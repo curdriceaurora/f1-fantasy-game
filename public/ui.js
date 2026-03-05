@@ -310,10 +310,9 @@ function initializePredictions() {
         thumb.style.left = percentString;
         if (fill) fill.style.width = percentString;
 
-        // Logical value
         let logicalVal = Math.round(min + pct * (max - min));
         if (invert) {
-          logicalVal = max - Math.round(pct * (max - min)); // P22 -> P1
+          logicalVal = (max + min) - logicalVal;
         }
 
         // Update display and state
@@ -368,25 +367,33 @@ function initializePredictions() {
 
       slider.addEventListener('pointerdown', (e) => {
         isDragging = true;
-        slider.setPointerCapture(e.pointerId);
+        try { slider.setPointerCapture(e.pointerId); } catch (err) { }
         handleDrag(e);
       });
 
       slider.addEventListener('pointermove', (e) => {
-        if (isDragging && slider.hasPointerCapture(e.pointerId)) {
+        if (isDragging) {
           handleDrag(e);
         }
       });
 
       slider.addEventListener('pointerup', (e) => {
         isDragging = false;
-        slider.releasePointerCapture(e.pointerId);
-        recalc(); // recalc if implemented
+        try {
+          if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+          }
+        } catch (err) { }
+        if (typeof window.recalc === 'function') window.recalc();
       });
 
       slider.addEventListener('pointercancel', (e) => {
         isDragging = false;
-        slider.releasePointerCapture(e.pointerId);
+        try {
+          if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+          }
+        } catch (err) { }
       });
     });
   }

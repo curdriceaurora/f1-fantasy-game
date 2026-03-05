@@ -238,7 +238,8 @@
                 <div class="cs-fill" style="background:transparent;"></div>
                 <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
                   <div class="cs-tooltip" id="pred-cola-val">P12</div>
-                  <img src="/images/drivers/colapinto.jpg" alt="Colapinto" onerror="this.style.display='none'">
+                  <img src="/images/drivers/colapinto.jpg" draggable="false" alt="Colapinto"
+                    onerror="this.style.display='none'">
                 </div>
               </div>
             </div>
@@ -841,6 +842,107 @@
     buildHomeCircuitDropdown();
     buildDriverChampionDropdown();
     buildConstructorDropdown();
+
+    // ── Prediction sliders ──
+    function initCustomSliders() {
+      const sliders = document.querySelectorAll('.custom-slider-container');
+
+      sliders.forEach(slider => {
+        const min = parseFloat(slider.getAttribute('data-min'));
+        const max = parseFloat(slider.getAttribute('data-max'));
+        const invert = slider.getAttribute('data-invert') === 'true';
+        let currentVal = parseFloat(slider.getAttribute('data-val'));
+
+        const track = slider.querySelector('.cs-track');
+        const fill = slider.querySelector('.cs-fill');
+        const thumb = slider.querySelector('.cs-thumb');
+        const tooltip = slider.querySelector('.cs-tooltip');
+        const isCola = slider.id === 'cs-colapinto';
+
+        function updateDOM(val) {
+          let pct = (val - min) / (max - min);
+          pct = Math.max(0, Math.min(1, pct));
+
+          const percentString = (pct * 100).toFixed(2) + '%';
+          thumb.style.left = percentString;
+          if (fill) fill.style.width = percentString;
+
+          let logicalVal = Math.round(min + pct * (max - min));
+          if (invert) {
+            logicalVal = (max + min) - logicalVal;
+          }
+
+          if (isCola) {
+            selectedPredictions.colaPosition = logicalVal;
+            if (tooltip) tooltip.textContent = `P${logicalVal}`;
+          } else {
+            selectedPredictions.totalClassified = logicalVal;
+            if (tooltip) tooltip.textContent = logicalVal;
+          }
+          slider.setAttribute('data-val', val);
+        }
+
+        function handleDrag(e) {
+          const rect = track.getBoundingClientRect();
+          let x = e.clientX - rect.left;
+          let pct = x / rect.width;
+
+          pct = Math.max(0, Math.min(1, pct));
+          let val = min + pct * (max - min);
+          val = Math.round(val);
+
+          slider.classList.remove('untouched');
+          if (isCola) {
+            const hint = document.getElementById('cola-hint');
+            if (hint) hint.classList.add('faded');
+          } else {
+            const hint = document.getElementById('classified-hint');
+            if (hint) hint.classList.add('faded');
+          }
+
+          updateDOM(val);
+        }
+
+        let initVal = currentVal;
+        if (isCola) {
+          initVal = invert ? 23 - selectedPredictions.colaPosition : selectedPredictions.colaPosition;
+        } else {
+          initVal = selectedPredictions.totalClassified;
+        }
+        updateDOM(initVal);
+
+        let isDragging = false;
+
+        slider.addEventListener('pointerdown', (e) => {
+          isDragging = true;
+          slider.setPointerCapture(e.pointerId);
+          handleDrag(e);
+        });
+
+        slider.addEventListener('pointermove', (e) => {
+          if (isDragging && slider.hasPointerCapture(e.pointerId)) {
+            handleDrag(e);
+          }
+        });
+
+        slider.addEventListener('pointerup', (e) => {
+          isDragging = false;
+          if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+          }
+          if (typeof window.recalc === 'function') window.recalc();
+        });
+
+        slider.addEventListener('pointercancel', (e) => {
+          isDragging = false;
+          if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+          }
+        });
+      });
+    }
+
+    initCustomSliders();
 
 
     // Pre-fill name + team from landing page if previously set
