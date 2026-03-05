@@ -915,29 +915,33 @@
 
         slider.addEventListener('pointerdown', (e) => {
           isDragging = true;
-          slider.setPointerCapture(e.pointerId);
+          try { slider.setPointerCapture(e.pointerId); } catch (err) { }
           handleDrag(e);
         });
 
         slider.addEventListener('pointermove', (e) => {
-          if (isDragging && slider.hasPointerCapture(e.pointerId)) {
+          if (isDragging) {
             handleDrag(e);
           }
         });
 
         slider.addEventListener('pointerup', (e) => {
           isDragging = false;
-          if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-          }
+          try {
+            if (slider.hasPointerCapture(e.pointerId)) {
+              slider.releasePointerCapture(e.pointerId);
+            }
+          } catch (err) { }
           if (typeof window.recalc === 'function') window.recalc();
         });
 
         slider.addEventListener('pointercancel', (e) => {
           isDragging = false;
-          if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-          }
+          try {
+            if (slider.hasPointerCapture(e.pointerId)) {
+              slider.releasePointerCapture(e.pointerId);
+            }
+          } catch (err) { }
         });
       });
     }
