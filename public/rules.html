@@ -429,23 +429,59 @@
     .calc-status.bad { background: rgba(225,6,0,0.1); color: var(--f1-red); border: 1px solid rgba(225,6,0,0.3); }
     .calc-status.empty { background: var(--bg-card); color: var(--text-muted); border: 1px solid #2a2a3e; }
 
+    .calc-entry-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .calc-input {
+      background: var(--bg-card);
+      border: 1px solid #333;
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      padding: 9px 12px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .calc-input:focus { outline: none; border-color: var(--accent-gold); }
+    .calc-input::placeholder { color: var(--text-muted); }
+    .calc-email-btns { display: flex; gap: 8px; margin-top: 4px; }
     .calc-copy-btn {
       font-family: var(--font-racing);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 1px;
-      padding: 12px 24px;
+      padding: 12px 16px;
       background: var(--f1-red);
       color: white;
       border: none;
       border-radius: var(--radius);
       cursor: pointer;
       transition: all 0.15s;
-      width: 100%;
-      margin-top: 4px;
+      flex: 1;
     }
     .calc-copy-btn:hover:not(:disabled) { background: var(--f1-red-glow); transform: scale(1.02); }
     .calc-copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .calc-mailto-btn {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid #444;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s;
+      flex: 1;
+    }
+    .calc-mailto-btn:hover:not(:disabled) { border-color: var(--accent-gold); color: var(--accent-gold); }
+    .calc-mailto-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
     .calc-preview {
       background: var(--bg-dark);
@@ -1064,7 +1100,14 @@ Example: Spend £49m → £1m unspent → floor(1÷2) = 0 pts (odd millions are 
           <span class="calc-stat-value gold" id="calc-season">+600 pts</span>
         </div>
         <div class="calc-status empty" id="calc-status">Select drivers and teams above</div>
-        <button class="calc-copy-btn" id="calc-copy" disabled onclick="copySelection()">📋 Copy Selection Summary</button>
+        <div class="calc-entry-row">
+          <input type="text" id="calc-name" class="calc-input" placeholder="Your name" maxlength="50" autocomplete="given-name">
+          <input type="text" id="calc-team-name" class="calc-input" placeholder="Team name (optional)" maxlength="60">
+        </div>
+        <div class="calc-email-btns">
+          <button class="calc-copy-btn" id="calc-copy" disabled onclick="copySelection()">📧 Copy Entry Email</button>
+          <button class="calc-mailto-btn" id="calc-mailto" disabled onclick="openMailto()">📨 Open in Mail</button>
+        </div>
         <pre class="calc-preview" id="calc-preview"></pre>
       </div>
     </div>
@@ -1317,55 +1360,114 @@ window.recalc = function() {
   bar.style.width = pct + '%';
   bar.classList.toggle('over', overBudget);
 
-  const status  = document.getElementById('calc-status');
-  const copyBtn = document.getElementById('calc-copy');
+  const status     = document.getElementById('calc-status');
+  const copyBtn    = document.getElementById('calc-copy');
+  const mailtoBtn  = document.getElementById('calc-mailto');
+  const enabled    = allFilled && !overBudget;
 
   if (!allFilled) {
     status.className = 'calc-status empty';
     status.textContent = 'Select all 6 picks to see your entry';
-    copyBtn.disabled = true;
   } else if (overBudget) {
     status.className = 'calc-status bad';
     status.textContent = `❌ Over budget by £${total - 50}m — adjust your picks`;
-    copyBtn.disabled = true;
   } else {
     status.className = 'calc-status ok';
     status.textContent = `✅ Valid entry — £${total}m spent, £${investment}m invested`;
-    copyBtn.disabled = false;
   }
+  copyBtn.disabled = !enabled;
+  mailtoBtn.disabled = !enabled;
 
   window._calcState = { selDrivers, selTeams, total, investment, allFilled, overBudget };
 };
+
+// ── Clipboard helper: modern API with execCommand fallback ──
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy') ? resolve() : reject(); }
+    catch (e) { reject(e); }
+    finally { document.body.removeChild(ta); }
+  });
+}
+
+// ── Build the entry email in the same format Martin receives ──
+function buildEntryEmail(managerName, teamName, s) {
+  return [
+    `To: mblewis@ntlworld.com`,
+    `Subject: Martin's FF1 2026 - Entry Submission`,
+    ``,
+    `Hi Martin,`,
+    ``,
+    `Please find my entry for Martin's FF1 2026 below. Hoping to sneak in before the deadline!`,
+    ``,
+    `Team Manager: ${managerName}`,
+    `Team Name: ${teamName}`,
+    ``,
+    `Driver 1: ${s.selDrivers[0].fullName} (${s.selDrivers[0].team}) - £${s.selDrivers[0].cost}m`,
+    `Driver 2: ${s.selDrivers[1].fullName} (${s.selDrivers[1].team}) - £${s.selDrivers[1].cost}m`,
+    `Driver 3: ${s.selDrivers[2].fullName} (${s.selDrivers[2].team}) - £${s.selDrivers[2].cost}m`,
+    ``,
+    `Team 1: ${s.selTeams[0].name} - £${s.selTeams[0].cost}m`,
+    `Team 2: ${s.selTeams[1].name} - £${s.selTeams[1].cost}m`,
+    `Team 3: ${s.selTeams[2].name} - £${s.selTeams[2].cost}m`,
+    ``,
+    `Total Team Cost: £${s.total}m`,
+    `Investment Value: £${s.investment}m`,
+    ``,
+    `Home Circuit: [fill in — the one race where your score is doubled]`,
+    `Driver Champion: [fill in]`,
+    `Constructor Champion: [fill in]`,
+    `Total Classified: [fill in — your prediction for the season]`,
+    `Best Pos. (Colapinto): [fill in]`,
+    ``,
+    `Happy to pay the £15 entry fee electronically - please send me the details.`,
+    ``,
+    `All the best,`,
+    `${managerName}`,
+  ].join('\n');
+}
 
 window.copySelection = function() {
   const s = window._calcState;
   if (!s || !s.allFilled || s.overBudget) return;
 
-  const lines = [
-    `Martin's FF1 2026 — Team Selection`,
-    ``,
-    `Driver 1: ${s.selDrivers[0].fullName} (${s.selDrivers[0].team}) — £${s.selDrivers[0].cost}m`,
-    `Driver 2: ${s.selDrivers[1].fullName} (${s.selDrivers[1].team}) — £${s.selDrivers[1].cost}m`,
-    `Driver 3: ${s.selDrivers[2].fullName} (${s.selDrivers[2].team}) — £${s.selDrivers[2].cost}m`,
-    ``,
-    `Team 1: ${s.selTeams[0].name} — £${s.selTeams[0].cost}m`,
-    `Team 2: ${s.selTeams[1].name} — £${s.selTeams[1].cost}m`,
-    `Team 3: ${s.selTeams[2].name} — £${s.selTeams[2].cost}m`,
-    ``,
-    `Total Cost: £${s.total}m`,
-    `Investment: £${s.investment}m → +${Math.floor(s.investment/2)} pts/race (+${Math.floor(s.investment/2)*24} season)`,
-  ];
-  const text = lines.join('\n');
+  const managerName = document.getElementById('calc-name').value.trim() || 'Your Name';
+  const teamName    = document.getElementById('calc-team-name').value.trim() || 'Your Team Name';
+  const text = buildEntryEmail(managerName, teamName, s);
 
   const preview = document.getElementById('calc-preview');
   preview.textContent = text;
   preview.classList.add('visible');
 
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('calc-copy');
+  const btn = document.getElementById('calc-copy');
+  copyText(text).then(() => {
     btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = '📋 Copy Selection Summary'; }, 2000);
-  }).catch(() => { /* preview already shown */ });
+    setTimeout(() => { btn.textContent = '📧 Copy Entry Email'; }, 2000);
+  }).catch(() => {
+    btn.textContent = '⚠️ Select & copy text below';
+    setTimeout(() => { btn.textContent = '📧 Copy Entry Email'; }, 3000);
+  });
+};
+
+window.openMailto = function() {
+  const s = window._calcState;
+  if (!s || !s.allFilled || s.overBudget) return;
+
+  const managerName = document.getElementById('calc-name').value.trim() || 'Your Name';
+  const teamName    = document.getElementById('calc-team-name').value.trim() || 'Your Team Name';
+  const text = buildEntryEmail(managerName, teamName, s);
+  const lines = text.split('\n');
+  const subject = `Martin's FF1 2026 - Entry Submission`;
+  const body = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
+  window.open(`mailto:mblewis@ntlworld.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
 };
 
 // ── Init ──

@@ -5,6 +5,29 @@
 import { TankGame } from './game.js';
 import { DEFAULTS, generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS } from './constants.js';
 
+// ── Clipboard helper: modern API with execCommand fallback ──
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for HTTP / restricted contexts
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy') ? resolve() : reject();
+    } catch (e) {
+      reject(e);
+    } finally {
+      document.body.removeChild(ta);
+    }
+  });
+}
+
 // ── DOM refs ──
 const screens = {
   welcome: document.getElementById('screen-welcome'),
@@ -276,14 +299,17 @@ function init() {
   // Copy email
   document.getElementById('btn-copy').addEventListener('click', () => {
     const text = document.getElementById('email-body').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('btn-copy');
+    const btn  = document.getElementById('btn-copy');
+    copyText(text).then(() => {
       btn.textContent = '✅ Copied!';
       btn.classList.add('copied');
       setTimeout(() => {
         btn.textContent = '📋 Copy Email';
         btn.classList.remove('copied');
       }, 2000);
+    }).catch(() => {
+      btn.textContent = '⚠️ Select text above';
+      setTimeout(() => { btn.textContent = '📋 Copy Email'; }, 3000);
     });
   });
 
