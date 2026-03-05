@@ -2,9 +2,7 @@
 
 ## Overview
 
-A web app for Martin's FF1 2026 fantasy league that lets players "earn" their team selection through:
-- **🎯 Aim for Glory** — A PocketTanks-style aiming game where accuracy determines your team rank
-- **🎰 Feel Lucky?** — A 3-reel slot machine that picks a fully random team
+A web app for Martin's FF1 2026 fantasy league that lets players "earn" their team selection through a **PocketTanks-style aiming game** — the closer you hit the target, the better your team rank.
 
 The app serves 100,000 pre-ranked team combinations via a serverless API. Players get a ready-to-send email entry based on their result.
 
@@ -30,7 +28,6 @@ f1-fantasy-game/
 │   ├── index.html           ← Single-page app
 │   ├── styles.css           ← F1-themed styles
 │   ├── game.js              ← Canvas tank aiming game
-│   ├── slots.js             ← 3-reel slot machine
 │   ├── ui.js                ← Screen flow, results, email display
 │   └── constants.js         ← Driver/team data for client display
 ├── data/
@@ -86,17 +83,13 @@ Test the API directly:
 # Best possible selection (accuracy = 1.0)
 curl "http://localhost:3456/api/selection?accuracy=1.0"
 
-# Random selection
-curl "http://localhost:3456/api/selection?mode=random"
-
 # Custom name + team
 curl "http://localhost:3456/api/selection?accuracy=0.8&name=Alice&team=Speed+Queens"
 ```
 
 **Verify:**
-- Welcome screen shows with name/team inputs and two mode buttons
+- Welcome screen shows with name/team inputs and PLAY button
 - Tank game: canvas renders terrain, F1 car, target; sliders and LAUNCH work
-- Slot machine: 3 reels spin and settle; results appear
 - Results: rank, points, drivers, teams, email body, Copy/Mail buttons
 - Copy Email copies to clipboard; Open in Mail opens mailto: link
 
@@ -157,7 +150,7 @@ vercel --prod
 
 Once deployed, share the Vercel URL with anyone who wants to play. They can:
 1. Enter their own name and team name
-2. Choose Aim (skill) or Slots (luck)
+2. Aim and fire — accuracy determines team quality
 3. Get a rank + full email body
 4. Copy or email it directly to Martin
 
@@ -171,12 +164,9 @@ Once deployed, share the Vercel URL with anyone who wants to play. They can:
 
 | Param | Type | Required | Description |
 |-------|------|----------|-------------|
-| `accuracy` | float (0-1) | Yes* | Shot accuracy. 1.0 = bullseye (rank 1), 0.0 = total miss |
-| `mode` | string | Yes* | Set to `random` for slot machine mode |
+| `accuracy` | float (0-1) | Yes | Shot accuracy. 1.0 = bullseye (rank 1), 0.0 = total miss |
 | `name` | string | No | Player name (default: "Rahul") |
 | `team` | string | No | Team name (default: "Ask MOM Before Overtaking") |
-
-*Provide either `accuracy` OR `mode=random`, not both.
 
 **Response:**
 ```json
@@ -256,7 +246,6 @@ In `public/game.js`, tweak:
 | API returns 500 | Check that `data/selections.json` exists and `vercel.json` has `includeFiles: "data/**"` |
 | Blank canvas | Ensure browser supports Canvas API (all modern browsers do) |
 | Fonts not loading | Google Fonts requires internet access; app will fall back to system fonts |
-| Slot reels don't stop | Check browser console for API errors; the API must return before reels settle |
 | Data file too large | The 3.6MB JSON is within Vercel's 50MB function size limit |
 
 ---

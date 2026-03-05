@@ -3,28 +3,64 @@
 // ═══════════════════════════════════════════
 
 import { TankGame } from './game.js';
-import { SlotMachine } from './slots.js';
-import { DEFAULTS } from './constants.js';
+import { DEFAULTS, generateTeamName } from './constants.js';
 
 // ── DOM refs ──
 const screens = {
   welcome: document.getElementById('screen-welcome'),
   game:    document.getElementById('screen-game'),
-  slots:   document.getElementById('screen-slots'),
   results: document.getElementById('screen-results'),
 };
 const loading = document.getElementById('loading-overlay');
 
-const inputName = document.getElementById('input-name');
-const inputTeam = document.getElementById('input-team');
+const inputFirstName   = document.getElementById('input-firstname');
+const inputLastName    = document.getElementById('input-lastname');
+const inputTeam        = document.getElementById('input-team');
+const sliderInvestment = document.getElementById('slider-investment');
+const valInvestment    = document.getElementById('val-investment');
+const btnPlay          = document.getElementById('btn-play');
+const validationMsg    = document.getElementById('validation-msg');
 
-// ── Persist user fields ──
+// ── Investment label ──
+function updateInvestmentLabel() {
+  const inv = parseInt(sliderInvestment.value);
+  const bonusPerRace = Math.floor(inv / 2);
+  const seasonBonus  = bonusPerRace * 24;
+  if (inv === 0) {
+    valInvestment.textContent = `£0m → +0 pts/race`;
+  } else {
+    valInvestment.textContent = `£${inv}m → +${bonusPerRace} pts/race (+${seasonBonus} season)`;
+  }
+}
+
+// ── Validation ──
+function validate() {
+  const fn = inputFirstName.value.trim();
+  const ln = inputLastName.value.trim();
+  const ok = fn.length > 0 && ln.length > 0;
+
+  btnPlay.disabled = !ok;
+
+  if (ok) {
+    validationMsg.textContent = '';
+    validationMsg.classList.remove('error');
+  } else {
+    const touched = inputFirstName.dataset.touched || inputLastName.dataset.touched;
+    validationMsg.textContent = 'Enter your first and last name to play';
+    validationMsg.classList.toggle('error', !!touched);
+  }
+
+  inputFirstName.classList.toggle('error', !fn && !!inputFirstName.dataset.touched);
+  inputLastName.classList.toggle('error',  !ln && !!inputLastName.dataset.touched);
+}
+
+// ── Persist team name only ──
 function loadSaved() {
-  inputName.value = localStorage.getItem('ff1_name') || DEFAULTS.managerName;
-  inputTeam.value = localStorage.getItem('ff1_team') || DEFAULTS.teamName;
+  inputTeam.value = localStorage.getItem('ff1_team') || generateTeamName();
+  updateInvestmentLabel();
+  validate();
 }
 function saveFields() {
-  localStorage.setItem('ff1_name', inputName.value.trim());
   localStorage.setItem('ff1_team', inputTeam.value.trim());
 }
 
@@ -35,16 +71,12 @@ function showScreen(name) {
 }
 
 // ── API call ──
-async function fetchSelection(params) {
-  const name = encodeURIComponent(inputName.value.trim() || DEFAULTS.managerName);
-  const team = encodeURIComponent(inputTeam.value.trim() || DEFAULTS.teamName);
-
-  let url = `/api/selection?name=${name}&team=${team}`;
-  if (params.mode === 'random') {
-    url += '&mode=random';
-  } else {
-    url += `&accuracy=${params.accuracy}`;
-  }
+async function fetchSelection(accuracy) {
+  const fullName   = `${inputFirstName.value.trim()} ${inputLastName.value.trim()}`;
+  const name       = encodeURIComponent(fullName);
+  const team       = encodeURIComponent(inputTeam.value.trim() || generateTeamName());
+  const investment = parseInt(sliderInvestment.value);
+  const url = `/api/selection?accuracy=${accuracy}&name=${name}&team=${team}&investment=${investment}`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -57,9 +89,10 @@ function showResults(data) {
 
   // Rank
   document.getElementById('rank-number').textContent = `#${data.rank.toLocaleString()}`;
-  document.getElementById('est-points').textContent = data.estPoints.toLocaleString();
+  document.getElementById('rank-total').textContent  = `/ ${data.totalEntries.toLocaleString()}`;
+  document.getElementById('est-points').textContent  = data.estPoints.toLocaleString();
 
-  // Jackpot effect
+  // Jackpot effect for top 100 in pool
   const container = document.querySelector('.results-container');
   container.classList.remove('jackpot');
   if (data.rank <= 100) container.classList.add('jackpot');
@@ -77,7 +110,7 @@ function showResults(data) {
   ).join('');
 
   // Cost
-  document.getElementById('result-cost').textContent = data.totalCost;
+  document.getElementById('result-cost').textContent   = data.totalCost;
   document.getElementById('result-invest').textContent = data.investmentValue;
 
   // Email
@@ -91,21 +124,21 @@ function showResults(data) {
 // ══════════════════════════
 
 let tankGame = null;
+let resetGameFn = null;
 
 function initTankGame() {
-  const canvas = document.getElementById('game-canvas');
+  const canvas      = document.getElementById('game-canvas');
   const sliderAngle = document.getElementById('slider-angle');
   const sliderPower = document.getElementById('slider-power');
-  const valAngle = document.getElementById('val-angle');
-  const valPower = document.getElementById('val-power');
-  const btnFire = document.getElementById('btn-fire');
-  const windEl = document.getElementById('wind-indicator');
+  const valAngle    = document.getElementById('val-angle');
+  const valPower    = document.getElementById('val-power');
+  const btnFire     = document.getElementById('btn-fire');
+  const windEl      = document.getElementById('wind-indicator');
 
   tankGame = new TankGame(canvas, async (accuracy) => {
-    // Projectile landed — fetch selection
     loading.classList.remove('hidden');
     try {
-      const data = await fetchSelection({ accuracy });
+      const data = await fetchSelection(accuracy);
       showResults(data);
     } catch (err) {
       console.error('API error:', err);
@@ -115,7 +148,6 @@ function initTankGame() {
     }
   });
 
-  // Update displays
   sliderAngle.addEventListener('input', () => {
     const deg = parseInt(sliderAngle.value);
     valAngle.textContent = `${deg}°`;
@@ -129,9 +161,7 @@ function initTankGame() {
   btnFire.addEventListener('click', () => {
     if (tankGame.state !== 'aiming') return;
     btnFire.disabled = true;
-    const angle = parseInt(sliderAngle.value);
-    const power = parseInt(sliderPower.value);
-    tankGame.fire(angle, power);
+    tankGame.fire(parseInt(sliderAngle.value), parseInt(sliderPower.value));
   });
 
   function resetGame() {
@@ -141,104 +171,57 @@ function initTankGame() {
     tankGame.draw(parseInt(sliderAngle.value));
   }
 
-  // Initial draw
   windEl.textContent = tankGame.getWindLabel();
   tankGame.draw(parseInt(sliderAngle.value));
 
-  // Expose reset
   return resetGame;
-}
-
-// ══════════════════════════
-// SLOT MACHINE SETUP
-// ══════════════════════════
-
-let slotMachine = null;
-
-function initSlotMachine() {
-  const r1 = document.getElementById('reel-1');
-  const r2 = document.getElementById('reel-2');
-  const r3 = document.getElementById('reel-3');
-  const btnSpin = document.getElementById('btn-spin');
-
-  slotMachine = new SlotMachine(r1, r2, r3, (apiResult) => {
-    // Reels stopped — show results
-    showResults(apiResult);
-    btnSpin.disabled = false;
-  });
-
-  btnSpin.addEventListener('click', async () => {
-    if (slotMachine.spinning) return;
-    btnSpin.disabled = true;
-    saveFields();
-
-    try {
-      // Fetch from API
-      const data = await fetchSelection({ mode: 'random' });
-      // Start spinning (will call onComplete when done)
-      slotMachine.spin(data);
-    } catch (err) {
-      console.error('API error:', err);
-      btnSpin.disabled = false;
-      alert('Failed to fetch selection. Check your connection and try again.');
-    }
-  });
 }
 
 // ══════════════════════════
 // INIT + EVENT WIRING
 // ══════════════════════════
 
-let resetGameFn = null;
+function startGame() {
+  saveFields();
+  showScreen('game');
+  if (!tankGame) {
+    resetGameFn = initTankGame();
+  } else {
+    resetGameFn();
+  }
+}
 
 function init() {
   loadSaved();
 
+  // Name validation — live + on blur
+  [inputFirstName, inputLastName].forEach(el => {
+    el.addEventListener('input', validate);
+    el.addEventListener('blur', () => {
+      el.dataset.touched = '1';
+      validate();
+    });
+  });
+
+  // Team name regenerate
+  document.getElementById('btn-regen-team').addEventListener('click', () => {
+    inputTeam.value = generateTeamName();
+  });
+
+  // Investment slider
+  sliderInvestment.addEventListener('input', updateInvestmentLabel);
+
   // Welcome → Game
-  document.getElementById('btn-aim').addEventListener('click', () => {
-    saveFields();
-    showScreen('game');
-    if (!tankGame) {
-      resetGameFn = initTankGame();
-    } else {
-      resetGameFn();
-    }
-  });
+  btnPlay.addEventListener('click', startGame);
 
-  // Welcome → Slots
-  document.getElementById('btn-slots').addEventListener('click', () => {
-    saveFields();
-    showScreen('slots');
-    if (!slotMachine) {
-      initSlotMachine();
-    } else {
-      slotMachine.reset();
-    }
-  });
-
-  // Back buttons
+  // Back button
   document.getElementById('btn-back-game').addEventListener('click', () => {
     if (tankGame) tankGame.reset();
     showScreen('welcome');
   });
-  document.getElementById('btn-back-slots').addEventListener('click', () => {
-    showScreen('welcome');
-  });
 
-  // Results → replay
-  document.getElementById('btn-aim-again').addEventListener('click', () => {
-    showScreen('game');
-    if (resetGameFn) resetGameFn();
-    else resetGameFn = initTankGame();
-  });
-  document.getElementById('btn-spin-again').addEventListener('click', () => {
-    showScreen('slots');
-    if (!slotMachine) initSlotMachine();
-    else slotMachine.reset();
-  });
-  document.getElementById('btn-home').addEventListener('click', () => {
-    showScreen('welcome');
-  });
+  // Results → Try Again
+  document.getElementById('btn-try-again').addEventListener('click', startGame);
 
   // Copy email
   document.getElementById('btn-copy').addEventListener('click', () => {
@@ -257,14 +240,11 @@ function init() {
   // Mailto
   document.getElementById('btn-mailto').addEventListener('click', () => {
     const body = document.getElementById('email-body').textContent;
-    // Extract subject from body (line 2)
     const lines = body.split('\n');
     const subjectLine = lines.find(l => l.startsWith('Subject:'));
-    const subject = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
-    // Remove To: and Subject: lines for the body
+    const subject  = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
     const mailBody = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
-    const mailto = `mailto:${DEFAULTS.emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
-    window.open(mailto);
+    window.open(`mailto:${DEFAULTS.emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`);
   });
 }
 

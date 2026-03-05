@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martin's FF1 2026 — Rules & Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Rules page specific styles ── */
+    body { overflow-x: hidden; }
+
+    .rules-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* Header */
+    .rules-header {
+      padding: 24px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .rules-header-title {
+      font-family: var(--font-racing);
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    .rules-header-title span { color: var(--f1-red); }
+    .back-to-game {
+      font-family: var(--font-racing);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .back-to-game:hover { color: #fff; border-color: var(--f1-red); }
+
+    /* Sticky nav */
+    .rules-nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg-dark);
+      border-bottom: 1px solid #222;
+      padding: 10px 0;
+      display: flex;
+      gap: 8px;
+      z-index: 50;
+      overflow-x: auto;
+    }
+    .rules-nav a {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 16px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .rules-nav a:hover { color: #fff; border-color: var(--accent-gold); }
+
+    /* Section headers */
+    .section-title {
+      font-family: var(--font-racing);
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--f1-red);
+      color: var(--text-primary);
+    }
+    .section-title span { color: var(--f1-red); }
+
+    .sub-title {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      margin: 28px 0 10px;
+      text-transform: uppercase;
+    }
+
+    /* Quick start box */
+    .quickstart {
+      background: var(--bg-card);
+      border: 1px solid #444;
+      border-left: 4px solid var(--f1-red);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+    .quickstart h3 {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--f1-red);
+      margin-bottom: 12px;
+    }
+    .quickstart ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quickstart li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .quickstart li strong { color: var(--text-primary); }
+
+    /* Rules text */
+    .rules-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .rules-text strong { color: var(--text-primary); }
+
+    /* Tables */
+    .rules-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 13px;
+      overflow-x: auto;
+      display: block;
+    }
+    .rules-table th {
+      font-family: var(--font-racing);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 10px 12px;
+      text-align: center;
+      border: 1px solid #333;
+    }
+    .rules-table td {
+      padding: 8px 12px;
+      border: 1px solid #222;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    .rules-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .rules-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .rules-table td.pos { color: var(--green); }
+    .rules-table td.neg { color: #e10600; }
+    .rules-table td.zero { color: var(--text-muted); }
+
+    /* Driver/team reference table */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 12px 0 24px;
+    }
+    .ref-table th {
+      font-family: var(--font-racing);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+    .ref-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #1a1a2e;
+      color: var(--text-secondary);
+    }
+    .ref-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .ref-table .rank-badge {
+      font-family: var(--font-racing);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+    .rank-champion   { background: #ffd70022; color: #ffd700; border: 1px solid #ffd70066; }
+    .rank-contender  { background: #3671c622; color: #6694ff; border: 1px solid #3671c666; }
+    .rank-topten     { background: #e8002d22; color: #ff6688; border: 1px solid #e8002d66; }
+    .rank-midrunner  { background: #ff800022; color: #ff9944; border: 1px solid #ff800066; }
+    .rank-outsider   { background: #27f4d222; color: #27f4d2; border: 1px solid #27f4d266; }
+    .rank-nohoper    { background: #66668822; color: #9999bb; border: 1px solid #66668866; }
+    .cost-val {
+      font-family: var(--font-racing);
+      font-size: 12px;
+      color: var(--accent-gold);
+    }
+
+    /* Race calendar */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px;
+      margin: 12px 0 24px;
+    }
+    .calendar-item {
+      background: var(--bg-surface);
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .race-num {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 24px;
+    }
+    .race-info { flex: 1; }
+    .race-country { font-size: 13px; font-weight: 600; }
+    .race-date { font-size: 11px; color: var(--text-muted); }
+    .sprint-badge {
+      font-family: var(--font-racing);
+      font-size: 8px;
+      letter-spacing: 0.5px;
+      background: rgba(255,215,0,0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(255,215,0,0.4);
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    details.faq-item {
+      background: var(--bg-card);
+      border: 1px solid #2a2a3e;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    details.faq-item[open] { border-color: var(--f1-red); }
+    details.faq-item summary {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 16px 18px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+    }
+    details.faq-item summary::after {
+      content: '＋';
+      color: var(--text-muted);
+      font-size: 16px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      transition: transform 0.2s;
+    }
+    details.faq-item[open] summary::after {
+      content: '－';
+      color: var(--f1-red);
+    }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      border-top: 1px solid #1e1e30;
+      padding-top: 14px;
+    }
+    .faq-answer strong { color: var(--text-primary); }
+    .faq-answer .example {
+      background: var(--bg-surface);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--green);
+    }
+
+    /* ── CALCULATOR ── */
+    .calculator-card {
+      background: var(--bg-card);
+      border: 1px solid #2a2a3e;
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 8px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .calc-col h3 {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .calc-select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .calc-select-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-slot-num {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 16px;
+    }
+    .calc-select {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      padding: 9px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+    .calc-select:focus { border-color: var(--f1-red); }
+    .calc-cost-badge {
+      font-family: var(--font-racing);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* Totals panel */
+    .calc-totals {
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border: 1px solid #333;
+    }
+    .calc-budget-bar {
+      width: 100%;
+      height: 10px;
+      background: #1a1a2e;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .calc-budget-fill {
+      height: 100%;
+      border-radius: 5px;
+      background: var(--green);
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .calc-budget-fill.over { background: var(--f1-red); }
+    .calc-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .calc-stat-label {
+      font-family: var(--font-racing);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+    .calc-stat-value {
+      font-family: var(--font-racing);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .calc-stat-value.gold { color: var(--accent-gold); }
+    .calc-stat-value.green { color: var(--green); }
+    .calc-stat-value.red { color: var(--f1-red); }
+    .calc-status {
+      text-align: center;
+      font-family: var(--font-racing);
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .calc-status.ok  { background: rgba(39,244,210,0.1); color: var(--green); border: 1px solid rgba(39,244,210,0.3); }
+    .calc-status.bad { background: rgba(225,6,0,0.1); color: var(--f1-red); border: 1px solid rgba(225,6,0,0.3); }
+    .calc-status.empty { background: var(--bg-card); color: var(--text-muted); border: 1px solid #2a2a3e; }
+
+    .calc-copy-btn {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 24px;
+      background: var(--f1-red);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s;
+      width: 100%;
+      margin-top: 4px;
+    }
+    .calc-copy-btn:hover:not(:disabled) { background: var(--f1-red-glow); transform: scale(1.02); }
+    .calc-copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .calc-preview {
+      background: var(--bg-dark);
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin-top: 4px;
+      display: none;
+    }
+    .calc-preview.visible { display: block; }
+
+    /* Driver/team side-by-side grid */
+    .dt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .dt-grid { grid-template-columns: 1fr; }
+      .rules-header { flex-direction: column; align-items: flex-start; }
+      .rules-nav { padding-bottom: 2px; }
+      .calculator-card { padding: 16px; }
+      .rules-page { padding: 0 12px 60px; }
+      .rules-table th, .rules-table td { padding: 6px 8px; font-size: 11px; }
+      .ref-table td, .ref-table th { padding: 6px 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="rules-page">
+
+  <!-- Header -->
+  <div class="rules-header">
+    <div class="rules-header-title">MARTIN'S FF1 2026<br><span>RULES &amp; CALCULATOR</span></div>
+    <a href="index.html" class="back-to-game">← Back to Game</a>
+  </div>
+  <div class="checkered-bar"></div>
+
+  <!-- Sticky nav -->
+  <nav class="rules-nav">
+    <a href="#rules">📋 Rules</a>
+    <a href="#drivers">🏎 Drivers &amp; Teams</a>
+    <a href="#calendar">📅 Calendar</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="#calculator">🧮 Calculator</a>
+  </nav>
+
+  <!-- ══════════════════ RULES ══════════════════ -->
+  <section id="rules">
+    <h2 class="section-title">📋 Rules</h2>
+
+    <div class="quickstart">
+      <h3>⚡ QUICK START — NEW? READ THIS ONLY</h3>
+      <ol>
+        <li>Pick <strong>3 drivers</strong> and <strong>3 teams</strong> from the table below</li>
+        <li>Make sure your <strong>total cost ≤ £50m</strong> (use the calculator!)</li>
+        <li>Pick a <strong>Home Circuit</strong> from the race calendar for a double-points bonus</li>
+        <li>Fill in the <strong>5 predictions</strong> for end-of-season bonus points</li>
+        <li>Email to <strong>mblewis@ntlworld.com</strong> by <strong>Thursday 5th March 2026</strong> with your £15 entry fee</li>
+      </ol>
+    </div>
+
+    <p class="rules-text">You have <strong>£50m</strong> to spend on 3 drivers + 3 teams. No restrictions on combinations — you can pick 2 drivers from the same team, or even the team itself. Points come from qualifying performance, race results, your home circuit bonus, and your end-of-season predictions.</p>
+
+    <h3 class="sub-title">§2.1 — Qualifying Points</h3>
+    <p class="rules-text">Each driver scores points based on their <strong>qualifying position</strong> relative to their assigned capability rank:</p>
+
+    <table class="rules-table">
+      <thead>
+        <tr>
+          <th>Grid Position</th>
+          <th><span class="rank-badge rank-champion">CHAMPION</span></th>
+          <th><span class="rank-badge rank-contender">CONTENDER</span></th>
+          <th><span class="rank-badge rank-topten">TOP TEN</span></th>
+          <th><span class="rank-badge rank-midrunner">MID RUNNER</span></th>
+          <th><span class="rank-badge rank-outsider">OUTSIDER</span></th>
+          <th><span class="rank-badge rank-nohoper">NO HOPER</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Pole</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td><td class="pos">+12</td><td class="pos">+15</td></tr>
+        <tr><td>2nd – 5th</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td><td class="pos">+12</td></tr>
+        <tr><td>6th – 10th</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td></tr>
+        <tr><td>11th – 14th</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td></tr>
+        <tr><td>15th – 18th</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td></tr>
+        <tr><td>19th – 22nd</td><td class="neg">-13</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="pos">+2</td><td class="zero">0</td></tr>
+        <tr><td>Did Not Qualify</td><td class="neg">-20</td><td class="neg">-13</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-3</td></tr>
+      </tbody>
+    </table>
+
+    <p class="rules-text"><strong>Key insight:</strong> "No Hoper" and "Outsider" drivers earn <em>positive</em> points for qualifying anywhere in the top half of the grid — making cheap, fast-qualifying drivers like Gasly, Lindblad, and Colapinto extremely valuable picks.</p>
+
+    <h3 class="sub-title">§2.2 — Race Points</h3>
+    <p class="rules-text">Standard F1 finishing points: <strong>1st 25 | 2nd 18 | 3rd 15 | 4th 12 | 5th 10 | 6th 8 | 7th 6 | 8th 4 | 9th 2 | 10th 1</strong></p>
+    <p class="rules-text"><strong>Position change bonus:</strong> +2 pts per place gained, –2 pts per place lost vs. grid start position.</p>
+    <p class="rules-text"><strong>Fastest Lap:</strong> +2 pts. <strong>Sprint races:</strong> FIA sprint scoring (8→1 pts for top 8).</p>
+    <p class="rules-text"><strong>Team scoring:</strong> Sum of both drivers' points, weighted as <code>(3 × Lead Driver + 2 × Second Driver) ÷ 5</code>, rounded up.</p>
+
+    <h3 class="sub-title">§2.3 — Home Circuit Bonus</h3>
+    <p class="rules-text">Pick one race circuit at the start. Your <strong>entire score for that race is doubled</strong> (driver + team). If the result is negative, it's reset to 0. If your circuit is cancelled, you may pick another.</p>
+
+    <h3 class="sub-title">§2.4 — Penalties</h3>
+    <p class="rules-text">Grid penalties = minus points equal to places penalised (capped at 10). Time penalties at race end = minus seconds penalised (capped at 10).</p>
+
+    <h3 class="sub-title">§2.5 — Fines</h3>
+    <p class="rules-text">FIA monetary fines: <strong>–1 pt per €2,000</strong> (or part thereof), capped at 100 pts. Suspended fines = no penalty.</p>
+
+    <h3 class="sub-title">§2.6 — Investment Bonus</h3>
+    <p class="rules-text">Any unspent budget (up to £20m) earns bonus points <strong>every race</strong>:</p>
+    <p class="rules-text"><strong>Formula: floor(unspent £m ÷ 2) pts per race</strong></p>
+    <table class="rules-table" style="max-width:480px;">
+      <thead><tr><th>Spent</th><th>Unspent</th><th>Pts/Race</th><th>Season Total</th></tr></thead>
+      <tbody>
+        <tr><td>£50m</td><td>£0m</td><td class="zero">0</td><td class="zero">0</td></tr>
+        <tr><td>£48m</td><td>£2m</td><td class="pos">+1</td><td class="pos">+24</td></tr>
+        <tr><td>£46m</td><td>£4m</td><td class="pos">+2</td><td class="pos">+48</td></tr>
+        <tr><td>£44m</td><td>£6m</td><td class="pos">+3</td><td class="pos">+72</td></tr>
+        <tr><td>£40m</td><td>£10m</td><td class="pos">+5</td><td class="pos">+120</td></tr>
+        <tr><td>£30m</td><td>£20m</td><td class="pos">+10</td><td class="pos">+240</td></tr>
+      </tbody>
+    </table>
+    <p class="rules-text">Note: odd £m of unspent budget is ignored (floor division). £49m spent = £1m unspent = <strong>0 bonus</strong>.</p>
+
+    <h3 class="sub-title">§2.7 — End-of-Season Bonuses</h3>
+    <table class="rules-table" style="max-width:580px;">
+      <thead><tr><th>Prediction</th><th>Points</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td>Total Classified Drivers</td><td class="pos">+30</td><td>Exact</td></tr>
+        <tr><td>Total Classified Drivers</td><td class="pos">+20</td><td>Within 5</td></tr>
+        <tr><td>Total Classified Drivers</td><td class="pos">+10</td><td>Within 10</td></tr>
+        <tr><td>FIA Driver Champion</td><td class="pos">+10</td><td>Correct</td></tr>
+        <tr><td>FIA Constructor Champion</td><td class="pos">+5</td><td>Correct</td></tr>
+        <tr><td>Best Finish — Colapinto</td><td class="pos">+20</td><td>Exact position</td></tr>
+      </tbody>
+    </table>
+    <p class="rules-text"><strong>Total Classified</strong> = total drivers still running at finish across all 24 races. Maximum possible: 22 × 24 = 528. Last year (20 drivers): 407. Expect 420–460 range with 22 drivers.</p>
+
+    <h3 class="sub-title">Mid-Season Transfer</h3>
+    <p class="rules-text">After Race 11 (Britain), you may replace <strong>one driver or one team</strong>. Costs <strong>20 points</strong> deducted from your current total. Must stay within £50m. Must be submitted before Race 12 (Belgium). If a driver drops out permanently, free replacement at same cost — no penalty.</p>
+  </section>
+
+  <!-- ══════════════════ DRIVERS & TEAMS ══════════════════ -->
+  <section id="drivers">
+    <h2 class="section-title">🏎 2026 Drivers &amp; Teams</h2>
+    <p class="rules-text">Pick 3 drivers and 3 teams. Total cost must be <strong>≤ £50m</strong>. (R) = Rookie.</p>
+
+    <div class="dt-grid">
+      <div>
+        <h3 class="sub-title">DRIVERS</h3>
+        <table class="ref-table">
+          <thead><tr><th>Driver</th><th>Team</th><th>Rank</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Lando Norris</td><td>McLaren</td><td><span class="rank-badge rank-champion">CHAMPION</span></td><td class="cost-val">£16m</td></tr>
+            <tr><td>Oscar Piastri</td><td>McLaren</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£16m</td></tr>
+            <tr><td>Max Verstappen</td><td>Red Bull</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£16m</td></tr>
+            <tr><td>George Russell</td><td>Mercedes</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£12m</td></tr>
+            <tr><td>Charles Leclerc</td><td>Ferrari</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£11m</td></tr>
+            <tr><td>Kimi Antonelli</td><td>Mercedes</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£10m</td></tr>
+            <tr><td>Isack Hadjar (R)</td><td>Racing Bulls</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£10m</td></tr>
+            <tr><td>Lewis Hamilton</td><td>Ferrari</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£9m</td></tr>
+            <tr><td>Carlos Sainz Jr</td><td>Williams</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£7m</td></tr>
+            <tr><td>Fernando Alonso</td><td>Aston Martin</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£7m</td></tr>
+            <tr><td>Nico Hulkenberg</td><td>Audi</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Gabriel Bortoleto (R)</td><td>Audi</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Sergio Perez</td><td>Cadillac</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Alex Albon</td><td>Williams</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Esteban Ocon</td><td>Haas</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Oliver Bearman</td><td>Haas</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Liam Lawson</td><td>Red Bull</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Valtteri Bottas</td><td>Cadillac</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
+            <tr><td>Pierre Gasly</td><td>Alpine</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
+            <tr><td>Franco Colapinto (R)</td><td>Alpine</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
+            <tr><td>Arvid Lindblad (R)</td><td>Racing Bulls</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
+            <tr><td>Lance Stroll</td><td>Aston Martin</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 class="sub-title">TEAMS</h3>
+        <table class="ref-table">
+          <thead><tr><th>Team</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td>McLaren</td><td class="cost-val">£15m</td></tr>
+            <tr><td>Mercedes</td><td class="cost-val">£13m</td></tr>
+            <tr><td>Red Bull</td><td class="cost-val">£13m</td></tr>
+            <tr><td>Ferrari</td><td class="cost-val">£10m</td></tr>
+            <tr><td>Williams</td><td class="cost-val">£8m</td></tr>
+            <tr><td>Racing Bulls</td><td class="cost-val">£6m</td></tr>
+            <tr><td>Aston Martin</td><td class="cost-val">£6m</td></tr>
+            <tr><td>Haas</td><td class="cost-val">£6m</td></tr>
+            <tr><td>Audi</td><td class="cost-val">£5m</td></tr>
+            <tr><td>Alpine</td><td class="cost-val">£5m</td></tr>
+            <tr><td>Cadillac</td><td class="cost-val">£5m</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub-title" style="margin-top:24px;">HOME CIRCUITS</h3>
+        <p class="rules-text" style="font-size:13px;">Pick any circuit from the calendar. Your <strong>total score is doubled</strong> at that race.</p>
+        <p class="rules-text" style="font-size:13px;">Choose wisely — a street circuit (Monaco, Baku) often produces surprises. Sprint weekends give extra scoring opportunities.</p>
+
+        <h3 class="sub-title" style="margin-top:24px;">PREDICTIONS</h3>
+        <table class="ref-table">
+          <thead><tr><th>Prediction</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr><td>Total Classified (season)</td><td class="cost-val">10–30</td></tr>
+            <tr><td>FIA Driver Champion</td><td class="cost-val">+10</td></tr>
+            <tr><td>FIA Constructor Champion</td><td class="cost-val">+5</td></tr>
+            <tr><td>Best Finish — Colapinto</td><td class="cost-val">+20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CALENDAR ══════════════════ -->
+  <section id="calendar">
+    <h2 class="section-title">📅 2026 Race Calendar</h2>
+    <p class="rules-text">24 races. Sprint weekends marked with <span class="sprint-badge">SPRINT</span>. Deadline for entry: <strong>Thursday 5th March 2026, 4pm</strong>.</p>
+    <div class="calendar-grid">
+      <div class="calendar-item"><span class="race-num">R1</span><div class="race-info"><div class="race-country">Australia</div><div class="race-date">8 March 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R2</span><div class="race-info"><div class="race-country">China</div><div class="race-date">15 March 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R3</span><div class="race-info"><div class="race-country">Japan</div><div class="race-date">29 March 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R4</span><div class="race-info"><div class="race-country">Bahrain</div><div class="race-date">12 April 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R5</span><div class="race-info"><div class="race-country">Saudi Arabia</div><div class="race-date">19 April 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R6</span><div class="race-info"><div class="race-country">Miami</div><div class="race-date">3 May 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R7</span><div class="race-info"><div class="race-country">Canada</div><div class="race-date">24 May 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R8</span><div class="race-info"><div class="race-country">Monaco</div><div class="race-date">7 June 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R9</span><div class="race-info"><div class="race-country">Spain</div><div class="race-date">14 June 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R10</span><div class="race-info"><div class="race-country">Austria</div><div class="race-date">28 June 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R11</span><div class="race-info"><div class="race-country">Britain</div><div class="race-date">5 July 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R12</span><div class="race-info"><div class="race-country">Belgium</div><div class="race-date">19 July 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R13</span><div class="race-info"><div class="race-country">Hungary</div><div class="race-date">26 July 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R14</span><div class="race-info"><div class="race-country">Netherlands</div><div class="race-date">23 August 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R15</span><div class="race-info"><div class="race-country">Italy</div><div class="race-date">31 August 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R16</span><div class="race-info"><div class="race-country">Madrid</div><div class="race-date">13 September 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R17</span><div class="race-info"><div class="race-country">Azerbaijan</div><div class="race-date">26 September 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R18</span><div class="race-info"><div class="race-country">Singapore</div><div class="race-date">11 October 2026</div></div><span class="sprint-badge">SPRINT</span></div>
+      <div class="calendar-item"><span class="race-num">R19</span><div class="race-info"><div class="race-country">USA (Austin)</div><div class="race-date">25 October 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R20</span><div class="race-info"><div class="race-country">Mexico</div><div class="race-date">1 November 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R21</span><div class="race-info"><div class="race-country">Brazil</div><div class="race-date">8 November 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R22</span><div class="race-info"><div class="race-country">Las Vegas</div><div class="race-date">21 November 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R23</span><div class="race-info"><div class="race-country">Qatar</div><div class="race-date">29 November 2026</div></div></div>
+      <div class="calendar-item"><span class="race-num">R24</span><div class="race-info"><div class="race-country">Abu Dhabi</div><div class="race-date">6 December 2026</div></div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FAQ ══════════════════ -->
+  <section id="faq">
+    <h2 class="section-title">❓ FAQ</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>What does "Total Classified" mean?</summary>
+        <div class="faq-answer">
+          A driver is "classified" if they were still running at the checkered flag, per the FIA official results. You predict the <strong>total count across all 24 races</strong>. With 22 drivers and 24 races, the maximum is 528 (if everyone finishes every race). Last year with 20 drivers the total was 407. Expect somewhere in the <strong>420–460 range</strong> for 2026.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I pick two drivers from the same team?</summary>
+        <div class="faq-answer">
+          <strong>Yes!</strong> There are no restrictions on combinations. You can even pick a team and both its drivers in the same entry — as long as the total cost stays within £50m.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does the Home Circuit bonus work?</summary>
+        <div class="faq-answer">
+          Pick any circuit from the 2026 calendar. At that race, your <strong>entire score is doubled</strong> — drivers and teams combined, including sprint points if applicable. If the doubled result is negative, it's reset to zero. If your circuit is cancelled, you may pick an alternative later in the season.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does the Investment Bonus work exactly?</summary>
+        <div class="faq-answer">
+          Any unspent budget earns you <strong>floor(unspent ÷ 2) points per race</strong>, every race.
+          <div class="example">Example: Spend £44m → £6m unspent → floor(6÷2) = 3 pts/race × 24 races = +72 pts season bonus
+Example: Spend £49m → £1m unspent → floor(1÷2) = 0 pts (odd millions are ignored!)</div>
+          The maximum investment is £20m (cheapest possible team = 3×£5 drivers + 3×£5 teams = £30m), giving +10 pts/race, +240 pts over the season.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I change my entry before the deadline?</summary>
+        <div class="faq-answer">
+          <strong>Yes</strong> — you can update your selection any time before <strong>5th March 2026, 4pm</strong>, subject to your new combination not already being taken by someone else. Martin will let you know if there's a clash.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I change my team during the season?</summary>
+        <div class="faq-answer">
+          After <strong>Race 11 (Britain)</strong>, you may swap one driver or one team. This costs you <strong>20 points</strong> deducted from your current total and must be submitted before Race 12 (Belgium). The replacement must keep your total within £50m (usually the incoming driver/team costs the same as the outgoing one).
+          <br><br>
+          If a driver drops out for the rest of the season, you get a <strong>free replacement</strong> at the same cost — no points penalty.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why do No Hoper drivers score the most qualifying points?</summary>
+        <div class="faq-answer">
+          The scoring matrix rewards <strong>outperforming expectations</strong>. A "No Hoper" driver who qualifies 6th–10th scores <strong>+9 points</strong>, while a "Champion" in the same position scores <strong>–4 points</strong>. This makes cheap, scrappy qualifiers like Gasly, Colapinto, and Lindblad potentially very lucrative picks — especially if they regularly punch above their weight.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How are prizes distributed?</summary>
+        <div class="faq-answer">
+          £4 per entrant goes to charity. The rest is all prize money:
+          <ul style="padding-left:16px;margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+            <li><strong>£3</strong> for highest score in each individual race (×24 = £72 total)</li>
+            <li><strong>£5</strong> to last place at season end</li>
+            <li><strong>£5 each</strong> to highest and lowest individual race score over the season</li>
+            <li>Remaining pot split among <strong>top finishers</strong> (number depends on total entries — roughly top 10 with ~25 entrants)</li>
+          </ul>
+          All payouts are higher than the £15 entry fee.
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ CALCULATOR ══════════════════ -->
+  <section id="calculator">
+    <h2 class="section-title">🧮 Team Cost Calculator</h2>
+    <p class="rules-text">Select your 3 drivers and 3 teams. Costs update live — must stay within £50m total.</p>
+
+    <div class="calculator-card">
+      <div class="calc-grid">
+        <!-- Drivers -->
+        <div class="calc-col">
+          <h3>DRIVERS (pick 3)</h3>
+          <div class="calc-select-group">
+            <div class="calc-select-row">
+              <span class="calc-slot-num">1.</span>
+              <select class="calc-select" id="driver-1" onchange="recalc()">
+                <option value="">— Select driver —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-d1">—</span>
+            </div>
+            <div class="calc-select-row">
+              <span class="calc-slot-num">2.</span>
+              <select class="calc-select" id="driver-2" onchange="recalc()">
+                <option value="">— Select driver —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-d2">—</span>
+            </div>
+            <div class="calc-select-row">
+              <span class="calc-slot-num">3.</span>
+              <select class="calc-select" id="driver-3" onchange="recalc()">
+                <option value="">— Select driver —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-d3">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teams -->
+        <div class="calc-col">
+          <h3>TEAMS (pick 3)</h3>
+          <div class="calc-select-group">
+            <div class="calc-select-row">
+              <span class="calc-slot-num">1.</span>
+              <select class="calc-select" id="team-1" onchange="recalc()">
+                <option value="">— Select team —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-t1">—</span>
+            </div>
+            <div class="calc-select-row">
+              <span class="calc-slot-num">2.</span>
+              <select class="calc-select" id="team-2" onchange="recalc()">
+                <option value="">— Select team —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-t2">—</span>
+            </div>
+            <div class="calc-select-row">
+              <span class="calc-slot-num">3.</span>
+              <select class="calc-select" id="team-3" onchange="recalc()">
+                <option value="">— Select team —</option>
+              </select>
+              <span class="calc-cost-badge" id="cost-t3">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="calc-totals">
+        <div>
+          <div class="calc-stat-row" style="margin-bottom:6px;">
+            <span class="calc-stat-label">BUDGET USED</span>
+            <span class="calc-stat-value gold" id="calc-spent">£0m / £50m</span>
+          </div>
+          <div class="calc-budget-bar">
+            <div class="calc-budget-fill" id="calc-bar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="calc-stat-row">
+          <span class="calc-stat-label">INVESTMENT</span>
+          <span class="calc-stat-value green" id="calc-invest">£50m unspent</span>
+        </div>
+        <div class="calc-stat-row">
+          <span class="calc-stat-label">BONUS PTS/RACE</span>
+          <span class="calc-stat-value gold" id="calc-bonus">+25 pts/race</span>
+        </div>
+        <div class="calc-stat-row">
+          <span class="calc-stat-label">SEASON INVESTMENT BONUS</span>
+          <span class="calc-stat-value gold" id="calc-season">+600 pts</span>
+        </div>
+        <div class="calc-status empty" id="calc-status">Select drivers and teams above</div>
+        <button class="calc-copy-btn" id="calc-copy" disabled onclick="copySelection()">📋 Copy Selection Summary</button>
+        <pre class="calc-preview" id="calc-preview"></pre>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end rules-page -->
+
+<script type="module">
+import { DRIVERS, TEAMS, DRIVER_RANKS } from './constants.js';
+
+// ── Populate dropdowns ──
+function populateSelects() {
+  const driverOptions = DRIVERS.map((d, i) =>
+    `<option value="${i}">${d.fullName} (${d.team}) · ${DRIVER_RANKS[i]} · £${d.cost}m</option>`
+  ).join('');
+
+  const teamOptions = TEAMS.map((t, i) =>
+    `<option value="${i}">${t.name} · £${t.cost}m</option>`
+  ).join('');
+
+  for (let n = 1; n <= 3; n++) {
+    document.getElementById(`driver-${n}`).innerHTML =
+      '<option value="">— Select driver —</option>' + driverOptions;
+    document.getElementById(`team-${n}`).innerHTML =
+      '<option value="">— Select team —</option>' + teamOptions;
+  }
+}
+
+// ── Recalculate on any change ──
+window.recalc = function() {
+  let driverTotal = 0, teamTotal = 0;
+  let allFilled = true;
+  const selDrivers = [], selTeams = [];
+
+  for (let n = 1; n <= 3; n++) {
+    const dSel = document.getElementById(`driver-${n}`);
+    const tSel = document.getElementById(`team-${n}`);
+    const dBadge = document.getElementById(`cost-d${n}`);
+    const tBadge = document.getElementById(`cost-t${n}`);
+
+    if (dSel.value !== '') {
+      const d = DRIVERS[parseInt(dSel.value)];
+      driverTotal += d.cost;
+      dBadge.textContent = `£${d.cost}m`;
+      selDrivers.push({ ...d, slot: n });
+    } else {
+      dBadge.textContent = '—';
+      allFilled = false;
+    }
+
+    if (tSel.value !== '') {
+      const t = TEAMS[parseInt(tSel.value)];
+      teamTotal += t.cost;
+      tBadge.textContent = `£${t.cost}m`;
+      selTeams.push({ ...t, slot: n });
+    } else {
+      tBadge.textContent = '—';
+      allFilled = false;
+    }
+  }
+
+  const total = driverTotal + teamTotal;
+  const investment = Math.max(0, 50 - total);
+  const bonusPerRace = Math.floor(investment / 2);
+  const seasonBonus = bonusPerRace * 24;
+  const overBudget = total > 50;
+  const pct = Math.min(100, (total / 50) * 100);
+
+  document.getElementById('calc-spent').textContent = `£${total}m / £50m`;
+  document.getElementById('calc-invest').textContent = `£${investment}m unspent`;
+  document.getElementById('calc-bonus').textContent = `+${bonusPerRace} pts/race`;
+  document.getElementById('calc-season').textContent = `+${seasonBonus} pts`;
+
+  const bar = document.getElementById('calc-bar');
+  bar.style.width = pct + '%';
+  bar.classList.toggle('over', overBudget);
+
+  const status = document.getElementById('calc-status');
+  const copyBtn = document.getElementById('calc-copy');
+
+  if (!allFilled) {
+    status.className = 'calc-status empty';
+    status.textContent = 'Select all 6 picks to see your entry';
+    copyBtn.disabled = true;
+  } else if (overBudget) {
+    status.className = 'calc-status bad';
+    status.textContent = `❌ Over budget by £${total - 50}m — adjust your picks`;
+    copyBtn.disabled = true;
+  } else {
+    status.className = 'calc-status ok';
+    status.textContent = `✅ Valid entry — £${total}m spent, £${investment}m invested`;
+    copyBtn.disabled = false;
+  }
+
+  // Store for copy
+  window._calcState = { selDrivers, selTeams, total, investment, allFilled, overBudget };
+};
+
+window.copySelection = function() {
+  const s = window._calcState;
+  if (!s || !s.allFilled || s.overBudget) return;
+
+  const lines = [
+    `Martin's FF1 2026 — Team Selection`,
+    ``,
+    `Driver 1: ${s.selDrivers[0].fullName} (${s.selDrivers[0].team}) — £${s.selDrivers[0].cost}m`,
+    `Driver 2: ${s.selDrivers[1].fullName} (${s.selDrivers[1].team}) — £${s.selDrivers[1].cost}m`,
+    `Driver 3: ${s.selDrivers[2].fullName} (${s.selDrivers[2].team}) — £${s.selDrivers[2].cost}m`,
+    ``,
+    `Team 1: ${s.selTeams[0].name} — £${s.selTeams[0].cost}m`,
+    `Team 2: ${s.selTeams[1].name} — £${s.selTeams[1].cost}m`,
+    `Team 3: ${s.selTeams[2].name} — £${s.selTeams[2].cost}m`,
+    ``,
+    `Total Cost: £${s.total}m`,
+    `Investment: £${s.investment}m → +${Math.floor(s.investment/2)} pts/race (+${Math.floor(s.investment/2)*24} season)`,
+  ];
+  const text = lines.join('\n');
+
+  const preview = document.getElementById('calc-preview');
+  preview.textContent = text;
+  preview.classList.add('visible');
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('calc-copy');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy Selection Summary'; }, 2000);
+  }).catch(() => {
+    // Clipboard unavailable — preview already shown
+  });
+};
+
+// Init
+populateSelects();
+recalc();
+</script>
+
+</body>
+</html>

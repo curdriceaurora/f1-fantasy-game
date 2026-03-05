@@ -13,6 +13,7 @@
   <!-- ═══ WELCOME SCREEN ═══ -->
   <div id="screen-welcome" class="screen active">
     <div class="welcome-container">
+
       <div class="logo-area">
         <div class="checkered-bar"></div>
         <h1 class="title">F1 FANTASY<br><span class="title-accent">TEAM SELECTOR</span></h1>
@@ -20,31 +21,51 @@
         <div class="checkered-bar"></div>
       </div>
 
+      <a href="rules.html" class="rules-link" target="_blank">📋 Rules &amp; Calculator</a>
+
       <div class="form-area">
-        <label class="form-label">
-          Your Name
-          <input type="text" id="input-name" value="Rahul" maxlength="40" />
-        </label>
+
+        <!-- First + Last name side by side -->
+        <div class="name-row">
+          <label class="form-label">
+            First Name
+            <input type="text" id="input-firstname" placeholder="e.g. Rahul" maxlength="30" autocomplete="given-name" />
+          </label>
+          <label class="form-label">
+            Last Name
+            <input type="text" id="input-lastname" placeholder="e.g. Sharma" maxlength="30" autocomplete="family-name" />
+          </label>
+        </div>
+
+        <!-- Team name with regenerate button -->
         <label class="form-label">
           Team Name
-          <input type="text" id="input-team" value="Ask MOM Before Overtaking" maxlength="60" />
+          <div class="team-name-row">
+            <input type="text" id="input-team" maxlength="60" />
+            <button id="btn-regen-team" class="btn-regen" title="Generate a new name">🎲</button>
+          </div>
         </label>
+
+        <!-- Investment slider -->
+        <div class="investment-group">
+          <div class="investment-header">
+            <span class="control-label">INVESTMENT</span>
+            <span id="val-investment" class="investment-display">£0m → +0 pts/race</span>
+          </div>
+          <input type="range" id="slider-investment" min="0" max="20" value="0" step="1" />
+          <p class="investment-description">Unspent budget earns bonus pts every race · £2m = +1 pt/race</p>
+        </div>
+
       </div>
 
-      <p class="tagline">Pick your entry by skill... or by luck.</p>
+      <p class="tagline">Aim well — the closer you hit the target, the better your team.</p>
 
-      <div class="mode-buttons">
-        <button id="btn-aim" class="mode-btn aim-btn">
-          <span class="mode-icon">🎯</span>
-          <span class="mode-label">AIM FOR GLORY</span>
-          <span class="mode-desc">Skill earns a better team</span>
-        </button>
-        <button id="btn-slots" class="mode-btn slots-btn">
-          <span class="mode-icon">🎰</span>
-          <span class="mode-label">FEEL LUCKY?</span>
-          <span class="mode-desc">Pure random chance</span>
-        </button>
-      </div>
+      <p id="validation-msg" class="validation-msg">Enter your first and last name to play</p>
+
+      <button id="btn-play" class="play-btn" disabled>
+        🎯 PLAY
+      </button>
+
     </div>
   </div>
 
@@ -72,35 +93,6 @@
     </div>
   </div>
 
-  <!-- ═══ SLOT MACHINE ═══ -->
-  <div id="screen-slots" class="screen">
-    <div class="game-header">
-      <button id="btn-back-slots" class="back-btn">← Back</button>
-      <h2 class="slots-title">🎰 LUCKY DIP 🎰</h2>
-    </div>
-    <div class="slot-machine">
-      <div class="slot-frame">
-        <div class="slot-lights top-lights"></div>
-        <div class="reels-container">
-          <div class="reel-window">
-            <div class="reel" id="reel-1"></div>
-            <div class="reel-label">DRIVER 1</div>
-          </div>
-          <div class="reel-window">
-            <div class="reel" id="reel-2"></div>
-            <div class="reel-label">DRIVER 2</div>
-          </div>
-          <div class="reel-window">
-            <div class="reel" id="reel-3"></div>
-            <div class="reel-label">TEAM</div>
-          </div>
-        </div>
-        <div class="slot-lights bottom-lights"></div>
-      </div>
-      <button id="btn-spin" class="spin-btn">PULL THE LEVER!</button>
-    </div>
-  </div>
-
   <!-- ═══ RESULTS OVERLAY ═══ -->
   <div id="screen-results" class="screen">
     <div class="results-container">
@@ -108,7 +100,7 @@
         <div class="checkered-bar small"></div>
         <h2 class="rank-display">
           RANK <span id="rank-number">#1</span>
-          <span class="rank-total">/ 100,000</span>
+          <span class="rank-total" id="rank-total">/ 100,000</span>
         </h2>
         <p class="points-display">Estimated: <span id="est-points">1,563</span> pts</p>
         <div class="checkered-bar small"></div>
@@ -139,9 +131,7 @@
       </div>
 
       <div class="replay-actions">
-        <button id="btn-aim-again" class="mode-btn aim-btn small">🎯 Aim Again</button>
-        <button id="btn-spin-again" class="mode-btn slots-btn small">🎰 Spin Again</button>
-        <button id="btn-home" class="mode-btn home-btn small">🏠 Home</button>
+        <button id="btn-try-again" class="play-btn small">🎯 Try Again</button>
       </div>
     </div>
   </div>

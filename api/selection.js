@@ -63,50 +63,53 @@ const PREDICTIONS = {
   bestPosColapinto: "9th",
 };
 
-// ── Helper: pick entry by accuracy or random ──
-function pickEntry(accuracy, mode) {
-  const entries = DATA.entries;
-  const count = entries.length;
+// ── Pre-compute investment pools at module load (cached for warm starts) ──
+// investment = unspent £m = 50 - totalCost, range 0–20
+const POOLS = {};
+for (let inv = 0; inv <= 20; inv++) {
+  POOLS[inv] = DATA.entries.filter(e => {
+    const tc = e.d.reduce((s, di) => s + DRIVERS[di].cost, 0)
+              + e.t.reduce((s, ti) => s + TEAMS[ti].cost, 0);
+    return (50 - tc) === inv;
+  });
+}
 
-  if (mode === 'random') {
-    const idx = Math.floor(Math.random() * count);
-    return { entry: entries[idx], rank: idx + 1 };
+// ── Helper: pick entry by accuracy within an investment pool ──
+function pickEntry(accuracy, investment) {
+  // Choose pool: investment-filtered or full dataset
+  let pool = DATA.entries;
+  if (investment !== undefined && !isNaN(investment)
+      && investment >= 0 && investment <= 20
+      && POOLS[investment]?.length > 0) {
+    pool = POOLS[investment];
   }
+  const count = pool.length;
 
-  // Map accuracy (0–1) to target points
-  const maxPts = DATA.meta.maxPts;
-  const minPts = DATA.meta.minPts;
+  // Map accuracy (0–1) to target points within this pool
+  const maxPts = pool[0].p;            // pool is sorted DESC
+  const minPts = pool[count - 1].p;
   const targetPts = minPts + accuracy * (maxPts - minPts);
 
-  // Find entries within a band of the target points
-  // Start with ±5 points, expand until we have at least 5 candidates
+  // Find entries within a band of the target — expand until ≥5 candidates
   let bandWidth = 5;
   let candidates = [];
-
   while (candidates.length < 5 && bandWidth <= 200) {
     candidates = [];
     for (let i = 0; i < count; i++) {
-      if (Math.abs(entries[i].p - targetPts) <= bandWidth) {
-        candidates.push({ entry: entries[i], rank: i + 1 });
+      if (Math.abs(pool[i].p - targetPts) <= bandWidth) {
+        candidates.push({ entry: pool[i], rank: i + 1 });
       }
     }
     if (candidates.length < 5) bandWidth += 5;
   }
 
-  // If still empty (shouldn't happen), fall back to closest
+  // Fallback: closest match
   if (candidates.length === 0) {
-    let bestIdx = 0;
-    let bestDiff = Infinity;
-    for (let i = 0; i < count; i++) {
-      const diff = Math.abs(entries[i].p - targetPts);
-      if (diff < bestDiff) { bestDiff = diff; bestIdx = i; }
-    }
-    return { entry: entries[bestIdx], rank: bestIdx + 1 };
+    return { entry: pool[0], rank: 1, totalEntries: count };
   }
 
-  // Pick a random candidate from the band
   const pick = candidates[Math.floor(Math.random() * candidates.length)];
-  return pick;
+  return { ...pick, totalEntries: count };
 }
 
 // ── Build email body ──
@@ -150,34 +153,25 @@ function buildEmail(drivers, teams, totalCost, investmentValue, managerName, tea
 // ── API handler ──
 export default function handler(req, res) {
   try {
-    const { accuracy, mode, name, team } = req.query;
+    const { accuracy, name, team, investment } = req.query;
 
-    const managerName = name || 'Rahul';
+    const managerName = name || 'Player';
     const teamName = team || 'Ask MOM Before Overtaking';
 
-    let acc = parseFloat(accuracy);
-    let selectedMode = mode;
-
-    if (selectedMode !== 'random' && (isNaN(acc) || acc < 0 || acc > 1)) {
-      return res.status(400).json({
-        error: 'Provide accuracy (0-1) or mode=random',
-      });
+    const acc = parseFloat(accuracy);
+    if (isNaN(acc) || acc < 0 || acc > 1) {
+      return res.status(400).json({ error: 'Provide accuracy (0-1)' });
     }
 
-    if (selectedMode !== 'random') {
-      selectedMode = 'accuracy';
-    }
+    const inv = investment !== undefined ? parseInt(investment) : undefined;
 
-    const { entry, rank } = pickEntry(
-      selectedMode === 'random' ? 0 : acc,
-      selectedMode
-    );
+    const { entry, rank, totalEntries } = pickEntry(acc, inv);
 
     // Reconstruct full selection
     const drivers = entry.d.map(i => DRIVERS[i]);
-    const teams = entry.t.map(i => TEAMS[i]);
-    const totalCost = drivers.reduce((s, d) => s + d.cost, 0)
-                    + teams.reduce((s, t) => s + t.cost, 0);
+    const teams   = entry.t.map(i => TEAMS[i]);
+    const totalCost     = drivers.reduce((s, d) => s + d.cost, 0)
+                        + teams.reduce((s, t) => s + t.cost, 0);
     const investmentValue = 50 - totalCost;
     const estPoints = entry.p + PREDICTION_BONUS;
 
@@ -188,12 +182,12 @@ export default function handler(req, res) {
 
     return res.status(200).json({
       rank,
-      totalEntries: DATA.meta.count,
+      totalEntries,
       estPoints,
       totalCost,
       investmentValue,
       drivers: drivers.map(d => ({ name: d.name, team: d.team, cost: d.cost })),
-      teams: teams.map(t => ({ name: t.name, cost: t.cost })),
+      teams:   teams.map(t => ({ name: t.name, cost: t.cost })),
       predictions: PREDICTIONS,
       emailBody,
     });
