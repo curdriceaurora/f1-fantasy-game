@@ -203,6 +203,35 @@ body {
   transform: rotate(180deg);
 }
 
+/* ── Investment slider thumb pulse (untouched state) ── */
+@keyframes pulse-invest {
+  0%, 100% { box-shadow: 0 0 8px rgba(225,6,0,0.5); }
+  50%       { box-shadow: 0 0 22px 8px rgba(225,6,0,0.8), 0 0 36px rgba(225,6,0,0.35); }
+}
+#slider-investment.untouched::-webkit-slider-thumb {
+  animation: pulse-invest 1.4s ease-in-out infinite;
+}
+
+/* ── Investment hint text ── */
+@keyframes nudge {
+  0%, 100% { letter-spacing: 1px; opacity: 0.7; }
+  50%       { letter-spacing: 3px; opacity: 1; }
+}
+.investment-hint {
+  font-size: 11px;
+  font-family: var(--font-racing);
+  color: var(--accent-gold);
+  text-align: center;
+  margin: 0;
+  animation: nudge 2s ease-in-out infinite;
+  transition: opacity 0.5s;
+}
+.investment-hint.faded {
+  opacity: 0 !important;
+  animation: none;
+  pointer-events: none;
+}
+
 /* ── Investment slider block ── */
 .investment-group {
   width: 100%;

@@ -288,8 +288,12 @@ function init() {
     inputTeam.value = generateTeamName();
   });
 
-  // Investment slider
+  // Investment slider — dismiss hint + stop pulse on first touch
   sliderInvestment.addEventListener('input', updateInvestmentLabel);
+  sliderInvestment.addEventListener('input', () => {
+    sliderInvestment.classList.remove('untouched');
+    document.getElementById('invest-hint')?.classList.add('faded');
+  }, { once: true });
 
   // Welcome → Game (sync investment from welcome screen)
   btnPlay.addEventListener('click', () => startGame(true));
