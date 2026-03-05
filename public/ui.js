@@ -21,6 +21,18 @@ const valInvestment    = document.getElementById('val-investment');
 const btnPlay          = document.getElementById('btn-play');
 const validationMsg    = document.getElementById('validation-msg');
 
+// ── Game screen invest slider ──
+const gameSliderInvest = document.getElementById('game-slider-invest');
+const gameValInvest    = document.getElementById('game-val-invest');
+
+// ── Game screen invest label ──
+function updateGameInvestLabel() {
+  const inv = parseInt(gameSliderInvest.value);
+  const bonusPerRace = Math.floor(inv / 2);
+  gameValInvest.textContent = inv === 0 ? `£0m` : `£${inv}m +${bonusPerRace}pt/r`;
+  fillSlider(gameSliderInvest, '#ffd700', '#16213e');
+}
+
 // ── Slider fill (paints the left portion of the track) ──
 function fillSlider(slider, fillColor = '#e10600', emptyColor = '#16213e') {
   const min = parseFloat(slider.min) || 0;
@@ -85,7 +97,7 @@ async function fetchSelection(accuracy) {
   const fullName   = `${inputFirstName.value.trim()} ${inputLastName.value.trim()}`;
   const name       = encodeURIComponent(fullName);
   const team       = encodeURIComponent(inputTeam.value.trim() || generateTeamName());
-  const investment = parseInt(sliderInvestment.value);
+  const investment = parseInt(gameSliderInvest.value);   // reads game-screen slider
   const url = `/api/selection?accuracy=${accuracy}&name=${name}&team=${team}&investment=${investment}`;
 
   const res = await fetch(url);
@@ -170,6 +182,8 @@ function initTankGame() {
     fillSlider(sliderPower);
   });
 
+  gameSliderInvest.addEventListener('input', updateGameInvestLabel);
+
   btnFire.addEventListener('click', () => {
     if (tankGame.state !== 'aiming') return;
     btnFire.disabled = true;
@@ -183,12 +197,14 @@ function initTankGame() {
     tankGame.draw(parseInt(sliderAngle.value));
     fillSlider(sliderAngle);
     fillSlider(sliderPower);
+    updateGameInvestLabel();
   }
 
   windEl.textContent = tankGame.getWindLabel();
   tankGame.draw(parseInt(sliderAngle.value));
   fillSlider(sliderAngle);
   fillSlider(sliderPower);
+  updateGameInvestLabel();
 
   return resetGame;
 }
@@ -197,8 +213,12 @@ function initTankGame() {
 // INIT + EVENT WIRING
 // ══════════════════════════
 
-function startGame() {
+function startGame(syncInvestment = false) {
   saveFields();
+  // Sync game invest slider from welcome screen when entering via Play
+  if (syncInvestment) {
+    gameSliderInvest.value = sliderInvestment.value;
+  }
   showScreen('game');
   if (!tankGame) {
     resetGameFn = initTankGame();
@@ -227,8 +247,8 @@ function init() {
   // Investment slider
   sliderInvestment.addEventListener('input', updateInvestmentLabel);
 
-  // Welcome → Game
-  btnPlay.addEventListener('click', startGame);
+  // Welcome → Game (sync investment from welcome screen)
+  btnPlay.addEventListener('click', () => startGame(true));
 
   // Back button
   document.getElementById('btn-back-game').addEventListener('click', () => {
@@ -236,8 +256,8 @@ function init() {
     showScreen('welcome');
   });
 
-  // Results → Try Again
-  document.getElementById('btn-try-again').addEventListener('click', startGame);
+  // Results → Try Again (keep current game-screen investment)
+  document.getElementById('btn-try-again').addEventListener('click', () => startGame(false));
 
   // Copy email
   document.getElementById('btn-copy').addEventListener('click', () => {
