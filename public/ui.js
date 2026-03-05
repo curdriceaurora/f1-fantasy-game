@@ -90,11 +90,18 @@ function validate() {
 
   if (ok) {
     validationMsg.textContent = '';
-    validationMsg.classList.remove('error');
+    validationMsg.classList.remove('error', 'info');
   } else {
     const touched = inputFirstName.dataset.touched || inputLastName.dataset.touched;
-    validationMsg.textContent = 'Enter your first and last name to play';
-    validationMsg.classList.toggle('error', !!touched);
+    if (touched) {
+      validationMsg.textContent = '⚠ First and last name are required';
+      validationMsg.classList.add('error');
+      validationMsg.classList.remove('info');
+    } else {
+      validationMsg.textContent = 'ⓘ Fields marked * are required to play';
+      validationMsg.classList.add('info');
+      validationMsg.classList.remove('error');
+    }
   }
 
   inputFirstName.classList.toggle('error', !fn && !!inputFirstName.dataset.touched);

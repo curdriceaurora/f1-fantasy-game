@@ -235,6 +235,12 @@ body {
   width: 100%;
 }
 
+/* ── Required field asterisk ── */
+.form-label.required::after {
+  content: ' *';
+  color: var(--f1-red);
+}
+
 /* ── Validation message ── */
 .validation-msg {
   font-size: 12px;
@@ -243,6 +249,7 @@ body {
   min-height: 18px;
   transition: color 0.2s;
 }
+.validation-msg.info  { color: var(--accent-gold); }
 .validation-msg.error { color: var(--f1-red); }
 
 /* ── Input error state ── */
