@@ -220,13 +220,13 @@ function initializePredictions() {
         </div>
       </div>
     `).join('');
-    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.homeCircuit;
+    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.homeCircuit;
     trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
     panel.querySelectorAll('.cs-home-circuit-opt').forEach(opt => {
       opt.addEventListener('click', () => {
         const circuit = opt.dataset.circuit;
         selectedPredictions.homeCircuit = circuit;
-        trigger.querySelector('.cs-selected-content').textContent = circuit;
+        trigger.querySelector('.cs-placeholder').textContent = circuit;
         closePanel(panel, trigger);
         rebuildEmail();
       });
@@ -246,13 +246,13 @@ function initializePredictions() {
         </div>
       </div>
     `).join('');
-    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.driverChampion;
+    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.driverChampion;
     trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
     panel.querySelectorAll('.cs-driver-champ-opt').forEach(opt => {
       opt.addEventListener('click', () => {
         const name = opt.dataset.name;
         selectedPredictions.driverChampion = name;
-        trigger.querySelector('.cs-selected-content').textContent = name;
+        trigger.querySelector('.cs-placeholder').textContent = name;
         closePanel(panel, trigger);
         rebuildEmail();
       });
@@ -271,13 +271,13 @@ function initializePredictions() {
         </div>
       </div>
     `).join('');
-    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.constructorChampion;
+    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.constructorChampion;
     trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
     panel.querySelectorAll('.cs-constructor-champ-opt').forEach(opt => {
       opt.addEventListener('click', () => {
         const name = opt.dataset.name;
         selectedPredictions.constructorChampion = name;
-        trigger.querySelector('.cs-selected-content').textContent = name;
+        trigger.querySelector('.cs-placeholder').textContent = name;
         closePanel(panel, trigger);
         rebuildEmail();
       });
@@ -290,9 +290,20 @@ function initializePredictions() {
   if (classifiedSlider) {
     classifiedSlider.value = selectedPredictions.totalClassified;
     classifiedVal.textContent = selectedPredictions.totalClassified;
+    // Set initial track width
+    const classifiedTrack = classifiedSlider.parentElement.querySelector('.pred-slider-track');
+    if (classifiedTrack) {
+      const pct = (selectedPredictions.totalClassified / 528) * 100;
+      classifiedTrack.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+    }
     classifiedSlider.addEventListener('input', () => {
       selectedPredictions.totalClassified = parseInt(classifiedSlider.value);
       classifiedVal.textContent = classifiedSlider.value;
+      const track = classifiedSlider.parentElement.querySelector('.pred-slider-track');
+      if (track) {
+        const pct = (parseInt(classifiedSlider.value) / 528) * 100;
+        track.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+      }
       rebuildEmail();
     });
   }
@@ -303,10 +314,22 @@ function initializePredictions() {
   if (colaSlider) {
     colaSlider.value = 23 - selectedPredictions.colaPosition;
     colaVal.textContent = `P${selectedPredictions.colaPosition}`;
+    // Set initial track width
+    const colaTrack = colaSlider.parentElement.querySelector('.pred-slider-track');
+    if (colaTrack) {
+      const val = 23 - selectedPredictions.colaPosition;
+      const pct = ((val - 1) / 21) * 100;
+      colaTrack.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+    }
     colaSlider.addEventListener('input', () => {
       const pos = 23 - parseInt(colaSlider.value);
       selectedPredictions.colaPosition = pos;
       colaVal.textContent = `P${pos}`;
+      const track = colaSlider.parentElement.querySelector('.pred-slider-track');
+      if (track) {
+        const pct = ((parseInt(colaSlider.value) - 1) / 21) * 100;
+        track.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+      }
       rebuildEmail();
     });
   }

@@ -139,47 +139,51 @@
       <div class="predictions-section">
         <h3>🎯 Predictions (Customize Before Copy)</h3>
         <div class="predictions-grid">
-          <div id="cs-home-circuit" class="cs-wrapper">
-            <button class="cs-trigger cs-trigger-pred">
-              <span class="cs-selected-content">Select Circuit...</span>
-              <span class="cs-arrow">▼</span>
-            </button>
+          <div id="cs-home-circuit" class="custom-select-wrap">
+            <div class="cs-trigger cs-trigger-pred">
+              <div class="cs-selected-content"><span class="cs-placeholder">Select Circuit...</span></div>
+              <span class="cs-arrow">▾</span>
+            </div>
             <div class="cs-panel hidden"></div>
           </div>
-          <div id="cs-driver-champion" class="cs-wrapper">
-            <button class="cs-trigger cs-trigger-pred">
-              <span class="cs-selected-content">Select Driver...</span>
-              <span class="cs-arrow">▼</span>
-            </button>
+          <div id="cs-driver-champion" class="custom-select-wrap">
+            <div class="cs-trigger cs-trigger-pred">
+              <div class="cs-selected-content"><span class="cs-placeholder">Select Driver...</span></div>
+              <span class="cs-arrow">▾</span>
+            </div>
             <div class="cs-panel hidden"></div>
           </div>
-          <div id="cs-constructor-champion" class="cs-wrapper">
-            <button class="cs-trigger cs-trigger-pred">
-              <span class="cs-selected-content">Select Team...</span>
-              <span class="cs-arrow">▼</span>
-            </button>
+          <div id="cs-constructor-champion" class="custom-select-wrap">
+            <div class="cs-trigger cs-trigger-pred">
+              <div class="cs-selected-content"><span class="cs-placeholder">Select Team...</span></div>
+              <span class="cs-arrow">▾</span>
+            </div>
             <div class="cs-panel hidden"></div>
           </div>
         </div>
-        <div class="pred-sliders">
+        <div class="pred-sliders-grid">
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Total Classified</label>
               <span class="pred-value-display" id="pred-classified-val">440</span>
             </div>
-            <input type="range" id="pred-classified" class="pred-slider" min="0" max="528" value="440">
+            <div class="pred-slider-container">
+              <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
+              <div class="pred-slider-track" style="width: calc((100% - 18px) * 440 / 528)"></div>
+            </div>
             <div class="pred-hint-mid">Total Starts − DNFs (0–528)</div>
+            <div class="pred-slider-ends"><span>0</span><span>528</span></div>
           </div>
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Colapinto Best Position</label>
               <span class="pred-value-display" id="pred-cola-val">P12</span>
             </div>
-            <input type="range" id="pred-colapinto" class="pred-slider" min="1" max="22" value="11">
-            <div class="pred-slider-ends">
-              <span>P22</span>
-              <span>P1</span>
+            <div class="pred-slider-container">
+              <input type="range" class="pred-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
+              <div class="pred-slider-track" style="width: calc((100% - 18px) * 10 / 21)"></div>
             </div>
+            <div class="pred-slider-ends"><span>P22</span><span>P1</span></div>
           </div>
         </div>
       </div>

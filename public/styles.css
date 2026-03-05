@@ -919,38 +919,22 @@ input[type="range"]::-webkit-slider-thumb {
 .calc-input:focus { outline: none; border-color: var(--accent-gold); }
 .calc-input::placeholder { color: var(--text-muted); }
 .calc-email-btns { display: flex; gap: 8px; margin-top: 4px; }
-.calc-copy-btn {
-  font-family: var(--font-racing);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 12px 16px;
+.action-btn.primary {
   background: var(--f1-red);
   color: white;
   border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.15s;
-  flex: 1;
-}
-.calc-copy-btn:hover:not(:disabled) { background: var(--f1-red-glow); transform: scale(1.02); }
-.calc-copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.calc-mailto-btn {
   font-family: var(--font-racing);
-  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 12px 16px;
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  border: 1px solid #444;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.15s;
-  flex: 1;
 }
-.calc-mailto-btn:hover:not(:disabled) { border-color: var(--accent-gold); color: var(--accent-gold); }
-.calc-mailto-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.action-btn.primary:hover:not(:disabled) { background: var(--f1-red-glow); transform: scale(1.02); }
+.action-btn.secondary {
+  font-family: var(--font-racing);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.action-btn.secondary:hover:not(:disabled) { border-color: var(--accent-gold); color: var(--accent-gold); }
+.action-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .calc-preview {
   background: var(--bg-dark);
@@ -975,9 +959,6 @@ input[type="range"]::-webkit-slider-thumb {
   position: relative;
   flex: 1;
   min-width: 0;
-}
-.cs-wrapper {
-  position: relative;
 }
 .cs-trigger {
   display: flex;
@@ -1185,12 +1166,6 @@ input[type="range"]::-webkit-slider-thumb {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 20px;
-}
-.pred-sliders {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
 }
 .pred-sliders-grid {
   display: grid;
@@ -1609,7 +1584,6 @@ details.faq-item[open] summary::after {
   .rules-table th, .rules-table td { padding: 6px 8px; font-size: 11px; }
   .ref-table td, .ref-table th { padding: 6px 8px; }
   .dt-grid { grid-template-columns: 1fr; }
-  .pred-sliders { grid-template-columns: 1fr; }
 }
 @media (max-width: 800px) {
   .pred-sliders-grid { grid-template-columns: 1fr; }
