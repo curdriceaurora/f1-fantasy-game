@@ -731,11 +731,11 @@
 
   <!-- Sticky nav -->
   <nav class="rules-nav">
+    <a href="#calculator">🧮 Calculator</a>
     <a href="#rules">📋 Rules</a>
+    <a href="#faq">❓ FAQ</a>
     <a href="#drivers">🏎 Drivers &amp; Teams</a>
     <a href="#calendar">📅 Calendar</a>
-    <a href="#faq">❓ FAQ</a>
-    <a href="#calculator">🧮 Calculator</a>
   </nav>
 
   <!-- ══════════════════ RULES ══════════════════ -->
@@ -1126,8 +1126,8 @@ Example: Spend £49m → £1m unspent → floor(1÷2) = 0 pts (odd millions are 
         </div>
         <div class="calc-status empty" id="calc-status">Select drivers and teams above</div>
         <div class="calc-entry-row">
-          <input type="text" id="calc-name" class="calc-input" placeholder="Your name" maxlength="50" autocomplete="given-name">
-          <input type="text" id="calc-team-name" class="calc-input" placeholder="Team name (optional)" maxlength="60">
+          <input type="text" id="calc-name" class="calc-input" placeholder="Your name *" maxlength="50" autocomplete="given-name">
+          <input type="text" id="calc-team-name" class="calc-input" placeholder="Your team name *" maxlength="60">
         </div>
         <div class="calc-email-btns">
           <button class="calc-copy-btn" id="calc-copy" disabled onclick="copySelection()">📧 Copy Entry Email</button>
@@ -1385,10 +1385,15 @@ window.recalc = function() {
   bar.style.width = pct + '%';
   bar.classList.toggle('over', overBudget);
 
+  const nameVal    = document.getElementById('calc-name').value.trim();
+  const teamVal    = document.getElementById('calc-team-name').value.trim();
+  const nameOk     = nameVal.length > 0;
+  const teamOk     = teamVal.length > 0;
+
   const status     = document.getElementById('calc-status');
   const copyBtn    = document.getElementById('calc-copy');
   const mailtoBtn  = document.getElementById('calc-mailto');
-  const enabled    = allFilled && !overBudget;
+  const enabled    = allFilled && !overBudget && nameOk && teamOk;
 
   if (!allFilled) {
     status.className = 'calc-status empty';
@@ -1396,6 +1401,9 @@ window.recalc = function() {
   } else if (overBudget) {
     status.className = 'calc-status bad';
     status.textContent = `❌ Over budget by £${total - 50}m — adjust your picks`;
+  } else if (!nameOk || !teamOk) {
+    status.className = 'calc-status empty';
+    status.textContent = !nameOk ? 'Enter your name to copy your entry' : 'Enter your team name to copy your entry';
   } else {
     status.className = 'calc-status ok';
     status.textContent = `✅ Valid entry — £${total}m spent, £${investment}m invested`;
@@ -1462,10 +1470,9 @@ function buildEntryEmail(managerName, teamName, s) {
 
 window.copySelection = function() {
   const s = window._calcState;
-  if (!s || !s.allFilled || s.overBudget) return;
-
-  const managerName = document.getElementById('calc-name').value.trim() || 'Your Name';
-  const teamName    = document.getElementById('calc-team-name').value.trim() || 'Your Team Name';
+  const managerName = document.getElementById('calc-name').value.trim();
+  const teamName    = document.getElementById('calc-team-name').value.trim();
+  if (!s || !s.allFilled || s.overBudget || !managerName || !teamName) return;
   const text = buildEntryEmail(managerName, teamName, s);
 
   const preview = document.getElementById('calc-preview');
@@ -1484,10 +1491,9 @@ window.copySelection = function() {
 
 window.openMailto = function() {
   const s = window._calcState;
-  if (!s || !s.allFilled || s.overBudget) return;
-
-  const managerName = document.getElementById('calc-name').value.trim() || 'Your Name';
-  const teamName    = document.getElementById('calc-team-name').value.trim() || 'Your Team Name';
+  const managerName = document.getElementById('calc-name').value.trim();
+  const teamName    = document.getElementById('calc-team-name').value.trim();
+  if (!s || !s.allFilled || s.overBudget || !managerName || !teamName) return;
   const text = buildEntryEmail(managerName, teamName, s);
   const lines = text.split('\n');
   const subject = `Martin's FF1 2026 - Entry Submission`;
@@ -1498,6 +1504,15 @@ window.openMailto = function() {
 // ── Init ──
 buildCustomDropdowns();
 refreshCostly();
+
+// Pre-fill team name from landing page if set
+const savedTeam = localStorage.getItem('ff1_team');
+if (savedTeam) document.getElementById('calc-team-name').value = savedTeam;
+
+// Name + team name changes re-evaluate button state
+document.getElementById('calc-name').addEventListener('input', recalc);
+document.getElementById('calc-team-name').addEventListener('input', recalc);
+
 recalc();
 </script>
 
