@@ -619,6 +619,7 @@
       border-radius: 3px;
       pointer-events: none;
       z-index: 1;
+      max-width: calc(100% - 18px);
     }
 
     .pred-slider::-webkit-slider-thumb {
@@ -908,7 +909,7 @@
         <div class="pred-sublabel">Total Starts − DNFs (0–528)</div>
         <div class="pred-slider-container">
           <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
-          <div class="pred-slider-track" style="width: calc(440 / 528 * 100%)"></div>
+          <div class="pred-slider-track" style="width: calc((100% - 18px) * 440 / 528)"></div>
         </div>
         <div class="pred-slider-ends">
           <span>0</span>
@@ -1481,9 +1482,9 @@ _sliderClassified.addEventListener('input', () => {
   const val = parseInt(_sliderClassified.value);
   selectedPredictions.totalClassified = val;
   _valClassified.textContent = val;
-  // Update track width for completion status
+  // Update track width for completion status (accounting for container padding)
   const pct = (val / 528) * 100;
-  _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = pct + '%';
+  _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = `calc((100% - 18px) * ${pct} / 100)`;
   rebuildEmail();
 });
 
@@ -1513,7 +1514,8 @@ updateColaThumbPosition();
 
 // Initialize slider track width to show completion status
 const _trackClassified = _sliderClassified.parentElement.querySelector('.pred-slider-track');
-_trackClassified.style.width = (selectedPredictions.totalClassified / 528 * 100) + '%';
+const _pctClassified = (selectedPredictions.totalClassified / 528 * 100);
+_trackClassified.style.width = `calc((100% - 18px) * ${_pctClassified} / 100)`;
 
 // Pre-fill name + team from landing page if previously set
 const _fn = localStorage.getItem('ff1_first') || '';
