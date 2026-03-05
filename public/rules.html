@@ -553,6 +553,12 @@
       border-left: 3px solid var(--f1-red);
       padding-left: 8px;
     }
+    .cs-option.cs-disabled {
+      opacity: 0.28;
+      pointer-events: none;
+      cursor: not-allowed;
+      filter: grayscale(60%);
+    }
 
     .cs-avatar {
       width: 42px;
@@ -1126,6 +1132,7 @@ function buildDriverDropdown(n) {
       updateDriverTrigger(n, i);
       closePanel(panel, trigger);
       refreshSelected();
+      refreshDisabled();
       recalc();
     });
   });
@@ -1157,6 +1164,7 @@ function buildTeamDropdown(n) {
       updateTeamTrigger(n, i);
       closePanel(panel, trigger);
       refreshSelected();
+      refreshDisabled();
       recalc();
     });
   });
@@ -1212,6 +1220,19 @@ function refreshSelected() {
   document.querySelectorAll('.cs-team-opt').forEach(opt => {
     const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
     opt.classList.toggle('cs-selected', selected.t[n] === i);
+  });
+}
+
+// Grey-out options already chosen in another slot
+function refreshDisabled() {
+  document.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    // Disable if this driver is selected in any OTHER slot
+    opt.classList.toggle('cs-disabled', selected.d.some((s, j) => s === i && j !== n));
+  });
+  document.querySelectorAll('.cs-team-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    opt.classList.toggle('cs-disabled', selected.t.some((s, j) => s === i && j !== n));
   });
 }
 
