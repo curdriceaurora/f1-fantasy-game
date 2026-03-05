@@ -586,10 +586,8 @@
 
     .pred-slider-container {
       position: relative;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
+      height: 6px;
+      margin: 12px 0;
     }
 
     .pred-slider {
@@ -604,14 +602,15 @@
       -webkit-appearance: none;
       position: relative;
       z-index: 2;
+      padding: 0;
+      margin: 0;
     }
 
     /* Track showing completion status */
     .pred-slider-track {
       position: absolute;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 0;
       height: 6px;
       background: linear-gradient(90deg, #e10600 0%, #f5c518 100%);
       border-radius: 3px;
