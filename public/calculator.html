@@ -559,6 +559,130 @@
       padding: 2px 4px;
       border-radius: 4px;
     }
+
+    /* Predictions section enhancements */
+    .cs-avatar-tiny {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #555;
+      flex-shrink: 0;
+    }
+    .cs-drivers-row {
+      display: flex;
+      gap: 4px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    /* Slider grid layout (2 columns, matching dropdown widths) */
+    .pred-sliders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .pred-slider-container {
+      position: relative;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .pred-slider {
+      width: 100%;
+      height: 6px;
+      background: #2a2a3e;
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Track showing completion status */
+    .pred-slider-track {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 6px;
+      background: linear-gradient(90deg, #e10600 0%, #f5c518 100%);
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pred-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #e10600;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 0 6px rgba(225,6,0,0.6);
+      position: relative;
+      z-index: 10;
+    }
+
+    .pred-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #e10600;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 0 6px rgba(225,6,0,0.6);
+    }
+
+    /* Colapinto slider special styling */
+    .cola-slider-container {
+      position: relative;
+    }
+
+    .cola-slider {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cola-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 8px rgba(245,197,24,0.7), inset 0 0 0 2px #0a0a0f;
+      position: relative;
+      z-index: 10;
+      background-image: url('/images/drivers/colapinto.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cola-slider::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: url('/images/drivers/colapinto.jpg') center / cover;
+      cursor: pointer;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 8px rgba(245,197,24,0.7);
+    }
+
+    @media (max-width: 800px) {
+      .pred-sliders-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -755,36 +879,44 @@
 
     </div><!-- end predictions-grid -->
 
-    <!-- Total Classified slider -->
-    <div class="pred-field" style="margin-bottom: 24px;">
-      <div class="pred-label-row">
-        <div class="pred-label">Total Classified</div>
-        <div class="pred-value-display" id="pred-classified-val">440</div>
+    <!-- Sliders grid (2 columns, same width as dropdowns) -->
+    <div class="pred-sliders-grid">
+      <!-- Total Classified slider -->
+      <div class="pred-field">
+        <div class="pred-label-row">
+          <label class="pred-label">Total Classified</label>
+          <span class="pred-value-display" id="pred-classified-val">440</span>
+        </div>
+        <div class="pred-sublabel">Total Starts − DNFs (0–528)</div>
+        <div class="pred-slider-container">
+          <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
+          <div class="pred-slider-track" style="width: calc(440 / 528 * 100%)"></div>
+        </div>
+        <div class="pred-slider-ends">
+          <span>0</span>
+          <span>528</span>
+        </div>
       </div>
-      <div class="pred-sublabel">Total Starts − Total DNFs across all 24 races (max 528)</div>
-      <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
-      <div class="pred-slider-ends">
-        <span>0</span>
-        <span class="pred-hint-mid">↔ drag to set your prediction</span>
-        <span>528</span>
-      </div>
-    </div>
 
-    <!-- Colapinto best finish slider -->
-    <div class="pred-field">
-      <div class="pred-label-row">
-        <div class="pred-label">Best Finish — Colapinto</div>
-        <div class="pred-value-display" id="pred-cola-val">P12</div>
+      <!-- Colapinto best finish slider -->
+      <div class="pred-field">
+        <div class="pred-label-row">
+          <label class="pred-label">Best Finish — Colapinto</label>
+          <span class="pred-value-display" id="pred-cola-val">P12</span>
+        </div>
+        <div class="pred-sublabel">Best classification in 2026</div>
+        <div class="pred-slider-container cola-slider-container">
+          <input type="range" class="pred-slider cola-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
+          <div class="cola-thumb-wrapper">
+            <img class="cola-thumb-img" src="/images/drivers/colapinto.jpg" alt="Colapinto" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="pred-slider-ends">
+          <span>← P22</span>
+          <span>P1 →</span>
+        </div>
       </div>
-      <div class="pred-sublabel">Colapinto's best race classification in 2026</div>
-      <input type="range" class="pred-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
-      <!-- slider value: 1 = P22 (worst, left) · 22 = P1 (best, right) -->
-      <div class="pred-slider-ends">
-        <span>← P22</span>
-        <span class="pred-hint-mid">↔ drag to set position</span>
-        <span>P1 →</span>
-      </div>
-    </div>
+    </div><!-- end pred-sliders-grid -->
 
   </div><!-- end predictions-section -->
 
@@ -803,6 +935,23 @@ const selectedPredictions = {
   constructorChampion: null,  // team name string, or null
   totalClassified:     440,   // integer 0–528
   colaPosition:        12,    // integer P1–P22
+};
+
+// ── Driver nationalities (maps driver short name to country flag) ──
+const DRIVER_COUNTRIES = {
+  'Leclerc': '🇲🇨', 'Russell': '🇬🇧', 'Piastri': '🇦🇺', 'Antonelli': '🇮🇹',
+  'Verstappen': '🇳🇱', 'Norris': '🇬🇧', 'Hamilton': '🇬🇧', 'Gasly': '🇫🇷',
+  'Lindblad': '🇸🇪', 'Colapinto': '🇦🇷', 'Ocon': '🇫🇷', 'Bearman': '🇬🇧',
+  'Hadjar': '🇯🇴', 'Lawson': '🇳🇿', 'Stroll': '🇨🇦', 'Hulkenberg': '🇩🇪',
+  'Bortoleto': '🇧🇷', 'Bottas': '🇫🇮', 'Sainz': '🇪🇸', 'Albon': '🇹🇭',
+  'Perez': '🇲🇽', 'Alonso': '🇪🇸',
+};
+
+// ── Team countries (maps team name to country flag) ──
+const TEAM_COUNTRIES = {
+  'Mercedes': '🇩🇪', 'Ferrari': '🇮🇹', 'McLaren': '🇬🇧', 'Red Bull': '🇦🇹',
+  'Alpine': '🇫🇷', 'Haas': '🇺🇸', 'Racing Bulls': '🇮🇹', 'Audi': '🇩🇪',
+  'Cadillac': '🇺🇸', 'Williams': '🇬🇧', 'Aston Martin': '🇬🇧',
 };
 
 // ── Home circuits: only races where a current 2026 driver is a national ──
@@ -851,29 +1000,38 @@ function buildHomeCircuitDropdown() {
   const trigger = wrap.querySelector('.cs-trigger');
   const panel   = wrap.querySelector('.cs-panel');
 
-  panel.innerHTML = HOME_CIRCUITS.map((c, i) =>
-    `<div class="cs-option cs-circuit-opt" data-index="${i}">
+  panel.innerHTML = HOME_CIRCUITS.map((c, i) => {
+    const driverImgs = c.drivers.map(d => {
+      const slug = d.toLowerCase();
+      return `<img class="cs-avatar-tiny" src="/images/drivers/${slug}.jpg" alt="${d}" title="${d} ${DRIVER_COUNTRIES[d] || ''}" onerror="this.style.display='none'">`;
+    }).join('');
+    return `<div class="cs-option cs-circuit-opt" data-index="${i}">
       <span style="font-size:22px;flex-shrink:0;line-height:1">${c.flag}</span>
       <div class="cs-detail">
         <div class="cs-fullname">${c.circuit}</div>
         <div class="cs-meta">
           <span class="cs-rank-chip">${c.race} · ${c.date}</span>
-          <span class="cs-rank-chip" style="max-width:120px;overflow:hidden;text-overflow:ellipsis">${c.drivers.join(' · ')}</span>
+          <div class="cs-drivers-row">${driverImgs}</div>
         </div>
       </div>
-    </div>`
-  ).join('');
+    </div>`;
+  }).join('');
 
   trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
   panel.querySelectorAll('.cs-circuit-opt').forEach(opt => {
     opt.addEventListener('click', () => {
       const c = HOME_CIRCUITS[parseInt(opt.dataset.index)];
+      const driverImgs = c.drivers.map(d => {
+        const slug = d.toLowerCase();
+        return `<img class="cs-avatar-tiny" src="/images/drivers/${slug}.jpg" alt="${d}" title="${d} ${DRIVER_COUNTRIES[d] || ''}" onerror="this.style.display='none'">`;
+      }).join('');
       selectedPredictions.homeCircuit = c.circuit;
       trigger.querySelector('.cs-selected-content').innerHTML =
         `<span style="font-size:18px;line-height:1">${c.flag}</span>
          <span class="cs-sel-name">${c.circuit}</span>
-         <span class="cs-rank-chip">${c.race}</span>`;
+         <div class="cs-drivers-row">${driverImgs}</div>`;
       closePanel(panel, trigger);
+      rebuildEmail();
     });
   });
 }
@@ -887,11 +1045,12 @@ function buildDriverChampionDropdown() {
     const slug = d.name.toLowerCase();
     const col  = TCOLORS[d.team] || '#555';
     const txt  = badgeText(col);
+    const flag = DRIVER_COUNTRIES[d.name] || '🏁';
     return `<div class="cs-option cs-driverchamp-opt" data-index="${i}">
       <img class="cs-avatar" src="/images/drivers/${slug}.jpg" alt="${d.name}"
            onerror="this.style.visibility='hidden'">
       <div class="cs-detail">
-        <div class="cs-fullname">${d.fullName}</div>
+        <div class="cs-fullname">${d.fullName} ${flag}</div>
         <div class="cs-meta">
           <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>
         </div>
@@ -906,13 +1065,15 @@ function buildDriverChampionDropdown() {
       const slug = d.name.toLowerCase();
       const col  = TCOLORS[d.team] || '#555';
       const txt  = badgeText(col);
+      const flag = DRIVER_COUNTRIES[d.name] || '🏁';
       selectedPredictions.driverChampion = d.fullName;
       trigger.querySelector('.cs-selected-content').innerHTML =
         `<img class="cs-avatar cs-avatar-sm" src="/images/drivers/${slug}.jpg" alt="${d.name}"
               onerror="this.style.visibility='hidden'">
-         <span class="cs-sel-name">${d.fullName}</span>
+         <span class="cs-sel-name">${d.fullName} ${flag}</span>
          <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>`;
       closePanel(panel, trigger);
+      rebuildEmail();
     });
   });
 }
@@ -925,11 +1086,12 @@ function buildConstructorDropdown() {
   panel.innerHTML = TEAMS.map((t, i) => {
     const slug = TEAM_LOGO_SLUGS[t.name];
     const col  = TCOLORS[t.name] || '#555';
+    const flag = TEAM_COUNTRIES[t.name] || '🏁';
     return `<div class="cs-option cs-constructorchamp-opt" data-index="${i}">
       <div class="cs-team-swatch" style="background:${col}"></div>
       ${slug ? `<img class="cs-team-logo" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
       <div class="cs-detail">
-        <div class="cs-fullname">${t.name}</div>
+        <div class="cs-fullname">${t.name} ${flag}</div>
       </div>
     </div>`;
   }).join('');
@@ -940,12 +1102,14 @@ function buildConstructorDropdown() {
       const t    = TEAMS[parseInt(opt.dataset.index)];
       const slug = TEAM_LOGO_SLUGS[t.name];
       const col  = TCOLORS[t.name] || '#555';
+      const flag = TEAM_COUNTRIES[t.name] || '🏁';
       selectedPredictions.constructorChampion = t.name;
       trigger.querySelector('.cs-selected-content').innerHTML =
         `<div class="cs-team-swatch cs-swatch-sm" style="background:${col}"></div>
          ${slug ? `<img class="cs-team-logo cs-team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
-         <span class="cs-sel-name">${t.name}</span>`;
+         <span class="cs-sel-name">${t.name} ${flag}</span>`;
       closePanel(panel, trigger);
+      rebuildEmail();
     });
   });
 }
@@ -1296,17 +1460,28 @@ buildConstructorDropdown();
 const _sliderClassified = document.getElementById('pred-classified');
 const _valClassified    = document.getElementById('pred-classified-val');
 _sliderClassified.addEventListener('input', () => {
-  selectedPredictions.totalClassified = parseInt(_sliderClassified.value);
-  _valClassified.textContent = _sliderClassified.value;
+  const val = parseInt(_sliderClassified.value);
+  selectedPredictions.totalClassified = val;
+  _valClassified.textContent = val;
+  // Update track width for completion status
+  const pct = (val / 528) * 100;
+  _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = pct + '%';
+  rebuildEmail();
 });
 
 const _sliderCola = document.getElementById('pred-colapinto');
 const _valCola    = document.getElementById('pred-cola-val');
 _sliderCola.addEventListener('input', () => {
-  const pos = 23 - parseInt(_sliderCola.value); // 1→P22, 22→P1
+  const val = parseInt(_sliderCola.value);
+  const pos = 23 - val; // 1→P22, 22→P1
   selectedPredictions.colaPosition = pos;
   _valCola.textContent = `P${pos}`;
+  rebuildEmail();
 });
+
+// Initialize slider track width to show completion status
+const _trackClassified = _sliderClassified.parentElement.querySelector('.pred-slider-track');
+_trackClassified.style.width = (selectedPredictions.totalClassified / 528 * 100) + '%';
 
 // Pre-fill name + team from landing page if previously set
 const _fn = localStorage.getItem('ff1_first') || '';
