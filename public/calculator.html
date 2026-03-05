@@ -973,18 +973,32 @@ const TEAM_COUNTRIES = {
   'Cadillac': '🇺🇸', 'Williams': '🇬🇧', 'Aston Martin': '🇬🇧',
 };
 
-// ── Home circuits: only races where a current 2026 driver is a national ──
+// ── All 2026 race circuits ──
 const HOME_CIRCUITS = [
-  { circuit: 'Australia',   race: 'R1',  date: '8 Mar',  flag: '🇦🇺', drivers: ['Piastri'] },
-  { circuit: 'Canada',      race: 'R7',  date: '24 May', flag: '🇨🇦', drivers: ['Stroll'] },
-  { circuit: 'Monaco',      race: 'R8',  date: '7 Jun',  flag: '🇲🇨', drivers: ['Leclerc'] },
-  { circuit: 'Spain',       race: 'R9',  date: '14 Jun', flag: '🇪🇸', drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Britain',     race: 'R11', date: '5 Jul',  flag: '🇬🇧', drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman'] },
-  { circuit: 'Netherlands', race: 'R14', date: '23 Aug', flag: '🇳🇱', drivers: ['Verstappen'] },
-  { circuit: 'Italy',       race: 'R15', date: '31 Aug', flag: '🇮🇹', drivers: ['Antonelli'] },
-  { circuit: 'Madrid',      race: 'R16', date: '13 Sep', flag: '🇪🇸', drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Mexico',      race: 'R20', date: '1 Nov',  flag: '🇲🇽', drivers: ['Perez'] },
-  { circuit: 'Brazil',      race: 'R21', date: '8 Nov',  flag: '🇧🇷', drivers: ['Bortoleto'] },
+  { race: 'R1',  circuit: 'Australia',   flag: '🇦🇺', date: '8 Mar' },
+  { race: 'R2',  circuit: 'China',       flag: '🇨🇳', date: '15 Mar' },
+  { race: 'R3',  circuit: 'Japan',       flag: '🇯🇵', date: '29 Mar' },
+  { race: 'R4',  circuit: 'Bahrain',     flag: '🇧🇭', date: '12 Apr' },
+  { race: 'R5',  circuit: 'Saudi Arabia',flag: '🇸🇦', date: '19 Apr' },
+  { race: 'R6',  circuit: 'Miami',       flag: '🇺🇸', date: '3 May' },
+  { race: 'R7',  circuit: 'Canada',      flag: '🇨🇦', date: '24 May' },
+  { race: 'R8',  circuit: 'Monaco',      flag: '🇲🇨', date: '7 Jun' },
+  { race: 'R9',  circuit: 'Spain',       flag: '🇪🇸', date: '14 Jun' },
+  { race: 'R10', circuit: 'Austria',     flag: '🇦🇹', date: '28 Jun' },
+  { race: 'R11', circuit: 'Britain',     flag: '🇬🇧', date: '5 Jul' },
+  { race: 'R12', circuit: 'Belgium',     flag: '🇧🇪', date: '19 Jul' },
+  { race: 'R13', circuit: 'Hungary',     flag: '🇭🇺', date: '26 Jul' },
+  { race: 'R14', circuit: 'Netherlands', flag: '🇳🇱', date: '23 Aug' },
+  { race: 'R15', circuit: 'Italy',       flag: '🇮🇹', date: '31 Aug' },
+  { race: 'R16', circuit: 'Madrid',      flag: '🇪🇸', date: '13 Sep' },
+  { race: 'R17', circuit: 'Azerbaijan',  flag: '🇦🇿', date: '26 Sep' },
+  { race: 'R18', circuit: 'Singapore',   flag: '🇸🇬', date: '11 Oct' },
+  { race: 'R19', circuit: 'USA (Austin)',flag: '🇺🇸', date: '25 Oct' },
+  { race: 'R20', circuit: 'Mexico',      flag: '🇲🇽', date: '1 Nov' },
+  { race: 'R21', circuit: 'Brazil',      flag: '🇧🇷', date: '8 Nov' },
+  { race: 'R22', circuit: 'Las Vegas',   flag: '🇺🇸', date: '21 Nov' },
+  { race: 'R23', circuit: 'Qatar',       flag: '🇶🇦', date: '29 Nov' },
+  { race: 'R24', circuit: 'Abu Dhabi',   flag: '🇦🇪', date: '6 Dec' },
 ];
 
 // ── Team colours (mirrors constants.js TEAM_COLORS) ──
@@ -1020,17 +1034,12 @@ function buildHomeCircuitDropdown() {
   const panel   = wrap.querySelector('.cs-panel');
 
   panel.innerHTML = HOME_CIRCUITS.map((c, i) => {
-    const driverImgs = c.drivers.map(d => {
-      const slug = d.toLowerCase();
-      return `<img class="cs-avatar-tiny" src="/images/drivers/${slug}.jpg" alt="${d}" title="${d} ${DRIVER_COUNTRIES[d] || ''}" onerror="this.style.display='none'">`;
-    }).join('');
     return `<div class="cs-option cs-circuit-opt" data-index="${i}">
       <span style="font-size:22px;flex-shrink:0;line-height:1">${c.flag}</span>
       <div class="cs-detail">
         <div class="cs-fullname">${c.circuit}</div>
         <div class="cs-meta">
           <span class="cs-rank-chip">${c.race} · ${c.date}</span>
-          <div class="cs-drivers-row">${driverImgs}</div>
         </div>
       </div>
     </div>`;
@@ -1040,15 +1049,10 @@ function buildHomeCircuitDropdown() {
   panel.querySelectorAll('.cs-circuit-opt').forEach(opt => {
     opt.addEventListener('click', () => {
       const c = HOME_CIRCUITS[parseInt(opt.dataset.index)];
-      const driverImgs = c.drivers.map(d => {
-        const slug = d.toLowerCase();
-        return `<img class="cs-avatar-tiny" src="/images/drivers/${slug}.jpg" alt="${d}" title="${d} ${DRIVER_COUNTRIES[d] || ''}" onerror="this.style.display='none'">`;
-      }).join('');
       selectedPredictions.homeCircuit = c.circuit;
       trigger.querySelector('.cs-selected-content').innerHTML =
         `<span style="font-size:18px;line-height:1">${c.flag}</span>
-         <span class="cs-sel-name">${c.circuit}</span>
-         <div class="cs-drivers-row">${driverImgs}</div>`;
+         <span class="cs-sel-name">${c.circuit}</span>`;
       closePanel(panel, trigger);
       rebuildEmail();
     });
