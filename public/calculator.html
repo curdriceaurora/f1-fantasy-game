@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Martin's F1 Fantasy League — Team Cost Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Calculator page specific styles ── */
+    body { overflow-x: hidden; padding-top: 44px; }
+    .site-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: #0a0a0f;
+      border-bottom: 2px solid #e10600;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .site-banner:hover { color: #f5c518; border-bottom-color: #f5c518; }
+
+    .rules-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* Header */
+    .rules-header {
+      padding: 24px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .rules-header-title {
+      font-family: var(--font-racing);
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    .rules-header-title span { color: var(--f1-red); }
+    .back-to-game {
+      font-family: var(--font-racing);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .back-to-game:hover { color: #fff; border-color: var(--f1-red); }
+
+    /* Sticky nav */
+    .rules-nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg-dark);
+      border-bottom: 1px solid #222;
+      padding: 10px 0;
+      display: flex;
+      gap: 8px;
+      z-index: 50;
+      overflow-x: auto;
+    }
+    .rules-nav a {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 16px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .rules-nav a:hover { color: #fff; border-color: var(--accent-gold); }
+    .rules-nav a.nav-active { color: #fff; border-color: var(--f1-red); background: rgba(225,6,0,0.08); }
+
+    /* Rules text */
+    .rules-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .rules-text strong { color: var(--text-primary); }
+
+    /* ── CALCULATOR ── */
+    .section-title {
+      font-family: var(--font-racing);
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 36px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--f1-red);
+      color: var(--text-primary);
+    }
+    .calculator-card {
+      background: var(--bg-card);
+      border: 1px solid #2a2a3e;
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 8px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .calc-col h3 {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .calc-select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .calc-select-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-slot-num {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 16px;
+    }
+    .calc-cost-badge {
+      font-family: var(--font-racing);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* Totals panel */
+    .calc-totals {
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border: 1px solid #333;
+    }
+    .calc-budget-bar {
+      width: 100%;
+      height: 10px;
+      background: #1a1a2e;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .calc-budget-fill {
+      height: 100%;
+      border-radius: 5px;
+      background: var(--green);
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .calc-budget-fill.over { background: var(--f1-red); }
+    .calc-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .calc-stat-label {
+      font-family: var(--font-racing);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+    .calc-stat-value {
+      font-family: var(--font-racing);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .calc-stat-value.gold { color: var(--accent-gold); }
+    .calc-stat-value.green { color: var(--green); }
+    .calc-stat-value.red { color: var(--f1-red); }
+    .calc-status {
+      text-align: center;
+      font-family: var(--font-racing);
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .calc-status.ok  { background: rgba(39,244,210,0.1); color: var(--green); border: 1px solid rgba(39,244,210,0.3); }
+    .calc-status.bad { background: rgba(225,6,0,0.1); color: var(--f1-red); border: 1px solid rgba(225,6,0,0.3); }
+    .calc-status.empty { background: var(--bg-card); color: var(--text-muted); border: 1px solid #2a2a3e; }
+
+    .calc-entry-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .calc-input {
+      background: var(--bg-card);
+      border: 1px solid #333;
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      padding: 9px 12px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .calc-input:focus { outline: none; border-color: var(--accent-gold); }
+    .calc-input::placeholder { color: var(--text-muted); }
+    .calc-email-btns { display: flex; gap: 8px; margin-top: 4px; }
+    .calc-copy-btn {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      background: var(--f1-red);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s;
+      flex: 1;
+    }
+    .calc-copy-btn:hover:not(:disabled) { background: var(--f1-red-glow); transform: scale(1.02); }
+    .calc-copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .calc-mailto-btn {
+      font-family: var(--font-racing);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid #444;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s;
+      flex: 1;
+    }
+    .calc-mailto-btn:hover:not(:disabled) { border-color: var(--accent-gold); color: var(--accent-gold); }
+    .calc-mailto-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .calc-preview {
+      background: var(--bg-dark);
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin-top: 4px;
+      display: none;
+    }
+    .calc-preview.visible { display: block; }
+
+    @media (max-width: 640px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .calc-entry-row { grid-template-columns: 1fr; }
+      .rules-header { flex-direction: column; align-items: flex-start; }
+      .rules-nav { padding-bottom: 2px; }
+      .calculator-card { padding: 16px; }
+      .rules-page { padding: 0 12px 60px; }
+    }
+
+    /* ══════════════════════════════
+       CUSTOM SELECT COMPONENT
+       ══════════════════════════════ */
+    .custom-select-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+    }
+    .cs-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 10px;
+      background: var(--bg-surface);
+      border: 1px solid #333;
+      border-radius: 8px;
+      cursor: pointer;
+      min-height: 52px;
+      transition: border-color 0.2s;
+      user-select: none;
+    }
+    .cs-trigger:hover, .cs-trigger.open { border-color: var(--f1-red); }
+    .cs-selected-content {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .cs-placeholder { color: var(--text-muted); font-size: 12px; }
+    .cs-arrow {
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .cs-trigger.open .cs-arrow { transform: rotate(180deg); }
+
+    .cs-panel {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--bg-card);
+      border: 1px solid #444;
+      border-radius: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 300;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.75);
+    }
+    .cs-panel.hidden { display: none; }
+
+    .cs-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 11px;
+      cursor: pointer;
+      border-bottom: 1px solid #1e1e30;
+      transition: background 0.15s;
+    }
+    .cs-option:last-child { border-bottom: none; }
+    .cs-option:hover { background: #1e2e4e; }
+    .cs-option.cs-selected {
+      background: rgba(225,6,0,0.1);
+      border-left: 3px solid var(--f1-red);
+      padding-left: 8px;
+    }
+    .cs-option.cs-disabled {
+      opacity: 0.28;
+      pointer-events: none;
+      cursor: not-allowed;
+      filter: grayscale(60%);
+    }
+    /* Over-budget options: still selectable but visually subdued */
+    .cs-option.cs-costly {
+      opacity: 0.35;
+    }
+
+    .cs-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid #444;
+      flex-shrink: 0;
+      background: var(--bg-surface);
+    }
+    .cs-avatar-sm {
+      width: 26px;
+      height: 26px;
+      border-width: 1px;
+    }
+
+    .cs-detail { flex: 1; min-width: 0; }
+    .cs-fullname {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cs-sel-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+    .cs-meta {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 3px;
+      flex-wrap: wrap;
+    }
+    .cs-team-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .cs-rank-chip {
+      font-size: 9px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.07);
+      padding: 2px 5px;
+      border-radius: 3px;
+      line-height: 1.3;
+    }
+    .cs-item-cost {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .cs-team-swatch {
+      width: 18px;
+      height: 36px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .cs-swatch-sm {
+      width: 12px;
+      height: 20px;
+    }
+    /* Team logo image (in dropdown options + trigger) */
+    .cs-team-logo {
+      width: 60px;
+      height: 38px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 5px;
+      padding: 3px 5px;
+      flex-shrink: 0;
+    }
+    .cs-team-logo-sm {
+      width: 44px;
+      height: 26px;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
+
+<div class="rules-page">
+
+  <!-- Header -->
+  <div class="rules-header">
+    <div class="rules-header-title">🧮 TEAM COST <span>CALCULATOR</span></div>
+    <a href="index.html" class="back-to-game">← Back to Game</a>
+  </div>
+  <div class="checkered-bar"></div>
+
+  <!-- Sticky nav -->
+  <nav class="rules-nav">
+    <a href="calculator.html" class="nav-active">🧮 Calculator</a>
+    <a href="rules.html#rules">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
+    <a href="rules.html#drivers">🏎 Drivers &amp; Teams</a>
+    <a href="rules.html#calendar">📅 Calendar</a>
+  </nav>
+
+  <p class="rules-text" style="margin-top: 24px">
+    Build your real entry before you commit. Pick <strong>3 drivers</strong> and <strong>3 teams</strong> —
+    total cost must stay within <strong>£50m</strong>. Any unspent budget earns bonus points every race.
+  </p>
+
+  <div class="calculator-card">
+    <div class="calc-grid">
+      <!-- Drivers -->
+      <div class="calc-col">
+        <h3>DRIVERS (pick 3)</h3>
+        <div class="calc-select-group">
+          <div class="calc-select-row">
+            <span class="calc-slot-num">1.</span>
+            <div class="custom-select-wrap" id="cs-driver-1">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Driver 1 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-d1">—</span>
+          </div>
+          <div class="calc-select-row">
+            <span class="calc-slot-num">2.</span>
+            <div class="custom-select-wrap" id="cs-driver-2">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Driver 2 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-d2">—</span>
+          </div>
+          <div class="calc-select-row">
+            <span class="calc-slot-num">3.</span>
+            <div class="custom-select-wrap" id="cs-driver-3">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Driver 3 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-d3">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teams -->
+      <div class="calc-col">
+        <h3>TEAMS (pick 3)</h3>
+        <div class="calc-select-group">
+          <div class="calc-select-row">
+            <span class="calc-slot-num">1.</span>
+            <div class="custom-select-wrap" id="cs-team-1">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Team 1 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-t1">—</span>
+          </div>
+          <div class="calc-select-row">
+            <span class="calc-slot-num">2.</span>
+            <div class="custom-select-wrap" id="cs-team-2">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Team 2 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-t2">—</span>
+          </div>
+          <div class="calc-select-row">
+            <span class="calc-slot-num">3.</span>
+            <div class="custom-select-wrap" id="cs-team-3">
+              <div class="cs-trigger">
+                <div class="cs-selected-content"><span class="cs-placeholder">— Pick Team 3 —</span></div>
+                <span class="cs-arrow">▾</span>
+              </div>
+              <div class="cs-panel hidden"></div>
+            </div>
+            <span class="calc-cost-badge" id="cost-t3">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Totals -->
+    <div class="calc-totals">
+      <div>
+        <div class="calc-stat-row" style="margin-bottom:6px;">
+          <span class="calc-stat-label">BUDGET USED</span>
+          <span class="calc-stat-value gold" id="calc-spent">£0m / £50m</span>
+        </div>
+        <div class="calc-budget-bar">
+          <div class="calc-budget-fill" id="calc-bar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="calc-stat-row">
+        <span class="calc-stat-label">INVESTMENT</span>
+        <span class="calc-stat-value green" id="calc-invest">£50m unspent</span>
+      </div>
+      <div class="calc-stat-row">
+        <span class="calc-stat-label">BONUS PTS/RACE</span>
+        <span class="calc-stat-value gold" id="calc-bonus">+25 pts/race</span>
+      </div>
+      <div class="calc-stat-row">
+        <span class="calc-stat-label">SEASON INVESTMENT BONUS</span>
+        <span class="calc-stat-value gold" id="calc-season">+600 pts</span>
+      </div>
+      <div class="calc-status empty" id="calc-status">Select drivers and teams above</div>
+      <div class="calc-entry-row">
+        <input type="text" id="calc-name" class="calc-input" placeholder="Your name *" maxlength="50" autocomplete="given-name">
+        <input type="text" id="calc-team-name" class="calc-input" placeholder="Your team name *" maxlength="60">
+      </div>
+      <div class="calc-email-btns">
+        <button class="calc-copy-btn" id="calc-copy" disabled onclick="copySelection()">📧 Copy Entry Email</button>
+        <button class="calc-mailto-btn" id="calc-mailto" disabled onclick="openMailto()">📨 Open in Mail</button>
+      </div>
+      <pre class="calc-preview" id="calc-preview"></pre>
+    </div>
+  </div>
+
+</div><!-- end rules-page -->
+
+<script type="module">
+import { DRIVERS, TEAMS, DRIVER_RANKS, TEAM_LOGO_SLUGS } from './constants.js';
+
+// ── Selection state ──
+const selected = { d: [null, null, null], t: [null, null, null] };
+
+// ── Team colours (mirrors constants.js TEAM_COLORS) ──
+const TCOLORS = {
+  "Mercedes":    "#27f4d2", "Ferrari":      "#e8002d",
+  "McLaren":     "#ff8000", "Red Bull":     "#3671c6",
+  "Alpine":      "#ff87bc", "Haas":         "#b6babd",
+  "Racing Bulls":"#6692ff", "Audi":         "#00e701",
+  "Cadillac":    "#1d1d1b", "Williams":     "#64c4ff",
+  "Aston Martin":"#229971",
+};
+
+function badgeText(hex) {
+  // Returns '#000' for light backgrounds, '#fff' for dark
+  const r = parseInt(hex.slice(1,3),16),
+        g = parseInt(hex.slice(3,5),16),
+        b = parseInt(hex.slice(5,7),16);
+  return (0.299*r + 0.587*g + 0.114*b) > 130 ? '#000' : '#fff';
+}
+
+// ── Build all 6 custom dropdowns ──
+function buildCustomDropdowns() {
+  for (let n = 1; n <= 3; n++) {
+    buildDriverDropdown(n);
+    buildTeamDropdown(n);
+  }
+}
+
+function buildDriverDropdown(n) {
+  const wrap    = document.getElementById(`cs-driver-${n}`);
+  const trigger = wrap.querySelector('.cs-trigger');
+  const panel   = wrap.querySelector('.cs-panel');
+
+  panel.innerHTML = DRIVERS.map((d, i) => {
+    const slug  = d.name.toLowerCase();
+    const col   = TCOLORS[d.team] || '#555';
+    const txt   = badgeText(col);
+    const rank  = DRIVER_RANKS[i];
+    return `<div class="cs-option cs-driver-opt" data-index="${i}" data-n="${n-1}">
+      <img class="cs-avatar" src="/images/drivers/${slug}.jpg" alt="${d.name}"
+           onerror="this.style.visibility='hidden'">
+      <div class="cs-detail">
+        <div class="cs-fullname">${d.fullName}</div>
+        <div class="cs-meta">
+          <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>
+          <span class="cs-rank-chip">${rank}</span>
+          <span class="cs-item-cost">£${d.cost}m</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+  panel.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const i = parseInt(opt.dataset.index);
+      selected.d[n-1] = i;
+      updateDriverTrigger(n, i);
+      closePanel(panel, trigger);
+      refreshSelected();
+      refreshDisabled();
+      refreshCostly();
+      recalc();
+    });
+  });
+}
+
+function buildTeamDropdown(n) {
+  const wrap    = document.getElementById(`cs-team-${n}`);
+  const trigger = wrap.querySelector('.cs-trigger');
+  const panel   = wrap.querySelector('.cs-panel');
+
+  panel.innerHTML = TEAMS.map((t, i) => {
+    const slug = TEAM_LOGO_SLUGS[t.name];
+    const col  = TCOLORS[t.name] || '#555';
+    return `<div class="cs-option cs-team-opt" data-index="${i}" data-n="${n-1}">
+      <div class="cs-team-swatch" style="background:${col}"></div>
+      ${slug ? `<img class="cs-team-logo" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
+      <div class="cs-detail">
+        <div class="cs-fullname">${t.name}</div>
+      </div>
+      <span class="cs-item-cost">£${t.cost}m</span>
+    </div>`;
+  }).join('');
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+  panel.querySelectorAll('.cs-team-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const i = parseInt(opt.dataset.index);
+      selected.t[n-1] = i;
+      updateTeamTrigger(n, i);
+      closePanel(panel, trigger);
+      refreshSelected();
+      refreshDisabled();
+      refreshCostly();
+      recalc();
+    });
+  });
+}
+
+// ── Trigger display updates ──
+function updateDriverTrigger(n, i) {
+  const d    = DRIVERS[i];
+  const slug = d.name.toLowerCase();
+  const col  = TCOLORS[d.team] || '#555';
+  const txt  = badgeText(col);
+  document.querySelector(`#cs-driver-${n} .cs-selected-content`).innerHTML =
+    `<img class="cs-avatar cs-avatar-sm" src="/images/drivers/${slug}.jpg" alt="${d.name}"
+          onerror="this.style.visibility='hidden'">
+     <span class="cs-sel-name">${d.fullName}</span>
+     <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>`;
+}
+
+function updateTeamTrigger(n, i) {
+  const t    = TEAMS[i];
+  const slug = TEAM_LOGO_SLUGS[t.name];
+  const col  = TCOLORS[t.name] || '#555';
+  document.querySelector(`#cs-team-${n} .cs-selected-content`).innerHTML =
+    `<div class="cs-team-swatch cs-swatch-sm" style="background:${col}"></div>
+     ${slug ? `<img class="cs-team-logo cs-team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
+     <span class="cs-sel-name">${t.name}</span>
+     <span class="cs-item-cost">£${t.cost}m</span>`;
+}
+
+// ── Panel open/close helpers ──
+function togglePanel(panel, trigger) {
+  const wasHidden = panel.classList.contains('hidden');
+  // Close all first
+  document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
+  document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
+  // Re-open if it was closed
+  if (wasHidden) {
+    panel.classList.remove('hidden');
+    trigger.classList.add('open');
+  }
+}
+function closePanel(panel, trigger) {
+  panel.classList.add('hidden');
+  trigger.classList.remove('open');
+}
+
+// Highlight the currently selected option in each panel
+function refreshSelected() {
+  document.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    opt.classList.toggle('cs-selected', selected.d[n] === i);
+  });
+  document.querySelectorAll('.cs-team-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    opt.classList.toggle('cs-selected', selected.t[n] === i);
+  });
+}
+
+// Grey-out options already chosen in another slot
+function refreshDisabled() {
+  document.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    // Disable if this driver is selected in any OTHER slot
+    opt.classList.toggle('cs-disabled', selected.d.some((s, j) => s === i && j !== n));
+  });
+  document.querySelectorAll('.cs-team-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    opt.classList.toggle('cs-disabled', selected.t.some((s, j) => s === i && j !== n));
+  });
+}
+
+// Subdue options that would push the total over £50m
+function refreshCostly() {
+  const driverSpend = selected.d.reduce((s, i) => s + (i !== null ? DRIVERS[i].cost : 0), 0);
+  const teamSpend   = selected.t.reduce((s, i) => s + (i !== null ? TEAMS[i].cost : 0), 0);
+  const totalSpent  = driverSpend + teamSpend;
+
+  document.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    // Free up the current slot's cost (we'd be replacing it)
+    const slotCost = selected.d[n] !== null ? DRIVERS[selected.d[n]].cost : 0;
+    opt.classList.toggle('cs-costly', DRIVERS[i].cost > 50 - totalSpent + slotCost);
+  });
+
+  document.querySelectorAll('.cs-team-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    const slotCost = selected.t[n] !== null ? TEAMS[selected.t[n]].cost : 0;
+    opt.classList.toggle('cs-costly', TEAMS[i].cost > 50 - totalSpent + slotCost);
+  });
+}
+
+// Close panels when clicking outside any dropdown
+document.addEventListener('click', () => {
+  document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
+  document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
+});
+
+// ── Recalculate totals ──
+window.recalc = function() {
+  let driverTotal = 0, teamTotal = 0;
+  let allFilled = true;
+  const selDrivers = [], selTeams = [];
+
+  for (let n = 1; n <= 3; n++) {
+    const dIdx = selected.d[n-1];
+    const tIdx = selected.t[n-1];
+    const dBadge = document.getElementById(`cost-d${n}`);
+    const tBadge = document.getElementById(`cost-t${n}`);
+
+    if (dIdx !== null) {
+      const d = DRIVERS[dIdx];
+      driverTotal += d.cost;
+      dBadge.textContent = `£${d.cost}m`;
+      selDrivers.push({ ...d, slot: n });
+    } else {
+      dBadge.textContent = '—';
+      allFilled = false;
+    }
+
+    if (tIdx !== null) {
+      const t = TEAMS[tIdx];
+      teamTotal += t.cost;
+      tBadge.textContent = `£${t.cost}m`;
+      selTeams.push({ ...t, slot: n });
+    } else {
+      tBadge.textContent = '—';
+      allFilled = false;
+    }
+  }
+
+  const total       = driverTotal + teamTotal;
+  const investment  = Math.max(0, 50 - total);
+  const bonusPerRace = Math.floor(investment / 2);
+  const seasonBonus = bonusPerRace * 24;
+  const overBudget  = total > 50;
+  const pct         = Math.min(100, (total / 50) * 100);
+
+  document.getElementById('calc-spent').textContent  = `£${total}m / £50m`;
+  document.getElementById('calc-invest').textContent = `£${investment}m unspent`;
+  document.getElementById('calc-bonus').textContent  = `+${bonusPerRace} pts/race`;
+  document.getElementById('calc-season').textContent = `+${seasonBonus} pts`;
+
+  const bar = document.getElementById('calc-bar');
+  bar.style.width = pct + '%';
+  bar.classList.toggle('over', overBudget);
+
+  const nameVal    = document.getElementById('calc-name').value.trim();
+  const teamVal    = document.getElementById('calc-team-name').value.trim();
+  const nameOk     = nameVal.length > 0;
+  const teamOk     = teamVal.length > 0;
+
+  const status     = document.getElementById('calc-status');
+  const copyBtn    = document.getElementById('calc-copy');
+  const mailtoBtn  = document.getElementById('calc-mailto');
+  const enabled    = allFilled && !overBudget && nameOk && teamOk;
+
+  if (!allFilled) {
+    status.className = 'calc-status empty';
+    status.textContent = 'Select all 6 picks to see your entry';
+  } else if (overBudget) {
+    status.className = 'calc-status bad';
+    status.textContent = `❌ Over budget by £${total - 50}m — adjust your picks`;
+  } else if (!nameOk || !teamOk) {
+    status.className = 'calc-status empty';
+    status.textContent = !nameOk ? 'Enter your name to copy your entry' : 'Enter your team name to copy your entry';
+  } else {
+    status.className = 'calc-status ok';
+    status.textContent = `✅ Valid entry — £${total}m spent, £${investment}m invested`;
+  }
+  copyBtn.disabled = !enabled;
+  mailtoBtn.disabled = !enabled;
+
+  window._calcState = { selDrivers, selTeams, total, investment, allFilled, overBudget };
+};
+
+// ── Clipboard helper: modern API with execCommand fallback ──
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy') ? resolve() : reject(); }
+    catch (e) { reject(e); }
+    finally { document.body.removeChild(ta); }
+  });
+}
+
+// ── Build the entry email in the same format Martin receives ──
+function buildEntryEmail(managerName, teamName, s) {
+  return [
+    `To: mblewis@ntlworld.com`,
+    `Subject: Martin's FF1 2026 - Entry Submission`,
+    ``,
+    `Hi Martin,`,
+    ``,
+    `Please find my entry for Martin's FF1 2026 below. Hoping to sneak in before the deadline!`,
+    ``,
+    `Team Manager: ${managerName}`,
+    `Team Name: ${teamName}`,
+    ``,
+    `Driver 1: ${s.selDrivers[0].fullName} (${s.selDrivers[0].team}) - £${s.selDrivers[0].cost}m`,
+    `Driver 2: ${s.selDrivers[1].fullName} (${s.selDrivers[1].team}) - £${s.selDrivers[1].cost}m`,
+    `Driver 3: ${s.selDrivers[2].fullName} (${s.selDrivers[2].team}) - £${s.selDrivers[2].cost}m`,
+    ``,
+    `Team 1: ${s.selTeams[0].name} - £${s.selTeams[0].cost}m`,
+    `Team 2: ${s.selTeams[1].name} - £${s.selTeams[1].cost}m`,
+    `Team 3: ${s.selTeams[2].name} - £${s.selTeams[2].cost}m`,
+    ``,
+    `Total Team Cost: £${s.total}m`,
+    `Investment Value: £${s.investment}m`,
+    ``,
+    `Home Circuit: [fill in — the one race where your score is doubled]`,
+    `Driver Champion: [fill in — your pick for 2026 World Drivers' Champion e.g. Verstappen]`,
+    `Constructor Champion: [fill in — your pick for 2026 World Constructors' Champion e.g. McLaren]`,
+    `Total Classified: [fill in — total driver race finishes across all 24 races e.g. 430]`,
+    `Best Pos. (Colapinto): [fill in — Colapinto's best finish this season e.g. 9th]`,
+    ``,
+    `Happy to pay the £15 entry fee electronically - please send me the details.`,
+    ``,
+    `All the best,`,
+    `${managerName}`,
+  ].join('\n');
+}
+
+window.copySelection = function() {
+  const s = window._calcState;
+  const managerName = document.getElementById('calc-name').value.trim();
+  const teamName    = document.getElementById('calc-team-name').value.trim();
+  if (!s || !s.allFilled || s.overBudget || !managerName || !teamName) return;
+  const text = buildEntryEmail(managerName, teamName, s);
+
+  const preview = document.getElementById('calc-preview');
+  preview.textContent = text;
+  preview.classList.add('visible');
+
+  const btn = document.getElementById('calc-copy');
+  copyText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.textContent = '📧 Copy Entry Email'; }, 2000);
+  }).catch(() => {
+    btn.textContent = '⚠️ Select & copy text below';
+    setTimeout(() => { btn.textContent = '📧 Copy Entry Email'; }, 3000);
+  });
+};
+
+window.openMailto = function() {
+  const s = window._calcState;
+  const managerName = document.getElementById('calc-name').value.trim();
+  const teamName    = document.getElementById('calc-team-name').value.trim();
+  if (!s || !s.allFilled || s.overBudget || !managerName || !teamName) return;
+  const text = buildEntryEmail(managerName, teamName, s);
+  const lines = text.split('\n');
+  const subject = `Martin's FF1 2026 - Entry Submission`;
+  const body = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
+  window.open(`mailto:mblewis@ntlworld.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+};
+
+// ── Init ──
+buildCustomDropdowns();
+refreshCostly();
+
+// Pre-fill name + team from landing page if previously set
+const _fn = localStorage.getItem('ff1_first') || '';
+const _ln = localStorage.getItem('ff1_last')  || '';
+const _savedName = [_fn, _ln].filter(Boolean).join(' ');
+if (_savedName) document.getElementById('calc-name').value = _savedName;
+const _savedTeam = localStorage.getItem('ff1_team');
+if (_savedTeam) document.getElementById('calc-team-name').value = _savedTeam;
+
+// Name + team name changes re-evaluate button state
+document.getElementById('calc-name').addEventListener('input', recalc);
+document.getElementById('calc-team-name').addEventListener('input', recalc);
+
+recalc();
+</script>
+
+</body>
+</html>
