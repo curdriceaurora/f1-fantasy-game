@@ -290,11 +290,100 @@
     @media (max-width: 640px) {
       .calc-grid { grid-template-columns: 1fr; }
       .calc-entry-row { grid-template-columns: 1fr; }
+      .predictions-grid { grid-template-columns: 1fr; }
       .rules-header { flex-direction: column; align-items: flex-start; }
       .rules-nav { padding-bottom: 2px; }
       .calculator-card { padding: 16px; }
       .rules-page { padding: 0 12px 60px; }
     }
+
+    /* ── PREDICTIONS ── */
+    .predictions-section { margin-top: 32px; }
+    .predictions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .pred-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .pred-label {
+      font-family: var(--font-racing);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .pred-sublabel {
+      font-size: 11px;
+      color: var(--text-muted);
+      opacity: 0.75;
+      margin-bottom: 2px;
+      line-height: 1.4;
+    }
+    .pred-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .pred-value-display {
+      font-family: var(--font-racing);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 48px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .pred-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #2a2a3e;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      margin: 8px 0 4px;
+    }
+    .pred-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--f1-red);
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 0 6px rgba(225,6,0,0.5);
+    }
+    .pred-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--f1-red);
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+    .pred-slider-ends {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-family: var(--font-racing);
+      color: var(--text-muted);
+    }
+    .pred-slider-ends .pred-hint-mid {
+      font-size: 10px;
+      color: var(--accent-gold);
+      font-family: var(--font-body);
+      text-align: center;
+      flex: 1;
+    }
+    /* Smaller trigger for prediction dropdowns */
+    .cs-trigger.cs-trigger-pred { min-height: 42px; }
 
     /* ══════════════════════════════
        CUSTOM SELECT COMPONENT
@@ -618,6 +707,87 @@
     </div>
   </div>
 
+  <!-- ══════════════════ PREDICTIONS ══════════════════ -->
+  <div class="predictions-section">
+    <h2 class="section-title">🎯 Predictions</h2>
+    <p class="rules-text">Five season-long picks that earn bonus points — included in your entry email automatically.</p>
+
+    <div class="predictions-grid">
+
+      <!-- Home Circuit -->
+      <div class="pred-field">
+        <div class="pred-label">Home Circuit</div>
+        <div class="pred-sublabel">Your race for double points</div>
+        <div class="custom-select-wrap" id="cs-home-circuit">
+          <div class="cs-trigger cs-trigger-pred">
+            <div class="cs-selected-content"><span class="cs-placeholder">— Pick Circuit —</span></div>
+            <span class="cs-arrow">▾</span>
+          </div>
+          <div class="cs-panel hidden"></div>
+        </div>
+      </div>
+
+      <!-- Driver Champion -->
+      <div class="pred-field">
+        <div class="pred-label">Driver Champion</div>
+        <div class="pred-sublabel">2026 World Drivers' Champion</div>
+        <div class="custom-select-wrap" id="cs-driver-champion">
+          <div class="cs-trigger cs-trigger-pred">
+            <div class="cs-selected-content"><span class="cs-placeholder">— Pick Driver —</span></div>
+            <span class="cs-arrow">▾</span>
+          </div>
+          <div class="cs-panel hidden"></div>
+        </div>
+      </div>
+
+      <!-- Constructor Champion -->
+      <div class="pred-field">
+        <div class="pred-label">Constructor Champion</div>
+        <div class="pred-sublabel">2026 World Constructors' Champion</div>
+        <div class="custom-select-wrap" id="cs-constructor-champion">
+          <div class="cs-trigger cs-trigger-pred">
+            <div class="cs-selected-content"><span class="cs-placeholder">— Pick Team —</span></div>
+            <span class="cs-arrow">▾</span>
+          </div>
+          <div class="cs-panel hidden"></div>
+        </div>
+      </div>
+
+    </div><!-- end predictions-grid -->
+
+    <!-- Total Classified slider -->
+    <div class="pred-field" style="margin-bottom: 24px;">
+      <div class="pred-label-row">
+        <div class="pred-label">Total Classified</div>
+        <div class="pred-value-display" id="pred-classified-val">440</div>
+      </div>
+      <div class="pred-sublabel">Total Starts − Total DNFs across all 24 races (max 528)</div>
+      <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
+      <div class="pred-slider-ends">
+        <span>0</span>
+        <span class="pred-hint-mid">↔ drag to set your prediction</span>
+        <span>528</span>
+      </div>
+    </div>
+
+    <!-- Colapinto best finish slider -->
+    <div class="pred-field">
+      <div class="pred-label-row">
+        <div class="pred-label">Best Finish — Colapinto</div>
+        <div class="pred-value-display" id="pred-cola-val">P12</div>
+      </div>
+      <div class="pred-sublabel">Colapinto's best race classification in 2026</div>
+      <input type="range" class="pred-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
+      <!-- slider value: 1 = P22 (worst, left) · 22 = P1 (best, right) -->
+      <div class="pred-slider-ends">
+        <span>← P22</span>
+        <span class="pred-hint-mid">↔ drag to set position</span>
+        <span>P1 →</span>
+      </div>
+    </div>
+
+  </div><!-- end predictions-section -->
+
 </div><!-- end rules-page -->
 
 <script type="module">
@@ -625,6 +795,29 @@ import { DRIVERS, TEAMS, DRIVER_RANKS, TEAM_LOGO_SLUGS } from './constants.js';
 
 // ── Selection state ──
 const selected = { d: [null, null, null], t: [null, null, null] };
+
+// ── Prediction state ──
+const selectedPredictions = {
+  homeCircuit:         null,  // circuit name string, or null
+  driverChampion:      null,  // driver fullName string, or null
+  constructorChampion: null,  // team name string, or null
+  totalClassified:     440,   // integer 0–528
+  colaPosition:        12,    // integer P1–P22
+};
+
+// ── Home circuits: only races where a current 2026 driver is a national ──
+const HOME_CIRCUITS = [
+  { circuit: 'Australia',   race: 'R1',  date: '8 Mar',  flag: '🇦🇺', drivers: ['Piastri'] },
+  { circuit: 'Canada',      race: 'R7',  date: '24 May', flag: '🇨🇦', drivers: ['Stroll'] },
+  { circuit: 'Monaco',      race: 'R8',  date: '7 Jun',  flag: '🇲🇨', drivers: ['Leclerc'] },
+  { circuit: 'Spain',       race: 'R9',  date: '14 Jun', flag: '🇪🇸', drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Britain',     race: 'R11', date: '5 Jul',  flag: '🇬🇧', drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman', 'Lindblad'] },
+  { circuit: 'Netherlands', race: 'R14', date: '23 Aug', flag: '🇳🇱', drivers: ['Verstappen'] },
+  { circuit: 'Italy',       race: 'R15', date: '31 Aug', flag: '🇮🇹', drivers: ['Antonelli'] },
+  { circuit: 'Madrid',      race: 'R16', date: '13 Sep', flag: '🇪🇸', drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Mexico',      race: 'R20', date: '1 Nov',  flag: '🇲🇽', drivers: ['Perez'] },
+  { circuit: 'Brazil',      race: 'R21', date: '8 Nov',  flag: '🇧🇷', drivers: ['Bortoleto'] },
+];
 
 // ── Team colours (mirrors constants.js TEAM_COLORS) ──
 const TCOLORS = {
@@ -650,6 +843,111 @@ function buildCustomDropdowns() {
     buildDriverDropdown(n);
     buildTeamDropdown(n);
   }
+}
+
+// ── Build prediction dropdowns ──
+function buildHomeCircuitDropdown() {
+  const wrap    = document.getElementById('cs-home-circuit');
+  const trigger = wrap.querySelector('.cs-trigger');
+  const panel   = wrap.querySelector('.cs-panel');
+
+  panel.innerHTML = HOME_CIRCUITS.map((c, i) =>
+    `<div class="cs-option cs-circuit-opt" data-index="${i}">
+      <span style="font-size:22px;flex-shrink:0;line-height:1">${c.flag}</span>
+      <div class="cs-detail">
+        <div class="cs-fullname">${c.circuit}</div>
+        <div class="cs-meta">
+          <span class="cs-rank-chip">${c.race} · ${c.date}</span>
+          <span class="cs-rank-chip" style="max-width:120px;overflow:hidden;text-overflow:ellipsis">${c.drivers.join(' · ')}</span>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+  panel.querySelectorAll('.cs-circuit-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const c = HOME_CIRCUITS[parseInt(opt.dataset.index)];
+      selectedPredictions.homeCircuit = c.circuit;
+      trigger.querySelector('.cs-selected-content').innerHTML =
+        `<span style="font-size:18px;line-height:1">${c.flag}</span>
+         <span class="cs-sel-name">${c.circuit}</span>
+         <span class="cs-rank-chip">${c.race}</span>`;
+      closePanel(panel, trigger);
+    });
+  });
+}
+
+function buildDriverChampionDropdown() {
+  const wrap    = document.getElementById('cs-driver-champion');
+  const trigger = wrap.querySelector('.cs-trigger');
+  const panel   = wrap.querySelector('.cs-panel');
+
+  panel.innerHTML = DRIVERS.map((d, i) => {
+    const slug = d.name.toLowerCase();
+    const col  = TCOLORS[d.team] || '#555';
+    const txt  = badgeText(col);
+    return `<div class="cs-option cs-driverchamp-opt" data-index="${i}">
+      <img class="cs-avatar" src="/images/drivers/${slug}.jpg" alt="${d.name}"
+           onerror="this.style.visibility='hidden'">
+      <div class="cs-detail">
+        <div class="cs-fullname">${d.fullName}</div>
+        <div class="cs-meta">
+          <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+  panel.querySelectorAll('.cs-driverchamp-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const d    = DRIVERS[parseInt(opt.dataset.index)];
+      const slug = d.name.toLowerCase();
+      const col  = TCOLORS[d.team] || '#555';
+      const txt  = badgeText(col);
+      selectedPredictions.driverChampion = d.fullName;
+      trigger.querySelector('.cs-selected-content').innerHTML =
+        `<img class="cs-avatar cs-avatar-sm" src="/images/drivers/${slug}.jpg" alt="${d.name}"
+              onerror="this.style.visibility='hidden'">
+         <span class="cs-sel-name">${d.fullName}</span>
+         <span class="cs-team-badge" style="background:${col};color:${txt}">${d.team}</span>`;
+      closePanel(panel, trigger);
+    });
+  });
+}
+
+function buildConstructorDropdown() {
+  const wrap    = document.getElementById('cs-constructor-champion');
+  const trigger = wrap.querySelector('.cs-trigger');
+  const panel   = wrap.querySelector('.cs-panel');
+
+  panel.innerHTML = TEAMS.map((t, i) => {
+    const slug = TEAM_LOGO_SLUGS[t.name];
+    const col  = TCOLORS[t.name] || '#555';
+    return `<div class="cs-option cs-constructorchamp-opt" data-index="${i}">
+      <div class="cs-team-swatch" style="background:${col}"></div>
+      ${slug ? `<img class="cs-team-logo" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
+      <div class="cs-detail">
+        <div class="cs-fullname">${t.name}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+  panel.querySelectorAll('.cs-constructorchamp-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const t    = TEAMS[parseInt(opt.dataset.index)];
+      const slug = TEAM_LOGO_SLUGS[t.name];
+      const col  = TCOLORS[t.name] || '#555';
+      selectedPredictions.constructorChampion = t.name;
+      trigger.querySelector('.cs-selected-content').innerHTML =
+        `<div class="cs-team-swatch cs-swatch-sm" style="background:${col}"></div>
+         ${slug ? `<img class="cs-team-logo cs-team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
+         <span class="cs-sel-name">${t.name}</span>`;
+      closePanel(panel, trigger);
+    });
+  });
 }
 
 function buildDriverDropdown(n) {
@@ -744,8 +1042,7 @@ function updateTeamTrigger(n, i) {
   document.querySelector(`#cs-team-${n} .cs-selected-content`).innerHTML =
     `<div class="cs-team-swatch cs-swatch-sm" style="background:${col}"></div>
      ${slug ? `<img class="cs-team-logo cs-team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
-     <span class="cs-sel-name">${t.name}</span>
-     <span class="cs-item-cost">£${t.cost}m</span>`;
+     <span class="cs-sel-name">${t.name}</span>`;
 }
 
 // ── Panel open/close helpers ──
@@ -913,6 +1210,11 @@ function copyText(text) {
 
 // ── Build the entry email in the same format Martin receives ──
 function buildEntryEmail(managerName, teamName, s) {
+  const pred = selectedPredictions;
+  const homeCircuit = pred.homeCircuit         || '[fill in — the one race where your score is doubled]';
+  const driverChamp = pred.driverChampion      || "[fill in — your pick for 2026 World Drivers' Champion]";
+  const consChamp   = pred.constructorChampion || '[fill in — your pick for 2026 World Constructors\' Champion]';
+
   return [
     `To: mblewis@ntlworld.com`,
     `Subject: Martin's FF1 2026 - Entry Submission`,
@@ -935,11 +1237,11 @@ function buildEntryEmail(managerName, teamName, s) {
     `Total Team Cost: £${s.total}m`,
     `Investment Value: £${s.investment}m`,
     ``,
-    `Home Circuit: [fill in — the one race where your score is doubled]`,
-    `Driver Champion: [fill in — your pick for 2026 World Drivers' Champion e.g. Verstappen]`,
-    `Constructor Champion: [fill in — your pick for 2026 World Constructors' Champion e.g. McLaren]`,
-    `Total Classified: [fill in — total driver race finishes across all 24 races e.g. 430]`,
-    `Best Pos. (Colapinto): [fill in — Colapinto's best finish this season e.g. 9th]`,
+    `Home Circuit: ${homeCircuit}`,
+    `Driver Champion: ${driverChamp}`,
+    `Constructor Champion: ${consChamp}`,
+    `Total Classified: ${pred.totalClassified}`,
+    `Best Pos. (Colapinto): P${pred.colaPosition}`,
     ``,
     `Happy to pay the £15 entry fee electronically - please send me the details.`,
     ``,
@@ -984,6 +1286,27 @@ window.openMailto = function() {
 // ── Init ──
 buildCustomDropdowns();
 refreshCostly();
+
+// ── Prediction dropdowns ──
+buildHomeCircuitDropdown();
+buildDriverChampionDropdown();
+buildConstructorDropdown();
+
+// ── Prediction sliders ──
+const _sliderClassified = document.getElementById('pred-classified');
+const _valClassified    = document.getElementById('pred-classified-val');
+_sliderClassified.addEventListener('input', () => {
+  selectedPredictions.totalClassified = parseInt(_sliderClassified.value);
+  _valClassified.textContent = _sliderClassified.value;
+});
+
+const _sliderCola = document.getElementById('pred-colapinto');
+const _valCola    = document.getElementById('pred-cola-val');
+_sliderCola.addEventListener('input', () => {
+  const pos = 23 - parseInt(_sliderCola.value); // 1→P22, 22→P1
+  selectedPredictions.colaPosition = pos;
+  _valCola.textContent = `P${pos}`;
+});
 
 // Pre-fill name + team from landing page if previously set
 const _fn = localStorage.getItem('ff1_first') || '';

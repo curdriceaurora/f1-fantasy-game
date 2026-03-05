@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════
 
 import { TankGame } from './game.js';
-import { DEFAULTS, generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS } from './constants.js';
+import { DEFAULTS, generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS, DRIVERS, TEAMS, PREDICTIONS as DEFAULT_PREDICTIONS } from './constants.js';
 
 // ── Clipboard helper: modern API with execCommand fallback ──
 function copyText(text) {
@@ -35,6 +35,16 @@ const screens = {
   results: document.getElementById('screen-results'),
 };
 const loading = document.getElementById('loading-overlay');
+
+// ── Game state for results screen ──
+let gameState = null;
+const selectedPredictions = {
+  homeCircuit: DEFAULT_PREDICTIONS.homeCircuit,
+  driverChampion: DEFAULT_PREDICTIONS.driverChampion,
+  constructorChampion: DEFAULT_PREDICTIONS.constructorChampion,
+  totalClassified: DEFAULT_PREDICTIONS.totalClassified,
+  colaPosition: DEFAULT_PREDICTIONS.bestPosColapinto.match(/\d+/) ? parseInt(DEFAULT_PREDICTIONS.bestPosColapinto) : 12,
+};
 
 const inputFirstName   = document.getElementById('input-firstname');
 const inputLastName    = document.getElementById('input-lastname');
@@ -139,6 +149,190 @@ async function fetchSelection(accuracy) {
   return res.json();
 }
 
+// ── Build email with custom predictions ──
+function rebuildEmail() {
+  if (!gameState) return;
+  const p = selectedPredictions;
+  const managerName = gameState.managerName;
+  const teamName = gameState.teamName;
+  const email = [
+    `To: mblewis@ntlworld.com`,
+    `Subject: Martin's FF1 2026 - Entry Submission`,
+    ``,
+    `Hi Martin,`,
+    ``,
+    `Please find my entry for Martin's FF1 2026 below. Hoping to sneak in before the deadline!`,
+    ``,
+    `Team Manager: ${managerName}`,
+    `Team Name: ${teamName}`,
+    ``,
+    `Driver 1: ${gameState.drivers[0].name} (${gameState.drivers[0].team}) - £${gameState.drivers[0].cost}m`,
+    `Driver 2: ${gameState.drivers[1].name} (${gameState.drivers[1].team}) - £${gameState.drivers[1].cost}m`,
+    `Driver 3: ${gameState.drivers[2].name} (${gameState.drivers[2].team}) - £${gameState.drivers[2].cost}m`,
+    ``,
+    `Team 1: ${gameState.teams[0].name} - £${gameState.teams[0].cost}m`,
+    `Team 2: ${gameState.teams[1].name} - £${gameState.teams[1].cost}m`,
+    `Team 3: ${gameState.teams[2].name} - £${gameState.teams[2].cost}m`,
+    ``,
+    `Total Team Cost: £${gameState.totalCost}m`,
+    `Investment Value: £${gameState.investmentValue}m`,
+    ``,
+    `Home Circuit: ${p.homeCircuit}`,
+    `Driver Champion: ${p.driverChampion}`,
+    `Constructor Champion: ${p.constructorChampion}`,
+    `Total Classified: ${p.totalClassified}`,
+    `Best Pos. (Colapinto): P${p.colaPosition}`,
+    ``,
+    `Happy to pay the £15 entry fee electronically - please send me the details.`,
+    ``,
+    `All the best,`,
+    `${managerName}`,
+  ].join('\n');
+  document.getElementById('email-body').textContent = email;
+}
+
+// ── Home circuits with drivers ──
+const HOME_CIRCUITS = [
+  { circuit: 'Australia',   drivers: ['Piastri'] },
+  { circuit: 'Canada',      drivers: ['Stroll'] },
+  { circuit: 'Monaco',      drivers: ['Leclerc'] },
+  { circuit: 'Spain',       drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Britain',     drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman', 'Lindblad'] },
+  { circuit: 'Netherlands', drivers: ['Verstappen'] },
+  { circuit: 'Italy',       drivers: ['Antonelli'] },
+  { circuit: 'Madrid',      drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Mexico',      drivers: ['Perez'] },
+  { circuit: 'Brazil',      drivers: ['Bortoleto'] },
+];
+
+// ── Initialize prediction dropdowns and sliders ──
+function initializePredictions() {
+  // Home Circuit dropdown
+  const homeCircuitWrap = document.getElementById('cs-home-circuit');
+  if (homeCircuitWrap) {
+    const trigger = homeCircuitWrap.querySelector('.cs-trigger');
+    const panel = homeCircuitWrap.querySelector('.cs-panel');
+    panel.innerHTML = HOME_CIRCUITS.map((h, i) => `
+      <div class="cs-option cs-home-circuit-opt" data-circuit="${h.circuit}">
+        <div class="cs-detail">
+          <div class="cs-fullname">${h.circuit}</div>
+          <div class="cs-meta">${h.drivers.join(', ')}</div>
+        </div>
+      </div>
+    `).join('');
+    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.homeCircuit;
+    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+    panel.querySelectorAll('.cs-home-circuit-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const circuit = opt.dataset.circuit;
+        selectedPredictions.homeCircuit = circuit;
+        trigger.querySelector('.cs-selected-content').textContent = circuit;
+        closePanel(panel, trigger);
+        rebuildEmail();
+      });
+    });
+  }
+
+  // Driver Champion dropdown
+  const driverChampWrap = document.getElementById('cs-driver-champion');
+  if (driverChampWrap) {
+    const trigger = driverChampWrap.querySelector('.cs-trigger');
+    const panel = driverChampWrap.querySelector('.cs-panel');
+    panel.innerHTML = DRIVERS.map((d, i) => `
+      <div class="cs-option cs-driver-champ-opt" data-name="${d.fullName}">
+        <div class="cs-detail">
+          <div class="cs-fullname">${d.fullName}</div>
+          <div class="cs-meta">${d.team}</div>
+        </div>
+      </div>
+    `).join('');
+    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.driverChampion;
+    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+    panel.querySelectorAll('.cs-driver-champ-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const name = opt.dataset.name;
+        selectedPredictions.driverChampion = name;
+        trigger.querySelector('.cs-selected-content').textContent = name;
+        closePanel(panel, trigger);
+        rebuildEmail();
+      });
+    });
+  }
+
+  // Constructor Champion dropdown
+  const constructorChampWrap = document.getElementById('cs-constructor-champion');
+  if (constructorChampWrap) {
+    const trigger = constructorChampWrap.querySelector('.cs-trigger');
+    const panel = constructorChampWrap.querySelector('.cs-panel');
+    panel.innerHTML = TEAMS.map((t, i) => `
+      <div class="cs-option cs-constructor-champ-opt" data-name="${t.name}">
+        <div class="cs-detail">
+          <div class="cs-fullname">${t.name}</div>
+        </div>
+      </div>
+    `).join('');
+    trigger.querySelector('.cs-selected-content').textContent = selectedPredictions.constructorChampion;
+    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
+    panel.querySelectorAll('.cs-constructor-champ-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const name = opt.dataset.name;
+        selectedPredictions.constructorChampion = name;
+        trigger.querySelector('.cs-selected-content').textContent = name;
+        closePanel(panel, trigger);
+        rebuildEmail();
+      });
+    });
+  }
+
+  // Total Classified slider
+  const classifiedSlider = document.getElementById('pred-classified');
+  const classifiedVal = document.getElementById('pred-classified-val');
+  if (classifiedSlider) {
+    classifiedSlider.value = selectedPredictions.totalClassified;
+    classifiedVal.textContent = selectedPredictions.totalClassified;
+    classifiedSlider.addEventListener('input', () => {
+      selectedPredictions.totalClassified = parseInt(classifiedSlider.value);
+      classifiedVal.textContent = classifiedSlider.value;
+      rebuildEmail();
+    });
+  }
+
+  // Colapinto position slider (inverted: 1=P22, 22=P1)
+  const colaSlider = document.getElementById('pred-colapinto');
+  const colaVal = document.getElementById('pred-cola-val');
+  if (colaSlider) {
+    colaSlider.value = 23 - selectedPredictions.colaPosition;
+    colaVal.textContent = `P${selectedPredictions.colaPosition}`;
+    colaSlider.addEventListener('input', () => {
+      const pos = 23 - parseInt(colaSlider.value);
+      selectedPredictions.colaPosition = pos;
+      colaVal.textContent = `P${pos}`;
+      rebuildEmail();
+    });
+  }
+
+  // Close panels when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
+  });
+}
+
+// ── Dropdown panel toggle helpers ──
+function togglePanel(panel, trigger) {
+  const wasHidden = panel.classList.contains('hidden');
+  document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
+  document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
+  if (wasHidden) {
+    panel.classList.remove('hidden');
+    trigger.classList.add('open');
+  }
+}
+function closePanel(panel, trigger) {
+  panel.classList.add('hidden');
+  trigger.classList.remove('open');
+}
+
 // ── Show results ──
 function showResults(data) {
   loading.classList.add('hidden');
@@ -183,6 +377,19 @@ function showResults(data) {
 
   // Email
   document.getElementById('email-body').textContent = data.emailBody;
+
+  // Store game state for prediction updates
+  gameState = {
+    managerName: inputFirstName.value.trim() + ' ' + inputLastName.value.trim(),
+    teamName: inputTeam.value.trim(),
+    drivers: data.drivers,
+    teams: data.teams,
+    totalCost: data.totalCost,
+    investmentValue: data.investmentValue,
+  };
+
+  // Initialize predictions from defaults and set up handlers
+  initializePredictions();
 
   showScreen('results');
 }
