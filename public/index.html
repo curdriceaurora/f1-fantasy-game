@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 Martin's F1 Fantasy League</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- All styles are in styles.css -->
 </head>
+
 <body>
 
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
@@ -33,11 +37,13 @@
         <div class="name-row">
           <label class="form-label required">
             First Name
-            <input type="text" id="input-firstname" placeholder="e.g. Lewis" maxlength="30" autocomplete="given-name" required />
+            <input type="text" id="input-firstname" placeholder="e.g. Lewis" maxlength="30" autocomplete="given-name"
+              required />
           </label>
           <label class="form-label required">
             Last Name
-            <input type="text" id="input-lastname" placeholder="e.g. Hamilton" maxlength="30" autocomplete="family-name" required />
+            <input type="text" id="input-lastname" placeholder="e.g. Hamilton" maxlength="30" autocomplete="family-name"
+              required />
           </label>
         </div>
 
@@ -169,7 +175,7 @@
             </div>
             <div class="pred-slider-container">
               <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
-              <div class="pred-slider-track" style="width: calc((100% - 18px) * 440 / 528)"></div>
+              <div class="pred-slider-track" style="width: calc(10px + (100% - 38px) * 440 / 528)"></div>
             </div>
             <div class="pred-hint-mid">Total Starts − DNFs (0–528)</div>
             <div class="pred-slider-ends"><span>0</span><span>528</span></div>
@@ -181,7 +187,7 @@
             </div>
             <div class="pred-slider-container">
               <input type="range" class="pred-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
-              <div class="pred-slider-track" style="width: calc((100% - 18px) * 10 / 21)"></div>
+              <div class="pred-slider-track" style="width: calc(10px + (100% - 38px) * 10 / 21)"></div>
             </div>
             <div class="pred-slider-ends"><span>P22</span><span>P1</span></div>
           </div>
@@ -216,4 +222,5 @@
 
   <script type="module" src="ui.js"></script>
 </body>
+
 </html>

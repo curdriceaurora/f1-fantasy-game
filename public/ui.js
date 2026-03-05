@@ -294,7 +294,7 @@ function initializePredictions() {
     const classifiedTrack = classifiedSlider.parentElement.querySelector('.pred-slider-track');
     if (classifiedTrack) {
       const pct = (selectedPredictions.totalClassified / 528) * 100;
-      classifiedTrack.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+      classifiedTrack.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
     }
     classifiedSlider.addEventListener('input', () => {
       selectedPredictions.totalClassified = parseInt(classifiedSlider.value);
@@ -302,7 +302,7 @@ function initializePredictions() {
       const track = classifiedSlider.parentElement.querySelector('.pred-slider-track');
       if (track) {
         const pct = (parseInt(classifiedSlider.value) / 528) * 100;
-        track.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+        track.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
       }
       rebuildEmail();
     });
@@ -319,7 +319,7 @@ function initializePredictions() {
     if (colaTrack) {
       const val = 23 - selectedPredictions.colaPosition;
       const pct = ((val - 1) / 21) * 100;
-      colaTrack.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+      colaTrack.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
     }
     colaSlider.addEventListener('input', () => {
       const pos = 23 - parseInt(colaSlider.value);
@@ -328,7 +328,7 @@ function initializePredictions() {
       const track = colaSlider.parentElement.querySelector('.pred-slider-track');
       if (track) {
         const pct = ((parseInt(colaSlider.value) - 1) / 21) * 100;
-        track.style.width = `calc((100% - 18px) * ${pct} / 100)`;
+        track.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
       }
       rebuildEmail();
     });
