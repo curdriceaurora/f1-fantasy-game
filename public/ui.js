@@ -156,7 +156,7 @@ function rebuildEmail() {
   const managerName = gameState.managerName;
   const teamName = gameState.teamName;
   const email = [
-    `To: mblewis@ntlworld.com`,
+    `To: Email Martin`,
     `Subject: Martin's FF1 2026 - Entry Submission`,
     ``,
     `Hi Martin,`,
@@ -629,7 +629,7 @@ function init() {
     const subjectLine = lines.find(l => l.startsWith('Subject:'));
     const subject = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
     const mailBody = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
-    window.open(`mailto:${DEFAULTS.emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`);
+    window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`);
   });
 }
 

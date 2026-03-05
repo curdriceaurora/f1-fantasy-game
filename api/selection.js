@@ -116,7 +116,7 @@ function pickEntry(accuracy, investment) {
 function buildEmail(drivers, teams, totalCost, investmentValue, managerName, teamName) {
   const p = PREDICTIONS;
   return [
-    `To: mblewis@ntlworld.com`,
+    `To: Email Martin`,
     `Subject: Martin's FF1 2026 - Entry Submission`,
     ``,
     `Hi Martin,`,

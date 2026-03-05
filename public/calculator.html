@@ -767,7 +767,7 @@
       const consChamp = pred.constructorChampion || '[fill in — your pick for 2026 World Constructors\' Champion]';
 
       return [
-        `To: mblewis@ntlworld.com`,
+        `To: Email Martin`,
         `Subject: Martin's FF1 2026 - Entry Submission`,
         ``,
         `Hi Martin,`,
@@ -831,7 +831,7 @@
       const lines = text.split('\n');
       const subject = `Martin's FF1 2026 - Entry Submission`;
       const body = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
-      window.open(`mailto:mblewis@ntlworld.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
     };
 
     // ── Init ──

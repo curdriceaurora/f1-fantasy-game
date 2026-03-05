@@ -66,7 +66,7 @@ export const PREDICTIONS = {
 export const DEFAULTS = {
   managerName: "Rahul",
   teamName: "Ask MOM Before Overtaking",
-  emailTo: "mblewis@ntlworld.com",
+  emailTo: "Email Martin",
   emailSubject: "Martin's FF1 2026 - Entry Submission",
 };
 

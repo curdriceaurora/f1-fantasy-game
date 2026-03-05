@@ -193,7 +193,7 @@ Once deployed, share the Vercel URL with anyone who wants to play. They can:
     "totalClassified": 440,
     "bestPosColapinto": "9th"
   },
-  "emailBody": "To: mblewis@ntlworld.com\nSubject: ..."
+  "emailBody": "To: Email Martin\nSubject: ..."
 }
 ```
 
@@ -220,7 +220,7 @@ Edit `public/constants.js` → `DEFAULTS` object:
 export const DEFAULTS = {
   managerName: "Your Name",
   teamName: "Your Team Name",
-  emailTo: "mblewis@ntlworld.com",
+  emailTo: "Email Martin",
   emailSubject: "Martin's FF1 2026 - Entry Submission",
 };
 ```
