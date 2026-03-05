@@ -206,13 +206,17 @@
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Total Classified</label>
-              <span class="pred-value-display" id="pred-classified-val">440</span>
             </div>
             <div class="pred-sublabel">Total Starts − DNFs (0–528)</div>
-            <div class="pred-slider-container">
-              <input type="range" class="pred-slider untouched" id="pred-classified" min="0" max="528" value="440"
-                step="1">
-              <div class="pred-slider-track" style="width: calc((100% - 18px) * 440 / 528)"></div>
+            <div class="custom-slider-container untouched" id="cs-classified" data-min="0" data-max="528"
+              data-val="440">
+              <div class="cs-track">
+                <div class="cs-fill" style="width: 83.33%;"></div>
+                <div class="cs-thumb" style="left: 83.33%;">
+                  <div class="cs-tooltip" id="pred-classified-val">440</div>
+                  <div class="cs-dot"></div>
+                </div>
+              </div>
             </div>
             <p id="classified-hint" class="pred-slider-hint">← drag to adjust finishes →</p>
             <p class="pred-slider-description">Total drivers classified across all 2026 GPs (finishers only)</p>
@@ -226,15 +230,16 @@
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Best Finish — Colapinto</label>
-              <span class="pred-value-display" id="pred-cola-val">P12</span>
             </div>
             <div class="pred-sublabel">Best classification in 2026</div>
-            <div class="pred-slider-container cola-slider-container">
-              <input type="range" class="pred-slider cola-slider untouched" id="pred-colapinto" min="1" max="22"
-                value="11" step="1">
-              <div class="cola-thumb-wrapper">
-                <img class="cola-thumb-img" src="/images/drivers/colapinto.jpg" alt="Colapinto"
-                  onerror="this.style.display='none'">
+            <div class="custom-slider-container untouched" id="cs-colapinto" data-min="1" data-max="22" data-val="11"
+              data-invert="true">
+              <div class="cs-track">
+                <div class="cs-fill" style="background:transparent;"></div>
+                <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
+                  <div class="cs-tooltip" id="pred-cola-val">P12</div>
+                  <img src="/images/drivers/colapinto.jpg" alt="Colapinto" onerror="this.style.display='none'">
+                </div>
               </div>
             </div>
             <p id="cola-hint" class="pred-slider-hint">← drag to set his best result →</p>
@@ -837,57 +842,6 @@
     buildDriverChampionDropdown();
     buildConstructorDropdown();
 
-    // ── Prediction sliders ──
-    const _sliderClassified = document.getElementById('pred-classified');
-    const _valClassified = document.getElementById('pred-classified-val');
-    const _hintClassified = document.getElementById('classified-hint');
-    _sliderClassified.addEventListener('input', () => {
-      // Remove untouched state and fade hint on first interaction
-      _sliderClassified.classList.remove('untouched');
-      _hintClassified.classList.add('faded');
-
-      const val = parseInt(_sliderClassified.value);
-      selectedPredictions.totalClassified = val;
-      _valClassified.textContent = val;
-      // Update track width for completion status (track reaches to where thumb can reach)
-      const pct = (val / 528) * 100;
-      _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
-      rebuildEmail();
-    });
-
-    const _sliderCola = document.getElementById('pred-colapinto');
-    const _valCola = document.getElementById('pred-cola-val');
-    const _hintCola = document.getElementById('cola-hint');
-    const _colaThumbWrapper = document.querySelector('.cola-thumb-wrapper');
-
-    function updateColaThumbPosition() {
-      const val = parseInt(_sliderCola.value);
-      const min = parseInt(_sliderCola.min);
-      const max = parseInt(_sliderCola.max);
-      const percent = ((val - min) / (max - min)) * 100;
-      _colaThumbWrapper.style.left = `calc(19px + (100% - 38px) * ${percent} / 100)`;
-    }
-
-    _sliderCola.addEventListener('input', () => {
-      // Remove untouched state and fade hint on first interaction
-      _sliderCola.classList.remove('untouched');
-      _hintCola.classList.add('faded');
-
-      const val = parseInt(_sliderCola.value);
-      const pos = 23 - val; // 1→P22, 22→P1
-      selectedPredictions.colaPosition = pos;
-      _valCola.textContent = `P${pos}`;
-      updateColaThumbPosition();
-      rebuildEmail();
-    });
-
-    // Initialize thumb position
-    updateColaThumbPosition();
-
-    // Initialize slider track width to show completion status
-    const _trackClassified = _sliderClassified.parentElement.querySelector('.pred-slider-track');
-    const _pctClassified = (selectedPredictions.totalClassified / 528 * 100);
-    _trackClassified.style.width = `calc(10px + (100% - 38px) * ${_pctClassified} / 100)`;
 
     // Pre-fill name + team from landing page if previously set
     const _fn = localStorage.getItem('ff1_first') || '';

@@ -171,11 +171,16 @@
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Total Classified</label>
-              <span class="pred-value-display" id="pred-classified-val">440</span>
             </div>
-            <div class="pred-slider-container">
-              <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
-              <div class="pred-slider-track" style="width: calc(10px + (100% - 38px) * 440 / 528)"></div>
+            <div class="custom-slider-container untouched" id="cs-classified" data-min="0" data-max="528"
+              data-val="440">
+              <div class="cs-track">
+                <div class="cs-fill" style="width: 83.33%;"></div>
+                <div class="cs-thumb" style="left: 83.33%;">
+                  <div class="cs-tooltip" id="pred-classified-val">440</div>
+                  <div class="cs-dot"></div>
+                </div>
+              </div>
             </div>
             <div class="pred-hint-mid">Total Starts − DNFs (0–528)</div>
             <div class="pred-slider-ends"><span>0</span><span>528</span></div>
@@ -183,11 +188,16 @@
           <div class="pred-field">
             <div class="pred-label-row">
               <label class="pred-label">Colapinto Best Position</label>
-              <span class="pred-value-display" id="pred-cola-val">P12</span>
             </div>
-            <div class="pred-slider-container">
-              <input type="range" class="pred-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
-              <div class="pred-slider-track" style="width: calc(10px + (100% - 38px) * 10 / 21)"></div>
+            <div class="custom-slider-container untouched" id="cs-colapinto" data-min="1" data-max="22" data-val="11"
+              data-invert="true">
+              <div class="cs-track">
+                <div class="cs-fill" style="background:transparent;"></div>
+                <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
+                  <div class="cs-tooltip" id="pred-cola-val">P12</div>
+                  <img src="/images/drivers/colapinto.jpg" alt="Colapinto" onerror="this.style.display='none'">
+                </div>
+              </div>
             </div>
             <div class="pred-slider-ends"><span>P22</span><span>P1</span></div>
           </div>

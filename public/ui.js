@@ -31,7 +31,7 @@ function copyText(text) {
 // ── DOM refs ──
 const screens = {
   welcome: document.getElementById('screen-welcome'),
-  game:    document.getElementById('screen-game'),
+  game: document.getElementById('screen-game'),
   results: document.getElementById('screen-results'),
 };
 const loading = document.getElementById('loading-overlay');
@@ -46,17 +46,17 @@ const selectedPredictions = {
   colaPosition: DEFAULT_PREDICTIONS.bestPosColapinto.match(/\d+/) ? parseInt(DEFAULT_PREDICTIONS.bestPosColapinto) : 12,
 };
 
-const inputFirstName   = document.getElementById('input-firstname');
-const inputLastName    = document.getElementById('input-lastname');
-const inputTeam        = document.getElementById('input-team');
+const inputFirstName = document.getElementById('input-firstname');
+const inputLastName = document.getElementById('input-lastname');
+const inputTeam = document.getElementById('input-team');
 const sliderInvestment = document.getElementById('slider-investment');
-const valInvestment    = document.getElementById('val-investment');
-const btnPlay          = document.getElementById('btn-play');
-const validationMsg    = document.getElementById('validation-msg');
+const valInvestment = document.getElementById('val-investment');
+const btnPlay = document.getElementById('btn-play');
+const validationMsg = document.getElementById('validation-msg');
 
 // ── Game screen invest slider ──
 const gameSliderInvest = document.getElementById('game-slider-invest');
-const gameValInvest    = document.getElementById('game-val-invest');
+const gameValInvest = document.getElementById('game-val-invest');
 
 // ── Game screen invest label ──
 function updateGameInvestLabel() {
@@ -81,7 +81,7 @@ function fillSlider(slider, fillColor = '#e10600', emptyColor = '#16213e') {
 function updateInvestmentLabel() {
   const inv = parseInt(sliderInvestment.value);
   const bonusPerRace = Math.floor(inv / 2);
-  const seasonBonus  = bonusPerRace * 24;
+  const seasonBonus = bonusPerRace * 24;
   if (inv === 0) {
     valInvestment.textContent = `£0m → +0 pts/race`;
   } else {
@@ -115,7 +115,7 @@ function validate() {
   }
 
   inputFirstName.classList.toggle('error', !fn && !!inputFirstName.dataset.touched);
-  inputLastName.classList.toggle('error',  !ln && !!inputLastName.dataset.touched);
+  inputLastName.classList.toggle('error', !ln && !!inputLastName.dataset.touched);
 }
 
 // ── Persist team name only ──
@@ -125,9 +125,9 @@ function loadSaved() {
   validate();
 }
 function saveFields() {
-  localStorage.setItem('ff1_team',  inputTeam.value.trim());
+  localStorage.setItem('ff1_team', inputTeam.value.trim());
   localStorage.setItem('ff1_first', inputFirstName.value.trim());
-  localStorage.setItem('ff1_last',  inputLastName.value.trim());
+  localStorage.setItem('ff1_last', inputLastName.value.trim());
 }
 
 // ── Screen switching ──
@@ -138,9 +138,9 @@ function showScreen(name) {
 
 // ── API call ──
 async function fetchSelection(accuracy) {
-  const fullName   = `${inputFirstName.value.trim()} ${inputLastName.value.trim()}`;
-  const name       = encodeURIComponent(fullName);
-  const team       = encodeURIComponent(inputTeam.value.trim() || generateTeamName());
+  const fullName = `${inputFirstName.value.trim()} ${inputLastName.value.trim()}`;
+  const name = encodeURIComponent(fullName);
+  const team = encodeURIComponent(inputTeam.value.trim() || generateTeamName());
   const investment = parseInt(gameSliderInvest.value);   // reads game-screen slider
   const url = `/api/selection?accuracy=${accuracy}&name=${name}&team=${team}&investment=${investment}`;
 
@@ -193,16 +193,16 @@ function rebuildEmail() {
 
 // ── Home circuits with drivers ──
 const HOME_CIRCUITS = [
-  { circuit: 'Australia',   drivers: ['Piastri'] },
-  { circuit: 'Canada',      drivers: ['Stroll'] },
-  { circuit: 'Monaco',      drivers: ['Leclerc'] },
-  { circuit: 'Spain',       drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Britain',     drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman', 'Lindblad'] },
+  { circuit: 'Australia', drivers: ['Piastri'] },
+  { circuit: 'Canada', drivers: ['Stroll'] },
+  { circuit: 'Monaco', drivers: ['Leclerc'] },
+  { circuit: 'Spain', drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Britain', drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman', 'Lindblad'] },
   { circuit: 'Netherlands', drivers: ['Verstappen'] },
-  { circuit: 'Italy',       drivers: ['Antonelli'] },
-  { circuit: 'Madrid',      drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Mexico',      drivers: ['Perez'] },
-  { circuit: 'Brazil',      drivers: ['Bortoleto'] },
+  { circuit: 'Italy', drivers: ['Antonelli'] },
+  { circuit: 'Madrid', drivers: ['Sainz', 'Alonso'] },
+  { circuit: 'Mexico', drivers: ['Perez'] },
+  { circuit: 'Brazil', drivers: ['Bortoleto'] },
 ];
 
 // ── Initialize prediction dropdowns and sliders ──
@@ -284,55 +284,114 @@ function initializePredictions() {
     });
   }
 
-  // Total Classified slider
-  const classifiedSlider = document.getElementById('pred-classified');
-  const classifiedVal = document.getElementById('pred-classified-val');
-  if (classifiedSlider) {
-    classifiedSlider.value = selectedPredictions.totalClassified;
-    classifiedVal.textContent = selectedPredictions.totalClassified;
-    // Set initial track width
-    const classifiedTrack = classifiedSlider.parentElement.querySelector('.pred-slider-track');
-    if (classifiedTrack) {
-      const pct = (selectedPredictions.totalClassified / 528) * 100;
-      classifiedTrack.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
-    }
-    classifiedSlider.addEventListener('input', () => {
-      selectedPredictions.totalClassified = parseInt(classifiedSlider.value);
-      classifiedVal.textContent = classifiedSlider.value;
-      const track = classifiedSlider.parentElement.querySelector('.pred-slider-track');
-      if (track) {
-        const pct = (parseInt(classifiedSlider.value) / 528) * 100;
-        track.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
+  // Initialize custom sliders
+  function initCustomSliders() {
+    const sliders = document.querySelectorAll('.custom-slider-container');
+
+    sliders.forEach(slider => {
+      const min = parseFloat(slider.getAttribute('data-min'));
+      const max = parseFloat(slider.getAttribute('data-max'));
+      const invert = slider.getAttribute('data-invert') === 'true';
+      let currentVal = parseFloat(slider.getAttribute('data-val'));
+
+      const track = slider.querySelector('.cs-track');
+      const fill = slider.querySelector('.cs-fill');
+      const thumb = slider.querySelector('.cs-thumb');
+      const tooltip = slider.querySelector('.cs-tooltip');
+      const isCola = slider.id === 'cs-colapinto';
+
+      function updateDOM(val) {
+        let pct = (val - min) / (max - min);
+        // clamp
+        pct = Math.max(0, Math.min(1, pct));
+
+        // Calculate the percentage
+        const percentString = (pct * 100).toFixed(2) + '%';
+        thumb.style.left = percentString;
+        if (fill) fill.style.width = percentString;
+
+        // Logical value
+        let logicalVal = Math.round(min + pct * (max - min));
+        if (invert) {
+          logicalVal = max - Math.round(pct * (max - min)); // P22 -> P1
+        }
+
+        // Update display and state
+        if (isCola) {
+          selectedPredictions.colaPosition = logicalVal;
+          if (tooltip) tooltip.textContent = `P${logicalVal}`;
+        } else {
+          selectedPredictions.totalClassified = logicalVal;
+          if (tooltip) tooltip.textContent = logicalVal;
+        }
+        slider.setAttribute('data-val', val);
       }
-      rebuildEmail();
+
+      function handleDrag(e) {
+        const rect = track.getBoundingClientRect();
+        // Calculate X position relative to track
+        let x = e.clientX - rect.left;
+        let pct = x / rect.width;
+
+        pct = Math.max(0, Math.min(1, pct));
+        let val = min + pct * (max - min);
+        val = Math.round(val);
+
+        // Remove untouched state and fade hints
+        slider.classList.remove('untouched');
+        if (isCola) {
+          const hint = document.getElementById('cola-hint');
+          if (hint) hint.classList.add('faded');
+        } else {
+          const hint = document.getElementById('classified-hint');
+          if (hint) hint.classList.add('faded');
+        }
+
+        updateDOM(val);
+        rebuildEmail();
+      }
+
+      // Initialize initial value
+      let initVal = currentVal;
+      if (isCola) {
+        // Cola starts at 11, data-val is 11, logical is P12. 
+        // If invert is true, pct maps left to right -> P22 to P1.
+        // min=1 max=22. 
+        initVal = invert ? 23 - selectedPredictions.colaPosition : selectedPredictions.colaPosition;
+      } else {
+        initVal = selectedPredictions.totalClassified;
+      }
+      updateDOM(initVal);
+
+      // Event Listeners for dragging
+      let isDragging = false;
+
+      slider.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        slider.setPointerCapture(e.pointerId);
+        handleDrag(e);
+      });
+
+      slider.addEventListener('pointermove', (e) => {
+        if (isDragging && slider.hasPointerCapture(e.pointerId)) {
+          handleDrag(e);
+        }
+      });
+
+      slider.addEventListener('pointerup', (e) => {
+        isDragging = false;
+        slider.releasePointerCapture(e.pointerId);
+        recalc(); // recalc if implemented
+      });
+
+      slider.addEventListener('pointercancel', (e) => {
+        isDragging = false;
+        slider.releasePointerCapture(e.pointerId);
+      });
     });
   }
 
-  // Colapinto position slider (inverted: 1=P22, 22=P1)
-  const colaSlider = document.getElementById('pred-colapinto');
-  const colaVal = document.getElementById('pred-cola-val');
-  if (colaSlider) {
-    colaSlider.value = 23 - selectedPredictions.colaPosition;
-    colaVal.textContent = `P${selectedPredictions.colaPosition}`;
-    // Set initial track width
-    const colaTrack = colaSlider.parentElement.querySelector('.pred-slider-track');
-    if (colaTrack) {
-      const val = 23 - selectedPredictions.colaPosition;
-      const pct = ((val - 1) / 21) * 100;
-      colaTrack.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
-    }
-    colaSlider.addEventListener('input', () => {
-      const pos = 23 - parseInt(colaSlider.value);
-      selectedPredictions.colaPosition = pos;
-      colaVal.textContent = `P${pos}`;
-      const track = colaSlider.parentElement.querySelector('.pred-slider-track');
-      if (track) {
-        const pct = ((parseInt(colaSlider.value) - 1) / 21) * 100;
-        track.style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
-      }
-      rebuildEmail();
-    });
-  }
+  initCustomSliders();
 
   // Close panels when clicking outside
   document.addEventListener('click', () => {
@@ -362,8 +421,8 @@ function showResults(data) {
 
   // Rank
   document.getElementById('rank-number').textContent = `#${data.rank.toLocaleString()}`;
-  document.getElementById('rank-total').textContent  = `/ ${data.totalEntries.toLocaleString()}`;
-  document.getElementById('est-points').textContent  = data.estPoints.toLocaleString();
+  document.getElementById('rank-total').textContent = `/ ${data.totalEntries.toLocaleString()}`;
+  document.getElementById('est-points').textContent = data.estPoints.toLocaleString();
 
   // Jackpot effect for top 100 in pool
   const container = document.querySelector('.results-container');
@@ -385,7 +444,7 @@ function showResults(data) {
   const teamsEl = document.getElementById('result-teams');
   teamsEl.innerHTML = data.teams.map(t => {
     const slug = TEAM_LOGO_SLUGS[t.name];
-    const col  = TEAM_COLORS[t.name] || '#555';
+    const col = TEAM_COLORS[t.name] || '#555';
     return `<div class="selection-item">
       <div class="team-swatch-sm" style="background:${col}"></div>
       ${slug ? `<img class="team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
@@ -395,7 +454,7 @@ function showResults(data) {
   }).join('');
 
   // Cost
-  document.getElementById('result-cost').textContent   = data.totalCost;
+  document.getElementById('result-cost').textContent = data.totalCost;
   document.getElementById('result-invest').textContent = data.investmentValue;
 
   // Email
@@ -425,13 +484,13 @@ let tankGame = null;
 let resetGameFn = null;
 
 function initTankGame() {
-  const canvas      = document.getElementById('game-canvas');
+  const canvas = document.getElementById('game-canvas');
   const sliderAngle = document.getElementById('slider-angle');
   const sliderPower = document.getElementById('slider-power');
-  const valAngle    = document.getElementById('val-angle');
-  const valPower    = document.getElementById('val-power');
-  const btnFire     = document.getElementById('btn-fire');
-  const windEl      = document.getElementById('wind-indicator');
+  const valAngle = document.getElementById('val-angle');
+  const valPower = document.getElementById('val-power');
+  const btnFire = document.getElementById('btn-fire');
+  const windEl = document.getElementById('wind-indicator');
 
   tankGame = new TankGame(canvas, async (accuracy) => {
     loading.classList.remove('hidden');
@@ -542,7 +601,7 @@ function init() {
   // Copy email
   document.getElementById('btn-copy').addEventListener('click', () => {
     const text = document.getElementById('email-body').textContent;
-    const btn  = document.getElementById('btn-copy');
+    const btn = document.getElementById('btn-copy');
     copyText(text).then(() => {
       btn.textContent = '✅ Copied!';
       btn.classList.add('copied');
@@ -561,7 +620,7 @@ function init() {
     const body = document.getElementById('email-body').textContent;
     const lines = body.split('\n');
     const subjectLine = lines.find(l => l.startsWith('Subject:'));
-    const subject  = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
+    const subject = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
     const mailBody = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
     window.open(`mailto:${DEFAULTS.emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`);
   });

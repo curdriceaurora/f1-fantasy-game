@@ -1548,65 +1548,105 @@ input[type="range"]::-webkit-slider-thumb {
   flex-shrink: 0;
 }
 
-.pred-slider-container {
+/* ── Custom Sliders ── */
+.custom-slider-container {
   position: relative;
-  height: 6px;
-  margin: 12px 0;
-  padding: 0 9px;
+  height: 48px;
+  /* space for tooltip + track + thumb */
+  margin: 16px 0;
+  cursor: pointer;
+  touch-action: none;
+  /* prevent scrolling when dragging */
+  user-select: none;
 }
 
-.pred-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
+.cs-track {
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  right: 9px;
   height: 6px;
   background: #2a2a3e;
-  border: none;
   border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-  margin: 8px 0 4px;
-  position: relative;
-  z-index: 2;
-  padding: 0;
+  transform: translateY(-50%);
 }
 
-.pred-slider-container .pred-slider {
-  margin: 0;
-}
-
-.pred-slider-track {
+.cs-fill {
   position: absolute;
-  left: 9px;
+  left: 0;
   top: 0;
-  height: 6px;
+  height: 100%;
   background: linear-gradient(90deg, var(--f1-red) 0%, var(--accent-gold) 100%);
   border-radius: 3px;
   pointer-events: none;
-  z-index: 1;
 }
 
-.pred-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--f1-red);
-  cursor: pointer;
-  border: 2px solid #fff;
-  box-shadow: 0 0 6px rgba(225, 6, 0, 0.6);
-  position: relative;
+.cs-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
+  pointer-events: none;
 }
 
-.pred-slider::-moz-range-thumb {
+/* Pulse untouched */
+.custom-slider-container.untouched .cs-thumb {
+  animation: pulse-slider 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-slider {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(225, 6, 0, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 22px rgba(225, 6, 0, 0.8));
+  }
+}
+
+.cs-dot {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: var(--f1-red);
-  cursor: pointer;
   border: 2px solid #fff;
   box-shadow: 0 0 6px rgba(225, 6, 0, 0.6);
+}
+
+.cs-thumb-img img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.7), inset 0 0 0 2px var(--bg-dark);
+  display: block;
+}
+
+.cs-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  /* space between thumb and tooltip */
+  background: var(--bg-surface);
+  color: var(--accent-gold);
+  font-family: var(--font-racing);
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-slider-container.untouched .cs-tooltip {
+  display: none;
+  /* Hide tooltip initially if untouched? or show it? Let's show it so they know it's a value */
 }
 
 .pred-slider-ends {
@@ -1617,108 +1657,6 @@ input[type="range"]::-webkit-slider-thumb {
   color: var(--text-muted);
   padding: 0 9px;
   margin: 0 -9px;
-}
-
-.pred-slider-ends .pred-hint-mid {
-  font-size: 10px;
-  color: var(--accent-gold);
-  font-family: var(--font-body);
-  text-align: center;
-  flex: 1;
-}
-
-.pred-hint-mid {
-  font-size: 11px;
-  color: var(--accent-gold);
-  text-align: center;
-}
-
-/* Slider pulse animation (untouched state) */
-@keyframes pulse-slider {
-
-  0%,
-  100% {
-    box-shadow: 0 0 8px rgba(225, 6, 0, 0.5);
-  }
-
-  50% {
-    box-shadow: 0 0 22px 8px rgba(225, 6, 0, 0.8), 0 0 36px rgba(225, 6, 0, 0.35);
-  }
-}
-
-.pred-slider.untouched::-webkit-slider-thumb {
-  animation: pulse-slider 1.4s ease-in-out infinite;
-}
-
-.pred-slider-hint {
-  font-family: var(--font-racing);
-  font-size: 11px;
-  color: var(--accent-gold);
-  text-align: center;
-  margin: 2px 0;
-  animation: nudge 2s ease-in-out infinite;
-  transition: opacity 0.5s;
-}
-
-.pred-slider-hint.faded {
-  opacity: 0 !important;
-  animation: none;
-  pointer-events: none;
-}
-
-.pred-slider-description {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-align: center;
-  margin: 4px 0 0;
-}
-
-/* ── Colapinto slider ── */
-.cola-slider-container {
-  position: relative;
-}
-
-.cola-slider {
-  position: relative;
-  z-index: 2;
-}
-
-.cola-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 0;
-  height: 0;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.cola-slider::-moz-range-thumb {
-  width: 0;
-  height: 0;
-  cursor: pointer;
-  opacity: 0;
-  border: none;
-  background: transparent;
-}
-
-.cola-thumb-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  margin-left: -16px;
-  margin-top: -16px;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.cola-thumb-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--accent-gold);
-  box-shadow: 0 0 8px rgba(255, 215, 0, 0.7), inset 0 0 0 2px var(--bg-dark);
 }
 
 /* ══════════════════════════════════════════
