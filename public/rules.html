@@ -3,13 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Martin's FF1 2026 — Rules & Calculator</title>
+  <title>2026 Martin's F1 Fantasy League — Rules & Calculator</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ── Rules page specific styles ── */
-    body { overflow-x: hidden; }
+    body { overflow-x: hidden; padding-top: 44px; }
+    .site-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: #0a0a0f;
+      border-bottom: 2px solid #e10600;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .rules-page {
       max-width: 860px;
@@ -695,11 +712,14 @@
   </style>
 </head>
 <body>
+
+  <div class="site-banner">2026 Martin's F1 Fantasy League Selector</div>
+
 <div class="rules-page">
 
   <!-- Header -->
   <div class="rules-header">
-    <div class="rules-header-title">MARTIN'S FF1 2026<br><span>RULES &amp; CALCULATOR</span></div>
+    <div class="rules-header-title">RULES &amp; CALCULATOR</div>
     <a href="index.html" class="back-to-game">← Back to Game</a>
   </div>
   <div class="checkered-bar"></div>

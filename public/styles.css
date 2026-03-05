@@ -29,6 +29,26 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: 44px; /* offset for fixed site banner */
+}
+
+/* ── Persistent site-wide banner ── */
+.site-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--bg-dark);
+  border-bottom: 2px solid var(--f1-red);
+  text-align: center;
+  padding: 10px 20px;
+  font-family: var(--font-racing);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── Screens ── */
