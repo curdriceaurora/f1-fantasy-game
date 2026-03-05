@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════
 
 import { TankGame } from './game.js';
-import { DEFAULTS, generateTeamName } from './constants.js';
+import { DEFAULTS, generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS } from './constants.js';
 
 // ── DOM refs ──
 const screens = {
@@ -123,15 +123,27 @@ function showResults(data) {
 
   // Drivers
   const driversEl = document.getElementById('result-drivers');
-  driversEl.innerHTML = data.drivers.map(d =>
-    `<div class="selection-item">${d.name} <span class="item-cost">£${d.cost}m</span></div>`
-  ).join('');
+  driversEl.innerHTML = data.drivers.map(d => {
+    const slug = d.name.toLowerCase();
+    return `<div class="selection-item">
+      <img class="driver-avatar" src="/images/drivers/${slug}.jpg" alt="${d.name}" onerror="this.style.display='none'">
+      <span>${d.name}</span>
+      <span class="item-cost">£${d.cost}m</span>
+    </div>`;
+  }).join('');
 
   // Teams
   const teamsEl = document.getElementById('result-teams');
-  teamsEl.innerHTML = data.teams.map(t =>
-    `<div class="selection-item">${t.name} <span class="item-cost">£${t.cost}m</span></div>`
-  ).join('');
+  teamsEl.innerHTML = data.teams.map(t => {
+    const slug = TEAM_LOGO_SLUGS[t.name];
+    const col  = TEAM_COLORS[t.name] || '#555';
+    return `<div class="selection-item">
+      <div class="team-swatch-sm" style="background:${col}"></div>
+      ${slug ? `<img class="team-logo-sm" src="/images/teams/${slug}.png" alt="${t.name}" onerror="this.style.display='none'">` : ''}
+      <span>${t.name}</span>
+      <span class="item-cost">£${t.cost}m</span>
+    </div>`;
+  }).join('');
 
   // Cost
   document.getElementById('result-cost').textContent   = data.totalCost;

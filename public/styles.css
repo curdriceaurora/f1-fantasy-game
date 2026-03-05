@@ -119,17 +119,25 @@ body {
   border-color: var(--f1-red);
 }
 
-/* ── Rules page link ── */
+/* ── Rules page links ── */
+.rules-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 .rules-link {
-  font-size: 12px;
+  font-size: 11px;
   font-family: var(--font-racing);
   letter-spacing: 1px;
   color: var(--text-muted);
   text-decoration: none;
   border: 1px solid #333;
   border-radius: 20px;
-  padding: 6px 14px;
+  padding: 5px 11px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 .rules-link:hover {
   color: var(--text-primary);
@@ -440,15 +448,50 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .selection-item {
   background: var(--bg-surface);
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   font-size: 14px;
   border-left: 3px solid var(--f1-red);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .selection-item .item-cost {
-  float: right;
+  margin-left: auto;
   color: var(--text-muted);
   font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Driver avatar in results ── */
+.driver-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid #444;
+  flex-shrink: 0;
+  background: var(--bg-card);
+}
+
+/* ── Team colour swatch in results ── */
+.team-swatch-sm {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Team logo in results ── */
+.team-logo-sm {
+  width: 46px;
+  height: 26px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 4px;
+  padding: 2px 4px;
+  flex-shrink: 0;
 }
 
 .cost-line {

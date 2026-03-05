@@ -96,6 +96,21 @@ export const DRIVER_RANKS = [
   "Mid Runner", // 21 Alonso
 ];
 
+// ── Team logo file slugs (maps team name → /images/teams/{slug}.png) ──
+export const TEAM_LOGO_SLUGS = {
+  "Mercedes":    "mercedes",
+  "Ferrari":     "ferrari",
+  "McLaren":     "mclaren",
+  "Red Bull":    "redbull",
+  "Alpine":      "alpine",
+  "Haas":        "haas",
+  "Racing Bulls":"racing_bulls",
+  "Audi":        "audi",
+  "Cadillac":    "cadillac",
+  "Williams":    "williams",
+  "Aston Martin":"aston_martin",
+};
+
 // ── Team Name Generator — 50K+ unique F1 meme names ──
 const _ADJ = [
   "Turbo","Nitro","Apex","DRS","Podium","Grid","Backmarker","Privateer",
