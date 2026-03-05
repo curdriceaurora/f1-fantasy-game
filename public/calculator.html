@@ -851,7 +851,7 @@
       _valClassified.textContent = val;
       // Update track width for completion status (track reaches to where thumb can reach)
       const pct = (val / 528) * 100;
-      _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = `calc((100% - 18px) * ${pct} / 100)`;
+      _sliderClassified.parentElement.querySelector('.pred-slider-track').style.width = `calc(10px + (100% - 38px) * ${pct} / 100)`;
       rebuildEmail();
     });
 
@@ -865,7 +865,7 @@
       const min = parseInt(_sliderCola.min);
       const max = parseInt(_sliderCola.max);
       const percent = ((val - min) / (max - min)) * 100;
-      _colaThumbWrapper.style.left = percent + '%';
+      _colaThumbWrapper.style.left = `calc(19px + (100% - 38px) * ${percent} / 100)`;
     }
 
     _sliderCola.addEventListener('input', () => {
@@ -887,7 +887,7 @@
     // Initialize slider track width to show completion status
     const _trackClassified = _sliderClassified.parentElement.querySelector('.pred-slider-track');
     const _pctClassified = (selectedPredictions.totalClassified / 528 * 100);
-    _trackClassified.style.width = `calc((100% - 18px) * ${_pctClassified} / 100)`;
+    _trackClassified.style.width = `calc(10px + (100% - 38px) * ${_pctClassified} / 100)`;
 
     // Pre-fill name + team from landing page if previously set
     const _fn = localStorage.getItem('ff1_first') || '';
