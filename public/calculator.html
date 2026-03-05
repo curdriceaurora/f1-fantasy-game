@@ -654,28 +654,44 @@
 
     .cola-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: transparent;
+      width: 0;
+      height: 0;
       cursor: pointer;
-      border: 2px solid #f5c518;
-      box-shadow: 0 0 8px rgba(245,197,24,0.7), inset 0 0 0 2px #0a0a0f;
-      position: relative;
-      z-index: 10;
-      background-image: url('/images/drivers/colapinto.jpg');
-      background-size: cover;
-      background-position: center;
+      opacity: 0;
     }
 
     .cola-slider::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: url('/images/drivers/colapinto.jpg') center / cover;
+      width: 0;
+      height: 0;
       cursor: pointer;
+      opacity: 0;
+      border: none;
+      background: transparent;
+    }
+
+    .cola-slider-container {
+      position: relative;
+    }
+
+    .cola-thumb-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      margin-left: -16px;
+      margin-top: -16px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .cola-thumb-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
       border: 2px solid #f5c518;
-      box-shadow: 0 0 8px rgba(245,197,24,0.7);
+      box-shadow: 0 0 8px rgba(245,197,24,0.7), inset 0 0 0 2px #0a0a0f;
     }
 
     @media (max-width: 800px) {
@@ -1471,13 +1487,27 @@ _sliderClassified.addEventListener('input', () => {
 
 const _sliderCola = document.getElementById('pred-colapinto');
 const _valCola    = document.getElementById('pred-cola-val');
+const _colaThumbWrapper = document.querySelector('.cola-thumb-wrapper');
+
+function updateColaThumbPosition() {
+  const val = parseInt(_sliderCola.value);
+  const min = parseInt(_sliderCola.min);
+  const max = parseInt(_sliderCola.max);
+  const percent = ((val - min) / (max - min)) * 100;
+  _colaThumbWrapper.style.left = percent + '%';
+}
+
 _sliderCola.addEventListener('input', () => {
   const val = parseInt(_sliderCola.value);
   const pos = 23 - val; // 1→P22, 22→P1
   selectedPredictions.colaPosition = pos;
   _valCola.textContent = `P${pos}`;
+  updateColaThumbPosition();
   rebuildEmail();
 });
+
+// Initialize thumb position
+updateColaThumbPosition();
 
 // Initialize slider track width to show completion status
 const _trackClassified = _sliderClassified.parentElement.querySelector('.pred-slider-track');
