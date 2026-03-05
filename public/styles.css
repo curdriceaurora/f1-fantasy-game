@@ -49,6 +49,14 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-banner:hover {
+  color: var(--accent-gold);
+  border-bottom-color: var(--accent-gold);
 }
 
 /* ── Screens ── */

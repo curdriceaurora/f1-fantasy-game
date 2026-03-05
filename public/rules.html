@@ -26,7 +26,12 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
     }
+    .site-banner:hover { color: #f5c518; border-bottom-color: #f5c518; }
 
     .rules-page {
       max-width: 860px;
@@ -713,7 +718,7 @@
 </head>
 <body>
 
-  <div class="site-banner">2026 Martin's F1 Fantasy League Selector</div>
+  <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
 
 <div class="rules-page">
 
