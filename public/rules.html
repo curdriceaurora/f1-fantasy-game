@@ -559,6 +559,10 @@
       cursor: not-allowed;
       filter: grayscale(60%);
     }
+    /* Over-budget options: still selectable but visually subdued */
+    .cs-option.cs-costly {
+      opacity: 0.35;
+    }
 
     .cs-avatar {
       width: 42px;
@@ -1133,6 +1137,7 @@ function buildDriverDropdown(n) {
       closePanel(panel, trigger);
       refreshSelected();
       refreshDisabled();
+      refreshCostly();
       recalc();
     });
   });
@@ -1165,6 +1170,7 @@ function buildTeamDropdown(n) {
       closePanel(panel, trigger);
       refreshSelected();
       refreshDisabled();
+      refreshCostly();
       recalc();
     });
   });
@@ -1233,6 +1239,26 @@ function refreshDisabled() {
   document.querySelectorAll('.cs-team-opt').forEach(opt => {
     const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
     opt.classList.toggle('cs-disabled', selected.t.some((s, j) => s === i && j !== n));
+  });
+}
+
+// Subdue options that would push the total over £50m
+function refreshCostly() {
+  const driverSpend = selected.d.reduce((s, i) => s + (i !== null ? DRIVERS[i].cost : 0), 0);
+  const teamSpend   = selected.t.reduce((s, i) => s + (i !== null ? TEAMS[i].cost : 0), 0);
+  const totalSpent  = driverSpend + teamSpend;
+
+  document.querySelectorAll('.cs-driver-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    // Free up the current slot's cost (we'd be replacing it)
+    const slotCost = selected.d[n] !== null ? DRIVERS[selected.d[n]].cost : 0;
+    opt.classList.toggle('cs-costly', DRIVERS[i].cost > 50 - totalSpent + slotCost);
+  });
+
+  document.querySelectorAll('.cs-team-opt').forEach(opt => {
+    const i = parseInt(opt.dataset.index), n = parseInt(opt.dataset.n);
+    const slotCost = selected.t[n] !== null ? TEAMS[selected.t[n]].cost : 0;
+    opt.classList.toggle('cs-costly', TEAMS[i].cost > 50 - totalSpent + slotCost);
   });
 }
 
@@ -1344,6 +1370,7 @@ window.copySelection = function() {
 
 // ── Init ──
 buildCustomDropdowns();
+refreshCostly();
 recalc();
 </script>
 
