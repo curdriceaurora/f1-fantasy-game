@@ -648,6 +648,42 @@
       box-shadow: 0 0 6px rgba(225,6,0,0.6);
     }
 
+    /* Slider pulse animation (untouched state) */
+    @keyframes pulse-slider {
+      0%, 100% { box-shadow: 0 0 8px rgba(225,6,0,0.5); }
+      50%       { box-shadow: 0 0 22px 8px rgba(225,6,0,0.8), 0 0 36px rgba(225,6,0,0.35); }
+    }
+    .pred-slider.untouched::-webkit-slider-thumb {
+      animation: pulse-slider 1.4s ease-in-out infinite;
+    }
+
+    /* Slider hint nudge animation */
+    @keyframes nudge {
+      0%, 100% { letter-spacing: 1px; opacity: 0.7; }
+      50%       { letter-spacing: 3px; opacity: 1; }
+    }
+    .pred-slider-hint {
+      font-family: var(--font-racing);
+      font-size: 11px;
+      color: var(--accent-gold);
+      text-align: center;
+      margin: 2px 0;
+      animation: nudge 2s ease-in-out infinite;
+      transition: opacity 0.5s;
+    }
+    .pred-slider-hint.faded {
+      opacity: 0 !important;
+      animation: none;
+      pointer-events: none;
+    }
+
+    .pred-slider-description {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin: 4px 0 0;
+    }
+
     /* Colapinto slider special styling */
     .cola-slider-container {
       position: relative;
@@ -911,9 +947,11 @@
         </div>
         <div class="pred-sublabel">Total Starts − DNFs (0–528)</div>
         <div class="pred-slider-container">
-          <input type="range" class="pred-slider" id="pred-classified" min="0" max="528" value="440" step="1">
+          <input type="range" class="pred-slider untouched" id="pred-classified" min="0" max="528" value="440" step="1">
           <div class="pred-slider-track" style="width: calc((100% - 18px) * 440 / 528)"></div>
         </div>
+        <p id="classified-hint" class="pred-slider-hint">← drag to adjust finishes →</p>
+        <p class="pred-slider-description">How many drivers will complete the race across all 2026 GPs</p>
         <div class="pred-slider-ends">
           <span>0</span>
           <span>528</span>
@@ -928,11 +966,13 @@
         </div>
         <div class="pred-sublabel">Best classification in 2026</div>
         <div class="pred-slider-container cola-slider-container">
-          <input type="range" class="pred-slider cola-slider" id="pred-colapinto" min="1" max="22" value="11" step="1">
+          <input type="range" class="pred-slider cola-slider untouched" id="pred-colapinto" min="1" max="22" value="11" step="1">
           <div class="cola-thumb-wrapper">
             <img class="cola-thumb-img" src="/images/drivers/colapinto.jpg" alt="Colapinto" onerror="this.style.display='none'">
           </div>
         </div>
+        <p id="cola-hint" class="pred-slider-hint">← drag to set his best result →</p>
+        <p class="pred-slider-description">Colapinto's best grid finish or classification during 2026 season</p>
         <div class="pred-slider-ends">
           <span>← P22</span>
           <span>P1 →</span>
@@ -1485,7 +1525,12 @@ buildConstructorDropdown();
 // ── Prediction sliders ──
 const _sliderClassified = document.getElementById('pred-classified');
 const _valClassified    = document.getElementById('pred-classified-val');
+const _hintClassified   = document.getElementById('classified-hint');
 _sliderClassified.addEventListener('input', () => {
+  // Remove untouched state and fade hint on first interaction
+  _sliderClassified.classList.remove('untouched');
+  _hintClassified.classList.add('faded');
+
   const val = parseInt(_sliderClassified.value);
   selectedPredictions.totalClassified = val;
   _valClassified.textContent = val;
@@ -1497,6 +1542,7 @@ _sliderClassified.addEventListener('input', () => {
 
 const _sliderCola = document.getElementById('pred-colapinto');
 const _valCola    = document.getElementById('pred-cola-val');
+const _hintCola   = document.getElementById('cola-hint');
 const _colaThumbWrapper = document.querySelector('.cola-thumb-wrapper');
 
 function updateColaThumbPosition() {
@@ -1508,6 +1554,10 @@ function updateColaThumbPosition() {
 }
 
 _sliderCola.addEventListener('input', () => {
+  // Remove untouched state and fade hint on first interaction
+  _sliderCola.classList.remove('untouched');
+  _hintCola.classList.add('faded');
+
   const val = parseInt(_sliderCola.value);
   const pos = 23 - val; // 1→P22, 22→P1
   selectedPredictions.colaPosition = pos;
