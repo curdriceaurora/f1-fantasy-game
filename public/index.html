@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Fantasy Team Selector</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══ WELCOME SCREEN ═══ -->
+  <div id="screen-welcome" class="screen active">
+    <div class="welcome-container">
+      <div class="logo-area">
+        <div class="checkered-bar"></div>
+        <h1 class="title">F1 FANTASY<br><span class="title-accent">TEAM SELECTOR</span></h1>
+        <p class="subtitle">Martin's FF1 2026</p>
+        <div class="checkered-bar"></div>
+      </div>
+
+      <div class="form-area">
+        <label class="form-label">
+          Your Name
+          <input type="text" id="input-name" value="Rahul" maxlength="40" />
+        </label>
+        <label class="form-label">
+          Team Name
+          <input type="text" id="input-team" value="Ask MOM Before Overtaking" maxlength="60" />
+        </label>
+      </div>
+
+      <p class="tagline">Pick your entry by skill... or by luck.</p>
+
+      <div class="mode-buttons">
+        <button id="btn-aim" class="mode-btn aim-btn">
+          <span class="mode-icon">🎯</span>
+          <span class="mode-label">AIM FOR GLORY</span>
+          <span class="mode-desc">Skill earns a better team</span>
+        </button>
+        <button id="btn-slots" class="mode-btn slots-btn">
+          <span class="mode-icon">🎰</span>
+          <span class="mode-label">FEEL LUCKY?</span>
+          <span class="mode-desc">Pure random chance</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TANK AIMING GAME ═══ -->
+  <div id="screen-game" class="screen">
+    <div class="game-header">
+      <button id="btn-back-game" class="back-btn">← Back</button>
+      <div id="wind-indicator" class="wind-indicator">Wind: → 0</div>
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <div class="controls">
+      <div class="control-group">
+        <label class="control-label">ANGLE</label>
+        <input type="range" id="slider-angle" min="5" max="85" value="45" step="1" />
+        <span id="val-angle" class="control-value">45°</span>
+      </div>
+      <div class="control-group">
+        <label class="control-label">POWER</label>
+        <div class="power-track">
+          <input type="range" id="slider-power" min="1" max="100" value="50" step="1" />
+        </div>
+        <span id="val-power" class="control-value">50%</span>
+      </div>
+      <button id="btn-fire" class="fire-btn">🏁 LAUNCH!</button>
+    </div>
+  </div>
+
+  <!-- ═══ SLOT MACHINE ═══ -->
+  <div id="screen-slots" class="screen">
+    <div class="game-header">
+      <button id="btn-back-slots" class="back-btn">← Back</button>
+      <h2 class="slots-title">🎰 LUCKY DIP 🎰</h2>
+    </div>
+    <div class="slot-machine">
+      <div class="slot-frame">
+        <div class="slot-lights top-lights"></div>
+        <div class="reels-container">
+          <div class="reel-window">
+            <div class="reel" id="reel-1"></div>
+            <div class="reel-label">DRIVER 1</div>
+          </div>
+          <div class="reel-window">
+            <div class="reel" id="reel-2"></div>
+            <div class="reel-label">DRIVER 2</div>
+          </div>
+          <div class="reel-window">
+            <div class="reel" id="reel-3"></div>
+            <div class="reel-label">TEAM</div>
+          </div>
+        </div>
+        <div class="slot-lights bottom-lights"></div>
+      </div>
+      <button id="btn-spin" class="spin-btn">PULL THE LEVER!</button>
+    </div>
+  </div>
+
+  <!-- ═══ RESULTS OVERLAY ═══ -->
+  <div id="screen-results" class="screen">
+    <div class="results-container">
+      <div class="results-header">
+        <div class="checkered-bar small"></div>
+        <h2 class="rank-display">
+          RANK <span id="rank-number">#1</span>
+          <span class="rank-total">/ 100,000</span>
+        </h2>
+        <p class="points-display">Estimated: <span id="est-points">1,563</span> pts</p>
+        <div class="checkered-bar small"></div>
+      </div>
+
+      <div class="selection-grid">
+        <div class="selection-col">
+          <h3>DRIVERS</h3>
+          <div id="result-drivers" class="selection-list"></div>
+        </div>
+        <div class="selection-col">
+          <h3>TEAMS</h3>
+          <div id="result-teams" class="selection-list"></div>
+        </div>
+      </div>
+      <div class="cost-line">
+        Total: £<span id="result-cost">49</span>m &nbsp;|&nbsp;
+        Investment: £<span id="result-invest">1</span>m
+      </div>
+
+      <div class="email-section">
+        <h3>📧 YOUR ENTRY EMAIL</h3>
+        <pre id="email-body" class="email-box"></pre>
+        <div class="email-actions">
+          <button id="btn-copy" class="action-btn copy-btn">📋 Copy Email</button>
+          <button id="btn-mailto" class="action-btn mailto-btn">📧 Open in Mail</button>
+        </div>
+      </div>
+
+      <div class="replay-actions">
+        <button id="btn-aim-again" class="mode-btn aim-btn small">🎯 Aim Again</button>
+        <button id="btn-spin-again" class="mode-btn slots-btn small">🎰 Spin Again</button>
+        <button id="btn-home" class="mode-btn home-btn small">🏠 Home</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LOADING OVERLAY ═══ -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p>Selecting your team...</p>
+  </div>
+
+  <script type="module" src="ui.js"></script>
+</body>
+</html>

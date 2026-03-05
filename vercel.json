@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "api/selection.js": {
+      "memory": 256,
+      "maxDuration": 10,
+      "includeFiles": "data/**"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    }
+  ]
+}
