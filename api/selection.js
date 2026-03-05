@@ -1,8 +1,16 @@
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // ── Load data once at module level (cached across warm invocations) ──
-const dataPath = join(process.cwd(), 'data', 'selections.json');
+// Try Vercel's cwd first, then relative to this file
+let dataPath = join(process.cwd(), 'data', 'selections.json');
+try { readFileSync(dataPath); } catch {
+  dataPath = join(__dirname, '..', 'data', 'selections.json');
+}
 const DATA = JSON.parse(readFileSync(dataPath, 'utf-8'));
 
 const PREDICTION_BONUS = 24; // Constant added to all entries
