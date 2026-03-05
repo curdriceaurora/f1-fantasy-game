@@ -21,6 +21,15 @@ const valInvestment    = document.getElementById('val-investment');
 const btnPlay          = document.getElementById('btn-play');
 const validationMsg    = document.getElementById('validation-msg');
 
+// ── Slider fill (paints the left portion of the track) ──
+function fillSlider(slider, fillColor = '#e10600', emptyColor = '#16213e') {
+  const min = parseFloat(slider.min) || 0;
+  const max = parseFloat(slider.max) || 100;
+  const pct = ((parseFloat(slider.value) - min) / (max - min)) * 100;
+  slider.style.background =
+    `linear-gradient(to right, ${fillColor} ${pct}%, ${emptyColor} ${pct}%)`;
+}
+
 // ── Investment label ──
 function updateInvestmentLabel() {
   const inv = parseInt(sliderInvestment.value);
@@ -31,6 +40,7 @@ function updateInvestmentLabel() {
   } else {
     valInvestment.textContent = `£${inv}m → +${bonusPerRace} pts/race (+${seasonBonus} season)`;
   }
+  fillSlider(sliderInvestment);
 }
 
 // ── Validation ──
@@ -152,10 +162,12 @@ function initTankGame() {
     const deg = parseInt(sliderAngle.value);
     valAngle.textContent = `${deg}°`;
     tankGame.draw(deg);
+    fillSlider(sliderAngle);
   });
 
   sliderPower.addEventListener('input', () => {
     valPower.textContent = `${sliderPower.value}%`;
+    fillSlider(sliderPower);
   });
 
   btnFire.addEventListener('click', () => {
@@ -169,10 +181,14 @@ function initTankGame() {
     btnFire.disabled = false;
     windEl.textContent = tankGame.getWindLabel();
     tankGame.draw(parseInt(sliderAngle.value));
+    fillSlider(sliderAngle);
+    fillSlider(sliderPower);
   }
 
   windEl.textContent = tankGame.getWindLabel();
   tankGame.draw(parseInt(sliderAngle.value));
+  fillSlider(sliderAngle);
+  fillSlider(sliderPower);
 
   return resetGame;
 }
