@@ -1505,9 +1505,13 @@ window.openMailto = function() {
 buildCustomDropdowns();
 refreshCostly();
 
-// Pre-fill team name from landing page if set
-const savedTeam = localStorage.getItem('ff1_team');
-if (savedTeam) document.getElementById('calc-team-name').value = savedTeam;
+// Pre-fill name + team from landing page if previously set
+const _fn = localStorage.getItem('ff1_first') || '';
+const _ln = localStorage.getItem('ff1_last')  || '';
+const _savedName = [_fn, _ln].filter(Boolean).join(' ');
+if (_savedName) document.getElementById('calc-name').value = _savedName;
+const _savedTeam = localStorage.getItem('ff1_team');
+if (_savedTeam) document.getElementById('calc-team-name').value = _savedTeam;
 
 // Name + team name changes re-evaluate button state
 document.getElementById('calc-name').addEventListener('input', recalc);

@@ -115,7 +115,9 @@ function loadSaved() {
   validate();
 }
 function saveFields() {
-  localStorage.setItem('ff1_team', inputTeam.value.trim());
+  localStorage.setItem('ff1_team',  inputTeam.value.trim());
+  localStorage.setItem('ff1_first', inputFirstName.value.trim());
+  localStorage.setItem('ff1_last',  inputLastName.value.trim());
 }
 
 // ── Screen switching ──
