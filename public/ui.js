@@ -29,7 +29,9 @@ const gameValInvest    = document.getElementById('game-val-invest');
 function updateGameInvestLabel() {
   const inv = parseInt(gameSliderInvest.value);
   const bonusPerRace = Math.floor(inv / 2);
-  gameValInvest.textContent = inv === 0 ? `£0m` : `£${inv}m +${bonusPerRace}pt/r`;
+  gameValInvest.textContent = inv === 0
+    ? `£0m → no bonus`
+    : `£${inv}m → +${bonusPerRace} pts/race`;
   fillSlider(gameSliderInvest, '#ffd700', '#16213e');
 }
 
