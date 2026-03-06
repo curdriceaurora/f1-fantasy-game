@@ -1,312 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 Martin's F1 Fantasy League — Rules & FAQ</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- All styles are in styles.css -->
 </head>
+
 <body>
 
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
 
-<div class="rules-page">
-
-  <!-- Header -->
-  <div class="rules-header">
-    <div class="rules-header-title">RULES &amp; <span>FAQ</span></div>
-    <a href="index.html" class="back-to-game">← Back to Game</a>
-  </div>
-  <div class="checkered-bar"></div>
-
-  <!-- Sticky nav -->
-  <nav class="rules-nav">
+  <!-- Global Navigation -->
+  <nav class="global-nav">
+    <a href="index.html">Home</a>
     <a href="calculator.html">🧮 Calculator</a>
-    <a href="#rules" class="nav-active">📋 Rules</a>
-    <a href="#faq">❓ FAQ</a>
-    <a href="#drivers">🏎 Drivers &amp; Teams</a>
-    <a href="#calendar">📅 Calendar</a>
+    <a href="rules.html#rules" class="nav-active">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
   </nav>
 
-  <!-- ══════════════════ RULES ══════════════════ -->
-  <section id="rules">
-    <h2 class="section-title">📋 Rules</h2>
+  <div class="rules-page">
 
-    <div class="quickstart">
-      <h3>⚡ QUICK START — NEW HERE? READ THIS FIRST</h3>
-      <ol>
-        <li>Pick <strong>3 drivers</strong> and <strong>3 teams</strong> from the table below</li>
-        <li>Make sure your <strong>total cost ≤ £50m</strong> (use the calculator!)</li>
-        <li>Pick a <strong>Home Circuit</strong> from the race calendar for a double-points bonus</li>
-        <li>Fill in the <strong>5 predictions</strong> for end-of-season bonus points</li>
-        <li><strong>Email Martin</strong> by <strong>Thursday 5th March 2026</strong> with your £15 entry fee</li>
-      </ol>
-    </div>
+    <!-- Sticky nav -->
+    <nav class="rules-nav">
+      <a href="calculator.html">🧮 Calculator</a>
+      <a href="#rules" class="nav-active">📋 Rules</a>
+      <a href="#faq">❓ FAQ</a>
+      <a href="#drivers">🏎 Drivers &amp; Teams</a>
+      <a href="#calendar">📅 Calendar</a>
+    </nav>
 
-    <p class="rules-text">You have <strong>£50m</strong> to spend on 3 drivers + 3 teams. No restrictions on combinations — you can pick 2 drivers from the same team, or even the team itself. Points come from qualifying performance, race results, your home circuit bonus, and your end-of-season predictions.</p>
+    <!-- ══════════════════ RULES ══════════════════ -->
+    <section id="rules">
+      <h2 class="section-title">📋 Rules</h2>
 
-    <h3 class="sub-title">§2.1 — Qualifying Points</h3>
-    <p class="rules-text">Each driver scores points based on their <strong>qualifying position</strong> relative to their assigned capability rank:</p>
-
-    <table class="rules-table">
-      <thead>
-        <tr>
-          <th>Grid Position</th>
-          <th><span class="rank-badge rank-champion">CHAMPION</span></th>
-          <th><span class="rank-badge rank-contender">CONTENDER</span></th>
-          <th><span class="rank-badge rank-topten">TOP TEN</span></th>
-          <th><span class="rank-badge rank-midrunner">MID RUNNER</span></th>
-          <th><span class="rank-badge rank-outsider">OUTSIDER</span></th>
-          <th><span class="rank-badge rank-nohoper">NO HOPER</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Pole</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td><td class="pos">+12</td><td class="pos">+15</td></tr>
-        <tr><td>2nd – 5th</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td><td class="pos">+12</td></tr>
-        <tr><td>6th – 10th</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td><td class="pos">+9</td></tr>
-        <tr><td>11th – 14th</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td><td class="pos">+6</td></tr>
-        <tr><td>15th – 18th</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-2</td><td class="zero">0</td><td class="pos">+3</td></tr>
-        <tr><td>19th – 22nd</td><td class="neg">-13</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="pos">+2</td><td class="zero">0</td></tr>
-        <tr><td>Did Not Qualify</td><td class="neg">-20</td><td class="neg">-13</td><td class="neg">-9</td><td class="neg">-6</td><td class="neg">-4</td><td class="neg">-3</td></tr>
-      </tbody>
-    </table>
-
-    <p class="rules-text"><strong>Key insight:</strong> "No Hoper" and "Outsider" drivers earn <em>positive</em> points for qualifying anywhere in the top half of the grid — making cheap, fast-qualifying drivers like Gasly, Lindblad, and Colapinto extremely valuable picks.</p>
-
-    <h3 class="sub-title">§2.2 — Race Points</h3>
-    <p class="rules-text">Standard F1 finishing points: <strong>1st 25 | 2nd 18 | 3rd 15 | 4th 12 | 5th 10 | 6th 8 | 7th 6 | 8th 4 | 9th 2 | 10th 1</strong></p>
-    <p class="rules-text"><strong>Position change bonus:</strong> +2 pts per place gained, –2 pts per place lost vs. grid start position.</p>
-    <p class="rules-text"><strong>Fastest Lap:</strong> +2 pts. <strong>Sprint races:</strong> FIA sprint scoring (8→1 pts for top 8).</p>
-    <p class="rules-text"><strong>Team scoring:</strong> Sum of both drivers' points, weighted as <code>(3 × Lead Driver + 2 × Second Driver) ÷ 5</code>, rounded up.</p>
-
-    <h3 class="sub-title">§2.3 — Home Circuit Bonus</h3>
-    <p class="rules-text">Pick one race circuit at the start. Your <strong>entire score for that race is doubled</strong> (driver + team). If the result is negative, it's reset to 0. If your circuit is cancelled, you may pick another.</p>
-
-    <h3 class="sub-title">§2.4 — Penalties</h3>
-    <p class="rules-text">Grid penalties = minus points equal to places penalised (capped at 10). Time penalties at race end = minus seconds penalised (capped at 10).</p>
-
-    <h3 class="sub-title">§2.5 — Fines</h3>
-    <p class="rules-text">FIA monetary fines: <strong>–1 pt per €2,000</strong> (or part thereof), capped at 100 pts. Suspended fines = no penalty.</p>
-
-    <h3 class="sub-title">§2.6 — Investment Bonus</h3>
-    <p class="rules-text">Any unspent budget (up to £20m) earns bonus points <strong>every race</strong>:</p>
-    <p class="rules-text"><strong>Formula: floor(unspent £m ÷ 2) pts per race</strong></p>
-    <table class="rules-table" style="max-width:480px;">
-      <thead><tr><th>Spent</th><th>Unspent</th><th>Pts/Race</th><th>Season Total</th></tr></thead>
-      <tbody>
-        <tr><td>£50m</td><td>£0m</td><td class="zero">0</td><td class="zero">0</td></tr>
-        <tr><td>£48m</td><td>£2m</td><td class="pos">+1</td><td class="pos">+24</td></tr>
-        <tr><td>£46m</td><td>£4m</td><td class="pos">+2</td><td class="pos">+48</td></tr>
-        <tr><td>£44m</td><td>£6m</td><td class="pos">+3</td><td class="pos">+72</td></tr>
-        <tr><td>£40m</td><td>£10m</td><td class="pos">+5</td><td class="pos">+120</td></tr>
-        <tr><td>£30m</td><td>£20m</td><td class="pos">+10</td><td class="pos">+240</td></tr>
-      </tbody>
-    </table>
-    <p class="rules-text">Note: odd £m of unspent budget is ignored (floor division). £49m spent = £1m unspent = <strong>0 bonus</strong>.</p>
-
-    <h3 class="sub-title">§2.7 — End-of-Season Bonuses</h3>
-    <table class="rules-table" style="max-width:580px;">
-      <thead><tr><th>Prediction</th><th>Points</th><th>Condition</th></tr></thead>
-      <tbody>
-        <tr><td>Total Classified Drivers</td><td class="pos">+30</td><td>Exact</td></tr>
-        <tr><td>Total Classified Drivers</td><td class="pos">+20</td><td>Within 5</td></tr>
-        <tr><td>Total Classified Drivers</td><td class="pos">+10</td><td>Within 10</td></tr>
-        <tr><td>FIA Driver Champion</td><td class="pos">+10</td><td>Correct</td></tr>
-        <tr><td>FIA Constructor Champion</td><td class="pos">+5</td><td>Correct</td></tr>
-        <tr><td>Best Finish — Colapinto</td><td class="pos">+20</td><td>Exact position</td></tr>
-      </tbody>
-    </table>
-    <p class="rules-text"><strong>Total Classified</strong> = total drivers still running at finish across all 24 races. Maximum possible: 22 × 24 = 528. Last year (20 drivers): 407. Expect 420–460 range with 22 drivers.</p>
-
-    <h3 class="sub-title">Mid-Season Transfer</h3>
-    <p class="rules-text">After Race 11 (Britain), you may replace <strong>one driver or one team</strong>. Costs <strong>20 points</strong> deducted from your current total. Must stay within £50m. Must be submitted before Race 12 (Belgium). If a driver drops out permanently, free replacement at same cost — no penalty.</p>
-  </section>
-
-  <!-- ══════════════════ DRIVERS & TEAMS ══════════════════ -->
-  <section id="drivers">
-    <h2 class="section-title">🏎 2026 Drivers &amp; Teams</h2>
-    <p class="rules-text">Pick 3 drivers and 3 teams. Total cost must be <strong>≤ £50m</strong>. (R) = Rookie.</p>
-
-    <div class="dt-grid">
-      <div>
-        <h3 class="sub-title">DRIVERS</h3>
-        <table class="ref-table">
-          <thead><tr><th>Driver</th><th>Team</th><th>Rank</th><th>Cost</th></tr></thead>
-          <tbody>
-            <tr><td>Lando Norris</td><td>McLaren</td><td><span class="rank-badge rank-champion">CHAMPION</span></td><td class="cost-val">£16m</td></tr>
-            <tr><td>Oscar Piastri</td><td>McLaren</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£16m</td></tr>
-            <tr><td>Max Verstappen</td><td>Red Bull</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£16m</td></tr>
-            <tr><td>George Russell</td><td>Mercedes</td><td><span class="rank-badge rank-contender">CONTENDER</span></td><td class="cost-val">£12m</td></tr>
-            <tr><td>Charles Leclerc</td><td>Ferrari</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£11m</td></tr>
-            <tr><td>Kimi Antonelli</td><td>Mercedes</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£10m</td></tr>
-            <tr><td>Isack Hadjar (R)</td><td>Racing Bulls</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£10m</td></tr>
-            <tr><td>Lewis Hamilton</td><td>Ferrari</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£9m</td></tr>
-            <tr><td>Carlos Sainz Jr</td><td>Williams</td><td><span class="rank-badge rank-topten">TOP TEN</span></td><td class="cost-val">£7m</td></tr>
-            <tr><td>Fernando Alonso</td><td>Aston Martin</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£7m</td></tr>
-            <tr><td>Nico Hulkenberg</td><td>Audi</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Gabriel Bortoleto (R)</td><td>Audi</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Sergio Perez</td><td>Cadillac</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Alex Albon</td><td>Williams</td><td><span class="rank-badge rank-midrunner">MID RUNNER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Esteban Ocon</td><td>Haas</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Oliver Bearman</td><td>Haas</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Liam Lawson</td><td>Red Bull</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Valtteri Bottas</td><td>Cadillac</td><td><span class="rank-badge rank-outsider">OUTSIDER</span></td><td class="cost-val">£6m</td></tr>
-            <tr><td>Pierre Gasly</td><td>Alpine</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
-            <tr><td>Franco Colapinto (R)</td><td>Alpine</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
-            <tr><td>Arvid Lindblad (R)</td><td>Racing Bulls</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
-            <tr><td>Lance Stroll</td><td>Aston Martin</td><td><span class="rank-badge rank-nohoper">NO HOPER</span></td><td class="cost-val">£5m</td></tr>
-          </tbody>
-        </table>
+      <div class="quickstart">
+        <h3>⚡ QUICK START — NEW HERE? READ THIS FIRST</h3>
+        <ol>
+          <li>Pick <strong>3 drivers</strong> and <strong>3 teams</strong> from the table below</li>
+          <li>Make sure your <strong>total cost ≤ £50m</strong> (use the calculator!)</li>
+          <li>Pick a <strong>Home Circuit</strong> from the race calendar for a double-points bonus</li>
+          <li>Fill in the <strong>5 predictions</strong> for end-of-season bonus points</li>
+          <li><strong>Email Martin</strong> by <strong>Thursday 5th March 2026</strong> with your £15 entry fee</li>
+        </ol>
       </div>
-      <div>
-        <h3 class="sub-title">TEAMS</h3>
-        <table class="ref-table">
-          <thead><tr><th>Team</th><th>Cost</th></tr></thead>
-          <tbody>
-            <tr><td>McLaren</td><td class="cost-val">£15m</td></tr>
-            <tr><td>Mercedes</td><td class="cost-val">£13m</td></tr>
-            <tr><td>Red Bull</td><td class="cost-val">£13m</td></tr>
-            <tr><td>Ferrari</td><td class="cost-val">£10m</td></tr>
-            <tr><td>Williams</td><td class="cost-val">£8m</td></tr>
-            <tr><td>Racing Bulls</td><td class="cost-val">£6m</td></tr>
-            <tr><td>Aston Martin</td><td class="cost-val">£6m</td></tr>
-            <tr><td>Haas</td><td class="cost-val">£6m</td></tr>
-            <tr><td>Audi</td><td class="cost-val">£5m</td></tr>
-            <tr><td>Alpine</td><td class="cost-val">£5m</td></tr>
-            <tr><td>Cadillac</td><td class="cost-val">£5m</td></tr>
-          </tbody>
-        </table>
 
-        <h3 class="sub-title" style="margin-top:24px;">HOME CIRCUITS</h3>
-        <p class="rules-text" style="font-size:13px;">Pick any circuit from the calendar. Your <strong>total score is doubled</strong> at that race.</p>
-        <p class="rules-text" style="font-size:13px;">Choose wisely — a street circuit (Monaco, Baku) often produces surprises. Sprint weekends give extra scoring opportunities.</p>
+      <p class="rules-text">You have <strong>£50m</strong> to spend on 3 drivers + 3 teams. No restrictions on
+        combinations — you can pick 2 drivers from the same team, or even the team itself. Points come from qualifying
+        performance, race results, your home circuit bonus, and your end-of-season predictions.</p>
 
-        <h3 class="sub-title" style="margin-top:24px;">PREDICTIONS</h3>
-        <table class="ref-table">
-          <thead><tr><th>Prediction</th><th>Pts</th></tr></thead>
-          <tbody>
-            <tr><td>Total Classified (season)</td><td class="cost-val">10–30</td></tr>
-            <tr><td>FIA Driver Champion</td><td class="cost-val">+10</td></tr>
-            <tr><td>FIA Constructor Champion</td><td class="cost-val">+5</td></tr>
-            <tr><td>Best Finish — Colapinto</td><td class="cost-val">+20</td></tr>
-          </tbody>
-        </table>
+      <h3 class="sub-title">§2.1 — Qualifying Points</h3>
+      <p class="rules-text">Each driver scores points based on their <strong>qualifying position</strong> relative to
+        their assigned capability rank:</p>
+
+      <table class="rules-table">
+        <thead>
+          <tr>
+            <th>Grid Position</th>
+            <th><span class="rank-badge rank-champion">CHAMPION</span></th>
+            <th><span class="rank-badge rank-contender">CONTENDER</span></th>
+            <th><span class="rank-badge rank-topten">TOP TEN</span></th>
+            <th><span class="rank-badge rank-midrunner">MID RUNNER</span></th>
+            <th><span class="rank-badge rank-outsider">OUTSIDER</span></th>
+            <th><span class="rank-badge rank-nohoper">NO HOPER</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pole</td>
+            <td class="zero">0</td>
+            <td class="pos">+3</td>
+            <td class="pos">+6</td>
+            <td class="pos">+9</td>
+            <td class="pos">+12</td>
+            <td class="pos">+15</td>
+          </tr>
+          <tr>
+            <td>2nd – 5th</td>
+            <td class="neg">-2</td>
+            <td class="zero">0</td>
+            <td class="pos">+3</td>
+            <td class="pos">+6</td>
+            <td class="pos">+9</td>
+            <td class="pos">+12</td>
+          </tr>
+          <tr>
+            <td>6th – 10th</td>
+            <td class="neg">-4</td>
+            <td class="neg">-2</td>
+            <td class="zero">0</td>
+            <td class="pos">+3</td>
+            <td class="pos">+6</td>
+            <td class="pos">+9</td>
+          </tr>
+          <tr>
+            <td>11th – 14th</td>
+            <td class="neg">-6</td>
+            <td class="neg">-4</td>
+            <td class="neg">-2</td>
+            <td class="zero">0</td>
+            <td class="pos">+3</td>
+            <td class="pos">+6</td>
+          </tr>
+          <tr>
+            <td>15th – 18th</td>
+            <td class="neg">-9</td>
+            <td class="neg">-6</td>
+            <td class="neg">-4</td>
+            <td class="neg">-2</td>
+            <td class="zero">0</td>
+            <td class="pos">+3</td>
+          </tr>
+          <tr>
+            <td>19th – 22nd</td>
+            <td class="neg">-13</td>
+            <td class="neg">-9</td>
+            <td class="neg">-6</td>
+            <td class="neg">-4</td>
+            <td class="pos">+2</td>
+            <td class="zero">0</td>
+          </tr>
+          <tr>
+            <td>Did Not Qualify</td>
+            <td class="neg">-20</td>
+            <td class="neg">-13</td>
+            <td class="neg">-9</td>
+            <td class="neg">-6</td>
+            <td class="neg">-4</td>
+            <td class="neg">-3</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="rules-text"><strong>Key insight:</strong> "No Hoper" and "Outsider" drivers earn <em>positive</em>
+        points for qualifying anywhere in the top half of the grid — making cheap, fast-qualifying drivers like Gasly,
+        Lindblad, and Colapinto extremely valuable picks.</p>
+
+      <h3 class="sub-title">§2.2 — Race Points</h3>
+      <p class="rules-text">Standard F1 finishing points: <strong>1st 25 | 2nd 18 | 3rd 15 | 4th 12 | 5th 10 | 6th 8 |
+          7th 6 | 8th 4 | 9th 2 | 10th 1</strong></p>
+      <p class="rules-text"><strong>Position change bonus:</strong> +2 pts per place gained, –2 pts per place lost vs.
+        grid start position.</p>
+      <p class="rules-text"><strong>Fastest Lap:</strong> +2 pts. <strong>Sprint races:</strong> FIA sprint scoring (8→1
+        pts for top 8).</p>
+      <p class="rules-text"><strong>Team scoring:</strong> Sum of both drivers' points, weighted as
+        <code>(3 × Lead Driver + 2 × Second Driver) ÷ 5</code>, rounded up.</p>
+
+      <h3 class="sub-title">§2.3 — Home Circuit Bonus</h3>
+      <p class="rules-text">Pick one race circuit at the start. Your <strong>entire score for that race is
+          doubled</strong> (driver + team). If the result is negative, it's reset to 0. If your circuit is cancelled,
+        you may pick another.</p>
+
+      <h3 class="sub-title">§2.4 — Penalties</h3>
+      <p class="rules-text">Grid penalties = minus points equal to places penalised (capped at 10). Time penalties at
+        race end = minus seconds penalised (capped at 10).</p>
+
+      <h3 class="sub-title">§2.5 — Fines</h3>
+      <p class="rules-text">FIA monetary fines: <strong>–1 pt per €2,000</strong> (or part thereof), capped at 100 pts.
+        Suspended fines = no penalty.</p>
+
+      <h3 class="sub-title">§2.6 — Investment Bonus</h3>
+      <p class="rules-text">Any unspent budget (up to £20m) earns bonus points <strong>every race</strong>:</p>
+      <p class="rules-text"><strong>Formula: floor(unspent £m ÷ 2) pts per race</strong></p>
+      <table class="rules-table" style="max-width:480px;">
+        <thead>
+          <tr>
+            <th>Spent</th>
+            <th>Unspent</th>
+            <th>Pts/Race</th>
+            <th>Season Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>£50m</td>
+            <td>£0m</td>
+            <td class="zero">0</td>
+            <td class="zero">0</td>
+          </tr>
+          <tr>
+            <td>£48m</td>
+            <td>£2m</td>
+            <td class="pos">+1</td>
+            <td class="pos">+24</td>
+          </tr>
+          <tr>
+            <td>£46m</td>
+            <td>£4m</td>
+            <td class="pos">+2</td>
+            <td class="pos">+48</td>
+          </tr>
+          <tr>
+            <td>£44m</td>
+            <td>£6m</td>
+            <td class="pos">+3</td>
+            <td class="pos">+72</td>
+          </tr>
+          <tr>
+            <td>£40m</td>
+            <td>£10m</td>
+            <td class="pos">+5</td>
+            <td class="pos">+120</td>
+          </tr>
+          <tr>
+            <td>£30m</td>
+            <td>£20m</td>
+            <td class="pos">+10</td>
+            <td class="pos">+240</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rules-text">Note: odd £m of unspent budget is ignored (floor division). £49m spent = £1m unspent =
+        <strong>0 bonus</strong>.</p>
+
+      <h3 class="sub-title">§2.7 — End-of-Season Bonuses</h3>
+      <table class="rules-table" style="max-width:580px;">
+        <thead>
+          <tr>
+            <th>Prediction</th>
+            <th>Points</th>
+            <th>Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Classified Drivers</td>
+            <td class="pos">+30</td>
+            <td>Exact</td>
+          </tr>
+          <tr>
+            <td>Total Classified Drivers</td>
+            <td class="pos">+20</td>
+            <td>Within 5</td>
+          </tr>
+          <tr>
+            <td>Total Classified Drivers</td>
+            <td class="pos">+10</td>
+            <td>Within 10</td>
+          </tr>
+          <tr>
+            <td>FIA Driver Champion</td>
+            <td class="pos">+10</td>
+            <td>Correct</td>
+          </tr>
+          <tr>
+            <td>FIA Constructor Champion</td>
+            <td class="pos">+5</td>
+            <td>Correct</td>
+          </tr>
+          <tr>
+            <td>Best Finish — Colapinto</td>
+            <td class="pos">+20</td>
+            <td>Exact position</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rules-text"><strong>Total Classified</strong> = total drivers still running at finish across all 24
+        races. Maximum possible: 22 × 24 = 528. Last year (20 drivers): 407. Expect 420–460 range with 22 drivers.</p>
+
+      <h3 class="sub-title">Mid-Season Transfer</h3>
+      <p class="rules-text">After Race 11 (Britain), you may replace <strong>one driver or one team</strong>. Costs
+        <strong>20 points</strong> deducted from your current total. Must stay within £50m. Must be submitted before
+        Race 12 (Belgium). If a driver drops out permanently, free replacement at same cost — no penalty.</p>
+    </section>
+
+    <!-- ══════════════════ DRIVERS & TEAMS ══════════════════ -->
+    <section id="drivers">
+      <h2 class="section-title">🏎 2026 Drivers &amp; Teams</h2>
+      <p class="rules-text">Pick 3 drivers and 3 teams. Total cost must be <strong>≤ £50m</strong>. (R) = Rookie.</p>
+
+      <div class="dt-grid">
+        <div>
+          <h3 class="sub-title">DRIVERS</h3>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Rank</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lando Norris</td>
+                <td>McLaren</td>
+                <td><span class="rank-badge rank-champion">CHAMPION</span></td>
+                <td class="cost-val">£16m</td>
+              </tr>
+              <tr>
+                <td>Oscar Piastri</td>
+                <td>McLaren</td>
+                <td><span class="rank-badge rank-contender">CONTENDER</span></td>
+                <td class="cost-val">£16m</td>
+              </tr>
+              <tr>
+                <td>Max Verstappen</td>
+                <td>Red Bull</td>
+                <td><span class="rank-badge rank-contender">CONTENDER</span></td>
+                <td class="cost-val">£16m</td>
+              </tr>
+              <tr>
+                <td>George Russell</td>
+                <td>Mercedes</td>
+                <td><span class="rank-badge rank-contender">CONTENDER</span></td>
+                <td class="cost-val">£12m</td>
+              </tr>
+              <tr>
+                <td>Charles Leclerc</td>
+                <td>Ferrari</td>
+                <td><span class="rank-badge rank-topten">TOP TEN</span></td>
+                <td class="cost-val">£11m</td>
+              </tr>
+              <tr>
+                <td>Kimi Antonelli</td>
+                <td>Mercedes</td>
+                <td><span class="rank-badge rank-topten">TOP TEN</span></td>
+                <td class="cost-val">£10m</td>
+              </tr>
+              <tr>
+                <td>Isack Hadjar (R)</td>
+                <td>Racing Bulls</td>
+                <td><span class="rank-badge rank-topten">TOP TEN</span></td>
+                <td class="cost-val">£10m</td>
+              </tr>
+              <tr>
+                <td>Lewis Hamilton</td>
+                <td>Ferrari</td>
+                <td><span class="rank-badge rank-topten">TOP TEN</span></td>
+                <td class="cost-val">£9m</td>
+              </tr>
+              <tr>
+                <td>Carlos Sainz Jr</td>
+                <td>Williams</td>
+                <td><span class="rank-badge rank-topten">TOP TEN</span></td>
+                <td class="cost-val">£7m</td>
+              </tr>
+              <tr>
+                <td>Fernando Alonso</td>
+                <td>Aston Martin</td>
+                <td><span class="rank-badge rank-midrunner">MID RUNNER</span></td>
+                <td class="cost-val">£7m</td>
+              </tr>
+              <tr>
+                <td>Nico Hulkenberg</td>
+                <td>Audi</td>
+                <td><span class="rank-badge rank-midrunner">MID RUNNER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Gabriel Bortoleto (R)</td>
+                <td>Audi</td>
+                <td><span class="rank-badge rank-midrunner">MID RUNNER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Sergio Perez</td>
+                <td>Cadillac</td>
+                <td><span class="rank-badge rank-midrunner">MID RUNNER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Alex Albon</td>
+                <td>Williams</td>
+                <td><span class="rank-badge rank-midrunner">MID RUNNER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Esteban Ocon</td>
+                <td>Haas</td>
+                <td><span class="rank-badge rank-outsider">OUTSIDER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Oliver Bearman</td>
+                <td>Haas</td>
+                <td><span class="rank-badge rank-outsider">OUTSIDER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Liam Lawson</td>
+                <td>Red Bull</td>
+                <td><span class="rank-badge rank-outsider">OUTSIDER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Valtteri Bottas</td>
+                <td>Cadillac</td>
+                <td><span class="rank-badge rank-outsider">OUTSIDER</span></td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Pierre Gasly</td>
+                <td>Alpine</td>
+                <td><span class="rank-badge rank-nohoper">NO HOPER</span></td>
+                <td class="cost-val">£5m</td>
+              </tr>
+              <tr>
+                <td>Franco Colapinto (R)</td>
+                <td>Alpine</td>
+                <td><span class="rank-badge rank-nohoper">NO HOPER</span></td>
+                <td class="cost-val">£5m</td>
+              </tr>
+              <tr>
+                <td>Arvid Lindblad (R)</td>
+                <td>Racing Bulls</td>
+                <td><span class="rank-badge rank-nohoper">NO HOPER</span></td>
+                <td class="cost-val">£5m</td>
+              </tr>
+              <tr>
+                <td>Lance Stroll</td>
+                <td>Aston Martin</td>
+                <td><span class="rank-badge rank-nohoper">NO HOPER</span></td>
+                <td class="cost-val">£5m</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="sub-title">TEAMS</h3>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>McLaren</td>
+                <td class="cost-val">£15m</td>
+              </tr>
+              <tr>
+                <td>Mercedes</td>
+                <td class="cost-val">£13m</td>
+              </tr>
+              <tr>
+                <td>Red Bull</td>
+                <td class="cost-val">£13m</td>
+              </tr>
+              <tr>
+                <td>Ferrari</td>
+                <td class="cost-val">£10m</td>
+              </tr>
+              <tr>
+                <td>Williams</td>
+                <td class="cost-val">£8m</td>
+              </tr>
+              <tr>
+                <td>Racing Bulls</td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Aston Martin</td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Haas</td>
+                <td class="cost-val">£6m</td>
+              </tr>
+              <tr>
+                <td>Audi</td>
+                <td class="cost-val">£5m</td>
+              </tr>
+              <tr>
+                <td>Alpine</td>
+                <td class="cost-val">£5m</td>
+              </tr>
+              <tr>
+                <td>Cadillac</td>
+                <td class="cost-val">£5m</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="sub-title" style="margin-top:24px;">HOME CIRCUITS</h3>
+          <p class="rules-text" style="font-size:13px;">Pick any circuit from the calendar. Your <strong>total score is
+              doubled</strong> at that race.</p>
+          <p class="rules-text" style="font-size:13px;">Choose wisely — a street circuit (Monaco, Baku) often produces
+            surprises. Sprint weekends give extra scoring opportunities.</p>
+
+          <h3 class="sub-title" style="margin-top:24px;">PREDICTIONS</h3>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Prediction</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Total Classified (season)</td>
+                <td class="cost-val">10–30</td>
+              </tr>
+              <tr>
+                <td>FIA Driver Champion</td>
+                <td class="cost-val">+10</td>
+              </tr>
+              <tr>
+                <td>FIA Constructor Champion</td>
+                <td class="cost-val">+5</td>
+              </tr>
+              <tr>
+                <td>Best Finish — Colapinto</td>
+                <td class="cost-val">+20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════ CALENDAR ══════════════════ -->
-  <section id="calendar">
-    <h2 class="section-title">📅 2026 Race Calendar</h2>
-    <p class="rules-text">24 races. Sprint weekends marked with <span class="sprint-badge">SPRINT</span>. Deadline for entry: <strong>Thursday 5th March 2026, 4pm</strong>.</p>
-    <div class="calendar-grid">
-      <div class="calendar-item"><span class="race-num">R1</span><div class="race-info"><div class="race-country">🇦🇺 Australia</div><div class="race-date">8 March 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R2</span><div class="race-info"><div class="race-country">🇨🇳 China</div><div class="race-date">15 March 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R3</span><div class="race-info"><div class="race-country">🇯🇵 Japan</div><div class="race-date">29 March 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R4</span><div class="race-info"><div class="race-country">🇧🇭 Bahrain</div><div class="race-date">12 April 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R5</span><div class="race-info"><div class="race-country">🇸🇦 Saudi Arabia</div><div class="race-date">19 April 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R6</span><div class="race-info"><div class="race-country">🇺🇸 Miami</div><div class="race-date">3 May 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R7</span><div class="race-info"><div class="race-country">🇨🇦 Canada</div><div class="race-date">24 May 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R8</span><div class="race-info"><div class="race-country">🇲🇨 Monaco</div><div class="race-date">7 June 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R9</span><div class="race-info"><div class="race-country">🇪🇸 Spain</div><div class="race-date">14 June 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R10</span><div class="race-info"><div class="race-country">🇦🇹 Austria</div><div class="race-date">28 June 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R11</span><div class="race-info"><div class="race-country">🇬🇧 Britain</div><div class="race-date">5 July 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R12</span><div class="race-info"><div class="race-country">🇧🇪 Belgium</div><div class="race-date">19 July 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R13</span><div class="race-info"><div class="race-country">🇭🇺 Hungary</div><div class="race-date">26 July 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R14</span><div class="race-info"><div class="race-country">🇳🇱 Netherlands</div><div class="race-date">23 August 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R15</span><div class="race-info"><div class="race-country">🇮🇹 Italy</div><div class="race-date">31 August 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R16</span><div class="race-info"><div class="race-country">🇪🇸 Madrid</div><div class="race-date">13 September 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R17</span><div class="race-info"><div class="race-country">🇦🇿 Azerbaijan</div><div class="race-date">26 September 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R18</span><div class="race-info"><div class="race-country">🇸🇬 Singapore</div><div class="race-date">11 October 2026</div></div><span class="sprint-badge">SPRINT</span></div>
-      <div class="calendar-item"><span class="race-num">R19</span><div class="race-info"><div class="race-country">🇺🇸 USA (Austin)</div><div class="race-date">25 October 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R20</span><div class="race-info"><div class="race-country">🇲🇽 Mexico</div><div class="race-date">1 November 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R21</span><div class="race-info"><div class="race-country">🇧🇷 Brazil</div><div class="race-date">8 November 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R22</span><div class="race-info"><div class="race-country">🇺🇸 Las Vegas</div><div class="race-date">21 November 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R23</span><div class="race-info"><div class="race-country">🇶🇦 Qatar</div><div class="race-date">29 November 2026</div></div></div>
-      <div class="calendar-item"><span class="race-num">R24</span><div class="race-info"><div class="race-country">🇦🇪 Abu Dhabi</div><div class="race-date">6 December 2026</div></div></div>
-    </div>
-  </section>
-
-  <!-- ══════════════════ FAQ ══════════════════ -->
-  <section id="faq">
-    <h2 class="section-title">❓ FAQ</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>What does "Total Classified" mean?</summary>
-        <div class="faq-answer">
-          A driver is "classified" if they were still running at the checkered flag, per the FIA official results. You predict the <strong>total count across all 24 races</strong>. With 22 drivers and 24 races, the maximum is 528 (if everyone finishes every race). Last year with 20 drivers the total was 407. Expect somewhere in the <strong>420–460 range</strong> for 2026.
+    <!-- ══════════════════ CALENDAR ══════════════════ -->
+    <section id="calendar">
+      <h2 class="section-title">📅 2026 Race Calendar</h2>
+      <p class="rules-text">24 races. Sprint weekends marked with <span class="sprint-badge">SPRINT</span>. Deadline for
+        entry: <strong>Thursday 5th March 2026, 4pm</strong>.</p>
+      <div class="calendar-grid">
+        <div class="calendar-item"><span class="race-num">R1</span>
+          <div class="race-info">
+            <div class="race-country">🇦🇺 Australia</div>
+            <div class="race-date">8 March 2026</div>
+          </div>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I pick two drivers from the same team?</summary>
-        <div class="faq-answer">
-          <strong>Yes!</strong> There are no restrictions on combinations. You can even pick a team and both its drivers in the same entry — as long as the total cost stays within £50m.
+        <div class="calendar-item"><span class="race-num">R2</span>
+          <div class="race-info">
+            <div class="race-country">🇨🇳 China</div>
+            <div class="race-date">15 March 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does the Home Circuit bonus work?</summary>
-        <div class="faq-answer">
-          Pick any circuit from the 2026 calendar. At that race, your <strong>entire score is doubled</strong> — drivers and teams combined, including sprint points if applicable. If the doubled result is negative, it's reset to zero. If your circuit is cancelled, you may pick an alternative later in the season.
+        <div class="calendar-item"><span class="race-num">R3</span>
+          <div class="race-info">
+            <div class="race-country">🇯🇵 Japan</div>
+            <div class="race-date">29 March 2026</div>
+          </div>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does the Investment Bonus work exactly?</summary>
-        <div class="faq-answer">
-          Any unspent budget earns you <strong>floor(unspent ÷ 2) points per race</strong>, every race.
-          <div class="example">Example: Spend £44m → £6m unspent → floor(6÷2) = 3 pts/race × 24 races = +72 pts season bonus
-Example: Spend £49m → £1m unspent → floor(1÷2) = 0 pts (odd millions are ignored!)</div>
-          The maximum investment is £20m (cheapest possible team = 3×£5 drivers + 3×£5 teams = £30m), giving +10 pts/race, +240 pts over the season.
+        <div class="calendar-item"><span class="race-num">R4</span>
+          <div class="race-info">
+            <div class="race-country">🇧🇭 Bahrain</div>
+            <div class="race-date">12 April 2026</div>
+          </div>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I change my entry before the deadline?</summary>
-        <div class="faq-answer">
-          <strong>Yes</strong> — you can update your selection any time before <strong>5th March 2026, 4pm</strong>, subject to your new combination not already being taken by someone else. Martin will let you know if there's a clash.
+        <div class="calendar-item"><span class="race-num">R5</span>
+          <div class="race-info">
+            <div class="race-country">🇸🇦 Saudi Arabia</div>
+            <div class="race-date">19 April 2026</div>
+          </div>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I change my team during the season?</summary>
-        <div class="faq-answer">
-          After <strong>Race 11 (Britain)</strong>, you may swap one driver or one team. This costs you <strong>20 points</strong> deducted from your current total and must be submitted before Race 12 (Belgium). The replacement must keep your total within £50m (usually the incoming driver/team costs the same as the outgoing one).
-          <br><br>
-          If a driver drops out for the rest of the season, you get a <strong>free replacement</strong> at the same cost — no points penalty.
+        <div class="calendar-item"><span class="race-num">R6</span>
+          <div class="race-info">
+            <div class="race-country">🇺🇸 Miami</div>
+            <div class="race-date">3 May 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Why do No Hoper drivers score the most qualifying points?</summary>
-        <div class="faq-answer">
-          The scoring matrix rewards <strong>outperforming expectations</strong>. A "No Hoper" driver who qualifies 6th–10th scores <strong>+9 points</strong>, while a "Champion" in the same position scores <strong>–4 points</strong>. This makes cheap, scrappy qualifiers like Gasly, Colapinto, and Lindblad potentially very lucrative picks — especially if they regularly punch above their weight.
+        <div class="calendar-item"><span class="race-num">R7</span>
+          <div class="race-info">
+            <div class="race-country">🇨🇦 Canada</div>
+            <div class="race-date">24 May 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
         </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How are prizes distributed?</summary>
-        <div class="faq-answer">
-          £4 per entrant goes to charity. The rest is all prize money:
-          <ul style="padding-left:16px;margin-top:8px;display:flex;flex-direction:column;gap:6px;">
-            <li><strong>£3</strong> for highest score in each individual race (×24 = £72 total)</li>
-            <li><strong>£5</strong> to last place at season end</li>
-            <li><strong>£5 each</strong> to highest and lowest individual race score over the season</li>
-            <li>Remaining pot split among <strong>top finishers</strong> (number depends on total entries — roughly top 10 with ~25 entrants)</li>
-          </ul>
-          All payouts are higher than the £15 entry fee.
+        <div class="calendar-item"><span class="race-num">R8</span>
+          <div class="race-info">
+            <div class="race-country">🇲🇨 Monaco</div>
+            <div class="race-date">7 June 2026</div>
+          </div>
         </div>
-      </details>
+        <div class="calendar-item"><span class="race-num">R9</span>
+          <div class="race-info">
+            <div class="race-country">🇪🇸 Spain</div>
+            <div class="race-date">14 June 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R10</span>
+          <div class="race-info">
+            <div class="race-country">🇦🇹 Austria</div>
+            <div class="race-date">28 June 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R11</span>
+          <div class="race-info">
+            <div class="race-country">🇬🇧 Britain</div>
+            <div class="race-date">5 July 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
+        </div>
+        <div class="calendar-item"><span class="race-num">R12</span>
+          <div class="race-info">
+            <div class="race-country">🇧🇪 Belgium</div>
+            <div class="race-date">19 July 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R13</span>
+          <div class="race-info">
+            <div class="race-country">🇭🇺 Hungary</div>
+            <div class="race-date">26 July 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R14</span>
+          <div class="race-info">
+            <div class="race-country">🇳🇱 Netherlands</div>
+            <div class="race-date">23 August 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
+        </div>
+        <div class="calendar-item"><span class="race-num">R15</span>
+          <div class="race-info">
+            <div class="race-country">🇮🇹 Italy</div>
+            <div class="race-date">31 August 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R16</span>
+          <div class="race-info">
+            <div class="race-country">🇪🇸 Madrid</div>
+            <div class="race-date">13 September 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R17</span>
+          <div class="race-info">
+            <div class="race-country">🇦🇿 Azerbaijan</div>
+            <div class="race-date">26 September 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R18</span>
+          <div class="race-info">
+            <div class="race-country">🇸🇬 Singapore</div>
+            <div class="race-date">11 October 2026</div>
+          </div><span class="sprint-badge">SPRINT</span>
+        </div>
+        <div class="calendar-item"><span class="race-num">R19</span>
+          <div class="race-info">
+            <div class="race-country">🇺🇸 USA (Austin)</div>
+            <div class="race-date">25 October 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R20</span>
+          <div class="race-info">
+            <div class="race-country">🇲🇽 Mexico</div>
+            <div class="race-date">1 November 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R21</span>
+          <div class="race-info">
+            <div class="race-country">🇧🇷 Brazil</div>
+            <div class="race-date">8 November 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R22</span>
+          <div class="race-info">
+            <div class="race-country">🇺🇸 Las Vegas</div>
+            <div class="race-date">21 November 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R23</span>
+          <div class="race-info">
+            <div class="race-country">🇶🇦 Qatar</div>
+            <div class="race-date">29 November 2026</div>
+          </div>
+        </div>
+        <div class="calendar-item"><span class="race-num">R24</span>
+          <div class="race-info">
+            <div class="race-country">🇦🇪 Abu Dhabi</div>
+            <div class="race-date">6 December 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ══════════════════ FAQ ══════════════════ -->
+    <section id="faq">
+      <h2 class="section-title">❓ FAQ</h2>
+      <div class="faq-list">
 
-</div><!-- end rules-page -->
+        <details class="faq-item">
+          <summary>What does "Total Classified" mean?</summary>
+          <div class="faq-answer">
+            A driver is "classified" if they were still running at the checkered flag, per the FIA official results. You
+            predict the <strong>total count across all 24 races</strong>. With 22 drivers and 24 races, the maximum is
+            528 (if everyone finishes every race). Last year with 20 drivers the total was 407. Expect somewhere in the
+            <strong>420–460 range</strong> for 2026.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I pick two drivers from the same team?</summary>
+          <div class="faq-answer">
+            <strong>Yes!</strong> There are no restrictions on combinations. You can even pick a team and both its
+            drivers in the same entry — as long as the total cost stays within £50m.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the Home Circuit bonus work?</summary>
+          <div class="faq-answer">
+            Pick any circuit from the 2026 calendar. At that race, your <strong>entire score is doubled</strong> —
+            drivers and teams combined, including sprint points if applicable. If the doubled result is negative, it's
+            reset to zero. If your circuit is cancelled, you may pick an alternative later in the season.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the Investment Bonus work exactly?</summary>
+          <div class="faq-answer">
+            Any unspent budget earns you <strong>floor(unspent ÷ 2) points per race</strong>, every race.
+            <div class="example">Example: Spend £44m → £6m unspent → floor(6÷2) = 3 pts/race × 24 races = +72 pts season
+              bonus
+              Example: Spend £49m → £1m unspent → floor(1÷2) = 0 pts (odd millions are ignored!)</div>
+            The maximum investment is £20m (cheapest possible team = 3×£5 drivers + 3×£5 teams = £30m), giving +10
+            pts/race, +240 pts over the season.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I change my entry before the deadline?</summary>
+          <div class="faq-answer">
+            <strong>Yes</strong> — you can update your selection any time before <strong>5th March 2026, 4pm</strong>,
+            subject to your new combination not already being taken by someone else. Martin will let you know if there's
+            a clash.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I change my team during the season?</summary>
+          <div class="faq-answer">
+            After <strong>Race 11 (Britain)</strong>, you may swap one driver or one team. This costs you <strong>20
+              points</strong> deducted from your current total and must be submitted before Race 12 (Belgium). The
+            replacement must keep your total within £50m (usually the incoming driver/team costs the same as the
+            outgoing one).
+            <br><br>
+            If a driver drops out for the rest of the season, you get a <strong>free replacement</strong> at the same
+            cost — no points penalty.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why do No Hoper drivers score the most qualifying points?</summary>
+          <div class="faq-answer">
+            The scoring matrix rewards <strong>outperforming expectations</strong>. A "No Hoper" driver who qualifies
+            6th–10th scores <strong>+9 points</strong>, while a "Champion" in the same position scores <strong>–4
+              points</strong>. This makes cheap, scrappy qualifiers like Gasly, Colapinto, and Lindblad potentially very
+            lucrative picks — especially if they regularly punch above their weight.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How are prizes distributed?</summary>
+          <div class="faq-answer">
+            £4 per entrant goes to charity. The rest is all prize money:
+            <ul style="padding-left:16px;margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+              <li><strong>£3</strong> for highest score in each individual race (×24 = £72 total)</li>
+              <li><strong>£5</strong> to last place at season end</li>
+              <li><strong>£5 each</strong> to highest and lowest individual race score over the season</li>
+              <li>Remaining pot split among <strong>top finishers</strong> (number depends on total entries — roughly
+                top 10 with ~25 entrants)</li>
+            </ul>
+            All payouts are higher than the £15 entry fee.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+  </div><!-- end rules-page -->
 
 </body>
+
 </html>

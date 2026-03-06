@@ -38,13 +38,6 @@ const loading = document.getElementById('loading-overlay');
 
 // ── Game state for results screen ──
 let gameState = null;
-const selectedPredictions = {
-  homeCircuit: DEFAULT_PREDICTIONS.homeCircuit,
-  driverChampion: DEFAULT_PREDICTIONS.driverChampion,
-  constructorChampion: DEFAULT_PREDICTIONS.constructorChampion,
-  totalClassified: DEFAULT_PREDICTIONS.totalClassified,
-  colaPosition: DEFAULT_PREDICTIONS.bestPosColapinto.match(/\d+/) ? parseInt(DEFAULT_PREDICTIONS.bestPosColapinto) : 12,
-};
 
 const inputFirstName = document.getElementById('input-firstname');
 const inputLastName = document.getElementById('input-lastname');
@@ -149,263 +142,7 @@ async function fetchSelection(accuracy) {
   return res.json();
 }
 
-// ── Build email with custom predictions ──
-function rebuildEmail() {
-  if (!gameState) return;
-  const p = selectedPredictions;
-  const managerName = gameState.managerName;
-  const teamName = gameState.teamName;
-  const email = [
-    `To: Email Martin`,
-    `Subject: Martin's FF1 2026 - Entry Submission`,
-    ``,
-    `Hi Martin,`,
-    ``,
-    `Please find my entry for Martin's FF1 2026 below. Hoping to sneak in before the deadline!`,
-    ``,
-    `Team Manager: ${managerName}`,
-    `Team Name: ${teamName}`,
-    ``,
-    `Driver 1: ${gameState.drivers[0].name} (${gameState.drivers[0].team}) - £${gameState.drivers[0].cost}m`,
-    `Driver 2: ${gameState.drivers[1].name} (${gameState.drivers[1].team}) - £${gameState.drivers[1].cost}m`,
-    `Driver 3: ${gameState.drivers[2].name} (${gameState.drivers[2].team}) - £${gameState.drivers[2].cost}m`,
-    ``,
-    `Team 1: ${gameState.teams[0].name} - £${gameState.teams[0].cost}m`,
-    `Team 2: ${gameState.teams[1].name} - £${gameState.teams[1].cost}m`,
-    `Team 3: ${gameState.teams[2].name} - £${gameState.teams[2].cost}m`,
-    ``,
-    `Total Team Cost: £${gameState.totalCost}m`,
-    `Investment Value: £${gameState.investmentValue}m`,
-    ``,
-    `Home Circuit: ${p.homeCircuit}`,
-    `Driver Champion: ${p.driverChampion}`,
-    `Constructor Champion: ${p.constructorChampion}`,
-    `Total Classified: ${p.totalClassified}`,
-    `Best Pos. (Colapinto): P${p.colaPosition}`,
-    ``,
-    `Happy to pay the £15 entry fee electronically - please send me the details.`,
-    ``,
-    `All the best,`,
-    `${managerName}`,
-  ].join('\n');
-  document.getElementById('email-body').textContent = email;
-}
 
-// ── Home circuits with drivers ──
-const HOME_CIRCUITS = [
-  { circuit: 'Australia', drivers: ['Piastri'] },
-  { circuit: 'Canada', drivers: ['Stroll'] },
-  { circuit: 'Monaco', drivers: ['Leclerc'] },
-  { circuit: 'Spain', drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Britain', drivers: ['Hamilton', 'Russell', 'Norris', 'Bearman', 'Lindblad'] },
-  { circuit: 'Netherlands', drivers: ['Verstappen'] },
-  { circuit: 'Italy', drivers: ['Antonelli'] },
-  { circuit: 'Madrid', drivers: ['Sainz', 'Alonso'] },
-  { circuit: 'Mexico', drivers: ['Perez'] },
-  { circuit: 'Brazil', drivers: ['Bortoleto'] },
-];
-
-// ── Initialize prediction dropdowns and sliders ──
-function initializePredictions() {
-  // Home Circuit dropdown
-  const homeCircuitWrap = document.getElementById('cs-home-circuit');
-  if (homeCircuitWrap) {
-    const trigger = homeCircuitWrap.querySelector('.cs-trigger');
-    const panel = homeCircuitWrap.querySelector('.cs-panel');
-    panel.innerHTML = HOME_CIRCUITS.map((h, i) => `
-      <div class="cs-option cs-home-circuit-opt" data-circuit="${h.circuit}">
-        <div class="cs-detail">
-          <div class="cs-fullname">${h.circuit}</div>
-          <div class="cs-meta">${h.drivers.join(', ')}</div>
-        </div>
-      </div>
-    `).join('');
-    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.homeCircuit;
-    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
-    panel.querySelectorAll('.cs-home-circuit-opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const circuit = opt.dataset.circuit;
-        selectedPredictions.homeCircuit = circuit;
-        trigger.querySelector('.cs-placeholder').textContent = circuit;
-        closePanel(panel, trigger);
-        rebuildEmail();
-      });
-    });
-  }
-
-  // Driver Champion dropdown
-  const driverChampWrap = document.getElementById('cs-driver-champion');
-  if (driverChampWrap) {
-    const trigger = driverChampWrap.querySelector('.cs-trigger');
-    const panel = driverChampWrap.querySelector('.cs-panel');
-    panel.innerHTML = DRIVERS.map((d, i) => `
-      <div class="cs-option cs-driver-champ-opt" data-name="${d.fullName}">
-        <div class="cs-detail">
-          <div class="cs-fullname">${d.fullName}</div>
-          <div class="cs-meta">${d.team}</div>
-        </div>
-      </div>
-    `).join('');
-    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.driverChampion;
-    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
-    panel.querySelectorAll('.cs-driver-champ-opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const name = opt.dataset.name;
-        selectedPredictions.driverChampion = name;
-        trigger.querySelector('.cs-placeholder').textContent = name;
-        closePanel(panel, trigger);
-        rebuildEmail();
-      });
-    });
-  }
-
-  // Constructor Champion dropdown
-  const constructorChampWrap = document.getElementById('cs-constructor-champion');
-  if (constructorChampWrap) {
-    const trigger = constructorChampWrap.querySelector('.cs-trigger');
-    const panel = constructorChampWrap.querySelector('.cs-panel');
-    panel.innerHTML = TEAMS.map((t, i) => `
-      <div class="cs-option cs-constructor-champ-opt" data-name="${t.name}">
-        <div class="cs-detail">
-          <div class="cs-fullname">${t.name}</div>
-        </div>
-      </div>
-    `).join('');
-    trigger.querySelector('.cs-placeholder').textContent = selectedPredictions.constructorChampion;
-    trigger.addEventListener('click', e => { e.stopPropagation(); togglePanel(panel, trigger); });
-    panel.querySelectorAll('.cs-constructor-champ-opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const name = opt.dataset.name;
-        selectedPredictions.constructorChampion = name;
-        trigger.querySelector('.cs-placeholder').textContent = name;
-        closePanel(panel, trigger);
-        rebuildEmail();
-      });
-    });
-  }
-
-  // Initialize custom sliders
-  function initCustomSliders() {
-    const sliders = document.querySelectorAll('.custom-slider-container');
-
-    sliders.forEach(slider => {
-      const min = parseFloat(slider.getAttribute('data-min'));
-      const max = parseFloat(slider.getAttribute('data-max'));
-      const invert = slider.getAttribute('data-invert') === 'true';
-      let currentVal = parseFloat(slider.getAttribute('data-val'));
-
-      const track = slider.querySelector('.cs-track');
-      const fill = slider.querySelector('.cs-fill');
-      const thumb = slider.querySelector('.cs-thumb');
-      const tooltip = slider.querySelector('.cs-tooltip');
-      const isCola = slider.id === 'cs-colapinto';
-
-      function updateDOM(val) {
-        let pct = (val - min) / (max - min);
-        // clamp
-        pct = Math.max(0, Math.min(1, pct));
-
-        // Calculate the percentage
-        const percentString = (pct * 100).toFixed(2) + '%';
-        thumb.style.left = percentString;
-        if (fill) fill.style.width = percentString;
-
-        let logicalVal = Math.round(min + pct * (max - min));
-        if (invert) {
-          logicalVal = (max + min) - logicalVal;
-        }
-
-        // Update display and state
-        if (isCola) {
-          selectedPredictions.colaPosition = logicalVal;
-          if (tooltip) tooltip.textContent = `P${logicalVal}`;
-        } else {
-          selectedPredictions.totalClassified = logicalVal;
-          if (tooltip) tooltip.textContent = logicalVal;
-        }
-        slider.setAttribute('data-val', val);
-      }
-
-      function handleDrag(e) {
-        const rect = track.getBoundingClientRect();
-        // Calculate X position relative to track
-        let x = e.clientX - rect.left;
-        let pct = x / rect.width;
-
-        pct = Math.max(0, Math.min(1, pct));
-        let val = min + pct * (max - min);
-        val = Math.round(val);
-
-        // Remove untouched state and fade hints
-        slider.classList.remove('untouched');
-        if (isCola) {
-          const hint = document.getElementById('cola-hint');
-          if (hint) hint.classList.add('faded');
-        } else {
-          const hint = document.getElementById('classified-hint');
-          if (hint) hint.classList.add('faded');
-        }
-
-        updateDOM(val);
-        rebuildEmail();
-      }
-
-      // Initialize initial value
-      let initVal = currentVal;
-      if (isCola) {
-        // Cola starts at 11, data-val is 11, logical is P12. 
-        // If invert is true, pct maps left to right -> P22 to P1.
-        // min=1 max=22. 
-        initVal = invert ? 23 - selectedPredictions.colaPosition : selectedPredictions.colaPosition;
-      } else {
-        initVal = selectedPredictions.totalClassified;
-      }
-      updateDOM(initVal);
-
-      // Event Listeners for dragging
-      let isDragging = false;
-
-      slider.addEventListener('pointerdown', (e) => {
-        isDragging = true;
-        try { slider.setPointerCapture(e.pointerId); } catch (err) { }
-        handleDrag(e);
-      });
-
-      slider.addEventListener('pointermove', (e) => {
-        if (isDragging) {
-          handleDrag(e);
-        }
-      });
-
-      slider.addEventListener('pointerup', (e) => {
-        isDragging = false;
-        try {
-          if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-          }
-        } catch (err) { }
-        if (typeof window.recalc === 'function') window.recalc();
-      });
-
-      slider.addEventListener('pointercancel', (e) => {
-        isDragging = false;
-        try {
-          if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-          }
-        } catch (err) { }
-      });
-    });
-  }
-
-  initCustomSliders();
-
-  // Close panels when clicking outside
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
-    document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
-  });
-}
 
 // ── Dropdown panel toggle helpers ──
 function togglePanel(panel, trigger) {
@@ -464,9 +201,6 @@ function showResults(data) {
   document.getElementById('result-cost').textContent = data.totalCost;
   document.getElementById('result-invest').textContent = data.investmentValue;
 
-  // Email
-  document.getElementById('email-body').textContent = data.emailBody;
-
   // Store game state for prediction updates
   gameState = {
     managerName: inputFirstName.value.trim() + ' ' + inputLastName.value.trim(),
@@ -476,9 +210,6 @@ function showResults(data) {
     totalCost: data.totalCost,
     investmentValue: data.investmentValue,
   };
-
-  // Initialize predictions from defaults and set up handlers
-  initializePredictions();
 
   showScreen('results');
 }
@@ -605,31 +336,25 @@ function init() {
   // Results → Try Again (keep current game-screen investment)
   document.getElementById('btn-try-again').addEventListener('click', () => startGame(false));
 
-  // Copy email
-  document.getElementById('btn-copy').addEventListener('click', () => {
-    const text = document.getElementById('email-body').textContent;
-    const btn = document.getElementById('btn-copy');
-    copyText(text).then(() => {
-      btn.textContent = '✅ Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = '📋 Copy Email';
-        btn.classList.remove('copied');
-      }, 2000);
-    }).catch(() => {
-      btn.textContent = '⚠️ Select text above';
-      setTimeout(() => { btn.textContent = '📋 Copy Email'; }, 3000);
-    });
-  });
+  // Finalize (redirect to calculator with query params)
+  document.getElementById('btn-finalize').addEventListener('click', () => {
+    if (!gameState) return;
+    const params = new URLSearchParams();
 
-  // Mailto
-  document.getElementById('btn-mailto').addEventListener('click', () => {
-    const body = document.getElementById('email-body').textContent;
-    const lines = body.split('\n');
-    const subjectLine = lines.find(l => l.startsWith('Subject:'));
-    const subject = subjectLine ? subjectLine.replace('Subject: ', '') : DEFAULTS.emailSubject;
-    const mailBody = lines.filter(l => !l.startsWith('To:') && !l.startsWith('Subject:')).join('\n').trim();
-    window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`);
+    gameState.drivers.forEach((d, i) => {
+      const idx = DRIVERS.findIndex(x => x.name === d.name);
+      if (idx !== -1) params.set(`d${i + 1}`, idx);
+    });
+
+    gameState.teams.forEach((t, i) => {
+      const idx = TEAMS.findIndex(x => x.name === t.name);
+      if (idx !== -1) params.set(`t${i + 1}`, idx);
+    });
+
+    params.set('name', gameState.managerName);
+    params.set('team', gameState.teamName);
+
+    window.location.href = `calculator.html?${params.toString()}`;
   });
 }
 

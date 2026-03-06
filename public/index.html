@@ -17,18 +17,20 @@
 
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
 
+  <!-- Global Navigation -->
+  <nav class="global-nav">
+    <a href="index.html" class="nav-active">Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="rules.html#rules">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
+  </nav>
+
   <!-- ═══ WELCOME SCREEN ═══ -->
   <div id="screen-welcome" class="screen active">
     <div class="welcome-container">
 
       <div class="logo-area">
         <div class="checkered-bar"></div>
-      </div>
-
-      <div class="rules-links">
-        <a href="rules.html#rules" class="rules-link" target="_blank">📋 Rules</a>
-        <a href="rules.html#faq" class="rules-link" target="_blank">❓ FAQ</a>
-        <a href="calculator.html" class="rules-link" target="_blank">🧮 Calc</a>
       </div>
 
       <div class="form-area">
@@ -84,11 +86,6 @@
   <div id="screen-game" class="screen">
     <div class="game-header">
       <button id="btn-back-game" class="back-btn">← Back</button>
-      <div class="rules-links">
-        <a href="rules.html#rules" class="rules-link" target="_blank">📋 Rules</a>
-        <a href="rules.html#faq" class="rules-link" target="_blank">❓ FAQ</a>
-        <a href="calculator.html" class="rules-link" target="_blank">🧮 Calc</a>
-      </div>
       <div id="wind-indicator" class="wind-indicator">Wind: → 0</div>
     </div>
     <canvas id="game-canvas"></canvas>
@@ -142,85 +139,14 @@
         Investment: £<span id="result-invest">1</span>m
       </div>
 
-      <div class="predictions-section">
-        <h3>🎯 Predictions (Customize Before Copy)</h3>
-        <div class="predictions-grid">
-          <div id="cs-home-circuit" class="custom-select-wrap">
-            <div class="cs-trigger cs-trigger-pred">
-              <div class="cs-selected-content"><span class="cs-placeholder">Select Circuit...</span></div>
-              <span class="cs-arrow">▾</span>
-            </div>
-            <div class="cs-panel hidden"></div>
-          </div>
-          <div id="cs-driver-champion" class="custom-select-wrap">
-            <div class="cs-trigger cs-trigger-pred">
-              <div class="cs-selected-content"><span class="cs-placeholder">Select Driver...</span></div>
-              <span class="cs-arrow">▾</span>
-            </div>
-            <div class="cs-panel hidden"></div>
-          </div>
-          <div id="cs-constructor-champion" class="custom-select-wrap">
-            <div class="cs-trigger cs-trigger-pred">
-              <div class="cs-selected-content"><span class="cs-placeholder">Select Team...</span></div>
-              <span class="cs-arrow">▾</span>
-            </div>
-            <div class="cs-panel hidden"></div>
-          </div>
-        </div>
-        <div class="pred-sliders-grid">
-          <div class="pred-field">
-            <div class="pred-label-row">
-              <label class="pred-label">Total Classified</label>
-            </div>
-            <div class="custom-slider-container untouched" id="cs-classified" data-min="0" data-max="528"
-              data-val="440">
-              <div class="cs-track">
-                <div class="cs-fill" style="width: 83.33%;"></div>
-                <div class="cs-thumb" style="left: 83.33%;">
-                  <div class="cs-tooltip" id="pred-classified-val">440</div>
-                  <div class="cs-dot"></div>
-                </div>
-              </div>
-            </div>
-            <div class="pred-hint-mid">Total Starts − DNFs (0–528)</div>
-            <div class="pred-slider-ends"><span>0</span><span>528</span></div>
-          </div>
-          <div class="pred-field">
-            <div class="pred-label-row">
-              <label class="pred-label">Colapinto Best Position</label>
-            </div>
-            <div class="custom-slider-container untouched" id="cs-colapinto" data-min="1" data-max="22" data-val="11"
-              data-invert="true">
-              <div class="cs-track">
-                <div class="cs-fill" style="background:transparent;"></div>
-                <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
-                  <div class="cs-tooltip" id="pred-cola-val">P12</div>
-                  <img src="/images/drivers/colapinto.jpg" draggable="false" alt="Colapinto"
-                    onerror="this.style.display='none'">
-                </div>
-              </div>
-            </div>
-            <div class="pred-slider-ends"><span>P22</span><span>P1</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="email-section">
-        <h3>📧 YOUR ENTRY EMAIL</h3>
-        <pre id="email-body" class="email-box"></pre>
-        <div class="email-actions">
-          <button id="btn-copy" class="action-btn copy-btn">📋 Copy Email</button>
-          <button id="btn-mailto" class="action-btn mailto-btn">📧 Open in Mail</button>
-        </div>
+      <div class="game-finalize-section" style="text-align: center; margin-top: 10px;">
+        <button id="btn-finalize" class="play-btn" style="width: 100%;">🎯 FINALIZE & ENTER TEAM</button>
+        <p style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">This will take you to the calculator to
+          confirm your entry.</p>
       </div>
 
       <div class="replay-actions">
         <button id="btn-try-again" class="play-btn small">🎯 Try Again</button>
-        <div class="rules-links">
-          <a href="rules.html#rules" class="rules-link" target="_blank">📋 Rules</a>
-          <a href="rules.html#faq" class="rules-link" target="_blank">❓ FAQ</a>
-          <a href="calculator.html" class="rules-link" target="_blank">🧮 Calc</a>
-        </div>
       </div>
     </div>
   </div>

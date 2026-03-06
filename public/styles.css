@@ -67,6 +67,49 @@ body {
   border-bottom-color: var(--accent-gold);
 }
 
+/* ── Global Navigation ── */
+.global-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  background: #0f0f23;
+  padding: 16px 20px;
+  border-bottom: 1px solid #222;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 36px;
+  z-index: 150;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.global-nav a {
+  font-family: var(--font-racing);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 1px solid #333;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  background: #16213e;
+}
+
+.global-nav a:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.global-nav a.nav-active {
+  color: var(--text-primary);
+  border-color: var(--f1-red);
+  background: rgba(225, 6, 0, 0.15);
+  box-shadow: 0 0 15px rgba(225, 6, 0, 0.3);
+}
+
 /* ── Screens ── */
 .screen {
   display: none;

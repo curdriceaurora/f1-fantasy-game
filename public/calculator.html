@@ -17,14 +17,15 @@
 
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
 
-  <div class="rules-page">
+  <!-- Global Navigation -->
+  <nav class="global-nav">
+    <a href="index.html">Home</a>
+    <a href="calculator.html" class="nav-active">🧮 Calculator</a>
+    <a href="rules.html#rules">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
+  </nav>
 
-    <!-- Header -->
-    <div class="rules-header">
-      <div class="rules-header-title">🧮 TEAM COST <span>CALCULATOR</span></div>
-      <a href="index.html" class="back-to-game">← Back to Game</a>
-    </div>
-    <div class="checkered-bar"></div>
+  <div class="rules-page">
 
     <!-- Sticky nav -->
     <nav class="rules-nav">
@@ -960,6 +961,37 @@
     // Name + team name changes re-evaluate button state
     document.getElementById('calc-name').addEventListener('input', recalc);
     document.getElementById('calc-team-name').addEventListener('input', recalc);
+
+    // Parse URL params to pre-fill selections from game
+    const params = new URLSearchParams(window.location.search);
+    if (params.toString()) {
+      for (let i = 1; i <= 3; i++) {
+        if (params.has(`d${i}`)) {
+          const idx = parseInt(params.get(`d${i}`));
+          selected.d[i - 1] = idx;
+          updateDriverTrigger(i, idx);
+        }
+        if (params.has(`t${i}`)) {
+          const idx = parseInt(params.get(`t${i}`));
+          selected.t[i - 1] = idx;
+          updateTeamTrigger(i, idx);
+        }
+      }
+
+      if (params.has('name')) {
+        document.getElementById('calc-name').value = params.get('name');
+      }
+      if (params.has('team')) {
+        document.getElementById('calc-team-name').value = params.get('team');
+      }
+
+      refreshSelected();
+      refreshDisabled();
+      refreshCostly();
+
+      // Clean up URL without reloading
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
 
     recalc();
   </script>
