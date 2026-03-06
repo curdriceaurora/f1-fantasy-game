@@ -35,19 +35,12 @@
 
       <div class="form-area">
 
-        <!-- First + Last name side by side -->
-        <div class="name-row">
-          <label class="form-label required">
-            First Name
-            <input type="text" id="input-firstname" placeholder="e.g. Lewis" maxlength="30" autocomplete="given-name"
-              required />
-          </label>
-          <label class="form-label required">
-            Last Name
-            <input type="text" id="input-lastname" placeholder="e.g. Hamilton" maxlength="30" autocomplete="family-name"
-              required />
-          </label>
-        </div>
+        <!-- Name input -->
+        <label class="form-label required">
+          Name
+          <input type="text" id="input-name" placeholder="e.g. Lewis Hamilton" maxlength="60" autocomplete="name"
+            required />
+        </label>
 
         <!-- Team name with regenerate button -->
         <label class="form-label">
@@ -73,7 +66,7 @@
 
       <p class="tagline">Aim well — the closer you hit the target, the better your team.</p>
 
-      <p id="validation-msg" class="validation-msg">Enter your first and last name to play</p>
+      <p id="validation-msg" class="validation-msg">Enter your name to play</p>
 
       <button id="btn-play" class="play-btn" disabled>
         🎯 PLAY

@@ -262,7 +262,7 @@
         <div class="calc-status empty" id="calc-status">Select drivers, teams, and predictions above</div>
         <div class="calc-entry-row">
           <input type="text" id="calc-name" class="calc-input" placeholder="Your Driver Manager Name *" maxlength="50"
-            autocomplete="given-name">
+            autocomplete="name">
           <input type="text" id="calc-team-name" class="calc-input" placeholder="Your Team Name *" maxlength="60">
         </div>
         <div class="calc-email-btns">
@@ -951,9 +951,7 @@
 
 
     // Pre-fill name + team from landing page if previously set
-    const _fn = localStorage.getItem('ff1_first') || '';
-    const _ln = localStorage.getItem('ff1_last') || '';
-    const _savedName = [_fn, _ln].filter(Boolean).join(' ');
+    const _savedName = localStorage.getItem('ff1_name') || '';
     if (_savedName) document.getElementById('calc-name').value = _savedName;
     const _savedTeam = localStorage.getItem('ff1_team');
     if (_savedTeam) document.getElementById('calc-team-name').value = _savedTeam;

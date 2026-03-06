@@ -39,8 +39,7 @@ const loading = document.getElementById('loading-overlay');
 // ── Game state for results screen ──
 let gameState = null;
 
-const inputFirstName = document.getElementById('input-firstname');
-const inputLastName = document.getElementById('input-lastname');
+const inputName = document.getElementById('input-name');
 const inputTeam = document.getElementById('input-team');
 const sliderInvestment = document.getElementById('slider-investment');
 const valInvestment = document.getElementById('val-investment');
@@ -85,9 +84,8 @@ function updateInvestmentLabel() {
 
 // ── Validation ──
 function validate() {
-  const fn = inputFirstName.value.trim();
-  const ln = inputLastName.value.trim();
-  const ok = fn.length > 0 && ln.length > 0;
+  const nameVal = inputName.value.trim();
+  const ok = nameVal.length > 0;
 
   btnPlay.disabled = !ok;
 
@@ -95,9 +93,9 @@ function validate() {
     validationMsg.textContent = '';
     validationMsg.classList.remove('error', 'info');
   } else {
-    const touched = inputFirstName.dataset.touched || inputLastName.dataset.touched;
+    const touched = inputName.dataset.touched;
     if (touched) {
-      validationMsg.textContent = '⚠ First and last name are required';
+      validationMsg.textContent = '⚠ Name is required';
       validationMsg.classList.add('error');
       validationMsg.classList.remove('info');
     } else {
@@ -107,20 +105,19 @@ function validate() {
     }
   }
 
-  inputFirstName.classList.toggle('error', !fn && !!inputFirstName.dataset.touched);
-  inputLastName.classList.toggle('error', !ln && !!inputLastName.dataset.touched);
+  inputName.classList.toggle('error', !nameVal && !!inputName.dataset.touched);
 }
 
 // ── Persist team name only ──
 function loadSaved() {
   inputTeam.value = localStorage.getItem('ff1_team') || generateTeamName();
+  inputName.value = localStorage.getItem('ff1_name') || '';
   updateInvestmentLabel();
   validate();
 }
 function saveFields() {
   localStorage.setItem('ff1_team', inputTeam.value.trim());
-  localStorage.setItem('ff1_first', inputFirstName.value.trim());
-  localStorage.setItem('ff1_last', inputLastName.value.trim());
+  localStorage.setItem('ff1_name', inputName.value.trim());
 }
 
 // ── Screen switching ──
@@ -131,7 +128,7 @@ function showScreen(name) {
 
 // ── API call ──
 async function fetchSelection(accuracy) {
-  const fullName = `${inputFirstName.value.trim()} ${inputLastName.value.trim()}`;
+  const fullName = inputName.value.trim();
   const name = encodeURIComponent(fullName);
   const team = encodeURIComponent(inputTeam.value.trim() || generateTeamName());
   const investment = parseInt(gameSliderInvest.value);   // reads game-screen slider
@@ -176,7 +173,8 @@ function showResults(data) {
   // Drivers
   const driversEl = document.getElementById('result-drivers');
   driversEl.innerHTML = data.drivers.map(d => {
-    const slug = d.name.toLowerCase();
+    const driverDef = DRIVERS.find(x => x.fullName === d.name);
+    const slug = driverDef ? driverDef.name.toLowerCase() : d.name.toLowerCase().replace(/ /g, '_');
     return `<div class="selection-item">
       <img class="driver-avatar" src="/images/drivers/${slug}.jpg" alt="${d.name}" onerror="this.style.display='none'">
       <span>${d.name}</span>
@@ -203,7 +201,7 @@ function showResults(data) {
 
   // Store game state for prediction updates
   gameState = {
-    managerName: inputFirstName.value.trim() + ' ' + inputLastName.value.trim(),
+    managerName: inputName.value.trim(),
     teamName: inputTeam.value.trim(),
     drivers: data.drivers,
     teams: data.teams,
@@ -304,7 +302,7 @@ function init() {
   loadSaved();
 
   // Name validation — live + on blur
-  [inputFirstName, inputLastName].forEach(el => {
+  [inputName].forEach(el => {
     el.addEventListener('input', validate);
     el.addEventListener('blur', () => {
       el.dataset.touched = '1';
@@ -342,7 +340,7 @@ function init() {
     const params = new URLSearchParams();
 
     gameState.drivers.forEach((d, i) => {
-      const idx = DRIVERS.findIndex(x => x.name === d.name);
+      const idx = DRIVERS.findIndex(x => x.fullName === d.name);
       if (idx !== -1) params.set(`d${i + 1}`, idx);
     });
 
