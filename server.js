@@ -2,17 +2,13 @@
 // Usage: node server.js
 
 import { createServer } from 'http';
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-// Import the API handler
-const apiModule = await import('./api/selection.js');
-const apiHandler = apiModule.default;
 
 const MIME = {
   '.html': 'text/html',
@@ -24,27 +20,96 @@ const MIME = {
   '.woff2': 'font/woff2',
 };
 
+function resolveApiRoute(pathname) {
+  const parts = pathname.replace(/^\/api\//, '').split('/').filter(Boolean);
+  const params = {};
+
+  function walk(baseDir, segmentIndex) {
+    if (segmentIndex === parts.length) {
+      const indexFile = join(baseDir, 'index.js');
+      return existsSync(indexFile) ? indexFile : null;
+    }
+
+    const segment = parts[segmentIndex];
+    const directFile = join(baseDir, `${segment}.js`);
+    if (segmentIndex === parts.length - 1 && existsSync(directFile)) {
+      return directFile;
+    }
+
+    const directDir = join(baseDir, segment);
+    if (existsSync(directDir)) {
+      const resolved = walk(directDir, segmentIndex + 1);
+      if (resolved) return resolved;
+    }
+
+    const files = existsSync(baseDir) ? readdirSync(baseDir) : [];
+    for (const file of files) {
+      const match = file.match(/^\[(.+)\]\.js$/);
+      if (match && segmentIndex === parts.length - 1) {
+        params[match[1]] = segment;
+        return join(baseDir, file);
+      }
+    }
+
+    const childDirs = files.filter((file) => file.startsWith('[') && file.endsWith(']'));
+    for (const childDir of childDirs) {
+      params[childDir.slice(1, -1)] = segment;
+      const resolved = walk(join(baseDir, childDir), segmentIndex + 1);
+      if (resolved) return resolved;
+      delete params[childDir.slice(1, -1)];
+    }
+
+    return null;
+  }
+
+  const filePath = walk(join(__dirname, 'api'), 0);
+  return filePath ? { filePath, params } : null;
+}
+
 const server = createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
+  if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/calculator.html') {
+    res.writeHead(302, { Location: '/dashboard.html' });
+    res.end();
+    return;
+  }
+
   // API route
   if (url.pathname.startsWith('/api/')) {
-    const query = Object.fromEntries(url.searchParams);
-    const fakeReq = { query, method: req.method };
-    const fakeRes = {
-      _status: 200,
-      _headers: {},
-      status(code) { this._status = code; return this; },
-      setHeader(k, v) { this._headers[k] = v; },
-      json(data) {
-        res.writeHead(this._status, {
-          'Content-Type': 'application/json',
-          ...this._headers,
-        });
-        res.end(JSON.stringify(data));
-      },
-    };
-    apiHandler(fakeReq, fakeRes);
+    const resolved = resolveApiRoute(url.pathname);
+    if (!resolved) {
+      res.writeHead(404);
+      res.end('API route not found');
+      return;
+    }
+
+    import(resolved.filePath).then((apiModule) => {
+      const apiHandler = apiModule.default;
+      const query = {
+        ...Object.fromEntries(url.searchParams),
+        ...resolved.params,
+      };
+      const fakeReq = { query, method: req.method, url: req.url };
+      const fakeRes = {
+        _status: 200,
+        _headers: {},
+        status(code) { this._status = code; return this; },
+        setHeader(k, v) { this._headers[k] = v; },
+        json(data) {
+          res.writeHead(this._status, {
+            'Content-Type': 'application/json',
+            ...this._headers,
+          });
+          res.end(JSON.stringify(data));
+        },
+      };
+      apiHandler(fakeReq, fakeRes);
+    }).catch((error) => {
+      console.error('API route load error:', error);
+      res.writeHead(500);
+      res.end('API route error');
+    });
     return;
   }
 

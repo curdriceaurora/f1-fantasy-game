@@ -3,5 +3,16 @@
   "version": "1.0.0",
   "description": "F1 Fantasy Team Selector — PocketTanks Game + Slot Machine",
   "type": "module",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "test": "node --test",
+    "test:generate-corpus": "node scripts/generate-test-corpus.mjs",
+    "sync:entries": "node scripts/sync-season-entries.mjs",
+    "score:race": "node scripts/score-race.mjs"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "xlsx": "^0.18.5"
+  }
 }

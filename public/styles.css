@@ -884,7 +884,7 @@ input[type="range"]::-webkit-slider-thumb {
 /* ── Sticky nav ── */
 .rules-nav {
   position: sticky;
-  top: 0;
+  top: 92px;
   background: var(--bg-dark);
   border-bottom: 1px solid #222;
   padding: 10px 0;
@@ -916,6 +916,10 @@ input[type="range"]::-webkit-slider-thumb {
   color: var(--text-primary);
   border-color: var(--f1-red);
   background: rgba(225, 6, 0, 0.08);
+}
+
+.rules-page section[id] {
+  scroll-margin-top: 148px;
 }
 
 /* ── Section titles ── */
@@ -1596,7 +1600,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: relative;
   height: 48px;
   /* space for tooltip + track + thumb */
-  margin: 16px 0;
+  margin: 32px 0 8px;
   cursor: pointer;
   touch-action: none;
   /* prevent scrolling when dragging */
@@ -1824,13 +1828,43 @@ input[type="range"]::-webkit-slider-thumb {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.ref-table .rank-badge {
+/* Global Utility Classes */
+.glass-card {
+  background:
+    linear-gradient(135deg, rgba(225, 6, 0, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(39, 244, 210, 0.08), transparent 30%),
+    #12192b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
   font-family: var(--font-racing);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 2px 7px;
-  border-radius: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Base style for rules table rank badges, unifying with .badge */
+.ref-table .rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-family: var(--font-racing);
+  font-size: 10px; /* Slightly smaller to fit in tables */
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 

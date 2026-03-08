@@ -1,9 +1,26 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/dashboard.html",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "destination": "/dashboard.html",
+      "permanent": false
+    },
+    {
+      "source": "/calculator.html",
+      "destination": "/dashboard.html",
+      "permanent": false
+    }
+  ],
   "functions": {
-    "api/selection.js": {
+    "api/**/*.js": {
       "memory": 256,
       "maxDuration": 10,
-      "includeFiles": "data/**"
+      "includeFiles": "{data/**,season/**}"
     }
   },
   "headers": [
