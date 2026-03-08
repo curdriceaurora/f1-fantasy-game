@@ -457,28 +457,15 @@
   align-items: flex-start;
 }
 
-.settings-row-feature {
-  justify-content: flex-start;
-}
-
-.settings-row-feature > div {
-  width: 100%;
-}
-
-.settings-row-feature .selection-inline-media {
-  display: flex;
-  width: 100%;
-}
-
-.settings-row-feature .selection-finish-chip {
-  margin-left: auto;
-}
-
 .selection-inline-media {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   max-width: 100%;
+}
+
+.selection-inline-media-compact {
+  justify-content: flex-end;
 }
 
 .selection-inline-media .driver-avatar {

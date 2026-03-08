@@ -114,11 +114,8 @@ function renderSelectionMedia(item, type, suffix = '') {
 function renderBestFinishChip(driver, finish) {
   if (!driver || finish == null) return '—';
   return `
-    <div class="selection-inline-media">
+    <div class="selection-inline-media selection-inline-media-compact">
       ${imageMarkup(driver.imageSlug, 'driver', driver.name)}
-      <div class="selection-inline-copy">
-        <strong>Colapinto Best Finish</strong>
-      </div>
       <span class="selection-finish-chip">${formatBestFinish(finish)}</span>
     </div>
   `;
