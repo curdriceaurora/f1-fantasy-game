@@ -118,7 +118,6 @@ function renderBestFinishChip(driver, finish) {
       ${imageMarkup(driver.imageSlug, 'driver', driver.name)}
       <div class="selection-inline-copy">
         <strong>Colapinto Best Finish</strong>
-        <span class="card-subtle">Finish Value</span>
       </div>
       <span class="selection-finish-chip">${formatBestFinish(finish)}</span>
     </div>
@@ -430,8 +429,8 @@ function renderTeamDetail(team) {
   document.getElementById('team-wow').className = `meta-value ${weekOverWeekClass(team.standings.wowDelta)}`;
   document.getElementById('team-home-circuit').textContent = `${team.seasonSelections.homeCircuit}${circuitFlag(team.seasonSelections.homeCircuit) ? ` ${circuitFlag(team.seasonSelections.homeCircuit)}` : ''}`;
   document.getElementById('team-investment').innerHTML = `<span class="selection-chip-inline selection-chip-inline-value">${team.seasonSelections.investmentBonusPerRace}</span>`;
-  document.getElementById('team-total-classified').textContent = team.seasonSelections.totalClassified ?? '—';
-  document.getElementById('team-driver-champion').innerHTML = renderSelectionMedia(team.seasonSelections.driverChampion, 'driver', team.seasonSelections.driverChampion?.teamName || '');
+  document.getElementById('team-total-classified').innerHTML = `<span class="selection-chip-inline selection-chip-inline-value">${team.seasonSelections.totalClassified ?? '—'}</span>`;
+  document.getElementById('team-driver-champion').innerHTML = renderSelectionMedia(team.seasonSelections.driverChampion, 'driver');
   document.getElementById('team-constructor-champion').innerHTML = renderSelectionMedia(team.seasonSelections.constructorChampion, 'team');
   document.getElementById('team-colapinto-finish').innerHTML = renderBestFinishChip(team.seasonSelections.colapintoDriver, team.seasonSelections.colapintoBestFinish);
 
@@ -440,13 +439,11 @@ function renderTeamDetail(team) {
 
   const teamRaces = document.getElementById('team-races');
   teamRaces.innerHTML = '';
-  const latestDetailedIndex = team.races.reduce((latest, race, index) => (race.detail ? index : latest), -1);
 
-  team.races.forEach((race, index) => {
+  team.races.forEach((race) => {
     if (race.detail) {
       const wrapper = document.createElement('details');
       wrapper.className = 'race-item';
-      wrapper.open = latestDetailedIndex === index;
       wrapper.innerHTML = `
         <summary>
           <div class="race-summary-copy">
