@@ -37,7 +37,7 @@
 
 .dashboard-hero h1 {
   font-size: clamp(28px, 4.4vw, 48px);
-  max-width: 12ch;
+  max-width: none;
   margin: 10px 0 12px;
 }
 
@@ -50,13 +50,13 @@
   font-size: clamp(18px, 2.4vw, 28px);
   line-height: 1.15;
   color: var(--text-primary);
-  max-width: 20ch;
+  max-width: none;
 }
 
 .dashboard-copy,
 .card-subtle {
   color: var(--text-secondary);
-  max-width: 62ch;
+  max-width: none;
 }
 
 .dashboard-card {
