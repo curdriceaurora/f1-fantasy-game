@@ -197,8 +197,6 @@ async function fetchJson(url) {
 }
 
 function renderStandings(data) {
-  document.getElementById('generated-at').textContent = formatGeneratedAt(data.generatedAt);
-
   const standingsBody = document.getElementById('standings-body');
   standingsBody.innerHTML = data.standings.map((row) => `
     <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}" tabindex="0" role="link" aria-label="Open ${row.displayName}">
