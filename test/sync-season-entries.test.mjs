@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildEntries, createStableTeamId } from '../scripts/sync-season-entries.mjs';
+import { syntheticEntries } from '../scripts/generate-test-corpus.mjs';
 
 function workbookRows(order = ['Alice', 'Bob']) {
   const base = Array.from({ length: 4 }, () => []);
@@ -40,4 +41,14 @@ test('duplicate principal and display combinations are rejected', () => {
     () => buildEntries(rows, '/tmp/roster.xlsx'),
     /Duplicate stable team id/,
   );
+});
+
+test('synthetic corpus entries use the same principal-based stable ids as live imports', () => {
+  const calendar = [{ id: 'australia' }];
+  const entries = syntheticEntries(calendar);
+
+  for (const entry of entries) {
+    assert.equal(entry.teamId, createStableTeamId(entry.principalName));
+    assert.notEqual(entry.teamId, entry.displayName);
+  }
 });

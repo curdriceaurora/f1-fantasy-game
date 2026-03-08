@@ -256,7 +256,7 @@ function buildNormalizedRace(year, race, mapping) {
   };
 }
 
-function syntheticEntries(calendar) {
+export function syntheticEntries(calendar) {
   const entryBlueprints = [
     ['Ava Patel', 'Slipstream Syndicate'],
     ['Leo Carter', 'Parc Ferme'],
@@ -271,7 +271,9 @@ function syntheticEntries(calendar) {
   const teams = SIMULATED_TEAMS.map((team) => team.id);
 
   return entryBlueprints.map(([principalName, displayName], index) => ({
-    teamId: createStableTeamId(principalName, displayName),
+    // Historical fixtures should exercise the same principal-based ID generation
+    // as the real workbook importer instead of baking display labels into IDs.
+    teamId: createStableTeamId(principalName),
     principalName,
     displayName,
     selectedDriverIds: [drivers[index], drivers[index + 4], drivers[(index + 8) % drivers.length]],
