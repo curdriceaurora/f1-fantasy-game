@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Martin's F1 Fantasy League — Team View</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body data-dashboard-view="team">
+  <a href="dashboard.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
+
+  <nav class="global-nav">
+    <a href="dashboard.html" class="nav-active">📊 Dashboard</a>
+    <a href="rules.html#rules">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
+  </nav>
+
+  <main class="dashboard-shell">
+    <section class="dashboard-hero">
+      <div>
+        <p class="dashboard-kicker">Per-team view</p>
+        <h1 id="team-page-title">Loading team</h1>
+        <p class="dashboard-copy" id="team-page-copy">Reconstructing the season breakdown from stored race scores.</p>
+      </div>
+      <div class="dashboard-meta">
+        <div class="dashboard-meta-card">
+          <span class="meta-label">Total points</span>
+          <span class="meta-value" id="team-total-points">0</span>
+        </div>
+        <div class="dashboard-meta-card">
+          <span class="meta-label">Completed races</span>
+          <span class="meta-value" id="team-completed-races">0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid dashboard-grid-team">
+      <div class="dashboard-card">
+        <div class="card-header">
+          <div>
+            <p class="card-eyebrow">Locked selections</p>
+            <h2>Drivers and constructors</h2>
+          </div>
+        </div>
+        <div class="selection-columns">
+          <div>
+            <h3 class="mini-heading">Drivers</h3>
+            <div id="team-driver-list" class="selection-stack"></div>
+          </div>
+          <div>
+            <h3 class="mini-heading">Constructors</h3>
+            <div id="team-constructor-list" class="selection-stack"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header">
+          <div>
+            <p class="card-eyebrow">Season selections</p>
+            <h2>Locked predictions and bonuses</h2>
+          </div>
+        </div>
+        <div class="settings-list">
+          <div class="settings-row"><span>Home circuit</span><strong id="team-home-circuit">-</strong></div>
+          <div class="settings-row"><span>Investment bonus</span><strong id="team-investment">0 pts/race</strong></div>
+          <div class="settings-row"><span>Total classified</span><strong id="team-total-classified">-</strong></div>
+          <div class="settings-row"><span>Driver champion</span><strong id="team-driver-champion">-</strong></div>
+          <div class="settings-row"><span>Constructor champion</span><strong id="team-constructor-champion">-</strong></div>
+          <div class="settings-row"><span>Colapinto best finish</span><strong id="team-colapinto-finish">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-card">
+      <div class="card-header">
+        <div>
+          <p class="card-eyebrow">Race-by-race</p>
+          <h2>Score breakdown</h2>
+        </div>
+        <a class="team-back-link" href="dashboard.html">← Back to standings</a>
+      </div>
+      <div id="team-races" class="race-breakdown-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+
+</html>

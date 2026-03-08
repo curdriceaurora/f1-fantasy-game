@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Martin's F1 Fantasy League — Season Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body data-dashboard-view="standings">
+  <a href="dashboard.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
+
+  <nav class="global-nav">
+    <a href="dashboard.html" class="nav-active">📊 Dashboard</a>
+    <a href="rules.html#rules">📋 Rules</a>
+    <a href="rules.html#faq">❓ FAQ</a>
+  </nav>
+
+  <main class="dashboard-shell">
+    <section class="dashboard-hero">
+      <div>
+        <p class="dashboard-kicker">Season transparency</p>
+        <h1>League standings</h1>
+        <p class="dashboard-copy">Open your team to inspect the locked selections, score contribution from every pick, and the running season total.</p>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="card-header">
+          <div>
+            <p class="card-eyebrow">Standings</p>
+            <h2>League table</h2>
+          </div>
+          <p class="card-subtle" id="generated-at">Waiting for Monday scoring</p>
+        </div>
+        <div class="standings-table-wrap">
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Principal</th>
+                <th>Total</th>
+                <th>Latest race</th>
+                <th>Week over week</th>
+              </tr>
+            </thead>
+            <tbody id="standings-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header">
+          <div>
+            <p class="card-eyebrow">Schedule</p>
+            <h2>Race status</h2>
+          </div>
+        </div>
+        <div id="race-status-list" class="race-status-list"></div>
+      </div>
+    </section>
+
+    <section class="dashboard-card">
+      <div class="card-header">
+        <div>
+          <p class="card-eyebrow">Big movers</p>
+          <h2>Quick jump into the biggest weekly shifts</h2>
+        </div>
+      </div>
+      <div id="big-movers" class="movers-grid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+
+</html>

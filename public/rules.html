@@ -15,12 +15,11 @@
 
 <body>
 
-  <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
+  <a href="dashboard.html" class="site-banner">2026 Martin's F1 Fantasy League Selector</a>
 
   <!-- Global Navigation -->
   <nav class="global-nav">
-    <a href="index.html">Home</a>
-    <a href="calculator.html">🧮 Calculator</a>
+    <a href="dashboard.html">📊 Dashboard</a>
     <a href="rules.html#rules" class="nav-active">📋 Rules</a>
     <a href="rules.html#faq">❓ FAQ</a>
   </nav>
@@ -29,7 +28,6 @@
 
     <!-- Sticky nav -->
     <nav class="rules-nav">
-      <a href="calculator.html">🧮 Calculator</a>
       <a href="#rules" class="nav-active">📋 Rules</a>
       <a href="#faq">❓ FAQ</a>
       <a href="#drivers">🏎 Drivers &amp; Teams</a>
@@ -44,7 +42,7 @@
         <h3>⚡ QUICK START — NEW HERE? READ THIS FIRST</h3>
         <ol>
           <li>Pick <strong>3 drivers</strong> and <strong>3 teams</strong> from the table below</li>
-          <li>Make sure your <strong>total cost ≤ £50m</strong> (use the calculator!)</li>
+          <li>Make sure your <strong>total cost ≤ £50m</strong></li>
           <li>Pick a <strong>Home Circuit</strong> from the race calendar for a double-points bonus</li>
           <li>Fill in the <strong>5 predictions</strong> for end-of-season bonus points</li>
           <li><strong>Email Martin</strong> by <strong>Thursday 5th March 2026</strong> with your £15 entry fee</li>
@@ -150,7 +148,8 @@
       <p class="rules-text"><strong>Fastest Lap:</strong> +2 pts. <strong>Sprint races:</strong> FIA sprint scoring (8→1
         pts for top 8).</p>
       <p class="rules-text"><strong>Team scoring:</strong> Sum of both drivers' points, weighted as
-        <code>(3 × Lead Driver + 2 × Second Driver) ÷ 5</code>, rounded up.</p>
+        <code>(3 × Lead Driver + 2 × Second Driver) ÷ 5</code>, rounded up.
+      </p>
 
       <h3 class="sub-title">§2.3 — Home Circuit Bonus</h3>
       <p class="rules-text">Pick one race circuit at the start. Your <strong>entire score for that race is
@@ -217,7 +216,8 @@
         </tbody>
       </table>
       <p class="rules-text">Note: odd £m of unspent budget is ignored (floor division). £49m spent = £1m unspent =
-        <strong>0 bonus</strong>.</p>
+        <strong>0 bonus</strong>.
+      </p>
 
       <h3 class="sub-title">§2.7 — End-of-Season Bonuses</h3>
       <table class="rules-table" style="max-width:580px;">
@@ -267,7 +267,8 @@
       <h3 class="sub-title">Mid-Season Transfer</h3>
       <p class="rules-text">After Race 11 (Britain), you may replace <strong>one driver or one team</strong>. Costs
         <strong>20 points</strong> deducted from your current total. Must stay within £50m. Must be submitted before
-        Race 12 (Belgium). If a driver drops out permanently, free replacement at same cost — no penalty.</p>
+        Race 12 (Belgium). If a driver drops out permanently, free replacement at same cost — no penalty.
+      </p>
     </section>
 
     <!-- ══════════════════ DRIVERS & TEAMS ══════════════════ -->
@@ -766,6 +767,33 @@
 
   </div><!-- end rules-page -->
 
+  <script>
+    // Scrollspy for sticky navigation
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.rules-nav a[href^="#"]');
+
+    const observer = new IntersectionObserver((entries) => {
+      let activeId = null;
+      // We process entries. Since multiple might intersect, we could take the highly visible one
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeId = entry.target.getAttribute('id');
+        }
+      });
+
+      if (activeId) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${activeId}`) {
+            link.classList.add('nav-active');
+          } else {
+            link.classList.remove('nav-active');
+          }
+        });
+      }
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 
 </html>
