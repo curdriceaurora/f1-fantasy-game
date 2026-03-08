@@ -37,6 +37,18 @@
   margin: 10px 0 12px;
 }
 
+.dashboard-hero-team h1 {
+  color: var(--accent-gold);
+}
+
+.dashboard-hero-team .dashboard-copy {
+  font-family: var(--font-racing);
+  font-size: clamp(18px, 2.4vw, 28px);
+  line-height: 1.15;
+  color: var(--text-primary);
+  max-width: 20ch;
+}
+
 .dashboard-copy,
 .card-subtle {
   color: var(--text-secondary);
