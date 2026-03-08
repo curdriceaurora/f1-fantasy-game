@@ -54,7 +54,7 @@ git push
 
 **Alternative: Environment Variable (Vercel Dashboard)**
 - Set `SITE_MODE=preseason` or `SITE_MODE=season` in your Vercel project settings
-- Note: The local dev server respects this env var, but vercel.json redirects take precedence in production
+- **Important**: The `/api/site-mode` endpoint reads from `SITE_MODE`, but production redirects are controlled by `vercel.json`. Both must be kept in sync for consistent behavior. Using the `npm run switch-mode` script is recommended to maintain this synchronization.
 
 **Understanding the Switch:**
 

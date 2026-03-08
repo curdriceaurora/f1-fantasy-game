@@ -21,12 +21,13 @@ export async function getSiteMode() {
     return cachedSiteMode;
   } catch (error) {
     console.error('Error fetching site mode:', error);
-    // Default to season mode on error
-    return {
+    // Default to season mode on error and cache the fallback
+    cachedSiteMode = {
       mode: 'season',
       isPreseason: false,
       isSeason: true,
     };
+    return cachedSiteMode;
   }
 }
 

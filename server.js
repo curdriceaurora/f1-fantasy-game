@@ -69,24 +69,26 @@ function resolveApiRoute(pathname) {
 
 const server = createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
+  const mode = getSiteMode();
+  const isPreseason = mode === 'preseason';
 
   // Redirect root and mode-specific entry points based on site mode
   if (url.pathname === '/') {
-    const destination = getDefaultLandingPage();
+    const destination = isPreseason ? '/index.html' : '/dashboard.html';
     res.writeHead(302, { Location: destination });
     res.end();
     return;
   }
 
   // In season mode, redirect preseason pages to dashboard
-  if (!isPreseasonMode() && (url.pathname === '/index.html' || url.pathname === '/calculator.html')) {
+  if (!isPreseason && (url.pathname === '/index.html' || url.pathname === '/calculator.html')) {
     res.writeHead(302, { Location: '/dashboard.html' });
     res.end();
     return;
   }
 
   // In preseason mode, redirect dashboard to entry builder
-  if (isPreseasonMode() && url.pathname === '/dashboard.html') {
+  if (isPreseason && url.pathname === '/dashboard.html') {
     res.writeHead(302, { Location: '/index.html' });
     res.end();
     return;

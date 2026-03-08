@@ -9,7 +9,7 @@ test('getSiteMode returns season by default', () => {
 
   assert.strictEqual(getSiteMode(), SITE_MODES.SEASON);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   }
 });
@@ -20,7 +20,7 @@ test('getSiteMode returns preseason when SITE_MODE=preseason', () => {
 
   assert.strictEqual(getSiteMode(), SITE_MODES.PRESEASON);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -33,7 +33,7 @@ test('getSiteMode returns season when SITE_MODE=season', () => {
 
   assert.strictEqual(getSiteMode(), SITE_MODES.SEASON);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -46,7 +46,7 @@ test('getSiteMode defaults to season for invalid mode', () => {
 
   assert.strictEqual(getSiteMode(), SITE_MODES.SEASON);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -60,7 +60,7 @@ test('isPreseasonMode returns true when in preseason mode', () => {
   assert.strictEqual(isPreseasonMode(), true);
   assert.strictEqual(isSeasonMode(), false);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -74,7 +74,7 @@ test('isSeasonMode returns true when in season mode', () => {
   assert.strictEqual(isSeasonMode(), true);
   assert.strictEqual(isPreseasonMode(), false);
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -87,7 +87,7 @@ test('getDefaultLandingPage returns index.html in preseason mode', () => {
 
   assert.strictEqual(getDefaultLandingPage(), '/index.html');
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
@@ -100,7 +100,7 @@ test('getDefaultLandingPage returns dashboard.html in season mode', () => {
 
   assert.strictEqual(getDefaultLandingPage(), '/dashboard.html');
 
-  if (originalMode) {
+  if (originalMode !== undefined) {
     process.env.SITE_MODE = originalMode;
   } else {
     delete process.env.SITE_MODE;
