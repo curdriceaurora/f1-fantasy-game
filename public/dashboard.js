@@ -92,6 +92,33 @@ function formatBestFinish(value) {
   return `P${value}`;
 }
 
+function renderSelectionMedia(item, type, suffix = '') {
+  if (!item) return '—';
+  const flag = type === 'driver' ? driverFlag(item.id) : '';
+  return `
+    <div class="selection-inline-media">
+      ${imageMarkup(item.imageSlug, type, item.name)}
+      <div class="selection-inline-copy">
+        <strong>${item.name}${flag ? ` <span class="entity-flag">${flag}</span>` : ''}</strong>
+        ${suffix ? `<span class="card-subtle">${suffix}</span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderBestFinishChip(driver, finish) {
+  if (!driver || finish == null) return '—';
+  return `
+    <div class="selection-inline-media">
+      ${imageMarkup(driver.imageSlug, 'driver', driver.name)}
+      <div class="selection-inline-copy">
+        <strong>${driver.name} <span class="entity-flag">${driverFlag(driver.id)}</span></strong>
+      </div>
+      <span class="selection-finish-chip">${formatBestFinish(finish)}</span>
+    </div>
+  `;
+}
+
 const DRIVER_FLAGS = {
   'charles-leclerc': '🇲🇨',
   'george-russell': '🇬🇧',
@@ -359,13 +386,17 @@ function renderRaceDetails(target, race) {
 function renderTeamDetail(team) {
   document.title = `2026 Martin's F1 Fantasy League — ${team.displayName}`;
   document.getElementById('team-page-title').textContent = team.displayName;
-  document.getElementById('team-page-copy').textContent = `${team.principalName} · Team Principal`;
+  document.getElementById('team-page-copy').textContent = team.principalName;
+  document.getElementById('team-total-points').textContent = team.standings.totalPoints;
+  document.getElementById('team-current-standing').textContent = team.standings.rank == null ? '—' : `#${team.standings.rank}`;
+  document.getElementById('team-wow').textContent = formatWeekOverWeekDelta(team.standings.wowDelta);
+  document.getElementById('team-wow').className = `meta-value ${weekOverWeekClass(team.standings.wowDelta)}`;
   document.getElementById('team-home-circuit').textContent = team.seasonSelections.homeCircuit;
   document.getElementById('team-investment').textContent = `${team.seasonSelections.investmentBonusPerRace} pts/race`;
   document.getElementById('team-total-classified').textContent = team.seasonSelections.totalClassified ?? '—';
-  document.getElementById('team-driver-champion').textContent = team.seasonSelections.driverChampion;
-  document.getElementById('team-constructor-champion').textContent = team.seasonSelections.constructorChampion;
-  document.getElementById('team-colapinto-finish').textContent = formatBestFinish(team.seasonSelections.colapintoBestFinish);
+  document.getElementById('team-driver-champion').innerHTML = renderSelectionMedia(team.seasonSelections.driverChampion, 'driver', team.seasonSelections.driverChampion?.teamName || '');
+  document.getElementById('team-constructor-champion').innerHTML = renderSelectionMedia(team.seasonSelections.constructorChampion, 'team');
+  document.getElementById('team-colapinto-finish').innerHTML = renderBestFinishChip(team.seasonSelections.colapintoDriver, team.seasonSelections.colapintoBestFinish);
 
   renderSelectionStack('team-driver-list', team.drivers, 'driver');
   renderSelectionStack('team-constructor-list', team.constructors, 'team');
@@ -387,7 +418,6 @@ function renderTeamDetail(team) {
           </div>
           <div class="race-summary-points">
             <div class="${pointsClass(race.totalPoints ?? 0)}">${signedPoints(race.totalPoints)} pts</div>
-            <div class="race-running-total">${race.runningTotal == null ? '' : `Running total ${race.runningTotal}`}</div>
             <div class="race-toggle-hint">View breakdown</div>
           </div>
         </summary>
