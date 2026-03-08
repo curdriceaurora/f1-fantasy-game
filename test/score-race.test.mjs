@@ -40,7 +40,8 @@ function stubFetchedRace() {
       { driver_number: 63, lap_duration: 90.1, is_pit_out_lap: false },
       { driver_number: 12, lap_duration: 90.4, is_pit_out_lap: false },
     ],
-    raceControlMessages: [],
+    gridPenaltyMessages: [],
+    raceTimePenaltyMessages: [],
     positionFeed: [
       { driver_number: 63, position: 2, date: '2026-03-08T03:00:00Z' },
       { driver_number: 12, position: 4, date: '2026-03-08T03:00:00Z' },
@@ -86,7 +87,7 @@ test('scoreRace blocks scoring until fine review is explicitly completed', async
 
     await assert.rejects(
       () => scoreRace('australia', {
-        now: new Date('2026-03-09T16:01:00Z'),
+        now: new Date('2026-03-09T12:01:00Z'),
         fetchRaceWeekend: async () => stubFetchedRace(),
         fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
       }),
@@ -103,7 +104,7 @@ test('scoreRace blocks publication before the Monday scoring window opens', asyn
 
     await assert.rejects(
       () => scoreRace('australia', {
-        now: new Date('2026-03-09T15:59:00Z'),
+        now: new Date('2026-03-09T11:59:00Z'),
         fetchRaceWeekend: async () => stubFetchedRace(),
         fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
       }),
@@ -120,7 +121,7 @@ test('scoreRace fails closed when fine parsing warnings remain', async () => {
 
     await assert.rejects(
       () => scoreRace('australia', {
-        now: new Date('2026-03-09T16:01:00Z'),
+        now: new Date('2026-03-09T12:01:00Z'),
         fetchRaceWeekend: async () => stubFetchedRace(),
         fetchFineSummary: async () => ({
           drivers: {},
@@ -143,7 +144,7 @@ test('scoreRace reruns replace outputs cleanly instead of duplicating race total
     });
 
     const services = {
-      now: new Date('2026-03-09T16:01:00Z'),
+      now: new Date('2026-03-09T12:01:00Z'),
       fetchRaceWeekend: async () => stubFetchedRace(),
       fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
     };
@@ -161,5 +162,29 @@ test('scoreRace reruns replace outputs cleanly instead of duplicating race total
     assert.equal(secondTeam.totalPoints, secondTeam.races[0].runningTotal);
     assert.equal(readJson(scoredRacePath('australia')).teams.length, 1);
     assert.ok(readJson(normalizedRacePath('australia')).drivers['george-russell']);
+  });
+});
+
+test('scoreRace recognizes existing normalized artifacts when evaluating workflow state', async () => {
+  await withTempSeason(async (seasonDir) => {
+    writeJson(join(seasonDir, 'config', 'fine-documents.json'), {
+      australia: { reviewed: true, documents: [], reviewedAt: '2026-03-09T12:00:00Z' },
+    });
+    writeJson(normalizedRacePath('australia'), {
+      raceId: 'australia',
+      raceName: 'Australian Grand Prix',
+      date: '2026-03-08',
+      round: 1,
+      drivers: {},
+      teams: {},
+    });
+
+    await scoreRace('australia', {
+      now: new Date('2026-03-09T12:01:00Z'),
+      fetchRaceWeekend: async () => stubFetchedRace(),
+      fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
+    });
+
+    assert.equal(readJson(scoredRacePath('australia')).raceId, 'australia');
   });
 });

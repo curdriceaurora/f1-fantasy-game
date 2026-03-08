@@ -10,30 +10,30 @@ const race = {
 test('race workflow stays scheduled before Monday publication', () => {
   const workflow = evaluateRaceWorkflow({
     race,
-    now: new Date('2026-03-09T15:59:00Z'),
+    now: new Date('2026-03-09T11:59:00Z'),
     fineReview: { reviewed: false, documents: [] },
   });
 
   assert.equal(workflow.state, RACE_WORKFLOW_STATES.SCHEDULED);
   assert.equal(workflow.publicStatus, 'not run');
-  assert.equal(mondayPublicationDate(race.date).toISOString(), '2026-03-09T16:00:00.000Z');
+  assert.equal(mondayPublicationDate(race.date).toISOString(), '2026-03-09T12:00:00.000Z');
 });
 
 test('race workflow waits on fine review after Monday cutoff', () => {
   const workflow = evaluateRaceWorkflow({
     race,
-    now: new Date('2026-03-09T16:01:00Z'),
+    now: new Date('2026-03-09T12:01:00Z'),
     fineReview: { reviewed: false, documents: [] },
   });
 
   assert.equal(workflow.state, RACE_WORKFLOW_STATES.AWAITING_FINE_REVIEW);
-  assert.equal(workflow.publicStatus, 'awaiting Monday scoring');
+  assert.equal(workflow.publicStatus, 'awaiting fine review');
 });
 
 test('race workflow is ready to score once fine review is complete', () => {
   const workflow = evaluateRaceWorkflow({
     race,
-    now: new Date('2026-03-09T16:01:00Z'),
+    now: new Date('2026-03-09T12:01:00Z'),
     fineReview: { reviewed: true, documents: [] },
   });
 

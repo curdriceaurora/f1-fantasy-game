@@ -7,8 +7,6 @@ import { CANONICAL_DRIVERS, CANONICAL_TEAMS, resolveCircuitId, resolveDriver, re
 import { configPath, ensureSeasonDirs, readJson, writeJson } from '../lib/season-store.js';
 import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 
-const DEFAULT_WORKBOOK = '/Users/rahul/Downloads/Martins FF1 2026 Starting Roster with Prize values.xlsx';
-
 function readWorkbook(filePath) {
   const workbook = xlsx.readFile(filePath);
   const worksheet = workbook.Sheets['Starting Roster'];
@@ -150,15 +148,24 @@ export function buildCatalog() {
   };
 }
 
-export function syncSeasonEntries(workbookPath = process.argv[2] || process.env.ROSTER_XLSX_PATH || DEFAULT_WORKBOOK) {
+function resolveWorkbookPath(workbookPath) {
+  const resolvedPath = workbookPath || process.argv[2] || process.env.ROSTER_XLSX_PATH;
+  if (!resolvedPath) {
+    throw new Error('Roster workbook path is required. Pass it as the first argument or set ROSTER_XLSX_PATH.');
+  }
+  return resolvedPath;
+}
+
+export function syncSeasonEntries(workbookPath) {
   ensureSeasonDirs();
-  const rows = readWorkbook(workbookPath);
+  const resolvedWorkbookPath = resolveWorkbookPath(workbookPath);
+  const rows = readWorkbook(resolvedWorkbookPath);
   const existingEntries = readJson(configPath('entries.json'), []);
-  const entries = buildEntries(rows, workbookPath, existingEntries);
+  const entries = buildEntries(rows, resolvedWorkbookPath, existingEntries);
   writeJson(configPath('entries.json'), entries);
   writeJson(configPath('catalog.json'), buildCatalog());
   const scoreboard = rebuildScoreboard();
-  return { workbookPath, entries, scoreboard };
+  return { workbookPath: resolvedWorkbookPath, entries, scoreboard };
 }
 
 function main() {

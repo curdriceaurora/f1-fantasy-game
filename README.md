@@ -32,7 +32,14 @@ If you're tinkering with the code or want to run it on your own machine:
 This creates the canonical season entry file from the starting-roster workbook:
 
 ```bash
-npm run sync:entries -- "/Users/rahul/Downloads/Martins FF1 2026 Starting Roster with Prize values.xlsx"
+npm run sync:entries -- "/absolute/path/to/Martins FF1 2026 Starting Roster with Prize values.xlsx"
+```
+
+Or set the path once for your shell session:
+
+```bash
+export ROSTER_XLSX_PATH="/absolute/path/to/Martins FF1 2026 Starting Roster with Prize values.xlsx"
+npm run sync:entries
 ```
 
 The script writes:

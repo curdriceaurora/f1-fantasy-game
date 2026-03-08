@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readdirSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 import { readJson, withFixtureSeason } from './helpers/season-fixture.mjs';
@@ -43,3 +43,15 @@ for (const year of [2023, 2024, 2025]) {
     });
   });
 }
+
+test('rebuildScoreboard removes stale team score files after entries change', async () => {
+  await withFixtureSeason(2023, async ({ seasonDir }) => {
+    const ghostFile = join(seasonDir, 'scored', 'teams', 'ghost-team.json');
+    mkdirSync(join(seasonDir, 'scored', 'teams'), { recursive: true });
+    writeFileSync(ghostFile, '{}\n');
+
+    assert.equal(existsSync(ghostFile), true);
+    rebuildScoreboard();
+    assert.equal(existsSync(ghostFile), false);
+  });
+});

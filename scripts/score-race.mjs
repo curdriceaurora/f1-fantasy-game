@@ -54,7 +54,7 @@ export async function scoreRace(raceId, services = {}) {
     race: calendarRace,
     now: services.now || new Date(),
     fineReview,
-    normalizedExists: false,
+    normalizedExists: existsSync(normalizedRacePath(calendarRace.id)),
     scoredExists: existsSync(scoredRacePath(calendarRace.id)),
   });
   assertRaceReadyForScoring(calendarRace.id, workflow, fineReview);

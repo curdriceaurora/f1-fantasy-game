@@ -92,6 +92,12 @@ function summaryPoints(points) {
   return `${points} pts`;
 }
 
+function raceStatusCopy(status) {
+  if (status === 'awaiting Monday scoring') return 'Awaiting Monday scoring';
+  if (status === 'awaiting fine review') return 'Awaiting fine review';
+  return '';
+}
+
 function formatBestFinish(value) {
   if (value == null) return '—';
   return `P${value}`;
@@ -465,7 +471,7 @@ function renderTeamDetail(team) {
           <span class="card-subtle">${formatRaceDate(race.raceDate)}</span>
         </div>
         <div class="race-summary-points">
-          <div class="card-subtle">${race.status === 'awaiting Monday scoring' ? 'Awaiting Monday scoring' : ''}</div>
+          <div class="card-subtle">${raceStatusCopy(race.status)}</div>
         </div>
       </div>
     `;

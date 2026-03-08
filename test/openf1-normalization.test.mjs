@@ -35,8 +35,11 @@ function baseFetchedRace() {
       { driver_number: 63, lap_duration: 91.2, is_pit_out_lap: false },
       { driver_number: 12, lap_duration: 91.8, is_pit_out_lap: false },
     ],
-    raceControlMessages: [
+    gridPenaltyMessages: [
       { date: '2026-03-07T06:30:00Z', message: '5 PLACE GRID PENALTY FOR CAR 63' },
+      { date: '2026-03-07T07:00:00Z', message: '10 SECOND TIME PENALTY FOR CAR 63' },
+    ],
+    raceTimePenaltyMessages: [
       { date: '2026-03-08T05:30:00Z', message: '5 SECOND TIME PENALTY FOR CAR 12' },
     ],
     positionFeed: [
@@ -48,11 +51,12 @@ function baseFetchedRace() {
   };
 }
 
-test('normalizeRaceWeekend applies grid and time penalties from aggregated race control messages', () => {
+test('normalizeRaceWeekend applies grid penalties across the weekend but race time penalties only from the race session', () => {
   const normalized = normalizeRaceWeekend(calendarRace, baseFetchedRace(), { drivers: {}, teams: {}, documents: [] });
 
   assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 5);
   assert.equal(normalized.drivers['george-russell'].gridStart, 4);
+  assert.equal(normalized.drivers['george-russell'].timePenaltySeconds, 0);
   assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 5);
   assert.equal(normalized.drivers['george-russell'].fastestLap, true);
 });

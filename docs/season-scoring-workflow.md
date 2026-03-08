@@ -13,7 +13,7 @@ The current internal lifecycle is:
 - `ready_to_score`: the race is eligible for Monday scoring
 - `finalized`: normalized race data and scored outputs both exist
 
-This is implemented in [race-workflow.js](/Users/rahul/Desktop/Formula1%20-%20Martins%20League/f1-fantasy-game/lib/race-workflow.js).
+This is implemented in [race-workflow.js](../lib/race-workflow.js).
 
 ## Why This Level Is Enough
 
