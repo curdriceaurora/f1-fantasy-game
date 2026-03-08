@@ -274,7 +274,7 @@ function renderSelectionStack(targetId, selections, type) {
     <div class="selection-tile">
       ${imageMarkup(item.imageSlug, type, item.name)}
       <div>
-        <h4>${item.name}</h4>
+        <h4>${item.name}${type === 'driver' ? ` <span class="entity-flag">${driverFlag(item.id)}</span>` : ''}</h4>
         ${item.teamName ? `<p class="card-subtle">${item.teamName}</p>` : ''}
       </div>
     </div>
