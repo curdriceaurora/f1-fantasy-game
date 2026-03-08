@@ -21,22 +21,27 @@ function weekOverWeekClass(value) {
 }
 
 function buildRaceStatusRows(races) {
-  const nextRaceIndex = races.findIndex((race) => race.status === 'not run');
-  return races
-    .flatMap((race, index) => {
-      if (race.status === 'not run' && index !== nextRaceIndex) {
-        return [];
-      }
+  const lastEvaluatedRace = [...races].reverse().find((race) => race.status === 'finalized');
+  const nextScheduledRace = races.find((race) => race.status === 'not run');
+  const rows = [];
 
-      const label = race.status === 'not run' ? 'next race' : race.status;
-      const statusName = race.status === 'not run' ? 'next-race' : race.status;
-
-      return [{
-        ...race,
-        statusLabel: label,
-        statusName,
-      }];
+  if (lastEvaluatedRace) {
+    rows.push({
+      ...lastEvaluatedRace,
+      statusLabel: 'last evaluated',
+      statusName: 'finalized',
     });
+  }
+
+  if (nextScheduledRace) {
+    rows.push({
+      ...nextScheduledRace,
+      statusLabel: 'next race',
+      statusName: 'next-race',
+    });
+  }
+
+  return rows;
 }
 
 function compareMoverRows(left, right) {
@@ -136,15 +141,29 @@ function renderStandings(data) {
 
   const standingsBody = document.getElementById('standings-body');
   standingsBody.innerHTML = data.standings.map((row) => `
-    <tr>
+    <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}" tabindex="0" role="link" aria-label="Open ${row.displayName}">
       <td><span class="rank-pill">#${row.rank}</span></td>
-      <td><a class="team-link" href="team.html?team=${encodeURIComponent(row.teamId)}">${row.displayName}</a></td>
+      <td><span class="team-link">${row.displayName}</span></td>
       <td>${row.principalName}</td>
       <td class="points-strong">${row.totalPoints}</td>
       <td class="${pointsClass(row.latestRacePoints)}">${signedPoints(row.latestRacePoints)}</td>
       <td class="${weekOverWeekClass(row.wowDelta)}">${formatWeekOverWeekDelta(row.wowDelta)}</td>
     </tr>
   `).join('');
+
+  standingsBody.onclick = (event) => {
+    const row = event.target.closest('.standings-row-link');
+    if (!row) return;
+    window.location.href = row.dataset.teamHref;
+  };
+
+  standingsBody.onkeydown = (event) => {
+    const row = event.target.closest('.standings-row-link');
+    if (!row) return;
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    window.location.href = row.dataset.teamHref;
+  };
 
   const raceStatusList = document.getElementById('race-status-list');
   raceStatusList.innerHTML = buildRaceStatusRows(data.races).map((race) => `
@@ -197,8 +216,7 @@ function renderBigMovers(data) {
     <section class="mover-panel">
       <div class="mover-panel-header">
         <div>
-          <p class="card-eyebrow">Up this week</p>
-          <h3>Top 3 risers</h3>
+          <h3>Risers</h3>
         </div>
       </div>
       <div class="mover-list">
@@ -209,8 +227,7 @@ function renderBigMovers(data) {
     <section class="mover-panel">
       <div class="mover-panel-header">
         <div>
-          <p class="card-eyebrow">Down this week</p>
-          <h3>Bottom 3 fallers</h3>
+          <h3>Fallers</h3>
         </div>
       </div>
       <div class="mover-list">
@@ -342,9 +359,7 @@ function renderRaceDetails(target, race) {
 function renderTeamDetail(team) {
   document.title = `2026 Martin's F1 Fantasy League — ${team.displayName}`;
   document.getElementById('team-page-title').textContent = team.displayName;
-  document.getElementById('team-page-copy').textContent = `${team.principalName} · every scored component is stored and shown race by race.`;
-  document.getElementById('team-total-points').textContent = team.standings.totalPoints;
-  document.getElementById('team-completed-races').textContent = team.standings.completedRaces;
+  document.getElementById('team-page-copy').textContent = `${team.principalName} · Team Principal`;
   document.getElementById('team-home-circuit').textContent = team.seasonSelections.homeCircuit;
   document.getElementById('team-investment').textContent = `${team.seasonSelections.investmentBonusPerRace} pts/race`;
   document.getElementById('team-total-classified').textContent = team.seasonSelections.totalClassified ?? '—';

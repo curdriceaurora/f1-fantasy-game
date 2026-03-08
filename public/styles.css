@@ -1596,7 +1596,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: relative;
   height: 48px;
   /* space for tooltip + track + thumb */
-  margin: 16px 0;
+  margin: 32px 0 8px;
   cursor: pointer;
   touch-action: none;
   /* prevent scrolling when dragging */

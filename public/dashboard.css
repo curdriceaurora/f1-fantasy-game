@@ -54,6 +54,11 @@
   align-items: start;
 }
 
+.dashboard-rail {
+  display: grid;
+  gap: 18px;
+}
+
 .dashboard-grid-team {
   grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
 }
@@ -68,6 +73,13 @@
   gap: 18px;
   align-items: flex-start;
   margin-bottom: 18px;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
 }
 
 .standings-table-wrap {
@@ -85,6 +97,21 @@
   padding: 12px 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   text-align: left;
+}
+
+.standings-row-link {
+  cursor: pointer;
+}
+
+.standings-row-link:hover td,
+.standings-row-link:focus td,
+.standings-row-link:focus-visible td {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.standings-row-link:focus,
+.standings-row-link:focus-visible {
+  outline: none;
 }
 
 .standings-table th {
@@ -199,8 +226,8 @@
 
 .movers-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 .mover-panel {
@@ -598,6 +625,7 @@
 
 @media (max-width: 920px) {
   .dashboard-grid,
+  .dashboard-rail,
   .dashboard-grid-team,
   .selection-columns,
   .movers-grid {
