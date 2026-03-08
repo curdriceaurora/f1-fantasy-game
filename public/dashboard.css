@@ -446,8 +446,32 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.settings-inline-note {
+  color: var(--text-muted);
+  font-family: var(--font-racing);
+  font-size: 11px;
+  letter-spacing: 0.6px;
+}
+
 .settings-row-media {
   align-items: flex-start;
+}
+
+.settings-row-feature {
+  justify-content: flex-start;
+}
+
+.settings-row-feature > div {
+  width: 100%;
+}
+
+.settings-row-feature .selection-inline-media {
+  display: flex;
+  width: 100%;
+}
+
+.settings-row-feature .selection-finish-chip {
+  margin-left: auto;
 }
 
 .selection-inline-media {
@@ -497,6 +521,24 @@
   white-space: nowrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
+}
+
+.selection-chip-inline {
+  font-family: var(--font-racing);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.selection-chip-inline + .selection-chip-inline {
+  margin-left: 6px;
+}
+
+.selection-chip-inline-value {
+  color: var(--accent-gold);
+}
+
+.selection-chip-inline-muted {
+  color: var(--text-muted);
 }
 
 .team-back-link {

@@ -884,7 +884,7 @@ input[type="range"]::-webkit-slider-thumb {
 /* ── Sticky nav ── */
 .rules-nav {
   position: sticky;
-  top: 0;
+  top: 92px;
   background: var(--bg-dark);
   border-bottom: 1px solid #222;
   padding: 10px 0;
@@ -916,6 +916,10 @@ input[type="range"]::-webkit-slider-thumb {
   color: var(--text-primary);
   border-color: var(--f1-red);
   background: rgba(225, 6, 0, 0.08);
+}
+
+.rules-page section[id] {
+  scroll-margin-top: 148px;
 }
 
 /* ── Section titles ── */

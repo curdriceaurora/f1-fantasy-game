@@ -117,7 +117,8 @@ function renderBestFinishChip(driver, finish) {
     <div class="selection-inline-media">
       ${imageMarkup(driver.imageSlug, 'driver', driver.name)}
       <div class="selection-inline-copy">
-        <strong>${driver.name} <span class="entity-flag">${driverFlag(driver.id)}</span></strong>
+        <strong>Colapinto Best Finish</strong>
+        <span class="card-subtle">Finish Value</span>
       </div>
       <span class="selection-finish-chip">${formatBestFinish(finish)}</span>
     </div>
@@ -149,6 +150,33 @@ const DRIVER_FLAGS = {
   'fernando-alonso': '🇪🇸',
 };
 
+const CIRCUIT_FLAGS = {
+  Australia: '🇦🇺',
+  China: '🇨🇳',
+  Japan: '🇯🇵',
+  Bahrain: '🇧🇭',
+  'Saudi Arabia': '🇸🇦',
+  Miami: '🇺🇸',
+  Canada: '🇨🇦',
+  Monaco: '🇲🇨',
+  Spain: '🇪🇸',
+  Austria: '🇦🇹',
+  'Great Britain': '🇬🇧',
+  Belgium: '🇧🇪',
+  Hungary: '🇭🇺',
+  Netherlands: '🇳🇱',
+  Italy: '🇮🇹',
+  Madrid: '🇪🇸',
+  Azerbaijan: '🇦🇿',
+  Singapore: '🇸🇬',
+  'United States': '🇺🇸',
+  Mexico: '🇲🇽',
+  Brazil: '🇧🇷',
+  'Las Vegas': '🇺🇸',
+  Qatar: '🇶🇦',
+  'Abu Dhabi': '🇦🇪',
+};
+
 function imageMarkup(imageSlug, type, alt) {
   if (!imageSlug) return '';
   const src = type === 'driver' ? `/images/drivers/${imageSlug}.jpg` : `/images/teams/${imageSlug}.png`;
@@ -158,6 +186,10 @@ function imageMarkup(imageSlug, type, alt) {
 
 function driverFlag(driverId) {
   return DRIVER_FLAGS[driverId] || '';
+}
+
+function circuitFlag(name) {
+  return CIRCUIT_FLAGS[name] || '';
 }
 
 async function fetchJson(url) {
@@ -396,8 +428,8 @@ function renderTeamDetail(team) {
   document.getElementById('team-current-standing').textContent = team.standings.rank == null ? '—' : `#${team.standings.rank}`;
   document.getElementById('team-wow').textContent = formatWeekOverWeekDelta(team.standings.wowDelta);
   document.getElementById('team-wow').className = `meta-value ${weekOverWeekClass(team.standings.wowDelta)}`;
-  document.getElementById('team-home-circuit').textContent = team.seasonSelections.homeCircuit;
-  document.getElementById('team-investment').textContent = `${team.seasonSelections.investmentBonusPerRace} pts/race`;
+  document.getElementById('team-home-circuit').textContent = `${team.seasonSelections.homeCircuit}${circuitFlag(team.seasonSelections.homeCircuit) ? ` ${circuitFlag(team.seasonSelections.homeCircuit)}` : ''}`;
+  document.getElementById('team-investment').innerHTML = `<span class="selection-chip-inline selection-chip-inline-value">${team.seasonSelections.investmentBonusPerRace}</span>`;
   document.getElementById('team-total-classified').textContent = team.seasonSelections.totalClassified ?? '—';
   document.getElementById('team-driver-champion').innerHTML = renderSelectionMedia(team.seasonSelections.driverChampion, 'driver', team.seasonSelections.driverChampion?.teamName || '');
   document.getElementById('team-constructor-champion').innerHTML = renderSelectionMedia(team.seasonSelections.constructorChampion, 'team');
