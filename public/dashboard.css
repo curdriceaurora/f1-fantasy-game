@@ -418,10 +418,17 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  min-height: 94px;
 }
 
 .selection-tile h4 {
   margin-bottom: 3px;
+}
+
+.selection-tile > div {
+  display: grid;
+  align-content: center;
+  min-height: 40px;
 }
 
 .settings-list {
