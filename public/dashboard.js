@@ -87,6 +87,11 @@ function signedPoints(points) {
   return `${points > 0 ? '+' : ''}${points}`;
 }
 
+function summaryPoints(points) {
+  if (points == null) return '—';
+  return `${points} pts`;
+}
+
 function formatBestFinish(value) {
   if (value == null) return '—';
   return `P${value}`;
@@ -417,7 +422,7 @@ function renderTeamDetail(team) {
             <span class="card-subtle">${formatRaceDate(race.raceDate)}</span>
           </div>
           <div class="race-summary-points">
-            <div class="${pointsClass(race.totalPoints ?? 0)}">${signedPoints(race.totalPoints)} pts</div>
+            <div class="points-strong ${pointsClass(race.totalPoints ?? 0)}">${summaryPoints(race.totalPoints)}</div>
             <div class="race-toggle-hint">View breakdown</div>
           </div>
         </summary>

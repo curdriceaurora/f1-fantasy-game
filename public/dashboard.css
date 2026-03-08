@@ -500,6 +500,10 @@
   list-style: none;
   cursor: pointer;
   padding: 16px 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 14px;
 }
 
 .race-item-static-body {
@@ -524,15 +528,20 @@
 }
 
 .race-summary-points {
+  display: grid;
+  margin-left: auto;
+  justify-items: end;
+  align-content: center;
   text-align: right;
 }
 
 .race-toggle-hint {
-  color: var(--text-muted);
+  color: var(--accent-gold);
   font-size: 12px;
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: var(--font-racing);
 }
 
 .race-item[open] .race-toggle-hint {
