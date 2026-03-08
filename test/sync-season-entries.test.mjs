@@ -6,8 +6,8 @@ import { syntheticEntries } from '../scripts/generate-test-corpus.mjs';
 function workbookRows(order = ['Alice', 'Bob']) {
   const base = Array.from({ length: 4 }, () => []);
   const templates = {
-    Alice: [null, 'Alice Example', 'Apex Hunters', 'George Russell', 'Lando Norris', 'Pierre Gasly', 'Mercedes', 'Ferrari', 'McLaren', 'Australia', 380, 'George Russell', 'Mercedes', 4, 48],
-    Bob: [null, 'Bob Example', 'Brake Late', 'Max Verstappen', 'Oscar Piastri', 'Lewis Hamilton', 'Red Bull', 'Ferrari', 'Williams', 'Japan', 382, 'Max Verstappen', 'Ferrari', 5, 44],
+    Alice: [null, 'Alice Example', 'Apex Hunters', 'Pierre Gasly', 'Franco Colapinto', 'Lance Stroll', 'Alpine', 'Haas', 'Audi', 'Australia', 380, 'George Russell', 'Mercedes', 4, 31],
+    Bob: [null, 'Bob Example', 'Brake Late', 'Esteban Ocon', 'Oliver Bearman', 'Nico Hulkenberg', 'Williams', 'Aston Martin', 'Audi', 'Japan', 382, 'Max Verstappen', 'Ferrari', 5, 37],
   };
   return base.concat(order.map((key) => templates[key]));
 }
@@ -40,6 +40,32 @@ test('duplicate principal and display combinations are rejected', () => {
   assert.throws(
     () => buildEntries(rows, '/tmp/roster.xlsx'),
     /Duplicate stable team id/,
+  );
+});
+
+test('workbook total cost is validated against canonical roster pricing', () => {
+  const rows = workbookRows(['Alice']);
+  rows[4][14] = 48;
+
+  assert.throws(
+    () => buildEntries(rows, '/tmp/roster.xlsx'),
+    /Workbook Total Cost mismatch/,
+  );
+});
+
+test('over-budget rosters are rejected even if the workbook total is blank', () => {
+  const rows = workbookRows(['Alice']);
+  rows[4][3] = 'George Russell';
+  rows[4][4] = 'Lando Norris';
+  rows[4][5] = 'Max Verstappen';
+  rows[4][6] = 'Mercedes';
+  rows[4][7] = 'Ferrari';
+  rows[4][8] = 'McLaren';
+  rows[4][14] = null;
+
+  assert.throws(
+    () => buildEntries(rows, '/tmp/roster.xlsx'),
+    /over budget/,
   );
 });
 

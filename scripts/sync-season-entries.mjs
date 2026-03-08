@@ -7,6 +7,10 @@ import { CANONICAL_DRIVERS, CANONICAL_TEAMS, resolveCircuitId, resolveDriver, re
 import { configPath, ensureSeasonDirs, readJson, writeJson } from '../lib/season-store.js';
 import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 
+const DRIVER_COST_BY_ID = new Map(CANONICAL_DRIVERS.map((driver) => [driver.id, Number(driver.cost)]));
+const TEAM_COST_BY_ID = new Map(CANONICAL_TEAMS.map((team) => [team.id, Number(team.cost)]));
+const BUDGET_CAP = 50;
+
 function readWorkbook(filePath) {
   const workbook = xlsx.readFile(filePath);
   const worksheet = workbook.Sheets['Starting Roster'];
@@ -30,6 +34,33 @@ function assertResolvedTeam(value, fieldName, principalName) {
     throw new Error(`Unable to resolve ${fieldName} "${value}" for ${principalName}`);
   }
   return team.id;
+}
+
+function sumRosterCost(selectedIds, costLookup, entityLabel, principalName) {
+  return selectedIds.reduce((total, id) => {
+    const cost = costLookup.get(id);
+    if (!Number.isFinite(cost)) {
+      throw new Error(`Missing canonical ${entityLabel} cost for ${id} while importing ${principalName}`);
+    }
+    return total + cost;
+  }, 0);
+}
+
+function parseWorkbookTotalCost(value, principalName) {
+  if (value == null || value === '') {
+    return null;
+  }
+
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) {
+    throw new Error(`Invalid Total Cost "${value}" for ${principalName}`);
+  }
+  return numeric;
+}
+
+function computeRosterCost(selectedDriverIds, selectedConstructorIds, principalName) {
+  return sumRosterCost(selectedDriverIds, DRIVER_COST_BY_ID, 'driver', principalName)
+    + sumRosterCost(selectedConstructorIds, TEAM_COST_BY_ID, 'constructor', principalName);
 }
 
 function stableSlug(value) {
@@ -95,8 +126,17 @@ export function buildEntries(rows, workbookPath, existingEntries = []) {
       throw new Error(`Unable to resolve Home Circuit "${row[9]}" for ${principalName}`);
     }
 
-    const totalCost = Number(row[14] || 0);
-    const investmentBonusPerRace = Math.floor(Math.max(0, 50 - totalCost) / 2);
+    const computedTotalCost = computeRosterCost(selectedDriverIds, selectedConstructorIds, principalName);
+    const workbookTotalCost = parseWorkbookTotalCost(row[14], principalName);
+
+    if (workbookTotalCost != null && workbookTotalCost !== computedTotalCost) {
+      throw new Error(`Workbook Total Cost mismatch for ${principalName}: workbook shows ${workbookTotalCost} but selected roster costs ${computedTotalCost}`);
+    }
+    if (computedTotalCost > BUDGET_CAP) {
+      throw new Error(`Roster for ${principalName} is over budget: ${computedTotalCost} exceeds £${BUDGET_CAP}m`);
+    }
+
+    const investmentBonusPerRace = Math.floor(Math.max(0, BUDGET_CAP - computedTotalCost) / 2);
     const teamId = createStableTeamId(principalName, teamIdByPrincipal.get(normalizeIdentityKey(principalName)) || null);
     if (seenTeamIds.has(teamId)) {
       throw new Error(`Duplicate stable team id "${teamId}" generated for ${principalName}. Principal/display names must be unique.`);
@@ -120,6 +160,7 @@ export function buildEntries(rows, workbookPath, existingEntries = []) {
       source: {
         workbook: workbookPath,
         rowNumber: index + 1,
+        computedTotalCost,
       },
     });
   }
