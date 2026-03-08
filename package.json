@@ -9,7 +9,8 @@
     "test": "node --test",
     "test:generate-corpus": "node scripts/generate-test-corpus.mjs",
     "sync:entries": "node scripts/sync-season-entries.mjs",
-    "score:race": "node scripts/score-race.mjs"
+    "score:race": "node scripts/score-race.mjs",
+    "switch-mode": "node scripts/switch-mode.mjs"
   },
   "dependencies": {
     "pdf-parse": "^1.1.1",

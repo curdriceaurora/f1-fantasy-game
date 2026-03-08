@@ -4,6 +4,97 @@ Welcome to the official prediction and entry builder for Martin's F1 Fantasy Lea
 
 This is a fun, interactive web app designed to let our league members craft their fantasy entries, manage their £50m budget, and submit their predictions for the 2026 season.
 
+## Site Mode Configuration
+
+The application supports two modes to handle both preseason and in-season workflows:
+
+### **Preseason Mode** (`SITE_MODE=preseason`)
+Entry builder flow is active:
+- Home page (`/`) shows the interactive team selector with the tank game
+- Calculator page is accessible for budget planning
+- Dashboard is redirected to the home page
+
+### **Season Mode** (`SITE_MODE=season`) - Default
+Dashboard flow is active:
+- Home page (`/`) shows the league standings dashboard
+- Preseason pages (selector, calculator) redirect to dashboard
+- Team detail pages and race scoring are accessible
+
+### Switching Between Modes
+
+**Quick Switch (Recommended):**
+```bash
+# Switch to preseason mode
+npm run switch-mode -- preseason
+
+# Switch to season mode
+npm run switch-mode -- season
+```
+
+The script will update `vercel.json` with the appropriate redirects and provide next steps for deployment.
+
+**Local Development:**
+```bash
+# Season mode (default)
+npm run dev
+
+# Preseason mode
+SITE_MODE=preseason npm run dev
+```
+
+**Vercel Deployment:**
+
+After running the switch-mode script:
+```bash
+# Commit the change
+git add vercel.json
+git commit -m "Switch to [preseason|season] mode"
+git push
+```
+
+**Alternative: Environment Variable (Vercel Dashboard)**
+- Set `SITE_MODE=preseason` or `SITE_MODE=season` in your Vercel project settings
+- Note: The local dev server respects this env var, but vercel.json redirects take precedence in production
+
+**Understanding the Switch:**
+
+| Mode | Root (`/`) | `/index.html` | `/calculator.html` | `/dashboard.html` |
+|------|------------|---------------|-------------------|-------------------|
+| **Preseason** | → index.html | ✅ Entry builder | ✅ Calculator | → index.html |
+| **Season** | → dashboard.html | → dashboard.html | → dashboard.html | ✅ Standings |
+
+This approach ensures both experiences remain in the repository without needing to recover old branches.
+
+### Recommended Release Tagging
+
+To maintain clean recovery points for each season transition:
+
+```bash
+# Before switching to preseason mode (end of season)
+git tag -a season-2026-end -m "End of 2026 season"
+git push origin season-2026-end
+
+# After switching to preseason mode
+npm run switch-mode -- preseason
+git add vercel.json
+git commit -m "Switch to preseason mode for 2027 season"
+git tag -a preseason-2027-start -m "Start of 2027 preseason entries"
+git push origin preseason-2027-start
+
+# Before switching to season mode (preseason ends)
+git tag -a preseason-2027-end -m "End of 2027 preseason entries"
+git push origin preseason-2027-end
+
+# After switching to season mode
+npm run switch-mode -- season
+git add vercel.json
+git commit -m "Switch to season mode for 2027 season"
+git tag -a season-2027-start -m "Start of 2027 season scoring"
+git push origin season-2027-start
+```
+
+These tags provide clear rollback points if you need to reference or restore a previous season's configuration.
+
 ## Features
 - **Interactive Team Builder**: Pick 3 drivers and 3 teams while staying under the £50m cap.
 - **Season Predictions**: Lock in your picks for Home Circuit, Driver Champion, Constructor Champion, Total Classified, and Colapinto's Best Position.
