@@ -1,6 +1,6 @@
 // Test site configuration module
-import { test } from 'node:test';
-import assert from 'node:assert';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 import { getSiteMode, isPreseasonMode, isSeasonMode, getDefaultLandingPage, SITE_MODES } from '../lib/site-config.js';
 
 test('getSiteMode returns season by default', () => {

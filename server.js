@@ -6,7 +6,7 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { getSiteMode, getDefaultLandingPage, isPreseasonMode } from './lib/site-config.js';
+import { getSiteMode } from './lib/site-config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -87,8 +87,8 @@ const server = createServer((req, res) => {
     return;
   }
 
-  // In preseason mode, redirect dashboard to entry builder
-  if (isPreseason && url.pathname === '/dashboard.html') {
+  // In preseason mode, redirect dashboard and team pages to entry builder
+  if (isPreseason && (url.pathname === '/dashboard.html' || url.pathname === '/team.html')) {
     res.writeHead(302, { Location: '/index.html' });
     res.end();
     return;
