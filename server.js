@@ -6,6 +6,7 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { getSiteMode, SITE_MODES } from './lib/site-config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -68,9 +69,27 @@ function resolveApiRoute(pathname) {
 
 const server = createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
+  const mode = getSiteMode();
+  const isPreseason = mode === SITE_MODES.PRESEASON;
 
-  if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/calculator.html') {
+  // Redirect root and mode-specific entry points based on site mode
+  if (url.pathname === '/') {
+    const destination = isPreseason ? '/index.html' : '/dashboard.html';
+    res.writeHead(302, { Location: destination });
+    res.end();
+    return;
+  }
+
+  // In season mode, redirect preseason pages to dashboard
+  if (!isPreseason && (url.pathname === '/index.html' || url.pathname === '/calculator.html')) {
     res.writeHead(302, { Location: '/dashboard.html' });
+    res.end();
+    return;
+  }
+
+  // In preseason mode, redirect dashboard and team pages to entry builder
+  if (isPreseason && (url.pathname === '/dashboard.html' || url.pathname === '/team.html')) {
+    res.writeHead(302, { Location: '/index.html' });
     res.end();
     return;
   }
@@ -133,6 +152,9 @@ const server = createServer((req, res) => {
 
 const PORT = 3456;
 server.listen(PORT, () => {
+  const mode = getSiteMode();
+  const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
   console.log(`\n  🏎️  F1 Fantasy Team Selector`);
-  console.log(`  Local: http://localhost:${PORT}\n`);
+  console.log(`  Local: http://localhost:${PORT}`);
+  console.log(`  Mode:  ${mode} (${modeName})\n`);
 });

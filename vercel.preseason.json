@@ -2,17 +2,17 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/dashboard.html",
+      "destination": "/index.html",
       "permanent": false
     },
     {
-      "source": "/index.html",
-      "destination": "/dashboard.html",
+      "source": "/dashboard.html",
+      "destination": "/index.html",
       "permanent": false
     },
     {
-      "source": "/calculator.html",
-      "destination": "/dashboard.html",
+      "source": "/team.html",
+      "destination": "/index.html",
       "permanent": false
     }
   ],
@@ -27,14 +27,8 @@
     {
       "source": "/api/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-cache"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "no-cache" }
       ]
     }
   ]
