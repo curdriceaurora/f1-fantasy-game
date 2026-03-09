@@ -18,6 +18,7 @@ if (!mode || !['preseason', 'season'].includes(mode)) {
 
 const vercelJsonPath = join(__dirname, '..', 'vercel.json');
 const vercelPreseasonPath = join(__dirname, '..', 'vercel.preseason.json');
+const vercelSeasonPath = join(__dirname, '..', 'vercel.season.json');
 
 if (mode === 'preseason') {
   // Copy preseason config to vercel.json
@@ -31,58 +32,34 @@ if (mode === 'preseason') {
 
   console.log('✅ Switched to preseason mode');
   console.log('   - Root (/) now redirects to /index.html (entry builder)');
-  console.log('   - Dashboard redirects to /index.html');
+  console.log('   - Dashboard and team pages redirect to /index.html');
   console.log('   - Calculator and entry builder are accessible');
   console.log('\n📝 Next steps:');
-  console.log('   1. Test locally: SITE_MODE=preseason npm run dev');
-  console.log('   2. Commit: git add vercel.json && git commit -m "Switch to preseason mode"');
-  console.log('   3. Deploy: git push');
+  console.log('   1. Set SITE_MODE environment variable in Vercel:');
+  console.log('      vercel env add SITE_MODE');
+  console.log('      (enter "preseason" when prompted)');
+  console.log('   2. Test locally: SITE_MODE=preseason npm run dev');
+  console.log('   3. Commit: git add vercel.json && git commit -m "Switch to preseason mode"');
+  console.log('   4. Deploy: git push');
 } else {
-  // Use default season config
-  const seasonConfig = {
-    redirects: [
-      {
-        source: '/',
-        destination: '/dashboard.html',
-        permanent: false,
-      },
-      {
-        source: '/index.html',
-        destination: '/dashboard.html',
-        permanent: false,
-      },
-      {
-        source: '/calculator.html',
-        destination: '/dashboard.html',
-        permanent: false,
-      },
-    ],
-    functions: {
-      'api/**/*.js': {
-        memory: 256,
-        maxDuration: 10,
-        includeFiles: '{data/**,season/**}',
-      },
-    },
-    headers: [
-      {
-        source: '/api/(.*)',
-        headers: [
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-          { key: 'Cache-Control', value: 'no-cache' },
-        ],
-      },
-    ],
-  };
+  // Copy season config to vercel.json
+  if (!existsSync(vercelSeasonPath)) {
+    console.error('Error: vercel.season.json not found');
+    process.exit(1);
+  }
 
-  writeFileSync(vercelJsonPath, JSON.stringify(seasonConfig, null, 2) + '\n');
+  const seasonConfig = readFileSync(vercelSeasonPath, 'utf-8');
+  writeFileSync(vercelJsonPath, seasonConfig);
 
   console.log('✅ Switched to season mode');
   console.log('   - Root (/) now redirects to /dashboard.html (standings)');
   console.log('   - Entry builder pages redirect to dashboard');
   console.log('   - Team details and race scoring are accessible');
   console.log('\n📝 Next steps:');
-  console.log('   1. Test locally: npm run dev');
-  console.log('   2. Commit: git add vercel.json && git commit -m "Switch to season mode"');
-  console.log('   3. Deploy: git push');
+  console.log('   1. Set SITE_MODE environment variable in Vercel:');
+  console.log('      vercel env add SITE_MODE');
+  console.log('      (enter "season" when prompted, or leave unset for default)');
+  console.log('   2. Test locally: npm run dev');
+  console.log('   3. Commit: git add vercel.json && git commit -m "Switch to season mode"');
+  console.log('   4. Deploy: git push');
 }

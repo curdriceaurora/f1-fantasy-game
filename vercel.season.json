@@ -1,0 +1,41 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/dashboard.html",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "destination": "/dashboard.html",
+      "permanent": false
+    },
+    {
+      "source": "/calculator.html",
+      "destination": "/dashboard.html",
+      "permanent": false
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "memory": 256,
+      "maxDuration": 10,
+      "includeFiles": "{data/**,season/**}"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}
