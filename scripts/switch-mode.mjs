@@ -35,10 +35,10 @@ if (mode === 'preseason') {
 
   const preseasonTemplate = JSON.parse(readFileSync(vercelPreseasonPath, 'utf-8'));
 
-  // Merge: use template redirects, preserve other current config
+  // Merge: only replace redirects, preserve all other current config
   const mergedConfig = {
     ...currentConfig,
-    ...preseasonTemplate,
+    redirects: preseasonTemplate.redirects,
   };
 
   writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
@@ -63,10 +63,10 @@ if (mode === 'preseason') {
 
   const seasonTemplate = JSON.parse(readFileSync(vercelSeasonPath, 'utf-8'));
 
-  // Merge: use template redirects, preserve other current config
+  // Merge: only replace redirects, preserve all other current config
   const mergedConfig = {
     ...currentConfig,
-    ...seasonTemplate,
+    redirects: seasonTemplate.redirects,
   };
 
   writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');

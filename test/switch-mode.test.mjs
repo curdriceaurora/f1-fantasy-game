@@ -13,7 +13,7 @@ const vercelJsonPath = join(projectRoot, 'vercel.json');
 const vercelPreseasonPath = join(projectRoot, 'vercel.preseason.json');
 const vercelSeasonPath = join(projectRoot, 'vercel.season.json');
 
-test('switch-mode script switches to preseason mode', () => {
+test('switch-mode script switches to preseason mode', { concurrency: false }, () => {
   // Use unique backup filename to avoid race conditions
   const vercelBackupPath = join(projectRoot, `vercel.json.backup.${process.pid}.${Date.now()}`);
   // Backup current vercel.json
@@ -46,7 +46,7 @@ test('switch-mode script switches to preseason mode', () => {
   }
 });
 
-test('switch-mode script switches to season mode', () => {
+test('switch-mode script switches to season mode', { concurrency: false }, () => {
   // Use unique backup filename to avoid race conditions
   const vercelBackupPath = join(projectRoot, `vercel.json.backup.${process.pid}.${Date.now()}`);
   // Backup current vercel.json
@@ -79,7 +79,7 @@ test('switch-mode script switches to season mode', () => {
   }
 });
 
-test('switch-mode script preserves non-redirect vercel.json config', () => {
+test('switch-mode script preserves non-redirect vercel.json config', { concurrency: false }, () => {
   // Use unique backup filename to avoid race conditions
   const vercelBackupPath = join(projectRoot, `vercel.json.backup.${process.pid}.${Date.now()}`);
   // Backup current vercel.json
