@@ -6,7 +6,7 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { getSiteMode } from './lib/site-config.js';
+import { getSiteMode, SITE_MODES } from './lib/site-config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -70,7 +70,7 @@ function resolveApiRoute(pathname) {
 const server = createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const mode = getSiteMode();
-  const isPreseason = mode === 'preseason';
+  const isPreseason = mode === SITE_MODES.PRESEASON;
 
   // Redirect root and mode-specific entry points based on site mode
   if (url.pathname === '/') {
@@ -153,7 +153,7 @@ const server = createServer((req, res) => {
 const PORT = 3456;
 server.listen(PORT, () => {
   const mode = getSiteMode();
-  const modeName = mode === 'preseason' ? 'Preseason Entry Builder' : 'Season Dashboard';
+  const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
   console.log(`\n  🏎️  F1 Fantasy Team Selector`);
   console.log(`  Local: http://localhost:${PORT}`);
   console.log(`  Mode:  ${mode} (${modeName})\n`);
