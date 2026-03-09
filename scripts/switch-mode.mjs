@@ -20,15 +20,28 @@ const vercelJsonPath = join(__dirname, '..', 'vercel.json');
 const vercelPreseasonPath = join(__dirname, '..', 'vercel.preseason.json');
 const vercelSeasonPath = join(__dirname, '..', 'vercel.season.json');
 
+// Read current vercel.json to preserve non-redirect config
+let currentConfig = {};
+if (existsSync(vercelJsonPath)) {
+  currentConfig = JSON.parse(readFileSync(vercelJsonPath, 'utf-8'));
+}
+
 if (mode === 'preseason') {
-  // Copy preseason config to vercel.json
+  // Read preseason template
   if (!existsSync(vercelPreseasonPath)) {
     console.error('Error: vercel.preseason.json not found');
     process.exit(1);
   }
 
-  const preseasonConfig = readFileSync(vercelPreseasonPath, 'utf-8');
-  writeFileSync(vercelJsonPath, preseasonConfig);
+  const preseasonTemplate = JSON.parse(readFileSync(vercelPreseasonPath, 'utf-8'));
+
+  // Merge: use template redirects, preserve other current config
+  const mergedConfig = {
+    ...currentConfig,
+    ...preseasonTemplate,
+  };
+
+  writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
 
   console.log('✅ Switched to preseason mode');
   console.log('   - Root (/) now redirects to /index.html (entry builder)');
@@ -42,14 +55,21 @@ if (mode === 'preseason') {
   console.log('   3. Commit: git add vercel.json && git commit -m "Switch to preseason mode"');
   console.log('   4. Deploy: git push');
 } else {
-  // Copy season config to vercel.json
+  // Read season template
   if (!existsSync(vercelSeasonPath)) {
     console.error('Error: vercel.season.json not found');
     process.exit(1);
   }
 
-  const seasonConfig = readFileSync(vercelSeasonPath, 'utf-8');
-  writeFileSync(vercelJsonPath, seasonConfig);
+  const seasonTemplate = JSON.parse(readFileSync(vercelSeasonPath, 'utf-8'));
+
+  // Merge: use template redirects, preserve other current config
+  const mergedConfig = {
+    ...currentConfig,
+    ...seasonTemplate,
+  };
+
+  writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
 
   console.log('✅ Switched to season mode');
   console.log('   - Root (/) now redirects to /dashboard.html (standings)');

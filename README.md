@@ -31,7 +31,7 @@ npm run switch-mode -- preseason
 npm run switch-mode -- season
 ```
 
-The script will update `vercel.json` with the appropriate redirects and provide next steps for deployment.
+The script will merge the mode-specific redirects into `vercel.json` while preserving other configuration keys, and provide next steps for deployment.
 
 **Local Development:**
 ```bash
