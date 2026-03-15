@@ -10,6 +10,14 @@ const calendarRace = {
   isSprintWeekend: false,
 };
 
+const sprintCalendarRace = {
+  id: 'china',
+  name: 'Chinese Grand Prix',
+  date: '2026-03-15',
+  round: 2,
+  isSprintWeekend: true,
+};
+
 function baseFetchedRace() {
   return {
     meeting: { meeting_key: 1234 },
@@ -68,5 +76,26 @@ test('normalizeRaceWeekend fails when official grid starts are unavailable', () 
   assert.throws(
     () => normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
     /official race grid starts/,
+  );
+});
+
+test('normalizeRaceWeekend fails for sprint weekends when sprint results are missing', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.sessions.sprint = { session_key: 33 };
+  fetchedRace.sprintResultRows = [];
+
+  assert.throws(
+    () => normalizeRaceWeekend(sprintCalendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
+    /sprint results are missing/,
+  );
+});
+
+test('normalizeRaceWeekend fails when lap feed cannot determine fastest lap', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.laps = [];
+
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
+    /cannot determine fastest lap/,
   );
 });

@@ -49,6 +49,18 @@ function stubFetchedRace() {
   };
 }
 
+function stubSprintFetchedRaceWithoutSprintResults() {
+  const baseRace = stubFetchedRace();
+  return {
+    ...baseRace,
+    sessions: {
+      ...baseRace.sessions,
+      sprint: { session_key: 33 },
+    },
+    sprintResultRows: [],
+  };
+}
+
 async function withTempSeason(callback) {
   const root = mkdtempSync(join(tmpdir(), 'f1-score-race-'));
   const seasonDir = join(root, 'season');
@@ -186,5 +198,25 @@ test('scoreRace recognizes existing normalized artifacts when evaluating workflo
     });
 
     assert.equal(readJson(scoredRacePath('australia')).raceId, 'australia');
+  });
+});
+
+test('scoreRace fails closed on sprint weekends when sprint results are unavailable', async () => {
+  await withTempSeason(async (seasonDir) => {
+    writeJson(join(seasonDir, 'config', '2026-calendar.json'), [
+      { id: 'china', round: 2, name: 'Chinese Grand Prix', meetingName: 'China', date: '2026-03-15', isSprintWeekend: true },
+    ]);
+    writeJson(join(seasonDir, 'config', 'fine-documents.json'), {
+      china: { reviewed: true, documents: [], reviewedAt: '2026-03-16T12:00:00Z' },
+    });
+
+    await assert.rejects(
+      () => scoreRace('china', {
+        now: new Date('2026-03-16T12:01:00Z'),
+        fetchRaceWeekend: async () => stubSprintFetchedRaceWithoutSprintResults(),
+        fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
+      }),
+      /sprint results are missing/,
+    );
   });
 });

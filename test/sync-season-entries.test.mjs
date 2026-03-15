@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildEntries, createStableTeamId } from '../scripts/sync-season-entries.mjs';
+import { buildEntries, buildEntriesWithMap, createStableTeamId } from '../scripts/sync-season-entries.mjs';
 import { syntheticEntries } from '../scripts/generate-test-corpus.mjs';
 
 function workbookRows(order = ['Alice', 'Bob']) {
@@ -24,13 +24,42 @@ test('stable team ids do not depend on worksheet row order', () => {
 });
 
 test('existing team ids survive display-name edits across workbook reimports', () => {
-  const previousEntries = buildEntries(workbookRows(['Alice', 'Bob']), '/tmp/roster.xlsx');
+  const previousImport = buildEntriesWithMap(workbookRows(['Alice', 'Bob']), '/tmp/roster.xlsx');
+  const previousEntries = previousImport.entries;
   const renamedRows = workbookRows(['Alice', 'Bob']);
   renamedRows[4][2] = 'Apex Hunters Reloaded';
 
-  const nextEntries = buildEntries(renamedRows, '/tmp/roster.xlsx', previousEntries);
+  const nextImport = buildEntriesWithMap(renamedRows, '/tmp/roster.xlsx', previousEntries, previousImport.teamIdMap);
+  const nextEntries = nextImport.entries;
   const previousAlice = previousEntries.find((entry) => entry.principalName === 'Alice Example');
   const nextAlice = nextEntries.find((entry) => entry.principalName === 'Alice Example');
+
+  assert.equal(nextAlice.teamId, previousAlice.teamId);
+});
+
+test('existing team ids survive principal-name edits when map aliases are available', () => {
+  const previousImport = buildEntriesWithMap(workbookRows(['Alice', 'Bob']), '/tmp/roster.xlsx');
+  const previousEntries = previousImport.entries;
+  const renamedRows = workbookRows(['Alice', 'Bob']);
+  renamedRows[4][1] = 'Alice Example-Smith';
+
+  const nextImport = buildEntriesWithMap(renamedRows, '/tmp/roster.xlsx', previousEntries, previousImport.teamIdMap);
+  const previousAlice = previousEntries.find((entry) => entry.displayName === 'Apex Hunters');
+  const nextAlice = nextImport.entries.find((entry) => entry.displayName === 'Apex Hunters');
+
+  assert.equal(nextAlice.teamId, previousAlice.teamId);
+});
+
+test('existing team ids survive principal and display edits when row placement remains stable', () => {
+  const previousImport = buildEntriesWithMap(workbookRows(['Alice', 'Bob']), '/tmp/roster.xlsx');
+  const previousEntries = previousImport.entries;
+  const renamedRows = workbookRows(['Alice', 'Bob']);
+  renamedRows[4][1] = 'Alice Example-Smith';
+  renamedRows[4][2] = 'Apex Hunters Reloaded';
+
+  const nextImport = buildEntriesWithMap(renamedRows, '/tmp/roster.xlsx', previousEntries, previousImport.teamIdMap);
+  const previousAlice = previousEntries.find((entry) => entry.source.rowNumber === 5);
+  const nextAlice = nextImport.entries.find((entry) => entry.source.rowNumber === 5);
 
   assert.equal(nextAlice.teamId, previousAlice.teamId);
 });
