@@ -78,15 +78,138 @@ function normalizeIdentityKey(value) {
     .trim();
 }
 
-function existingTeamIdLookup(existingEntries = []) {
+function existingTeamIdLookup(existingEntries = [], selector = (entry) => entry.principalName) {
   const lookup = new Map();
   for (const entry of existingEntries) {
-    const identityKey = normalizeIdentityKey(entry.principalName);
+    const identityKey = normalizeIdentityKey(selector(entry));
     if (identityKey && !lookup.has(identityKey) && entry.teamId) {
       lookup.set(identityKey, entry.teamId);
     }
   }
   return lookup;
+}
+
+function ensureArray(values) {
+  if (!Array.isArray(values)) return [];
+  return values
+    .map((value) => normalizeIdentityKey(value))
+    .filter(Boolean);
+}
+
+export function normalizeTeamIdMap(rawMap = null) {
+  if (!rawMap || typeof rawMap !== 'object' || Array.isArray(rawMap)) {
+    return { entries: [] };
+  }
+
+  const rawEntries = Array.isArray(rawMap.entries) ? rawMap.entries : [];
+  const seenTeamIds = new Set();
+  const entries = [];
+
+  for (const rawEntry of rawEntries) {
+    if (!rawEntry || typeof rawEntry !== 'object' || !rawEntry.teamId) continue;
+    if (seenTeamIds.has(rawEntry.teamId)) continue;
+    seenTeamIds.add(rawEntry.teamId);
+    entries.push({
+      teamId: rawEntry.teamId,
+      principalKeys: ensureArray(rawEntry.principalKeys),
+      displayKeys: ensureArray(rawEntry.displayKeys),
+      rowNumbers: Array.isArray(rawEntry.rowNumbers)
+        ? rawEntry.rowNumbers.filter((value) => Number.isInteger(value) && value > 0)
+        : [],
+    });
+  }
+
+  return { entries };
+}
+
+function buildTeamIdMapIndex(teamIdMap = { entries: [] }) {
+  const byTeamId = new Map();
+  const byPrincipalKey = new Map();
+  const byDisplayKey = new Map();
+  const byRowNumber = new Map();
+
+  for (const entry of teamIdMap.entries) {
+    byTeamId.set(entry.teamId, entry);
+    for (const principalKey of entry.principalKeys) {
+      if (!byPrincipalKey.has(principalKey)) {
+        byPrincipalKey.set(principalKey, entry.teamId);
+      }
+    }
+    for (const displayKey of entry.displayKeys) {
+      if (!byDisplayKey.has(displayKey)) {
+        byDisplayKey.set(displayKey, entry.teamId);
+      }
+    }
+    for (const rowNumber of entry.rowNumbers) {
+      if (!byRowNumber.has(rowNumber)) {
+        byRowNumber.set(rowNumber, entry.teamId);
+      }
+    }
+  }
+
+  return { byTeamId, byPrincipalKey, byDisplayKey, byRowNumber };
+}
+
+function upsertTeamIdMapEntry(index, teamId, principalKey, displayKey, rowNumber) {
+  let entry = index.byTeamId.get(teamId);
+  if (!entry) {
+    entry = {
+      teamId,
+      principalKeys: [],
+      displayKeys: [],
+      rowNumbers: [],
+    };
+    index.byTeamId.set(teamId, entry);
+  }
+
+  if (principalKey && !entry.principalKeys.includes(principalKey)) {
+    entry.principalKeys.push(principalKey);
+    if (!index.byPrincipalKey.has(principalKey)) {
+      index.byPrincipalKey.set(principalKey, teamId);
+    }
+  }
+  if (displayKey && !entry.displayKeys.includes(displayKey)) {
+    entry.displayKeys.push(displayKey);
+    if (!index.byDisplayKey.has(displayKey)) {
+      index.byDisplayKey.set(displayKey, teamId);
+    }
+  }
+  if (Number.isInteger(rowNumber) && rowNumber > 0 && !entry.rowNumbers.includes(rowNumber)) {
+    entry.rowNumbers.push(rowNumber);
+    if (!index.byRowNumber.has(rowNumber)) {
+      index.byRowNumber.set(rowNumber, teamId);
+    }
+  }
+}
+
+function resolveTeamIdForRow({ principalKey, displayKey, rowNumber }, teamIdMapIndex, fallbackLookups, seenTeamIds) {
+  const candidates = [
+    teamIdMapIndex.byRowNumber.get(rowNumber),
+    teamIdMapIndex.byPrincipalKey.get(principalKey),
+    teamIdMapIndex.byDisplayKey.get(displayKey),
+    fallbackLookups.byPrincipal.get(principalKey),
+    fallbackLookups.byDisplay.get(displayKey),
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    if (!seenTeamIds.has(candidate)) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
+function serializeTeamIdMap(teamIdMapIndex) {
+  const entries = [...teamIdMapIndex.byTeamId.values()]
+    .map((entry) => ({
+      teamId: entry.teamId,
+      principalKeys: [...entry.principalKeys].sort(),
+      displayKeys: [...entry.displayKeys].sort(),
+      rowNumbers: [...entry.rowNumbers].sort((left, right) => left - right),
+    }))
+    .sort((left, right) => left.teamId.localeCompare(right.teamId));
+
+  return { entries };
 }
 
 export function createStableTeamId(principalName, existingTeamId = null) {
@@ -101,16 +224,35 @@ export function createStableTeamId(principalName, existingTeamId = null) {
   return `${base}-${fingerprint}`;
 }
 
-export function buildEntries(rows, workbookPath, existingEntries = []) {
+export function buildEntriesWithMap(rows, workbookPath, existingEntries = [], previousTeamIdMap = null) {
   const entries = [];
   const seenTeamIds = new Set();
-  const teamIdByPrincipal = existingTeamIdLookup(existingEntries);
+  const fallbackLookups = {
+    byPrincipal: existingTeamIdLookup(existingEntries, (entry) => entry.principalName),
+    byDisplay: existingTeamIdLookup(existingEntries, (entry) => entry.displayName),
+  };
+  const teamIdMapIndex = buildTeamIdMapIndex(normalizeTeamIdMap(previousTeamIdMap));
+
+  for (const existingEntry of existingEntries) {
+    upsertTeamIdMapEntry(
+      teamIdMapIndex,
+      existingEntry.teamId,
+      normalizeIdentityKey(existingEntry.principalName),
+      normalizeIdentityKey(existingEntry.displayName),
+      Number.isInteger(existingEntry?.source?.rowNumber) ? existingEntry.source.rowNumber : null,
+    );
+  }
+
   for (let index = 4; index < rows.length; index += 1) {
     const row = rows[index];
     if (!row || !row[1] || !row[2]) continue;
 
     const principalName = String(row[1]).trim();
     const displayName = String(row[2]).trim();
+    const principalKey = normalizeIdentityKey(principalName);
+    const displayKey = normalizeIdentityKey(displayName);
+    const rowNumber = index + 1;
+
     const selectedDriverIds = [
       assertResolvedDriver(row[3], 'Driver 1', principalName),
       assertResolvedDriver(row[4], 'Driver 2', principalName),
@@ -137,11 +279,18 @@ export function buildEntries(rows, workbookPath, existingEntries = []) {
     }
 
     const investmentBonusPerRace = Math.floor(Math.max(0, BUDGET_CAP - computedTotalCost) / 2);
-    const teamId = createStableTeamId(principalName, teamIdByPrincipal.get(normalizeIdentityKey(principalName)) || null);
+    const existingTeamId = resolveTeamIdForRow(
+      { principalKey, displayKey, rowNumber },
+      teamIdMapIndex,
+      fallbackLookups,
+      seenTeamIds,
+    );
+    const teamId = createStableTeamId(principalName, existingTeamId || null);
     if (seenTeamIds.has(teamId)) {
       throw new Error(`Duplicate stable team id "${teamId}" generated for ${principalName}. Principal/display names must be unique.`);
     }
     seenTeamIds.add(teamId);
+    upsertTeamIdMapEntry(teamIdMapIndex, teamId, principalKey, displayKey, rowNumber);
 
     entries.push({
       teamId,
@@ -159,7 +308,7 @@ export function buildEntries(rows, workbookPath, existingEntries = []) {
       },
       source: {
         workbook: workbookPath,
-        rowNumber: index + 1,
+        rowNumber,
         computedTotalCost,
       },
     });
@@ -169,7 +318,14 @@ export function buildEntries(rows, workbookPath, existingEntries = []) {
     throw new Error('No team entries found in the workbook');
   }
 
-  return entries;
+  return {
+    entries,
+    teamIdMap: serializeTeamIdMap(teamIdMapIndex),
+  };
+}
+
+export function buildEntries(rows, workbookPath, existingEntries = [], previousTeamIdMap = null) {
+  return buildEntriesWithMap(rows, workbookPath, existingEntries, previousTeamIdMap).entries;
 }
 
 export function buildCatalog() {
@@ -202,8 +358,10 @@ export function syncSeasonEntries(workbookPath) {
   const resolvedWorkbookPath = resolveWorkbookPath(workbookPath);
   const rows = readWorkbook(resolvedWorkbookPath);
   const existingEntries = readJson(configPath('entries.json'), []);
-  const entries = buildEntries(rows, resolvedWorkbookPath, existingEntries);
+  const previousTeamIdMap = readJson(configPath('team-id-map.json'), { entries: [] });
+  const { entries, teamIdMap } = buildEntriesWithMap(rows, resolvedWorkbookPath, existingEntries, previousTeamIdMap);
   writeJson(configPath('entries.json'), entries);
+  writeJson(configPath('team-id-map.json'), teamIdMap);
   writeJson(configPath('catalog.json'), buildCatalog());
   const scoreboard = rebuildScoreboard();
   return { workbookPath: resolvedWorkbookPath, entries, scoreboard };
