@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { createHash } from 'crypto';
-import xlsx from 'xlsx';
+import ExcelJS from 'exceljs';
 import { pathToFileURL } from 'url';
 import { CANONICAL_DRIVERS, CANONICAL_TEAMS, resolveCircuitId, resolveDriver, resolveTeam } from '../lib/canonical.js';
 import { configPath, ensureSeasonDirs, readJson, writeJson } from '../lib/season-store.js';
@@ -11,13 +11,60 @@ const DRIVER_COST_BY_ID = new Map(CANONICAL_DRIVERS.map((driver) => [driver.id, 
 const TEAM_COST_BY_ID = new Map(CANONICAL_TEAMS.map((team) => [team.id, Number(team.cost)]));
 const BUDGET_CAP = 50;
 
-function readWorkbook(filePath) {
-  const workbook = xlsx.readFile(filePath);
-  const worksheet = workbook.Sheets['Starting Roster'];
+function normalizeCellValue(value) {
+  if (value == null) return null;
+
+  if (typeof value !== 'object') {
+    return value;
+  }
+
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+
+  if (typeof value.formula === 'string') {
+    return normalizeCellValue(value.result);
+  }
+
+  if (Array.isArray(value.richText)) {
+    return value.richText.map((segment) => segment.text || '').join('');
+  }
+
+  if (typeof value.text === 'string') {
+    return value.text;
+  }
+
+  if (typeof value.hyperlink === 'string' && typeof value.text === 'string') {
+    return value.text;
+  }
+
+  return null;
+}
+
+async function readWorkbook(filePath) {
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(filePath);
+  const worksheet = workbook.getWorksheet('Starting Roster');
   if (!worksheet) {
     throw new Error('Expected a "Starting Roster" worksheet in the roster workbook');
   }
-  return xlsx.utils.sheet_to_json(worksheet, { header: 1, defval: null });
+
+  const rows = [];
+  for (let rowNumber = 1; rowNumber <= worksheet.rowCount; rowNumber += 1) {
+    const row = worksheet.getRow(rowNumber);
+    const maxColumns = Math.max(row.cellCount, row.actualCellCount);
+    if (maxColumns === 0) {
+      rows.push([]);
+      continue;
+    }
+
+    const normalizedRow = [];
+    for (let columnNumber = 1; columnNumber <= maxColumns; columnNumber += 1) {
+      normalizedRow.push(normalizeCellValue(row.getCell(columnNumber).value));
+    }
+    rows.push(normalizedRow);
+  }
+  return rows;
 }
 
 function assertResolvedDriver(value, fieldName, principalName) {
@@ -353,10 +400,10 @@ function resolveWorkbookPath(workbookPath) {
   return resolvedPath;
 }
 
-export function syncSeasonEntries(workbookPath) {
+export async function syncSeasonEntries(workbookPath) {
   ensureSeasonDirs();
   const resolvedWorkbookPath = resolveWorkbookPath(workbookPath);
-  const rows = readWorkbook(resolvedWorkbookPath);
+  const rows = await readWorkbook(resolvedWorkbookPath);
   const existingEntries = readJson(configPath('entries.json'), []);
   const previousTeamIdMap = readJson(configPath('team-id-map.json'), { entries: [] });
   const { entries, teamIdMap } = buildEntriesWithMap(rows, resolvedWorkbookPath, existingEntries, previousTeamIdMap);
@@ -367,12 +414,15 @@ export function syncSeasonEntries(workbookPath) {
   return { workbookPath: resolvedWorkbookPath, entries, scoreboard };
 }
 
-function main() {
-  const result = syncSeasonEntries();
+async function main() {
+  const result = await syncSeasonEntries();
   console.log(`Imported ${result.entries.length} team entries from ${result.workbookPath}`);
   console.log(`Standings regenerated for ${result.scoreboard.standings.length} teams.`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main();
+  main().catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
 }

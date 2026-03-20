@@ -6,6 +6,10 @@ on:
     - cron: '0 14 * * 4'  # Every Thursday 14:00 UTC (catch late steward decisions)
   workflow_dispatch:       # Allow manual trigger from GitHub UI
 
+concurrency:
+  group: auto-score-season-data
+  cancel-in-progress: false
+
 jobs:
   auto-score:
     runs-on: ubuntu-latest
@@ -14,13 +18,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run auto-scorer
         run: node scripts/auto-score.mjs
@@ -30,5 +37,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add season/
-          git diff --cached --quiet && echo "No changes to commit." || \
-            git commit -m "chore: auto-score race with FIA fine documents [skip ci]" && git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: auto-score race with FIA fine documents [skip ci]"
+
+          branch="${GITHUB_REF_NAME:-main}"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$branch" && git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push auto-score commit after 3 attempts."
+          exit 1
