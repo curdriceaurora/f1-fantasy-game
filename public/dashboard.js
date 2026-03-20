@@ -1,14 +1,3 @@
-function formatGeneratedAt(value) {
-  if (!value) return 'Waiting for Monday scoring';
-  return `Updated ${new Date(value).toLocaleString(undefined, {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-  })}`;
-}
-
 function formatWeekOverWeekDelta(value) {
   if (value == null) return '—';
   if (value === 0) return 'No change';

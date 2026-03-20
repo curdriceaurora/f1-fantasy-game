@@ -191,11 +191,30 @@ The scoring system now has an offline historical corpus under `test/fixtures/his
 npm run test
 ```
 
+Linting and local quality gate:
+
+```bash
+npm run lint
+npm run quality:check
+```
+
+The repository also installs a local Git pre-commit hook (`npm run lint`) via `simple-git-hooks` during `npm install`.
+
 To refresh the fixture corpus from the historical source:
 
 ```bash
 npm run test:generate-corpus
 ```
+
+## Season Year Configuration
+
+Calendar selection is now dynamic:
+
+- If `F1_FANTASY_SEASON_YEAR` is set (for example `2027`), the app loads `season/config/2027-calendar.json`.
+- If not set, it prefers the current UTC year calendar when present.
+- If the current year file is missing, it falls back to the latest available `*-calendar.json`.
+
+This removes the yearly hardcoded calendar switch in runtime code and makes season rollover safer.
 
 ## Rules Overview
 - You have a strict **£50m budget**.

@@ -170,6 +170,7 @@ test('scoreRace reruns replace outputs cleanly instead of duplicating race total
     const secondTeam = readJson(teamScorePath('test-team'));
 
     assert.deepEqual(firstStanding.standings, secondStanding.standings);
+    assert.equal(firstTeam.races.length, 1);
     assert.equal(secondTeam.races.length, 1);
     assert.equal(secondTeam.totalPoints, secondTeam.races[0].runningTotal);
     assert.equal(readJson(scoredRacePath('australia')).teams.length, 1);

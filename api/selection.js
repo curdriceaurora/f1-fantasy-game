@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { DRIVERS as SHARED_DRIVERS, TEAMS as SHARED_TEAMS, PREDICTIONS as SHARED_PREDICTIONS } from '../public/constants.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,53 +16,19 @@ const DATA = JSON.parse(readFileSync(dataPath, 'utf-8'));
 
 const PREDICTION_BONUS = 24; // Constant added to all entries
 
-// Driver/team lookup tables — indices match the Python generator
-const DRIVERS = [
-  { name: "Charles Leclerc",    team: "Ferrari",       cost: 11 },
-  { name: "George Russell",     team: "Mercedes",      cost: 12 },
-  { name: "Oscar Piastri",      team: "McLaren",       cost: 16 },
-  { name: "Kimi Antonelli",     team: "Mercedes",      cost: 10 },
-  { name: "Max Verstappen",     team: "Red Bull",      cost: 16 },
-  { name: "Lando Norris",       team: "McLaren",       cost: 16 },
-  { name: "Lewis Hamilton",     team: "Ferrari",       cost:  9 },
-  { name: "Pierre Gasly",       team: "Alpine",        cost:  5 },
-  { name: "Arvid Lindblad",     team: "Racing Bulls",  cost:  5 },
-  { name: "Franco Colapinto",   team: "Alpine",        cost:  5 },
-  { name: "Esteban Ocon",       team: "Haas",          cost:  6 },
-  { name: "Oliver Bearman",     team: "Haas",          cost:  6 },
-  { name: "Isack Hadjar",       team: "Racing Bulls",  cost: 10 },
-  { name: "Liam Lawson",        team: "Red Bull",      cost:  6 },
-  { name: "Lance Stroll",       team: "Aston Martin",  cost:  5 },
-  { name: "Nico Hulkenberg",    team: "Audi",          cost:  6 },
-  { name: "Gabriel Bortoleto",  team: "Audi",          cost:  6 },
-  { name: "Valtteri Bottas",    team: "Cadillac",      cost:  6 },
-  { name: "Carlos Sainz",       team: "Williams",      cost:  7 },
-  { name: "Alex Albon",         team: "Williams",      cost:  6 },
-  { name: "Sergio Perez",       team: "Cadillac",      cost:  6 },
-  { name: "Fernando Alonso",    team: "Aston Martin",  cost:  7 },
-];
+// Keep backend and frontend roster definitions in one place so costs/order never drift.
+const DRIVERS = SHARED_DRIVERS.map((driver) => ({
+  name: driver.fullName,
+  team: driver.team,
+  cost: driver.cost,
+}));
 
-const TEAMS = [
-  { name: "Mercedes",     cost: 13 },
-  { name: "Ferrari",      cost: 10 },
-  { name: "McLaren",      cost: 15 },
-  { name: "Red Bull",     cost: 13 },
-  { name: "Alpine",       cost:  5 },
-  { name: "Haas",         cost:  6 },
-  { name: "Racing Bulls", cost:  6 },
-  { name: "Audi",         cost:  5 },
-  { name: "Cadillac",     cost:  5 },
-  { name: "Williams",     cost:  8 },
-  { name: "Aston Martin", cost:  6 },
-];
+const TEAMS = SHARED_TEAMS.map((team) => ({
+  name: team.name,
+  cost: team.cost,
+}));
 
-const PREDICTIONS = {
-  homeCircuit: "Britain",
-  driverChampion: "George Russell",
-  constructorChampion: "Mercedes",
-  totalClassified: 440,
-  bestPosColapinto: "9th",
-};
+const PREDICTIONS = { ...SHARED_PREDICTIONS };
 
 // ── Pre-compute investment pools at module load (cached for warm starts) ──
 // investment = unspent £m = 50 - totalCost, range 0–20

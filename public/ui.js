@@ -3,30 +3,7 @@
 // ═══════════════════════════════════════════
 
 import { TankGame } from './game.js';
-import { DEFAULTS, generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS, DRIVERS, TEAMS, PREDICTIONS as DEFAULT_PREDICTIONS } from './constants.js';
-
-// ── Clipboard helper: modern API with execCommand fallback ──
-function copyText(text) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(text);
-  }
-  // Fallback for HTTP / restricted contexts
-  return new Promise((resolve, reject) => {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try {
-      document.execCommand('copy') ? resolve() : reject();
-    } catch (e) {
-      reject(e);
-    } finally {
-      document.body.removeChild(ta);
-    }
-  });
-}
+import { generateTeamName, TEAM_LOGO_SLUGS, TEAM_COLORS, DRIVERS, TEAMS } from './constants.js';
 
 // ── DOM refs ──
 const screens = {
@@ -137,23 +114,6 @@ async function fetchSelection(accuracy) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`API error: ${res.status}`);
   return res.json();
-}
-
-
-
-// ── Dropdown panel toggle helpers ──
-function togglePanel(panel, trigger) {
-  const wasHidden = panel.classList.contains('hidden');
-  document.querySelectorAll('.cs-panel').forEach(p => p.classList.add('hidden'));
-  document.querySelectorAll('.cs-trigger').forEach(t => t.classList.remove('open'));
-  if (wasHidden) {
-    panel.classList.remove('hidden');
-    trigger.classList.add('open');
-  }
-}
-function closePanel(panel, trigger) {
-  panel.classList.add('hidden');
-  trigger.classList.remove('open');
 }
 
 // ── Show results ──
