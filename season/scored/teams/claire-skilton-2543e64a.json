@@ -2,9 +2,9 @@
   "teamId": "claire-skilton-2543e64a",
   "principalName": "Claire Skilton",
   "displayName": "Princess Fiona's Fantasy Formula",
-  "totalPoints": 98,
-  "completedRaces": 1,
-  "latestRacePoints": 98,
+  "totalPoints": 234,
+  "completedRaces": 2,
+  "latestRacePoints": 136,
   "races": [
     {
       "raceId": "australia",
@@ -196,6 +196,209 @@
         }
       ],
       "runningTotal": 98
+    },
+    {
+      "raceId": "china",
+      "raceName": "China",
+      "raceDate": "2026-03-15",
+      "baseSubtotal": 136,
+      "driverSubtotal": 65,
+      "constructorSubtotal": 71,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 136,
+      "drivers": [
+        {
+          "driverId": "lewis-hamilton",
+          "name": "Lewis Hamilton",
+          "teamName": "Ferrari",
+          "imageSlug": "hamilton",
+          "rank": "Top Ten",
+          "qualifyingPosition": 3,
+          "sprintPosition": 3,
+          "gridStart": 3,
+          "racePosition": 3,
+          "classified": true,
+          "totalPoints": 24,
+          "components": [
+            {
+              "label": "Qualifying P3",
+              "points": 3
+            },
+            {
+              "label": "Sprint P3",
+              "points": 6
+            },
+            {
+              "label": "Race finish P3",
+              "points": 15
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 17,
+          "sprintPosition": 12,
+          "gridStart": 17,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 14,
+          "components": [
+            {
+              "label": "Qualifying P17",
+              "points": -4
+            },
+            {
+              "label": "Sprint P12",
+              "points": 0
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 16
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 10,
+          "sprintPosition": 8,
+          "gridStart": 10,
+          "racePosition": 5,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P10",
+              "points": 6
+            },
+            {
+              "label": "Sprint P8",
+              "points": 1
+            },
+            {
+              "label": "Race finish P5",
+              "points": 10
+            },
+            {
+              "label": "Position change",
+              "points": 10
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 33,
+          "weightingBreakdown": {
+            "leadDriverId": "kimi-antonelli",
+            "leadDriverName": "Kimi Antonelli",
+            "leadDriverPoints": 37,
+            "secondDriverId": "george-russell",
+            "secondDriverName": "George Russell",
+            "secondDriverPoints": 26,
+            "formula": "ceil((3×37 + 2×26) ÷ 5)",
+            "weightedRawPoints": 32.6,
+            "weightedPoints": 33
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 33
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 24,
+          "weightingBreakdown": {
+            "leadDriverId": "lewis-hamilton",
+            "leadDriverName": "Lewis Hamilton",
+            "leadDriverPoints": 24,
+            "secondDriverId": "charles-leclerc",
+            "secondDriverName": "Charles Leclerc",
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×24 + 2×22) ÷ 5)",
+            "weightedRawPoints": 23.2,
+            "weightedPoints": 24
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 24
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 14,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": 16,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×16 + 2×11) ÷ 5)",
+            "weightedRawPoints": 14,
+            "weightedPoints": 14
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 14
+            }
+          ]
+        }
+      ],
+      "runningTotal": 234
     }
   ]
 }
