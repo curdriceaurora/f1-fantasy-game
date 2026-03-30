@@ -2,9 +2,9 @@
   "teamId": "claire-skilton-2543e64a",
   "principalName": "Claire Skilton",
   "displayName": "Princess Fiona's Fantasy Formula",
-  "totalPoints": 236,
-  "completedRaces": 2,
-  "latestRacePoints": 138,
+  "totalPoints": 291,
+  "completedRaces": 3,
+  "latestRacePoints": 55,
   "races": [
     {
       "raceId": "australia",
@@ -399,6 +399,197 @@
         }
       ],
       "runningTotal": 236
+    },
+    {
+      "raceId": "japan",
+      "raceName": "Japan",
+      "raceDate": "2026-03-29",
+      "baseSubtotal": 55,
+      "driverSubtotal": 6,
+      "constructorSubtotal": 49,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 55,
+      "drivers": [
+        {
+          "driverId": "lewis-hamilton",
+          "name": "Lewis Hamilton",
+          "teamName": "Ferrari",
+          "imageSlug": "hamilton",
+          "rank": "Top Ten",
+          "qualifyingPosition": 6,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 6,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying P6",
+              "points": 0
+            },
+            {
+              "label": "Race finish P6",
+              "points": 8
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 16,
+          "sprintPosition": null,
+          "gridStart": 16,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying P16",
+              "points": -4
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 18,
+          "sprintPosition": null,
+          "gridStart": 18,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": 0,
+          "components": [
+            {
+              "label": "Qualifying P18",
+              "points": 0
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 23,
+          "weightingBreakdown": {
+            "leadDriverId": "kimi-antonelli",
+            "leadDriverName": "Kimi Antonelli",
+            "leadDriverPoints": 33,
+            "secondDriverId": "george-russell",
+            "secondDriverName": "George Russell",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×33 + 2×8) ÷ 5)",
+            "weightedRawPoints": 23,
+            "weightedPoints": 23
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 23
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 16,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 20,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×20 + 2×8) ÷ 5)",
+            "weightedRawPoints": 15.2,
+            "weightedPoints": 16
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 16
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": 15,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×15 + 2×1) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        }
+      ],
+      "runningTotal": 291
     }
   ]
 }

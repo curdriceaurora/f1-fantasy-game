@@ -2,9 +2,9 @@
   "teamId": "laurence-eggleston-9ea0df43",
   "principalName": "Laurence Eggleston",
   "displayName": "Stroll In The Park",
-  "totalPoints": 208,
-  "completedRaces": 2,
-  "latestRacePoints": 104,
+  "totalPoints": 287,
+  "completedRaces": 3,
+  "latestRacePoints": 79,
   "races": [
     {
       "raceId": "australia",
@@ -399,6 +399,201 @@
         }
       ],
       "runningTotal": 208
+    },
+    {
+      "raceId": "japan",
+      "raceName": "Japan",
+      "raceDate": "2026-03-29",
+      "baseSubtotal": 79,
+      "driverSubtotal": 54,
+      "constructorSubtotal": 25,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 79,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 4,
+          "sprintPosition": null,
+          "gridStart": 4,
+          "racePosition": 3,
+          "classified": true,
+          "totalPoints": 20,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 3
+            },
+            {
+              "label": "Race finish P3",
+              "points": 15
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        },
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 1,
+          "sprintPosition": null,
+          "gridStart": 1,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 33,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 6
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 10,
+          "sprintPosition": null,
+          "gridStart": 10,
+          "racePosition": 14,
+          "classified": true,
+          "totalPoints": 1,
+          "components": [
+            {
+              "label": "Qualifying P10",
+              "points": 9
+            },
+            {
+              "label": "Race finish P14",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -8
+            }
+          ],
+          "raceContext": {
+            "raceId": "japan",
+            "raceName": "Japan"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 23,
+          "weightingBreakdown": {
+            "leadDriverId": "kimi-antonelli",
+            "leadDriverName": "Kimi Antonelli",
+            "leadDriverPoints": 33,
+            "secondDriverId": "george-russell",
+            "secondDriverName": "George Russell",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×33 + 2×8) ÷ 5)",
+            "weightedRawPoints": 23,
+            "weightedPoints": 23
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 23
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 6,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×6 + 2×-8) ÷ 5)",
+            "weightedRawPoints": 0.4,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 4,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×4 + 2×-5) ÷ 5)",
+            "weightedRawPoints": 0.4,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        }
+      ],
+      "runningTotal": 287
     }
   ]
 }
