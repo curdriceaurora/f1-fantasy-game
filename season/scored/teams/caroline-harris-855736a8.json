@@ -2,9 +2,9 @@
   "teamId": "caroline-harris-855736a8",
   "principalName": "Caroline Harris",
   "displayName": "Harris Racing",
-  "totalPoints": 161,
-  "completedRaces": 4,
-  "latestRacePoints": 54,
+  "totalPoints": 167,
+  "completedRaces": 5,
+  "latestRacePoints": 6,
   "races": [
     {
       "raceId": "australia",
@@ -797,6 +797,201 @@
         }
       ],
       "runningTotal": 161
+    },
+    {
+      "raceId": "monaco",
+      "raceName": "Monaco",
+      "raceDate": "2026-06-07",
+      "baseSubtotal": 6,
+      "driverSubtotal": -9,
+      "constructorSubtotal": 15,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 6,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 2,
+          "sprintPosition": null,
+          "gridStart": 2,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": 0,
+          "components": [
+            {
+              "label": "Qualifying P2",
+              "points": 0
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        },
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 6,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": -19,
+          "components": [
+            {
+              "label": "Qualifying P6",
+              "points": -2
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -12
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        },
+        {
+          "driverId": "alex-albon",
+          "name": "Alex Albon",
+          "teamName": "Williams",
+          "imageSlug": "albon",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 11,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying P11",
+              "points": 0
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 19,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×19 + 2×-5) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "gabriel-bortoleto",
+            "leadDriverName": "Gabriel Bortoleto",
+            "leadDriverPoints": 8,
+            "secondDriverId": "nico-hulkenberg",
+            "secondDriverName": "Nico Hulkenberg",
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 4,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×4 + 2×2) ÷ 5)",
+            "weightedRawPoints": 3.2,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 167
     }
   ]
 }

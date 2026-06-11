@@ -2,9 +2,9 @@
   "teamId": "sanath-kuppa-f128be53",
   "principalName": "Sanath Kuppa",
   "displayName": "Must Be The Water",
-  "totalPoints": 175,
-  "completedRaces": 4,
-  "latestRacePoints": 48,
+  "totalPoints": 179,
+  "completedRaces": 5,
+  "latestRacePoints": 4,
   "races": [
     {
       "raceId": "australia",
@@ -789,6 +789,201 @@
         }
       ],
       "runningTotal": 175
+    },
+    {
+      "raceId": "monaco",
+      "raceName": "Monaco",
+      "raceDate": "2026-06-07",
+      "baseSubtotal": 4,
+      "driverSubtotal": -13,
+      "constructorSubtotal": 17,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 4,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 6,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": -19,
+          "components": [
+            {
+              "label": "Qualifying P6",
+              "points": -2
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -12
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 18,
+          "sprintPosition": null,
+          "gridStart": 18,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying P18",
+              "points": -2
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 20,
+          "sprintPosition": null,
+          "gridStart": 20,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P20",
+              "points": 2
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "monaco",
+            "raceName": "Monaco"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 14,
+          "weightingBreakdown": {
+            "leadDriverId": "isack-hadjar",
+            "leadDriverName": "Isack Hadjar",
+            "leadDriverPoints": 22,
+            "secondDriverId": "max-verstappen",
+            "secondDriverName": "Max Verstappen",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×22 + 2×0) ÷ 5)",
+            "weightedRawPoints": 13.2,
+            "weightedPoints": 14
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 14
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": 2,
+          "weightingBreakdown": {
+            "leadDriverId": "alex-albon",
+            "leadDriverName": "Alex Albon",
+            "leadDriverPoints": 10,
+            "secondDriverId": "carlos-sainz",
+            "secondDriverName": "Carlos Sainz",
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×10 + 2×-10) ÷ 5)",
+            "weightedRawPoints": 2,
+            "weightedPoints": 2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "gabriel-bortoleto",
+            "leadDriverName": "Gabriel Bortoleto",
+            "leadDriverPoints": 8,
+            "secondDriverId": "nico-hulkenberg",
+            "secondDriverName": "Nico Hulkenberg",
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        }
+      ],
+      "runningTotal": 179
     }
   ]
 }
