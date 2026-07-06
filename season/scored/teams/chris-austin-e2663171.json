@@ -2,9 +2,9 @@
   "teamId": "chris-austin-e2663171",
   "principalName": "Chris Austin",
   "displayName": "Austin Meastro",
-  "totalPoints": 704,
-  "completedRaces": 6,
-  "latestRacePoints": 86,
+  "totalPoints": 767,
+  "completedRaces": 7,
+  "latestRacePoints": 63,
   "races": [
     {
       "raceId": "australia",
@@ -1199,6 +1199,217 @@
         }
       ],
       "runningTotal": 704
+    },
+    {
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 63,
+      "driverSubtotal": 27,
+      "constructorSubtotal": 36,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 63,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 4,
+          "sprintPosition": 4,
+          "gridStart": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 1,
+          "sprintPosition": 1,
+          "gridStart": 1,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": -17,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 6
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -28
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 12,
+          "sprintPosition": 11,
+          "gridStart": 15,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 17,
+          "components": [
+            {
+              "label": "Qualifying P12",
+              "points": 6
+            },
+            {
+              "label": "Sprint P11",
+              "points": 0
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 10
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 27,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": -17,
+            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 6,
+          "weightingBreakdown": {
+            "leadDriverId": "gabriel-bortoleto",
+            "leadDriverName": "Gabriel Bortoleto",
+            "leadDriverPoints": 10,
+            "secondDriverId": "nico-hulkenberg",
+            "secondDriverName": "Nico Hulkenberg",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×10 + 2×0) ÷ 5)",
+            "weightedRawPoints": 6,
+            "weightedPoints": 6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 6
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 20,
+          "weightingBreakdown": {
+            "leadDriverId": "franco-colapinto",
+            "leadDriverName": "Franco Colapinto",
+            "leadDriverPoints": 22,
+            "secondDriverId": "pierre-gasly",
+            "secondDriverName": "Pierre Gasly",
+            "secondDriverPoints": 17,
+            "formula": "ceil((3×22 + 2×17) ÷ 5)",
+            "weightedRawPoints": 20,
+            "weightedPoints": 20
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 20
+            }
+          ]
+        }
+      ],
+      "runningTotal": 767
     }
   ]
 }

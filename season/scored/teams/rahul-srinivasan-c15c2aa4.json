@@ -2,9 +2,9 @@
   "teamId": "rahul-srinivasan-c15c2aa4",
   "principalName": "Rahul Srinivasan",
   "displayName": "Ask Colapinto's MOM Before Overtaking",
-  "totalPoints": 389,
-  "completedRaces": 6,
-  "latestRacePoints": 36,
+  "totalPoints": 663,
+  "completedRaces": 7,
+  "latestRacePoints": 274,
   "races": [
     {
       "raceId": "australia",
@@ -1183,6 +1183,209 @@
         }
       ],
       "runningTotal": 389
+    },
+    {
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 137,
+      "driverSubtotal": 83,
+      "constructorSubtotal": 54,
+      "homeCircuitApplied": true,
+      "homeCircuitBonusPoints": 137,
+      "investmentBonusPoints": 0,
+      "totalPoints": 274,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 4,
+          "sprintPosition": 4,
+          "gridStart": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 2,
+          "sprintPosition": 5,
+          "gridStart": 2,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 34,
+          "components": [
+            {
+              "label": "Qualifying P2",
+              "points": 3
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "franco-colapinto",
+          "name": "Franco Colapinto",
+          "teamName": "Alpine",
+          "imageSlug": "colapinto",
+          "rank": "No Hoper",
+          "qualifyingPosition": 19,
+          "sprintPosition": 12,
+          "gridStart": 19,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 22,
+          "components": [
+            {
+              "label": "Qualifying P19",
+              "points": 0
+            },
+            {
+              "label": "Sprint P12",
+              "points": 0
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 20
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 27,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 34,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×34 + 2×15) ÷ 5)",
+            "weightedRawPoints": 26.4,
+            "weightedPoints": 27
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 27
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 8,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 20,
+          "weightingBreakdown": {
+            "leadDriverId": "franco-colapinto",
+            "leadDriverName": "Franco Colapinto",
+            "leadDriverPoints": 22,
+            "secondDriverId": "pierre-gasly",
+            "secondDriverName": "Pierre Gasly",
+            "secondDriverPoints": 17,
+            "formula": "ceil((3×22 + 2×17) ÷ 5)",
+            "weightedRawPoints": 20,
+            "weightedPoints": 20
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 20
+            }
+          ]
+        }
+      ],
+      "runningTotal": 663
     }
   ]
 }
