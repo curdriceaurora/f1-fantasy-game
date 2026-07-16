@@ -3,18 +3,8 @@
   "raceName": "Great Britain",
   "date": "2026-07-05",
   "round": 11,
-  "generatedAt": "2026-07-06T15:07:45.700Z",
-  "documents": [
-    {
-      "url": "https://www.fia.com/system/files/decision-document/2026_british_grand_prix_-_infringement_-_car_41_-_unsafe_release.pdf",
-      "fineEuros": 5000,
-      "finePoints": -3,
-      "appliedTo": {
-        "type": "driver",
-        "id": "arvid-lindblad"
-      }
-    }
-  ],
+  "generatedAt": "2026-07-16T14:54:56.119Z",
+  "documents": [],
   "teams": [
     {
       "teamId": "rahul-srinivasan-c15c2aa4",
@@ -855,13 +845,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 81,
-      "driverSubtotal": 58,
+      "baseSubtotal": 84,
+      "driverSubtotal": 61,
       "constructorSubtotal": 23,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 81,
+      "homeCircuitBonusPoints": 84,
       "investmentBonusPoints": 0,
-      "totalPoints": 162,
+      "totalPoints": 168,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -948,7 +938,7 @@
           "gridStart": 9,
           "racePosition": 7,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 19,
           "components": [
             {
               "label": "Qualifying P9",
@@ -965,10 +955,6 @@
             {
               "label": "Position change",
               "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
             }
           ],
           "raceContext": {
@@ -1060,7 +1046,213 @@
           ]
         }
       ],
-      "runningTotal": 625
+      "runningTotal": 631
+    },
+    {
+      "teamId": "yavvan-tadepalli-9118d7c6",
+      "principalName": "Yavvan Tadepalli",
+      "displayName": "Prancing Horse Plan B",
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 134,
+      "driverSubtotal": 80,
+      "constructorSubtotal": 54,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 134,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 4,
+          "sprintPosition": 4,
+          "gridStart": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 2,
+          "sprintPosition": 5,
+          "gridStart": 2,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 34,
+          "components": [
+            {
+              "label": "Qualifying P2",
+              "points": 3
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": 10,
+          "gridStart": 9,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 27,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 34,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×34 + 2×15) ÷ 5)",
+            "weightedRawPoints": 26.4,
+            "weightedPoints": 27
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 27
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 8,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 20,
+          "weightingBreakdown": {
+            "leadDriverId": "franco-colapinto",
+            "leadDriverName": "Franco Colapinto",
+            "leadDriverPoints": 22,
+            "secondDriverId": "pierre-gasly",
+            "secondDriverName": "Pierre Gasly",
+            "secondDriverPoints": 17,
+            "formula": "ceil((3×22 + 2×17) ÷ 5)",
+            "weightedRawPoints": 20,
+            "weightedPoints": 20
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 20
+            }
+          ]
+        }
+      ],
+      "runningTotal": 552
     },
     {
       "teamId": "claire-skilton-2543e64a",
@@ -1479,216 +1671,6 @@
       "runningTotal": 659
     },
     {
-      "teamId": "yavvan-tadepalli-9118d7c6",
-      "principalName": "Yavvan Tadepalli",
-      "displayName": "Prancing Horse Plan B",
-      "raceId": "great-britain",
-      "raceName": "Great Britain",
-      "raceDate": "2026-07-05",
-      "baseSubtotal": 131,
-      "driverSubtotal": 77,
-      "constructorSubtotal": 54,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 131,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 4,
-          "sprintPosition": 4,
-          "gridStart": 4,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 27,
-          "components": [
-            {
-              "label": "Qualifying P4",
-              "points": 0
-            },
-            {
-              "label": "Sprint P4",
-              "points": 5
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 2,
-          "sprintPosition": 5,
-          "gridStart": 2,
-          "racePosition": 1,
-          "classified": true,
-          "totalPoints": 34,
-          "components": [
-            {
-              "label": "Qualifying P2",
-              "points": 3
-            },
-            {
-              "label": "Sprint P5",
-              "points": 4
-            },
-            {
-              "label": "Race finish P1",
-              "points": 25
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": 10,
-          "gridStart": 9,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 16,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 27,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 34,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 15,
-            "formula": "ceil((3×34 + 2×15) ÷ 5)",
-            "weightedRawPoints": 26.4,
-            "weightedPoints": 27
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 27
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 8,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×8 + 2×5) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "alpine",
-          "name": "Alpine",
-          "imageSlug": "alpine",
-          "driverIds": [
-            "pierre-gasly",
-            "franco-colapinto"
-          ],
-          "totalPoints": 20,
-          "weightingBreakdown": {
-            "leadDriverId": "franco-colapinto",
-            "leadDriverName": "Franco Colapinto",
-            "leadDriverPoints": 22,
-            "secondDriverId": "pierre-gasly",
-            "secondDriverName": "Pierre Gasly",
-            "secondDriverPoints": 17,
-            "formula": "ceil((3×22 + 2×17) ÷ 5)",
-            "weightedRawPoints": 20,
-            "weightedPoints": 20
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 20
-            }
-          ]
-        }
-      ],
-      "runningTotal": 549
-    },
-    {
       "teamId": "harish-malapati-a5ef0eba",
       "principalName": "Harish Malapati",
       "displayName": "No Sandbagging",
@@ -1901,13 +1883,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 105,
-      "driverSubtotal": 60,
+      "baseSubtotal": 108,
+      "driverSubtotal": 63,
       "constructorSubtotal": 45,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 105,
+      "totalPoints": 108,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1955,7 +1937,7 @@
           "gridStart": 9,
           "racePosition": 7,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 19,
           "components": [
             {
               "label": "Qualifying P9",
@@ -1972,10 +1954,6 @@
             {
               "label": "Position change",
               "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
             }
           ],
           "raceContext": {
@@ -2102,7 +2080,7 @@
           ]
         }
       ],
-      "runningTotal": 537
+      "runningTotal": 540
     },
     {
       "teamId": "louise-wallis-1d10f129",
@@ -2315,6 +2293,434 @@
       "runningTotal": 528
     },
     {
+      "teamId": "jason-smith-1a886fe7",
+      "principalName": "Jason Smith",
+      "displayName": "NMC Racing",
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 51,
+      "driverSubtotal": 7,
+      "constructorSubtotal": 44,
+      "homeCircuitApplied": true,
+      "homeCircuitBonusPoints": 51,
+      "investmentBonusPoints": 0,
+      "totalPoints": 102,
+      "drivers": [
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 1,
+          "sprintPosition": 1,
+          "gridStart": 1,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": -17,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 6
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -28
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 14,
+          "sprintPosition": 14,
+          "gridStart": 13,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 5,
+          "components": [
+            {
+              "label": "Qualifying P14",
+              "points": 3
+            },
+            {
+              "label": "Sprint P14",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": 10,
+          "gridStart": 9,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 27,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": -17,
+            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 27,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 34,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×34 + 2×15) ÷ 5)",
+            "weightedRawPoints": 26.4,
+            "weightedPoints": 27
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 27
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 8,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        }
+      ],
+      "runningTotal": 687
+    },
+    {
+      "teamId": "laurence-eggleston-9ea0df43",
+      "principalName": "Laurence Eggleston",
+      "displayName": "Stroll In The Park",
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 50,
+      "driverSubtotal": 36,
+      "constructorSubtotal": 14,
+      "homeCircuitApplied": true,
+      "homeCircuitBonusPoints": 50,
+      "investmentBonusPoints": 0,
+      "totalPoints": 100,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 2,
+          "sprintPosition": 5,
+          "gridStart": 2,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 34,
+          "components": [
+            {
+              "label": "Qualifying P2",
+              "points": 3
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 1,
+          "sprintPosition": 1,
+          "gridStart": 1,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": -17,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 6
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -28
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": 10,
+          "gridStart": 9,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 27,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": -17,
+            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": -2,
+          "weightingBreakdown": {
+            "leadDriverId": "isack-hadjar",
+            "leadDriverName": "Isack Hadjar",
+            "leadDriverPoints": 13,
+            "secondDriverId": "max-verstappen",
+            "secondDriverName": "Max Verstappen",
+            "secondDriverPoints": -25,
+            "formula": "ceil((3×13 + 2×-25) ÷ 5)",
+            "weightedRawPoints": -2.2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 6,
+          "weightingBreakdown": {
+            "leadDriverId": "gabriel-bortoleto",
+            "leadDriverName": "Gabriel Bortoleto",
+            "leadDriverPoints": 10,
+            "secondDriverId": "nico-hulkenberg",
+            "secondDriverName": "Nico Hulkenberg",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×10 + 2×0) ÷ 5)",
+            "weightedRawPoints": 6,
+            "weightedPoints": 6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 6
+            }
+          ]
+        }
+      ],
+      "runningTotal": 641
+    },
+    {
       "teamId": "chris-bayley-f3b36d58",
       "principalName": "Chris Bayley",
       "displayName": "Aero We Go",
@@ -2521,224 +2927,6 @@
       "runningTotal": 428
     },
     {
-      "teamId": "jason-smith-1a886fe7",
-      "principalName": "Jason Smith",
-      "displayName": "NMC Racing",
-      "raceId": "great-britain",
-      "raceName": "Great Britain",
-      "raceDate": "2026-07-05",
-      "baseSubtotal": 48,
-      "driverSubtotal": 4,
-      "constructorSubtotal": 44,
-      "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 48,
-      "investmentBonusPoints": 0,
-      "totalPoints": 96,
-      "drivers": [
-        {
-          "driverId": "kimi-antonelli",
-          "name": "Kimi Antonelli",
-          "teamName": "Mercedes",
-          "imageSlug": "antonelli",
-          "rank": "Top Ten",
-          "qualifyingPosition": 1,
-          "sprintPosition": 1,
-          "gridStart": 1,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": -17,
-          "components": [
-            {
-              "label": "Qualifying P1",
-              "points": 6
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -28
-            },
-            {
-              "label": "Fastest lap",
-              "points": 2
-            },
-            {
-              "label": "Race time penalty",
-              "points": -5
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "oliver-bearman",
-          "name": "Oliver Bearman",
-          "teamName": "Haas",
-          "imageSlug": "bearman",
-          "rank": "Outsider",
-          "qualifyingPosition": 14,
-          "sprintPosition": 14,
-          "gridStart": 13,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 5,
-          "components": [
-            {
-              "label": "Qualifying P14",
-              "points": 3
-            },
-            {
-              "label": "Sprint P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": 10,
-          "gridStart": 9,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 16,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 10,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 27,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": -17,
-            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
-            "weightedRawPoints": 9.4,
-            "weightedPoints": 10
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 10
-            }
-          ]
-        },
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 27,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 34,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 15,
-            "formula": "ceil((3×34 + 2×15) ÷ 5)",
-            "weightedRawPoints": 26.4,
-            "weightedPoints": 27
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 27
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 8,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×8 + 2×5) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 681
-    },
-    {
       "teamId": "ben-west-39e8b936",
       "principalName": "Ben West",
       "displayName": "Plan F (For Ferrari)",
@@ -2943,224 +3131,6 @@
         }
       ],
       "runningTotal": 479
-    },
-    {
-      "teamId": "laurence-eggleston-9ea0df43",
-      "principalName": "Laurence Eggleston",
-      "displayName": "Stroll In The Park",
-      "raceId": "great-britain",
-      "raceName": "Great Britain",
-      "raceDate": "2026-07-05",
-      "baseSubtotal": 47,
-      "driverSubtotal": 33,
-      "constructorSubtotal": 14,
-      "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 47,
-      "investmentBonusPoints": 0,
-      "totalPoints": 94,
-      "drivers": [
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 2,
-          "sprintPosition": 5,
-          "gridStart": 2,
-          "racePosition": 1,
-          "classified": true,
-          "totalPoints": 34,
-          "components": [
-            {
-              "label": "Qualifying P2",
-              "points": 3
-            },
-            {
-              "label": "Sprint P5",
-              "points": 4
-            },
-            {
-              "label": "Race finish P1",
-              "points": 25
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "kimi-antonelli",
-          "name": "Kimi Antonelli",
-          "teamName": "Mercedes",
-          "imageSlug": "antonelli",
-          "rank": "Top Ten",
-          "qualifyingPosition": 1,
-          "sprintPosition": 1,
-          "gridStart": 1,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": -17,
-          "components": [
-            {
-              "label": "Qualifying P1",
-              "points": 6
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -28
-            },
-            {
-              "label": "Fastest lap",
-              "points": 2
-            },
-            {
-              "label": "Race time penalty",
-              "points": -5
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": 10,
-          "gridStart": 9,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 16,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 10,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 27,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": -17,
-            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
-            "weightedRawPoints": 9.4,
-            "weightedPoints": 10
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 10
-            }
-          ]
-        },
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 13,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": -25,
-            "formula": "ceil((3×13 + 2×-25) ÷ 5)",
-            "weightedRawPoints": -2.2,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 6,
-          "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 10,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×10 + 2×0) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 6
-            }
-          ]
-        }
-      ],
-      "runningTotal": 635
     },
     {
       "teamId": "rick-grimshaw-e0e97b49",
@@ -3991,6 +3961,216 @@
       "runningTotal": 375
     },
     {
+      "teamId": "mark-haggan-f7670793",
+      "principalName": "Mark Haggan",
+      "displayName": "Henry’s Hoovers",
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 72,
+      "driverSubtotal": 61,
+      "constructorSubtotal": 11,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 72,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 4,
+          "sprintPosition": 4,
+          "gridStart": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "lewis-hamilton",
+          "name": "Lewis Hamilton",
+          "teamName": "Ferrari",
+          "imageSlug": "hamilton",
+          "rank": "Top Ten",
+          "qualifyingPosition": 3,
+          "sprintPosition": 2,
+          "gridStart": 3,
+          "racePosition": 3,
+          "classified": true,
+          "totalPoints": 15,
+          "components": [
+            {
+              "label": "Qualifying P3",
+              "points": 3
+            },
+            {
+              "label": "Sprint P2",
+              "points": 7
+            },
+            {
+              "label": "Race finish P3",
+              "points": 15
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            },
+            {
+              "label": "Race time penalty",
+              "points": -10
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": 10,
+          "gridStart": 9,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": -2,
+          "weightingBreakdown": {
+            "leadDriverId": "isack-hadjar",
+            "leadDriverName": "Isack Hadjar",
+            "leadDriverPoints": 13,
+            "secondDriverId": "max-verstappen",
+            "secondDriverName": "Max Verstappen",
+            "secondDriverPoints": -25,
+            "formula": "ceil((3×13 + 2×-25) ÷ 5)",
+            "weightedRawPoints": -2.2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 8,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 6,
+          "weightingBreakdown": {
+            "leadDriverId": "gabriel-bortoleto",
+            "leadDriverName": "Gabriel Bortoleto",
+            "leadDriverPoints": 10,
+            "secondDriverId": "nico-hulkenberg",
+            "secondDriverName": "Nico Hulkenberg",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×10 + 2×0) ÷ 5)",
+            "weightedRawPoints": 6,
+            "weightedPoints": 6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 6
+            }
+          ]
+        }
+      ],
+      "runningTotal": 443
+    },
+    {
       "teamId": "helen-pigott-f4d9bade",
       "principalName": "Helen Pigott",
       "displayName": "Rumtruffle",
@@ -4401,220 +4581,6 @@
         }
       ],
       "runningTotal": 392
-    },
-    {
-      "teamId": "mark-haggan-f7670793",
-      "principalName": "Mark Haggan",
-      "displayName": "Henry’s Hoovers",
-      "raceId": "great-britain",
-      "raceName": "Great Britain",
-      "raceDate": "2026-07-05",
-      "baseSubtotal": 69,
-      "driverSubtotal": 58,
-      "constructorSubtotal": 11,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 69,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 4,
-          "sprintPosition": 4,
-          "gridStart": 4,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 27,
-          "components": [
-            {
-              "label": "Qualifying P4",
-              "points": 0
-            },
-            {
-              "label": "Sprint P4",
-              "points": 5
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "lewis-hamilton",
-          "name": "Lewis Hamilton",
-          "teamName": "Ferrari",
-          "imageSlug": "hamilton",
-          "rank": "Top Ten",
-          "qualifyingPosition": 3,
-          "sprintPosition": 2,
-          "gridStart": 3,
-          "racePosition": 3,
-          "classified": true,
-          "totalPoints": 15,
-          "components": [
-            {
-              "label": "Qualifying P3",
-              "points": 3
-            },
-            {
-              "label": "Sprint P2",
-              "points": 7
-            },
-            {
-              "label": "Race finish P3",
-              "points": 15
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": 10,
-          "gridStart": 9,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 16,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 13,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": -25,
-            "formula": "ceil((3×13 + 2×-25) ÷ 5)",
-            "weightedRawPoints": -2.2,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 8,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×8 + 2×5) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 6,
-          "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 10,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×10 + 2×0) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 6
-            }
-          ]
-        }
-      ],
-      "runningTotal": 440
     },
     {
       "teamId": "paul-brooks-c712f8af",
@@ -5251,6 +5217,212 @@
       "runningTotal": 378
     },
     {
+      "teamId": "stephen-brooks-397d1f58",
+      "principalName": "Stephen Brooks",
+      "displayName": "Cadillacing Speed",
+      "raceId": "great-britain",
+      "raceName": "Great Britain",
+      "raceDate": "2026-07-05",
+      "baseSubtotal": 58,
+      "driverSubtotal": 51,
+      "constructorSubtotal": 7,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 58,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 4,
+          "sprintPosition": 4,
+          "gridStart": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying P4",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 14,
+          "sprintPosition": 14,
+          "gridStart": 13,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 5,
+          "components": [
+            {
+              "label": "Qualifying P14",
+              "points": 3
+            },
+            {
+              "label": "Sprint P14",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": 10,
+          "gridStart": 9,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "great-britain",
+            "raceName": "Great Britain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 10,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 27,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": -17,
+            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 10
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -10,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": -12,
+            "formula": "ceil((3×-10 + 2×-12) ÷ 5)",
+            "weightedRawPoints": -10.8,
+            "weightedPoints": -10
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -10
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 8,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        }
+      ],
+      "runningTotal": 490
+    },
+    {
       "teamId": "kiran-sivanna-aeca91ae",
       "principalName": "Kiran Sivanna",
       "displayName": "Velocity Racing",
@@ -5455,216 +5627,6 @@
         }
       ],
       "runningTotal": 362
-    },
-    {
-      "teamId": "stephen-brooks-397d1f58",
-      "principalName": "Stephen Brooks",
-      "displayName": "Cadillacing Speed",
-      "raceId": "great-britain",
-      "raceName": "Great Britain",
-      "raceDate": "2026-07-05",
-      "baseSubtotal": 55,
-      "driverSubtotal": 48,
-      "constructorSubtotal": 7,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 55,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 4,
-          "sprintPosition": 4,
-          "gridStart": 4,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 27,
-          "components": [
-            {
-              "label": "Qualifying P4",
-              "points": 0
-            },
-            {
-              "label": "Sprint P4",
-              "points": 5
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "oliver-bearman",
-          "name": "Oliver Bearman",
-          "teamName": "Haas",
-          "imageSlug": "bearman",
-          "rank": "Outsider",
-          "qualifyingPosition": 14,
-          "sprintPosition": 14,
-          "gridStart": 13,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 5,
-          "components": [
-            {
-              "label": "Qualifying P14",
-              "points": 3
-            },
-            {
-              "label": "Sprint P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": 10,
-          "gridStart": 9,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 16,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
-            }
-          ],
-          "raceContext": {
-            "raceId": "great-britain",
-            "raceName": "Great Britain"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 10,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 27,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": -17,
-            "formula": "ceil((3×27 + 2×-17) ÷ 5)",
-            "weightedRawPoints": 9.4,
-            "weightedPoints": 10
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 10
-            }
-          ]
-        },
-        {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
-          "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
-          ],
-          "totalPoints": -10,
-          "weightingBreakdown": {
-            "leadDriverId": "carlos-sainz",
-            "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
-            "secondDriverId": "alex-albon",
-            "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -12,
-            "formula": "ceil((3×-10 + 2×-12) ÷ 5)",
-            "weightedRawPoints": -10.8,
-            "weightedPoints": -10
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -10
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 8,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×8 + 2×5) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 487
     },
     {
       "teamId": "brian-donnell-c0048d2b",
