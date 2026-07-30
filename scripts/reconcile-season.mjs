@@ -9,7 +9,7 @@
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { discoverMonetaryFinePdfs } from '../lib/fia-documents.js';
-import { mondayPublicationDate } from '../lib/race-workflow.js';
+import { isRaceScoreable, mondayPublicationDate, raceStatus } from '../lib/race-workflow.js';
 import {
   configPath,
   ensureSeasonDirs,
@@ -33,8 +33,13 @@ function parseArgs(argv) {
 
 export function eligibleRaces(calendar, now) {
   return calendar
+    .filter(isRaceScoreable)
     .filter((race) => now >= mondayPublicationDate(race.date))
     .sort((a, b) => new Date(a.date) - new Date(b.date));
+}
+
+export function unraceableRaces(calendar) {
+  return calendar.filter((race) => !isRaceScoreable(race));
 }
 
 export function isFinalized(raceId) {
@@ -57,6 +62,11 @@ export async function reconcileSeason(services = {}) {
 
   const pending = eligible.filter((race) => !isFinalized(race.id));
   console.log(`${eligible.length} eligible race(s); ${pending.length} not yet finalized: ${pending.map((race) => race.id).join(', ') || 'none'}`);
+
+  const offCalendar = unraceableRaces(loadCalendar());
+  for (const race of offCalendar) {
+    console.log(`Not scoreable: ${race.id} is ${raceStatus(race)}${race.notes ? ` — ${race.notes}` : ''}`);
+  }
   if (dryRun) {
     return { scored: [], unchanged: [], failed: [] };
   }

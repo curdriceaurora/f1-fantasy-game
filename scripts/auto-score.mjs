@@ -3,7 +3,7 @@
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { discoverMonetaryFinePdfs } from '../lib/fia-documents.js';
-import { mondayPublicationDate } from '../lib/race-workflow.js';
+import { isRaceScoreable, mondayPublicationDate } from '../lib/race-workflow.js';
 import {
   configPath,
   ensureSeasonDirs,
@@ -19,6 +19,7 @@ import { scoreRace } from './score-race.mjs';
 
 function findMostRecentEligibleRace(calendar, now) {
   return calendar
+    .filter(isRaceScoreable)
     .filter((race) => now >= mondayPublicationDate(race.date))
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
 }
