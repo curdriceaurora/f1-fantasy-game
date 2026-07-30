@@ -1,7 +1,19 @@
 {
   "raceId": "great-britain",
   "drivers": {},
-  "teams": {},
-  "documents": [],
+  "teams": {
+    "racing-bulls": 5000
+  },
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_british_grand_prix_-_infringement_-_car_41_-_unsafe_release.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "racing-bulls"
+      }
+    }
+  ],
   "warnings": []
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { activeFineFromText, summarizeFineDocumentText } from '../lib/fines.js';
+import { activeFineFromText, classifySubject, summarizeFineDocumentText } from '../lib/fines.js';
 
 test('suspended fines do not create active penalties', () => {
   const text = `
@@ -86,4 +86,64 @@ test('activeFineFromText deduplicates repeated sanction amount across narrative 
   `;
 
   assert.equal(activeFineFromText(text), 5000);
+});
+
+test('a partially suspended fine only counts the payable part', () => {
+  const text = `
+    Decision
+    The competitor (Scuderia Ferrari HP) is fined €30,000 of which €10,000 is
+    suspended for 12 months on condition that the Competitor does not commit a
+    similar infringement in the meantime.
+  `;
+
+  assert.equal(activeFineFromText(text), 20000);
+  const summary = summarizeFineDocumentText('https://example.test/suspended-part.pdf', text);
+  assert.equal(summary.warning, null);
+  assert.equal(summary.document.fineEuros, 20000);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'ferrari' });
+});
+
+test('sponsor-prefixed competitor names still resolve to the canonical team', () => {
+  const text = `
+    No / Driver
+    6 - Isack Hadjar
+    Competitor
+    Oracle Red Bull Racing
+    Decision
+    The competitor (Oracle Red Bull Racing) is fined €400.
+  `;
+
+  const summary = summarizeFineDocumentText('https://example.test/pit-lane.pdf', text);
+  assert.equal(summary.warning, null);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'red-bull' });
+});
+
+test('an unnamed competitor fine is billed to the team that entered the car', () => {
+  const text = `
+    No / Driver
+    23 - Alexander Albon
+    Decision
+    A fine of €5,000 is also imposed on the Competitor for a breach of Article 12
+  `;
+
+  const summary = summarizeFineDocumentText('https://example.test/competitor.pdf', text);
+  assert.equal(summary.warning, null);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'williams' });
+});
+
+test('a fine imposed on the driver stays with the driver', () => {
+  const text = `
+    No / Driver
+    23 - Alexander Albon
+    Decision
+    The driver (Alexander Albon) is fined €5,000.
+  `;
+
+  const summary = summarizeFineDocumentText('https://example.test/driver-fine.pdf', text);
+  assert.equal(summary.warning, null);
+  assert.deepEqual(summary.document.appliedTo, { type: 'driver', id: 'alex-albon' });
+});
+
+test('the entry line resolves a driver by car number when the name is unknown', () => {
+  assert.deepEqual(classifySubject('6 - I. Hadjar-Unknown'), { type: 'driver', id: 'isack-hadjar' });
 });

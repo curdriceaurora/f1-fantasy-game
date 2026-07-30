@@ -1,7 +1,19 @@
 {
   "raceId": "miami",
   "drivers": {},
-  "teams": {},
-  "documents": [],
+  "teams": {
+    "ferrari": 200
+  },
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_miami_grand_prix_-_infringement_-_car_16_-_pit_lane_speeding.pdf",
+      "fineEuros": 200,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "ferrari"
+      }
+    }
+  ],
   "warnings": []
 }

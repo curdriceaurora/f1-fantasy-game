@@ -4,7 +4,26 @@
   "date": "2026-03-08",
   "round": 1,
   "sprintWeekend": false,
-  "documents": [],
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_australian_grand_prix_-_infringement_-_car_12_-_released_in_an_unsafe_condition.pdf",
+      "fineEuros": 7500,
+      "finePoints": -4,
+      "appliedTo": {
+        "type": "team",
+        "id": "mercedes"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_australian_grand_prix_-_infringement_-_car_10_-_released_in_an_unsafe_condition.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "alpine"
+      }
+    }
+  ],
   "drivers": {
     "lando-norris": {
       "driverId": "lando-norris",
@@ -437,7 +456,7 @@
         "pierre-gasly",
         "franco-colapinto"
       ],
-      "fineEuros": 0,
+      "fineEuros": 5000,
       "finePoints": 0
     },
     "cadillac": {
@@ -455,7 +474,7 @@
         "kimi-antonelli",
         "george-russell"
       ],
-      "fineEuros": 0,
+      "fineEuros": 7500,
       "finePoints": 0
     },
     "aston-martin": {
@@ -511,6 +530,6 @@
       "sprint": null,
       "race": 11234
     },
-    "generatedAt": "2026-03-08T16:10:53.792Z"
+    "generatedAt": "2026-07-30T18:37:58.549Z"
   }
 }
