@@ -6,7 +6,8 @@
     "meetingName": "Australian Grand Prix",
     "date": "2026-03-08",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 1
   },
   {
     "id": "china",
@@ -15,7 +16,8 @@
     "meetingName": "Chinese Grand Prix",
     "date": "2026-03-15",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 2
   },
   {
     "id": "japan",
@@ -24,49 +26,67 @@
     "meetingName": "Japanese Grand Prix",
     "date": "2026-03-29",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 3
+  },
+  {
+    "id": "bahrain",
+    "round": 4,
+    "name": "Bahrain",
+    "meetingName": "Bahrain Grand Prix",
+    "date": "2026-10-04",
+    "isSprintWeekend": false,
+    "status": "rescheduled",
+    "originalDate": "2026-04-12",
+    "venue": "Sepang International Circuit, Malaysia",
+    "notes": "Postponed from 12 April after the Iran conflict; run at Sepang as the Gulf Air Bahrain Grand Prix in Malaysia.",
+    "officialRound": 16
   },
   {
     "id": "saudi-arabia",
-    "round": null,
+    "round": 5,
     "name": "Saudi Arabia",
     "meetingName": "Saudi Arabian Grand Prix",
     "date": "2026-04-19",
     "isSprintWeekend": false,
     "status": "cancelled",
     "originalDate": "2026-04-19",
-    "notes": "Postponed in March after the Iran conflict and not reinstated on the revised 2026 calendar."
+    "notes": "Postponed in March after the Iran conflict and not reinstated on the revised 2026 calendar.",
+    "officialRound": null
   },
   {
     "id": "miami",
-    "round": 4,
+    "round": 6,
     "name": "Miami",
     "meetingName": "Miami Grand Prix",
     "date": "2026-05-03",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 4
   },
   {
     "id": "canada",
-    "round": 5,
+    "round": 7,
     "name": "Canada",
     "meetingName": "Canadian Grand Prix",
     "date": "2026-05-24",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 5
   },
   {
     "id": "monaco",
-    "round": 6,
+    "round": 8,
     "name": "Monaco",
     "meetingName": "Monaco Grand Prix",
     "date": "2026-06-07",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 6
   },
   {
     "id": "barcelona-catalunya",
-    "round": 7,
+    "round": 9,
     "name": "Barcelona-Catalunya",
     "meetingName": "Barcelona-Catalunya Grand Prix",
     "date": "2026-06-14",
@@ -75,154 +95,158 @@
     "sources": {
       "openf1MeetingName": "Barcelona Grand Prix",
       "fiaEventName": "Barcelona-Catalunya Grand Prix"
-    }
+    },
+    "officialRound": 7
   },
   {
     "id": "austria",
-    "round": 8,
+    "round": 10,
     "name": "Austria",
     "meetingName": "Austrian Grand Prix",
     "date": "2026-06-28",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 8
   },
   {
     "id": "great-britain",
-    "round": 9,
+    "round": 11,
     "name": "Great Britain",
     "meetingName": "British Grand Prix",
     "date": "2026-07-05",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 9
   },
   {
     "id": "belgium",
-    "round": 10,
+    "round": 12,
     "name": "Belgium",
     "meetingName": "Belgian Grand Prix",
     "date": "2026-07-19",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 10
   },
   {
     "id": "hungary",
-    "round": 11,
+    "round": 13,
     "name": "Hungary",
     "meetingName": "Hungarian Grand Prix",
     "date": "2026-07-26",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 11
   },
   {
     "id": "netherlands",
-    "round": 12,
+    "round": 14,
     "name": "Netherlands",
     "meetingName": "Dutch Grand Prix",
     "date": "2026-08-23",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 12
   },
   {
     "id": "italy",
-    "round": 13,
+    "round": 15,
     "name": "Italy",
     "meetingName": "Italian Grand Prix",
     "date": "2026-09-06",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 13
   },
   {
     "id": "spain",
-    "round": 14,
+    "round": 16,
     "name": "Spain",
     "meetingName": "Spanish Grand Prix",
     "date": "2026-09-13",
     "isSprintWeekend": false,
     "status": "scheduled",
-    "venue": "Madrid"
+    "venue": "Madrid",
+    "officialRound": 14
   },
   {
     "id": "azerbaijan",
-    "round": 15,
+    "round": 17,
     "name": "Azerbaijan",
     "meetingName": "Azerbaijan Grand Prix",
     "date": "2026-09-26",
     "isSprintWeekend": false,
-    "status": "scheduled"
-  },
-  {
-    "id": "bahrain",
-    "round": 16,
-    "name": "Bahrain",
-    "meetingName": "Bahrain Grand Prix",
-    "date": "2026-10-04",
-    "isSprintWeekend": false,
-    "status": "rescheduled",
-    "originalDate": "2026-04-12",
-    "venue": "Sepang International Circuit, Malaysia",
-    "notes": "Postponed from 12 April after the Iran conflict; run at Sepang as the Gulf Air Bahrain Grand Prix in Malaysia."
+    "status": "scheduled",
+    "officialRound": 15
   },
   {
     "id": "singapore",
-    "round": 17,
+    "round": 18,
     "name": "Singapore",
     "meetingName": "Singapore Grand Prix",
     "date": "2026-10-11",
     "isSprintWeekend": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 17
   },
   {
     "id": "united-states",
-    "round": 18,
+    "round": 19,
     "name": "United States",
     "meetingName": "United States Grand Prix",
     "date": "2026-10-25",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 18
   },
   {
     "id": "mexico",
-    "round": 19,
+    "round": 20,
     "name": "Mexico",
     "meetingName": "Mexico City Grand Prix",
     "date": "2026-11-01",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 19
   },
   {
     "id": "brazil",
-    "round": 20,
+    "round": 21,
     "name": "Brazil",
     "meetingName": "São Paulo Grand Prix",
     "date": "2026-11-08",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 20
   },
   {
     "id": "las-vegas",
-    "round": 21,
+    "round": 22,
     "name": "Las Vegas",
     "meetingName": "Las Vegas Grand Prix",
     "date": "2026-11-21",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 21
   },
   {
     "id": "qatar",
-    "round": 22,
+    "round": 23,
     "name": "Qatar",
     "meetingName": "Qatar Grand Prix",
     "date": "2026-11-29",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 22
   },
   {
     "id": "abu-dhabi",
-    "round": 23,
+    "round": 24,
     "name": "Abu Dhabi",
     "meetingName": "Abu Dhabi Grand Prix",
     "date": "2026-12-06",
     "isSprintWeekend": false,
-    "status": "scheduled"
+    "status": "scheduled",
+    "officialRound": 23
   }
 ]

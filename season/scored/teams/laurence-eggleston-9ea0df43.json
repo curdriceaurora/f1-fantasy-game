@@ -1006,197 +1006,6 @@
       "runningTotal": 475
     },
     {
-      "raceId": "barcelona-catalunya",
-      "raceName": "Barcelona-Catalunya",
-      "raceDate": "2026-06-14",
-      "baseSubtotal": -3,
-      "driverSubtotal": -21,
-      "constructorSubtotal": 18,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": -3,
-      "drivers": [
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 10,
-          "sprintPosition": null,
-          "gridStart": 10,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": -10,
-          "components": [
-            {
-              "label": "Qualifying P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "barcelona-catalunya",
-            "raceName": "Barcelona-Catalunya"
-          }
-        },
-        {
-          "driverId": "kimi-antonelli",
-          "name": "Kimi Antonelli",
-          "teamName": "Mercedes",
-          "imageSlug": "antonelli",
-          "rank": "Top Ten",
-          "qualifyingPosition": 3,
-          "sprintPosition": null,
-          "gridStart": 3,
-          "racePosition": 16,
-          "classified": true,
-          "totalPoints": -23,
-          "components": [
-            {
-              "label": "Qualifying P3",
-              "points": 3
-            },
-            {
-              "label": "Race finish P16",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -26
-            }
-          ],
-          "raceContext": {
-            "raceId": "barcelona-catalunya",
-            "raceName": "Barcelona-Catalunya"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 11,
-          "sprintPosition": null,
-          "gridStart": 11,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 12,
-          "components": [
-            {
-              "label": "Qualifying P11",
-              "points": 6
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "barcelona-catalunya",
-            "raceName": "Barcelona-Catalunya"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 3,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 19,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": -23,
-            "formula": "ceil((3×19 + 2×-23) ÷ 5)",
-            "weightedRawPoints": 2.2,
-            "weightedPoints": 3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 3
-            }
-          ]
-        },
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 12,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 14,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×14 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11.6,
-            "weightedPoints": 12
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 12
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 3,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×3 + 2×2) ÷ 5)",
-            "weightedRawPoints": 2.6,
-            "weightedPoints": 3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 3
-            }
-          ]
-        }
-      ],
-      "runningTotal": 472
-    },
-    {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
@@ -1389,6 +1198,197 @@
             {
               "label": "Weighted driver total",
               "points": 1
+            }
+          ]
+        }
+      ],
+      "runningTotal": 560
+    },
+    {
+      "raceId": "barcelona-catalunya",
+      "raceName": "Barcelona-Catalunya",
+      "raceDate": "2026-06-14",
+      "baseSubtotal": -3,
+      "driverSubtotal": -21,
+      "constructorSubtotal": 18,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -3,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 10,
+          "sprintPosition": null,
+          "gridStart": 10,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": -10,
+          "components": [
+            {
+              "label": "Qualifying P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -10
+            }
+          ],
+          "raceContext": {
+            "raceId": "barcelona-catalunya",
+            "raceName": "Barcelona-Catalunya"
+          }
+        },
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 3,
+          "sprintPosition": null,
+          "gridStart": 3,
+          "racePosition": 16,
+          "classified": true,
+          "totalPoints": -23,
+          "components": [
+            {
+              "label": "Qualifying P3",
+              "points": 3
+            },
+            {
+              "label": "Race finish P16",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -26
+            }
+          ],
+          "raceContext": {
+            "raceId": "barcelona-catalunya",
+            "raceName": "Barcelona-Catalunya"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 11,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 12,
+          "components": [
+            {
+              "label": "Qualifying P11",
+              "points": 6
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "barcelona-catalunya",
+            "raceName": "Barcelona-Catalunya"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 19,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": -23,
+            "formula": "ceil((3×19 + 2×-23) ÷ 5)",
+            "weightedRawPoints": 2.2,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 12,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 14,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×14 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11.6,
+            "weightedPoints": 12
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 12
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 3,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×3 + 2×2) ÷ 5)",
+            "weightedRawPoints": 2.6,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
             }
           ]
         }
