@@ -2,9 +2,9 @@
   "teamId": "ryan-eyre-6119a97c",
   "principalName": "Ryan Eyre",
   "displayName": "Eyre We Go Again",
-  "totalPoints": 370,
+  "totalPoints": 367,
   "completedRaces": 11,
-  "latestRacePoints": 21,
+  "latestRacePoints": 22,
   "races": [
     {
       "raceId": "australia",
@@ -1192,13 +1192,13 @@
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 28,
-      "driverSubtotal": 9,
+      "baseSubtotal": 24,
+      "driverSubtotal": 5,
       "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 35,
+      "totalPoints": 31,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -1211,7 +1211,7 @@
           "gridStart": 16,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 1,
           "components": [
             {
               "label": "Qualifying P16",
@@ -1224,6 +1224,10 @@
             {
               "label": "Position change",
               "points": 8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1273,7 +1277,7 @@
           "gridStart": 20,
           "racePosition": null,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 1,
           "components": [
             {
               "label": "Qualifying P20",
@@ -1286,6 +1290,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1377,7 +1385,7 @@
           ]
         }
       ],
-      "runningTotal": 265
+      "runningTotal": 261
     },
     {
       "raceId": "austria",
@@ -1568,7 +1576,7 @@
           ]
         }
       ],
-      "runningTotal": 298
+      "runningTotal": 294
     },
     {
       "raceId": "great-britain",
@@ -1771,7 +1779,7 @@
           ]
         }
       ],
-      "runningTotal": 310
+      "runningTotal": 306
     },
     {
       "raceId": "belgium",
@@ -1962,19 +1970,19 @@
           ]
         }
       ],
-      "runningTotal": 349
+      "runningTotal": 345
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 14,
+      "baseSubtotal": 15,
       "driverSubtotal": -5,
-      "constructorSubtotal": 19,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 21,
+      "totalPoints": 22,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -2083,26 +2091,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -2161,7 +2165,7 @@
           ]
         }
       ],
-      "runningTotal": 370
+      "runningTotal": 367
     }
   ]
 }

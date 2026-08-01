@@ -2,7 +2,7 @@
   "teamId": "matthew-brooks-0ba2f10f",
   "principalName": "Matthew Brooks",
   "displayName": "Sainz, Sealed, Delivered",
-  "totalPoints": 850,
+  "totalPoints": 849,
   "completedRaces": 11,
   "latestRacePoints": 38,
   "races": [
@@ -997,13 +997,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 44,
-      "driverSubtotal": 19,
+      "baseSubtotal": 43,
+      "driverSubtotal": 18,
       "constructorSubtotal": 25,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 44,
+      "totalPoints": 43,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1016,7 +1016,7 @@
           "gridStart": 6,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": -19,
+          "totalPoints": -20,
           "components": [
             {
               "label": "Qualifying P6",
@@ -1033,6 +1033,10 @@
             {
               "label": "Race time penalty",
               "points": -5
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1120,22 +1124,18 @@
           "weightingBreakdown": {
             "leadDriverId": "kimi-antonelli",
             "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 32,
             "secondDriverId": "george-russell",
             "secondDriverName": "George Russell",
-            "secondDriverPoints": -19,
-            "formula": "ceil((3×33 + 2×-19) ÷ 5)",
-            "weightedRawPoints": 12.2,
-            "weightedPoints": 13
+            "secondDriverPoints": -20,
+            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 12
             }
           ]
         },
@@ -1194,7 +1194,7 @@
           ]
         }
       ],
-      "runningTotal": 460
+      "runningTotal": 459
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1389,7 +1389,7 @@
           ]
         }
       ],
-      "runningTotal": 533
+      "runningTotal": 532
     },
     {
       "raceId": "austria",
@@ -1580,7 +1580,7 @@
           ]
         }
       ],
-      "runningTotal": 610
+      "runningTotal": 609
     },
     {
       "raceId": "great-britain",
@@ -1787,7 +1787,7 @@
           ]
         }
       ],
-      "runningTotal": 778
+      "runningTotal": 777
     },
     {
       "raceId": "belgium",
@@ -1982,7 +1982,7 @@
           ]
         }
       ],
-      "runningTotal": 812
+      "runningTotal": 811
     },
     {
       "raceId": "hungary",
@@ -2177,7 +2177,7 @@
           ]
         }
       ],
-      "runningTotal": 850
+      "runningTotal": 849
     }
   ]
 }

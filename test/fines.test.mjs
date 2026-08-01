@@ -118,6 +118,29 @@ test('a partially suspended fine still counts a separate full fine in the same d
   assert.equal(summary.document.fineEuros, 25000);
 });
 
+test('an amount-first partial suspension counts only the payable remainder', () => {
+  // Canada RBPT (car 30): the suspended part is named second, after the total.
+  const text = `
+    Decision
+    The competitor (Visa Cash App Racing Bulls F1 Team) is fined €30,000, €20,000 of
+    which is suspended for a period of 12 months subject to no further breach.
+  `;
+
+  assert.equal(activeFineFromText(text), 10000);
+});
+
+test('a fine suspended in full by a following sentence counts nothing', () => {
+  // Monaco (car 1 / car 16): "This fine is suspended" sits in its own sentence,
+  // so the clause scan never sees "suspend" next to the amount.
+  const text = `
+    Decision
+    The competitor (McLaren Mastercard F1 Team) is fined €5,000.  This fine is
+    suspended for a period of 12 months subject to no further breach.
+  `;
+
+  assert.equal(activeFineFromText(text), 0);
+});
+
 test('sponsor-prefixed competitor names still resolve to the canonical team', () => {
   const text = `
     No / Driver
@@ -157,6 +180,54 @@ test('a fine imposed on the driver stays with the driver', () => {
   const summary = summarizeFineDocumentText('https://example.test/driver-fine.pdf', text);
   assert.equal(summary.warning, null);
   assert.deepEqual(summary.document.appliedTo, { type: 'driver', id: 'alex-albon' });
+});
+
+test('a pit lane speeding fine is charged to the driver, not the competitor', () => {
+  const url = 'https://example.test/2026_monaco_grand_prix_-_infringement_-_car_63_-_pit_lane_speeding.pdf';
+  const text = `
+    The competitor (Mercedes-AMG PETRONAS F1 Team) is fined €100.
+    Reason Car 63 exceeded the pit lane speed limit which is set at 60 km/h.
+  `;
+
+  const summary = summarizeFineDocumentText(url, text);
+  assert.equal(summary.warning, null);
+  assert.equal(summary.document.fineEuros, 100);
+  assert.deepEqual(summary.document.appliedTo, { type: 'driver', id: 'george-russell' });
+});
+
+test('a start procedure infringement is charged to the driver', () => {
+  const url = 'https://example.test/2026_barcelona-catalunya_grand_prix_-_infringement_-_car_23_-_start_procedure_infringement.pdf';
+  const text = `
+    The competitor (Atlassian Williams F1 Team) is fined €5,000.
+    Reason Car 23 moved before the start signal was given.
+  `;
+
+  const summary = summarizeFineDocumentText(url, text);
+  assert.deepEqual(summary.document.appliedTo, { type: 'driver', id: 'alex-albon' });
+});
+
+test('a team fine whose reason text mentions a driving phrase still stays with the team', () => {
+  // Canada car 14: an unsafe release, but the reason narrates a near "collision
+  // with Car 27" — the infringement type comes from the title, not the reason.
+  const url = 'https://example.test/2026_canadian_grand_prix_-_infringement_-_car_14_-_unsafe_release_from_garage.pdf';
+  const text = `
+    The competitor (Aston Martin Aramco F1 Team) is fined €5,000.
+    Reason Car 14 was released from its garage into a near collision with Car 27.
+  `;
+
+  const summary = summarizeFineDocumentText(url, text);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'aston-martin' });
+});
+
+test('a driver-fault fine for a non-roster car falls back to the entrant team', () => {
+  const url = 'https://example.test/2026_belgian_grand_prix_-_infringement_-_car_34_-_pit_lane_speeding.pdf';
+  const text = `
+    The competitor (Aston Martin Aramco F1 Team) is fined €100.
+    Reason Car 34 exceeded the pit lane speed limit.
+  `;
+
+  const summary = summarizeFineDocumentText(url, text);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'aston-martin' });
 });
 
 test('the entry line resolves a driver by car number when the name is unknown', () => {

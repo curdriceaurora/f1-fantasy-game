@@ -2,7 +2,7 @@
   "teamId": "tracey-wallis-1da84f99",
   "principalName": "Tracey Wallis",
   "displayName": "Spanner In The Works",
-  "totalPoints": 487,
+  "totalPoints": 485,
   "completedRaces": 11,
   "latestRacePoints": 59,
   "races": [
@@ -1128,22 +1128,18 @@
           "weightingBreakdown": {
             "leadDriverId": "kimi-antonelli",
             "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 32,
             "secondDriverId": "george-russell",
             "secondDriverName": "George Russell",
-            "secondDriverPoints": -19,
-            "formula": "ceil((3×33 + 2×-19) ÷ 5)",
-            "weightedRawPoints": 12.2,
-            "weightedPoints": 13
+            "secondDriverPoints": -20,
+            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 12
             }
           ]
         },
@@ -1208,13 +1204,13 @@
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 31,
-      "driverSubtotal": 21,
+      "baseSubtotal": 29,
+      "driverSubtotal": 19,
       "constructorSubtotal": 10,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 29,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1258,7 +1254,7 @@
           "gridStart": 21,
           "racePosition": null,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -1,
           "components": [
             {
               "label": "Qualifying P21",
@@ -1271,6 +1267,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1289,7 +1289,7 @@
           "gridStart": 19,
           "racePosition": 14,
           "classified": true,
-          "totalPoints": 6,
+          "totalPoints": 5,
           "components": [
             {
               "label": "Qualifying P19",
@@ -1302,6 +1302,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1377,27 +1381,23 @@
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 6,
+            "leadDriverPoints": 5,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×6 + 2×2) ÷ 5)",
-            "weightedRawPoints": 4.4,
-            "weightedPoints": 5
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×5 + 2×1) ÷ 5)",
+            "weightedRawPoints": 3.4,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 4
             }
           ]
         }
       ],
-      "runningTotal": 321
+      "runningTotal": 319
     },
     {
       "raceId": "austria",
@@ -1588,7 +1588,7 @@
           ]
         }
       ],
-      "runningTotal": 347
+      "runningTotal": 345
     },
     {
       "raceId": "great-britain",
@@ -1795,7 +1795,7 @@
           ]
         }
       ],
-      "runningTotal": 392
+      "runningTotal": 390
     },
     {
       "raceId": "belgium",
@@ -1990,7 +1990,7 @@
           ]
         }
       ],
-      "runningTotal": 428
+      "runningTotal": 426
     },
     {
       "raceId": "hungary",
@@ -2181,7 +2181,7 @@
           ]
         }
       ],
-      "runningTotal": 487
+      "runningTotal": 485
     }
   ]
 }

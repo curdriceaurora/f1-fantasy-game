@@ -4,7 +4,7 @@
   "displayName": "Henry’s Hoovers",
   "totalPoints": 738,
   "completedRaces": 11,
-  "latestRacePoints": 37,
+  "latestRacePoints": 38,
   "races": [
     {
       "raceId": "australia",
@@ -993,13 +993,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 43,
-      "driverSubtotal": 19,
+      "baseSubtotal": 42,
+      "driverSubtotal": 18,
       "constructorSubtotal": 24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 43,
+      "totalPoints": 42,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1012,7 +1012,7 @@
           "gridStart": 6,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": -19,
+          "totalPoints": -20,
           "components": [
             {
               "label": "Qualifying P6",
@@ -1029,6 +1029,10 @@
             {
               "label": "Race time penalty",
               "points": -5
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1186,7 +1190,7 @@
           ]
         }
       ],
-      "runningTotal": 433
+      "runningTotal": 432
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1381,7 +1385,7 @@
           ]
         }
       ],
-      "runningTotal": 515
+      "runningTotal": 514
     },
     {
       "raceId": "austria",
@@ -1572,7 +1576,7 @@
           ]
         }
       ],
-      "runningTotal": 586
+      "runningTotal": 585
     },
     {
       "raceId": "great-britain",
@@ -1779,7 +1783,7 @@
           ]
         }
       ],
-      "runningTotal": 658
+      "runningTotal": 657
     },
     {
       "raceId": "belgium",
@@ -1974,19 +1978,19 @@
           ]
         }
       ],
-      "runningTotal": 701
+      "runningTotal": 700
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 37,
+      "baseSubtotal": 38,
       "driverSubtotal": 18,
-      "constructorSubtotal": 19,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 37,
+      "totalPoints": 38,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2095,26 +2099,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },

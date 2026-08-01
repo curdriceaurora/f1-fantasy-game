@@ -2,7 +2,7 @@
   "teamId": "laura-young-cf286bb9",
   "principalName": "Laura Young",
   "displayName": "Running on Empty",
-  "totalPoints": 391,
+  "totalPoints": 389,
   "completedRaces": 11,
   "latestRacePoints": 90,
   "races": [
@@ -1009,13 +1009,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 28,
-      "driverSubtotal": 19,
-      "constructorSubtotal": 9,
+      "baseSubtotal": 27,
+      "driverSubtotal": 16,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 28,
+      "totalPoints": 27,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1094,7 +1094,7 @@
           "gridStart": 11,
           "racePosition": 8,
           "classified": true,
-          "totalPoints": 10,
+          "totalPoints": 7,
           "components": [
             {
               "label": "Qualifying P11",
@@ -1107,6 +1107,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1124,26 +1128,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -1,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "alex-albon",
             "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 10,
+            "leadDriverPoints": 7,
             "secondDriverId": "carlos-sainz",
             "secondDriverName": "Carlos Sainz",
             "secondDriverPoints": -10,
-            "formula": "ceil((3×10 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "formula": "ceil((3×7 + 2×-10) ÷ 5)",
+            "weightedRawPoints": 0.2,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
+              "points": 1
             }
           ]
         },
@@ -1159,22 +1159,18 @@
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 19,
+            "leadDriverPoints": 18,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -5,
-            "formula": "ceil((3×19 + 2×-5) ÷ 5)",
-            "weightedRawPoints": 9.4,
-            "weightedPoints": 10
+            "formula": "ceil((3×18 + 2×-5) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 10
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 9
             }
           ]
         },
@@ -1206,19 +1202,19 @@
           ]
         }
       ],
-      "runningTotal": 206
+      "runningTotal": 205
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 43,
-      "driverSubtotal": 45,
-      "constructorSubtotal": -2,
+      "baseSubtotal": 42,
+      "driverSubtotal": 42,
+      "constructorSubtotal": 0,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 43,
+      "totalPoints": 42,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1297,7 +1293,7 @@
           "gridStart": 18,
           "racePosition": null,
           "classified": true,
-          "totalPoints": -2,
+          "totalPoints": -5,
           "components": [
             {
               "label": "Qualifying P18",
@@ -1310,6 +1306,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1327,26 +1327,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -3,
+          "totalPoints": -1,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 4,
+            "leadDriverPoints": 1,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×4 + 2×-2) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×1 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -1.4,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -5
+              "points": -1
             }
           ]
         },
@@ -1362,22 +1358,18 @@
           "weightingBreakdown": {
             "leadDriverId": "lance-stroll",
             "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 0,
+            "leadDriverPoints": -1,
             "secondDriverId": "fernando-alonso",
             "secondDriverName": "Fernando Alonso",
             "secondDriverPoints": -4,
-            "formula": "ceil((3×0 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -1.6,
-            "weightedPoints": -1
+            "formula": "ceil((3×-1 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -2.2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": -2
             }
           ]
         },
@@ -1409,7 +1401,7 @@
           ]
         }
       ],
-      "runningTotal": 249
+      "runningTotal": 247
     },
     {
       "raceId": "austria",
@@ -1600,7 +1592,7 @@
           ]
         }
       ],
-      "runningTotal": 258
+      "runningTotal": 256
     },
     {
       "raceId": "great-britain",
@@ -1811,7 +1803,7 @@
           ]
         }
       ],
-      "runningTotal": 275
+      "runningTotal": 273
     },
     {
       "raceId": "belgium",
@@ -2014,7 +2006,7 @@
           ]
         }
       ],
-      "runningTotal": 301
+      "runningTotal": 299
     },
     {
       "raceId": "hungary",
@@ -2209,7 +2201,7 @@
           ]
         }
       ],
-      "runningTotal": 391
+      "runningTotal": 389
     }
   ]
 }

@@ -1,19 +1,21 @@
 {
   "raceId": "barcelona-catalunya",
-  "drivers": {},
-  "teams": {
-    "williams": 10000,
-    "aston-martin": 600,
-    "cadillac": 600
+  "drivers": {
+    "carlos-sainz": 5000,
+    "alex-albon": 5000,
+    "lance-stroll": 600,
+    "sergio-perez": 500,
+    "valtteri-bottas": 100
   },
+  "teams": {},
   "documents": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_barcelona-catalunya_grand_prix_-_infringement_-_car_55_-_start_procedure_infringement.pdf",
       "fineEuros": 5000,
       "finePoints": -3,
       "appliedTo": {
-        "type": "team",
-        "id": "williams"
+        "type": "driver",
+        "id": "carlos-sainz"
       }
     },
     {
@@ -21,8 +23,8 @@
       "fineEuros": 5000,
       "finePoints": -3,
       "appliedTo": {
-        "type": "team",
-        "id": "williams"
+        "type": "driver",
+        "id": "alex-albon"
       }
     },
     {
@@ -30,8 +32,8 @@
       "fineEuros": 600,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "aston-martin"
+        "type": "driver",
+        "id": "lance-stroll"
       }
     },
     {
@@ -39,8 +41,8 @@
       "fineEuros": 500,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "cadillac"
+        "type": "driver",
+        "id": "sergio-perez"
       }
     },
     {
@@ -48,8 +50,8 @@
       "fineEuros": 100,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "cadillac"
+        "type": "driver",
+        "id": "valtteri-bottas"
       }
     }
   ],

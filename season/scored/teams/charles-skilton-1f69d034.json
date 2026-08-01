@@ -2,7 +2,7 @@
   "teamId": "charles-skilton-1f69d034",
   "principalName": "Charles Skilton",
   "displayName": "Sweet Child O’Sainz",
-  "totalPoints": 649,
+  "totalPoints": 647,
   "completedRaces": 11,
   "latestRacePoints": 20,
   "races": [
@@ -756,19 +756,15 @@
             "leadDriverPoints": 10,
             "secondDriverId": "charles-leclerc",
             "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×10 + 2×3) ÷ 5)",
-            "weightedRawPoints": 7.2,
-            "weightedPoints": 8
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×10 + 2×2) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 8
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 7
             }
           ]
         },
@@ -806,13 +802,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 101,
+      "baseSubtotal": 102,
       "driverSubtotal": 53,
-      "constructorSubtotal": 48,
+      "constructorSubtotal": 49,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 101,
+      "totalPoints": 102,
       "drivers": [
         {
           "driverId": "lewis-hamilton",
@@ -956,26 +952,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 27,
+          "totalPoints": 28,
           "weightingBreakdown": {
             "leadDriverId": "lewis-hamilton",
             "leadDriverName": "Lewis Hamilton",
             "leadDriverPoints": 30,
             "secondDriverId": "charles-leclerc",
             "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 24,
-            "formula": "ceil((3×30 + 2×24) ÷ 5)",
-            "weightedRawPoints": 27.6,
+            "secondDriverPoints": 23,
+            "formula": "ceil((3×30 + 2×23) ÷ 5)",
+            "weightedRawPoints": 27.2,
             "weightedPoints": 28
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 28
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -1007,7 +999,7 @@
           ]
         }
       ],
-      "runningTotal": 424
+      "runningTotal": 425
     },
     {
       "raceId": "monaco",
@@ -1132,22 +1124,18 @@
           "weightingBreakdown": {
             "leadDriverId": "kimi-antonelli",
             "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 32,
             "secondDriverId": "george-russell",
             "secondDriverName": "George Russell",
-            "secondDriverPoints": -19,
-            "formula": "ceil((3×33 + 2×-19) ÷ 5)",
-            "weightedRawPoints": 12.2,
-            "weightedPoints": 13
+            "secondDriverPoints": -20,
+            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 12
             }
           ]
         },
@@ -1206,19 +1194,19 @@
           ]
         }
       ],
-      "runningTotal": 451
+      "runningTotal": 452
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 54,
-      "driverSubtotal": 32,
+      "baseSubtotal": 51,
+      "driverSubtotal": 29,
       "constructorSubtotal": 22,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 54,
+      "totalPoints": 51,
       "drivers": [
         {
           "driverId": "lewis-hamilton",
@@ -1266,7 +1254,7 @@
           "gridStart": 16,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 1,
           "components": [
             {
               "label": "Qualifying P16",
@@ -1279,6 +1267,10 @@
             {
               "label": "Position change",
               "points": 8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1401,7 +1393,7 @@
           ]
         }
       ],
-      "runningTotal": 505
+      "runningTotal": 503
     },
     {
       "raceId": "austria",
@@ -1592,7 +1584,7 @@
           ]
         }
       ],
-      "runningTotal": 545
+      "runningTotal": 543
     },
     {
       "raceId": "great-britain",
@@ -1799,7 +1791,7 @@
           ]
         }
       ],
-      "runningTotal": 598
+      "runningTotal": 596
     },
     {
       "raceId": "belgium",
@@ -1998,7 +1990,7 @@
           ]
         }
       ],
-      "runningTotal": 629
+      "runningTotal": 627
     },
     {
       "raceId": "hungary",
@@ -2201,7 +2193,7 @@
           ]
         }
       ],
-      "runningTotal": 649
+      "runningTotal": 647
     }
   ]
 }

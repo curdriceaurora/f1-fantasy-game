@@ -1,10 +1,11 @@
 {
   "raceId": "canada",
-  "drivers": {},
+  "drivers": {
+    "charles-leclerc": 1000
+  },
   "teams": {
     "aston-martin": 12500,
-    "racing-bulls": 50000,
-    "ferrari": 1000
+    "racing-bulls": 10000
   },
   "documents": [
     {
@@ -27,8 +28,8 @@
     },
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_canadian_grand_prix_-_infringement_-_car_30_-_breach_of_article_c9.3.pdf",
-      "fineEuros": 50000,
-      "finePoints": -25,
+      "fineEuros": 10000,
+      "finePoints": -5,
       "appliedTo": {
         "type": "team",
         "id": "racing-bulls"
@@ -39,8 +40,8 @@
       "fineEuros": 1000,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "ferrari"
+        "type": "driver",
+        "id": "charles-leclerc"
       }
     }
   ],

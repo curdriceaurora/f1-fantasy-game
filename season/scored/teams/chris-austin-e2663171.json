@@ -2,7 +2,7 @@
   "teamId": "chris-austin-e2663171",
   "principalName": "Chris Austin",
   "displayName": "Austin Meastro",
-  "totalPoints": 1072,
+  "totalPoints": 1071,
   "completedRaces": 11,
   "latestRacePoints": 63,
   "races": [
@@ -1025,13 +1025,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 68,
-      "driverSubtotal": 40,
-      "constructorSubtotal": 28,
+      "baseSubtotal": 67,
+      "driverSubtotal": 38,
+      "constructorSubtotal": 29,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 68,
+      "totalPoints": 67,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1044,7 +1044,7 @@
           "gridStart": 6,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": -19,
+          "totalPoints": -20,
           "components": [
             {
               "label": "Qualifying P6",
@@ -1061,6 +1061,10 @@
             {
               "label": "Race time penalty",
               "points": -5
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1079,7 +1083,7 @@
           "gridStart": 1,
           "racePosition": 1,
           "classified": true,
-          "totalPoints": 33,
+          "totalPoints": 32,
           "components": [
             {
               "label": "Qualifying P1",
@@ -1096,6 +1100,10 @@
             {
               "label": "Fastest lap",
               "points": 2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1152,22 +1160,18 @@
           "weightingBreakdown": {
             "leadDriverId": "kimi-antonelli",
             "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 32,
             "secondDriverId": "george-russell",
             "secondDriverName": "George Russell",
-            "secondDriverPoints": -19,
-            "formula": "ceil((3×33 + 2×-19) ÷ 5)",
-            "weightedRawPoints": 12.2,
-            "weightedPoints": 13
+            "secondDriverPoints": -20,
+            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 12
             }
           ]
         },
@@ -1206,31 +1210,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 15,
+          "totalPoints": 16,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": 26,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 1,
-            "formula": "ceil((3×26 + 2×1) ÷ 5)",
-            "weightedRawPoints": 16,
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×26 + 2×0) ÷ 5)",
+            "weightedRawPoints": 15.6,
             "weightedPoints": 16
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 16
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         }
       ],
-      "runningTotal": 746
+      "runningTotal": 745
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1421,7 +1421,7 @@
           ]
         }
       ],
-      "runningTotal": 795
+      "runningTotal": 794
     },
     {
       "raceId": "austria",
@@ -1616,7 +1616,7 @@
           ]
         }
       ],
-      "runningTotal": 881
+      "runningTotal": 880
     },
     {
       "raceId": "great-britain",
@@ -1827,7 +1827,7 @@
           ]
         }
       ],
-      "runningTotal": 944
+      "runningTotal": 943
     },
     {
       "raceId": "belgium",
@@ -2018,7 +2018,7 @@
           ]
         }
       ],
-      "runningTotal": 1009
+      "runningTotal": 1008
     },
     {
       "raceId": "hungary",
@@ -2209,7 +2209,7 @@
           ]
         }
       ],
-      "runningTotal": 1072
+      "runningTotal": 1071
     }
   ]
 }

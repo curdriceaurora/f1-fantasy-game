@@ -2,9 +2,9 @@
   "teamId": "helen-pigott-f4d9bade",
   "principalName": "Helen Pigott",
   "displayName": "Rumtruffle",
-  "totalPoints": 453,
+  "totalPoints": 469,
   "completedRaces": 11,
-  "latestRacePoints": 31,
+  "latestRacePoints": 30,
   "races": [
     {
       "raceId": "australia",
@@ -1001,13 +1001,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 21,
+      "baseSubtotal": 36,
       "driverSubtotal": 33,
-      "constructorSubtotal": -12,
+      "constructorSubtotal": 3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 21,
+      "totalPoints": 36,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1120,7 +1120,7 @@
             "lando-norris",
             "oscar-piastri"
           ],
-          "totalPoints": -23,
+          "totalPoints": -10,
           "weightingBreakdown": {
             "leadDriverId": "oscar-piastri",
             "leadDriverName": "Oscar Piastri",
@@ -1139,7 +1139,7 @@
             },
             {
               "label": "FIA monetary fines",
-              "points": -23
+              "points": -10
             }
           ]
         },
@@ -1151,26 +1151,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -1,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "alex-albon",
             "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 10,
+            "leadDriverPoints": 7,
             "secondDriverId": "carlos-sainz",
             "secondDriverName": "Carlos Sainz",
             "secondDriverPoints": -10,
-            "formula": "ceil((3×10 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "formula": "ceil((3×7 + 2×-10) ÷ 5)",
+            "weightedRawPoints": 0.2,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -3
+              "points": 1
             }
           ]
         },
@@ -1202,19 +1198,19 @@
           ]
         }
       ],
-      "runningTotal": 215
+      "runningTotal": 230
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 52,
+      "baseSubtotal": 54,
       "driverSubtotal": 37,
-      "constructorSubtotal": 15,
+      "constructorSubtotal": 17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 52,
+      "totalPoints": 54,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1346,26 +1342,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -3,
+          "totalPoints": -1,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 4,
+            "leadDriverPoints": 1,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×4 + 2×-2) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×1 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -1.4,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -5
+              "points": -1
             }
           ]
         },
@@ -1397,7 +1389,7 @@
           ]
         }
       ],
-      "runningTotal": 267
+      "runningTotal": 284
     },
     {
       "raceId": "austria",
@@ -1588,7 +1580,7 @@
           ]
         }
       ],
-      "runningTotal": 294
+      "runningTotal": 311
     },
     {
       "raceId": "great-britain",
@@ -1791,7 +1783,7 @@
           ]
         }
       ],
-      "runningTotal": 366
+      "runningTotal": 383
     },
     {
       "raceId": "belgium",
@@ -1982,19 +1974,19 @@
           ]
         }
       ],
-      "runningTotal": 422
+      "runningTotal": 439
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 31,
-      "driverSubtotal": 25,
+      "baseSubtotal": 30,
+      "driverSubtotal": 24,
       "constructorSubtotal": 6,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 30,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2007,7 +1999,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -2020,6 +2012,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2173,7 +2169,7 @@
           ]
         }
       ],
-      "runningTotal": 453
+      "runningTotal": 469
     }
   ]
 }

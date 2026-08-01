@@ -3,15 +3,15 @@
   "raceName": "Hungary",
   "date": "2026-07-26",
   "round": 13,
-  "generatedAt": "2026-07-30T23:09:46.318Z",
+  "generatedAt": "2026-08-01T13:37:02.083Z",
   "documents": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_hungarian_grand_prix_-_infringement_-_car_6_-_pit_lane_speeding_.pdf",
       "fineEuros": 400,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "red-bull"
+        "type": "driver",
+        "id": "isack-hadjar"
       }
     }
   ],
@@ -212,7 +212,7 @@
           ]
         }
       ],
-      "runningTotal": 391
+      "runningTotal": 389
     },
     {
       "teamId": "laurence-eggleston-9ea0df43",
@@ -221,13 +221,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 87,
+      "baseSubtotal": 88,
       "driverSubtotal": 47,
-      "constructorSubtotal": 40,
+      "constructorSubtotal": 41,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 87,
+      "totalPoints": 88,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -363,26 +363,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -414,7 +410,7 @@
           ]
         }
       ],
-      "runningTotal": 935
+      "runningTotal": 933
     },
     {
       "teamId": "chris-austin-e2663171",
@@ -608,7 +604,205 @@
           ]
         }
       ],
-      "runningTotal": 1072
+      "runningTotal": 1071
+    },
+    {
+      "teamId": "kai-lewis-dbf2a760",
+      "principalName": "Kai Lewis",
+      "displayName": "Helldrivers",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 61,
+      "driverSubtotal": 26,
+      "constructorSubtotal": 35,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 61,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 3,
+          "sprintPosition": null,
+          "gridStart": 2,
+          "racePosition": 4,
+          "classified": true,
+          "totalPoints": 13,
+          "components": [
+            {
+              "label": "Qualifying P3",
+              "points": 3
+            },
+            {
+              "label": "Race finish P4",
+              "points": 12
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 10,
+          "sprintPosition": null,
+          "gridStart": 10,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 7,
+          "components": [
+            {
+              "label": "Qualifying P10",
+              "points": 3
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 12,
+          "sprintPosition": null,
+          "gridStart": 12,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 6,
+          "components": [
+            {
+              "label": "Qualifying P12",
+              "points": 6
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 11,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 13,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×13 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11,
+            "weightedPoints": 11
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 11
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 7,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×7 + 2×6) ÷ 5)",
+            "weightedRawPoints": 6.6,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        }
+      ],
+      "runningTotal": 628
     },
     {
       "teamId": "ben-west-39e8b936",
@@ -806,209 +1000,7 @@
           ]
         }
       ],
-      "runningTotal": 726
-    },
-    {
-      "teamId": "kai-lewis-dbf2a760",
-      "principalName": "Kai Lewis",
-      "displayName": "Helldrivers",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 60,
-      "driverSubtotal": 26,
-      "constructorSubtotal": 34,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 60,
-      "drivers": [
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 3,
-          "sprintPosition": null,
-          "gridStart": 2,
-          "racePosition": 4,
-          "classified": true,
-          "totalPoints": 13,
-          "components": [
-            {
-              "label": "Qualifying P3",
-              "points": 3
-            },
-            {
-              "label": "Race finish P4",
-              "points": 12
-            },
-            {
-              "label": "Position change",
-              "points": -4
-            },
-            {
-              "label": "Fastest lap",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 10,
-          "sprintPosition": null,
-          "gridStart": 10,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 7,
-          "components": [
-            {
-              "label": "Qualifying P10",
-              "points": 3
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "pierre-gasly",
-          "name": "Pierre Gasly",
-          "teamName": "Alpine",
-          "imageSlug": "gasly",
-          "rank": "No Hoper",
-          "qualifyingPosition": 12,
-          "sprintPosition": null,
-          "gridStart": 12,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 6,
-          "components": [
-            {
-              "label": "Qualifying P12",
-              "points": 6
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 11,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 13,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 11
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 7,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×7 + 2×6) ÷ 5)",
-            "weightedRawPoints": 6.6,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 628
+      "runningTotal": 725
     },
     {
       "teamId": "tracey-wallis-1da84f99",
@@ -1202,7 +1194,7 @@
           ]
         }
       ],
-      "runningTotal": 487
+      "runningTotal": 485
     },
     {
       "teamId": "richard-malet-7dc02204",
@@ -1590,7 +1582,201 @@
           ]
         }
       ],
-      "runningTotal": 553
+      "runningTotal": 558
+    },
+    {
+      "teamId": "rachel-khatri-e38f6983",
+      "principalName": "Rachel Khatri",
+      "displayName": "Little Red Corvette",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 49,
+      "driverSubtotal": 16,
+      "constructorSubtotal": 33,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 49,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P7",
+              "points": -2
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": null,
+          "gridStart": 9,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 12,
+          "sprintPosition": null,
+          "gridStart": 12,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 6,
+          "components": [
+            {
+              "label": "Qualifying P12",
+              "points": 6
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 11,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 13,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×13 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11,
+            "weightedPoints": 11
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 11
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 5,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": 6,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×6 + 2×2) ÷ 5)",
+            "weightedRawPoints": 4.4,
+            "weightedPoints": 5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 5
+            }
+          ]
+        }
+      ],
+      "runningTotal": 865
     },
     {
       "teamId": "jason-smith-1a886fe7",
@@ -1791,217 +1977,19 @@
       "runningTotal": 920
     },
     {
-      "teamId": "rachel-khatri-e38f6983",
-      "principalName": "Rachel Khatri",
-      "displayName": "Little Red Corvette",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 48,
-      "driverSubtotal": 16,
-      "constructorSubtotal": 32,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 48,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": null,
-          "gridStart": 9,
-          "racePosition": 10,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Race finish P10",
-              "points": 1
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "pierre-gasly",
-          "name": "Pierre Gasly",
-          "teamName": "Alpine",
-          "imageSlug": "gasly",
-          "rank": "No Hoper",
-          "qualifyingPosition": 12,
-          "sprintPosition": null,
-          "gridStart": 12,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 6,
-          "components": [
-            {
-              "label": "Qualifying P12",
-              "points": 6
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 11,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 13,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 11
-            }
-          ]
-        },
-        {
-          "teamId": "alpine",
-          "name": "Alpine",
-          "imageSlug": "alpine",
-          "driverIds": [
-            "pierre-gasly",
-            "franco-colapinto"
-          ],
-          "totalPoints": 5,
-          "weightingBreakdown": {
-            "leadDriverId": "pierre-gasly",
-            "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 6,
-            "secondDriverId": "franco-colapinto",
-            "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×6 + 2×2) ÷ 5)",
-            "weightedRawPoints": 4.4,
-            "weightedPoints": 5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 5
-            }
-          ]
-        }
-      ],
-      "runningTotal": 863
-    },
-    {
       "teamId": "mark-bayley-16a5cc70",
       "principalName": "Mark Bayley",
       "displayName": "Harvest Mode Heroes",
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 47,
+      "baseSubtotal": 48,
       "driverSubtotal": 15,
-      "constructorSubtotal": 32,
+      "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 47,
+      "totalPoints": 48,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2137,26 +2125,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -2188,7 +2172,205 @@
           ]
         }
       ],
-      "runningTotal": 816
+      "runningTotal": 810
+    },
+    {
+      "teamId": "harish-malapati-a5ef0eba",
+      "principalName": "Harish Malapati",
+      "displayName": "No Sandbagging",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 45,
+      "driverSubtotal": 21,
+      "constructorSubtotal": 24,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 45,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P7",
+              "points": -2
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 3,
+          "sprintPosition": null,
+          "gridStart": 2,
+          "racePosition": 4,
+          "classified": true,
+          "totalPoints": 13,
+          "components": [
+            {
+              "label": "Qualifying P3",
+              "points": 3
+            },
+            {
+              "label": "Race finish P4",
+              "points": 12
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 12,
+          "sprintPosition": null,
+          "gridStart": 12,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 6,
+          "components": [
+            {
+              "label": "Qualifying P12",
+              "points": 6
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 11,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 13,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×13 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11,
+            "weightedPoints": 11
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 11
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": -4,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": -9,
+            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 920
     },
     {
       "teamId": "venkatesh-bhimaraju-fa220cd7",
@@ -2386,209 +2568,7 @@
           ]
         }
       ],
-      "runningTotal": 942
-    },
-    {
-      "teamId": "harish-malapati-a5ef0eba",
-      "principalName": "Harish Malapati",
-      "displayName": "No Sandbagging",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 44,
-      "driverSubtotal": 21,
-      "constructorSubtotal": 23,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 44,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 3,
-          "sprintPosition": null,
-          "gridStart": 2,
-          "racePosition": 4,
-          "classified": true,
-          "totalPoints": 13,
-          "components": [
-            {
-              "label": "Qualifying P3",
-              "points": 3
-            },
-            {
-              "label": "Race finish P4",
-              "points": 12
-            },
-            {
-              "label": "Position change",
-              "points": -4
-            },
-            {
-              "label": "Fastest lap",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "pierre-gasly",
-          "name": "Pierre Gasly",
-          "teamName": "Alpine",
-          "imageSlug": "gasly",
-          "rank": "No Hoper",
-          "qualifyingPosition": 12,
-          "sprintPosition": null,
-          "gridStart": 12,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 6,
-          "components": [
-            {
-              "label": "Qualifying P12",
-              "points": 6
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 11,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 13,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 11
-            }
-          ]
-        },
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": -4,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -2,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -4.8,
-            "weightedPoints": -4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 921
+      "runningTotal": 941
     },
     {
       "teamId": "bruce-eggleston-cb831d32",
@@ -2597,13 +2577,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 40,
+      "baseSubtotal": 41,
       "driverSubtotal": 23,
-      "constructorSubtotal": 17,
+      "constructorSubtotal": 18,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 40,
+      "totalPoints": 41,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2716,26 +2696,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -2794,7 +2770,7 @@
           ]
         }
       ],
-      "runningTotal": 904
+      "runningTotal": 903
     },
     {
       "teamId": "faheem-mughal-462f69df",
@@ -2988,7 +2964,7 @@
           ]
         }
       ],
-      "runningTotal": 470
+      "runningTotal": 466
     },
     {
       "teamId": "caroline-harris-855736a8",
@@ -3182,109 +3158,113 @@
           ]
         }
       ],
-      "runningTotal": 335
+      "runningTotal": 328
     },
     {
-      "teamId": "john-khatri-81ee21fe",
-      "principalName": "John Khatri",
-      "displayName": "Bella’s Racing Team",
+      "teamId": "mark-haggan-f7670793",
+      "principalName": "Mark Haggan",
+      "displayName": "Henry’s Hoovers",
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
       "baseSubtotal": 38,
-      "driverSubtotal": 10,
-      "constructorSubtotal": 28,
+      "driverSubtotal": 18,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
       "totalPoints": 38,
       "drivers": [
         {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 8,
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
           "sprintPosition": null,
-          "gridStart": 8,
-          "racePosition": 6,
-          "classified": true,
-          "totalPoints": 12,
-          "components": [
-            {
-              "label": "Qualifying P8",
-              "points": 0
-            },
-            {
-              "label": "Race finish P6",
-              "points": 8
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 22,
-          "sprintPosition": null,
-          "gridStart": 22,
-          "racePosition": null,
-          "classified": true,
-          "totalPoints": -4,
-          "components": [
-            {
-              "label": "Qualifying P22",
-              "points": -4
-            },
-            {
-              "label": "Race finish PNC",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "valtteri-bottas",
-          "name": "Valtteri Bottas",
-          "teamName": "Cadillac",
-          "imageSlug": "bottas",
-          "rank": "Outsider",
-          "qualifyingPosition": 21,
-          "sprintPosition": null,
-          "gridStart": 21,
-          "racePosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
           "classified": true,
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P21",
-              "points": 2
+              "label": "Qualifying P7",
+              "points": -2
             },
             {
-              "label": "Race finish PNC",
-              "points": 0
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "lewis-hamilton",
+          "name": "Lewis Hamilton",
+          "teamName": "Ferrari",
+          "imageSlug": "hamilton",
+          "rank": "Top Ten",
+          "qualifyingPosition": 2,
+          "sprintPosition": null,
+          "gridStart": 5,
+          "racePosition": 5,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying P2",
+              "points": 3
+            },
+            {
+              "label": "Race finish P5",
+              "points": 10
             },
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": null,
+          "gridStart": 9,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 9
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": -2
             }
           ],
           "raceContext": {
@@ -3295,22 +3275,22 @@
       ],
       "constructors": [
         {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
           "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
+            "max-verstappen",
+            "isack-hadjar"
           ],
           "totalPoints": 17,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 26,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×26 + 2×2) ÷ 5)",
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
             "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
@@ -3322,61 +3302,61 @@
           ]
         },
         {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
           "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
+            "esteban-ocon",
+            "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": -4,
           "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 13,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": -9,
+            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": -4
             }
           ]
         },
         {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
           "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
           ],
-          "totalPoints": 0,
+          "totalPoints": 7,
           "weightingBreakdown": {
-            "leadDriverId": "valtteri-bottas",
-            "leadDriverName": "Valtteri Bottas",
-            "leadDriverPoints": 2,
-            "secondDriverId": "sergio-perez",
-            "secondDriverName": "Sergio Perez",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -0.4,
-            "weightedPoints": 0
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 7,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×7 + 2×6) ÷ 5)",
+            "weightedRawPoints": 6.6,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": 7
             }
           ]
         }
       ],
-      "runningTotal": 569
+      "runningTotal": 738
     },
     {
       "teamId": "matthew-brooks-0ba2f10f",
@@ -3574,7 +3554,7 @@
           ]
         }
       ],
-      "runningTotal": 850
+      "runningTotal": 849
     },
     {
       "teamId": "rob-wallis-94faa5a8",
@@ -3768,7 +3748,205 @@
           ]
         }
       ],
-      "runningTotal": 267
+      "runningTotal": 283
+    },
+    {
+      "teamId": "john-khatri-81ee21fe",
+      "principalName": "John Khatri",
+      "displayName": "Bella’s Racing Team",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 37,
+      "driverSubtotal": 9,
+      "constructorSubtotal": 28,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 37,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 8,
+          "sprintPosition": null,
+          "gridStart": 8,
+          "racePosition": 6,
+          "classified": true,
+          "totalPoints": 11,
+          "components": [
+            {
+              "label": "Qualifying P8",
+              "points": 0
+            },
+            {
+              "label": "Race finish P6",
+              "points": 8
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 22,
+          "sprintPosition": null,
+          "gridStart": 22,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": -4,
+          "components": [
+            {
+              "label": "Qualifying P22",
+              "points": -4
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 21,
+          "sprintPosition": null,
+          "gridStart": 21,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P21",
+              "points": 2
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "kimi-antonelli",
+            "leadDriverName": "Kimi Antonelli",
+            "leadDriverPoints": 26,
+            "secondDriverId": "george-russell",
+            "secondDriverName": "George Russell",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×26 + 2×2) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 11,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 13,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×13 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11,
+            "weightedPoints": 11
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 11
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 0,
+          "weightingBreakdown": {
+            "leadDriverId": "valtteri-bottas",
+            "leadDriverName": "Valtteri Bottas",
+            "leadDriverPoints": 2,
+            "secondDriverId": "sergio-perez",
+            "secondDriverName": "Sergio Perez",
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -0.4,
+            "weightedPoints": 0
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "runningTotal": 567
     },
     {
       "teamId": "fred-bull-c865e3fe",
@@ -3778,8 +3956,8 @@
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
       "baseSubtotal": 37,
-      "driverSubtotal": 18,
-      "constructorSubtotal": 19,
+      "driverSubtotal": 17,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
@@ -3827,7 +4005,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -3840,6 +4018,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -3892,26 +4074,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -3970,209 +4148,7 @@
           ]
         }
       ],
-      "runningTotal": 426
-    },
-    {
-      "teamId": "mark-haggan-f7670793",
-      "principalName": "Mark Haggan",
-      "displayName": "Henry’s Hoovers",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 37,
-      "driverSubtotal": 18,
-      "constructorSubtotal": 19,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 37,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "lewis-hamilton",
-          "name": "Lewis Hamilton",
-          "teamName": "Ferrari",
-          "imageSlug": "hamilton",
-          "rank": "Top Ten",
-          "qualifyingPosition": 2,
-          "sprintPosition": null,
-          "gridStart": 5,
-          "racePosition": 5,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying P2",
-              "points": 3
-            },
-            {
-              "label": "Race finish P5",
-              "points": 10
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            },
-            {
-              "label": "Race time penalty",
-              "points": -5
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "arvid-lindblad",
-          "name": "Arvid Lindblad",
-          "teamName": "Racing Bulls",
-          "imageSlug": "lindblad",
-          "rank": "No Hoper",
-          "qualifyingPosition": 9,
-          "sprintPosition": null,
-          "gridStart": 9,
-          "racePosition": 10,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 9
-            },
-            {
-              "label": "Race finish P10",
-              "points": 1
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": -4,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -2,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -4.8,
-            "weightedPoints": -4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -4
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 7,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×7 + 2×6) ÷ 5)",
-            "weightedRawPoints": 6.6,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 738
+      "runningTotal": 423
     },
     {
       "teamId": "yavvan-tadepalli-9118d7c6",
@@ -4370,7 +4346,7 @@
           ]
         }
       ],
-      "runningTotal": 795
+      "runningTotal": 794
     },
     {
       "teamId": "nathanael-wallis-711c13e3",
@@ -4564,7 +4540,7 @@
           ]
         }
       ],
-      "runningTotal": 619
+      "runningTotal": 618
     },
     {
       "teamId": "jon-cooke-fed59910",
@@ -4762,7 +4738,7 @@
           ]
         }
       ],
-      "runningTotal": 941
+      "runningTotal": 940
     },
     {
       "teamId": "tom-pigott-2ae838f8",
@@ -4771,13 +4747,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 33,
-      "driverSubtotal": 16,
+      "baseSubtotal": 32,
+      "driverSubtotal": 15,
       "constructorSubtotal": 17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 33,
+      "totalPoints": 32,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -4825,7 +4801,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -4838,6 +4814,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -4964,7 +4944,403 @@
           ]
         }
       ],
-      "runningTotal": 553
+      "runningTotal": 551
+    },
+    {
+      "teamId": "paul-brooks-c712f8af",
+      "principalName": "Paul Brooks",
+      "displayName": "Who put 2xAA batteries in the design",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 32,
+      "driverSubtotal": -7,
+      "constructorSubtotal": 39,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 32,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P7",
+              "points": -2
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "alex-albon",
+          "name": "Alex Albon",
+          "teamName": "Williams",
+          "imageSlug": "albon",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 19,
+          "sprintPosition": null,
+          "gridStart": 19,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": 0,
+          "components": [
+            {
+              "label": "Qualifying P19",
+              "points": -4
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 17,
+          "sprintPosition": null,
+          "gridStart": 17,
+          "racePosition": 19,
+          "classified": true,
+          "totalPoints": -9,
+          "components": [
+            {
+              "label": "Qualifying P17",
+              "points": 0
+            },
+            {
+              "label": "Race finish P19",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
+          "driverIds": [
+            "lando-norris",
+            "oscar-piastri"
+          ],
+          "totalPoints": 15,
+          "weightingBreakdown": {
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": 25,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×25 + 2×0) ÷ 5)",
+            "weightedRawPoints": 15,
+            "weightedPoints": 15
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 15
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 7,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×7 + 2×6) ÷ 5)",
+            "weightedRawPoints": 6.6,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        }
+      ],
+      "runningTotal": 490
+    },
+    {
+      "teamId": "brian-donnell-c0048d2b",
+      "principalName": "Brian Donnell",
+      "displayName": "Fairbanks ICEdogs",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 31,
+      "driverSubtotal": 1,
+      "constructorSubtotal": 30,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 31,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P7",
+              "points": -2
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 18,
+          "sprintPosition": null,
+          "gridStart": 18,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": -14,
+          "components": [
+            {
+              "label": "Qualifying P18",
+              "points": -4
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            },
+            {
+              "label": "Race time penalty",
+              "points": -10
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "liam-lawson",
+          "name": "Liam Lawson",
+          "teamName": "Red Bull",
+          "imageSlug": "lawson",
+          "rank": "Outsider",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 11,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 13,
+          "components": [
+            {
+              "label": "Qualifying P11",
+              "points": 3
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "kimi-antonelli",
+            "leadDriverName": "Kimi Antonelli",
+            "leadDriverPoints": 26,
+            "secondDriverId": "george-russell",
+            "secondDriverName": "George Russell",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×26 + 2×2) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": -4,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": -9,
+            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 690
     },
     {
       "teamId": "ken-pigott-5e176435",
@@ -4973,13 +5349,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 32,
-      "driverSubtotal": 0,
+      "baseSubtotal": 31,
+      "driverSubtotal": -1,
       "constructorSubtotal": 32,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 32,
+      "totalPoints": 31,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -4992,7 +5368,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -5005,6 +5381,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -5162,7 +5542,7 @@
           ]
         }
       ],
-      "runningTotal": 246
+      "runningTotal": 254
     },
     {
       "teamId": "helen-pigott-f4d9bade",
@@ -5171,13 +5551,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 31,
-      "driverSubtotal": 25,
+      "baseSubtotal": 30,
+      "driverSubtotal": 24,
       "constructorSubtotal": 6,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 30,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -5190,7 +5570,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -5203,6 +5583,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -5356,411 +5740,7 @@
           ]
         }
       ],
-      "runningTotal": 453
-    },
-    {
-      "teamId": "paul-brooks-c712f8af",
-      "principalName": "Paul Brooks",
-      "displayName": "Who put 2xAA batteries in the design",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 31,
-      "driverSubtotal": -7,
-      "constructorSubtotal": 38,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 31,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "alex-albon",
-          "name": "Alex Albon",
-          "teamName": "Williams",
-          "imageSlug": "albon",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 19,
-          "sprintPosition": null,
-          "gridStart": 19,
-          "racePosition": 17,
-          "classified": true,
-          "totalPoints": 0,
-          "components": [
-            {
-              "label": "Qualifying P19",
-              "points": -4
-            },
-            {
-              "label": "Race finish P17",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "oliver-bearman",
-          "name": "Oliver Bearman",
-          "teamName": "Haas",
-          "imageSlug": "bearman",
-          "rank": "Outsider",
-          "qualifyingPosition": 17,
-          "sprintPosition": null,
-          "gridStart": 17,
-          "racePosition": 19,
-          "classified": true,
-          "totalPoints": -9,
-          "components": [
-            {
-              "label": "Qualifying P17",
-              "points": 0
-            },
-            {
-              "label": "Race finish P19",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -4
-            },
-            {
-              "label": "Race time penalty",
-              "points": -5
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mclaren",
-          "name": "McLaren",
-          "imageSlug": "mclaren",
-          "driverIds": [
-            "lando-norris",
-            "oscar-piastri"
-          ],
-          "totalPoints": 15,
-          "weightingBreakdown": {
-            "leadDriverId": "lando-norris",
-            "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 25,
-            "secondDriverId": "oscar-piastri",
-            "secondDriverName": "Oscar Piastri",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×25 + 2×0) ÷ 5)",
-            "weightedRawPoints": 15,
-            "weightedPoints": 15
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 15
-            }
-          ]
-        },
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 7,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×7 + 2×6) ÷ 5)",
-            "weightedRawPoints": 6.6,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 483
-    },
-    {
-      "teamId": "brian-donnell-c0048d2b",
-      "principalName": "Brian Donnell",
-      "displayName": "Fairbanks ICEdogs",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 30,
-      "driverSubtotal": 1,
-      "constructorSubtotal": 29,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 30,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 18,
-          "sprintPosition": null,
-          "gridStart": 18,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": -14,
-          "components": [
-            {
-              "label": "Qualifying P18",
-              "points": -4
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "liam-lawson",
-          "name": "Liam Lawson",
-          "teamName": "Red Bull",
-          "imageSlug": "lawson",
-          "rank": "Outsider",
-          "qualifyingPosition": 11,
-          "sprintPosition": null,
-          "gridStart": 11,
-          "racePosition": 8,
-          "classified": true,
-          "totalPoints": 13,
-          "components": [
-            {
-              "label": "Qualifying P11",
-              "points": 3
-            },
-            {
-              "label": "Race finish P8",
-              "points": 4
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 17,
-          "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 26,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×26 + 2×2) ÷ 5)",
-            "weightedRawPoints": 16.4,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            }
-          ]
-        },
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": -4,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -2,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×-2 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -4.8,
-            "weightedPoints": -4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 693
+      "runningTotal": 469
     },
     {
       "teamId": "rahul-srinivasan-c15c2aa4",
@@ -5958,7 +5938,7 @@
           ]
         }
       ],
-      "runningTotal": 922
+      "runningTotal": 920
     },
     {
       "teamId": "lizzie-bulmer-ed151919",
@@ -5967,13 +5947,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 28,
+      "baseSubtotal": 29,
       "driverSubtotal": 10,
-      "constructorSubtotal": 18,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 28,
+      "totalPoints": 29,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -6078,26 +6058,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -6156,7 +6132,7 @@
           ]
         }
       ],
-      "runningTotal": 479
+      "runningTotal": 482
     },
     {
       "teamId": "john-hopkins-4d46f69f",
@@ -6350,7 +6326,7 @@
           ]
         }
       ],
-      "runningTotal": 468
+      "runningTotal": 474
     },
     {
       "teamId": "oyvind-helgerud-3d689e5d",
@@ -6359,13 +6335,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 26,
-      "driverSubtotal": 5,
+      "baseSubtotal": 25,
+      "driverSubtotal": 4,
       "constructorSubtotal": 21,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 26,
+      "totalPoints": 25,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -6378,7 +6354,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -6391,6 +6367,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -6548,7 +6528,7 @@
           ]
         }
       ],
-      "runningTotal": 270
+      "runningTotal": 279
     },
     {
       "teamId": "rick-grimshaw-e0e97b49",
@@ -6750,7 +6730,7 @@
           ]
         }
       ],
-      "runningTotal": 732
+      "runningTotal": 734
     },
     {
       "teamId": "chris-bayley-f3b36d58",
@@ -6948,7 +6928,7 @@
           ]
         }
       ],
-      "runningTotal": 588
+      "runningTotal": 584
     },
     {
       "teamId": "ryan-eyre-6119a97c",
@@ -6957,13 +6937,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 14,
+      "baseSubtotal": 15,
       "driverSubtotal": -5,
-      "constructorSubtotal": 19,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 21,
+      "totalPoints": 22,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -7072,26 +7052,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -7150,7 +7126,7 @@
           ]
         }
       ],
-      "runningTotal": 370
+      "runningTotal": 367
     },
     {
       "teamId": "charles-skilton-1f69d034",
@@ -7356,7 +7332,201 @@
           ]
         }
       ],
-      "runningTotal": 649
+      "runningTotal": 647
+    },
+    {
+      "teamId": "sanath-kuppa-f128be53",
+      "principalName": "Sanath Kuppa",
+      "displayName": "Must Be The Water",
+      "raceId": "hungary",
+      "raceName": "Hungary",
+      "raceDate": "2026-07-26",
+      "baseSubtotal": 19,
+      "driverSubtotal": 0,
+      "constructorSubtotal": 19,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 19,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 7,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P7",
+              "points": -2
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 22,
+          "sprintPosition": null,
+          "gridStart": 22,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": -4,
+          "components": [
+            {
+              "label": "Qualifying P22",
+              "points": -4
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 21,
+          "sprintPosition": null,
+          "gridStart": 21,
+          "racePosition": null,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P21",
+              "points": 2
+            },
+            {
+              "label": "Race finish PNC",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "hungary",
+            "raceName": "Hungary"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 17,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 20,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
+            "weightedPoints": 17
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 17
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -5,
+          "weightingBreakdown": {
+            "leadDriverId": "alex-albon",
+            "leadDriverName": "Alex Albon",
+            "leadDriverPoints": 0,
+            "secondDriverId": "carlos-sainz",
+            "secondDriverName": "Carlos Sainz",
+            "secondDriverPoints": -14,
+            "formula": "ceil((3×0 + 2×-14) ÷ 5)",
+            "weightedRawPoints": -5.6,
+            "weightedPoints": -5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -5
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 7,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×7 + 2×6) ÷ 5)",
+            "weightedRawPoints": 6.6,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        }
+      ],
+      "runningTotal": 366
     },
     {
       "teamId": "simon-walker-7dd9df1f",
@@ -7555,204 +7725,6 @@
         }
       ],
       "runningTotal": 921
-    },
-    {
-      "teamId": "sanath-kuppa-f128be53",
-      "principalName": "Sanath Kuppa",
-      "displayName": "Must Be The Water",
-      "raceId": "hungary",
-      "raceName": "Hungary",
-      "raceDate": "2026-07-26",
-      "baseSubtotal": 18,
-      "driverSubtotal": 0,
-      "constructorSubtotal": 18,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 18,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 7,
-          "sprintPosition": null,
-          "gridStart": 6,
-          "racePosition": 7,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P7",
-              "points": -2
-            },
-            {
-              "label": "Race finish P7",
-              "points": 6
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 22,
-          "sprintPosition": null,
-          "gridStart": 22,
-          "racePosition": null,
-          "classified": true,
-          "totalPoints": -4,
-          "components": [
-            {
-              "label": "Qualifying P22",
-              "points": -4
-            },
-            {
-              "label": "Race finish PNC",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        },
-        {
-          "driverId": "valtteri-bottas",
-          "name": "Valtteri Bottas",
-          "teamName": "Cadillac",
-          "imageSlug": "bottas",
-          "rank": "Outsider",
-          "qualifyingPosition": 21,
-          "sprintPosition": null,
-          "gridStart": 21,
-          "racePosition": null,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P21",
-              "points": 2
-            },
-            {
-              "label": "Race finish PNC",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "hungary",
-            "raceName": "Hungary"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": 16,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
-            "weightedPoints": 17
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ]
-        },
-        {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
-          "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 0,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": -14,
-            "formula": "ceil((3×0 + 2×-14) ÷ 5)",
-            "weightedRawPoints": -5.6,
-            "weightedPoints": -5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -5
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 7,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×7 + 2×6) ÷ 5)",
-            "weightedRawPoints": 6.6,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        }
-      ],
-      "runningTotal": 364
     },
     {
       "teamId": "claire-skilton-2543e64a",
@@ -7958,7 +7930,7 @@
           ]
         }
       ],
-      "runningTotal": 825
+      "runningTotal": 824
     },
     {
       "teamId": "louise-wallis-1d10f129",
@@ -8160,7 +8132,7 @@
           ]
         }
       ],
-      "runningTotal": 764
+      "runningTotal": 765
     },
     {
       "teamId": "leanne-lewis-b930b948",
@@ -8556,7 +8528,7 @@
           ]
         }
       ],
-      "runningTotal": 624
+      "runningTotal": 627
     },
     {
       "teamId": "martin-lewis-ea255cc6",
@@ -8566,8 +8538,8 @@
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
       "baseSubtotal": 5,
-      "driverSubtotal": -2,
-      "constructorSubtotal": 7,
+      "driverSubtotal": -3,
+      "constructorSubtotal": 8,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
@@ -8584,7 +8556,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -8597,6 +8569,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -8680,26 +8656,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 16,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 20,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×20 + 2×12) ÷ 5)",
-            "weightedRawPoints": 16.8,
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×20 + 2×11) ÷ 5)",
+            "weightedRawPoints": 16.4,
             "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 17
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         },
@@ -8758,7 +8730,7 @@
           ]
         }
       ],
-      "runningTotal": 331
+      "runningTotal": 326
     }
   ]
 }

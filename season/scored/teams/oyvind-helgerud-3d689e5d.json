@@ -2,9 +2,9 @@
   "teamId": "oyvind-helgerud-3d689e5d",
   "principalName": "Oyvind Helgerud",
   "displayName": "Vestigo Racing",
-  "totalPoints": 270,
+  "totalPoints": 279,
   "completedRaces": 11,
-  "latestRacePoints": 26,
+  "latestRacePoints": 25,
   "races": [
     {
       "raceId": "australia",
@@ -1005,13 +1005,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -5,
+      "baseSubtotal": 8,
       "driverSubtotal": -3,
-      "constructorSubtotal": -2,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -5,
+      "totalPoints": 8,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1120,7 +1120,7 @@
             "lando-norris",
             "oscar-piastri"
           ],
-          "totalPoints": -23,
+          "totalPoints": -10,
           "weightingBreakdown": {
             "leadDriverId": "oscar-piastri",
             "leadDriverName": "Oscar Piastri",
@@ -1139,7 +1139,7 @@
             },
             {
               "label": "FIA monetary fines",
-              "points": -23
+              "points": -10
             }
           ]
         },
@@ -1155,22 +1155,18 @@
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 19,
+            "leadDriverPoints": 18,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -5,
-            "formula": "ceil((3×19 + 2×-5) ÷ 5)",
-            "weightedRawPoints": 9.4,
-            "weightedPoints": 10
+            "formula": "ceil((3×18 + 2×-5) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 10
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 9
             }
           ]
         },
@@ -1202,19 +1198,19 @@
           ]
         }
       ],
-      "runningTotal": 121
+      "runningTotal": 134
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 31,
-      "driverSubtotal": 15,
+      "baseSubtotal": 28,
+      "driverSubtotal": 12,
       "constructorSubtotal": 16,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 28,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1258,7 +1254,7 @@
           "gridStart": 16,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 1,
           "components": [
             {
               "label": "Qualifying P16",
@@ -1271,6 +1267,10 @@
             {
               "label": "Position change",
               "points": 8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1350,22 +1350,18 @@
           "weightingBreakdown": {
             "leadDriverId": "lance-stroll",
             "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 0,
+            "leadDriverPoints": -1,
             "secondDriverId": "fernando-alonso",
             "secondDriverName": "Fernando Alonso",
             "secondDriverPoints": -4,
-            "formula": "ceil((3×0 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -1.6,
-            "weightedPoints": -1
+            "formula": "ceil((3×-1 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -2.2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": -2
             }
           ]
         },
@@ -1397,7 +1393,7 @@
           ]
         }
       ],
-      "runningTotal": 152
+      "runningTotal": 162
     },
     {
       "raceId": "austria",
@@ -1588,7 +1584,7 @@
           ]
         }
       ],
-      "runningTotal": 171
+      "runningTotal": 181
     },
     {
       "raceId": "great-britain",
@@ -1791,7 +1787,7 @@
           ]
         }
       ],
-      "runningTotal": 190
+      "runningTotal": 200
     },
     {
       "raceId": "belgium",
@@ -1986,19 +1982,19 @@
           ]
         }
       ],
-      "runningTotal": 244
+      "runningTotal": 254
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 26,
-      "driverSubtotal": 5,
+      "baseSubtotal": 25,
+      "driverSubtotal": 4,
       "constructorSubtotal": 21,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 26,
+      "totalPoints": 25,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2011,7 +2007,7 @@
           "gridStart": 8,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 12,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying P8",
@@ -2024,6 +2020,10 @@
             {
               "label": "Position change",
               "points": 4
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2181,7 +2181,7 @@
           ]
         }
       ],
-      "runningTotal": 270
+      "runningTotal": 279
     }
   ]
 }
