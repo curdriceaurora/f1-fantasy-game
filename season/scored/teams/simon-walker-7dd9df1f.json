@@ -1014,8 +1014,8 @@
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
       "baseSubtotal": 48,
-      "driverSubtotal": 9,
-      "constructorSubtotal": 39,
+      "driverSubtotal": 8,
+      "constructorSubtotal": 40,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
@@ -1032,7 +1032,7 @@
           "gridStart": 6,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": -19,
+          "totalPoints": -20,
           "components": [
             {
               "label": "Qualifying P6",
@@ -1049,6 +1049,10 @@
             {
               "label": "Race time penalty",
               "points": -5
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -1136,22 +1140,18 @@
           "weightingBreakdown": {
             "leadDriverId": "kimi-antonelli",
             "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 32,
             "secondDriverId": "george-russell",
             "secondDriverName": "George Russell",
-            "secondDriverPoints": -19,
-            "formula": "ceil((3×33 + 2×-19) ÷ 5)",
-            "weightedRawPoints": 12.2,
-            "weightedPoints": 13
+            "secondDriverPoints": -20,
+            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
+              "points": 12
             }
           ]
         },
@@ -1190,26 +1190,22 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 15,
+          "totalPoints": 16,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": 26,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 1,
-            "formula": "ceil((3×26 + 2×1) ÷ 5)",
-            "weightedRawPoints": 16,
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×26 + 2×0) ÷ 5)",
+            "weightedRawPoints": 15.6,
             "weightedPoints": 16
           },
           "components": [
             {
               "label": "Weighted driver total",
               "points": 16
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
             }
           ]
         }

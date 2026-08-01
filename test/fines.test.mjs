@@ -206,6 +206,19 @@ test('a start procedure infringement is charged to the driver', () => {
   assert.deepEqual(summary.document.appliedTo, { type: 'driver', id: 'alex-albon' });
 });
 
+test('a team fine whose reason text mentions a driving phrase still stays with the team', () => {
+  // Canada car 14: an unsafe release, but the reason narrates a near "collision
+  // with Car 27" — the infringement type comes from the title, not the reason.
+  const url = 'https://example.test/2026_canadian_grand_prix_-_infringement_-_car_14_-_unsafe_release_from_garage.pdf';
+  const text = `
+    The competitor (Aston Martin Aramco F1 Team) is fined €5,000.
+    Reason Car 14 was released from its garage into a near collision with Car 27.
+  `;
+
+  const summary = summarizeFineDocumentText(url, text);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'aston-martin' });
+});
+
 test('a driver-fault fine for a non-roster car falls back to the entrant team', () => {
   const url = 'https://example.test/2026_belgian_grand_prix_-_infringement_-_car_34_-_pit_lane_speeding.pdf';
   const text = `

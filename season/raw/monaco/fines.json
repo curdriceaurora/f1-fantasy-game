@@ -1,12 +1,14 @@
 {
   "raceId": "monaco",
-  "drivers": {},
+  "drivers": {
+    "alex-albon": 5100,
+    "franco-colapinto": 900,
+    "kimi-antonelli": 100,
+    "fernando-alonso": 100,
+    "george-russell": 100
+  },
   "teams": {
-    "williams": 5100,
-    "alpine": 900,
-    "mclaren": 45000,
-    "mercedes": 200,
-    "aston-martin": 100
+    "mclaren": 20000
   },
   "documents": [
     {
@@ -14,8 +16,8 @@
       "fineEuros": 5000,
       "finePoints": -3,
       "appliedTo": {
-        "type": "team",
-        "id": "williams"
+        "type": "driver",
+        "id": "alex-albon"
       }
     },
     {
@@ -23,8 +25,8 @@
       "fineEuros": 100,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "williams"
+        "type": "driver",
+        "id": "alex-albon"
       }
     },
     {
@@ -32,14 +34,14 @@
       "fineEuros": 900,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "alpine"
+        "type": "driver",
+        "id": "franco-colapinto"
       }
     },
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_1_-_technical_non-conformity_cds.pdf",
-      "fineEuros": 40000,
-      "finePoints": -20,
+      "fineEuros": 20000,
+      "finePoints": -10,
       "appliedTo": {
         "type": "team",
         "id": "mclaren"
@@ -50,8 +52,8 @@
       "fineEuros": 100,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "mercedes"
+        "type": "driver",
+        "id": "kimi-antonelli"
       }
     },
     {
@@ -59,8 +61,8 @@
       "fineEuros": 100,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "aston-martin"
+        "type": "driver",
+        "id": "fernando-alonso"
       }
     },
     {
@@ -68,17 +70,8 @@
       "fineEuros": 100,
       "finePoints": -1,
       "appliedTo": {
-        "type": "team",
-        "id": "mercedes"
-      }
-    },
-    {
-      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_1_-_media_commitment.pdf",
-      "fineEuros": 5000,
-      "finePoints": -3,
-      "appliedTo": {
-        "type": "team",
-        "id": "mclaren"
+        "type": "driver",
+        "id": "george-russell"
       }
     }
   ],
