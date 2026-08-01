@@ -162,3 +162,18 @@ test('a fine imposed on the driver stays with the driver', () => {
 test('the entry line resolves a driver by car number when the name is unknown', () => {
   assert.deepEqual(classifySubject('6 - I. Hadjar-Unknown'), { type: 'driver', id: 'isack-hadjar' });
 });
+
+test('a partial suspension is not counted twice when the PDF breaks the words apart', () => {
+  // Steward PDFs put line breaks and non-breaking spaces inside this sentence.
+  // The reader and the remover must agree, or the paired amounts are read once
+  // as a suspension and again as two independent fines.
+  const nonBreakingSpace = ' ';
+  const text = `
+    Decision
+    The competitor (Scuderia Ferrari HP) is fined €30,000 of${nonBreakingSpace}which €10,000 is
+    suspended for 12 months on condition that the Competitor does not commit a
+    similar infringement in the meantime.
+  `;
+
+  assert.equal(activeFineFromText(text), 20000);
+});
