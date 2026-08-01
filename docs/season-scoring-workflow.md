@@ -33,7 +33,7 @@ Two calendar fields absorb that, both in [`season/config/2026-calendar.json`](..
 1. Confirm the outcome against [formula1.com](https://www.formula1.com/en/racing/2026) — it is the definitive source for whether a race moved, and to when.
 2. Set `status`, move `date` to the new race Sunday, and record `originalDate` and `venue`.
 3. If either provider files the race under a different name, pin it in `sources`.
-4. Renumber `round` to match the official calendar; a cancelled race keeps `round: null`.
+4. Leave `round` as Martin's sequential numbering (the game's source of truth — a cancelled race keeps its slot, e.g. Saudi Arabia stays `round: 5`) and set `officialRound` to the 2026 F1 calendar position, or `null` for a cancelled race.
 5. Run `npm run reconcile:season` to pick up anything now scoreable.
 
 Meeting lookup is deliberately strict about this: OpenF1 meetings more than ten days from the calendar date are rejected with an error naming the closest candidate, rather than being accepted as the nearest match. That is what stops the October Bahrain race being scored against the April meeting that never ran.
