@@ -103,6 +103,21 @@ test('a partially suspended fine only counts the payable part', () => {
   assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'ferrari' });
 });
 
+test('a partially suspended fine still counts a separate full fine in the same document', () => {
+  const text = `
+    Decision
+    The competitor (Scuderia Ferrari HP) is fined €30,000 of which €10,000 is
+    suspended for 12 months on condition that no similar infringement follows.
+    A separate fine of €5,000 is imposed for an unrelated procedural breach.
+  `;
+
+  // €20,000 payable from the partial suspension, plus the €5,000 standalone fine.
+  assert.equal(activeFineFromText(text), 25000);
+  const summary = summarizeFineDocumentText('https://example.test/partial-plus-full.pdf', text);
+  assert.equal(summary.warning, null);
+  assert.equal(summary.document.fineEuros, 25000);
+});
+
 test('sponsor-prefixed competitor names still resolve to the canonical team', () => {
   const text = `
     No / Driver
