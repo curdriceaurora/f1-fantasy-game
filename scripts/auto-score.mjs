@@ -3,7 +3,7 @@
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { discoverMonetaryFinePdfs } from '../lib/fia-documents.js';
-import { mondayPublicationDate } from '../lib/race-workflow.js';
+import { isRaceScoreable, mondayPublicationDate } from '../lib/race-workflow.js';
 import {
   configPath,
   ensureSeasonDirs,
@@ -19,13 +19,16 @@ import { scoreRace } from './score-race.mjs';
 
 function findMostRecentEligibleRace(calendar, now) {
   return calendar
+    .filter(isRaceScoreable)
     .filter((race) => now >= mondayPublicationDate(race.date))
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
 }
 
-async function autoScore() {
+export async function autoScore(services = {}) {
   ensureSeasonDirs();
-  const now = new Date();
+  const now = services.now || new Date();
+  const discoverFinePdfs = services.discoverMonetaryFinePdfs || discoverMonetaryFinePdfs;
+  const scoreRaceImpl = services.scoreRace || scoreRace;
   const calendar = loadCalendar();
 
   const race = findMostRecentEligibleRace(calendar, now);
@@ -36,7 +39,21 @@ async function autoScore() {
 
   console.log(`Checking ${race.name} (Round ${race.round})...`);
 
-  const fineUrls = await discoverMonetaryFinePdfs(race);
+  const isFinalized = existsSync(normalizedRacePath(race.id)) && existsSync(scoredRacePath(race.id));
+
+  let fineUrls;
+  try {
+    fineUrls = await discoverFinePdfs(race);
+  } catch (error) {
+    // A stored review is only trustworthy when FIA actually answered, so never
+    // fall through and record "no fines found" off the back of a failed fetch.
+    if (isFinalized) {
+      console.log(`FIA document discovery failed: ${error.message}`);
+      console.log(`${race.name} is already finalized; keeping the stored fine review and retrying on the next run.`);
+      return;
+    }
+    throw new Error(`FIA document discovery failed for ${race.name}: ${error.message}`);
+  }
   console.log(`Discovered ${fineUrls.length} FIA monetary fine document(s).`);
 
   const storedReview = loadFineReview(race.id);
@@ -44,7 +61,6 @@ async function autoScore() {
   const discoveredSorted = [...fineUrls].sort().join(',');
 
   const docsChanged = storedSorted !== discoveredSorted;
-  const isFinalized = existsSync(normalizedRacePath(race.id)) && existsSync(scoredRacePath(race.id));
 
   if (!docsChanged && isFinalized) {
     console.log(`${race.name} is already finalized with up-to-date fine documents. Nothing to do.`);
@@ -64,7 +80,7 @@ async function autoScore() {
 
   removeFile(normalizedRacePath(race.id));
 
-  const result = await scoreRace(race.id);
+  const result = await scoreRaceImpl(race.id);
   console.log(`Scored ${result.race.name}.`);
   console.log(`Applied ${result.fineSummary.documents.length} FIA fine document(s).`);
   console.log(`Standings rebuilt for ${result.scoreboard.standings.length} teams.`);

@@ -1,7 +1,29 @@
 {
   "raceId": "australia",
   "drivers": {},
-  "teams": {},
-  "documents": [],
+  "teams": {
+    "mercedes": 7500,
+    "alpine": 5000
+  },
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_australian_grand_prix_-_infringement_-_car_12_-_released_in_an_unsafe_condition.pdf",
+      "fineEuros": 7500,
+      "finePoints": -4,
+      "appliedTo": {
+        "type": "team",
+        "id": "mercedes"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_australian_grand_prix_-_infringement_-_car_10_-_released_in_an_unsafe_condition.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "alpine"
+      }
+    }
+  ],
   "warnings": []
 }

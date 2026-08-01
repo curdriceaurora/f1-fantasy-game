@@ -4,7 +4,17 @@
   "date": "2026-05-03",
   "round": 6,
   "sprintWeekend": true,
-  "documents": [],
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_miami_grand_prix_-_infringement_-_car_16_-_pit_lane_speeding.pdf",
+      "fineEuros": 200,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "ferrari"
+      }
+    }
+  ],
   "drivers": {
     "lando-norris": {
       "driverId": "lando-norris",
@@ -473,7 +483,7 @@
         "charles-leclerc",
         "lewis-hamilton"
       ],
-      "fineEuros": 0,
+      "fineEuros": 200,
       "finePoints": 0
     },
     "williams": {
@@ -511,6 +521,6 @@
       "sprint": 11275,
       "race": 11280
     },
-    "generatedAt": "2026-05-21T15:01:41.479Z"
+    "generatedAt": "2026-07-30T23:06:43.376Z"
   }
 }

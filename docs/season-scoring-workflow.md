@@ -13,7 +13,30 @@ The current internal lifecycle is:
 - `ready_to_score`: the race is eligible for Monday scoring
 - `finalized`: normalized race data and scored outputs both exist
 
+- `postponed`: the race was pulled from its date and no replacement date is confirmed
+- `cancelled`: the race will not be run this season
+
 This is implemented in [race-workflow.js](../lib/race-workflow.js).
+
+## When the Calendar Moves
+
+A calendar entry is a plan, not a promise. The 2026 season made that concrete: Bahrain and Saudi Arabia were postponed after the Iran conflict, Bahrain came back in October at Sepang as the *Gulf Air Bahrain Grand Prix in Malaysia*, and Saudi Arabia was never reinstated. A race can therefore change date, change country, and keep its name — while a different race keeps the name it used to share.
+
+Two calendar fields absorb that, both in [`season/config/2026-calendar.json`](../season/config/2026-calendar.json):
+
+**`status`** — one of `scheduled` (default), `rescheduled`, `postponed`, `cancelled`. Only `scheduled` and `rescheduled` are ever scored; the other two are skipped by `auto:score` and `reconcile:season` rather than retried as failures, and surface to the dashboard as their own status. Alongside it, `originalDate`, `venue` and `notes` record what happened and why.
+
+**`sources`** — per-provider name overrides, because the providers disagree. The June race is FIA's `Barcelona-Catalunya Grand Prix` and OpenF1's `Barcelona Grand Prix`; the name `Spanish Grand Prix` belongs to the September round in Madrid. Without `sources.openf1MeetingName` and `sources.fiaEventName`, a race can silently resolve to the wrong weekend.
+
+`date` always means the date the race is actually expected to run. Rescheduling is therefore a data edit, not a code change:
+
+1. Confirm the outcome against [formula1.com](https://www.formula1.com/en/racing/2026) — it is the definitive source for whether a race moved, and to when.
+2. Set `status`, move `date` to the new race Sunday, and record `originalDate` and `venue`.
+3. If either provider files the race under a different name, pin it in `sources`.
+4. Renumber `round` to match the official calendar; a cancelled race keeps `round: null`.
+5. Run `npm run reconcile:season` to pick up anything now scoreable.
+
+Meeting lookup is deliberately strict about this: OpenF1 meetings more than ten days from the calendar date are rejected with an error naming the closest candidate, rather than being accepted as the nearest match. That is what stops the October Bahrain race being scored against the April meeting that never ran.
 
 ## Why This Level Is Enough
 

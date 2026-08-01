@@ -1,7 +1,86 @@
 {
   "raceId": "monaco",
   "drivers": {},
-  "teams": {},
-  "documents": [],
+  "teams": {
+    "williams": 5100,
+    "alpine": 900,
+    "mclaren": 45000,
+    "mercedes": 200,
+    "aston-martin": 100
+  },
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_23_-_pit_lane_incident_with_car_41.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "williams"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_23_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "williams"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_43_-_pit_lane_speeding.pdf",
+      "fineEuros": 900,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "alpine"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_1_-_technical_non-conformity_cds.pdf",
+      "fineEuros": 40000,
+      "finePoints": -20,
+      "appliedTo": {
+        "type": "team",
+        "id": "mclaren"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_12_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "mercedes"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_14_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "aston-martin"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_63_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "team",
+        "id": "mercedes"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_monaco_grand_prix_-_infringement_-_car_1_-_media_commitment.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "mclaren"
+      }
+    }
+  ],
   "warnings": []
 }
