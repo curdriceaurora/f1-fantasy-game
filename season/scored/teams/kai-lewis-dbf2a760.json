@@ -2,7 +2,7 @@
   "teamId": "kai-lewis-dbf2a760",
   "principalName": "Kai Lewis",
   "displayName": "Helldrivers",
-  "totalPoints": 628,
+  "totalPoints": 332,
   "completedRaces": 11,
   "latestRacePoints": 61,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 77,
-      "driverSubtotal": 35,
-      "constructorSubtotal": 42,
+      "baseSubtotal": 26,
+      "driverSubtotal": 13,
+      "constructorSubtotal": 13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 77,
+      "totalPoints": 26,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -58,21 +58,21 @@
           "qualifyingPosition": 11,
           "sprintPosition": null,
           "gridStart": 11,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": false,
-          "totalPoints": 0,
+          "totalPoints": -22,
           "components": [
             {
               "label": "Qualifying P11",
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -22
             }
           ],
           "raceContext": {
@@ -121,22 +121,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 17,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 25,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×25 + 2×3) ÷ 5)",
-            "weightedRawPoints": 16.2,
-            "weightedPoints": 17
+            "secondDriverPoints": -31,
+            "formula": "ceil((3×25 + 2×-31) ÷ 5)",
+            "weightedRawPoints": 2.6,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 17
+              "points": 3
             }
           ]
         },
@@ -175,39 +175,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 5,
+          "totalPoints": -10,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 7,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×7 + 2×0) ÷ 5)",
-            "weightedRawPoints": 4.2,
-            "weightedPoints": 5
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -22,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×-22 + 2×7) ÷ 5)",
+            "weightedRawPoints": -10.4,
+            "weightedPoints": -10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
+              "points": -10
             }
           ]
         }
       ],
-      "runningTotal": 77
+      "runningTotal": 26
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 68,
+      "baseSubtotal": 52,
       "driverSubtotal": 41,
-      "constructorSubtotal": 27,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 68,
+      "totalPoints": 52,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -320,22 +320,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 3,
+          "totalPoints": -8,
           "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 6,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×6 + 2×-2) ÷ 5)",
-            "weightedRawPoints": 2.8,
-            "weightedPoints": 3
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": -18,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-18 + 2×6) ÷ 5)",
+            "weightedRawPoints": -8.4,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 3
+              "points": -8
             }
           ]
         },
@@ -347,22 +347,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 24,
+          "totalPoints": 23,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 24,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 22,
-            "formula": "ceil((3×24 + 2×22) ÷ 5)",
-            "weightedRawPoints": 23.2,
-            "weightedPoints": 24
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 22,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 24,
+            "formula": "ceil((3×22 + 2×24) ÷ 5)",
+            "weightedRawPoints": 22.8,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 24
+              "points": 23
             }
           ]
         },
@@ -374,27 +374,27 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 0,
+          "totalPoints": -4,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
             "leadDriverPoints": 0,
             "secondDriverId": "gabriel-bortoleto",
             "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "secondDriverPoints": -12,
+            "formula": "ceil((3×0 + 2×-12) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -4
             }
           ]
         }
       ],
-      "runningTotal": 145
+      "runningTotal": 78
     },
     {
       "raceId": "japan",
@@ -585,19 +585,19 @@
           ]
         }
       ],
-      "runningTotal": 202
+      "runningTotal": 135
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 34,
-      "driverSubtotal": 15,
-      "constructorSubtotal": 19,
+      "baseSubtotal": -22,
+      "driverSubtotal": -27,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 34,
+      "totalPoints": -22,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -647,21 +647,21 @@
           "qualifyingPosition": 10,
           "sprintPosition": null,
           "gridStart": 10,
-          "racePosition": null,
+          "racePosition": 19,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": -15,
           "components": [
             {
               "label": "Qualifying P10",
               "points": 3
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P19",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -18
             }
           ],
           "raceContext": {
@@ -678,9 +678,9 @@
           "qualifyingPosition": 9,
           "sprintPosition": 8,
           "gridStart": 9,
-          "racePosition": null,
+          "racePosition": 21,
           "classified": true,
-          "totalPoints": 10,
+          "totalPoints": -14,
           "components": [
             {
               "label": "Qualifying P9",
@@ -691,12 +691,12 @@
               "points": 1
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P21",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -24
             }
           ],
           "raceContext": {
@@ -741,22 +741,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 7,
+          "totalPoints": 6,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 10,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×10 + 2×2) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×2 + 2×10) ÷ 5)",
+            "weightedRawPoints": 5.2,
+            "weightedPoints": 6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 7
+              "points": 6
             }
           ]
         },
@@ -768,39 +768,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 10,
+          "totalPoints": -3,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 14,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×14 + 2×3) ÷ 5)",
-            "weightedRawPoints": 9.6,
-            "weightedPoints": 10
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -15,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×-15 + 2×14) ÷ 5)",
+            "weightedRawPoints": -3.4,
+            "weightedPoints": -3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 10
+              "points": -3
             }
           ]
         }
       ],
-      "runningTotal": 236
+      "runningTotal": 113
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 69,
+      "baseSubtotal": 65,
       "driverSubtotal": 33,
-      "constructorSubtotal": 36,
+      "constructorSubtotal": 32,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 69,
+      "totalPoints": 65,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -952,22 +952,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 28,
+          "totalPoints": 26,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 30,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×30 + 2×23) ÷ 5)",
-            "weightedRawPoints": 27.2,
-            "weightedPoints": 28
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 30,
+            "formula": "ceil((3×23 + 2×30) ÷ 5)",
+            "weightedRawPoints": 25.8,
+            "weightedPoints": 26
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 28
+              "points": 26
             }
           ]
         },
@@ -979,39 +979,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -7,
+          "totalPoints": -9,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": -5,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": -12,
-            "formula": "ceil((3×-5 + 2×-12) ÷ 5)",
-            "weightedRawPoints": -7.8,
-            "weightedPoints": -7
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -12,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×-12 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -9.2,
+            "weightedPoints": -9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -7
+              "points": -9
             }
           ]
         }
       ],
-      "runningTotal": 305
+      "runningTotal": 178
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 40,
-      "driverSubtotal": 19,
-      "constructorSubtotal": 21,
+      "baseSubtotal": -34,
+      "driverSubtotal": -7,
+      "constructorSubtotal": -27,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 40,
+      "totalPoints": -34,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1022,21 +1022,21 @@
           "qualifyingPosition": 4,
           "sprintPosition": null,
           "gridStart": 4,
-          "racePosition": null,
+          "racePosition": 17,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": -23,
           "components": [
             {
               "label": "Qualifying P4",
               "points": 3
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P17",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -26
             }
           ],
           "raceContext": {
@@ -1124,22 +1124,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 11,
+          "totalPoints": -17,
           "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 17,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×17 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.2,
-            "weightedPoints": 11
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": -40,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 17,
+            "formula": "ceil((3×-40 + 2×17) ÷ 5)",
+            "weightedRawPoints": -17.2,
+            "weightedPoints": -17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": -17
             }
           ]
         },
@@ -1151,22 +1151,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 9,
+          "totalPoints": -8,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 13,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×13 + 2×3) ÷ 5)",
-            "weightedRawPoints": 9,
-            "weightedPoints": 9
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×-23 + 2×13) ÷ 5)",
+            "weightedRawPoints": -8.6,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 9
+              "points": -8
             }
           ]
         },
@@ -1178,39 +1178,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 1,
+          "totalPoints": -2,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 8,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": -10,
-            "formula": "ceil((3×8 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 0.8,
-            "weightedPoints": 1
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -10,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-10 + 2×8) ÷ 5)",
+            "weightedRawPoints": -2.8,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": -2
             }
           ]
         }
       ],
-      "runningTotal": 345
+      "runningTotal": 144
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 50,
-      "driverSubtotal": 19,
-      "constructorSubtotal": 31,
+      "baseSubtotal": 6,
+      "driverSubtotal": -3,
+      "constructorSubtotal": 9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 50,
+      "totalPoints": 6,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1252,21 +1252,21 @@
           "qualifyingPosition": 9,
           "sprintPosition": null,
           "gridStart": 9,
-          "racePosition": null,
+          "racePosition": 20,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": -19,
           "components": [
             {
               "label": "Qualifying P9",
               "points": 3
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P20",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -22
             }
           ],
           "raceContext": {
@@ -1342,22 +1342,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 7,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 32,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": -10,
-            "formula": "ceil((3×32 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 15.2,
-            "weightedPoints": 16
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -10,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 32,
+            "formula": "ceil((3×-10 + 2×32) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 16
+              "points": 7
             }
           ]
         },
@@ -1369,39 +1369,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 3,
+          "totalPoints": -10,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 3,
+            "leadDriverPoints": -19,
             "secondDriverId": "gabriel-bortoleto",
             "secondDriverName": "Gabriel Bortoleto",
             "secondDriverPoints": 2,
-            "formula": "ceil((3×3 + 2×2) ÷ 5)",
-            "weightedRawPoints": 2.6,
-            "weightedPoints": 3
+            "formula": "ceil((3×-19 + 2×2) ÷ 5)",
+            "weightedRawPoints": -10.6,
+            "weightedPoints": -10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 3
+              "points": -10
             }
           ]
         }
       ],
-      "runningTotal": 395
+      "runningTotal": 150
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 29,
+      "baseSubtotal": 26,
       "driverSubtotal": 1,
-      "constructorSubtotal": 28,
+      "constructorSubtotal": 25,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 29,
+      "totalPoints": 26,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1533,22 +1533,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 4,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 9,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×9 + 2×-5) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -5,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 9,
+            "formula": "ceil((3×-5 + 2×9) ÷ 5)",
+            "weightedRawPoints": 0.6,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 1
             }
           ]
         },
@@ -1580,19 +1580,19 @@
           ]
         }
       ],
-      "runningTotal": 424
+      "runningTotal": 176
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 82,
-      "driverSubtotal": 51,
-      "constructorSubtotal": 31,
+      "baseSubtotal": 41,
+      "driverSubtotal": 31,
+      "constructorSubtotal": 10,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 82,
+      "totalPoints": 41,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1638,9 +1638,9 @@
           "qualifyingPosition": 13,
           "sprintPosition": 15,
           "gridStart": 12,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -20,
           "components": [
             {
               "label": "Qualifying P13",
@@ -1651,12 +1651,12 @@
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -20
             }
           ],
           "raceContext": {
@@ -1709,22 +1709,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": -2,
+          "totalPoints": -9,
           "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 13,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": -25,
-            "formula": "ceil((3×13 + 2×-25) ÷ 5)",
-            "weightedRawPoints": -2.2,
-            "weightedPoints": -2
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": -25,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×-25 + 2×13) ÷ 5)",
+            "weightedRawPoints": -9.8,
+            "weightedPoints": -9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": -9
             }
           ]
         },
@@ -1763,39 +1763,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 6,
+          "totalPoints": -8,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 10,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×10 + 2×0) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -20,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×-20 + 2×10) ÷ 5)",
+            "weightedRawPoints": -8,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": -8
             }
           ]
         }
       ],
-      "runningTotal": 506
+      "runningTotal": 217
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 61,
+      "baseSubtotal": 54,
       "driverSubtotal": 27,
-      "constructorSubtotal": 34,
+      "constructorSubtotal": 27,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 61,
+      "totalPoints": 54,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1900,22 +1900,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 28,
+          "totalPoints": 23,
           "weightingBreakdown": {
-            "leadDriverId": "isack-hadjar",
-            "leadDriverName": "Isack Hadjar",
-            "leadDriverPoints": 38,
-            "secondDriverId": "max-verstappen",
-            "secondDriverName": "Max Verstappen",
-            "secondDriverPoints": 13,
-            "formula": "ceil((3×38 + 2×13) ÷ 5)",
-            "weightedRawPoints": 28,
-            "weightedPoints": 28
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 13,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 38,
+            "formula": "ceil((3×13 + 2×38) ÷ 5)",
+            "weightedRawPoints": 23,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 28
+              "points": 23
             }
           ]
         },
@@ -1958,27 +1958,27 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": 4,
+          "totalPoints": 2,
           "weightingBreakdown": {
-            "leadDriverId": "gabriel-bortoleto",
-            "leadDriverName": "Gabriel Bortoleto",
-            "leadDriverPoints": 7,
-            "secondDriverId": "nico-hulkenberg",
-            "secondDriverName": "Nico Hulkenberg",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×7 + 2×-2) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -2,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×-2 + 2×7) ÷ 5)",
+            "weightedRawPoints": 1.6,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 2
             }
           ]
         }
       ],
-      "runningTotal": 567
+      "runningTotal": 271
     },
     {
       "raceId": "hungary",
@@ -2173,7 +2173,7 @@
           ]
         }
       ],
-      "runningTotal": 628
+      "runningTotal": 332
     }
   ]
 }
