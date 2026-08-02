@@ -1,6 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreFantasyTeam } from '../lib/score-engine.js';
+import { scoreFantasyTeam, buildConstructorContribution } from '../lib/score-engine.js';
+
+test('constructor weighting favours the roster lead driver, not the higher scorer that race', () => {
+  // Ferrari's designated lead is Leclerc; Hamilton outscored him this race.
+  const contribution = buildConstructorContribution(
+    'ferrari',
+    { driverIds: ['charles-leclerc', 'lewis-hamilton'], finePoints: 0 },
+    [
+      { driverId: 'charles-leclerc', name: 'Charles Leclerc', totalPoints: -23 },
+      { driverId: 'lewis-hamilton', name: 'Lewis Hamilton', totalPoints: 23 },
+    ],
+  );
+
+  // 3×lead(Leclerc -23) + 2×second(Hamilton 23) = -23; ceil(-23/5) = -4.
+  assert.equal(contribution.weightingBreakdown.leadDriverId, 'charles-leclerc');
+  assert.equal(contribution.totalPoints, -4);
+});
 
 test('home circuit negative totals clamp to zero before the investment bonus is added', () => {
   const entry = {

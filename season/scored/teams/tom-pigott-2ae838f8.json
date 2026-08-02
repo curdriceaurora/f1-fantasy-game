@@ -2,21 +2,21 @@
   "teamId": "tom-pigott-2ae838f8",
   "principalName": "Tom Pigott",
   "displayName": "Suitable For Upgrade",
-  "totalPoints": 551,
+  "totalPoints": 434,
   "completedRaces": 11,
-  "latestRacePoints": 32,
+  "latestRacePoints": 29,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 75,
-      "driverSubtotal": 42,
+      "baseSubtotal": 41,
+      "driverSubtotal": 8,
       "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 75,
+      "totalPoints": 41,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -58,21 +58,21 @@
           "qualifyingPosition": 3,
           "sprintPosition": null,
           "gridStart": 3,
-          "racePosition": null,
+          "racePosition": 20,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": -31,
           "components": [
             {
               "label": "Qualifying P3",
               "points": 3
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P20",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -34
             }
           ],
           "raceContext": {
@@ -148,22 +148,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -2,
+            "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": -3,
-            "formula": "ceil((3×-2 + 2×-3) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×-4 + 2×7) ÷ 5)",
+            "weightedRawPoints": 0.4,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 1
             }
           ]
         },
@@ -175,39 +175,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 15,
+          "totalPoints": 12,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 19,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": 7,
-            "formula": "ceil((3×19 + 2×7) ÷ 5)",
-            "weightedRawPoints": 14.2,
-            "weightedPoints": 15
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 7,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 19,
+            "formula": "ceil((3×7 + 2×19) ÷ 5)",
+            "weightedRawPoints": 11.8,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 15
+              "points": 12
             }
           ]
         }
       ],
-      "runningTotal": 75
+      "runningTotal": 41
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 91,
+      "baseSubtotal": 85,
       "driverSubtotal": 55,
-      "constructorSubtotal": 36,
+      "constructorSubtotal": 30,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 91,
+      "totalPoints": 85,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -324,22 +324,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 24,
+          "totalPoints": 23,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 24,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 22,
-            "formula": "ceil((3×24 + 2×22) ÷ 5)",
-            "weightedRawPoints": 23.2,
-            "weightedPoints": 24
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 22,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 24,
+            "formula": "ceil((3×22 + 2×24) ÷ 5)",
+            "weightedRawPoints": 22.8,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 24
+              "points": 23
             }
           ]
         },
@@ -351,22 +351,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -1,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 0,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×0 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -1.6,
-            "weightedPoints": -1
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-2 + 2×4) ÷ 5)",
+            "weightedRawPoints": 0.4,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": 1
             }
           ]
         },
@@ -378,39 +378,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 13,
+          "totalPoints": 6,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 27,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×27 + 2×-9) ÷ 5)",
-            "weightedRawPoints": 12.6,
-            "weightedPoints": 13
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -9,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 27,
+            "formula": "ceil((3×-9 + 2×27) ÷ 5)",
+            "weightedRawPoints": 5.4,
+            "weightedPoints": 6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
+              "points": 6
             }
           ]
         }
       ],
-      "runningTotal": 166
+      "runningTotal": 126
     },
     {
       "raceId": "japan",
       "raceName": "Japan",
       "raceDate": "2026-03-29",
-      "baseSubtotal": 35,
-      "driverSubtotal": 12,
-      "constructorSubtotal": 23,
+      "baseSubtotal": 24,
+      "driverSubtotal": 4,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 35,
+      "totalPoints": 24,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -483,21 +483,21 @@
           "qualifyingPosition": 18,
           "sprintPosition": null,
           "gridStart": 18,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying P18",
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -8
             }
           ],
           "raceContext": {
@@ -549,9 +549,9 @@
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×2 + 2×0) ÷ 5)",
-            "weightedRawPoints": 1.2,
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×2 + 2×2) ÷ 5)",
+            "weightedRawPoints": 2,
             "weightedPoints": 2
           },
           "components": [
@@ -569,39 +569,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 5,
+          "totalPoints": 2,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 8,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×8 + 2×0) ÷ 5)",
-            "weightedRawPoints": 4.8,
-            "weightedPoints": 5
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×8 + 2×-8) ÷ 5)",
+            "weightedRawPoints": 1.6,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
+              "points": 2
             }
           ]
         }
       ],
-      "runningTotal": 201
+      "runningTotal": 150
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 14,
+      "baseSubtotal": 13,
       "driverSubtotal": -2,
-      "constructorSubtotal": 16,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 14,
+      "totalPoints": 13,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -651,7 +651,7 @@
           "qualifyingPosition": null,
           "sprintPosition": 9,
           "gridStart": 22,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": true,
           "totalPoints": -9,
           "components": [
@@ -664,7 +664,7 @@
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
@@ -722,22 +722,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 7,
+          "totalPoints": 6,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 10,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×10 + 2×2) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×2 + 2×10) ÷ 5)",
+            "weightedRawPoints": 5.2,
+            "weightedPoints": 6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 7
+              "points": 6
             }
           ]
         },
@@ -751,14 +751,14 @@
           ],
           "totalPoints": 4,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 5,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×5 + 2×2) ÷ 5)",
-            "weightedRawPoints": 3.8,
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×2 + 2×5) ÷ 5)",
+            "weightedRawPoints": 3.2,
             "weightedPoints": 4
           },
           "components": [
@@ -796,19 +796,19 @@
           ]
         }
       ],
-      "runningTotal": 215
+      "runningTotal": 163
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 79,
+      "baseSubtotal": 70,
       "driverSubtotal": 40,
-      "constructorSubtotal": 39,
+      "constructorSubtotal": 30,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 79,
+      "totalPoints": 70,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -933,22 +933,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 28,
+          "totalPoints": 26,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 30,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×30 + 2×23) ÷ 5)",
-            "weightedRawPoints": 27.2,
-            "weightedPoints": 28
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 30,
+            "formula": "ceil((3×23 + 2×30) ÷ 5)",
+            "weightedRawPoints": 25.8,
+            "weightedPoints": 26
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 28
+              "points": 26
             }
           ]
         },
@@ -960,22 +960,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": -5,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 14,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×14 + 2×-4) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
+            "weightedRawPoints": 2,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 7
+              "points": 2
             },
             {
               "label": "FIA monetary fines",
@@ -991,39 +991,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 13,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×13 + 2×6) ÷ 5)",
-            "weightedRawPoints": 10.2,
-            "weightedPoints": 11
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 6,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×6 + 2×13) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 294
+      "runningTotal": 233
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 52,
-      "driverSubtotal": 22,
-      "constructorSubtotal": 30,
+      "baseSubtotal": 9,
+      "driverSubtotal": -6,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 52,
+      "totalPoints": 9,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1034,21 +1034,21 @@
           "qualifyingPosition": 4,
           "sprintPosition": null,
           "gridStart": 4,
-          "racePosition": null,
+          "racePosition": 17,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": -23,
           "components": [
             {
               "label": "Qualifying P4",
               "points": 3
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P17",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -26
             }
           ],
           "raceContext": {
@@ -1096,21 +1096,21 @@
           "qualifyingPosition": 19,
           "sprintPosition": null,
           "gridStart": 19,
-          "racePosition": null,
+          "racePosition": 20,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 0,
           "components": [
             {
               "label": "Qualifying P19",
               "points": 2
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P20",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -2
             }
           ],
           "raceContext": {
@@ -1128,22 +1128,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 9,
+          "totalPoints": -8,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 13,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×13 + 2×3) ÷ 5)",
-            "weightedRawPoints": 9,
-            "weightedPoints": 9
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×-23 + 2×13) ÷ 5)",
+            "weightedRawPoints": -8.6,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 9
+              "points": -8
             }
           ]
         },
@@ -1155,22 +1155,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 9,
+          "totalPoints": 12,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 18,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×18 + 2×-5) ÷ 5)",
-            "weightedRawPoints": 8.8,
-            "weightedPoints": 9
+            "secondDriverPoints": 3,
+            "formula": "ceil((3×18 + 2×3) ÷ 5)",
+            "weightedRawPoints": 12,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 9
+              "points": 12
             }
           ]
         },
@@ -1182,39 +1182,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 12,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×18 + 2×2) ÷ 5)",
-            "weightedRawPoints": 11.6,
-            "weightedPoints": 12
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×18 + 2×0) ÷ 5)",
+            "weightedRawPoints": 10.8,
+            "weightedPoints": 11
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 12
+              "points": 11
             }
           ]
         }
       ],
-      "runningTotal": 346
+      "runningTotal": 242
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 12,
+      "baseSubtotal": 5,
       "driverSubtotal": -6,
-      "constructorSubtotal": 18,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 12,
+      "totalPoints": 5,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1319,22 +1319,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 7,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 32,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": -10,
-            "formula": "ceil((3×32 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 15.2,
-            "weightedPoints": 16
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -10,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 32,
+            "formula": "ceil((3×-10 + 2×32) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 16
+              "points": 7
             }
           ]
         },
@@ -1346,22 +1346,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 0,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": -1,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×-1 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -2.2,
-            "weightedPoints": -2
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": -3,
+            "formula": "ceil((3×2 + 2×-3) ÷ 5)",
+            "weightedRawPoints": 0,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 0
             }
           ]
         },
@@ -1393,19 +1393,19 @@
           ]
         }
       ],
-      "runningTotal": 358
+      "runningTotal": 247
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 9,
+      "baseSubtotal": 7,
       "driverSubtotal": 8,
-      "constructorSubtotal": 1,
+      "constructorSubtotal": -1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 9,
+      "totalPoints": 7,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1510,22 +1510,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 4,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "lewis-hamilton",
-            "leadDriverName": "Lewis Hamilton",
-            "leadDriverPoints": 9,
-            "secondDriverId": "charles-leclerc",
-            "secondDriverName": "Charles Leclerc",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×9 + 2×-5) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -5,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 9,
+            "formula": "ceil((3×-5 + 2×9) ÷ 5)",
+            "weightedRawPoints": 0.6,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 1
             }
           ]
         },
@@ -1537,22 +1537,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -3,
+          "totalPoints": -2,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 0,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": -8,
-            "formula": "ceil((3×0 + 2×-8) ÷ 5)",
-            "weightedRawPoints": -3.2,
-            "weightedPoints": -3
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -8,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
+            "weightedRawPoints": -2.4,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -3
+              "points": -2
             }
           ]
         },
@@ -1566,14 +1566,14 @@
           ],
           "totalPoints": 0,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 1,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×1 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.2,
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
+            "weightedRawPoints": -0.8,
             "weightedPoints": 0
           },
           "components": [
@@ -1584,7 +1584,7 @@
           ]
         }
       ],
-      "runningTotal": 367
+      "runningTotal": 254
     },
     {
       "raceId": "great-britain",
@@ -1787,19 +1787,19 @@
           ]
         }
       ],
-      "runningTotal": 453
+      "runningTotal": 340
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 66,
+      "baseSubtotal": 65,
       "driverSubtotal": 63,
-      "constructorSubtotal": 3,
+      "constructorSubtotal": 2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 66,
+      "totalPoints": 65,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1966,39 +1966,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 0,
+          "totalPoints": -1,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 0,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-2 + 2×0) ÷ 5)",
+            "weightedRawPoints": -1.2,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -1
             }
           ]
         }
       ],
-      "runningTotal": 519
+      "runningTotal": 405
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 32,
+      "baseSubtotal": 29,
       "driverSubtotal": 15,
-      "constructorSubtotal": 17,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 32,
+      "totalPoints": 29,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2142,22 +2142,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 10,
+          "totalPoints": 7,
           "weightingBreakdown": {
-            "leadDriverId": "lance-stroll",
-            "leadDriverName": "Lance Stroll",
-            "leadDriverPoints": 14,
-            "secondDriverId": "fernando-alonso",
-            "secondDriverName": "Fernando Alonso",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×14 + 2×2) ÷ 5)",
-            "weightedRawPoints": 9.2,
-            "weightedPoints": 10
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×2 + 2×14) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 10
+              "points": 7
             }
           ]
         },
@@ -2189,7 +2189,7 @@
           ]
         }
       ],
-      "runningTotal": 551
+      "runningTotal": 434
     }
   ]
 }

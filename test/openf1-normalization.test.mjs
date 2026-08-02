@@ -69,6 +69,27 @@ test('normalizeRaceWeekend applies grid penalties across the weekend but race ti
   assert.equal(normalized.drivers['george-russell'].fastestLap, true);
 });
 
+test('retired drivers are classified after finishers, ordered by laps completed', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.drivers.push({ driver_number: 44, first_name: 'Lewis', last_name: 'Hamilton', full_name: 'Lewis Hamilton', team_name: 'Ferrari' });
+  // Russell finishes P1; Antonelli and Hamilton both retire with different lap counts.
+  fetchedRace.raceResultRows = [
+    { driver_number: 63, position: 1, dns: false, dsq: false, dnf: false, number_of_laps: 58 },
+    { driver_number: 12, position: null, dns: false, dsq: false, dnf: true, number_of_laps: 40 },
+    { driver_number: 44, position: null, dns: false, dsq: false, dnf: true, number_of_laps: 55 },
+  ];
+  fetchedRace.qualifyingResultRows.push({ driver_number: 44, position: 3 });
+  fetchedRace.laps.push({ driver_number: 44, lap_duration: 92.5, is_pit_out_lap: false });
+  fetchedRace.positionFeed.push({ driver_number: 44, position: 3, date: '2026-03-08T03:01:00Z' });
+
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['george-russell'].racePosition, 1);
+  // Hamilton did 55 laps, Antonelli 40 — Hamilton is classified P2, Antonelli P3.
+  assert.equal(normalized.drivers['lewis-hamilton'].racePosition, 2);
+  assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 3);
+});
+
 test('normalizeRaceWeekend fails when official grid starts are unavailable', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.positionFeed = [];

@@ -2,21 +2,21 @@
   "teamId": "stephen-brooks-397d1f58",
   "principalName": "Stephen Brooks",
   "displayName": "Cadillacing Speed",
-  "totalPoints": 627,
+  "totalPoints": 399,
   "completedRaces": 11,
-  "latestRacePoints": 9,
+  "latestRacePoints": 1,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 103,
+      "baseSubtotal": 100,
       "driverSubtotal": 62,
-      "constructorSubtotal": 41,
+      "constructorSubtotal": 38,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 103,
+      "totalPoints": 100,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -154,14 +154,14 @@
           ],
           "totalPoints": 4,
           "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 4,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": 3,
-            "formula": "ceil((3×4 + 2×3) ÷ 5)",
-            "weightedRawPoints": 3.6,
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": 3,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×3 + 2×4) ÷ 5)",
+            "weightedRawPoints": 3.4,
             "weightedPoints": 4
           },
           "components": [
@@ -179,39 +179,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 15,
+          "totalPoints": 12,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 19,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": 7,
-            "formula": "ceil((3×19 + 2×7) ÷ 5)",
-            "weightedRawPoints": 14.2,
-            "weightedPoints": 15
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 7,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 19,
+            "formula": "ceil((3×7 + 2×19) ÷ 5)",
+            "weightedRawPoints": 11.8,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 15
+              "points": 12
             }
           ]
         }
       ],
-      "runningTotal": 103
+      "runningTotal": 100
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 116,
+      "baseSubtotal": 107,
       "driverSubtotal": 62,
-      "constructorSubtotal": 54,
+      "constructorSubtotal": 45,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 116,
+      "totalPoints": 107,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -324,22 +324,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 33,
+          "totalPoints": 31,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 37,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 26,
-            "formula": "ceil((3×37 + 2×26) ÷ 5)",
-            "weightedRawPoints": 32.6,
-            "weightedPoints": 33
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 26,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 37,
+            "formula": "ceil((3×26 + 2×37) ÷ 5)",
+            "weightedRawPoints": 30.4,
+            "weightedPoints": 31
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 33
+              "points": 31
             }
           ]
         },
@@ -378,39 +378,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 13,
+          "totalPoints": 6,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 27,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×27 + 2×-9) ÷ 5)",
-            "weightedRawPoints": 12.6,
-            "weightedPoints": 13
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -9,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 27,
+            "formula": "ceil((3×-9 + 2×27) ÷ 5)",
+            "weightedRawPoints": 5.4,
+            "weightedPoints": 6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
+              "points": 6
             }
           ]
         }
       ],
-      "runningTotal": 219
+      "runningTotal": 207
     },
     {
       "raceId": "japan",
       "raceName": "Japan",
       "raceDate": "2026-03-29",
-      "baseSubtotal": 33,
-      "driverSubtotal": 9,
-      "constructorSubtotal": 24,
+      "baseSubtotal": 17,
+      "driverSubtotal": 1,
+      "constructorSubtotal": 16,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 33,
+      "totalPoints": 17,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -452,21 +452,21 @@
           "qualifyingPosition": 18,
           "sprintPosition": null,
           "gridStart": 18,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying P18",
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -8
             }
           ],
           "raceContext": {
@@ -515,22 +515,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 23,
+          "totalPoints": 18,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 33,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×33 + 2×8) ÷ 5)",
-            "weightedRawPoints": 23,
-            "weightedPoints": 23
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 8,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 33,
+            "formula": "ceil((3×8 + 2×33) ÷ 5)",
+            "weightedRawPoints": 18,
+            "weightedPoints": 18
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 23
+              "points": 18
             }
           ]
         },
@@ -569,39 +569,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 5,
+          "totalPoints": 2,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 8,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×8 + 2×0) ÷ 5)",
-            "weightedRawPoints": 4.8,
-            "weightedPoints": 5
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×8 + 2×-8) ÷ 5)",
+            "weightedRawPoints": 1.6,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
+              "points": 2
             }
           ]
         }
       ],
-      "runningTotal": 252
+      "runningTotal": 224
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 73,
+      "baseSubtotal": 70,
       "driverSubtotal": 31,
-      "constructorSubtotal": 42,
+      "constructorSubtotal": 39,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 73,
+      "totalPoints": 70,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -714,22 +714,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 28,
+          "totalPoints": 25,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 34,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 19,
-            "formula": "ceil((3×34 + 2×19) ÷ 5)",
-            "weightedRawPoints": 28,
-            "weightedPoints": 28
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 19,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 34,
+            "formula": "ceil((3×19 + 2×34) ÷ 5)",
+            "weightedRawPoints": 25,
+            "weightedPoints": 25
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 28
+              "points": 25
             }
           ]
         },
@@ -743,14 +743,14 @@
           ],
           "totalPoints": 9,
           "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 9,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×9 + 2×8) ÷ 5)",
-            "weightedRawPoints": 8.6,
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": 8,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 9,
+            "formula": "ceil((3×8 + 2×9) ÷ 5)",
+            "weightedRawPoints": 8.4,
             "weightedPoints": 9
           },
           "components": [
@@ -788,19 +788,19 @@
           ]
         }
       ],
-      "runningTotal": 325
+      "runningTotal": 294
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 79,
-      "driverSubtotal": 34,
-      "constructorSubtotal": 45,
+      "baseSubtotal": -15,
+      "driverSubtotal": -28,
+      "constructorSubtotal": 13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 79,
+      "totalPoints": -15,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -811,9 +811,9 @@
           "qualifyingPosition": 1,
           "sprintPosition": 1,
           "gridStart": 1,
-          "racePosition": null,
+          "racePosition": 19,
           "classified": true,
-          "totalPoints": 11,
+          "totalPoints": -25,
           "components": [
             {
               "label": "Qualifying P1",
@@ -824,12 +824,12 @@
               "points": 8
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P19",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -36
             }
           ],
           "raceContext": {
@@ -881,9 +881,9 @@
           "qualifyingPosition": 9,
           "sprintPosition": 8,
           "gridStart": 9,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": false,
-          "totalPoints": 10,
+          "totalPoints": -16,
           "components": [
             {
               "label": "Qualifying P9",
@@ -894,12 +894,12 @@
               "points": 1
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -26
             }
           ],
           "raceContext": {
@@ -917,22 +917,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 28,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 38,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 11,
-            "formula": "ceil((3×38 + 2×11) ÷ 5)",
-            "weightedRawPoints": 27.2,
-            "weightedPoints": 28
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -25,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 38,
+            "formula": "ceil((3×-25 + 2×38) ÷ 5)",
+            "weightedRawPoints": 0.2,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 28
+              "points": 1
             }
           ]
         },
@@ -944,22 +944,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": 6,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
             "leadDriverPoints": 10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×10 + 2×-2) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×10 + 2×-8) ÷ 5)",
+            "weightedRawPoints": 2.8,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 3
             }
           ]
         },
@@ -971,39 +971,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 13,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×13 + 2×6) ÷ 5)",
-            "weightedRawPoints": 10.2,
-            "weightedPoints": 11
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 6,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×6 + 2×13) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 404
+      "runningTotal": 279
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 32,
-      "driverSubtotal": 7,
-      "constructorSubtotal": 25,
+      "baseSubtotal": 14,
+      "driverSubtotal": 5,
+      "constructorSubtotal": 9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 32,
+      "totalPoints": 14,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1053,21 +1053,21 @@
           "qualifyingPosition": 19,
           "sprintPosition": null,
           "gridStart": 19,
-          "racePosition": null,
+          "racePosition": 20,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 0,
           "components": [
             {
               "label": "Qualifying P19",
               "points": 2
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P20",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -2
             }
           ],
           "raceContext": {
@@ -1116,22 +1116,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 12,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 32,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": -20,
-            "formula": "ceil((3×32 + 2×-20) ÷ 5)",
-            "weightedRawPoints": 11.2,
-            "weightedPoints": 12
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -20,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 32,
+            "formula": "ceil((3×-20 + 2×32) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 12
+              "points": 1
             }
           ]
         },
@@ -1143,22 +1143,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": 1,
+          "totalPoints": -3,
           "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 7,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": -10,
-            "formula": "ceil((3×7 + 2×-10) ÷ 5)",
-            "weightedRawPoints": 0.2,
-            "weightedPoints": 1
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×-10 + 2×7) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": -3
             }
           ]
         },
@@ -1170,27 +1170,27 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 12,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×18 + 2×2) ÷ 5)",
-            "weightedRawPoints": 11.6,
-            "weightedPoints": 12
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×18 + 2×0) ÷ 5)",
+            "weightedRawPoints": 10.8,
+            "weightedPoints": 11
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 12
+              "points": 11
             }
           ]
         }
       ],
-      "runningTotal": 436
+      "runningTotal": 293
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1381,19 +1381,19 @@
           ]
         }
       ],
-      "runningTotal": 469
+      "runningTotal": 326
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 64,
+      "baseSubtotal": 59,
       "driverSubtotal": 39,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 64,
+      "totalPoints": 59,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1525,22 +1525,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 0,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×0 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -1.6,
-            "weightedPoints": -1
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-10 + 2×0) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": -6
             }
           ]
         },
@@ -1554,14 +1554,14 @@
           ],
           "totalPoints": 0,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 1,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×1 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.2,
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
+            "weightedRawPoints": -0.8,
             "weightedPoints": 0
           },
           "components": [
@@ -1572,19 +1572,19 @@
           ]
         }
       ],
-      "runningTotal": 533
+      "runningTotal": 385
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 58,
+      "baseSubtotal": 54,
       "driverSubtotal": 51,
-      "constructorSubtotal": 7,
+      "constructorSubtotal": 3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 58,
+      "totalPoints": 54,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1728,22 +1728,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -10,
+          "totalPoints": -14,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
             "leadDriverPoints": -10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -12,
-            "formula": "ceil((3×-10 + 2×-12) ÷ 5)",
-            "weightedRawPoints": -10.8,
-            "weightedPoints": -10
+            "secondDriverPoints": -22,
+            "formula": "ceil((3×-10 + 2×-22) ÷ 5)",
+            "weightedRawPoints": -14.8,
+            "weightedPoints": -14
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -10
+              "points": -14
             }
           ]
         },
@@ -1775,19 +1775,19 @@
           ]
         }
       ],
-      "runningTotal": 591
+      "runningTotal": 439
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 27,
-      "driverSubtotal": 7,
-      "constructorSubtotal": 20,
+      "baseSubtotal": -41,
+      "driverSubtotal": -31,
+      "constructorSubtotal": -10,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 27,
+      "totalPoints": -41,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1798,21 +1798,21 @@
           "qualifyingPosition": 4,
           "sprintPosition": null,
           "gridStart": 3,
-          "racePosition": null,
+          "racePosition": 22,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -38,
           "components": [
             {
               "label": "Qualifying P4",
               "points": 0
             },
             {
-              "label": "Race finish PNC",
+              "label": "Race finish P22",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": -38
             }
           ],
           "raceContext": {
@@ -1892,22 +1892,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 19,
+          "totalPoints": -10,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 31,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×31 + 2×0) ÷ 5)",
-            "weightedRawPoints": 18.6,
-            "weightedPoints": 19
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -38,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 31,
+            "formula": "ceil((3×-38 + 2×31) ÷ 5)",
+            "weightedRawPoints": -10.4,
+            "weightedPoints": -10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 19
+              "points": -10
             }
           ]
         },
@@ -1946,39 +1946,39 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 0,
+          "totalPoints": -1,
           "weightingBreakdown": {
-            "leadDriverId": "oliver-bearman",
-            "leadDriverName": "Oliver Bearman",
-            "leadDriverPoints": 0,
-            "secondDriverId": "esteban-ocon",
-            "secondDriverName": "Esteban Ocon",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-2 + 2×0) ÷ 5)",
+            "weightedRawPoints": -1.2,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -1
             }
           ]
         }
       ],
-      "runningTotal": 618
+      "runningTotal": 398
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 9,
+      "baseSubtotal": 1,
       "driverSubtotal": 1,
-      "constructorSubtotal": 8,
+      "constructorSubtotal": 0,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 9,
+      "totalPoints": 1,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2087,22 +2087,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 17,
+          "totalPoints": 12,
           "weightingBreakdown": {
-            "leadDriverId": "kimi-antonelli",
-            "leadDriverName": "Kimi Antonelli",
-            "leadDriverPoints": 26,
-            "secondDriverId": "george-russell",
-            "secondDriverName": "George Russell",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×26 + 2×2) ÷ 5)",
-            "weightedRawPoints": 16.4,
-            "weightedPoints": 17
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 2,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 26,
+            "formula": "ceil((3×2 + 2×26) ÷ 5)",
+            "weightedRawPoints": 11.6,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 17
+              "points": 12
             }
           ]
         },
@@ -2114,22 +2114,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -5,
+          "totalPoints": -8,
           "weightingBreakdown": {
-            "leadDriverId": "alex-albon",
-            "leadDriverName": "Alex Albon",
-            "leadDriverPoints": 0,
-            "secondDriverId": "carlos-sainz",
-            "secondDriverName": "Carlos Sainz",
-            "secondDriverPoints": -14,
-            "formula": "ceil((3×0 + 2×-14) ÷ 5)",
-            "weightedRawPoints": -5.6,
-            "weightedPoints": -5
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -14,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-14 + 2×0) ÷ 5)",
+            "weightedRawPoints": -8.4,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -5
+              "points": -8
             }
           ]
         },
@@ -2161,7 +2161,7 @@
           ]
         }
       ],
-      "runningTotal": 627
+      "runningTotal": 399
     }
   ]
 }
