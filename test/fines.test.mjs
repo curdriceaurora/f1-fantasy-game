@@ -42,6 +42,21 @@ test('gridPenaltyFromText does not fire on a pit-lane speeding fine', () => {
   assert.equal(gridPenaltyFromText(text), 0);
 });
 
+test('timePenaltyFromText reads a post-race drive-through as its added seconds', () => {
+  const text = 'Decision: Drive through penalty imposed after the Race. (20 seconds added)';
+  assert.equal(timePenaltyFromText(text), 20);
+});
+
+test('timePenaltyFromText does not double-count seconds already stated as a time penalty', () => {
+  const text = 'Decision: a 5 second time penalty (5 seconds added to the race time).';
+  assert.equal(timePenaltyFromText(text), 5);
+});
+
+test('gridPenaltyFromText reads a "N grid position penalty" and a places drop', () => {
+  assert.equal(gridPenaltyFromText('A 3 grid position penalty is imposed on Car 10.'), 3);
+  assert.equal(gridPenaltyFromText('Car 44 is dropped 5 grid positions for a power unit change.'), 5);
+});
+
 test('suspended fines do not create active penalties', () => {
   const text = `
     Competitor: McLaren
