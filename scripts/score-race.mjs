@@ -66,7 +66,9 @@ export async function scoreRace(raceId, services = {}) {
   const fetchedRace = await fetchRaceWeekendImpl(calendarRace);
   // The FIA final-classification and starting-grid documents are the definitive
   // grid/finish/penalty source; normalizeRaceWeekend prefers them over OpenF1.
-  fetchedRace.fiaResults = await fetchRaceResultsImpl(calendarRace);
+  // Skip the fetch when the weekend data already carries them (cached re-scores
+  // and tests supply their own).
+  fetchedRace.fiaResults = fetchedRace.fiaResults ?? await fetchRaceResultsImpl(calendarRace);
   writeJson(rawRacePath(calendarRace.id, 'openf1.json'), fetchedRace);
 
   assertFineReviewReady(calendarRace.id, fineReview);

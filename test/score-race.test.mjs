@@ -17,6 +17,7 @@ function readJson(filePath) {
 
 function stubFetchedRace() {
   return {
+    fiaResults: {},
     meeting: { meeting_key: 1234 },
     sessions: {
       qualifying: { session_key: 11 },
