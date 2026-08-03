@@ -1,6 +1,71 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { activeFineFromText, classifySubject, summarizeFineDocumentText } from '../lib/fines.js';
+import { activeFineFromText, classifySubject, summarizeFineDocumentText, timePenaltyFromText, gridPenaltyFromText } from '../lib/fines.js';
+
+test('timePenaltyFromText reads a single time penalty in seconds', () => {
+  const text = 'The Stewards impose a 10 second time penalty on Car 11 for forcing another car off track.';
+  assert.equal(timePenaltyFromText(text), 10);
+});
+
+test('timePenaltyFromText totals a repeated penalty', () => {
+  const text = 'Car 10 is given a 2 x 5 second time penalty for speeding in the pit lane.';
+  assert.equal(timePenaltyFromText(text), 10);
+});
+
+test('timePenaltyFromText reads the "time penalty of N seconds" wording', () => {
+  const text = 'Decision: a time penalty of 5 seconds is applied.';
+  assert.equal(timePenaltyFromText(text), 5);
+});
+
+test('timePenaltyFromText returns 0 when there is no time penalty', () => {
+  const text = 'The competitor is fined €5,000. No time penalty is imposed.';
+  assert.equal(timePenaltyFromText(text), 0);
+});
+
+test('gridPenaltyFromText caps a back-of-grid start at 10 places', () => {
+  const text = 'Car 18 is required to start the race from the back of the grid.';
+  assert.equal(gridPenaltyFromText(text), 10);
+});
+
+test('gridPenaltyFromText treats a pit-lane start as the 10-place cap', () => {
+  const text = 'The driver of Car 18 must start from the pit lane.';
+  assert.equal(gridPenaltyFromText(text), 10);
+});
+
+test('gridPenaltyFromText reads an N-place grid penalty', () => {
+  const text = 'A 5 grid place penalty is imposed on Car 44 for a gearbox change.';
+  assert.equal(gridPenaltyFromText(text), 5);
+});
+
+test('gridPenaltyFromText does not fire on a pit-lane speeding fine', () => {
+  const text = 'Car 63 exceeded the pit lane speed limit and is fined €100.';
+  assert.equal(gridPenaltyFromText(text), 0);
+});
+
+test('timePenaltyFromText reads a post-race drive-through as its added seconds', () => {
+  const text = 'Decision: Drive through penalty imposed after the Race. (20 seconds added)';
+  assert.equal(timePenaltyFromText(text), 20);
+});
+
+test('timePenaltyFromText does not double-count seconds already stated as a time penalty', () => {
+  const text = 'Decision: a 5 second time penalty (5 seconds added to the race time).';
+  assert.equal(timePenaltyFromText(text), 5);
+});
+
+test('gridPenaltyFromText reads a "N grid position penalty" and a places drop', () => {
+  assert.equal(gridPenaltyFromText('A 3 grid position penalty is imposed on Car 10.'), 3);
+  assert.equal(gridPenaltyFromText('Car 44 is dropped 5 grid positions for a power unit change.'), 5);
+});
+
+test('timePenaltyFromText counts only the Decision, not a figure repeated in the Reason', () => {
+  const text = 'Decision: 5 second time penalty. Reason: Car 11 was 5 seconds under the minimum safety-car time.';
+  assert.equal(timePenaltyFromText(text), 5);
+});
+
+test('gridPenaltyFromText ignores a "next Race" grid drop and a "no penalty" decision', () => {
+  assert.equal(gridPenaltyFromText('Decision: Drop of 10 grid positions for the next Race in which the driver participates.'), 0);
+  assert.equal(gridPenaltyFromText('Decision: No penalty applied. Reason: The Stewards reviewed the start from the back.'), 0);
+});
 
 test('suspended fines do not create active penalties', () => {
   const text = `

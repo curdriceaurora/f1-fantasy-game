@@ -2,21 +2,21 @@
   "teamId": "chris-bayley-f3b36d58",
   "principalName": "Chris Bayley",
   "displayName": "Aero We Go",
-  "totalPoints": 436,
+  "totalPoints": 444,
   "completedRaces": 11,
-  "latestRacePoints": 24,
+  "latestRacePoints": 23,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 59,
-      "driverSubtotal": 27,
-      "constructorSubtotal": 32,
+      "baseSubtotal": 63,
+      "driverSubtotal": 30,
+      "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 59,
+      "totalPoints": 63,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -32,7 +32,7 @@
           "totalPoints": 28,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -63,7 +63,7 @@
           "totalPoints": -4,
           "components": [
             {
-              "label": "Qualifying P17",
+              "label": "Qualifying (grid P17)",
               "points": -2
             },
             {
@@ -91,11 +91,11 @@
           "gridStart": 21,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 3,
+          "totalPoints": 6,
           "components": [
             {
-              "label": "Qualifying PDNQ",
-              "points": -9
+              "label": "Qualifying (grid P21)",
+              "points": -6
             },
             {
               "label": "Race finish P15",
@@ -152,22 +152,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": 2,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 7,
-            "formula": "ceil((3×-4 + 2×7) ÷ 5)",
-            "weightedRawPoints": 0.4,
-            "weightedPoints": 1
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
+            "weightedRawPoints": 1.6,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": 2
             }
           ]
         },
@@ -203,19 +203,19 @@
           ]
         }
       ],
-      "runningTotal": 59
+      "runningTotal": 63
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 83,
-      "driverSubtotal": 38,
-      "constructorSubtotal": 45,
+      "baseSubtotal": 86,
+      "driverSubtotal": 40,
+      "constructorSubtotal": 46,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 83,
+      "totalPoints": 86,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -231,7 +231,7 @@
           "totalPoints": 26,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 0
             },
             {
@@ -263,11 +263,11 @@
           "gridStart": 18,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -2,
+          "totalPoints": 0,
           "components": [
             {
-              "label": "Qualifying P19",
-              "points": -4
+              "label": "Qualifying (grid P18)",
+              "points": -2
             },
             {
               "label": "Sprint P17",
@@ -301,7 +301,7 @@
           "totalPoints": 14,
           "components": [
             {
-              "label": "Qualifying P17",
+              "label": "Qualifying (grid P17)",
               "points": -4
             },
             {
@@ -359,22 +359,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": 2,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -2,
+            "leadDriverPoints": 0,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 4,
-            "formula": "ceil((3×-2 + 2×4) ÷ 5)",
-            "weightedRawPoints": 0.4,
-            "weightedPoints": 1
+            "formula": "ceil((3×0 + 2×4) ÷ 5)",
+            "weightedRawPoints": 1.6,
+            "weightedPoints": 2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": 2
             }
           ]
         },
@@ -410,7 +410,7 @@
           ]
         }
       ],
-      "runningTotal": 142
+      "runningTotal": 149
     },
     {
       "raceId": "japan",
@@ -438,7 +438,7 @@
           "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 0
             },
             {
@@ -469,7 +469,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P21",
+              "label": "Qualifying (grid P21)",
               "points": -4
             },
             {
@@ -500,7 +500,7 @@
           "totalPoints": -2,
           "components": [
             {
-              "label": "Qualifying P16",
+              "label": "Qualifying (grid P16)",
               "points": -4
             },
             {
@@ -601,7 +601,7 @@
           ]
         }
       ],
-      "runningTotal": 180
+      "runningTotal": 187
     },
     {
       "raceId": "miami",
@@ -629,7 +629,7 @@
           "totalPoints": 19,
           "components": [
             {
-              "label": "Qualifying P5",
+              "label": "Qualifying (grid P5)",
               "points": 0
             },
             {
@@ -664,7 +664,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P17",
+              "label": "Qualifying (grid P17)",
               "points": -2
             },
             {
@@ -699,7 +699,7 @@
           "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying P13",
+              "label": "Qualifying (grid P13)",
               "points": -2
             },
             {
@@ -804,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": 237
+      "runningTotal": 244
     },
     {
       "raceId": "canada",
@@ -832,7 +832,7 @@
           "totalPoints": -25,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -867,7 +867,7 @@
           "totalPoints": -6,
           "components": [
             {
-              "label": "Qualifying P19",
+              "label": "Qualifying (grid P19)",
               "points": -4
             },
             {
@@ -898,7 +898,7 @@
           "totalPoints": 10,
           "components": [
             {
-              "label": "Qualifying P15",
+              "label": "Qualifying (grid P15)",
               "points": -4
             },
             {
@@ -1007,7 +1007,7 @@
           ]
         }
       ],
-      "runningTotal": 236
+      "runningTotal": 243
     },
     {
       "raceId": "monaco",
@@ -1035,7 +1035,7 @@
           "totalPoints": -15,
           "components": [
             {
-              "label": "Qualifying P6",
+              "label": "Qualifying (grid P6)",
               "points": -2
             },
             {
@@ -1070,7 +1070,7 @@
           "totalPoints": 18,
           "components": [
             {
-              "label": "Qualifying P21",
+              "label": "Qualifying (grid P21)",
               "points": -4
             },
             {
@@ -1105,7 +1105,7 @@
           "totalPoints": -10,
           "components": [
             {
-              "label": "Qualifying P12",
+              "label": "Qualifying (grid P12)",
               "points": -2
             },
             {
@@ -1206,7 +1206,7 @@
           ]
         }
       ],
-      "runningTotal": 251
+      "runningTotal": 258
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1234,7 +1234,7 @@
           "totalPoints": 19,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -1265,7 +1265,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P22",
+              "label": "Qualifying (grid P22)",
               "points": -4
             },
             {
@@ -1296,7 +1296,7 @@
           "totalPoints": 1,
           "components": [
             {
-              "label": "Qualifying P16",
+              "label": "Qualifying (grid P16)",
               "points": -4
             },
             {
@@ -1401,7 +1401,7 @@
           ]
         }
       ],
-      "runningTotal": 291
+      "runningTotal": 298
     },
     {
       "raceId": "austria",
@@ -1429,7 +1429,7 @@
           "totalPoints": 28,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -1460,7 +1460,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P21",
+              "label": "Qualifying (grid P21)",
               "points": -4
             },
             {
@@ -1491,7 +1491,7 @@
           "totalPoints": -10,
           "components": [
             {
-              "label": "Qualifying P17",
+              "label": "Qualifying (grid P17)",
               "points": -4
             },
             {
@@ -1592,19 +1592,19 @@
           ]
         }
       ],
-      "runningTotal": 345
+      "runningTotal": 352
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 52,
-      "driverSubtotal": 19,
-      "constructorSubtotal": 33,
+      "baseSubtotal": 53,
+      "driverSubtotal": 21,
+      "constructorSubtotal": 32,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 52,
+      "homeCircuitBonusPoints": 53,
       "investmentBonusPoints": 0,
-      "totalPoints": 104,
+      "totalPoints": 106,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1620,7 +1620,7 @@
           "totalPoints": 27,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 0
             },
             {
@@ -1655,7 +1655,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P22",
+              "label": "Qualifying (grid P21)",
               "points": -4
             },
             {
@@ -1687,11 +1687,11 @@
           "gridStart": 14,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -8,
           "components": [
             {
-              "label": "Qualifying P15",
-              "points": -4
+              "label": "Qualifying (grid P14)",
+              "points": -2
             },
             {
               "label": "Sprint P17",
@@ -1775,35 +1775,35 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 19,
+          "totalPoints": 18,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 17,
+            "leadDriverPoints": 14,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
             "secondDriverPoints": 22,
-            "formula": "ceil((3×17 + 2×22) ÷ 5)",
-            "weightedRawPoints": 19,
-            "weightedPoints": 19
+            "formula": "ceil((3×14 + 2×22) ÷ 5)",
+            "weightedRawPoints": 17.2,
+            "weightedPoints": 18
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 19
+              "points": 18
             }
           ]
         }
       ],
-      "runningTotal": 449
+      "runningTotal": 458
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
       "baseSubtotal": -37,
-      "driverSubtotal": -34,
-      "constructorSubtotal": -3,
+      "driverSubtotal": -36,
+      "constructorSubtotal": -1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
@@ -1823,7 +1823,7 @@
           "totalPoints": -38,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P3)",
               "points": 0
             },
             {
@@ -1854,7 +1854,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P21",
+              "label": "Qualifying (grid P22)",
               "points": -4
             },
             {
@@ -1882,11 +1882,11 @@
           "gridStart": 19,
           "racePosition": 16,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 0,
           "components": [
             {
-              "label": "Qualifying P15",
-              "points": -4
+              "label": "Qualifying (grid P19)",
+              "points": -6
             },
             {
               "label": "Race finish P16",
@@ -1970,39 +1970,39 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 6,
+          "totalPoints": 8,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 4,
+            "leadDriverPoints": 7,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
             "secondDriverPoints": 9,
-            "formula": "ceil((3×4 + 2×9) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
+            "formula": "ceil((3×7 + 2×9) ÷ 5)",
+            "weightedRawPoints": 7.8,
+            "weightedPoints": 8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 8
             }
           ]
         }
       ],
-      "runningTotal": 412
+      "runningTotal": 421
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 24,
+      "baseSubtotal": 23,
       "driverSubtotal": 0,
-      "constructorSubtotal": 24,
+      "constructorSubtotal": 23,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 24,
+      "totalPoints": 23,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2018,7 +2018,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P7",
+              "label": "Qualifying (grid P6)",
               "points": -2
             },
             {
@@ -2049,7 +2049,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P16",
+              "label": "Qualifying (grid P16)",
               "points": -2
             },
             {
@@ -2080,7 +2080,7 @@
           "totalPoints": -4,
           "components": [
             {
-              "label": "Qualifying P18",
+              "label": "Qualifying (grid P18)",
               "points": -4
             },
             {
@@ -2107,22 +2107,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 12,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 26,
-            "formula": "ceil((3×2 + 2×26) ÷ 5)",
-            "weightedRawPoints": 11.6,
-            "weightedPoints": 12
+            "secondDriverPoints": 23,
+            "formula": "ceil((3×2 + 2×23) ÷ 5)",
+            "weightedRawPoints": 10.4,
+            "weightedPoints": 11
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 12
+              "points": 11
             }
           ]
         },
@@ -2181,7 +2181,7 @@
           ]
         }
       ],
-      "runningTotal": 436
+      "runningTotal": 444
     }
   ]
 }

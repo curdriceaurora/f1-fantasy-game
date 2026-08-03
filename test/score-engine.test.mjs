@@ -1,6 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreFantasyTeam, buildConstructorContribution } from '../lib/score-engine.js';
+import { scoreFantasyTeam, buildConstructorContribution, buildDriverContribution } from '../lib/score-engine.js';
+
+test('qualifying points use the grid position at the start, not the qualifying result', () => {
+  // Russell (Contender) qualifies P5 but takes a grid penalty and starts P12.
+  const contribution = buildDriverContribution('george-russell', {
+    qualifyingPosition: 5, gridStart: 12, racePosition: 12, sprintPosition: null,
+    fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+  }, { raceId: 'x', raceName: 'X' });
+  const quali = contribution.components.find((c) => /Qualifying/.test(c.label));
+  // Grid P12 is the 11th-14th band (-4 for a Contender), not P5's 2nd-5th (0).
+  assert.equal(quali.points, -4);
+});
 
 test('constructor weighting favours the roster lead driver, not the higher scorer that race', () => {
   // Ferrari's designated lead is Leclerc; Hamilton outscored him this race.
