@@ -2,9 +2,9 @@
   "teamId": "ryan-eyre-6119a97c",
   "principalName": "Ryan Eyre",
   "displayName": "Eyre We Go Again",
-  "totalPoints": 90,
+  "totalPoints": 136,
   "completedRaces": 11,
-  "latestRacePoints": 20,
+  "latestRacePoints": 30,
   "races": [
     {
       "raceId": "australia",
@@ -201,13 +201,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 22,
+      "baseSubtotal": 28,
       "driverSubtotal": 28,
-      "constructorSubtotal": -6,
+      "constructorSubtotal": 0,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 29,
+      "totalPoints": 35,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -343,22 +343,22 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 6,
+          "totalPoints": 12,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -9,
+            "leadDriverPoints": 1,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
             "secondDriverPoints": 27,
-            "formula": "ceil((3×-9 + 2×27) ÷ 5)",
-            "weightedRawPoints": 5.4,
-            "weightedPoints": 6
+            "formula": "ceil((3×1 + 2×27) ÷ 5)",
+            "weightedRawPoints": 11.4,
+            "weightedPoints": 12
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 12
             }
           ]
         },
@@ -390,7 +390,7 @@
           ]
         }
       ],
-      "runningTotal": 24
+      "runningTotal": 30
     },
     {
       "raceId": "japan",
@@ -581,19 +581,19 @@
           ]
         }
       ],
-      "runningTotal": 41
+      "runningTotal": 47
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 1,
+      "baseSubtotal": -2,
       "driverSubtotal": -3,
-      "constructorSubtotal": 4,
+      "constructorSubtotal": 1,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 1,
+      "homeCircuitBonusPoints": 2,
       "investmentBonusPoints": 7,
-      "totalPoints": 9,
+      "totalPoints": 7,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -706,22 +706,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 2,
+          "totalPoints": -1,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 8,
+            "leadDriverPoints": 3,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
             "secondDriverPoints": -9,
-            "formula": "ceil((3×8 + 2×-9) ÷ 5)",
-            "weightedRawPoints": 1.2,
-            "weightedPoints": 2
+            "formula": "ceil((3×3 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -1.8,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -1
             }
           ]
         },
@@ -780,19 +780,19 @@
           ]
         }
       ],
-      "runningTotal": 50
+      "runningTotal": 54
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 15,
-      "driverSubtotal": 0,
-      "constructorSubtotal": 15,
+      "baseSubtotal": 45,
+      "driverSubtotal": 20,
+      "constructorSubtotal": 25,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 22,
+      "totalPoints": 52,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -840,7 +840,7 @@
           "gridStart": 11,
           "racePosition": 12,
           "classified": true,
-          "totalPoints": -12,
+          "totalPoints": -2,
           "components": [
             {
               "label": "Qualifying P11",
@@ -857,10 +857,6 @@
             {
               "label": "Position change",
               "points": -2
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -879,7 +875,7 @@
           "gridStart": 21,
           "racePosition": 16,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 12,
           "components": [
             {
               "label": "Qualifying P22",
@@ -896,10 +892,6 @@
             {
               "label": "Position change",
               "points": 10
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -917,22 +909,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 15,
+          "totalPoints": 19,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 21,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×21 + 2×4) ÷ 5)",
-            "weightedRawPoints": 14.2,
-            "weightedPoints": 15
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×21 + 2×14) ÷ 5)",
+            "weightedRawPoints": 18.2,
+            "weightedPoints": 19
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 15
+              "points": 19
             }
           ]
         },
@@ -971,39 +963,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -9,
+          "totalPoints": -3,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -12,
+            "leadDriverPoints": -2,
             "secondDriverId": "gabriel-bortoleto",
             "secondDriverName": "Gabriel Bortoleto",
             "secondDriverPoints": -5,
-            "formula": "ceil((3×-12 + 2×-5) ÷ 5)",
-            "weightedRawPoints": -9.2,
-            "weightedPoints": -9
+            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -9
+              "points": -3
             }
           ]
         }
       ],
-      "runningTotal": 72
+      "runningTotal": 106
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -28,
+      "baseSubtotal": -26,
       "driverSubtotal": -20,
-      "constructorSubtotal": -8,
+      "constructorSubtotal": -6,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": -21,
+      "totalPoints": -19,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -1112,22 +1104,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": -17,
+          "totalPoints": -15,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": -40,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 17,
-            "formula": "ceil((3×-40 + 2×17) ÷ 5)",
-            "weightedRawPoints": -17.2,
-            "weightedPoints": -17
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×-40 + 2×22) ÷ 5)",
+            "weightedRawPoints": -15.2,
+            "weightedPoints": -15
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -17
+              "points": -15
             }
           ]
         },
@@ -1186,7 +1178,7 @@
           ]
         }
       ],
-      "runningTotal": 51
+      "runningTotal": 87
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1385,7 +1377,7 @@
           ]
         }
       ],
-      "runningTotal": 45
+      "runningTotal": 81
     },
     {
       "raceId": "austria",
@@ -1576,7 +1568,7 @@
           ]
         }
       ],
-      "runningTotal": 68
+      "runningTotal": 104
     },
     {
       "raceId": "great-britain",
@@ -1779,7 +1771,7 @@
           ]
         }
       ],
-      "runningTotal": 39
+      "runningTotal": 75
     },
     {
       "raceId": "belgium",
@@ -1970,19 +1962,19 @@
           ]
         }
       ],
-      "runningTotal": 70
+      "runningTotal": 106
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 13,
-      "driverSubtotal": -7,
+      "baseSubtotal": 23,
+      "driverSubtotal": 3,
       "constructorSubtotal": 20,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 20,
+      "totalPoints": 30,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -1995,7 +1987,7 @@
           "gridStart": 18,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": -14,
+          "totalPoints": -4,
           "components": [
             {
               "label": "Qualifying P18",
@@ -2008,10 +2000,6 @@
             {
               "label": "Position change",
               "points": 0
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -2165,7 +2153,7 @@
           ]
         }
       ],
-      "runningTotal": 90
+      "runningTotal": 136
     }
   ]
 }

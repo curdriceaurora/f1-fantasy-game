@@ -3,6 +3,7 @@
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { fetchFineSummary } from '../lib/fines.js';
+import { fetchRaceResults } from '../lib/fia-results.js';
 import { fetchRaceWeekend, normalizeRaceWeekend } from '../lib/openf1.js';
 import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 import { evaluateRaceWorkflow } from '../lib/race-workflow.js';
@@ -61,7 +62,11 @@ export async function scoreRace(raceId, services = {}) {
 
   const fetchRaceWeekendImpl = services.fetchRaceWeekend || fetchRaceWeekend;
   const fetchFineSummaryImpl = services.fetchFineSummary || fetchFineSummary;
+  const fetchRaceResultsImpl = services.fetchRaceResults || fetchRaceResults;
   const fetchedRace = await fetchRaceWeekendImpl(calendarRace);
+  // The FIA final-classification and starting-grid documents are the definitive
+  // grid/finish/penalty source; normalizeRaceWeekend prefers them over OpenF1.
+  fetchedRace.fiaResults = await fetchRaceResultsImpl(calendarRace);
   writeJson(rawRacePath(calendarRace.id, 'openf1.json'), fetchedRace);
 
   assertFineReviewReady(calendarRace.id, fineReview);
