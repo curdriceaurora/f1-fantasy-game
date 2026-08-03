@@ -110,6 +110,25 @@ test('FIA final classification and grid override OpenF1 when present', () => {
   assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 5);
 });
 
+test('FIA sprint classification overrides OpenF1 sprint positions when present', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.sessions.sprint = { session_key: 33 };
+  // OpenF1 has the pre-penalty sprint order; the FIA final sprint classification wins.
+  fetchedRace.sprintResultRows = [
+    { driver_number: 63, position: 3 },
+    { driver_number: 12, position: 2 },
+  ];
+  fetchedRace.fiaResults = {
+    finishingPositions: {}, gridPositions: {}, penaltySeconds: {},
+    sprintPositions: { 'george-russell': 1, 'kimi-antonelli': 4 },
+  };
+
+  const normalized = normalizeRaceWeekend(sprintCalendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['george-russell'].sprintPosition, 1);
+  assert.equal(normalized.drivers['kimi-antonelli'].sprintPosition, 4);
+});
+
 test('normalizeRaceWeekend fails when official grid starts are unavailable', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.positionFeed = [];
