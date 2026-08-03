@@ -2,21 +2,21 @@
   "teamId": "bruce-eggleston-cb831d32",
   "principalName": "Bruce Eggleston",
   "displayName": "Eggheads",
-  "totalPoints": 735,
+  "totalPoints": 741,
   "completedRaces": 11,
-  "latestRacePoints": 41,
+  "latestRacePoints": 42,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 90,
+      "baseSubtotal": 92,
       "driverSubtotal": 66,
-      "constructorSubtotal": 24,
+      "constructorSubtotal": 26,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 90,
+      "totalPoints": 92,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -32,7 +32,7 @@
           "totalPoints": 28,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -63,7 +63,7 @@
           "totalPoints": 20,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 3
             },
             {
@@ -94,7 +94,7 @@
           "totalPoints": 18,
           "components": [
             {
-              "label": "Qualifying P7",
+              "label": "Qualifying (grid P7)",
               "points": 0
             },
             {
@@ -121,22 +121,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 3,
+          "totalPoints": 5,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 25,
+            "leadDriverPoints": 29,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
             "secondDriverPoints": -31,
-            "formula": "ceil((3×25 + 2×-31) ÷ 5)",
-            "weightedRawPoints": 2.6,
-            "weightedPoints": 3
+            "formula": "ceil((3×29 + 2×-31) ÷ 5)",
+            "weightedRawPoints": 5,
+            "weightedPoints": 5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 3
+              "points": 5
             }
           ]
         },
@@ -199,7 +199,7 @@
           ]
         }
       ],
-      "runningTotal": 90
+      "runningTotal": 92
     },
     {
       "raceId": "china",
@@ -227,7 +227,7 @@
           "totalPoints": 26,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 0
             },
             {
@@ -262,7 +262,7 @@
           "totalPoints": 22,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 3
             },
             {
@@ -297,7 +297,7 @@
           "totalPoints": 24,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P3)",
               "points": 3
             },
             {
@@ -406,7 +406,7 @@
           ]
         }
       ],
-      "runningTotal": 179
+      "runningTotal": 181
     },
     {
       "raceId": "japan",
@@ -434,7 +434,7 @@
           "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 0
             },
             {
@@ -465,7 +465,7 @@
           "totalPoints": 20,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 3
             },
             {
@@ -496,7 +496,7 @@
           "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying P6",
+              "label": "Qualifying (grid P6)",
               "points": 0
             },
             {
@@ -597,19 +597,19 @@
           ]
         }
       ],
-      "runningTotal": 228
+      "runningTotal": 230
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 34,
+      "baseSubtotal": 35,
       "driverSubtotal": 31,
-      "constructorSubtotal": 3,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 34,
+      "totalPoints": 35,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -625,7 +625,7 @@
           "totalPoints": 19,
           "components": [
             {
-              "label": "Qualifying P5",
+              "label": "Qualifying (grid P5)",
               "points": 0
             },
             {
@@ -660,7 +660,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P3)",
               "points": 3
             },
             {
@@ -699,7 +699,7 @@
           "totalPoints": 10,
           "components": [
             {
-              "label": "Qualifying P6",
+              "label": "Qualifying (grid P6)",
               "points": 0
             },
             {
@@ -730,22 +730,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": -1,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 3,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×3 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -1.8,
-            "weightedPoints": -1
+            "secondDriverPoints": -6,
+            "formula": "ceil((3×3 + 2×-6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": 0
             }
           ]
         },
@@ -804,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": 262
+      "runningTotal": 265
     },
     {
       "raceId": "canada",
@@ -832,7 +832,7 @@
           "totalPoints": -25,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -867,7 +867,7 @@
           "totalPoints": 23,
           "components": [
             {
-              "label": "Qualifying P8",
+              "label": "Qualifying (grid P8)",
               "points": 0
             },
             {
@@ -906,7 +906,7 @@
           "totalPoints": 30,
           "components": [
             {
-              "label": "Qualifying P5",
+              "label": "Qualifying (grid P5)",
               "points": 3
             },
             {
@@ -1011,7 +1011,7 @@
           ]
         }
       ],
-      "runningTotal": 342
+      "runningTotal": 345
     },
     {
       "raceId": "monaco",
@@ -1039,7 +1039,7 @@
           "totalPoints": -15,
           "components": [
             {
-              "label": "Qualifying P6",
+              "label": "Qualifying (grid P6)",
               "points": -2
             },
             {
@@ -1074,7 +1074,7 @@
           "totalPoints": -23,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 3
             },
             {
@@ -1105,7 +1105,7 @@
           "totalPoints": 23,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P3)",
               "points": 3
             },
             {
@@ -1206,7 +1206,7 @@
           ]
         }
       ],
-      "runningTotal": 329
+      "runningTotal": 332
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1234,7 +1234,7 @@
           "totalPoints": 19,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -1265,7 +1265,7 @@
           "totalPoints": -10,
           "components": [
             {
-              "label": "Qualifying P10",
+              "label": "Qualifying (grid P10)",
               "points": 0
             },
             {
@@ -1296,7 +1296,7 @@
           "totalPoints": 32,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 3
             },
             {
@@ -1401,7 +1401,7 @@
           ]
         }
       ],
-      "runningTotal": 403
+      "runningTotal": 406
     },
     {
       "raceId": "austria",
@@ -1429,7 +1429,7 @@
           "totalPoints": 28,
           "components": [
             {
-              "label": "Qualifying P1",
+              "label": "Qualifying (grid P1)",
               "points": 3
             },
             {
@@ -1460,7 +1460,7 @@
           "totalPoints": -5,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 3
             },
             {
@@ -1491,7 +1491,7 @@
           "totalPoints": 9,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P3)",
               "points": 3
             },
             {
@@ -1592,19 +1592,19 @@
           ]
         }
       ],
-      "runningTotal": 459
+      "runningTotal": 462
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 103,
+      "baseSubtotal": 102,
       "driverSubtotal": 86,
-      "constructorSubtotal": 17,
+      "constructorSubtotal": 16,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 103,
+      "homeCircuitBonusPoints": 102,
       "investmentBonusPoints": 0,
-      "totalPoints": 206,
+      "totalPoints": 204,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1620,7 +1620,7 @@
           "totalPoints": 27,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P4)",
               "points": 0
             },
             {
@@ -1655,7 +1655,7 @@
           "totalPoints": 34,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P2)",
               "points": 3
             },
             {
@@ -1690,7 +1690,7 @@
           "totalPoints": 25,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P3)",
               "points": 3
             },
             {
@@ -1775,39 +1775,39 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 19,
+          "totalPoints": 18,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 17,
+            "leadDriverPoints": 14,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
             "secondDriverPoints": 22,
-            "formula": "ceil((3×17 + 2×22) ÷ 5)",
-            "weightedRawPoints": 19,
-            "weightedPoints": 19
+            "formula": "ceil((3×14 + 2×22) ÷ 5)",
+            "weightedRawPoints": 17.2,
+            "weightedPoints": 18
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 19
+              "points": 18
             }
           ]
         }
       ],
-      "runningTotal": 665
+      "runningTotal": 666
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 29,
-      "driverSubtotal": 1,
-      "constructorSubtotal": 28,
+      "baseSubtotal": 33,
+      "driverSubtotal": 4,
+      "constructorSubtotal": 29,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 29,
+      "totalPoints": 33,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1823,7 +1823,7 @@
           "totalPoints": -38,
           "components": [
             {
-              "label": "Qualifying P4",
+              "label": "Qualifying (grid P3)",
               "points": 0
             },
             {
@@ -1854,7 +1854,7 @@
           "totalPoints": 25,
           "components": [
             {
-              "label": "Qualifying P5",
+              "label": "Qualifying (grid P4)",
               "points": 3
             },
             {
@@ -1882,11 +1882,11 @@
           "gridStart": 5,
           "racePosition": 4,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 17,
           "components": [
             {
-              "label": "Qualifying P6",
-              "points": 0
+              "label": "Qualifying (grid P5)",
+              "points": 3
             },
             {
               "label": "Race finish P4",
@@ -1912,22 +1912,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 23,
+          "totalPoints": 21,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 38,
-            "formula": "ceil((3×13 + 2×38) ÷ 5)",
-            "weightedRawPoints": 23,
-            "weightedPoints": 23
+            "secondDriverPoints": 32,
+            "formula": "ceil((3×13 + 2×32) ÷ 5)",
+            "weightedRawPoints": 20.6,
+            "weightedPoints": 21
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 23
+              "points": 21
             }
           ]
         },
@@ -1939,22 +1939,22 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": -1,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": -2,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×-2 + 2×0) ÷ 5)",
-            "weightedRawPoints": -1.2,
-            "weightedPoints": -1
+            "secondDriverPoints": 3,
+            "formula": "ceil((3×-2 + 2×3) ÷ 5)",
+            "weightedRawPoints": 0,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": 0
             }
           ]
         },
@@ -1966,39 +1966,39 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 6,
+          "totalPoints": 8,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 4,
+            "leadDriverPoints": 7,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
             "secondDriverPoints": 9,
-            "formula": "ceil((3×4 + 2×9) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
+            "formula": "ceil((3×7 + 2×9) ÷ 5)",
+            "weightedRawPoints": 7.8,
+            "weightedPoints": 8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 8
             }
           ]
         }
       ],
-      "runningTotal": 694
+      "runningTotal": 699
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 41,
+      "baseSubtotal": 42,
       "driverSubtotal": 23,
-      "constructorSubtotal": 18,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 41,
+      "totalPoints": 42,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2014,7 +2014,7 @@
           "totalPoints": 2,
           "components": [
             {
-              "label": "Qualifying P7",
+              "label": "Qualifying (grid P6)",
               "points": -2
             },
             {
@@ -2045,7 +2045,7 @@
           "totalPoints": 13,
           "components": [
             {
-              "label": "Qualifying P3",
+              "label": "Qualifying (grid P2)",
               "points": 3
             },
             {
@@ -2080,7 +2080,7 @@
           "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying P2",
+              "label": "Qualifying (grid P5)",
               "points": 3
             },
             {
@@ -2111,22 +2111,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 17,
+          "totalPoints": 18,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 20,
+            "leadDriverPoints": 22,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
             "secondDriverPoints": 11,
-            "formula": "ceil((3×20 + 2×11) ÷ 5)",
-            "weightedRawPoints": 16.4,
-            "weightedPoints": 17
+            "formula": "ceil((3×22 + 2×11) ÷ 5)",
+            "weightedRawPoints": 17.6,
+            "weightedPoints": 18
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 17
+              "points": 18
             }
           ]
         },
@@ -2185,7 +2185,7 @@
           ]
         }
       ],
-      "runningTotal": 735
+      "runningTotal": 741
     }
   ]
 }

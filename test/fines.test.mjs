@@ -57,6 +57,16 @@ test('gridPenaltyFromText reads a "N grid position penalty" and a places drop', 
   assert.equal(gridPenaltyFromText('Car 44 is dropped 5 grid positions for a power unit change.'), 5);
 });
 
+test('timePenaltyFromText counts only the Decision, not a figure repeated in the Reason', () => {
+  const text = 'Decision: 5 second time penalty. Reason: Car 11 was 5 seconds under the minimum safety-car time.';
+  assert.equal(timePenaltyFromText(text), 5);
+});
+
+test('gridPenaltyFromText ignores a "next Race" grid drop and a "no penalty" decision', () => {
+  assert.equal(gridPenaltyFromText('Decision: Drop of 10 grid positions for the next Race in which the driver participates.'), 0);
+  assert.equal(gridPenaltyFromText('Decision: No penalty applied. Reason: The Stewards reviewed the start from the back.'), 0);
+});
+
 test('suspended fines do not create active penalties', () => {
   const text = `
     Competitor: McLaren
