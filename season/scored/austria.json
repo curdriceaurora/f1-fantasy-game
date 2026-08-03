@@ -3,7 +3,7 @@
   "raceName": "Austria",
   "date": "2026-06-28",
   "round": 10,
-  "generatedAt": "2026-08-02T19:19:50.423Z",
+  "generatedAt": "2026-08-03T00:50:41.354Z",
   "documents": [],
   "teams": [
     {
@@ -202,7 +202,7 @@
           ]
         }
       ],
-      "runningTotal": 700
+      "runningTotal": 676
     },
     {
       "teamId": "matthew-brooks-0ba2f10f",
@@ -396,7 +396,7 @@
           ]
         }
       ],
-      "runningTotal": 433
+      "runningTotal": 465
     },
     {
       "teamId": "laurence-eggleston-9ea0df43",
@@ -594,7 +594,7 @@
           ]
         }
       ],
-      "runningTotal": 428
+      "runningTotal": 437
     },
     {
       "teamId": "brian-donnell-c0048d2b",
@@ -788,7 +788,7 @@
           ]
         }
       ],
-      "runningTotal": 381
+      "runningTotal": 400
     },
     {
       "teamId": "mark-haggan-f7670793",
@@ -982,7 +982,7 @@
           ]
         }
       ],
-      "runningTotal": 338
+      "runningTotal": 382
     },
     {
       "teamId": "rachel-khatri-e38f6983",
@@ -1176,7 +1176,7 @@
           ]
         }
       ],
-      "runningTotal": 472
+      "runningTotal": 457
     },
     {
       "teamId": "simon-walker-7dd9df1f",
@@ -1370,7 +1370,7 @@
           ]
         }
       ],
-      "runningTotal": 632
+      "runningTotal": 613
     },
     {
       "teamId": "jason-smith-1a886fe7",
@@ -1568,7 +1568,7 @@
           ]
         }
       ],
-      "runningTotal": 577
+      "runningTotal": 587
     },
     {
       "teamId": "paul-brooks-c712f8af",
@@ -1762,7 +1762,7 @@
           ]
         }
       ],
-      "runningTotal": 112
+      "runningTotal": 135
     },
     {
       "teamId": "stephen-brooks-397d1f58",
@@ -1956,7 +1956,7 @@
           ]
         }
       ],
-      "runningTotal": 385
+      "runningTotal": 401
     },
     {
       "teamId": "bruce-eggleston-cb831d32",
@@ -2150,7 +2150,783 @@
           ]
         }
       ],
-      "runningTotal": 449
+      "runningTotal": 459
+    },
+    {
+      "teamId": "caroline-harris-855736a8",
+      "principalName": "Caroline Harris",
+      "displayName": "Harris Racing",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 55,
+      "driverSubtotal": 52,
+      "constructorSubtotal": 3,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 55,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 5,
+          "sprintPosition": null,
+          "gridStart": 5,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 24,
+          "components": [
+            {
+              "label": "Qualifying P5",
+              "points": 0
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": null,
+          "gridStart": 1,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 28,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 3
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "alex-albon",
+          "name": "Alex Albon",
+          "teamName": "Williams",
+          "imageSlug": "albon",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 18,
+          "sprintPosition": null,
+          "gridStart": 18,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": 0,
+          "components": [
+            {
+              "label": "Qualifying P18",
+              "points": -2
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 4,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×4 + 2×2) ÷ 5)",
+            "weightedRawPoints": 3.2,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": -5,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": -8,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": -2,
+            "formula": "ceil((3×-8 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -5.6,
+            "weightedPoints": -5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -5
+            }
+          ]
+        }
+      ],
+      "runningTotal": 132
+    },
+    {
+      "teamId": "chris-bayley-f3b36d58",
+      "principalName": "Chris Bayley",
+      "displayName": "Aero We Go",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 54,
+      "driverSubtotal": 20,
+      "constructorSubtotal": 34,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 54,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": null,
+          "gridStart": 1,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 28,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 3
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 21,
+          "sprintPosition": null,
+          "gridStart": 21,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P21",
+              "points": -4
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 17,
+          "sprintPosition": null,
+          "gridStart": 17,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -10,
+          "components": [
+            {
+              "label": "Qualifying P17",
+              "points": -4
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 26,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 28,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×28 + 2×22) ÷ 5)",
+            "weightedRawPoints": 25.6,
+            "weightedPoints": 26
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 26
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": 2,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×2 + 2×5) ÷ 5)",
+            "weightedRawPoints": 3.2,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 345
+    },
+    {
+      "teamId": "nathanael-wallis-711c13e3",
+      "principalName": "Nathanael Wallis",
+      "displayName": "Wallis Racing",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 53,
+      "driverSubtotal": 54,
+      "constructorSubtotal": -1,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 53,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 5,
+          "sprintPosition": null,
+          "gridStart": 5,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 24,
+          "components": [
+            {
+              "label": "Qualifying P5",
+              "points": 0
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": null,
+          "gridStart": 1,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 28,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 3
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 11,
+          "racePosition": 13,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P11",
+              "points": 6
+            },
+            {
+              "label": "Race finish P13",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 0,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": -5,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": -8,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": -2,
+            "formula": "ceil((3×-8 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -5.6,
+            "weightedPoints": -5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -5
+            }
+          ]
+        }
+      ],
+      "runningTotal": 394
+    },
+    {
+      "teamId": "lizzie-bulmer-ed151919",
+      "principalName": "Lizzie Bulmer",
+      "displayName": "Final Countdown",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 50,
+      "driverSubtotal": 32,
+      "constructorSubtotal": 18,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 50,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": null,
+          "gridStart": 1,
+          "racePosition": 1,
+          "classified": true,
+          "totalPoints": 28,
+          "components": [
+            {
+              "label": "Qualifying P1",
+              "points": 3
+            },
+            {
+              "label": "Race finish P1",
+              "points": 25
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 21,
+          "sprintPosition": null,
+          "gridStart": 21,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P21",
+              "points": -4
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 11,
+          "racePosition": 13,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying P11",
+              "points": 6
+            },
+            {
+              "label": "Race finish P13",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 20,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 24,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 12,
+            "formula": "ceil((3×24 + 2×12) ÷ 5)",
+            "weightedRawPoints": 19.2,
+            "weightedPoints": 20
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 20
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -6,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-10 + 2×0) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -6
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 4,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×4 + 2×2) ÷ 5)",
+            "weightedRawPoints": 3.2,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 210
     },
     {
       "teamId": "fred-bull-c865e3fe",
@@ -2340,200 +3116,6 @@
             {
               "label": "Weighted driver total",
               "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 97
-    },
-    {
-      "teamId": "caroline-harris-855736a8",
-      "principalName": "Caroline Harris",
-      "displayName": "Harris Racing",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 49,
-      "driverSubtotal": 52,
-      "constructorSubtotal": -3,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 49,
-      "drivers": [
-        {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 5,
-          "sprintPosition": null,
-          "gridStart": 5,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 24,
-          "components": [
-            {
-              "label": "Qualifying P5",
-              "points": 0
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 1,
-          "sprintPosition": null,
-          "gridStart": 1,
-          "racePosition": 1,
-          "classified": true,
-          "totalPoints": 28,
-          "components": [
-            {
-              "label": "Qualifying P1",
-              "points": 3
-            },
-            {
-              "label": "Race finish P1",
-              "points": 25
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "alex-albon",
-          "name": "Alex Albon",
-          "teamName": "Williams",
-          "imageSlug": "albon",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 18,
-          "sprintPosition": null,
-          "gridStart": 18,
-          "racePosition": 17,
-          "classified": true,
-          "totalPoints": 0,
-          "components": [
-            {
-              "label": "Qualifying P18",
-              "points": -2
-            },
-            {
-              "label": "Race finish P17",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 4,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×4 + 2×2) ÷ 5)",
-            "weightedRawPoints": 3.2,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": -8,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×-8 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -5.6,
-            "weightedPoints": -5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -5
             }
           ]
         }
@@ -2732,201 +3314,7 @@
           ]
         }
       ],
-      "runningTotal": 344
-    },
-    {
-      "teamId": "nathanael-wallis-711c13e3",
-      "principalName": "Nathanael Wallis",
-      "displayName": "Wallis Racing",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 47,
-      "driverSubtotal": 54,
-      "constructorSubtotal": -7,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 47,
-      "drivers": [
-        {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 5,
-          "sprintPosition": null,
-          "gridStart": 5,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 24,
-          "components": [
-            {
-              "label": "Qualifying P5",
-              "points": 0
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 1,
-          "sprintPosition": null,
-          "gridStart": 1,
-          "racePosition": 1,
-          "classified": true,
-          "totalPoints": 28,
-          "components": [
-            {
-              "label": "Qualifying P1",
-              "points": 3
-            },
-            {
-              "label": "Race finish P1",
-              "points": 25
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "pierre-gasly",
-          "name": "Pierre Gasly",
-          "teamName": "Alpine",
-          "imageSlug": "gasly",
-          "rank": "No Hoper",
-          "qualifyingPosition": 11,
-          "sprintPosition": null,
-          "gridStart": 11,
-          "racePosition": 13,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying P11",
-              "points": 6
-            },
-            {
-              "label": "Race finish P13",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 0,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -2,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 1,
-            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 0
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": -8,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×-8 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -5.6,
-            "weightedPoints": -5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -5
-            }
-          ]
-        }
-      ],
-      "runningTotal": 401
+      "runningTotal": 342
     },
     {
       "teamId": "harish-malapati-a5ef0eba",
@@ -3120,7 +3508,7 @@
           ]
         }
       ],
-      "runningTotal": 499
+      "runningTotal": 506
     },
     {
       "teamId": "louise-wallis-1d10f129",
@@ -3314,47 +3702,47 @@
           ]
         }
       ],
-      "runningTotal": 524
+      "runningTotal": 535
     },
     {
-      "teamId": "lizzie-bulmer-ed151919",
-      "principalName": "Lizzie Bulmer",
-      "displayName": "Final Countdown",
+      "teamId": "richard-malet-7dc02204",
+      "principalName": "Richard Malet",
+      "displayName": "The Last Carlos Fandango",
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 40,
-      "driverSubtotal": 22,
-      "constructorSubtotal": 18,
+      "baseSubtotal": 39,
+      "driverSubtotal": 30,
+      "constructorSubtotal": 9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 40,
+      "totalPoints": 39,
       "drivers": [
         {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
           "rank": "Contender",
-          "qualifyingPosition": 1,
+          "qualifyingPosition": 5,
           "sprintPosition": null,
-          "gridStart": 1,
-          "racePosition": 1,
+          "gridStart": 5,
+          "racePosition": 2,
           "classified": true,
-          "totalPoints": 28,
+          "totalPoints": 24,
           "components": [
             {
-              "label": "Qualifying P1",
-              "points": 3
+              "label": "Qualifying P5",
+              "points": 0
             },
             {
-              "label": "Race finish P1",
-              "points": 25
+              "label": "Race finish P2",
+              "points": 18
             },
             {
               "label": "Position change",
-              "points": 0
+              "points": 6
             }
           ],
           "raceContext": {
@@ -3373,7 +3761,7 @@
           "gridStart": 21,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": -8,
+          "totalPoints": 2,
           "components": [
             {
               "label": "Qualifying P21",
@@ -3386,10 +3774,6 @@
             {
               "label": "Position change",
               "points": 6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -3398,29 +3782,29 @@
           }
         },
         {
-          "driverId": "pierre-gasly",
-          "name": "Pierre Gasly",
-          "teamName": "Alpine",
-          "imageSlug": "gasly",
-          "rank": "No Hoper",
-          "qualifyingPosition": 11,
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 14,
           "sprintPosition": null,
-          "gridStart": 11,
-          "racePosition": 13,
+          "gridStart": 14,
+          "racePosition": 12,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": 4,
           "components": [
             {
-              "label": "Qualifying P11",
-              "points": 6
+              "label": "Qualifying P14",
+              "points": 0
             },
             {
-              "label": "Race finish P13",
+              "label": "Race finish P12",
               "points": 0
             },
             {
               "label": "Position change",
-              "points": -4
+              "points": 4
             }
           ],
           "raceContext": {
@@ -3431,56 +3815,56 @@
       ],
       "constructors": [
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "charles-leclerc",
+            "lewis-hamilton"
           ],
-          "totalPoints": 20,
+          "totalPoints": 1,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 24,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×24 + 2×12) ÷ 5)",
-            "weightedRawPoints": 19.2,
-            "weightedPoints": 20
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": -5,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 9,
+            "formula": "ceil((3×-5 + 2×9) ÷ 5)",
+            "weightedRawPoints": 0.6,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 20
+              "points": 1
             }
           ]
         },
         {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
           "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
+            "fernando-alonso",
+            "lance-stroll"
           ],
-          "totalPoints": -6,
+          "totalPoints": 4,
           "weightingBreakdown": {
-            "leadDriverId": "carlos-sainz",
-            "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
-            "secondDriverId": "alex-albon",
-            "secondDriverName": "Alex Albon",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×-10 + 2×0) ÷ 5)",
-            "weightedRawPoints": -6,
-            "weightedPoints": -6
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -6
+              "points": 4
             }
           ]
         },
@@ -3512,205 +3896,7 @@
           ]
         }
       ],
-      "runningTotal": 203
-    },
-    {
-      "teamId": "chris-bayley-f3b36d58",
-      "principalName": "Chris Bayley",
-      "displayName": "Aero We Go",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 38,
-      "driverSubtotal": 10,
-      "constructorSubtotal": 28,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 38,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 1,
-          "sprintPosition": null,
-          "gridStart": 1,
-          "racePosition": 1,
-          "classified": true,
-          "totalPoints": 28,
-          "components": [
-            {
-              "label": "Qualifying P1",
-              "points": 3
-            },
-            {
-              "label": "Race finish P1",
-              "points": 25
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "fernando-alonso",
-          "name": "Fernando Alonso",
-          "teamName": "Aston Martin",
-          "imageSlug": "alonso",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 21,
-          "sprintPosition": null,
-          "gridStart": 21,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": -8,
-          "components": [
-            {
-              "label": "Qualifying P21",
-              "points": -4
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 17,
-          "sprintPosition": null,
-          "gridStart": 17,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -10,
-          "components": [
-            {
-              "label": "Qualifying P17",
-              "points": -4
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -6
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 26,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 28,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 22,
-            "formula": "ceil((3×28 + 2×22) ÷ 5)",
-            "weightedRawPoints": 25.6,
-            "weightedPoints": 26
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 26
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "alpine",
-          "name": "Alpine",
-          "imageSlug": "alpine",
-          "driverIds": [
-            "pierre-gasly",
-            "franco-colapinto"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "pierre-gasly",
-            "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 2,
-            "secondDriverId": "franco-colapinto",
-            "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×2 + 2×5) ÷ 5)",
-            "weightedRawPoints": 3.2,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 337
+      "runningTotal": 86
     },
     {
       "teamId": "john-hopkins-4d46f69f",
@@ -3904,7 +4090,7 @@
           ]
         }
       ],
-      "runningTotal": 215
+      "runningTotal": 237
     },
     {
       "teamId": "yavvan-tadepalli-9118d7c6",
@@ -4098,7 +4284,7 @@
           ]
         }
       ],
-      "runningTotal": 431
+      "runningTotal": 436
     },
     {
       "teamId": "sanath-kuppa-f128be53",
@@ -4292,7 +4478,7 @@
           ]
         }
       ],
-      "runningTotal": 128
+      "runningTotal": 142
     },
     {
       "teamId": "venkatesh-bhimaraju-fa220cd7",
@@ -4486,7 +4672,7 @@
           ]
         }
       ],
-      "runningTotal": 405
+      "runningTotal": 389
     },
     {
       "teamId": "rahul-srinivasan-c15c2aa4",
@@ -4680,7 +4866,7 @@
           ]
         }
       ],
-      "runningTotal": 447
+      "runningTotal": 438
     },
     {
       "teamId": "faheem-mughal-462f69df",
@@ -4874,7 +5060,7 @@
           ]
         }
       ],
-      "runningTotal": 203
+      "runningTotal": 204
     },
     {
       "teamId": "ben-west-39e8b936",
@@ -5068,7 +5254,7 @@
           ]
         }
       ],
-      "runningTotal": 275
+      "runningTotal": 279
     },
     {
       "teamId": "claire-skilton-2543e64a",
@@ -5262,7 +5448,7 @@
           ]
         }
       ],
-      "runningTotal": 525
+      "runningTotal": 526
     },
     {
       "teamId": "charles-skilton-1f69d034",
@@ -5456,7 +5642,7 @@
           ]
         }
       ],
-      "runningTotal": 396
+      "runningTotal": 417
     },
     {
       "teamId": "jon-cooke-fed59910",
@@ -5650,7 +5836,7 @@
           ]
         }
       ],
-      "runningTotal": 583
+      "runningTotal": 567
     },
     {
       "teamId": "kai-lewis-dbf2a760",
@@ -5844,7 +6030,7 @@
           ]
         }
       ],
-      "runningTotal": 176
+      "runningTotal": 182
     },
     {
       "teamId": "rick-grimshaw-e0e97b49",
@@ -6038,7 +6224,7 @@
           ]
         }
       ],
-      "runningTotal": 485
+      "runningTotal": 484
     },
     {
       "teamId": "john-khatri-81ee21fe",
@@ -6232,7 +6418,7 @@
           ]
         }
       ],
-      "runningTotal": 279
+      "runningTotal": 297
     },
     {
       "teamId": "ryan-eyre-6119a97c",
@@ -6426,7 +6612,7 @@
           ]
         }
       ],
-      "runningTotal": 68
+      "runningTotal": 104
     },
     {
       "teamId": "tracey-wallis-1da84f99",
@@ -6620,47 +6806,78 @@
           ]
         }
       ],
-      "runningTotal": 169
+      "runningTotal": 154
     },
     {
-      "teamId": "richard-malet-7dc02204",
-      "principalName": "Richard Malet",
-      "displayName": "The Last Carlos Fandango",
+      "teamId": "ken-pigott-5e176435",
+      "principalName": "Ken Pigott",
+      "displayName": "Rascasse Racing",
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 23,
-      "driverSubtotal": 20,
-      "constructorSubtotal": 3,
+      "baseSubtotal": 19,
+      "driverSubtotal": 4,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 19,
       "drivers": [
         {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 5,
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 8,
           "sprintPosition": null,
-          "gridStart": 5,
-          "racePosition": 2,
+          "gridStart": 8,
+          "racePosition": 6,
           "classified": true,
-          "totalPoints": 24,
+          "totalPoints": 12,
           "components": [
             {
-              "label": "Qualifying P5",
+              "label": "Qualifying P8",
               "points": 0
             },
             {
-              "label": "Race finish P2",
-              "points": 18
+              "label": "Race finish P6",
+              "points": 8
             },
             {
               "label": "Position change",
-              "points": 6
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 17,
+          "sprintPosition": null,
+          "gridStart": 17,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -10,
+          "components": [
+            {
+              "label": "Qualifying P17",
+              "points": -4
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -6
             }
           ],
           "raceContext": {
@@ -6679,7 +6896,7 @@
           "gridStart": 21,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": -8,
+          "totalPoints": 2,
           "components": [
             {
               "label": "Qualifying P21",
@@ -6692,41 +6909,6 @@
             {
               "label": "Position change",
               "points": 6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 14,
-          "sprintPosition": null,
-          "gridStart": 14,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 4
             }
           ],
           "raceContext": {
@@ -6737,29 +6919,29 @@
       ],
       "constructors": [
         {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
           "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
+            "lando-norris",
+            "oscar-piastri"
           ],
-          "totalPoints": 1,
+          "totalPoints": 7,
           "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": -5,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 9,
-            "formula": "ceil((3×-5 + 2×9) ÷ 5)",
-            "weightedRawPoints": 0.6,
-            "weightedPoints": 1
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": 0,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": 16,
+            "formula": "ceil((3×0 + 2×16) ÷ 5)",
+            "weightedRawPoints": 6.4,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": 7
             }
           ]
         },
@@ -6771,22 +6953,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
+            "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 4
             }
           ]
         },
@@ -6818,7 +7000,7 @@
           ]
         }
       ],
-      "runningTotal": 55
+      "runningTotal": 27
     },
     {
       "teamId": "helen-pigott-f4d9bade",
@@ -7012,7 +7194,201 @@
           ]
         }
       ],
-      "runningTotal": 83
+      "runningTotal": 106
+    },
+    {
+      "teamId": "oyvind-helgerud-3d689e5d",
+      "principalName": "Oyvind Helgerud",
+      "displayName": "Vestigo Racing",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 17,
+      "driverSubtotal": 6,
+      "constructorSubtotal": 11,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 17,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 8,
+          "sprintPosition": null,
+          "gridStart": 8,
+          "racePosition": 6,
+          "classified": true,
+          "totalPoints": 12,
+          "components": [
+            {
+              "label": "Qualifying P8",
+              "points": 0
+            },
+            {
+              "label": "Race finish P6",
+              "points": 8
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 17,
+          "sprintPosition": null,
+          "gridStart": 17,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -10,
+          "components": [
+            {
+              "label": "Qualifying P17",
+              "points": -4
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -6
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 14,
+          "sprintPosition": null,
+          "gridStart": 14,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying P14",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
+          "driverIds": [
+            "lando-norris",
+            "oscar-piastri"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": 0,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": 16,
+            "formula": "ceil((3×0 + 2×16) ÷ 5)",
+            "weightedRawPoints": 6.4,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 0,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": -2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "runningTotal": 35
     },
     {
       "teamId": "martin-lewis-ea255cc6",
@@ -7206,201 +7582,7 @@
           ]
         }
       ],
-      "runningTotal": 130
-    },
-    {
-      "teamId": "oyvind-helgerud-3d689e5d",
-      "principalName": "Oyvind Helgerud",
-      "displayName": "Vestigo Racing",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 11,
-      "driverSubtotal": 6,
-      "constructorSubtotal": 5,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 11,
-      "drivers": [
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 8,
-          "sprintPosition": null,
-          "gridStart": 8,
-          "racePosition": 6,
-          "classified": true,
-          "totalPoints": 12,
-          "components": [
-            {
-              "label": "Qualifying P8",
-              "points": 0
-            },
-            {
-              "label": "Race finish P6",
-              "points": 8
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 17,
-          "sprintPosition": null,
-          "gridStart": 17,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -10,
-          "components": [
-            {
-              "label": "Qualifying P17",
-              "points": -4
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -6
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 14,
-          "sprintPosition": null,
-          "gridStart": 14,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mclaren",
-          "name": "McLaren",
-          "imageSlug": "mclaren",
-          "driverIds": [
-            "lando-norris",
-            "oscar-piastri"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "lando-norris",
-            "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 0,
-            "secondDriverId": "oscar-piastri",
-            "secondDriverName": "Oscar Piastri",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×0 + 2×16) ÷ 5)",
-            "weightedRawPoints": 6.4,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 0,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": -2,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 1,
-            "formula": "ceil((3×-2 + 2×1) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 0
-            }
-          ]
-        }
-      ],
-      "runningTotal": -11
+      "runningTotal": 168
     },
     {
       "teamId": "tom-pigott-2ae838f8",
@@ -7409,13 +7591,13 @@
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 7,
+      "baseSubtotal": 13,
       "driverSubtotal": 8,
-      "constructorSubtotal": -1,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 7,
+      "totalPoints": 13,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -7547,22 +7729,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
+            "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 4
             }
           ]
         },
@@ -7594,7 +7776,7 @@
           ]
         }
       ],
-      "runningTotal": 254
+      "runningTotal": 285
     },
     {
       "teamId": "laura-young-cf286bb9",
@@ -7603,13 +7785,13 @@
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 5,
+      "baseSubtotal": 11,
       "driverSubtotal": 9,
-      "constructorSubtotal": -4,
+      "constructorSubtotal": 2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 5,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -7741,22 +7923,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
+            "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 4
             }
           ]
         },
@@ -7788,7 +7970,201 @@
           ]
         }
       ],
-      "runningTotal": 114
+      "runningTotal": 136
+    },
+    {
+      "teamId": "rob-wallis-94faa5a8",
+      "principalName": "Rob Wallis",
+      "displayName": "Basil Bush - Zoom Zoom",
+      "raceId": "austria",
+      "raceName": "Austria",
+      "raceDate": "2026-06-28",
+      "baseSubtotal": 9,
+      "driverSubtotal": 4,
+      "constructorSubtotal": 5,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 1,
+      "totalPoints": 10,
+      "drivers": [
+        {
+          "driverId": "liam-lawson",
+          "name": "Liam Lawson",
+          "teamName": "Red Bull",
+          "imageSlug": "lawson",
+          "rank": "Outsider",
+          "qualifyingPosition": 9,
+          "sprintPosition": null,
+          "gridStart": 9,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying P9",
+              "points": 6
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 14,
+          "sprintPosition": null,
+          "gridStart": 14,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying P14",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 19,
+          "sprintPosition": null,
+          "gridStart": 19,
+          "racePosition": 21,
+          "classified": true,
+          "totalPoints": -8,
+          "components": [
+            {
+              "label": "Qualifying P19",
+              "points": -4
+            },
+            {
+              "label": "Race finish P21",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            }
+          ],
+          "raceContext": {
+            "raceId": "austria",
+            "raceName": "Austria"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
+          "driverIds": [
+            "lando-norris",
+            "oscar-piastri"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": 0,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": 16,
+            "formula": "ceil((3×0 + 2×16) ÷ 5)",
+            "weightedRawPoints": 6.4,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -6,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×-10 + 2×0) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -6
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 61
     },
     {
       "teamId": "kiran-sivanna-aeca91ae",
@@ -7982,399 +8358,7 @@
           ]
         }
       ],
-      "runningTotal": 105
-    },
-    {
-      "teamId": "rob-wallis-94faa5a8",
-      "principalName": "Rob Wallis",
-      "displayName": "Basil Bush - Zoom Zoom",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 3,
-      "driverSubtotal": 4,
-      "constructorSubtotal": -1,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 1,
-      "totalPoints": 4,
-      "drivers": [
-        {
-          "driverId": "liam-lawson",
-          "name": "Liam Lawson",
-          "teamName": "Red Bull",
-          "imageSlug": "lawson",
-          "rank": "Outsider",
-          "qualifyingPosition": 9,
-          "sprintPosition": null,
-          "gridStart": 9,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying P9",
-              "points": 6
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 14,
-          "sprintPosition": null,
-          "gridStart": 14,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 19,
-          "sprintPosition": null,
-          "gridStart": 19,
-          "racePosition": 21,
-          "classified": true,
-          "totalPoints": -8,
-          "components": [
-            {
-              "label": "Qualifying P19",
-              "points": -4
-            },
-            {
-              "label": "Race finish P21",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mclaren",
-          "name": "McLaren",
-          "imageSlug": "mclaren",
-          "driverIds": [
-            "lando-norris",
-            "oscar-piastri"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "lando-norris",
-            "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 0,
-            "secondDriverId": "oscar-piastri",
-            "secondDriverName": "Oscar Piastri",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×0 + 2×16) ÷ 5)",
-            "weightedRawPoints": 6.4,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
-          "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
-          ],
-          "totalPoints": -6,
-          "weightingBreakdown": {
-            "leadDriverId": "carlos-sainz",
-            "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
-            "secondDriverId": "alex-albon",
-            "secondDriverName": "Alex Albon",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×-10 + 2×0) ÷ 5)",
-            "weightedRawPoints": -6,
-            "weightedPoints": -6
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -6
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        }
-      ],
-      "runningTotal": 42
-    },
-    {
-      "teamId": "ken-pigott-5e176435",
-      "principalName": "Ken Pigott",
-      "displayName": "Rascasse Racing",
-      "raceId": "austria",
-      "raceName": "Austria",
-      "raceDate": "2026-06-28",
-      "baseSubtotal": 3,
-      "driverSubtotal": -6,
-      "constructorSubtotal": 9,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 3,
-      "drivers": [
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 8,
-          "sprintPosition": null,
-          "gridStart": 8,
-          "racePosition": 6,
-          "classified": true,
-          "totalPoints": 12,
-          "components": [
-            {
-              "label": "Qualifying P8",
-              "points": 0
-            },
-            {
-              "label": "Race finish P6",
-              "points": 8
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 17,
-          "sprintPosition": null,
-          "gridStart": 17,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -10,
-          "components": [
-            {
-              "label": "Qualifying P17",
-              "points": -4
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -6
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        },
-        {
-          "driverId": "fernando-alonso",
-          "name": "Fernando Alonso",
-          "teamName": "Aston Martin",
-          "imageSlug": "alonso",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 21,
-          "sprintPosition": null,
-          "gridStart": 21,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": -8,
-          "components": [
-            {
-              "label": "Qualifying P21",
-              "points": -4
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
-            }
-          ],
-          "raceContext": {
-            "raceId": "austria",
-            "raceName": "Austria"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mclaren",
-          "name": "McLaren",
-          "imageSlug": "mclaren",
-          "driverIds": [
-            "lando-norris",
-            "oscar-piastri"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "lando-norris",
-            "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 0,
-            "secondDriverId": "oscar-piastri",
-            "secondDriverName": "Oscar Piastri",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×0 + 2×16) ÷ 5)",
-            "weightedRawPoints": 6.4,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -2,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -2
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 4,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×4 + 2×2) ÷ 5)",
-            "weightedRawPoints": 3.2,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": -19
+      "runningTotal": 108
     },
     {
       "teamId": "leanne-lewis-b930b948",
@@ -8383,13 +8367,13 @@
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": -26,
-      "driverSubtotal": -18,
-      "constructorSubtotal": -8,
+      "baseSubtotal": -10,
+      "driverSubtotal": -8,
+      "constructorSubtotal": -2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -26,
+      "totalPoints": -10,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -8464,7 +8448,7 @@
           "gridStart": 21,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": -8,
+          "totalPoints": 2,
           "components": [
             {
               "label": "Qualifying P21",
@@ -8477,10 +8461,6 @@
             {
               "label": "Position change",
               "points": 6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -8525,22 +8505,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
+            "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 4
             }
           ]
         },
@@ -8572,7 +8552,7 @@
           ]
         }
       ],
-      "runningTotal": 81
+      "runningTotal": 103
     }
   ]
 }

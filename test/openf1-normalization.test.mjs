@@ -90,6 +90,26 @@ test('retired drivers are classified after finishers, ordered by laps completed'
   assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 3);
 });
 
+test('FIA final classification and grid override OpenF1 when present', () => {
+  const fetchedRace = baseFetchedRace();
+  // OpenF1 says Russell P2 with a phantom time penalty; the FIA docs are the truth.
+  fetchedRace.raceTimePenaltyMessages = [
+    { date: '2026-03-08T05:30:00Z', message: '10 SECOND TIME PENALTY FOR CAR 63' },
+  ];
+  fetchedRace.fiaResults = {
+    finishingPositions: { 'george-russell': 1, 'kimi-antonelli': 5 },
+    gridPositions: { 'george-russell': 1, 'kimi-antonelli': 4 },
+    penaltySeconds: {}, // FIA lists no penalty for Russell — the OpenF1 one is phantom
+  };
+
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['george-russell'].racePosition, 1);
+  assert.equal(normalized.drivers['george-russell'].gridStart, 1);
+  assert.equal(normalized.drivers['george-russell'].timePenaltySeconds, 0);
+  assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 5);
+});
+
 test('normalizeRaceWeekend fails when official grid starts are unavailable', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.positionFeed = [];

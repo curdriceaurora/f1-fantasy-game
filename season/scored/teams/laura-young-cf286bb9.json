@@ -2,9 +2,9 @@
   "teamId": "laura-young-cf286bb9",
   "principalName": "Laura Young",
   "displayName": "Running on Empty",
-  "totalPoints": 205,
+  "totalPoints": 277,
   "completedRaces": 11,
-  "latestRacePoints": 78,
+  "latestRacePoints": 90,
   "races": [
     {
       "raceId": "australia",
@@ -802,13 +802,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -14,
+      "baseSubtotal": -8,
       "driverSubtotal": -3,
-      "constructorSubtotal": -11,
+      "constructorSubtotal": -5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -14,
+      "totalPoints": -8,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -983,39 +983,39 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -9,
+          "totalPoints": -3,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -12,
+            "leadDriverPoints": -2,
             "secondDriverId": "gabriel-bortoleto",
             "secondDriverName": "Gabriel Bortoleto",
             "secondDriverPoints": -5,
-            "formula": "ceil((3×-12 + 2×-5) ÷ 5)",
-            "weightedRawPoints": -9.2,
-            "weightedPoints": -9
+            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -9
+              "points": -3
             }
           ]
         }
       ],
-      "runningTotal": 77
+      "runningTotal": 83
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 1,
-      "driverSubtotal": -6,
+      "baseSubtotal": 11,
+      "driverSubtotal": 4,
       "constructorSubtotal": 7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 1,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1059,7 +1059,7 @@
           "gridStart": 3,
           "racePosition": 2,
           "classified": true,
-          "totalPoints": 13,
+          "totalPoints": 23,
           "components": [
             {
               "label": "Qualifying P3",
@@ -1072,10 +1072,6 @@
             {
               "label": "Position change",
               "points": 2
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -1202,7 +1198,7 @@
           ]
         }
       ],
-      "runningTotal": 78
+      "runningTotal": 94
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1401,19 +1397,19 @@
           ]
         }
       ],
-      "runningTotal": 109
+      "runningTotal": 125
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 5,
+      "baseSubtotal": 11,
       "driverSubtotal": 9,
-      "constructorSubtotal": -4,
+      "constructorSubtotal": 2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 5,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1545,22 +1541,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -2,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -8,
+            "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": 6,
-            "formula": "ceil((3×-8 + 2×6) ÷ 5)",
-            "weightedRawPoints": -2.4,
-            "weightedPoints": -2
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -2
+              "points": 4
             }
           ]
         },
@@ -1592,19 +1588,19 @@
           ]
         }
       ],
-      "runningTotal": 114
+      "runningTotal": 136
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": -11,
-      "driverSubtotal": 11,
-      "constructorSubtotal": -22,
+      "baseSubtotal": 17,
+      "driverSubtotal": 31,
+      "constructorSubtotal": -14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -11,
+      "totalPoints": 17,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1652,7 +1648,7 @@
           "gridStart": 3,
           "racePosition": 3,
           "classified": true,
-          "totalPoints": 15,
+          "totalPoints": 25,
           "components": [
             {
               "label": "Qualifying P3",
@@ -1669,10 +1665,6 @@
             {
               "label": "Position change",
               "points": 0
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -1691,7 +1683,7 @@
           "gridStart": 16,
           "racePosition": 21,
           "classified": true,
-          "totalPoints": -22,
+          "totalPoints": -12,
           "components": [
             {
               "label": "Qualifying P16",
@@ -1707,10 +1699,6 @@
             },
             {
               "label": "Position change",
-              "points": -10
-            },
-            {
-              "label": "Race time penalty",
               "points": -10
             }
           ],
@@ -1729,22 +1717,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -14,
+          "totalPoints": -10,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
             "leadDriverPoints": -10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -22,
-            "formula": "ceil((3×-10 + 2×-22) ÷ 5)",
-            "weightedRawPoints": -14.8,
-            "weightedPoints": -14
+            "secondDriverPoints": -12,
+            "formula": "ceil((3×-10 + 2×-12) ÷ 5)",
+            "weightedRawPoints": -10.8,
+            "weightedPoints": -10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -14
+              "points": -10
             }
           ]
         },
@@ -1756,22 +1744,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": 4,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
-            "weightedRawPoints": -0.4,
-            "weightedPoints": 0
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×2 + 2×6) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": 4
             }
           ]
         },
@@ -1803,19 +1791,19 @@
           ]
         }
       ],
-      "runningTotal": 103
+      "runningTotal": 153
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 24,
-      "driverSubtotal": 20,
+      "baseSubtotal": 34,
+      "driverSubtotal": 30,
       "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 24,
+      "totalPoints": 34,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1863,7 +1851,7 @@
           "gridStart": 5,
           "racePosition": 4,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 14,
           "components": [
             {
               "label": "Qualifying P6",
@@ -1876,10 +1864,6 @@
             {
               "label": "Position change",
               "points": 2
-            },
-            {
-              "label": "Race time penalty",
-              "points": -10
             }
           ],
           "raceContext": {
@@ -2006,19 +1990,19 @@
           ]
         }
       ],
-      "runningTotal": 127
+      "runningTotal": 187
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 39,
+      "baseSubtotal": 45,
       "driverSubtotal": 33,
-      "constructorSubtotal": 6,
+      "constructorSubtotal": 12,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 39,
+      "homeCircuitBonusPoints": 45,
       "investmentBonusPoints": 0,
-      "totalPoints": 78,
+      "totalPoints": 90,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -2127,22 +2111,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": -8,
+          "totalPoints": -2,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -14,
+            "leadDriverPoints": -4,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": 0,
-            "formula": "ceil((3×-14 + 2×0) ÷ 5)",
-            "weightedRawPoints": -8.4,
-            "weightedPoints": -8
+            "formula": "ceil((3×-4 + 2×0) ÷ 5)",
+            "weightedRawPoints": -2.4,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -8
+              "points": -2
             }
           ]
         },
@@ -2201,7 +2185,7 @@
           ]
         }
       ],
-      "runningTotal": 205
+      "runningTotal": 277
     }
   ]
 }
