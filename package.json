@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "quality:check": "npm run lint && npm run test",
     "test": "node --test",
+    "test:e2e": "playwright test",
     "test:generate-corpus": "node scripts/generate-test-corpus.mjs",
     "sync:entries": "node scripts/sync-season-entries.mjs",
     "score:race": "node scripts/score-race.mjs",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
+    "@playwright/test": "^1.62.1",
     "eslint": "^9.23.0",
     "globals": "^16.0.0",
     "simple-git-hooks": "^2.13.0"

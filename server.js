@@ -150,7 +150,7 @@ const server = createServer((req, res) => {
   res.end(content);
 });
 
-const PORT = 3456;
+const PORT = Number.parseInt(process.env.PORT || '3456', 10);
 server.listen(PORT, () => {
   const mode = getSiteMode();
   const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
