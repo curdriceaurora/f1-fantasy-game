@@ -1,6 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { eventDocumentsPage, fetchFiaDecisionUrls, isPotentialFineDocument } from '../lib/fia-documents.js';
+import {
+  eventDocumentsPage,
+  fetchFiaDecisionUrls,
+  isPotentialFineDocument,
+  isPotentialResultDocument,
+} from '../lib/fia-documents.js';
 
 const RACE = { id: 'belgium', meetingName: 'Belgian Grand Prix', date: '2026-07-19' };
 
@@ -60,7 +65,12 @@ test('classification documents are not treated as fine candidates', () => {
   assert.equal(isPotentialFineDocument('https://fia.test/2026_belgian_grand_prix_-_reprimand_-_car_44.pdf'), false);
 });
 
-test('appeals and rights of review are treated as penalty candidates', () => {
-  assert.equal(isPotentialFineDocument('https://fia.test/grand_prix_-_appeal_of_decision.pdf'), true);
-  assert.equal(isPotentialFineDocument('https://fia.test/grand_prix_-_right_of_review_petition.pdf'), true);
+test('appeals and rights of review are monitored without entering fine scoring', () => {
+  const appeal = 'https://fia.test/grand_prix_-_appeal_of_decision.pdf';
+  const rightOfReview = 'https://fia.test/grand_prix_-_right_of_review_petition.pdf';
+
+  assert.equal(isPotentialResultDocument(appeal), true);
+  assert.equal(isPotentialResultDocument(rightOfReview), true);
+  assert.equal(isPotentialFineDocument(appeal), false);
+  assert.equal(isPotentialFineDocument(rightOfReview), false);
 });
