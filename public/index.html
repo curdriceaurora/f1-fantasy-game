@@ -15,6 +15,8 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League</a>
 
   <!-- Global Navigation -->
@@ -25,6 +27,7 @@
     <a href="rules.html#faq">❓ FAQ</a>
   </nav>
 
+  <main id="main-content" tabindex="-1">
   <!-- ═══ WELCOME SCREEN ═══ -->
   <div id="screen-welcome" class="screen active">
     <div class="welcome-container">
@@ -39,14 +42,14 @@
         <label class="form-label required">
           Name
           <input type="text" id="input-name" placeholder="e.g. Lewis Hamilton" maxlength="60" autocomplete="name"
-            required />
+            aria-describedby="validation-msg" required />
         </label>
 
         <!-- Team name with regenerate button -->
         <label class="form-label">
           Team Name
           <div class="team-name-row">
-            <input type="text" id="input-team" maxlength="60" />
+            <input type="text" id="input-team" maxlength="60" aria-describedby="validation-msg" />
             <button id="btn-regen-team" class="btn-regen" title="Generate a new name">🎲</button>
           </div>
         </label>
@@ -66,7 +69,7 @@
 
       <p class="tagline">Aim well — the closer you hit the target, the better your team.</p>
 
-      <p id="validation-msg" class="validation-msg">Enter your name to play</p>
+      <p id="validation-msg" class="validation-msg" role="status" aria-live="polite">Enter your name to play</p>
 
       <button id="btn-play" class="play-btn" disabled>
         🎯 PLAY
@@ -143,6 +146,7 @@
       </div>
     </div>
   </div>
+  </main>
 
   <!-- ═══ LOADING OVERLAY ═══ -->
   <div id="loading-overlay" class="loading-overlay hidden">

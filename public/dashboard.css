@@ -929,3 +929,14 @@
     font-size: 11px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .race-item summary::after {
+    transition: none;
+  }
+
+  .race-item[open] summary::after {
+    content: '▴';
+    transform: none;
+  }
+}
