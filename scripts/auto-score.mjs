@@ -2,7 +2,7 @@
 
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
-import { discoverMonetaryFinePdfs } from '../lib/fia-documents.js';
+import { discoverMonetaryFinePdfs, discoverPotentialPenaltyPdfs } from '../lib/fia-documents.js';
 import { isRaceScoreable, mondayPublicationDate } from '../lib/race-workflow.js';
 import {
   configPath,
@@ -16,6 +16,7 @@ import {
   writeJson,
 } from '../lib/season-store.js';
 import { scoreRace } from './score-race.mjs';
+import { recordFiaDocumentBaseline } from './check-late-fia-documents.mjs';
 
 function findMostRecentEligibleRace(calendar, now) {
   return calendar
@@ -28,6 +29,7 @@ export async function autoScore(services = {}) {
   ensureSeasonDirs();
   const now = services.now || new Date();
   const discoverFinePdfs = services.discoverMonetaryFinePdfs || discoverMonetaryFinePdfs;
+  const discoverPenaltyPdfs = services.discoverPotentialPenaltyPdfs || discoverPotentialPenaltyPdfs;
   const scoreRaceImpl = services.scoreRace || scoreRace;
   const calendar = loadCalendar();
 
@@ -67,6 +69,10 @@ export async function autoScore(services = {}) {
     return;
   }
 
+  // Capture the exact FIA document set at first publication. The daily monitor
+  // can then distinguish a genuinely late document from the original set.
+  const publicationDocuments = isFinalized ? null : await discoverPenaltyPdfs(race);
+
   const fineDocuments = loadFineDocuments();
   fineDocuments[race.id] = {
     reviewed: true,
@@ -81,6 +87,7 @@ export async function autoScore(services = {}) {
   removeFile(normalizedRacePath(race.id));
 
   const result = await scoreRaceImpl(race.id);
+  if (!isFinalized) recordFiaDocumentBaseline(race, publicationDocuments, now);
   console.log(`Scored ${result.race.name}.`);
   console.log(`Applied ${result.fineSummary.documents.length} FIA fine document(s).`);
   console.log(`Standings rebuilt for ${result.scoreboard.standings.length} teams.`);

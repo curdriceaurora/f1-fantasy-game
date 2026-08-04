@@ -96,6 +96,7 @@ test('a successful discovery records the reviewed documents and scores the race'
     await autoScore({
       now: NOW,
       discoverMonetaryFinePdfs: async () => ['https://fia.test/australia_other_fine.pdf'],
+      discoverPotentialPenaltyPdfs: async () => ['https://fia.test/australia_initial_decision.pdf'],
       scoreRace: async (raceId) => {
         scoredRaces.push(raceId);
         return {
@@ -110,5 +111,9 @@ test('a successful discovery records the reviewed documents and scores the race'
     const review = readJson(join(seasonDir, 'config', 'fine-documents.json')).australia;
     assert.equal(review.reviewed, true);
     assert.deepEqual(review.documents, ['https://fia.test/australia_other_fine.pdf']);
+    assert.deepEqual(
+      readJson(join(seasonDir, 'config', 'fia-document-snapshots.json')).australia.documents,
+      ['https://fia.test/australia_initial_decision.pdf'],
+    );
   });
 });

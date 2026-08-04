@@ -63,6 +63,7 @@ test('races skipped by earlier failures are picked up, and future races are left
     const result = await reconcileSeason({
       now: NOW,
       discoverMonetaryFinePdfs: async () => [],
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: stubScoreRace(scored),
     });
 
@@ -79,6 +80,7 @@ test('a finalized race whose fine documents still match is left untouched', asyn
     const result = await reconcileSeason({
       now: NOW,
       discoverMonetaryFinePdfs: async (race) => (race.id === 'china' ? ['https://fia.test/china.pdf'] : []),
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: stubScoreRace(scored),
     });
 
@@ -101,6 +103,7 @@ test('force rescores finalized races whose documents have not changed', async ()
       now: NOW,
       force: true,
       discoverMonetaryFinePdfs: async () => [],
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: stubScoreRace(scored),
     });
 
@@ -121,6 +124,7 @@ test('one unscoreable race does not strand the rest of the catch-up', async () =
         if (race.id === 'china') throw new Error('FIA documents page unavailable: 403 (after 4 attempts)');
         return [];
       },
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: stubScoreRace(scored),
     });
 

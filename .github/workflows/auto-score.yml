@@ -7,7 +7,7 @@ on:
   workflow_dispatch:       # Allow manual trigger from GitHub UI
 
 concurrency:
-  group: auto-score-season-data
+  group: season-data-writes
   cancel-in-progress: false
 
 jobs:
