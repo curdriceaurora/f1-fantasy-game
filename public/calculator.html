@@ -15,6 +15,8 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <a href="index.html" class="site-banner">2026 Martin's F1 Fantasy League</a>
 
   <!-- Global Navigation -->
@@ -25,7 +27,7 @@
     <a href="rules.html#faq">❓ FAQ</a>
   </nav>
 
-  <div class="rules-page">
+  <main id="main-content" class="rules-page" tabindex="-1">
 
     <!-- Sticky nav -->
     <nav class="rules-nav">
@@ -273,7 +275,7 @@
       <div class="calc-export-section" style="margin-top:32px; padding-top:24px; border-top:2px solid var(--f1-red);">
         <h3 style="font-family:var(--font-racing); font-size:14px; margin-bottom:12px; color:var(--text-primary);">📧
           Step 3: finalize &amp; Email</h3>
-        <div class="calc-status empty" id="calc-status">Select drivers, teams, and predictions above</div>
+        <div class="calc-status empty" id="calc-status" role="status" aria-live="polite" aria-atomic="true">Select drivers, teams, and predictions above</div>
         <div class="calc-entry-row">
           <input type="text" id="calc-name" class="calc-input" placeholder="Your Driver Manager Name *" maxlength="50"
             autocomplete="name">
@@ -289,7 +291,7 @@
 
     </div><!-- end calculator-card -->
 
-  </div><!-- end rules-page -->
+  </main><!-- end rules-page -->
 
   <div id="cs-bottom-sheet" class="cs-bottom-sheet" role="dialog" aria-modal="true"
     aria-labelledby="cs-sheet-title" hidden>

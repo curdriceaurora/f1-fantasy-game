@@ -83,6 +83,7 @@ function validate() {
   }
 
   inputName.classList.toggle('error', !nameVal && !!inputName.dataset.touched);
+  inputName.setAttribute('aria-invalid', String(!nameVal && !!inputName.dataset.touched));
 }
 
 // ── Persist team name only ──

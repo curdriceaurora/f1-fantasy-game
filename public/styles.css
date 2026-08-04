@@ -12,7 +12,7 @@
   --accent-silver: #c0c0c0;
   --text-primary: #ffffff;
   --text-secondary: #a0a0b8;
-  --text-muted: #6a6a80;
+  --text-muted: #8c8ca6;
   --green: #27f4d2;
   --yellow: #ffd700;
   --font-racing: 'Orbitron', monospace;
@@ -36,6 +36,30 @@ body {
   overflow-x: hidden;
   padding-top: 44px;
   /* offset for fixed site banner */
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 500;
+  padding: 10px 16px;
+  background: var(--bg-surface);
+  color: var(--accent-gold);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius);
+  font-family: var(--font-racing);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: none;
 }
 
 /* ── Persistent site-wide banner ── */
@@ -2450,8 +2474,34 @@ details.faq-item[open] summary::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #slider-investment.untouched::-webkit-slider-thumb,
+  .investment-hint,
+  .jackpot .rank-display,
+  .calc-select-row.over-budget-shake,
+  .spinner,
+  .cs-trigger.cs-untouched,
+  .custom-slider-container.untouched .cs-thumb,
   .cs-sheet-panel {
     animation: none;
+  }
+
+  .global-nav a:hover,
+  .play-btn:hover:not(:disabled),
+  .fire-btn:hover:not(:disabled),
+  .btn-regen:hover,
+  .action-btn.primary:hover:not(:disabled) {
+    transform: none;
+  }
+
+  .rules-nav.rules-nav-hidden,
+  .skip-link,
+  details.faq-item summary::after {
+    transition: none;
+  }
+
+  details.faq-item[open] summary::after {
+    content: '▴';
+    transform: none;
   }
 }
 
