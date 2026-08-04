@@ -4,9 +4,10 @@ import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { monitorPage } from './helpers.js';
 
-const leader = JSON.parse(
+const standings = JSON.parse(
   readFileSync(join(process.cwd(), 'season/scored/standings.json'), 'utf8'),
-).standings[0];
+).standings;
+const leader = standings[0];
 
 const mobilePages = [
   'http://127.0.0.1:3457/index.html',
@@ -24,6 +25,9 @@ test.describe('mobile navigation shell', () => {
     for (const url of mobilePages) {
       await page.goto(url);
       await expect(page.locator('.mobile-menu-btn')).toBeVisible();
+      if (url.endsWith('/dashboard.html')) {
+        await expect(page.locator('#standings-body tr')).toHaveCount(standings.length);
+      }
 
       const headerContentHeight = await page.locator('.site-banner').evaluate((header) => {
         const style = getComputedStyle(header);
@@ -41,6 +45,18 @@ test.describe('mobile navigation shell', () => {
       expect(hasOverflow, `${url} should not scroll horizontally`).toBe(false);
     }
 
+    await page.setViewportSize({ width: 320, height: 568 });
+    await page.goto('http://127.0.0.1:3456/dashboard.html');
+    await expect(page.locator('#standings-body tr')).toHaveCount(standings.length);
+    const compactHeader = await page.locator('.site-banner').evaluate(element => ({
+      scrollWidth: element.scrollWidth,
+      clientWidth: element.clientWidth,
+    }));
+    expect(compactHeader.scrollWidth).toBeLessThanOrEqual(compactHeader.clientWidth);
+    expect(await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    )).toBe(false);
+
     await page.waitForLoadState('networkidle');
     assertHealthy();
   });
@@ -57,6 +73,8 @@ test.describe('mobile navigation shell', () => {
     await expect(menuButton).toBeHidden();
     await expect(drawer).toBeVisible();
     await expect(page.locator('.mobile-drawer-close')).toBeFocused();
+    await expect(page.locator('.drawer-backdrop')).toHaveAttribute('aria-hidden', 'true');
+    await expect(page.getByRole('button', { name: 'Close navigation menu' })).toHaveCount(1);
 
     await page.keyboard.press('Shift+Tab');
     await expect(page.locator('.mobile-drawer-links a').last()).toBeFocused();

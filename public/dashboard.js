@@ -194,9 +194,9 @@ async function fetchJson(url) {
 function renderStandings(data) {
   const standingsBody = document.getElementById('standings-body');
   standingsBody.innerHTML = data.standings.map((row) => `
-    <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}" tabindex="0" role="link" aria-label="Open ${row.displayName}">
+    <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}">
       <td class="standing-rank"><span class="rank-pill">#${row.rank}</span></td>
-      <td class="standing-name"><span class="team-link">${row.displayName}</span></td>
+      <td class="standing-name"><a class="team-link" href="team.html?team=${encodeURIComponent(row.teamId)}">${row.displayName}</a></td>
       <td class="standing-principal" data-label="Principal">${row.principalName}</td>
       <td class="standing-total points-strong" data-label="Total">${row.totalPoints}</td>
       <td class="standing-latest ${pointsClass(row.latestRacePoints)}" data-label="Race">${signedPoints(row.latestRacePoints)}</td>
@@ -207,14 +207,8 @@ function renderStandings(data) {
   standingsBody.onclick = (event) => {
     const row = event.target.closest('.standings-row-link');
     if (!row) return;
-    window.location.href = row.dataset.teamHref;
-  };
-
-  standingsBody.onkeydown = (event) => {
-    const row = event.target.closest('.standings-row-link');
-    if (!row) return;
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    event.preventDefault();
+    if (event.target.closest('a, button, input, select, textarea')) return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     window.location.href = row.dataset.teamHref;
   };
 
@@ -230,6 +224,35 @@ function renderStandings(data) {
       </div>
     </div>
   `).join('');
+}
+
+function initStandingsFilter(data) {
+  const input = document.getElementById('standings-filter');
+  const status = document.getElementById('standings-filter-status');
+  const form = input.closest('form');
+  const rows = [...document.querySelectorAll('#standings-body tr')];
+  const searchableRows = rows.map((row, index) => ({
+    row,
+    text: `${data.standings[index].displayName} ${data.standings[index].principalName}`.toLocaleLowerCase(),
+  }));
+
+  const update = () => {
+    const query = input.value.trim().toLocaleLowerCase();
+    let visibleCount = 0;
+    searchableRows.forEach(({ row, text }) => {
+      const matches = query === '' || text.includes(query);
+      row.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+    status.textContent = query
+      ? `${visibleCount} ${visibleCount === 1 ? 'team' : 'teams'} found`
+      : `${searchableRows.length} teams`;
+  };
+
+  input.disabled = false;
+  form.addEventListener('submit', (event) => event.preventDefault());
+  input.addEventListener('input', update);
+  update();
 }
 
 function renderBigMovers(data) {
@@ -482,6 +505,13 @@ async function initStandingsPage() {
   const standings = await fetchJson('/api/dashboard/standings');
   renderStandings(standings);
   renderBigMovers(standings);
+  initStandingsFilter(standings);
+  document.querySelector('.dashboard-grid-standings')?.setAttribute('aria-busy', 'false');
+  const status = document.getElementById('dashboard-status');
+  if (status) {
+    status.textContent = 'Season dashboard loaded.';
+    status.classList.add('is-ready');
+  }
 }
 
 async function initTeamPage() {
@@ -505,6 +535,7 @@ async function main() {
 
 main().catch((error) => {
   console.error(error);
+  document.querySelector('.dashboard-grid-standings')?.setAttribute('aria-busy', 'false');
   const shell = document.querySelector('.dashboard-shell');
   if (shell) {
     shell.innerHTML = `<div class="empty-state">Unable to load dashboard data. ${error.message}</div>`;

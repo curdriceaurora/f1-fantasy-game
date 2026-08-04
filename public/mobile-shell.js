@@ -21,11 +21,9 @@ if (globalNav) {
   drawer.setAttribute('aria-label', 'Main Navigation');
   drawer.hidden = true;
 
-  const backdrop = document.createElement('button');
-  backdrop.type = 'button';
+  const backdrop = document.createElement('div');
   backdrop.className = 'drawer-backdrop';
-  backdrop.setAttribute('aria-label', 'Close navigation menu');
-  backdrop.tabIndex = -1;
+  backdrop.setAttribute('aria-hidden', 'true');
 
   const panel = document.createElement('div');
   panel.className = 'mobile-drawer-panel';

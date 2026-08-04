@@ -28,11 +28,18 @@
       <div>
         <h1 class="dashboard-title-accent">League standings</h1>
         <p class="dashboard-copy">Select your team below to view locked picks, race breakdowns, and season bonuses.</p>
+        <p id="dashboard-status" class="dashboard-status" role="status" aria-live="polite">Loading season dashboard…</p>
       </div>
     </section>
 
-    <section class="dashboard-grid">
+    <section class="dashboard-grid dashboard-grid-standings" aria-busy="true">
       <div class="dashboard-card glass-card" id="standings-section">
+        <form class="standings-tools" role="search">
+          <label for="standings-filter">Find your team</label>
+          <input id="standings-filter" type="search" autocomplete="off"
+            placeholder="Search team or principal" disabled>
+          <span id="standings-filter-status" class="standings-filter-status" role="status" aria-live="polite"></span>
+        </form>
         <div class="standings-table-wrap">
           <table class="standings-table" aria-label="League standings">
             <thead>
@@ -51,7 +58,7 @@
       </div>
 
       <div class="dashboard-rail">
-        <section class="dashboard-card glass-card">
+        <section class="dashboard-card glass-card" id="big-movers-section">
           <div class="card-header">
             <div>
               <h2 class="dashboard-title-accent">Big movers this week</h2>
@@ -60,7 +67,7 @@
           <div id="big-movers" class="movers-grid"></div>
         </section>
 
-        <section class="dashboard-card glass-card">
+        <section class="dashboard-card glass-card" id="schedule-section">
           <div class="card-header">
             <div>
               <h2 class="dashboard-title-accent">Schedule</h2>
