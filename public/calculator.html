@@ -213,15 +213,19 @@
               <label class="pred-label">Total Classified</label>
             </div>
             <div class="pred-sublabel">Total Starts − DNFs (0–528)</div>
-            <div class="custom-slider-container untouched" id="cs-classified" data-min="0" data-max="528"
-              data-val="440">
-              <div class="cs-track">
-                <div class="cs-fill" style="width: 83.33%;"></div>
-                <div class="cs-thumb" style="left: 83.33%;">
-                  <div class="cs-tooltip" id="pred-classified-val">440</div>
-                  <div class="cs-dot"></div>
+            <div class="custom-slider-control">
+              <button type="button" class="slider-step-btn btn-minus" aria-label="Decrease total classified">−</button>
+              <div class="custom-slider-container untouched" id="cs-classified" data-min="0" data-max="528"
+                data-val="440">
+                <div class="cs-track">
+                  <div class="cs-fill" style="width: 83.33%;"></div>
+                  <div class="cs-thumb" style="left: 83.33%;">
+                    <div class="cs-tooltip" id="pred-classified-val">440</div>
+                    <div class="cs-dot"></div>
+                  </div>
                 </div>
               </div>
+              <button type="button" class="slider-step-btn btn-plus" aria-label="Increase total classified">+</button>
             </div>
             <p id="classified-hint" class="pred-slider-hint">← drag to adjust finishes →</p>
             <p class="pred-slider-description">Total drivers classified across all 2026 GPs (finishers only)</p>
@@ -237,16 +241,22 @@
               <label class="pred-label">Best Finish — Colapinto</label>
             </div>
             <div class="pred-sublabel">Best classification in 2026</div>
-            <div class="custom-slider-container untouched" id="cs-colapinto" data-min="1" data-max="22" data-val="11"
-              data-invert="true">
-              <div class="cs-track">
-                <div class="cs-fill" style="background:transparent;"></div>
-                <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
-                  <div class="cs-tooltip" id="pred-cola-val">P12</div>
-                  <img src="/images/drivers/colapinto.jpg" draggable="false" alt="Colapinto"
-                    onerror="this.style.display='none'">
+            <div class="custom-slider-control">
+              <button type="button" class="slider-step-btn btn-minus"
+                aria-label="Worsen Colapinto finishing position">−</button>
+              <div class="custom-slider-container untouched" id="cs-colapinto" data-min="1" data-max="22" data-val="11"
+                data-invert="true">
+                <div class="cs-track">
+                  <div class="cs-fill" style="background:transparent;"></div>
+                  <div class="cs-thumb cs-thumb-img" style="left: 47.61%;">
+                    <div class="cs-tooltip" id="pred-cola-val">P12</div>
+                    <img src="/images/drivers/colapinto.jpg" draggable="false" alt="Colapinto"
+                      onerror="this.style.display='none'">
+                  </div>
                 </div>
               </div>
+              <button type="button" class="slider-step-btn btn-plus"
+                aria-label="Improve Colapinto finishing position">+</button>
             </div>
             <p id="cola-hint" class="pred-slider-hint">← drag to set his best result →</p>
             <p class="pred-slider-description">Colapinto's best grid finish or classification during 2026 season</p>

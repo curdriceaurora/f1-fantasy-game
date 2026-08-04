@@ -743,35 +743,76 @@ function initCustomSliders() {
     const min = parseFloat(slider.getAttribute('data-min'));
     const max = parseFloat(slider.getAttribute('data-max'));
     const invert = slider.getAttribute('data-invert') === 'true';
-    let currentVal = parseFloat(slider.getAttribute('data-val'));
+    const currentVal = parseFloat(slider.getAttribute('data-val'));
 
     const track = slider.querySelector('.cs-track');
     const fill = slider.querySelector('.cs-fill');
     const thumb = slider.querySelector('.cs-thumb');
     const tooltip = slider.querySelector('.cs-tooltip');
     const isCola = slider.id === 'cs-colapinto';
+    const control = slider.closest('.custom-slider-control');
+    const minusButton = control.querySelector('.btn-minus');
+    const plusButton = control.querySelector('.btn-plus');
+
+    slider.setAttribute('role', 'slider');
+    slider.setAttribute('tabindex', '0');
+    slider.setAttribute('aria-orientation', 'horizontal');
+    slider.setAttribute('aria-valuemin', String(min));
+    slider.setAttribute('aria-valuemax', String(max));
+    slider.setAttribute('aria-label', isCola ? 'Colapinto best finish' : 'Total classified');
+
+    function logicalFromRaw(rawValue) {
+      return invert ? (max + min) - rawValue : rawValue;
+    }
+
+    function rawFromLogical(logicalValue) {
+      return invert ? (max + min) - logicalValue : logicalValue;
+    }
+
+    function markTouched() {
+      slider.classList.remove('untouched');
+      const hint = document.getElementById(isCola ? 'cola-hint' : 'classified-hint');
+      if (hint) hint.classList.add('faded');
+    }
 
     function updateDOM(val) {
-      let pct = (val - min) / (max - min);
+      const rawValue = Math.max(min, Math.min(max, Math.round(val)));
+      let pct = (rawValue - min) / (max - min);
       pct = Math.max(0, Math.min(1, pct));
 
       const percentString = (pct * 100).toFixed(2) + '%';
       thumb.style.left = percentString;
       if (fill) fill.style.width = percentString;
 
-      let logicalVal = Math.round(min + pct * (max - min));
-      if (invert) {
-        logicalVal = (max + min) - logicalVal;
-      }
+      const logicalVal = logicalFromRaw(rawValue);
 
       if (isCola) {
         selectedPredictions.colaPosition = logicalVal;
         if (tooltip) tooltip.textContent = `P${logicalVal}`;
+        slider.setAttribute('aria-valuetext', `Position ${logicalVal}`);
       } else {
         selectedPredictions.totalClassified = logicalVal;
         if (tooltip) tooltip.textContent = logicalVal;
+        slider.removeAttribute('aria-valuetext');
       }
-      slider.setAttribute('data-val', val);
+      slider.setAttribute('aria-valuenow', String(logicalVal));
+      slider.setAttribute('data-val', String(rawValue));
+    }
+
+    function setLogicalValue(logicalValue, { haptic = false } = {}) {
+      const nextLogical = Math.max(min, Math.min(max, Math.round(logicalValue)));
+      const currentLogical = Number(slider.getAttribute('aria-valuenow'));
+      if (nextLogical === currentLogical) return;
+      markTouched();
+      updateDOM(rawFromLogical(nextLogical));
+      recalc();
+      if (haptic && 'vibrate' in navigator) navigator.vibrate(10);
+    }
+
+    function applyStep(direction) {
+      const currentLogical = Number(slider.getAttribute('aria-valuenow'));
+      const logicalDelta = invert ? -direction : direction;
+      setLogicalValue(currentLogical + logicalDelta, { haptic: true });
     }
 
     function handleDrag(e) {
@@ -783,15 +824,7 @@ function initCustomSliders() {
       let val = min + pct * (max - min);
       val = Math.round(val);
 
-      slider.classList.remove('untouched');
-      if (isCola) {
-        const hint = document.getElementById('cola-hint');
-        if (hint) hint.classList.add('faded');
-      } else {
-        const hint = document.getElementById('classified-hint');
-        if (hint) hint.classList.add('faded');
-      }
-
+      markTouched();
       updateDOM(val);
     }
 
@@ -803,10 +836,31 @@ function initCustomSliders() {
     }
     updateDOM(initVal);
 
+    minusButton.addEventListener('click', () => applyStep(-1));
+    plusButton.addEventListener('click', () => applyStep(1));
+
+    slider.addEventListener('keydown', event => {
+      let nextLogical = null;
+      const currentLogical = Number(slider.getAttribute('aria-valuenow'));
+      if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
+        nextLogical = currentLogical + (invert ? -1 : 1);
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
+        nextLogical = currentLogical + (invert ? 1 : -1);
+      } else if (event.key === 'Home') {
+        nextLogical = invert ? max : min;
+      } else if (event.key === 'End') {
+        nextLogical = invert ? min : max;
+      }
+      if (nextLogical === null) return;
+      event.preventDefault();
+      setLogicalValue(nextLogical, { haptic: true });
+    });
+
     let isDragging = false;
 
     slider.addEventListener('pointerdown', (e) => {
       isDragging = true;
+      slider.classList.add('is-dragging');
       try { slider.setPointerCapture(e.pointerId); } catch { /* Pointer capture is optional. */ }
       handleDrag(e);
     });
@@ -819,6 +873,7 @@ function initCustomSliders() {
 
     slider.addEventListener('pointerup', (e) => {
       isDragging = false;
+      slider.classList.remove('is-dragging');
       try {
         if (slider.hasPointerCapture(e.pointerId)) {
           slider.releasePointerCapture(e.pointerId);
@@ -829,6 +884,7 @@ function initCustomSliders() {
 
     slider.addEventListener('pointercancel', (e) => {
       isDragging = false;
+      slider.classList.remove('is-dragging');
       try {
         if (slider.hasPointerCapture(e.pointerId)) {
           slider.releasePointerCapture(e.pointerId);
