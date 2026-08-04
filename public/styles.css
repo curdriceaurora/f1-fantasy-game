@@ -2094,6 +2094,10 @@ details.faq-item[open] summary::after {
     cursor: pointer;
   }
 
+  .mobile-nav-open .mobile-menu-btn {
+    display: none;
+  }
+
   .mobile-menu-btn:focus-visible,
   .mobile-drawer-close:focus-visible,
   .mobile-drawer-links a:focus-visible {

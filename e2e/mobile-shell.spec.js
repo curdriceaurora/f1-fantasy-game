@@ -54,6 +54,7 @@ test.describe('mobile navigation shell', () => {
     const drawer = page.locator('#mobile-nav-drawer');
     await menuButton.click();
     await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(menuButton).toBeHidden();
     await expect(drawer).toBeVisible();
     await expect(page.locator('.mobile-drawer-close')).toBeFocused();
 
@@ -66,6 +67,24 @@ test.describe('mobile navigation shell', () => {
     await expect(drawer).toBeHidden();
     await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
     await expect(menuButton).toBeFocused();
+
+    assertHealthy();
+  });
+
+  test('closes the drawer after navigating to an intra-page section', async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.startsWith('mobile-'), 'mobile project only');
+    const assertHealthy = await monitorPage(page);
+    await page.goto('http://127.0.0.1:3456/rules.html');
+
+    const menuButton = page.locator('.mobile-menu-btn');
+    const drawer = page.locator('#mobile-nav-drawer');
+    await menuButton.click();
+    await drawer.locator('a[href="rules.html#faq"]').click();
+
+    await expect(page).toHaveURL(/rules\.html#faq$/);
+    await expect(drawer).toBeHidden();
+    await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(menuButton).toBeVisible();
 
     assertHealthy();
   });

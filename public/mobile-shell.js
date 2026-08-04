@@ -79,6 +79,9 @@ if (globalNav) {
   });
   closeButton.addEventListener('click', () => closeDrawer());
   backdrop.addEventListener('click', () => closeDrawer());
+  links.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeDrawer({ restoreFocus: false });
+  });
 
   drawer.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
