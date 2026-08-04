@@ -199,6 +199,16 @@ function initTankGame() {
       alert('Failed to fetch selection. Check your connection and try again.');
       resetGame();
     }
+  }, ({ angle, power }) => {
+    const roundedAngle = Math.round(angle);
+    const roundedPower = Math.round(power);
+    sliderAngle.value = roundedAngle;
+    sliderPower.value = roundedPower;
+    valAngle.textContent = `${roundedAngle}°`;
+    valPower.textContent = `${roundedPower}%`;
+    fillSlider(sliderAngle);
+    fillSlider(sliderPower);
+    btnFire.disabled = tankGame.state !== 'aiming';
   });
 
   sliderAngle.addEventListener('input', () => {

@@ -3,11 +3,14 @@
 // ═══════════════════════════════════════════
 
 export class TankGame {
-  constructor(canvas, onFired) {
+  constructor(canvas, onFired, onAimChange = () => {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.onFired = onFired; // callback(accuracy)
+    this.onAimChange = onAimChange; // callback({ angle, power })
     this.state = 'aiming'; // aiming | firing | landed
+    this.aimPreview = null;
+    this.isTouchAiming = false;
 
     // Physics constants (tuned so 45°/50% ≈ hits target)
     this.GRAVITY = 500;
@@ -35,6 +38,72 @@ export class TankGame {
 
     this._resize();
     window.addEventListener('resize', () => this._resize());
+    this._registerTouchAiming();
+  }
+
+  _registerTouchAiming() {
+    this.canvas.addEventListener('touchstart', event => {
+      if (this.state !== 'aiming' || event.touches.length !== 1) return;
+
+      const point = this._canvasPoint(event.touches[0]);
+      const origin = this._tankOrigin();
+      if (Math.hypot(point.x - origin.x, point.y - origin.y) > 44) return;
+
+      this.isTouchAiming = true;
+      event.preventDefault();
+    }, { passive: false });
+
+    this.canvas.addEventListener('touchmove', event => {
+      if (!this.isTouchAiming || event.touches.length !== 1) return;
+
+      const point = this._canvasPoint(event.touches[0]);
+      if (point.x < 0 || point.y < 0) {
+        this._cancelTouchAim();
+        return;
+      }
+
+      event.preventDefault();
+      const origin = this._tankOrigin();
+      const dx = point.x - origin.x;
+      const dy = point.y - origin.y;
+      const angle = Math.min(85, Math.max(5,
+        Math.atan2(-dy, dx) * (180 / Math.PI)));
+      const power = Math.min(100, Math.max(1, Math.hypot(dx, dy) / 2));
+
+      this.aimPreview = { angle, power };
+      this._currentAngle = angle;
+      this.onAimChange({ angle, power });
+      this._draw();
+    }, { passive: false });
+
+    this.canvas.addEventListener('touchend', event => {
+      if (!this.isTouchAiming) return;
+      event.preventDefault();
+      this._cancelTouchAim();
+    }, { passive: false });
+
+    this.canvas.addEventListener('touchcancel', () => this._cancelTouchAim());
+  }
+
+  _canvasPoint(touch) {
+    const rect = this.canvas.getBoundingClientRect();
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
+    };
+  }
+
+  _tankOrigin() {
+    return {
+      x: this.tankX,
+      y: this.terrainY(this.tankX) - 12,
+    };
+  }
+
+  _cancelTouchAim() {
+    this.isTouchAiming = false;
+    this.aimPreview = null;
+    this._draw();
   }
 
   _resize() {
@@ -70,6 +139,8 @@ export class TankGame {
   fire(angleDeg, powerPct) {
     if (this.state !== 'aiming') return;
     this.state = 'firing';
+    this.aimPreview = null;
+    this.isTouchAiming = false;
 
     const angle = angleDeg * Math.PI / 180;
     const v0 = (powerPct / 100) * this.MAX_VELOCITY;
@@ -217,7 +288,13 @@ export class TankGame {
 
     // ── F1 Car / Tank ──
     const tankY = this.terrainY(this.tankX);
+    this.canvas.dataset.aimOriginX = String(this.tankX);
+    this.canvas.dataset.aimOriginY = String(tankY - 12);
     this._drawTank(this.tankX, tankY, this._currentAngle || 45);
+
+    if (this.aimPreview && this.state === 'aiming') {
+      this._drawTrajectoryPreview(this.aimPreview.angle, this.aimPreview.power);
+    }
 
     // ── Trail ──
     if (this.trail.length > 1) {
@@ -348,11 +425,38 @@ export class TankGame {
     ctx.restore();
   }
 
+  _drawTrajectoryPreview(angleDeg, powerPct) {
+    const ctx = this.ctx;
+    const angle = angleDeg * Math.PI / 180;
+    const velocity = (powerPct / 100) * this.MAX_VELOCITY;
+    const origin = this._tankOrigin();
+    const vx = velocity * Math.cos(angle);
+    const vy = -velocity * Math.sin(angle);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.setLineDash([5, 6]);
+    for (let step = 0; step <= 32; step++) {
+      const time = step * 0.035;
+      const x = origin.x + 20 + vx * time + 0.5 * this.windSpeed * time * time;
+      const y = origin.y - 10 + vy * time + 0.5 * this.GRAVITY * time * time;
+      if (step === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+      if (x > this.W || y > this.H || y >= this.terrainY(x)) break;
+    }
+    ctx.strokeStyle = 'rgba(255, 215, 0, 0.85)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.restore();
+  }
+
   reset() {
     this.state = 'aiming';
     this.trail = [];
     this.particles = [];
     this.landingX = null;
+    this.aimPreview = null;
+    this.isTouchAiming = false;
     this.windSpeed = (Math.random() - 0.5) * 40;
     this.terrainPhases = [
       Math.random() * Math.PI * 2,

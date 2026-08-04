@@ -799,3 +799,133 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 640px) {
+  .standings-table-wrap {
+    overflow: visible;
+  }
+
+  .standings-table {
+    min-width: 0;
+    display: block;
+  }
+
+  .standings-table thead {
+    display: none;
+  }
+
+  .standings-table tbody {
+    display: block;
+  }
+
+  .standings-table tbody tr {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    padding: 14px;
+    gap: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .standings-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .standings-table tbody td {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    white-space: normal;
+  }
+
+  .standings-row-link:hover,
+  .standings-row-link:focus,
+  .standings-row-link:focus-visible {
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .standings-row-link:hover td,
+  .standings-row-link:focus td,
+  .standings-row-link:focus-visible td {
+    background: transparent;
+  }
+
+  .standings-row-link:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+  }
+
+  .standing-rank {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .standing-name {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    overflow: hidden;
+  }
+
+  .standing-name .team-link {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .standing-total {
+    grid-column: 3 / 5;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    color: var(--accent-gold);
+  }
+
+  .standing-total::after {
+    content: ' pts';
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .standing-principal {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    align-self: center;
+    overflow: hidden;
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-overflow: ellipsis;
+  }
+
+  .standing-principal::before,
+  .standing-latest::before,
+  .standing-delta::before {
+    content: attr(data-label) ' · ';
+    color: var(--text-muted);
+    font-family: var(--font-racing);
+    font-size: 8px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .standing-delta {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: center;
+    justify-self: end;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+
+  .standing-latest {
+    grid-column: 4;
+    grid-row: 2;
+    align-self: center;
+    justify-self: end;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+}
