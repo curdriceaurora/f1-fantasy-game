@@ -2473,6 +2473,14 @@ details.faq-item[open] summary::after {
   }
 }
 
+@media (max-width: 360px) {
+  .site-banner {
+    padding-right: 58px;
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #slider-investment.untouched::-webkit-slider-thumb,
   .investment-hint,
