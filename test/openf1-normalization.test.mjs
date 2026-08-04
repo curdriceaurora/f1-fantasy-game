@@ -69,7 +69,7 @@ test('normalizeRaceWeekend applies grid penalties across the weekend but race ti
   assert.equal(normalized.drivers['george-russell'].fastestLap, true);
 });
 
-test('OpenF1 fallback does not count a served notice as another issued penalty', () => {
+test('OpenF1 fallback removes a matching served penalty', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.raceTimePenaltyMessages = [
     { message: 'FIA STEWARDS: 5 SECOND TIME PENALTY FOR CAR 12 - SPEEDING IN THE PIT LANE' },
@@ -78,7 +78,20 @@ test('OpenF1 fallback does not count a served notice as another issued penalty',
 
   const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
 
-  assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 5);
+  assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 0);
+});
+
+test('OpenF1 fallback keeps a different unserved penalty for the same driver', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.raceTimePenaltyMessages = [
+    { message: 'FIA STEWARDS: 5 SECOND TIME PENALTY FOR CAR 12 - SPEEDING IN THE PIT LANE' },
+    { message: 'FIA STEWARDS: PENALTY SERVED - 5 SECOND TIME PENALTY FOR CAR 12 - SPEEDING IN THE PIT LANE' },
+    { message: 'FIA STEWARDS: 10 SECOND TIME PENALTY FOR CAR 12 - IGNORING BLUE FLAGS' },
+  ];
+
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 10);
 });
 
 test('retired drivers are classified after finishers, ordered by laps completed', () => {
