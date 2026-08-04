@@ -195,12 +195,12 @@ function renderStandings(data) {
   const standingsBody = document.getElementById('standings-body');
   standingsBody.innerHTML = data.standings.map((row) => `
     <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}" tabindex="0" role="link" aria-label="Open ${row.displayName}">
-      <td><span class="rank-pill">#${row.rank}</span></td>
-      <td><span class="team-link">${row.displayName}</span></td>
-      <td>${row.principalName}</td>
-      <td class="points-strong">${row.totalPoints}</td>
-      <td class="${pointsClass(row.latestRacePoints)}">${signedPoints(row.latestRacePoints)}</td>
-      <td class="${weekOverWeekClass(row.wowDelta)}">${formatWeekOverWeekDelta(row.wowDelta)}</td>
+      <td class="standing-rank"><span class="rank-pill">#${row.rank}</span></td>
+      <td class="standing-name"><span class="team-link">${row.displayName}</span></td>
+      <td class="standing-principal" data-label="Principal">${row.principalName}</td>
+      <td class="standing-total points-strong" data-label="Total">${row.totalPoints}</td>
+      <td class="standing-latest ${pointsClass(row.latestRacePoints)}" data-label="Race">${signedPoints(row.latestRacePoints)}</td>
+      <td class="standing-delta ${weekOverWeekClass(row.wowDelta)}" data-label="Change">${formatWeekOverWeekDelta(row.wowDelta)}</td>
     </tr>
   `).join('');
 
