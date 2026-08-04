@@ -61,3 +61,67 @@ McLaren Mastercard F1 Team
   assert.equal(grid.get('max-verstappen'), 2);
   assert.equal(grid.get('lando-norris'), 8);
 });
+
+test('parseStartingGrid assigns Barcelona pit-lane starter Alonso to P22', () => {
+  const text = `
+19
+11Sergio PEREZ
+Cadillac Formula 1 Team
+1:17.545
+21
+18Lance STROLL
+Aston Martin Aramco F1 Team
+1:18.758
+DRIVERS REQUIRED TO START FROM THE PIT LANE
+14Fernando ALONSO *
+Aston Martin Aramco F1 Team
+1:18.815
+* PENALTIES
+document no. 52
+`;
+
+  const grid = parseStartingGrid(text);
+  assert.equal(grid.get('sergio-perez'), 19);
+  assert.equal(grid.get('lance-stroll'), 21);
+  assert.equal(grid.get('fernando-alonso'), 22);
+});
+
+test('parseStartingGrid handles a pit-lane car number split from the driver name', () => {
+  const text = `
+21
+5Gabriel BORTOLETO
+Audi Revolut F1 Team
+DRIVERS REQUIRED TO START FROM THE PIT LANE
+6
+Isack HADJAR *
+Oracle Red Bull Racing
+NOTES
+Car 6 - Permitted to start
+`;
+
+  const grid = parseStartingGrid(text);
+  assert.equal(grid.get('gabriel-bortoleto'), 21);
+  assert.equal(grid.get('isack-hadjar'), 22);
+});
+
+test('parseStartingGrid gives multiple pit-lane starters ordered virtual positions', () => {
+  const text = `
+19
+11Sergio PEREZ
+Cadillac Formula 1 Team
+20
+18Lance STROLL
+Aston Martin Aramco F1 Team
+DRIVERS REQUIRED TO START FROM THE PIT LANE
+14Fernando ALONSO *
+Aston Martin Aramco F1 Team
+6
+Isack HADJAR *
+Oracle Red Bull Racing
+* PENALTIES
+`;
+
+  const grid = parseStartingGrid(text);
+  assert.equal(grid.get('fernando-alonso'), 21);
+  assert.equal(grid.get('isack-hadjar'), 22);
+});
