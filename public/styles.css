@@ -489,6 +489,21 @@ body {
   cursor: crosshair;
 }
 
+@media (max-width: 639px) {
+  #screen-game.active #game-canvas {
+    touch-action: none;
+  }
+
+  #screen-game .controls {
+    align-items: stretch;
+  }
+
+  #screen-game #btn-fire {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
 .controls {
   display: flex;
   align-items: center;
