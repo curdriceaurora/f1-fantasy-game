@@ -389,11 +389,17 @@ function closePanel(panel, trigger) {
   trigger.setAttribute('aria-expanded', 'false');
 }
 
+function syncTriggerPopupSemantics() {
+  const popupType = calculatorMobileQuery.matches ? 'dialog' : 'listbox';
+  document.querySelectorAll('.cs-trigger').forEach(trigger => {
+    trigger.setAttribute('aria-haspopup', popupType);
+  });
+}
+
 function initTriggerAccessibility() {
   document.querySelectorAll('.cs-trigger').forEach(trigger => {
     trigger.setAttribute('role', 'button');
     trigger.setAttribute('tabindex', '0');
-    trigger.setAttribute('aria-haspopup', 'dialog');
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-label', triggerLabel(trigger));
     trigger.addEventListener('keydown', event => {
@@ -415,6 +421,7 @@ function initTriggerAccessibility() {
     });
   });
   document.querySelectorAll('.cs-panel').forEach(panel => panel.setAttribute('role', 'listbox'));
+  syncTriggerPopupSemantics();
 }
 
 bottomSheetClose.addEventListener('click', () => closeBottomSheet());
@@ -443,7 +450,16 @@ bottomSheet.addEventListener('keydown', event => {
 });
 
 calculatorMobileQuery.addEventListener('change', event => {
-  if (!event.matches) closeBottomSheet({ restoreFocus: false });
+  if (!event.matches) {
+    closeBottomSheet({ restoreFocus: false });
+  } else {
+    document.querySelectorAll('.cs-panel').forEach(panel => panel.classList.add('hidden'));
+    document.querySelectorAll('.cs-trigger').forEach(trigger => {
+      trigger.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+  syncTriggerPopupSemantics();
 });
 
 // Highlight the currently selected option in each panel
@@ -908,18 +924,28 @@ document.getElementById('calc-name').addEventListener('input', recalc);
 document.getElementById('calc-team-name').addEventListener('input', recalc);
 
 // Parse URL params to pre-fill selections from game
+function parsePrefillIndex(value, options) {
+  if (!/^\d+$/.test(value || '')) return null;
+  const index = Number.parseInt(value, 10);
+  return index >= 0 && index < options.length ? index : null;
+}
+
 const params = new URLSearchParams(window.location.search);
 if (params.toString()) {
   for (let i = 1; i <= 3; i++) {
     if (params.has(`d${i}`)) {
-      const idx = parseInt(params.get(`d${i}`));
-      selected.d[i - 1] = idx;
-      updateDriverTrigger(i, idx);
+      const idx = parsePrefillIndex(params.get(`d${i}`), DRIVERS);
+      if (idx !== null) {
+        selected.d[i - 1] = idx;
+        updateDriverTrigger(i, idx);
+      }
     }
     if (params.has(`t${i}`)) {
-      const idx = parseInt(params.get(`t${i}`));
-      selected.t[i - 1] = idx;
-      updateTeamTrigger(i, idx);
+      const idx = parsePrefillIndex(params.get(`t${i}`), TEAMS);
+      if (idx !== null) {
+        selected.t[i - 1] = idx;
+        updateTeamTrigger(i, idx);
+      }
     }
   }
 
