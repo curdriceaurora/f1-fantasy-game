@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  discoverMonetaryFinePdfs,
   eventDocumentsPage,
   fetchFiaDecisionUrls,
   isPotentialFineDocument,
@@ -73,4 +74,20 @@ test('appeals and rights of review are monitored without entering fine scoring',
   assert.equal(isPotentialResultDocument(rightOfReview), true);
   assert.equal(isPotentialFineDocument(appeal), false);
   assert.equal(isPotentialFineDocument(rightOfReview), false);
+});
+
+test('fine discovery excludes an appeal that restates an active fine', async () => {
+  const appealFile = '2026_belgian_grand_prix_-_appeal_of_decision_-_car_44.pdf';
+  let pdfReads = 0;
+
+  const urls = await discoverMonetaryFinePdfs(RACE, {
+    fetchImpl: async () => pageWith(appealFile),
+    fetchPdfTextImpl: async () => {
+      pdfReads += 1;
+      return 'The Stewards confirm the €25,000 fine imposed on the driver.';
+    },
+  });
+
+  assert.deepEqual(urls, []);
+  assert.equal(pdfReads, 0);
 });
