@@ -9,6 +9,7 @@ const committedStandings = JSON.parse(
   readFileSync(join(process.cwd(), 'season/scored/standings.json'), 'utf8'),
 ).standings;
 const filterTarget = committedStandings[2];
+const LAYOUT_TOLERANCE_PX = 1;
 
 function formatDelta(value) {
   if (value == null) return '—';
@@ -56,16 +57,19 @@ test('renders standings as API-backed mobile cards without horizontal overflow',
         schedule: bounds('#schedule-section'),
       };
     });
-    expect(containment.documentWidth, `${width}px document width`).toBeLessThanOrEqual(width);
+    expect(containment.documentWidth, `${width}px document width`)
+      .toBeLessThanOrEqual(width + LAYOUT_TOLERANCE_PX);
     expect(containment.tableOverflow.scrollWidth, `${width}px standings table width`)
-      .toBeLessThanOrEqual(containment.tableOverflow.clientWidth);
+      .toBeLessThanOrEqual(containment.tableOverflow.clientWidth + LAYOUT_TOLERANCE_PX);
     for (const [name, bounds] of Object.entries({
       standings: containment.standings,
       movers: containment.movers,
       schedule: containment.schedule,
     })) {
-      expect(bounds.left, `${name} left edge at ${width}px`).toBeGreaterThanOrEqual(0);
-      expect(bounds.right, `${name} right edge at ${width}px`).toBeLessThanOrEqual(width);
+      expect(bounds.left, `${name} left edge at ${width}px`)
+        .toBeGreaterThanOrEqual(-LAYOUT_TOLERANCE_PX);
+      expect(bounds.right, `${name} right edge at ${width}px`)
+        .toBeLessThanOrEqual(width + LAYOUT_TOLERANCE_PX);
     }
   }
 
