@@ -8,7 +8,7 @@
 
 import { existsSync } from 'fs';
 import { pathToFileURL } from 'url';
-import { discoverMonetaryFinePdfs } from '../lib/fia-documents.js';
+import { discoverMonetaryFinePdfs, discoverPotentialPenaltyPdfs } from '../lib/fia-documents.js';
 import { isRaceScoreable, mondayPublicationDate, raceStatus } from '../lib/race-workflow.js';
 import {
   configPath,
@@ -21,6 +21,7 @@ import {
   writeJson,
 } from '../lib/season-store.js';
 import { scoreRace } from './score-race.mjs';
+import { recordFiaDocumentBaseline } from './check-late-fia-documents.mjs';
 
 function parseArgs(argv) {
   return {
@@ -50,6 +51,7 @@ export async function reconcileSeason(services = {}) {
   ensureSeasonDirs();
   const now = services.now || new Date();
   const discoverFinePdfs = services.discoverMonetaryFinePdfs || discoverMonetaryFinePdfs;
+  const discoverPenaltyPdfs = services.discoverPotentialPenaltyPdfs || discoverPotentialPenaltyPdfs;
   const scoreRaceImpl = services.scoreRace || scoreRace;
   const dryRun = Boolean(services.dryRun);
   const force = Boolean(services.force);
@@ -78,17 +80,20 @@ export async function reconcileSeason(services = {}) {
   for (const race of eligible) {
     console.log(`\n--- ${race.name} (Round ${race.round}) ---`);
     try {
+      const wasFinalized = isFinalized(race.id);
       const fineUrls = await discoverFinePdfs(race);
       console.log(`Discovered ${fineUrls.length} FIA monetary fine document(s).`);
 
       const fineDocuments = loadFineDocuments();
       const storedDocuments = fineDocuments[race.id]?.documents || [];
       const documentsMatch = [...storedDocuments].sort().join(',') === [...fineUrls].sort().join(',');
-      if (documentsMatch && isFinalized(race.id) && !force) {
+      if (documentsMatch && wasFinalized && !force) {
         console.log('Already finalized against the published fine documents.');
         unchanged.push(race.id);
         continue;
       }
+
+      const publicationDocuments = wasFinalized ? null : await discoverPenaltyPdfs(race);
 
       fineDocuments[race.id] = {
         reviewed: true,
@@ -103,6 +108,7 @@ export async function reconcileSeason(services = {}) {
       removeFile(normalizedRacePath(race.id));
 
       const result = await scoreRaceImpl(race.id);
+      if (!wasFinalized) recordFiaDocumentBaseline(race, publicationDocuments, now);
       console.log(`Scored ${result.race.name} with ${result.fineSummary.documents.length} FIA fine document(s).`);
       scored.push(race.id);
     } catch (error) {

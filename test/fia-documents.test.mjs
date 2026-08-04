@@ -59,3 +59,8 @@ test('classification documents are not treated as fine candidates', () => {
   assert.equal(isPotentialFineDocument('https://fia.test/2026_belgian_grand_prix_-_final_race_classification.pdf'), false);
   assert.equal(isPotentialFineDocument('https://fia.test/2026_belgian_grand_prix_-_reprimand_-_car_44.pdf'), false);
 });
+
+test('appeals and rights of review are treated as penalty candidates', () => {
+  assert.equal(isPotentialFineDocument('https://fia.test/grand_prix_-_appeal_of_decision.pdf'), true);
+  assert.equal(isPotentialFineDocument('https://fia.test/grand_prix_-_right_of_review_petition.pdf'), true);
+});

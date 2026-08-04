@@ -1,0 +1,73 @@
+name: Check Late FIA Documents
+
+on:
+  schedule:
+    - cron: '30 14 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: season-data-writes
+  cancel-in-progress: false
+
+jobs:
+  check-late-documents:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Scan finalized races
+        id: scan
+        run: node scripts/check-late-fia-documents.mjs
+
+      - name: Open notification issue
+        if: steps.scan.outputs.detected == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Late FIA result documents detected" \
+            --body-file "${{ steps.scan.outputs.report_path }}"
+
+      - name: Commit updated FIA document snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add season/config/fia-document-snapshots.json
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update FIA document snapshots [skip ci]"
+
+          branch="${GITHUB_REF_NAME:-main}"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$branch" && git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push FIA document snapshots after 3 attempts."
+          exit 1
+
+      - name: Fail when any race could not be checked
+        if: steps.scan.outputs.failed == 'true'
+        run: |
+          echo "One or more finalized races could not be checked. See the job summary."
+          exit 1
