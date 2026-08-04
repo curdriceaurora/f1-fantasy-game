@@ -1374,6 +1374,16 @@ input[type="range"]::-webkit-slider-thumb {
   display: none;
 }
 
+.cs-bottom-sheet,
+.sticky-budget-bar {
+  display: none;
+}
+
+.cs-bottom-sheet[hidden],
+.sticky-budget-bar[hidden] {
+  display: none;
+}
+
 .cs-option {
   display: flex;
   align-items: center;
@@ -2200,6 +2210,142 @@ details.faq-item[open] summary::after {
     scroll-margin-top: calc(var(--mobile-header-height) + env(safe-area-inset-top) + 62px);
   }
 
+  body.calc-sheet-open {
+    overflow: hidden;
+  }
+
+  .calc-totals-receipt {
+    position: static;
+    top: auto;
+  }
+
+  .sticky-budget-bar:not([hidden]) {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 100;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: rgba(15, 15, 35, 0.96);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    color: var(--text-primary);
+    font-family: var(--font-racing);
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    text-align: center;
+  }
+
+  .sticky-budget-bar[data-state='optimal'] {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
+
+  .sticky-budget-bar[data-state='over'] {
+    border-color: var(--f1-red);
+    background: rgba(225, 6, 0, 0.2);
+    color: var(--f1-red);
+  }
+
+  .cs-bottom-sheet:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: block;
+  }
+
+  .cs-sheet-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .cs-sheet-panel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: min(82dvh, 720px);
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px calc(env(safe-area-inset-bottom) + 16px);
+    border: 1px solid #444;
+    border-bottom: 0;
+    border-radius: 18px 18px 0 0;
+    background: var(--bg-card);
+    box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.65);
+    animation: cs-sheet-in 180ms ease-out;
+  }
+
+  .cs-sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .cs-sheet-header h2 {
+    font-family: var(--font-racing);
+    font-size: 14px;
+    letter-spacing: 0.8px;
+  }
+
+  .cs-sheet-close {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 24px;
+  }
+
+  .cs-sheet-close:focus-visible,
+  .cs-sheet-options .cs-option:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+  }
+
+  .cs-sheet-options {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .cs-sheet-options .cs-panel {
+    position: static;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .cs-sheet-options .cs-option {
+    min-height: 52px;
+    padding: 12px 16px;
+  }
+
+  @keyframes cs-sheet-in {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
   .calc-grid {
     grid-template-columns: 1fr;
   }
@@ -2242,6 +2388,12 @@ details.faq-item[open] summary::after {
 
   .dt-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-sheet-panel {
+    animation: none;
   }
 }
 
