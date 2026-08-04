@@ -14,6 +14,7 @@
     "sync:entries": "node scripts/sync-season-entries.mjs",
     "score:race": "node scripts/score-race.mjs",
     "auto:score": "node scripts/auto-score.mjs",
+    "audit:penalties": "node scripts/audit-time-penalties.mjs",
     "reconcile:season": "node scripts/reconcile-season.mjs",
     "switch-mode": "node scripts/switch-mode.mjs",
     "prepare": "simple-git-hooks"

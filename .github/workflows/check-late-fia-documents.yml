@@ -33,6 +33,9 @@ jobs:
         id: scan
         run: node scripts/check-late-fia-documents.mjs
 
+      - name: Audit time-penalty sources
+        run: npm run audit:penalties
+
       - name: Open notification issue
         if: steps.scan.outputs.detected == 'true'
         env:

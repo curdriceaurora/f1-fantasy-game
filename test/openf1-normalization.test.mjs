@@ -69,6 +69,18 @@ test('normalizeRaceWeekend applies grid penalties across the weekend but race ti
   assert.equal(normalized.drivers['george-russell'].fastestLap, true);
 });
 
+test('OpenF1 fallback does not count a served notice as another issued penalty', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.raceTimePenaltyMessages = [
+    { message: 'FIA STEWARDS: 5 SECOND TIME PENALTY FOR CAR 12 - SPEEDING IN THE PIT LANE' },
+    { message: 'FIA STEWARDS: PENALTY SERVED - 5 SECOND TIME PENALTY FOR CAR 12 - SPEEDING IN THE PIT LANE' },
+  ];
+
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 5);
+});
+
 test('retired drivers are classified after finishers, ordered by laps completed', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.drivers.push({ driver_number: 44, first_name: 'Lewis', last_name: 'Hamilton', full_name: 'Lewis Hamilton', team_name: 'Ferrari' });
