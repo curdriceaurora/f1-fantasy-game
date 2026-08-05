@@ -38,6 +38,18 @@ test('position change falls back to the grid start when no improvement baseline 
   assert.equal(contribution.improvementGrid, 4);
 });
 
+test('a race DSQ keeps qualifying points and scores the position loss from last place', () => {
+  const contribution = buildDriverContribution('george-russell', {
+    qualifyingPosition: 1, gridStart: 1, improvementGrid: 1, racePosition: 22, sprintPosition: 22,
+    fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: false,
+  }, { raceId: 'x', raceName: 'X' });
+
+  assert.equal(contribution.components.find((c) => /^Qualifying/.test(c.label)).points, 3);
+  assert.equal(contribution.components.find((c) => /^Sprint/.test(c.label)).points, 0);
+  assert.equal(contribution.components.find((c) => /^Race finish/.test(c.label)).points, 0);
+  assert.equal(contribution.components.find((c) => /^Position change/.test(c.label)).points, -42);
+});
+
 test('constructor weighting favours the roster lead driver, not the higher scorer that race', () => {
   // Ferrari's designated lead is Leclerc; Hamilton outscored him this race.
   const contribution = buildConstructorContribution(
