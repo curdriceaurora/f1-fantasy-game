@@ -40,6 +40,25 @@ Car 10 - 2 x 5 second time penalty - Speeding in the pit lane
   assert.equal(penalties.get('pierre-gasly'), 10); // car 10, 2 x 5s
 });
 
+test('parseFinalClassification identifies every FIA disqualified row', () => {
+  const text = `
+112Kimi ANTONELLIMercedes-AMG PETRONAS F1 Team7825
+NOT CLASSIFIED
+14Fernando ALONSOAston Martin Aramco F1 Team4DNF
+16Charles LECLERCScuderia Ferrari HPDQ
+44Lewis HAMILTONScuderia Ferrari HPDSQ
+10Pierre GASLYBWT Alpine F1 TeamDISQUALIFIED
+FASTEST LAP
+`;
+
+  const { positions, disqualified } = parseFinalClassification(text);
+  assert.equal(positions.get('charles-leclerc'), 3);
+  assert.deepEqual(
+    [...disqualified].sort(),
+    ['charles-leclerc', 'lewis-hamilton', 'pierre-gasly'],
+  );
+});
+
 test('parseStartingGrid maps each grid slot to its driver', () => {
   const text = `
 1

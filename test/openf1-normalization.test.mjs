@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeRaceWeekend } from '../lib/openf1.js';
+import { deriveFinishingPositions, normalizeRaceWeekend } from '../lib/openf1.js';
 
 const calendarRace = {
   id: 'australia',
@@ -152,6 +152,81 @@ test('retired drivers are classified after finishers, ordered by laps completed'
   // Hamilton did 55 laps, Antonelli 40 — Hamilton is classified P2, Antonelli P3.
   assert.equal(normalized.drivers['lewis-hamilton'].racePosition, 2);
   assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 3);
+});
+
+test('multiple race DSQs share the field-size last position after retirees', () => {
+  const positions = deriveFinishingPositions([
+    { driver_number: 63, position: 1, dsq: false, number_of_laps: 58 },
+    { driver_number: 12, position: null, dsq: false, number_of_laps: 40 },
+    // A DSQ may retain a position in a feed; Martin's shared-last rule still wins.
+    { driver_number: 44, position: 2, dsq: true, number_of_laps: 58 },
+    { driver_number: 16, position: null, dsq: true, number_of_laps: 20 },
+  ]);
+
+  assert.equal(positions.get(63), 1);
+  assert.equal(positions.get(12), 2);
+  assert.equal(positions.get(44), 4);
+  assert.equal(positions.get(16), 4);
+});
+
+test('FIA race and sprint DSQs override listed positions with the shared last place', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.sprintResultRows = [
+    { driver_number: 63, position: 1, dsq: false },
+    { driver_number: 12, position: 2, dsq: false },
+  ];
+  fetchedRace.raceResultRows = [
+    { driver_number: 63, position: 1, dns: false, dsq: false, dnf: false },
+    { driver_number: 12, position: 2, dns: false, dsq: false, dnf: false },
+  ];
+  fetchedRace.fiaResults = {
+    // Even if a classification parser yields consecutive positions, Martin gives
+    // every DSQ the single field-size position.
+    finishingPositions: { 'george-russell': 1, 'kimi-antonelli': 2 },
+    disqualifiedDrivers: ['george-russell', 'kimi-antonelli'],
+    gridPositions: {},
+    penaltySeconds: {},
+    sprintPositions: { 'george-russell': 1, 'kimi-antonelli': 2 },
+    sprintDisqualifiedDrivers: ['george-russell', 'kimi-antonelli'],
+  };
+
+  const normalized = normalizeRaceWeekend(
+    sprintCalendarRace,
+    fetchedRace,
+    { drivers: {}, teams: {}, documents: [] },
+  );
+
+  assert.equal(normalized.drivers['george-russell'].racePosition, 2);
+  assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 2);
+  assert.equal(normalized.drivers['george-russell'].sprintPosition, 2);
+  assert.equal(normalized.drivers['kimi-antonelli'].sprintPosition, 2);
+  assert.equal(normalized.drivers['george-russell'].classified, false);
+  assert.equal(normalized.drivers['george-russell'].dsq, true);
+});
+
+test('older FIA caches fall back to OpenF1 DSQ flags', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.raceResultRows[0] = {
+    ...fetchedRace.raceResultRows[0],
+    position: 1,
+    dsq: true,
+  };
+  // Existing raw caches predate the explicit FIA DSQ fields.
+  fetchedRace.fiaResults = {
+    finishingPositions: { 'george-russell': 1, 'kimi-antonelli': 2 },
+    gridPositions: {},
+    penaltySeconds: {},
+    sprintPositions: {},
+  };
+
+  const normalized = normalizeRaceWeekend(
+    calendarRace,
+    fetchedRace,
+    { drivers: {}, teams: {}, documents: [] },
+  );
+
+  assert.equal(normalized.drivers['george-russell'].racePosition, 2);
+  assert.equal(normalized.drivers['george-russell'].dsq, true);
 });
 
 test('FIA final classification and grid override OpenF1 when present', () => {
