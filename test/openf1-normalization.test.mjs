@@ -133,6 +133,18 @@ test('normalizeRaceWeekend rejects a non-array qualifyingDisqualified', () => {
   );
 });
 
+test('normalizeRaceWeekend rejects a fastest lap held by a disqualified driver', () => {
+  const fetchedRace = baseFetchedRace();
+  // Russell (63) sets the fastest lap in the base fixture; disqualify him.
+  fetchedRace.raceResultRows = fetchedRace.raceResultRows.map(
+    (row) => (row.driver_number === 63 ? { ...row, dsq: true } : row),
+  );
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
+    /fastest lap .* disqualified/i,
+  );
+});
+
 test('retired drivers are classified after finishers, ordered by laps completed', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.drivers.push({ driver_number: 44, first_name: 'Lewis', last_name: 'Hamilton', full_name: 'Lewis Hamilton', team_name: 'Ferrari' });
@@ -171,6 +183,14 @@ test('multiple race DSQs share the supplied field-size last position after retir
 
 test('FIA race and sprint DSQs override listed positions with the shared last place', () => {
   const fetchedRace = baseFetchedRace();
+  fetchedRace.drivers.push({ driver_number: 16, first_name: 'Charles', last_name: 'Leclerc', full_name: 'Charles Leclerc', team_name: 'Ferrari' });
+  fetchedRace.qualifyingResultRows.push({ driver_number: 16, position: 3 });
+  fetchedRace.raceResultRows.push({ driver_number: 16, position: 3, dns: false, dsq: false, dnf: false });
+  fetchedRace.laps = [
+    { driver_number: 63, lap_duration: 95.0, is_pit_out_lap: false },
+    { driver_number: 12, lap_duration: 91.2, is_pit_out_lap: false },
+    { driver_number: 16, lap_duration: 90.0, is_pit_out_lap: false },
+  ];
   fetchedRace.sprintResultRows = [
     { driver_number: 63, position: 1, dsq: false },
     { driver_number: 12, position: 2, dsq: false },
@@ -178,13 +198,14 @@ test('FIA race and sprint DSQs override listed positions with the shared last pl
   fetchedRace.raceResultRows = [
     { driver_number: 63, position: 1, dns: false, dsq: false, dnf: false },
     { driver_number: 12, position: 2, dns: false, dsq: false, dnf: false },
+    { driver_number: 16, position: 3, dns: false, dsq: false, dnf: false },
   ];
   fetchedRace.fiaResults = {
     // Even if a classification parser yields consecutive positions, Martin gives
     // every DSQ the single field-size position.
-    finishingPositions: { 'george-russell': 1, 'kimi-antonelli': 2 },
+    finishingPositions: { 'george-russell': 1, 'kimi-antonelli': 2, 'charles-leclerc': 3 },
     disqualifiedDrivers: ['george-russell', 'kimi-antonelli'],
-    gridPositions: {},
+    gridPositions: { 'george-russell': 1, 'kimi-antonelli': 2, 'charles-leclerc': 3 },
     penaltySeconds: {},
     sprintPositions: { 'george-russell': 1, 'kimi-antonelli': 2 },
     sprintDisqualifiedDrivers: ['george-russell', 'kimi-antonelli'],
@@ -196,16 +217,20 @@ test('FIA race and sprint DSQs override listed positions with the shared last pl
     { drivers: {}, teams: {}, documents: [] },
   );
 
-  assert.equal(normalized.drivers['george-russell'].racePosition, 2);
-  assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 2);
-  assert.equal(normalized.drivers['george-russell'].sprintPosition, 2);
-  assert.equal(normalized.drivers['kimi-antonelli'].sprintPosition, 2);
+  assert.equal(normalized.drivers['george-russell'].racePosition, 3);
+  assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 3);
+  assert.equal(normalized.drivers['george-russell'].sprintPosition, 3);
+  assert.equal(normalized.drivers['kimi-antonelli'].sprintPosition, 3);
   assert.equal(normalized.drivers['george-russell'].classified, false);
   assert.equal(normalized.drivers['george-russell'].dsq, true);
 });
 
 test('older FIA caches fall back to OpenF1 DSQ flags', () => {
   const fetchedRace = baseFetchedRace();
+  fetchedRace.laps = [
+    { driver_number: 63, lap_duration: 95.0, is_pit_out_lap: false },
+    { driver_number: 12, lap_duration: 91.2, is_pit_out_lap: false },
+  ];
   fetchedRace.raceResultRows[0] = {
     ...fetchedRace.raceResultRows[0],
     position: 1,
