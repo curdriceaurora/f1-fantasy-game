@@ -74,7 +74,7 @@ test('a postponed race renders a distinct inactive treatment', async ({ page }) 
     body: JSON.stringify({
       activeCount: 1,
       races: [{
-        id: 'test-postponed', round: 1, name: 'Test Grand Prix', date: '2026-05-01',
+        id: 'test-postponed', round: 1, name: 'Test Grand Prix', date: null,
         flag: '🏁', isSprintWeekend: false, status: 'postponed', venue: null,
       }],
     }),
@@ -85,7 +85,7 @@ test('a postponed race renders a distinct inactive treatment', async ({ page }) 
   const item = page.locator('#calendar-grid .calendar-item.postponed', { hasText: 'Test Grand Prix' });
   await expect(item).toHaveCount(1);
   await expect(item.locator('.postponed-badge')).toHaveText(/postponed/i);
-  await expect(item.locator('.race-date')).toContainText('postponed');
+  await expect(item.locator('.race-date')).toHaveText('Postponed — date TBC');
 
   await page.waitForLoadState('networkidle');
   assertHealthy();

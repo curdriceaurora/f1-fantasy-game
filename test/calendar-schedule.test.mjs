@@ -67,3 +67,26 @@ test('a postponed race passes its status through and still counts as active (onl
     assert.equal(activeCount, 2); // scheduled + postponed; cancelled excluded
   });
 });
+
+test('an undated postponed race sorts to the end, not to 1970', () => {
+  withTempSeason([
+    { id: 'opener', round: 1, name: 'Opener', date: '2026-03-08', isSprintWeekend: false, status: 'scheduled' },
+    { id: 'undated', round: 4, name: 'Undated', date: null, isSprintWeekend: false, status: 'postponed' },
+    { id: 'finale', round: 3, name: 'Finale', date: '2026-12-06', isSprintWeekend: false, status: 'scheduled' },
+  ], () => {
+    // date: null must not become new Date(null) === 1970 and jump to the front.
+    assert.deepEqual(loadCalendar().map((race) => race.id), ['opener', 'finale', 'undated']);
+    assert.equal(loadCalendarScheduleData().races.at(-1).id, 'undated');
+  });
+});
+
+test('a postponed race with only an original date keeps its original slot', () => {
+  withTempSeason([
+    { id: 'opener', round: 1, name: 'Opener', date: '2026-03-08', isSprintWeekend: false, status: 'scheduled' },
+    { id: 'held', round: 2, name: 'Held', date: null, originalDate: '2026-04-19', isSprintWeekend: false, status: 'postponed' },
+    { id: 'finale', round: 3, name: 'Finale', date: '2026-12-06', isSprintWeekend: false, status: 'scheduled' },
+  ], () => {
+    // Falls back to originalDate (April) rather than dropping to the end.
+    assert.deepEqual(loadCalendar().map((race) => race.id), ['opener', 'held', 'finale']);
+  });
+});
