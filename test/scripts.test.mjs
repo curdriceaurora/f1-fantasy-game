@@ -1,5 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import { parseArgs } from '../scripts/score-race.mjs';
 import {
@@ -7,7 +11,23 @@ import {
   buildTimePenaltyAuditReport,
   auditTimePenalties,
 } from '../scripts/audit-time-penalties.mjs';
-import { mulberry32, shuffle } from '../scripts/generate-test-corpus.mjs';
+import {
+  buildHistoricalConstructorSeats,
+  buildNormalizedRace,
+  buildSeasonMapping,
+  fastestLapDriverId,
+  fetchHistoricalJson,
+  generateTestCorpus,
+  injectSyntheticAdjustments,
+  loadHistoricalSeason,
+  mulberry32,
+  normalizePosition,
+  normalizeRacePosition,
+  pickHistoricalRow,
+  shuffle,
+  syntheticEntries,
+  syntheticPenaltySeed,
+} from '../scripts/generate-test-corpus.mjs';
 
 test('score-race parseArgs extracts --race argument cleanly', () => {
   const args1 = parseArgs(['--race', 'australia']);
@@ -29,6 +49,150 @@ test('generate-test-corpus mulberry32 & shuffle generate deterministic results',
   const shuffled2 = shuffle(arr, 999);
   assert.deepStrictEqual(shuffled1, shuffled2);
   assert.notDeepStrictEqual(shuffled1, arr);
+});
+
+function historicalRace(year = 2025) {
+  const constructors = Array.from({ length: 10 }, (_, index) => `constructor-${index + 1}`);
+  const results = constructors.flatMap((constructorId, constructorIndex) => [0, 1].map((seatIndex) => ({
+    number: String((constructorIndex * 2) + seatIndex + 1),
+    grid: String((constructorIndex * 2) + seatIndex + 1),
+    position: String((constructorIndex * 2) + seatIndex + 1),
+    positionText: String((constructorIndex * 2) + seatIndex + 1),
+    status: 'Finished',
+    Constructor: { constructorId },
+    Driver: { driverId: `${constructorId}-driver-${seatIndex + 1}` },
+    FastestLap: constructorIndex === 0 && seatIndex === 0 ? { rank: '1' } : undefined,
+  })));
+  return {
+    round: 1,
+    raceId: `sim-${year}-1-test`,
+    raceName: 'Test Grand Prix',
+    date: `${year}-03-01`,
+    results,
+    qualifying: structuredClone(results),
+    sprint: structuredClone(results.slice(0, 8)),
+  };
+}
+
+test('historical corpus builders map and normalize a complete season race', () => {
+  const race = historicalRace();
+  const seats = buildHistoricalConstructorSeats([race]);
+  assert.equal(seats.size, 10);
+  assert.deepEqual(seats.get('constructor-1'), ['constructor-1-driver-1', 'constructor-1-driver-2']);
+
+  const mapping = buildSeasonMapping(2025, [race]);
+  const normalized = buildNormalizedRace(2025, race, mapping);
+  assert.equal(Object.keys(normalized.teams).length, 10);
+  assert.equal(Object.keys(normalized.drivers).length, 20);
+  assert.equal(normalized.sprintWeekend, true);
+  assert.equal(Object.values(normalized.drivers).filter((driver) => driver.fastestLap).length, 1);
+
+  assert.equal(normalizePosition('12'), 12);
+  assert.equal(normalizePosition('not-a-position'), null);
+  assert.equal(normalizeRacePosition({ positionText: 'R', position: '4' }), null);
+  assert.equal(normalizeRacePosition({ positionText: '4', position: '4' }), 4);
+  assert.equal(fastestLapDriverId(race.results), 'constructor-1-driver-1');
+  assert.equal(fastestLapDriverId([]), null);
+  assert.equal(pickHistoricalRow(race.results, 'constructor-1', ['constructor-1-driver-2'], 0).Driver.driverId, 'constructor-1-driver-2');
+  assert.equal(pickHistoricalRow([], 'missing', [], 0), null);
+  assert.equal(syntheticPenaltySeed(2025, 1, 2), 202512);
+  assert.deepEqual(injectSyntheticAdjustments(2025, 1, 'driver', 'team', 0), injectSyntheticAdjustments(2025, 1, 'driver', 'team', 0));
+
+  const entries = syntheticEntries([{ id: 'home' }]);
+  assert.equal(entries.length, 8);
+  assert.equal(entries[0].homeCircuitId, 'home');
+});
+
+test('historical provider retries 429 and rejects terminal responses', async () => {
+  let calls = 0;
+  const sleeps = [];
+  const payload = await fetchHistoricalJson('2025.json', {
+    fetchImpl: async () => {
+      calls += 1;
+      return calls === 1
+        ? { ok: false, status: 429 }
+        : { ok: true, json: async () => ({ ok: true }) };
+    },
+    sleep: async (milliseconds) => sleeps.push(milliseconds),
+  });
+  assert.deepEqual(payload, { ok: true });
+  assert.deepEqual(sleeps, [1500]);
+
+  await assert.rejects(
+    fetchHistoricalJson('broken.json', { fetchImpl: async () => ({ ok: false, status: 500 }) }),
+    /Unable to fetch broken\.json: 500/,
+  );
+});
+
+test('loadHistoricalSeason assembles schedule, race, qualifying, and sprint data', async () => {
+  const race = historicalRace(2024);
+  const result = (rows, key) => ({ MRData: { RaceTable: { Races: [{ [key]: rows }] } } });
+  const loaded = await loadHistoricalSeason(2024, async (pathname) => {
+    if (pathname === '2024.json?limit=100') {
+      return { MRData: { RaceTable: { Races: [{
+        round: '1', raceName: race.raceName, date: race.date, Circuit: { circuitId: 'test' },
+      }] } } };
+    }
+    if (pathname.includes('/results.')) return result(race.results, 'Results');
+    if (pathname.includes('/qualifying.')) return result(race.qualifying, 'QualifyingResults');
+    return result(race.sprint, 'SprintResults');
+  });
+
+  assert.equal(loaded.length, 1);
+  assert.equal(loaded[0].raceId, 'sim-2024-1-test');
+  assert.equal(loaded[0].results.length, 20);
+});
+
+test('generateTestCorpus writes a complete deterministic fixture offline', async () => {
+  const outputRoot = mkdtempSync(join(tmpdir(), 'f1-generated-corpus-'));
+  try {
+    await generateTestCorpus({
+      years: [2025],
+      outputRoot,
+      loadHistoricalSeason: async () => [historicalRace(2025)],
+    });
+    const seasonRoot = join(outputRoot, '2025', 'season');
+    const calendar = JSON.parse(readFileSync(join(seasonRoot, 'config', '2026-calendar.json')));
+    const manifest = JSON.parse(readFileSync(join(outputRoot, '2025', 'manifest.json')));
+    assert.equal(calendar.length, 1);
+    assert.equal(manifest.races, 1);
+    assert.equal(manifest.historicalSeason, 2025);
+  } finally {
+    rmSync(outputRoot, { recursive: true, force: true });
+  }
+});
+
+test('historical mapping rejects an incomplete constructor field', () => {
+  const race = historicalRace();
+  race.results = race.results.filter((row) => row.Constructor.constructorId !== 'constructor-10');
+  assert.throws(() => buildSeasonMapping(2025, [race]), /Expected 10 historical constructors/);
+});
+
+test('generate-selections Python CLI emits the documented compact schema', () => {
+  const workingDir = mkdtempSync(join(tmpdir(), 'f1-selections-python-'));
+  mkdirSync(join(workingDir, 'data'));
+  try {
+    const python = process.env.PYTHON || 'python3';
+    const result = spawnSync(python, [join(process.cwd(), 'scripts', 'generate-selections.py')], {
+      cwd: workingDir,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    const output = JSON.parse(readFileSync(join(workingDir, 'data', 'selections.json')));
+    assert.equal(output.meta.count, output.entries.length);
+    assert.ok(output.meta.count > 0);
+    assert.equal(output.meta.maxPts, output.entries[0].p);
+    assert.equal(output.meta.minPts, output.entries.at(-1).p);
+    for (const entry of output.entries.slice(0, 20)) {
+      assert.deepEqual(Object.keys(entry).sort(), ['d', 'p', 't']);
+      assert.equal(entry.d.length, 3);
+      assert.equal(entry.t.length, 3);
+      assert.ok(entry.d.every((index) => Number.isInteger(index) && index >= 0 && index < 22));
+      assert.ok(entry.t.every((index) => Number.isInteger(index) && index >= 0 && index < 11));
+    }
+  } finally {
+    rmSync(workingDir, { recursive: true, force: true });
+  }
 });
 
 test('audit-time-penalties compareTimePenaltyLedgers detects penalty mismatches', () => {

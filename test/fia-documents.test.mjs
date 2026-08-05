@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   discoverMonetaryFinePdfs,
+  discoverPotentialPenaltyPdfs,
   eventDocumentsPage,
   fetchFiaDecisionUrls,
   isPotentialFineDocument,
@@ -90,4 +91,49 @@ test('fine discovery excludes an appeal that restates an active fine', async () 
 
   assert.deepEqual(urls, []);
   assert.equal(pdfReads, 0);
+});
+
+test('document discovery falls back when the event page request fails', async () => {
+  const originalWarn = console.warn;
+  const warnings = [];
+  console.warn = (message) => warnings.push(message);
+  try {
+    const urls = await fetchFiaDecisionUrls(RACE, {
+      fetchImpl: async (url) => {
+        if (url.includes('/event/')) return { ok: false, status: 500, text: async () => '' };
+        return pageWith('2026_belgian_grand_prix_-_decision_-_car_44.pdf');
+      },
+      attempts: 1,
+    });
+    assert.equal(urls.length, 1);
+    assert.match(warnings[0], /Falling back/);
+  } finally {
+    console.warn = originalWarn;
+  }
+});
+
+test('broad penalty discovery includes review documents', async () => {
+  const urls = await discoverPotentialPenaltyPdfs(RACE, {
+    fetchImpl: async () => pageWith(
+      '2026_belgian_grand_prix_-_decision_-_car_44.pdf',
+      '2026_belgian_grand_prix_-_appeal_of_decision_-_car_44.pdf',
+    ),
+  });
+  assert.equal(urls.length, 2);
+});
+
+test('monetary fine discovery includes active fines and skips zero or unreadable PDFs', async () => {
+  const urls = await discoverMonetaryFinePdfs(RACE, {
+    fetchImpl: async () => pageWith(
+      '2026_belgian_grand_prix_-_decision_-_car_44.pdf',
+      '2026_belgian_grand_prix_-_decision_-_car_16.pdf',
+      '2026_belgian_grand_prix_-_decision_-_car_63.pdf',
+    ),
+    fetchPdfTextImpl: async (url) => {
+      if (url.includes('car_44')) return 'The driver is fined €4,000.';
+      if (url.includes('car_16')) return 'No fine imposed.';
+      throw new Error('unreadable PDF');
+    },
+  });
+  assert.deepEqual(urls, ['https://www.fia.com/system/files/decision-document/2026_belgian_grand_prix_-_decision_-_car_44.pdf']);
 });

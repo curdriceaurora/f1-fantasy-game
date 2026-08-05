@@ -1,14 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { once } from 'node:events';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import siteModeHandler from '../api/site-mode.js';
-import standingsHandler from '../api/dashboard/standings.js';
-import calendarHandler from '../api/dashboard/calendar.js';
-import teamsIndexHandler from '../api/dashboard/teams/index.js';
-import teamDetailHandler from '../api/dashboard/teams/[teamId].js';
-import raceDetailHandler from '../api/dashboard/races/[raceId].js';
-import selectionHandler from '../api/selection.js';
-import { resolveApiRoute } from '../server.js';
+import standingsHandler, { createStandingsHandler } from '../api/dashboard/standings.js';
+import calendarHandler, { createCalendarHandler } from '../api/dashboard/calendar.js';
+import teamsIndexHandler, { createTeamsIndexHandler } from '../api/dashboard/teams/index.js';
+import teamDetailHandler, { createTeamDetailHandler } from '../api/dashboard/teams/[teamId].js';
+import raceDetailHandler, { createRaceDetailHandler } from '../api/dashboard/races/[raceId].js';
+import selectionHandler, { createSelectionHandler, pickEntry, resolveSelectionDataPath } from '../api/selection.js';
+import {
+  createAppServer,
+  resolveApiRoute,
+  resolveStaticPath,
+  startServer,
+} from '../server.js';
+import { SITE_MODES } from '../lib/site-config.js';
 
 // Helper mock response factory
 function createMockRes() {
@@ -122,6 +132,15 @@ test('api/dashboard/races/[raceId] returns 404 for non-existent raceId', () => {
   assert.deepStrictEqual(res.body, { error: 'Race not found' });
 });
 
+test('api/dashboard/races/[raceId] returns an existing scored race', () => {
+  const req = { query: { raceId: 'australia' }, method: 'GET' };
+  const res = createMockRes();
+  raceDetailHandler(req, res);
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.body.raceId, 'australia');
+  assert.ok(Array.isArray(res.body.teams));
+});
+
 test('api/selection rejects missing or invalid accuracy parameter', () => {
   const reqInvalid1 = { query: {}, method: 'GET' };
   const res1 = createMockRes();
@@ -155,6 +174,56 @@ test('api/selection returns valid selection and email for valid accuracy', () =>
   assert.ok(res.body.emailBody.includes('Test Team'));
 });
 
+test('selection endpoint exposes fallback, failure, and data-path behavior', () => {
+  const fallback = pickEntry(0.5, undefined, [
+    { p: 1000, d: [0, 1, 2], t: [0, 1, 2] },
+    { p: 0, d: [3, 4, 5], t: [3, 4, 5] },
+  ]);
+  assert.equal(fallback.rank, 1);
+  assert.equal(fallback.totalEntries, 2);
+  assert.equal(
+    resolveSelectionDataPath('/missing-cwd', '/module/api', () => { throw new Error('missing'); }),
+    '/module/data/selections.json',
+  );
+
+  const originalError = console.error;
+  console.error = () => {};
+  try {
+    const res = createMockRes();
+    createSelectionHandler(() => { throw new Error('selection unavailable'); })(
+      { query: { accuracy: '0.5' } },
+      res,
+    );
+    assert.equal(res.statusCode, 500);
+    assert.deepEqual(res.body, { error: 'Internal server error' });
+  } finally {
+    console.error = originalError;
+  }
+});
+
+test('dashboard API handlers return stable 500 payloads when loaders fail', () => {
+  const originalError = console.error;
+  console.error = () => {};
+  const failingLoader = () => { throw new Error('storage unavailable'); };
+  try {
+    const cases = [
+      [createCalendarHandler(failingLoader), {}, 'Unable to load calendar'],
+      [createStandingsHandler(failingLoader), {}, 'Unable to load standings'],
+      [createTeamsIndexHandler(failingLoader), {}, 'Unable to load teams'],
+      [createTeamDetailHandler(failingLoader), { teamId: 'one' }, 'Unable to load team detail'],
+      [createRaceDetailHandler(failingLoader), { raceId: 'australia' }, 'Unable to load race detail'],
+    ];
+    for (const [handler, query, message] of cases) {
+      const res = createMockRes();
+      handler({ query, method: 'GET' }, res);
+      assert.equal(res.statusCode, 500);
+      assert.deepEqual(res.body, { error: message });
+    }
+  } finally {
+    console.error = originalError;
+  }
+});
+
 test('server.js resolveApiRoute maps static and dynamic API paths correctly', () => {
   const selectionRoute = resolveApiRoute('/api/selection');
   assert.ok(selectionRoute);
@@ -176,4 +245,97 @@ test('server.js resolveApiRoute maps static and dynamic API paths correctly', ()
 
   const invalidRoute = resolveApiRoute('/api/nonexistent/path/999');
   assert.strictEqual(invalidRoute, null);
+});
+
+test('dev server static paths stay inside the configured public directory', () => {
+  const publicDir = join(tmpdir(), 'f1-public-root');
+  assert.equal(resolveStaticPath(publicDir, '/asset.bin'), join(publicDir, 'asset.bin'));
+  assert.equal(resolveStaticPath(publicDir, 'nested/asset.bin'), join(publicDir, 'nested/asset.bin'));
+  assert.equal(resolveStaticPath(publicDir, '/../secret.txt'), null);
+  assert.equal(resolveStaticPath(publicDir, '/nested/../../../secret.txt'), null);
+});
+
+async function request(server, pathname) {
+  if (!server.listening) {
+    server.listen(0, '127.0.0.1');
+    await once(server, 'listening');
+  }
+  const { port } = server.address();
+  const response = await fetch(`http://127.0.0.1:${port}${pathname}`, { redirect: 'manual' });
+  return {
+    status: response.status,
+    location: response.headers.get('location'),
+    contentType: response.headers.get('content-type'),
+    body: await response.text(),
+  };
+}
+
+test('dev server enforces season and preseason redirects', async (t) => {
+  const season = createAppServer({ getSiteMode: () => SITE_MODES.SEASON });
+  const preseason = createAppServer({ getSiteMode: () => SITE_MODES.PRESEASON });
+  t.after(() => season.close());
+  t.after(() => preseason.close());
+
+  assert.deepEqual(await request(season, '/'), {
+    status: 302, location: '/dashboard.html', contentType: null, body: '',
+  });
+  assert.equal((await request(season, '/calculator.html')).location, '/dashboard.html');
+  assert.equal((await request(preseason, '/')).location, '/index.html');
+  assert.equal((await request(preseason, '/dashboard.html')).location, '/index.html');
+});
+
+test('dev server serves static and API responses and their failure paths', async (t) => {
+  const publicDir = mkdtempSync(join(tmpdir(), 'f1-server-public-'));
+  writeFileSync(join(publicDir, 'asset.bin'), 'binary-content');
+  const server = createAppServer({ publicDir, getSiteMode: () => SITE_MODES.SEASON });
+  t.after(() => {
+    server.close();
+    rmSync(publicDir, { recursive: true, force: true });
+  });
+
+  const api = await request(server, '/api/site-mode?source=test');
+  assert.equal(api.status, 200);
+  assert.match(api.contentType, /application\/json/);
+  assert.equal(JSON.parse(api.body).mode, SITE_MODES.SEASON);
+
+  const missingApi = await request(server, '/api/not-real');
+  assert.equal(missingApi.status, 404);
+  assert.equal(missingApi.body, 'API route not found');
+
+  const asset = await request(server, '/asset.bin');
+  assert.equal(asset.status, 200);
+  assert.equal(asset.contentType, 'application/octet-stream');
+  assert.equal(asset.body, 'binary-content');
+
+  const missingFile = await request(server, '/missing.html');
+  assert.equal(missingFile.status, 404);
+  assert.equal(missingFile.body, 'Not found');
+});
+
+test('dev server returns 500 when an API module cannot load', async (t) => {
+  const server = createAppServer({
+    getSiteMode: () => SITE_MODES.SEASON,
+    resolveApiRoute: () => ({ filePath: '/invalid/api.js', params: {} }),
+    importApiModule: async () => { throw new Error('load failed'); },
+  });
+  t.after(() => server.close());
+
+  const response = await request(server, '/api/failure');
+  assert.equal(response.status, 500);
+  assert.equal(response.body, 'API route error');
+});
+
+test('startServer starts on an ephemeral port', async (t) => {
+  const originalLog = console.log;
+  const logs = [];
+  console.log = (...values) => logs.push(values.join(' '));
+  const server = startServer(0, { getSiteMode: () => SITE_MODES.PRESEASON });
+  t.after(() => {
+    console.log = originalLog;
+    server.close();
+  });
+  await once(server, 'listening');
+
+  assert.ok(server.address().port > 0);
+  assert.ok(logs.some((line) => line.includes('Preseason Entry Builder')));
 });

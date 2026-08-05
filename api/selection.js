@@ -8,10 +8,16 @@ const __dirname = dirname(__filename);
 
 // ── Load data once at module level (cached across warm invocations) ──
 // Try Vercel's cwd first, then relative to this file
-let dataPath = join(process.cwd(), 'data', 'selections.json');
-try { readFileSync(dataPath); } catch {
-  dataPath = join(__dirname, '..', 'data', 'selections.json');
+export function resolveSelectionDataPath(cwd = process.cwd(), moduleDir = __dirname, readFile = readFileSync) {
+  const cwdPath = join(cwd, 'data', 'selections.json');
+  try {
+    readFile(cwdPath);
+    return cwdPath;
+  } catch {
+    return join(moduleDir, '..', 'data', 'selections.json');
+  }
 }
+const dataPath = resolveSelectionDataPath();
 const DATA = JSON.parse(readFileSync(dataPath, 'utf-8'));
 
 const PREDICTION_BONUS = 24; // Constant added to all entries
@@ -42,10 +48,10 @@ for (let inv = 0; inv <= 20; inv++) {
 }
 
 // ── Helper: pick entry by accuracy within an investment pool ──
-function pickEntry(accuracy, investment) {
+export function pickEntry(accuracy, investment, forcedPool = null) {
   // Choose pool: investment-filtered or full dataset
-  let pool = DATA.entries;
-  if (investment !== undefined && !isNaN(investment)
+  let pool = forcedPool || DATA.entries;
+  if (!forcedPool && investment !== undefined && !isNaN(investment)
       && investment >= 0 && investment <= 20
       && POOLS[investment]?.length > 0) {
     pool = POOLS[investment];
@@ -118,8 +124,9 @@ function buildEmail(drivers, teams, totalCost, investmentValue, managerName, tea
 }
 
 // ── API handler ──
-export default function handler(req, res) {
-  try {
+export function createSelectionHandler(selectEntry = pickEntry) {
+  return function handler(req, res) {
+    try {
     const { accuracy, name, team, investment } = req.query;
 
     const managerName = name || 'Player';
@@ -132,7 +139,7 @@ export default function handler(req, res) {
 
     const inv = investment !== undefined ? parseInt(investment) : undefined;
 
-    const { entry, rank, totalEntries } = pickEntry(acc, inv);
+    const { entry, rank, totalEntries } = selectEntry(acc, inv);
 
     // Reconstruct full selection
     const drivers = entry.d.map(i => DRIVERS[i]);
@@ -158,8 +165,11 @@ export default function handler(req, res) {
       predictions: PREDICTIONS,
       emailBody,
     });
-  } catch (err) {
-    console.error('Selection API error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
+    } catch (err) {
+      console.error('Selection API error:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  };
 }
+
+export default createSelectionHandler();

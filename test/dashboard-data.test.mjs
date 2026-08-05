@@ -1,12 +1,30 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  buildWeekOverWeekDelta,
+  compareStandings,
   loadStandingsData,
   loadCalendarScheduleData,
   loadTeamListData,
   loadTeamDetail,
   loadRaceDetail,
 } from '../lib/dashboard-data.js';
+
+test('standings helpers cover every tiebreak and empty-history behavior', () => {
+  assert.ok(compareStandings(
+    { totalPoints: 10, latestRacePoints: 2, displayName: 'A' },
+    { totalPoints: 12, latestRacePoints: 2, displayName: 'B' },
+  ) > 0);
+  assert.ok(compareStandings(
+    { totalPoints: 10, latestRacePoints: 2, displayName: 'A' },
+    { totalPoints: 10, latestRacePoints: 4, displayName: 'B' },
+  ) > 0);
+  assert.ok(compareStandings(
+    { totalPoints: 10, latestRacePoints: 2, displayName: 'B' },
+    { totalPoints: 10, latestRacePoints: 2, displayName: 'A' },
+  ) > 0);
+  assert.equal(buildWeekOverWeekDelta([], []).size, 0);
+});
 
 test('loadStandingsData returns structured calendar, standings, and week-over-week deltas', () => {
   const data = loadStandingsData();

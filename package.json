@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "node server.js",
     "lint": "eslint .",
-    "quality:check": "npm run lint && npm run test",
+    "quality:check": "npm run lint && npm run test:coverage",
     "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=95",
     "test:e2e": "playwright test",
     "test:generate-corpus": "node scripts/generate-test-corpus.mjs",
     "sync:entries": "node scripts/sync-season-entries.mjs",

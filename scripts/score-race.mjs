@@ -90,20 +90,23 @@ export async function scoreRace(raceId, services = {}) {
   };
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
+export async function runScoreRaceCli(argv, services = {}) {
+  const args = parseArgs(argv);
   if (!args.race) {
     throw new Error('Usage: npm run score:race -- --race <raceId>');
   }
 
-  const result = await scoreRace(args.race);
-  console.log(`Scored ${result.race.name}.`);
-  console.log(`Applied ${result.fineSummary.documents.length} FIA fine document(s).`);
-  console.log(`Standings rebuilt for ${result.scoreboard.standings.length} teams.`);
+  const scoreRaceImpl = services.scoreRace || scoreRace;
+  const log = services.log || console.log;
+  const result = await scoreRaceImpl(args.race);
+  log(`Scored ${result.race.name}.`);
+  log(`Applied ${result.fineSummary.documents.length} FIA fine document(s).`);
+  log(`Standings rebuilt for ${result.scoreboard.standings.length} teams.`);
+  return result;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch((error) => {
+  runScoreRaceCli(process.argv.slice(2)).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });

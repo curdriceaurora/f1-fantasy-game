@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { tmpdir } from 'os';
-import { scoreRace } from '../scripts/score-race.mjs';
+import { runScoreRaceCli, scoreRace } from '../scripts/score-race.mjs';
 import { normalizedRacePath, scoredRacePath, standingsPath, teamScorePath } from '../lib/season-store.js';
 
 function writeJson(filePath, value) {
@@ -221,4 +221,56 @@ test('scoreRace fails closed on sprint weekends when sprint results are unavaila
       /sprint results are missing/,
     );
   });
+});
+
+test('scoreRace rejects empty entries and unknown race ids before fetching providers', async () => {
+  await withTempSeason(async (seasonDir) => {
+    writeJson(join(seasonDir, 'config', 'entries.json'), []);
+    await assert.rejects(scoreRace('australia'), /No imported entries found/);
+
+    writeJson(join(seasonDir, 'config', 'entries.json'), [{ teamId: 'test-team' }]);
+    await assert.rejects(scoreRace('not-a-race'), /Unknown race id/);
+  });
+});
+
+test('scoreRace fetches FIA results when weekend data does not include them', async () => {
+  await withTempSeason(async (seasonDir) => {
+    writeJson(join(seasonDir, 'config', 'fine-documents.json'), {
+      australia: { reviewed: true, documents: [], reviewedAt: '2026-03-09T12:00:00Z' },
+    });
+    let fiaFetches = 0;
+    await scoreRace('australia', {
+      now: new Date('2026-03-09T12:01:00Z'),
+      fetchRaceWeekend: async () => {
+        const fetched = stubFetchedRace();
+        delete fetched.fiaResults;
+        return fetched;
+      },
+      fetchRaceResults: async () => {
+        fiaFetches += 1;
+        return {};
+      },
+      fetchFineSummary: async () => ({ drivers: {}, teams: {}, documents: [], warnings: [] }),
+    });
+    assert.equal(fiaFetches, 1);
+  });
+});
+
+test('runScoreRaceCli validates arguments and reports a successful score', async () => {
+  await assert.rejects(runScoreRaceCli([]), /Usage/);
+  const logs = [];
+  const result = await runScoreRaceCli(['--race', 'australia'], {
+    scoreRace: async (raceId) => ({
+      race: { id: raceId, name: 'Australian Grand Prix' },
+      fineSummary: { documents: [{ url: 'fine.pdf' }] },
+      scoreboard: { standings: [{ teamId: 'one' }] },
+    }),
+    log: (message) => logs.push(message),
+  });
+  assert.equal(result.race.id, 'australia');
+  assert.deepEqual(logs, [
+    'Scored Australian Grand Prix.',
+    'Applied 1 FIA fine document(s).',
+    'Standings rebuilt for 1 teams.',
+  ]);
 });
