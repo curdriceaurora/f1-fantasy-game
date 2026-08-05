@@ -162,6 +162,7 @@ test('sprint positions are included in driver race totals on sprint weekends', (
     raceId: 'china',
     raceName: 'Chinese Grand Prix',
     date: '2026-03-15',
+    sprintWeekend: true,
     drivers: structuredClone(baseDrivers),
     teams: {},
   });
@@ -170,6 +171,7 @@ test('sprint positions are included in driver race totals on sprint weekends', (
     raceId: 'china',
     raceName: 'Chinese Grand Prix',
     date: '2026-03-15',
+    sprintWeekend: true,
     drivers: {
       ...structuredClone(baseDrivers),
       'george-russell': { ...baseDrivers['george-russell'], sprintPosition: 2 },
@@ -183,4 +185,160 @@ test('sprint positions are included in driver race totals on sprint weekends', (
   const kimiComponents = withSprint.drivers.find((driver) => driver.driverId === 'kimi-antonelli')?.components || [];
   assert.ok(georgeComponents.some((component) => component.label === 'Sprint P2' && component.points === 7));
   assert.ok(kimiComponents.some((component) => component.label === 'Sprint P12' && component.points === 0));
+});
+
+test('a selected seat scores different qualifying, sprint, and race occupants', () => {
+  const entry = {
+    selectedDriverIds: ['george-russell'],
+    selectedConstructorIds: [],
+    homeCircuitId: 'elsewhere',
+    investmentBonusPerRace: 0,
+  };
+  const normalizedRace = {
+    raceId: 'test-race',
+    raceName: 'Test Race',
+    date: '2026-08-05',
+    sprintWeekend: true,
+    seatOccupants: {
+      'mercedes:1': {
+        qualifying: 'george-russell',
+        sprint: 'kimi-antonelli',
+        race: 'reserve-driver',
+      },
+    },
+    drivers: {
+      'george-russell': {
+        // This grid belongs to a different race occupant and must not worsen the
+        // qualifying occupant's P1 score after the seat changes hands.
+        qualifyingPosition: 1, gridStart: 12, sprintPosition: null, racePosition: null,
+        teamId: 'mercedes',
+        fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0,
+      },
+      'kimi-antonelli': {
+        qualifyingPosition: 5, gridStart: 5, sprintPosition: 2, racePosition: 8,
+        teamId: 'mercedes',
+        fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0,
+      },
+      'reserve-driver': {
+        name: 'Reserve Driver',
+        qualifyingPosition: null, gridStart: 10, improvementGrid: 10, sprintPosition: null, racePosition: 5,
+        teamId: 'mercedes',
+        fastestLap: true, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+      },
+    },
+    teams: {},
+  };
+
+  const scored = scoreFantasyTeam(entry, normalizedRace);
+  const contribution = scored.drivers[0];
+  assert.deepEqual(contribution.sessionOccupants, {
+    qualifying: 'george-russell',
+    sprint: 'kimi-antonelli',
+    race: 'reserve-driver',
+  });
+  assert.equal(contribution.sessionOccupantDetails.race.name, 'Reserve Driver');
+  assert.equal(contribution.components.find((item) => item.label.startsWith('Qualifying')).points, 3);
+  assert.equal(contribution.qualifyingGridStart, 1);
+  assert.equal(contribution.gridStart, 10);
+  assert.equal(contribution.components.find((item) => item.label === 'Sprint P2').points, 7);
+  assert.equal(contribution.components.find((item) => item.label === 'Race finish P5').points, 10);
+  assert.equal(contribution.components.find((item) => item.label === 'Position change').points, 10);
+  assert.equal(contribution.components.find((item) => item.label === 'Fastest lap').points, 2);
+});
+
+test('a one-for-one race lineup change automatically scores the replacement', () => {
+  const entry = {
+    selectedDriverIds: ['george-russell'],
+    selectedConstructorIds: [],
+    homeCircuitId: 'elsewhere',
+    investmentBonusPerRace: 0,
+  };
+  const normalizedRace = {
+    raceId: 'test-race',
+    raceName: 'Test Race',
+    date: '2026-08-05',
+    sprintWeekend: false,
+    drivers: {
+      'reserve-driver': {
+        name: 'Reserve Driver', teamId: 'mercedes', qualifyingPosition: 3, gridStart: 3,
+        improvementGrid: 3, sprintPosition: null, racePosition: 2, fastestLap: false,
+        gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+      },
+      'kimi-antonelli': {
+        teamId: 'mercedes', qualifyingPosition: 5, gridStart: 5, improvementGrid: 5,
+        sprintPosition: null, racePosition: 6, fastestLap: false, gridPenaltyPlaces: 0,
+        timePenaltySeconds: 0, finePoints: 0, classified: true,
+      },
+    },
+    teams: {
+      mercedes: { teamId: 'mercedes', driverIds: ['reserve-driver', 'kimi-antonelli'], finePoints: 0 },
+    },
+  };
+
+  const contribution = scoreFantasyTeam(entry, normalizedRace).drivers[0];
+  assert.equal(contribution.seatId, 'mercedes:1');
+  assert.equal(contribution.sessionOccupants.qualifying, 'reserve-driver');
+  assert.equal(contribution.sessionOccupants.sprint, null);
+  assert.equal(contribution.sessionOccupants.race, 'reserve-driver');
+  assert.equal(contribution.racePosition, 2);
+});
+
+test('constructor scoring preserves seat weighting when its lead driver is replaced', () => {
+  const normalizedRace = {
+    raceId: 'test-race',
+    raceName: 'Test Race',
+    date: '2026-08-05',
+    sprintWeekend: false,
+    drivers: {
+      'reserve-driver': {
+        name: 'Reserve Driver', teamId: 'mercedes', qualifyingPosition: 3, gridStart: 3,
+        improvementGrid: 3, sprintPosition: null, racePosition: 2, fastestLap: false,
+        gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+      },
+      'kimi-antonelli': {
+        teamId: 'mercedes', qualifyingPosition: 5, gridStart: 5, improvementGrid: 5,
+        sprintPosition: null, racePosition: 6, fastestLap: false, gridPenaltyPlaces: 0,
+        timePenaltySeconds: 0, finePoints: 0, classified: true,
+      },
+    },
+    teams: {
+      mercedes: {
+        teamId: 'mercedes',
+        driverIds: ['reserve-driver', 'kimi-antonelli'],
+        finePoints: 0,
+      },
+    },
+  };
+
+  const scored = scoreFantasyTeam({
+    selectedDriverIds: [],
+    selectedConstructorIds: ['mercedes'],
+    homeCircuitId: 'elsewhere',
+    investmentBonusPerRace: 0,
+  }, normalizedRace);
+
+  const constructor = scored.constructors[0];
+  assert.deepEqual(constructor.driverIds, ['reserve-driver', 'kimi-antonelli']);
+  assert.equal(constructor.weightingBreakdown.leadDriverId, 'george-russell');
+  assert.equal(constructor.weightingBreakdown.leadDriverName, 'George Russell');
+  assert.equal(constructor.weightingBreakdown.leadDriverPoints, 20);
+  assert.equal(constructor.weightingBreakdown.secondDriverId, 'kimi-antonelli');
+});
+
+test('scoreFantasyTeam fails closed when a configured seat is empty', () => {
+  assert.throws(
+    () => scoreFantasyTeam({
+      selectedDriverIds: ['george-russell'],
+      selectedConstructorIds: [],
+      homeCircuitId: 'elsewhere',
+      investmentBonusPerRace: 0,
+    }, {
+      raceId: 'test-race',
+      raceName: 'Test Race',
+      drivers: { 'george-russell': { teamId: 'mercedes' } },
+      teams: {},
+      seatOccupants: { 'mercedes:1': { race: null } },
+    }),
+    /empty-seat scoring is blocked pending Martin's ruling/,
+  );
 });
