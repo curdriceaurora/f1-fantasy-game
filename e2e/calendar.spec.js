@@ -90,3 +90,18 @@ test('a postponed race renders a distinct inactive treatment', async ({ page }) 
   await page.waitForLoadState('networkidle');
   assertHealthy();
 });
+
+// A failed request must not leave the header showing a stale, hard-coded count.
+// (No monitorPage here: the 5xx and its console.error are the expected behaviour.)
+test('a failed calendar request clears the count instead of showing a stale number', async ({ page }) => {
+  await page.route('**/api/dashboard/calendar', (route) => route.fulfill({
+    status: 500,
+    contentType: 'application/json',
+    body: JSON.stringify({ error: 'boom' }),
+  }));
+
+  await page.goto('/rules.html');
+
+  await expect(page.locator('#calendar-grid')).toContainText('temporarily unavailable');
+  await expect(page.locator('#calendar-count')).toHaveText('—');
+});

@@ -523,7 +523,7 @@
     <!-- ══════════════════ CALENDAR ══════════════════ -->
     <section id="calendar" class="glass-card" style="padding: 22px; margin-top: 32px;">
       <h2 class="section-title" style="margin-top: 0;">📅 2026 Race Calendar</h2>
-      <p class="rules-text"><span id="calendar-count">23</span> races. Sprint weekends marked with <span class="sprint-badge">SPRINT</span>; cancelled races shown greyed out. Deadline for
+      <p class="rules-text"><span id="calendar-count">…</span> races. Sprint weekends marked with <span class="sprint-badge">SPRINT</span>; cancelled races shown greyed out. Deadline for
         entry: <strong>Thursday 5th March 2026, 4pm</strong>.</p>
       <div class="calendar-grid" id="calendar-grid"></div>
     </section>
@@ -698,6 +698,7 @@
       return formatDate(race.date) + (race.venue ? ` · ${race.venue}` : '');
     };
     const grid = document.getElementById('calendar-grid');
+    const count = document.getElementById('calendar-count');
     try {
       const response = await fetch('/api/dashboard/calendar');
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -710,10 +711,12 @@
             <div class="race-date">${dateLine(race)}</div>
           </div>${badges(race)}
         </div>`).join('');
-      const count = document.getElementById('calendar-count');
       if (count) count.textContent = String(data.activeCount);
     } catch (error) {
+      console.error('Failed to load race calendar:', error);
       grid.innerHTML = '<p class="rules-text">Calendar is temporarily unavailable.</p>';
+      // Don't leave a stale hard-coded number next to an error message.
+      if (count) count.textContent = '—';
     }
   </script>
 </body>
