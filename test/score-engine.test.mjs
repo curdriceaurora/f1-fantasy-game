@@ -13,6 +13,26 @@ test('qualifying points use the grid position at the start, not the qualifying r
   assert.equal(quali.points, -4);
 });
 
+test('position change scores from the improvement baseline (qualifying DSQ), not the real grid start', () => {
+  // Verstappen (Champion) was disqualified in qualifying: real grid P20, but the
+  // improvement baseline is the last grid slot (22). He finishes P6.
+  const contribution = buildDriverContribution('max-verstappen', {
+    qualifyingPosition: null, gridStart: 20, improvementGrid: 22, racePosition: 6, sprintPosition: null,
+    fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+  }, { raceId: 'australia', raceName: 'Australia' });
+  const positionChange = contribution.components.find((c) => c.label === 'Position change');
+  assert.equal(positionChange.points, (22 - 6) * 2); // 32, not (20 - 6) * 2 = 28
+});
+
+test('position change falls back to the grid start when no improvement baseline is set', () => {
+  const contribution = buildDriverContribution('max-verstappen', {
+    qualifyingPosition: null, gridStart: 4, racePosition: 1, sprintPosition: null,
+    fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+  }, { raceId: 'x', raceName: 'X' });
+  const positionChange = contribution.components.find((c) => c.label === 'Position change');
+  assert.equal(positionChange.points, (4 - 1) * 2);
+});
+
 test('constructor weighting favours the roster lead driver, not the higher scorer that race', () => {
   // Ferrari's designated lead is Leclerc; Hamilton outscored him this race.
   const contribution = buildConstructorContribution(
