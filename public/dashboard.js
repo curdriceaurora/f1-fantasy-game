@@ -9,6 +9,15 @@ function weekOverWeekClass(value) {
   return value > 0 ? 'component-positive' : 'component-negative';
 }
 
+// Week-over-week change as a state chip: direction is carried by shape and colour,
+// not just the sign, so movement reads at a glance in a dense table.
+function formatWeekOverWeekChip(value) {
+  if (value == null) return '<span class="delta-chip">—</span>';
+  if (value === 0) return '<span class="delta-chip delta-flat">No change</span>';
+  const up = value > 0;
+  return `<span class="delta-chip ${up ? 'delta-up' : 'delta-down'}">${up ? '▲' : '▼'} ${Math.abs(value)}</span>`;
+}
+
 function buildRaceStatusRows(races) {
   const lastEvaluatedRace = [...races].reverse().find((race) => race.status === 'finalized');
   const nextScheduledRace = races.find((race) => race.status === 'not run');
@@ -191,16 +200,56 @@ async function fetchJson(url) {
   return response.json();
 }
 
+// Surface the season at a glance before the full table: who leads, how far in,
+// what's next, and the size of the field.
+function renderSeasonSummary(data) {
+  const root = document.getElementById('season-summary');
+  if (!root) return;
+  const leader = data.standings[0];
+  const racesScored = data.races.filter((race) => race.status === 'finalized').length;
+  const activeRaces = data.races.filter((race) => race.status !== 'cancelled').length;
+  // Distinguish the ways a season can be "not complete": a scheduled next race,
+  // a race that has run but isn't scored yet (results pending, known date), and a
+  // postponed race with no firm date (TBC). Anything else means the season's done.
+  const nextRace = data.races.find((race) => race.status === 'not run');
+  const awaitingRace = data.races.find((race) => race.status === 'awaiting Monday scoring' || race.status === 'awaiting fine review');
+  const stillPending = data.races.some((race) => race.status !== 'finalized' && race.status !== 'cancelled');
+  let nextValue = 'Season complete';
+  let nextSub = '';
+  if (nextRace) {
+    nextValue = `R${nextRace.round} · ${nextRace.name}`;
+    nextSub = formatRaceDate(nextRace.date);
+  } else if (awaitingRace) {
+    nextValue = 'Results pending';
+    nextSub = awaitingRace.round ? `R${awaitingRace.round} · ${awaitingRace.name}` : awaitingRace.name;
+  } else if (stillPending) {
+    nextValue = 'To be confirmed';
+    nextSub = 'date TBC';
+  }
+  const tiles = [
+    { label: 'Championship leader', value: leader ? leader.displayName : '—', sub: leader ? `${leader.totalPoints} pts` : '', lead: true },
+    { label: 'Races scored', value: String(racesScored), sub: `of ${activeRaces}` },
+    { label: 'Next race', value: nextValue, sub: nextSub },
+    { label: 'Teams entered', value: String(data.standings.length), sub: 'principals' },
+  ];
+  root.innerHTML = tiles.map((tile) => `
+    <div class="summary-tile${tile.lead ? ' summary-tile-lead' : ''}">
+      <dt class="summary-label">${tile.label}</dt>
+      <dd class="summary-value">${tile.value}${tile.sub ? `<span class="summary-sub">${tile.sub}</span>` : ''}</dd>
+    </div>
+  `).join('');
+}
+
 function renderStandings(data) {
   const standingsBody = document.getElementById('standings-body');
   standingsBody.innerHTML = data.standings.map((row) => `
     <tr class="standings-row-link" data-team-href="team.html?team=${encodeURIComponent(row.teamId)}">
-      <td class="standing-rank"><span class="rank-pill">#${row.rank}</span></td>
+      <td class="standing-rank"><span class="rank-pill${row.rank <= 3 ? ` rank-pill-p${row.rank}` : ''}">#${row.rank}</span></td>
       <td class="standing-name"><a class="team-link" href="team.html?team=${encodeURIComponent(row.teamId)}">${row.displayName}</a></td>
       <td class="standing-principal" data-label="Principal">${row.principalName}</td>
       <td class="standing-total points-strong" data-label="Total">${row.totalPoints}</td>
       <td class="standing-latest ${pointsClass(row.latestRacePoints)}" data-label="Race">${signedPoints(row.latestRacePoints)}</td>
-      <td class="standing-delta ${weekOverWeekClass(row.wowDelta)}" data-label="Change">${formatWeekOverWeekDelta(row.wowDelta)}</td>
+      <td class="standing-delta" data-label="Change">${formatWeekOverWeekChip(row.wowDelta)}</td>
     </tr>
   `).join('');
 
@@ -503,6 +552,7 @@ function renderTeamDetail(team) {
 
 async function initStandingsPage() {
   const standings = await fetchJson('/api/dashboard/standings');
+  renderSeasonSummary(standings);
   renderStandings(standings);
   renderBigMovers(standings);
   initStandingsFilter(standings);
