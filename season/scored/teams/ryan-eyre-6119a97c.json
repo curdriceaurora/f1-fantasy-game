@@ -2,7 +2,7 @@
   "teamId": "ryan-eyre-6119a97c",
   "principalName": "Ryan Eyre",
   "displayName": "Eyre We Go Again",
-  "totalPoints": 139,
+  "totalPoints": 144,
   "completedRaces": 11,
   "latestRacePoints": 31,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": -7,
-      "driverSubtotal": -14,
-      "constructorSubtotal": 7,
+      "baseSubtotal": -2,
+      "driverSubtotal": -12,
+      "constructorSubtotal": 10,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 0,
+      "totalPoints": 5,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -27,9 +27,10 @@
           "qualifyingPosition": null,
           "sprintPosition": null,
           "gridStart": 21,
+          "improvementGrid": 22,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 6,
+          "totalPoints": 8,
           "components": [
             {
               "label": "Qualifying (grid P21)",
@@ -40,8 +41,8 @@
               "points": 0
             },
             {
-              "label": "Position change",
-              "points": 12
+              "label": "Position change (from P22)",
+              "points": 14
             }
           ],
           "raceContext": {
@@ -58,6 +59,7 @@
           "qualifyingPosition": 11,
           "sprintPosition": null,
           "gridStart": 11,
+          "improvementGrid": 11,
           "racePosition": 22,
           "classified": false,
           "totalPoints": -22,
@@ -89,6 +91,7 @@
           "qualifyingPosition": 19,
           "sprintPosition": null,
           "gridStart": 19,
+          "improvementGrid": 19,
           "racePosition": 19,
           "classified": true,
           "totalPoints": 2,
@@ -121,22 +124,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 5,
+          "totalPoints": 8,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 29,
+            "leadDriverPoints": 33,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
             "secondDriverPoints": -31,
-            "formula": "ceil((3×29 + 2×-31) ÷ 5)",
-            "weightedRawPoints": 5,
-            "weightedPoints": 5
+            "formula": "ceil((3×33 + 2×-31) ÷ 5)",
+            "weightedRawPoints": 7.4,
+            "weightedPoints": 8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
+              "points": 8
             }
           ]
         },
@@ -195,7 +198,7 @@
           ]
         }
       ],
-      "runningTotal": 0
+      "runningTotal": 5
     },
     {
       "raceId": "china",
@@ -218,6 +221,7 @@
           "qualifyingPosition": 17,
           "sprintPosition": 12,
           "gridStart": 17,
+          "improvementGrid": 17,
           "racePosition": 9,
           "classified": true,
           "totalPoints": 14,
@@ -253,6 +257,7 @@
           "qualifyingPosition": 11,
           "sprintPosition": 20,
           "gridStart": 11,
+          "improvementGrid": 11,
           "racePosition": 11,
           "classified": true,
           "totalPoints": 0,
@@ -288,6 +293,7 @@
           "qualifyingPosition": 20,
           "sprintPosition": 21,
           "gridStart": 19,
+          "improvementGrid": 19,
           "racePosition": 13,
           "classified": true,
           "totalPoints": 14,
@@ -398,7 +404,7 @@
           ]
         }
       ],
-      "runningTotal": 35
+      "runningTotal": 40
     },
     {
       "raceId": "japan",
@@ -421,6 +427,7 @@
           "qualifyingPosition": 16,
           "sprintPosition": null,
           "gridStart": 16,
+          "improvementGrid": 16,
           "racePosition": 15,
           "classified": true,
           "totalPoints": -2,
@@ -452,6 +459,7 @@
           "qualifyingPosition": 13,
           "sprintPosition": null,
           "gridStart": 13,
+          "improvementGrid": 13,
           "racePosition": 11,
           "classified": true,
           "totalPoints": 4,
@@ -483,6 +491,7 @@
           "qualifyingPosition": 20,
           "sprintPosition": null,
           "gridStart": 20,
+          "improvementGrid": 20,
           "racePosition": 19,
           "classified": true,
           "totalPoints": 4,
@@ -589,7 +598,7 @@
           ]
         }
       ],
-      "runningTotal": 52
+      "runningTotal": 57
     },
     {
       "raceId": "miami",
@@ -612,6 +621,7 @@
           "qualifyingPosition": 13,
           "sprintPosition": 13,
           "gridStart": 13,
+          "improvementGrid": 13,
           "racePosition": 9,
           "classified": true,
           "totalPoints": 8,
@@ -647,6 +657,7 @@
           "qualifyingPosition": 10,
           "sprintPosition": 20,
           "gridStart": 10,
+          "improvementGrid": 10,
           "racePosition": 19,
           "classified": true,
           "totalPoints": -15,
@@ -682,6 +693,7 @@
           "qualifyingPosition": 19,
           "sprintPosition": 19,
           "gridStart": 19,
+          "improvementGrid": 19,
           "racePosition": 18,
           "classified": true,
           "totalPoints": 4,
@@ -792,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": 59
+      "runningTotal": 64
     },
     {
       "raceId": "canada",
@@ -815,6 +827,7 @@
           "qualifyingPosition": 15,
           "sprintPosition": 10,
           "gridStart": 15,
+          "improvementGrid": 15,
           "racePosition": 9,
           "classified": true,
           "totalPoints": 10,
@@ -850,6 +863,7 @@
           "qualifyingPosition": 11,
           "sprintPosition": 15,
           "gridStart": 11,
+          "improvementGrid": 11,
           "racePosition": 12,
           "classified": true,
           "totalPoints": -2,
@@ -885,6 +899,7 @@
           "qualifyingPosition": 22,
           "sprintPosition": 17,
           "gridStart": 21,
+          "improvementGrid": 21,
           "racePosition": 16,
           "classified": true,
           "totalPoints": 12,
@@ -995,7 +1010,7 @@
           ]
         }
       ],
-      "runningTotal": 111
+      "runningTotal": 116
     },
     {
       "raceId": "monaco",
@@ -1018,6 +1033,7 @@
           "qualifyingPosition": 12,
           "sprintPosition": null,
           "gridStart": 12,
+          "improvementGrid": 12,
           "racePosition": 16,
           "classified": true,
           "totalPoints": -10,
@@ -1049,6 +1065,7 @@
           "qualifyingPosition": 13,
           "sprintPosition": null,
           "gridStart": 13,
+          "improvementGrid": 13,
           "racePosition": 13,
           "classified": true,
           "totalPoints": -10,
@@ -1084,6 +1101,7 @@
           "qualifyingPosition": 20,
           "sprintPosition": null,
           "gridStart": 20,
+          "improvementGrid": 20,
           "racePosition": 21,
           "classified": true,
           "totalPoints": 0,
@@ -1190,7 +1208,7 @@
           ]
         }
       ],
-      "runningTotal": 92
+      "runningTotal": 97
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1213,6 +1231,7 @@
           "qualifyingPosition": 16,
           "sprintPosition": null,
           "gridStart": 16,
+          "improvementGrid": 16,
           "racePosition": 12,
           "classified": true,
           "totalPoints": 1,
@@ -1248,6 +1267,7 @@
           "qualifyingPosition": 9,
           "sprintPosition": null,
           "gridStart": 9,
+          "improvementGrid": 9,
           "racePosition": 20,
           "classified": true,
           "totalPoints": -19,
@@ -1279,6 +1299,7 @@
           "qualifyingPosition": 20,
           "sprintPosition": null,
           "gridStart": 20,
+          "improvementGrid": 20,
           "racePosition": 21,
           "classified": true,
           "totalPoints": -1,
@@ -1389,7 +1410,7 @@
           ]
         }
       ],
-      "runningTotal": 86
+      "runningTotal": 91
     },
     {
       "raceId": "austria",
@@ -1412,6 +1433,7 @@
           "qualifyingPosition": 17,
           "sprintPosition": null,
           "gridStart": 17,
+          "improvementGrid": 17,
           "racePosition": 20,
           "classified": true,
           "totalPoints": -10,
@@ -1443,6 +1465,7 @@
           "qualifyingPosition": 14,
           "sprintPosition": null,
           "gridStart": 14,
+          "improvementGrid": 14,
           "racePosition": 12,
           "classified": true,
           "totalPoints": 4,
@@ -1474,6 +1497,7 @@
           "qualifyingPosition": 20,
           "sprintPosition": null,
           "gridStart": 20,
+          "improvementGrid": 20,
           "racePosition": 22,
           "classified": true,
           "totalPoints": -2,
@@ -1580,7 +1604,7 @@
           ]
         }
       ],
-      "runningTotal": 109
+      "runningTotal": 114
     },
     {
       "raceId": "great-britain",
@@ -1603,6 +1627,7 @@
           "qualifyingPosition": 15,
           "sprintPosition": 17,
           "gridStart": 14,
+          "improvementGrid": 14,
           "racePosition": 17,
           "classified": true,
           "totalPoints": -8,
@@ -1638,6 +1663,7 @@
           "qualifyingPosition": 13,
           "sprintPosition": 15,
           "gridStart": 12,
+          "improvementGrid": 12,
           "racePosition": 22,
           "classified": true,
           "totalPoints": -20,
@@ -1673,6 +1699,7 @@
           "qualifyingPosition": 18,
           "sprintPosition": 19,
           "gridStart": 18,
+          "improvementGrid": 18,
           "racePosition": 16,
           "classified": true,
           "totalPoints": 4,
@@ -1783,7 +1810,7 @@
           ]
         }
       ],
-      "runningTotal": 82
+      "runningTotal": 87
     },
     {
       "raceId": "belgium",
@@ -1806,6 +1833,7 @@
           "qualifyingPosition": 15,
           "sprintPosition": null,
           "gridStart": 19,
+          "improvementGrid": 19,
           "racePosition": 16,
           "classified": true,
           "totalPoints": 0,
@@ -1837,6 +1865,7 @@
           "qualifyingPosition": 14,
           "sprintPosition": null,
           "gridStart": 12,
+          "improvementGrid": 12,
           "racePosition": 13,
           "classified": true,
           "totalPoints": -2,
@@ -1868,6 +1897,7 @@
           "qualifyingPosition": 19,
           "sprintPosition": null,
           "gridStart": 17,
+          "improvementGrid": 17,
           "racePosition": 18,
           "classified": true,
           "totalPoints": -2,
@@ -1974,7 +2004,7 @@
           ]
         }
       ],
-      "runningTotal": 108
+      "runningTotal": 113
     },
     {
       "raceId": "hungary",
@@ -1997,6 +2027,7 @@
           "qualifyingPosition": 18,
           "sprintPosition": null,
           "gridStart": 18,
+          "improvementGrid": 18,
           "racePosition": 18,
           "classified": true,
           "totalPoints": -4,
@@ -2028,6 +2059,7 @@
           "qualifyingPosition": 10,
           "sprintPosition": null,
           "gridStart": 10,
+          "improvementGrid": 10,
           "racePosition": 9,
           "classified": true,
           "totalPoints": 7,
@@ -2059,6 +2091,7 @@
           "qualifyingPosition": 21,
           "sprintPosition": null,
           "gridStart": 21,
+          "improvementGrid": 21,
           "racePosition": 22,
           "classified": true,
           "totalPoints": 0,
@@ -2165,7 +2198,7 @@
           ]
         }
       ],
-      "runningTotal": 139
+      "runningTotal": 144
     }
   ]
 }

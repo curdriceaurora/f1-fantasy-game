@@ -94,6 +94,45 @@ test('OpenF1 fallback keeps a different unserved penalty for the same driver', (
   assert.equal(normalized.drivers['kimi-antonelli'].timePenaltySeconds, 10);
 });
 
+test('a qualifying-DSQ driver is measured from the last grid slot for improvement, keeping the real grid start', () => {
+  const normalized = normalizeRaceWeekend(
+    { ...calendarRace, qualifyingDisqualified: ['george-russell'] },
+    baseFetchedRace(),
+    { drivers: {}, teams: {}, documents: [] },
+  );
+  // Field size = number of entrants (2 here). Russell's real grid is kept for the
+  // qualifying band; only his improvement baseline moves to the last slot.
+  assert.equal(normalized.drivers['george-russell'].gridStart, 4);
+  assert.equal(normalized.drivers['george-russell'].improvementGrid, 2);
+  // A driver not disqualified in qualifying keeps grid == improvement baseline.
+  assert.equal(
+    normalized.drivers['kimi-antonelli'].improvementGrid,
+    normalized.drivers['kimi-antonelli'].gridStart,
+  );
+});
+
+test('normalizeRaceWeekend rejects a qualifyingDisqualified id not in the entry list', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(
+      { ...calendarRace, qualifyingDisqualified: ['nobody-here'] },
+      baseFetchedRace(),
+      { drivers: {}, teams: {}, documents: [] },
+    ),
+    /not in the race entry list/,
+  );
+});
+
+test('normalizeRaceWeekend rejects a non-array qualifyingDisqualified', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(
+      { ...calendarRace, qualifyingDisqualified: 'george-russell' },
+      baseFetchedRace(),
+      { drivers: {}, teams: {}, documents: [] },
+    ),
+    /must be an array/,
+  );
+});
+
 test('retired drivers are classified after finishers, ordered by laps completed', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.drivers.push({ driver_number: 44, first_name: 'Lewis', last_name: 'Hamilton', full_name: 'Lewis Hamilton', team_name: 'Ferrari' });
