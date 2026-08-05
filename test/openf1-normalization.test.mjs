@@ -154,19 +154,19 @@ test('retired drivers are classified after finishers, ordered by laps completed'
   assert.equal(normalized.drivers['kimi-antonelli'].racePosition, 3);
 });
 
-test('multiple race DSQs share the field-size last position after retirees', () => {
+test('multiple race DSQs share the supplied field-size last position after retirees', () => {
   const positions = deriveFinishingPositions([
     { driver_number: 63, position: 1, dsq: false, number_of_laps: 58 },
     { driver_number: 12, position: null, dsq: false, number_of_laps: 40 },
     // A DSQ may retain a position in a feed; Martin's shared-last rule still wins.
     { driver_number: 44, position: 2, dsq: true, number_of_laps: 58 },
     { driver_number: 16, position: null, dsq: true, number_of_laps: 20 },
-  ]);
+  ], 22);
 
   assert.equal(positions.get(63), 1);
   assert.equal(positions.get(12), 2);
-  assert.equal(positions.get(44), 4);
-  assert.equal(positions.get(16), 4);
+  assert.equal(positions.get(44), 22);
+  assert.equal(positions.get(16), 22);
 });
 
 test('FIA race and sprint DSQs override listed positions with the shared last place', () => {

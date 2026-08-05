@@ -48,6 +48,7 @@ NOT CLASSIFIED
 16Charles LECLERCScuderia Ferrari HPDQ
 44Lewis HAMILTONScuderia Ferrari HPDSQ
 10Pierre GASLYBWT Alpine F1 TeamDISQUALIFIED
+11Sergio PEREZCadillac DQ Racing TeamDNF
 FASTEST LAP
 `;
 
@@ -57,6 +58,7 @@ FASTEST LAP
     [...disqualified].sort(),
     ['charles-leclerc', 'lewis-hamilton', 'pierre-gasly'],
   );
+  assert.equal(disqualified.has('sergio-perez'), false);
 });
 
 test('parseStartingGrid maps each grid slot to its driver', () => {
