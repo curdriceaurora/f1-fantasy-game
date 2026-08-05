@@ -21,7 +21,7 @@ const MIME = {
   '.woff2': 'font/woff2',
 };
 
-function resolveApiRoute(pathname) {
+export function resolveApiRoute(pathname) {
   const parts = pathname.replace(/^\/api\//, '').split('/').filter(Boolean);
   const params = {};
 
@@ -150,11 +150,14 @@ const server = createServer((req, res) => {
   res.end(content);
 });
 
-const PORT = Number.parseInt(process.env.PORT || '3456', 10);
-server.listen(PORT, () => {
-  const mode = getSiteMode();
-  const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
-  console.log(`\n  🏎️  F1 Fantasy Team Selector`);
-  console.log(`  Local: http://localhost:${PORT}`);
-  console.log(`  Mode:  ${mode} (${modeName})\n`);
-});
+const isDirectRun = process.argv[1] && process.argv[1].endsWith('server.js');
+if (isDirectRun) {
+  const PORT = Number.parseInt(process.env.PORT || '3456', 10);
+  server.listen(PORT, () => {
+    const mode = getSiteMode();
+    const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
+    console.log(`\n  🏎️  F1 Fantasy Team Selector`);
+    console.log(`  Local: http://localhost:${PORT}`);
+    console.log(`  Mode:  ${mode} (${modeName})\n`);
+  });
+}

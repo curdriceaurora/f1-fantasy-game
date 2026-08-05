@@ -21,7 +21,7 @@ function writeJson(filePath, value) {
   writeFileSync(filePath, JSON.stringify(value, null, 2) + '\n');
 }
 
-function mulberry32(seed) {
+export function mulberry32(seed) {
   let state = seed >>> 0;
   return () => {
     state += 0x6D2B79F5;
@@ -32,7 +32,7 @@ function mulberry32(seed) {
   };
 }
 
-function shuffle(values, seed) {
+export function shuffle(values, seed) {
   const output = [...values];
   const random = mulberry32(seed);
   for (let index = output.length - 1; index > 0; index -= 1) {

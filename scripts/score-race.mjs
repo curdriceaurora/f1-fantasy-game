@@ -9,7 +9,7 @@ import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 import { evaluateRaceWorkflow } from '../lib/race-workflow.js';
 import { ensureSeasonDirs, loadCalendar, loadEntries, loadFineReview, normalizedRacePath, rawRacePath, scoredRacePath, writeJson } from '../lib/season-store.js';
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = {};
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
