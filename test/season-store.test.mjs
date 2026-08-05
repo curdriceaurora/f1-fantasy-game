@@ -122,3 +122,21 @@ test('readJson returns fallback value when file is missing or corrupted', () => 
     assert.deepStrictEqual(corrupted, { fallback: true });
   });
 });
+
+test('season store handles absent calendars and rejects malformed fine reviews', () => {
+  withTempSeason(({ configDir }) => {
+    rmSync(configDir, { recursive: true, force: true });
+    assert.equal(resolveCalendarFileName(), null);
+    assert.deepEqual(loadCalendar(), []);
+
+    mkdirSync(configDir, { recursive: true });
+    writeFileSync(join(configDir, 'fine-documents.json'), '[]');
+    assert.throws(() => loadFineReviews(), /must be an object keyed by race id/);
+
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify({ australia: 'reviewed' }));
+    assert.throws(() => loadFineReviews(), /must be an object/);
+
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify({ australia: {} }));
+    assert.throws(() => loadFineReviews(), /documents.*array/);
+  });
+});

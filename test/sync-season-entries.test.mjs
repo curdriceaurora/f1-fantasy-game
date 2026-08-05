@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildEntries, buildEntriesWithMap, createStableTeamId } from '../scripts/sync-season-entries.mjs';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import ExcelJS from 'exceljs';
+import {
+  buildEntries,
+  buildEntriesWithMap,
+  createStableTeamId,
+  syncSeasonEntries,
+} from '../scripts/sync-season-entries.mjs';
 import { syntheticEntries } from '../scripts/generate-test-corpus.mjs';
 
 function workbookRows(order = ['Alice', 'Bob']) {
@@ -105,5 +114,65 @@ test('synthetic corpus entries use the same principal-based stable ids as live i
   for (const entry of entries) {
     assert.equal(entry.teamId, createStableTeamId(entry.principalName));
     assert.notEqual(entry.teamId, entry.displayName);
+  }
+});
+
+test('syncSeasonEntries reads the workbook and writes all season configuration', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'f1-roster-sync-'));
+  const workbookPath = join(root, 'roster.xlsx');
+  const seasonDir = join(root, 'season');
+  const previousSeasonDir = process.env.F1_FANTASY_SEASON_DIR;
+  process.env.F1_FANTASY_SEASON_DIR = seasonDir;
+
+  try {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet('Starting Roster');
+    sheet.getCell('A1').value = new Date('2026-01-01T00:00:00Z');
+    sheet.getCell('A2').value = { formula: '1+1', result: 2 };
+    sheet.getCell('A3').value = { richText: [{ text: 'Header' }] };
+    sheet.getCell('A4').value = { text: 'Rules', hyperlink: 'https://example.test/rules' };
+    sheet.addRow([
+      null,
+      'Alice Example',
+      'Apex Hunters',
+      'Pierre Gasly',
+      'Franco Colapinto',
+      'Lance Stroll',
+      'Alpine',
+      'Haas',
+      'Audi',
+      'Australia',
+      380,
+      'George Russell',
+      'Mercedes',
+      4,
+      { formula: '10+21', result: 31 },
+    ]);
+    await workbook.xlsx.writeFile(workbookPath);
+
+    const result = await syncSeasonEntries(workbookPath);
+    assert.equal(result.entries.length, 1);
+    assert.equal(result.entries[0].principalName, 'Alice Example');
+    assert.equal(result.scoreboard.standings.length, 1);
+    assert.equal(JSON.parse(readFileSync(join(seasonDir, 'config', 'entries.json'))).length, 1);
+    assert.ok(JSON.parse(readFileSync(join(seasonDir, 'config', 'catalog.json'))).drivers.length > 0);
+    assert.equal(JSON.parse(readFileSync(join(seasonDir, 'config', 'team-id-map.json'))).entries.length, 1);
+  } finally {
+    if (previousSeasonDir == null) delete process.env.F1_FANTASY_SEASON_DIR;
+    else process.env.F1_FANTASY_SEASON_DIR = previousSeasonDir;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('syncSeasonEntries rejects a workbook without the roster sheet', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'f1-roster-missing-sheet-'));
+  const workbookPath = join(root, 'roster.xlsx');
+  try {
+    const workbook = new ExcelJS.Workbook();
+    workbook.addWorksheet('Other');
+    await workbook.xlsx.writeFile(workbookPath);
+    await assert.rejects(syncSeasonEntries(workbookPath), /Starting Roster/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });

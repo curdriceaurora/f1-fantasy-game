@@ -67,9 +67,15 @@ export function resolveApiRoute(pathname) {
   return filePath ? { filePath, params } : null;
 }
 
-const server = createServer((req, res) => {
+export function createAppServer(options = {}) {
+  const resolveRoute = options.resolveApiRoute || resolveApiRoute;
+  const importApiModule = options.importApiModule || ((filePath) => import(filePath));
+  const siteMode = options.getSiteMode || getSiteMode;
+  const publicDir = options.publicDir || join(__dirname, 'public');
+
+  return createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const mode = getSiteMode();
+  const mode = siteMode();
   const isPreseason = mode === SITE_MODES.PRESEASON;
 
   // Redirect root and mode-specific entry points based on site mode
@@ -96,14 +102,14 @@ const server = createServer((req, res) => {
 
   // API route
   if (url.pathname.startsWith('/api/')) {
-    const resolved = resolveApiRoute(url.pathname);
+    const resolved = resolveRoute(url.pathname);
     if (!resolved) {
       res.writeHead(404);
       res.end('API route not found');
       return;
     }
 
-    import(resolved.filePath).then((apiModule) => {
+    importApiModule(resolved.filePath).then((apiModule) => {
       const apiHandler = apiModule.default;
       const query = {
         ...Object.fromEntries(url.searchParams),
@@ -134,7 +140,7 @@ const server = createServer((req, res) => {
 
   // Static files from public/
   let filePath = url.pathname === '/' ? '/index.html' : url.pathname;
-  const fullPath = join(__dirname, 'public', filePath);
+  const fullPath = join(publicDir, filePath);
 
   if (!existsSync(fullPath)) {
     res.writeHead(404);
@@ -148,16 +154,23 @@ const server = createServer((req, res) => {
 
   res.writeHead(200, { 'Content-Type': mime });
   res.end(content);
-});
+  });
+}
+
+export function startServer(port = Number.parseInt(process.env.PORT || '3456', 10), options = {}) {
+  const server = createAppServer(options);
+  server.listen(port, () => {
+    const mode = (options.getSiteMode || getSiteMode)();
+    const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
+    const actualPort = server.address().port;
+    console.log(`\n  🏎️  F1 Fantasy Team Selector`);
+    console.log(`  Local: http://localhost:${actualPort}`);
+    console.log(`  Mode:  ${mode} (${modeName})\n`);
+  });
+  return server;
+}
 
 const isDirectRun = process.argv[1] && process.argv[1].endsWith('server.js');
 if (isDirectRun) {
-  const PORT = Number.parseInt(process.env.PORT || '3456', 10);
-  server.listen(PORT, () => {
-    const mode = getSiteMode();
-    const modeName = mode === SITE_MODES.PRESEASON ? 'Preseason Entry Builder' : 'Season Dashboard';
-    console.log(`\n  🏎️  F1 Fantasy Team Selector`);
-    console.log(`  Local: http://localhost:${PORT}`);
-    console.log(`  Mode:  ${mode} (${modeName})\n`);
-  });
+  startServer();
 }

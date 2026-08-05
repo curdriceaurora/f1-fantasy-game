@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { activeFineFromText, classifySubject, summarizeFineDocumentText, timePenaltyFromText, gridPenaltyFromText, driverFaultDriver, fetchFineSummary } from '../lib/fines.js';
+import { mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { activeFineFromText, classifySubject, summarizeFineDocumentText, timePenaltyFromText, gridPenaltyFromText, driverFaultDriver, fetchFineSummary, fetchPdfText } from '../lib/fines.js';
 
 test('timePenaltyFromText reads a single time penalty in seconds', () => {
   const text = 'The Stewards impose a 10 second time penalty on Car 11 for forcing another car off track.';
@@ -335,4 +338,50 @@ test('fetchFineSummary handles fine documents list and summarizes totals', async
   assert.deepStrictEqual(summary.drivers, {});
   assert.deepStrictEqual(summary.teams, {});
   assert.deepStrictEqual(summary.documents, []);
+});
+
+test('fetchPdfText fetches, parses, caches, and reuses FIA PDF text', async () => {
+  const cacheDir = mkdtempSync(join(tmpdir(), 'f1-fia-pdf-cache-'));
+  let fetches = 0;
+  let parses = 0;
+  const options = {
+    cacheDir,
+    fetchImpl: async () => {
+      fetches += 1;
+      return { ok: true, status: 200, arrayBuffer: async () => Buffer.from('pdf-bytes') };
+    },
+    parsePdf: async (buffer) => {
+      parses += 1;
+      assert.equal(buffer.toString(), 'pdf-bytes');
+      return { text: 'Parsed FIA decision' };
+    },
+  };
+
+  try {
+    const url = 'https://fia.test/decision car 63.pdf';
+    assert.equal(await fetchPdfText(url, options), 'Parsed FIA decision');
+    assert.equal(await fetchPdfText(url, options), 'Parsed FIA decision');
+    assert.equal(fetches, 1);
+    assert.equal(parses, 1);
+  } finally {
+    rmSync(cacheDir, { recursive: true, force: true });
+  }
+});
+
+test('fetchFineSummary aggregates drivers and teams while retaining warnings', async () => {
+  const documents = ['driver.pdf', 'team.pdf', 'unknown.pdf', 'no-fine.pdf'];
+  const texts = {
+    'driver.pdf': 'Driver: Lando Norris\nFine €4,000',
+    'team.pdf': 'Competitor: Ferrari\nFine €6,000',
+    'unknown.pdf': 'Competitor: Safety delegate\nFine €2,000',
+    'no-fine.pdf': 'No financial penalty.',
+  };
+  const summary = await fetchFineSummary('australia', documents, {
+    fetchPdfTextImpl: async (url) => texts[url],
+  });
+
+  assert.equal(summary.drivers['lando-norris'], 4000);
+  assert.equal(summary.teams.ferrari, 6000);
+  assert.equal(summary.documents.length, 4);
+  assert.equal(summary.warnings.length, 1);
 });

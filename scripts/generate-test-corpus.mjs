@@ -42,22 +42,24 @@ export function shuffle(values, seed) {
   return output;
 }
 
-async function fetchJson(pathname) {
+export async function fetchHistoricalJson(pathname, options = {}) {
+  const fetchImpl = options.fetchImpl || fetch;
+  const sleep = options.sleep || ((milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)));
   for (let attempt = 0; attempt < 5; attempt += 1) {
-    const response = await fetch(`${API_BASE}/${pathname}`);
+    const response = await fetchImpl(`${API_BASE}/${pathname}`);
     if (response.ok) {
       return response.json();
     }
     if (response.status !== 429 || attempt === 4) {
       throw new Error(`Unable to fetch ${pathname}: ${response.status}`);
     }
-    await new Promise((resolve) => setTimeout(resolve, 1500 * (attempt + 1)));
+    await sleep(1500 * (attempt + 1));
   }
   throw new Error(`Unable to fetch ${pathname}`);
 }
 
-function seasonRoot(year) {
-  return join(OUTPUT_ROOT, String(year), 'season');
+function seasonRoot(year, outputRoot = OUTPUT_ROOT) {
+  return join(outputRoot, String(year), 'season');
 }
 
 function teamDriverPairs() {
@@ -68,14 +70,14 @@ function teamDriverPairs() {
   return pairs;
 }
 
-async function loadHistoricalSeason(year) {
-  const scheduleData = await fetchJson(`${year}.json?limit=100`);
+export async function loadHistoricalSeason(year, fetchJsonImpl = fetchHistoricalJson) {
+  const scheduleData = await fetchJsonImpl(`${year}.json?limit=100`);
   const schedule = scheduleData.MRData.RaceTable.Races;
   const races = [];
   for (const race of schedule) {
-    const resultData = await fetchJson(`${year}/${race.round}/results.json?limit=100`);
-    const qualifyingData = await fetchJson(`${year}/${race.round}/qualifying.json?limit=100`);
-    const sprintData = await fetchJson(`${year}/${race.round}/sprint.json?limit=100`);
+    const resultData = await fetchJsonImpl(`${year}/${race.round}/results.json?limit=100`);
+    const qualifyingData = await fetchJsonImpl(`${year}/${race.round}/qualifying.json?limit=100`);
+    const sprintData = await fetchJsonImpl(`${year}/${race.round}/sprint.json?limit=100`);
 
     races.push({
       round: Number(race.round),
@@ -91,7 +93,7 @@ async function loadHistoricalSeason(year) {
   return races;
 }
 
-function buildHistoricalConstructorSeats(races) {
+export function buildHistoricalConstructorSeats(races) {
   const counts = new Map();
   for (const race of races) {
     for (const row of race.results) {
@@ -113,7 +115,7 @@ function buildHistoricalConstructorSeats(races) {
   );
 }
 
-function buildSeasonMapping(year, races) {
+export function buildSeasonMapping(year, races) {
   const currentTeamIds = SIMULATED_TEAMS.map((team) => team.id);
   const historicalConstructors = [...new Set(races.flatMap((race) => race.results.map((row) => row.Constructor.constructorId)))];
   if (historicalConstructors.length !== currentTeamIds.length) {
@@ -148,24 +150,24 @@ function buildSeasonMapping(year, races) {
   };
 }
 
-function normalizePosition(value) {
+export function normalizePosition(value) {
   const parsed = Number.parseInt(value, 10);
   return Number.isFinite(parsed) ? parsed : null;
 }
 
-function normalizeRacePosition(row) {
+export function normalizeRacePosition(row) {
   if (row.positionText === 'R' || row.positionText === 'W' || row.positionText === 'F') {
     return null;
   }
   return normalizePosition(row.position);
 }
 
-function fastestLapDriverId(results) {
+export function fastestLapDriverId(results) {
   const fastest = results.find((row) => row.FastestLap?.rank === '1');
   return fastest?.Driver?.driverId || null;
 }
 
-function pickHistoricalRow(rows, constructorId, seatDriverIds, seatIndex) {
+export function pickHistoricalRow(rows, constructorId, seatDriverIds, seatIndex) {
   const matching = rows.filter((row) => row.Constructor.constructorId === constructorId);
   const preferredDriverId = seatDriverIds[seatIndex];
   if (preferredDriverId) {
@@ -175,11 +177,11 @@ function pickHistoricalRow(rows, constructorId, seatDriverIds, seatIndex) {
   return matching[seatIndex] || matching[0] || null;
 }
 
-function syntheticPenaltySeed(year, round, slot) {
+export function syntheticPenaltySeed(year, round, slot) {
   return (year * 100) + (round * 10) + slot;
 }
 
-function injectSyntheticAdjustments(year, round, currentDriverId, currentTeamId, seatIndex) {
+export function injectSyntheticAdjustments(year, round, currentDriverId, currentTeamId, seatIndex) {
   const seed = syntheticPenaltySeed(year, round, seatIndex + currentDriverId.length + currentTeamId.length);
   return {
     gridPenaltyPlaces: seed % 19 === 0 ? 5 : 0,
@@ -189,7 +191,7 @@ function injectSyntheticAdjustments(year, round, currentDriverId, currentTeamId,
   };
 }
 
-function buildNormalizedRace(year, race, mapping) {
+export function buildNormalizedRace(year, race, mapping) {
   const currentPairs = teamDriverPairs();
   const drivers = {};
   const teams = {};
@@ -293,8 +295,10 @@ export function syntheticEntries(calendar) {
   }));
 }
 
-async function generateSeasonFixture(year) {
-  const historicalRaces = await loadHistoricalSeason(year);
+export async function generateSeasonFixture(year, options = {}) {
+  const outputRoot = options.outputRoot || OUTPUT_ROOT;
+  const loadHistoricalSeasonImpl = options.loadHistoricalSeason || loadHistoricalSeason;
+  const historicalRaces = await loadHistoricalSeasonImpl(year);
   const mapping = buildSeasonMapping(year, historicalRaces);
   const calendar = historicalRaces.map((race) => ({
     id: race.raceId,
@@ -304,9 +308,9 @@ async function generateSeasonFixture(year) {
     date: race.date,
     isSprintWeekend: race.sprint.length > 0,
   }));
-  const seasonDir = seasonRoot(year);
+  const seasonDir = seasonRoot(year, outputRoot);
 
-  rmSync(join(OUTPUT_ROOT, String(year)), { recursive: true, force: true });
+  rmSync(join(outputRoot, String(year)), { recursive: true, force: true });
   writeJson(join(seasonDir, 'config', '2026-calendar.json'), calendar);
   writeJson(join(seasonDir, 'config', 'entries.json'), syntheticEntries(calendar));
   writeJson(
@@ -319,7 +323,7 @@ async function generateSeasonFixture(year) {
     writeJson(join(seasonDir, 'normalized', `${race.raceId}.json`), normalized);
   }
 
-  writeJson(join(OUTPUT_ROOT, String(year), 'manifest.json'), {
+  writeJson(join(outputRoot, String(year), 'manifest.json'), {
     generatedAt: new Date().toISOString(),
     historicalSeason: year,
     source: 'https://api.jolpi.ca/ergast/f1',
@@ -328,15 +332,15 @@ async function generateSeasonFixture(year) {
   });
 }
 
-async function main() {
-  for (const year of YEARS) {
-    await generateSeasonFixture(year);
+export async function generateTestCorpus(options = {}) {
+  for (const year of options.years || YEARS) {
+    await generateSeasonFixture(year, options);
     console.log(`Generated synthetic fixture season for ${year}`);
   }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch((error) => {
+  generateTestCorpus().catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
