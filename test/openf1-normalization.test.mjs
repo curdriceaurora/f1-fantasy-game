@@ -111,6 +111,28 @@ test('a qualifying-DSQ driver is measured from the last grid slot for improvemen
   );
 });
 
+test('normalizeRaceWeekend rejects a qualifyingDisqualified id not in the entry list', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(
+      { ...calendarRace, qualifyingDisqualified: ['nobody-here'] },
+      baseFetchedRace(),
+      { drivers: {}, teams: {}, documents: [] },
+    ),
+    /not in the race entry list/,
+  );
+});
+
+test('normalizeRaceWeekend rejects a non-array qualifyingDisqualified', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(
+      { ...calendarRace, qualifyingDisqualified: 'george-russell' },
+      baseFetchedRace(),
+      { drivers: {}, teams: {}, documents: [] },
+    ),
+    /must be an array/,
+  );
+});
+
 test('retired drivers are classified after finishers, ordered by laps completed', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.drivers.push({ driver_number: 44, first_name: 'Lewis', last_name: 'Hamilton', full_name: 'Lewis Hamilton', team_name: 'Ferrari' });

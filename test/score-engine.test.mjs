@@ -20,8 +20,12 @@ test('position change scores from the improvement baseline (qualifying DSQ), not
     qualifyingPosition: null, gridStart: 20, improvementGrid: 22, racePosition: 6, sprintPosition: null,
     fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
   }, { raceId: 'australia', raceName: 'Australia' });
-  const positionChange = contribution.components.find((c) => c.label === 'Position change');
+  const positionChange = contribution.components.find((c) => /^Position change/.test(c.label));
   assert.equal(positionChange.points, (22 - 6) * 2); // 32, not (20 - 6) * 2 = 28
+  // The exceptional baseline is labelled and preserved so the artifact self-reconciles.
+  assert.equal(positionChange.label, 'Position change (from P22)');
+  assert.equal(contribution.improvementGrid, 22);
+  assert.equal(contribution.gridStart, 20);
 });
 
 test('position change falls back to the grid start when no improvement baseline is set', () => {
@@ -31,6 +35,7 @@ test('position change falls back to the grid start when no improvement baseline 
   }, { raceId: 'x', raceName: 'X' });
   const positionChange = contribution.components.find((c) => c.label === 'Position change');
   assert.equal(positionChange.points, (4 - 1) * 2);
+  assert.equal(contribution.improvementGrid, 4);
 });
 
 test('constructor weighting favours the roster lead driver, not the higher scorer that race', () => {
