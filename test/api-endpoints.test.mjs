@@ -12,7 +12,12 @@ import teamsIndexHandler, { createTeamsIndexHandler } from '../api/dashboard/tea
 import teamDetailHandler, { createTeamDetailHandler } from '../api/dashboard/teams/[teamId].js';
 import raceDetailHandler, { createRaceDetailHandler } from '../api/dashboard/races/[raceId].js';
 import selectionHandler, { createSelectionHandler, pickEntry, resolveSelectionDataPath } from '../api/selection.js';
-import { createAppServer, resolveApiRoute, startServer } from '../server.js';
+import {
+  createAppServer,
+  resolveApiRoute,
+  resolveStaticPath,
+  startServer,
+} from '../server.js';
 import { SITE_MODES } from '../lib/site-config.js';
 
 // Helper mock response factory
@@ -240,6 +245,14 @@ test('server.js resolveApiRoute maps static and dynamic API paths correctly', ()
 
   const invalidRoute = resolveApiRoute('/api/nonexistent/path/999');
   assert.strictEqual(invalidRoute, null);
+});
+
+test('dev server static paths stay inside the configured public directory', () => {
+  const publicDir = join(tmpdir(), 'f1-public-root');
+  assert.equal(resolveStaticPath(publicDir, '/asset.bin'), join(publicDir, 'asset.bin'));
+  assert.equal(resolveStaticPath(publicDir, 'nested/asset.bin'), join(publicDir, 'nested/asset.bin'));
+  assert.equal(resolveStaticPath(publicDir, '/../secret.txt'), null);
+  assert.equal(resolveStaticPath(publicDir, '/nested/../../../secret.txt'), null);
 });
 
 async function request(server, pathname) {

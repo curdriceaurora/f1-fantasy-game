@@ -3,9 +3,8 @@
 
 import { createServer } from 'http';
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { join, extname } from 'path';
+import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import { getSiteMode, SITE_MODES } from './lib/site-config.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -65,6 +64,17 @@ export function resolveApiRoute(pathname) {
 
   const filePath = walk(join(__dirname, 'api'), 0);
   return filePath ? { filePath, params } : null;
+}
+
+export function resolveStaticPath(publicDir, pathname) {
+  const publicRoot = resolve(publicDir);
+  const requestPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const candidate = resolve(publicRoot, `.${requestPath}`);
+  const relativePath = relative(publicRoot, candidate);
+  const escapesPublicRoot = relativePath === '..'
+    || relativePath.startsWith(`..${sep}`)
+    || isAbsolute(relativePath);
+  return escapesPublicRoot ? null : candidate;
 }
 
 export function createAppServer(options = {}) {
@@ -139,10 +149,10 @@ export function createAppServer(options = {}) {
   }
 
   // Static files from public/
-  let filePath = url.pathname === '/' ? '/index.html' : url.pathname;
-  const fullPath = join(publicDir, filePath);
+  const filePath = url.pathname === '/' ? '/index.html' : url.pathname;
+  const fullPath = resolveStaticPath(publicDir, filePath);
 
-  if (!existsSync(fullPath)) {
+  if (!fullPath || !existsSync(fullPath)) {
     res.writeHead(404);
     res.end('Not found');
     return;
