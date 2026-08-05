@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
-import { loadCalendar, resolveCalendarFileName } from '../lib/season-store.js';
+import { loadCalendar, resolveCalendarFileName, loadFineReviews, loadFineReview, listNormalizedRaceIds, readJson } from '../lib/season-store.js';
 
 function withTempSeason(callback) {
   const workingRoot = mkdtempSync(join(tmpdir(), 'f1-season-store-'));
@@ -66,5 +66,59 @@ test('loadCalendar reads from the resolved season year file', () => {
 
     process.env.F1_FANTASY_SEASON_YEAR = '2027';
     assert.deepEqual(loadCalendar(), [{ id: 'china' }]);
+  });
+});
+
+test('resolveCalendarFileName throws error on invalid F1_FANTASY_SEASON_YEAR', () => {
+  withTempSeason(() => {
+    process.env.F1_FANTASY_SEASON_YEAR = 'invalid';
+    assert.throws(() => resolveCalendarFileName(), /Expected a four-digit year/);
+
+    process.env.F1_FANTASY_SEASON_YEAR = '1900';
+    assert.throws(() => resolveCalendarFileName(), /was not found in season\/config/);
+  });
+});
+
+test('loadFineReviews validates fine documents structure and documents array', () => {
+  withTempSeason(({ configDir }) => {
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify({
+      australia: { reviewed: true, documents: ['https://example.test/doc.pdf'] },
+    }));
+
+    const reviews = loadFineReviews();
+    assert.ok(reviews.australia);
+    assert.strictEqual(reviews.australia.reviewed, true);
+    assert.deepStrictEqual(reviews.australia.documents, ['https://example.test/doc.pdf']);
+
+    const review = loadFineReview('australia');
+    assert.strictEqual(review.reviewed, true);
+  });
+});
+
+test('loadFineReviews throws error on invalid or deprecated fine document format', () => {
+  withTempSeason(({ configDir }) => {
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify({
+      australia: ['https://example.test/deprecated.pdf'],
+    }));
+
+    assert.throws(() => loadFineReviews(), /deprecated array format/);
+  });
+});
+
+test('listNormalizedRaceIds lists json files or returns empty array when folder is missing', () => {
+  withTempSeason(() => {
+    const raceIds = listNormalizedRaceIds();
+    assert.ok(Array.isArray(raceIds));
+  });
+});
+
+test('readJson returns fallback value when file is missing or corrupted', () => {
+  withTempSeason(({ configDir }) => {
+    const missing = readJson(join(configDir, 'missing.json'), { fallback: true });
+    assert.deepStrictEqual(missing, { fallback: true });
+
+    writeFileSync(join(configDir, 'corrupted.json'), '{ invalid json syntax ');
+    const corrupted = readJson(join(configDir, 'corrupted.json'), { fallback: true });
+    assert.deepStrictEqual(corrupted, { fallback: true });
   });
 });

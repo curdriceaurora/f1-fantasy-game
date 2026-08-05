@@ -1,6 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseFinalClassification, parseStartingGrid } from '../lib/fia-results.js';
+import { parseFinalClassification, parseStartingGrid, fetchRaceResults, fetchDecisionPenalties } from '../lib/fia-results.js';
+
+test('fetchRaceResults handles missing or failing PDF downloads gracefully', async () => {
+  const race = { date: '2026-03-08', id: 'australia', meetingName: 'Australian Grand Prix', isSprintWeekend: false };
+  const mockHtml = '<a href="/system/files/decision-document/2026_australian_grand_prix_-_doc.pdf">doc</a>';
+  const options = { maxAttempts: 1, retryDelayMs: 0, fetch: async () => ({ ok: true, status: 200, text: async () => mockHtml }), fetchPdfTextImpl: async () => '' };
+  const results = await fetchRaceResults(race, options);
+  assert.ok(results);
+  assert.ok(typeof results.finishingPositions === 'object');
+  assert.ok(typeof results.gridPositions === 'object');
+});
+
+test('fetchDecisionPenalties handles empty or failed decision fetches gracefully', async () => {
+  const race = { date: '2026-03-08', id: 'australia', meetingName: 'Australian Grand Prix' };
+  const mockHtml = '<a href="/system/files/decision-document/2026_australian_grand_prix_-_infringement_-_car_63.pdf">doc</a>';
+  const options = { maxAttempts: 1, retryDelayMs: 0, fetch: async () => ({ ok: true, status: 200, text: async () => mockHtml }), fetchPdfTextImpl: async () => '' };
+  const penalties = await fetchDecisionPenalties(race, options);
+  assert.ok(penalties);
+  assert.ok(typeof penalties.timePenalties === 'object');
+  assert.ok(typeof penalties.gridPenalties === 'object');
+});
 
 test('parseFinalClassification numbers classified finishers then retirees by list order', () => {
   // Classified rows are prefixed "{position}{carNumber}"; retirees list the car

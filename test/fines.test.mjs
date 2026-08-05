@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { activeFineFromText, classifySubject, summarizeFineDocumentText, timePenaltyFromText, gridPenaltyFromText } from '../lib/fines.js';
+import { activeFineFromText, classifySubject, summarizeFineDocumentText, timePenaltyFromText, gridPenaltyFromText, driverFaultDriver, fetchFineSummary } from '../lib/fines.js';
 
 test('timePenaltyFromText reads a single time penalty in seconds', () => {
   const text = 'The Stewards impose a 10 second time penalty on Car 11 for forcing another car off track.';
@@ -312,4 +312,27 @@ test('a partial suspension is not counted twice when the PDF breaks the words ap
   `;
 
   assert.equal(activeFineFromText(text), 20000);
+});
+
+test('driverFaultDriver identifies driver-fault infringements from URL patterns', () => {
+  const url1 = 'https://example.test/infringement_-_car_44_-_track_limits.pdf';
+  const driver1 = driverFaultDriver(url1, 'Reason Car 44 track limits');
+  assert.ok(driver1);
+  assert.strictEqual(driver1.id, 'lewis-hamilton');
+
+  const url2 = 'https://example.test/infringement_-_car_12_-_impeding.pdf';
+  const driver2 = driverFaultDriver(url2, 'Reason Car 12 impeding');
+  assert.ok(driver2);
+  assert.strictEqual(driver2.id, 'kimi-antonelli');
+
+  const nonDriverUrl = 'https://example.test/infringement_-_car_44_-_technical_breach.pdf';
+  assert.strictEqual(driverFaultDriver(nonDriverUrl, 'Technical breach'), null);
+});
+
+test('fetchFineSummary handles fine documents list and summarizes totals', async () => {
+  const summary = await fetchFineSummary('australia', []);
+  assert.strictEqual(summary.raceId, 'australia');
+  assert.deepStrictEqual(summary.drivers, {});
+  assert.deepStrictEqual(summary.teams, {});
+  assert.deepStrictEqual(summary.documents, []);
 });
