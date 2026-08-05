@@ -208,16 +208,21 @@ function renderSeasonSummary(data) {
   const leader = data.standings[0];
   const racesScored = data.races.filter((race) => race.status === 'finalized').length;
   const activeRaces = data.races.filter((race) => race.status !== 'cancelled').length;
+  // Distinguish the ways a season can be "not complete": a scheduled next race,
+  // a race that has run but isn't scored yet (results pending, known date), and a
+  // postponed race with no firm date (TBC). Anything else means the season's done.
   const nextRace = data.races.find((race) => race.status === 'not run');
-  // A race can still be pending without a firm next date (postponed, or run but
-  // not yet scored), so the absence of a scheduled race isn't "season complete".
-  const seasonPending = data.races.some((race) => race.status !== 'finalized' && race.status !== 'cancelled');
+  const awaitingRace = data.races.find((race) => race.status === 'awaiting Monday scoring' || race.status === 'awaiting fine review');
+  const stillPending = data.races.some((race) => race.status !== 'finalized' && race.status !== 'cancelled');
   let nextValue = 'Season complete';
   let nextSub = '';
   if (nextRace) {
     nextValue = `R${nextRace.round} · ${nextRace.name}`;
     nextSub = formatRaceDate(nextRace.date);
-  } else if (seasonPending) {
+  } else if (awaitingRace) {
+    nextValue = 'Results pending';
+    nextSub = awaitingRace.round ? `R${awaitingRace.round} · ${awaitingRace.name}` : awaitingRace.name;
+  } else if (stillPending) {
     nextValue = 'To be confirmed';
     nextSub = 'date TBC';
   }

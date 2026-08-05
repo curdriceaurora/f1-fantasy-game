@@ -57,6 +57,29 @@ test('a postponed race with no firm date reads "To be confirmed", not "Season co
   await expect(nextTile).not.toContainText('Season complete');
 });
 
+test('a race that has run but is not scored reads "Results pending", not a TBC date', async ({ page }) => {
+  await mockStandings(page, [
+    { id: 'r1', name: 'One', date: '2026-03-08', status: 'finalized', round: 1 },
+    { id: 'r2', name: 'Two', date: '2026-03-15', status: 'awaiting Monday scoring', round: 2 },
+  ]);
+  await page.goto('/dashboard.html');
+
+  const nextTile = page.locator('#season-summary .summary-tile').nth(2);
+  await expect(nextTile).toContainText('Results pending');
+  await expect(nextTile).toContainText('R2 · Two');
+  await expect(nextTile).not.toContainText('To be confirmed');
+});
+
+test('a race awaiting fine review also reads "Results pending"', async ({ page }) => {
+  await mockStandings(page, [
+    { id: 'r1', name: 'One', date: '2026-03-08', status: 'finalized', round: 1 },
+    { id: 'r2', name: 'Two', date: '2026-03-15', status: 'awaiting fine review', round: 2 },
+  ]);
+  await page.goto('/dashboard.html');
+
+  await expect(page.locator('#season-summary .summary-tile').nth(2)).toContainText('Results pending');
+});
+
 test('a fully finalized season reads "Season complete"', async ({ page }) => {
   await mockStandings(page, [
     { id: 'r1', name: 'One', date: '2026-03-08', status: 'finalized', round: 1 },
