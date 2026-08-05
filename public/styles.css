@@ -2071,6 +2071,71 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 2px 5px;
 }
 
+/* Cancelled races stay legible but read as inactive: muted surface and text
+   rather than a blanket opacity that would dim the small metadata and badge. */
+.calendar-item.cancelled {
+  background: rgba(22, 33, 62, 0.35);
+  border-color: #242438;
+}
+
+.calendar-item.cancelled .race-num,
+.calendar-item.cancelled .race-date {
+  color: var(--text-muted);
+}
+
+.calendar-item.cancelled .race-country {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.cancelled-badge {
+  font-family: var(--font-racing);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(255, 90, 90, 0.14);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 90, 90, 0.4);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+.rescheduled-badge {
+  font-family: var(--font-racing);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(90, 170, 255, 0.14);
+  color: #6bb2ff;
+  border: 1px solid rgba(90, 170, 255, 0.4);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+/* Postponed races are delayed with no confirmed new date — flagged in amber
+   (distinct from blue "rescheduled" and red "cancelled"), date muted, but not
+   struck through since the race is still expected to run. */
+.calendar-item.postponed {
+  border-color: rgba(255, 176, 60, 0.35);
+}
+
+.calendar-item.postponed .race-date {
+  color: var(--text-muted);
+}
+
+.postponed-badge {
+  font-family: var(--font-racing);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(255, 176, 60, 0.14);
+  color: #ffb03c;
+  border: 1px solid rgba(255, 176, 60, 0.4);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
 /* FAQ accordion */
 .faq-list {
   display: flex;
