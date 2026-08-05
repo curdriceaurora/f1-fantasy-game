@@ -55,3 +55,15 @@ test('calendar schedule is date-ordered and excludes cancelled races from the ac
     assert.equal(races.find((race) => race.id === 'middle').isSprintWeekend, true);
   });
 });
+
+test('a postponed race passes its status through and still counts as active (only cancelled is excluded)', () => {
+  withTempSeason([
+    { id: 'run', round: 1, name: 'Run', date: '2026-03-08', isSprintWeekend: false, status: 'scheduled' },
+    { id: 'delayed', round: 2, name: 'Delayed', date: '2026-04-01', isSprintWeekend: false, status: 'postponed' },
+    { id: 'gone', round: null, name: 'Gone', date: '2026-05-01', isSprintWeekend: false, status: 'cancelled' },
+  ], () => {
+    const { races, activeCount } = loadCalendarScheduleData();
+    assert.equal(races.find((race) => race.id === 'delayed').status, 'postponed');
+    assert.equal(activeCount, 2); // scheduled + postponed; cancelled excluded
+  });
+});

@@ -62,3 +62,31 @@ test('rescheduled races show a rescheduled badge and relocated venue', async ({ 
   await page.waitForLoadState('networkidle');
   assertHealthy();
 });
+
+// No race is currently postponed, so mock the endpoint to verify the distinct
+// treatment renders whenever that status is next used.
+test('a postponed race renders a distinct inactive treatment', async ({ page }) => {
+  const assertHealthy = await monitorPage(page);
+
+  await page.route('**/api/dashboard/calendar', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({
+      activeCount: 1,
+      races: [{
+        id: 'test-postponed', round: 1, name: 'Test Grand Prix', date: '2026-05-01',
+        flag: '🏁', isSprintWeekend: false, status: 'postponed', venue: null,
+      }],
+    }),
+  }));
+
+  await page.goto('/rules.html');
+
+  const item = page.locator('#calendar-grid .calendar-item.postponed', { hasText: 'Test Grand Prix' });
+  await expect(item).toHaveCount(1);
+  await expect(item.locator('.postponed-badge')).toHaveText(/postponed/i);
+  await expect(item.locator('.race-date')).toContainText('postponed');
+
+  await page.waitForLoadState('networkidle');
+  assertHealthy();
+});

@@ -673,27 +673,41 @@
     const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'];
     const formatDate = (iso) => {
+      if (!iso) return 'Date TBC';
       const [year, month, day] = iso.split('-').map(Number);
       return `${day} ${MONTHS[month - 1]} ${year}`;
     };
+    // Each non-default calendar status gets a distinct visual state:
+    //   cancelled   — greyed, struck through, red badge (will not run)
+    //   rescheduled — blue badge + relocated venue (moved, still scored)
+    //   postponed   — amber badge, muted date (delayed, no confirmed new date)
     const badges = (race) => [
       race.isSprintWeekend && race.status !== 'cancelled' ? '<span class="sprint-badge">SPRINT</span>' : '',
       race.status === 'cancelled' ? '<span class="cancelled-badge">Cancelled</span>' : '',
       race.status === 'rescheduled' ? '<span class="rescheduled-badge">Rescheduled</span>' : '',
+      race.status === 'postponed' ? '<span class="postponed-badge">Postponed</span>' : '',
     ].join('');
+    const itemClass = (race) => {
+      if (race.status === 'cancelled') return ' cancelled';
+      if (race.status === 'postponed') return ' postponed';
+      return '';
+    };
+    const dateLine = (race) => {
+      if (race.status === 'cancelled') return 'Cancelled — not held in 2026';
+      if (race.status === 'postponed') return race.date ? `${formatDate(race.date)} — postponed` : 'Postponed — date TBC';
+      return formatDate(race.date) + (race.venue ? ` · ${race.venue}` : '');
+    };
     const grid = document.getElementById('calendar-grid');
     try {
       const response = await fetch('/api/dashboard/calendar');
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       grid.innerHTML = data.races.map((race) => `
-        <div class="calendar-item${race.status === 'cancelled' ? ' cancelled' : ''}">
+        <div class="calendar-item${itemClass(race)}">
           <span class="race-num">${race.round ? `R${race.round}` : '—'}</span>
           <div class="race-info">
             <div class="race-country">${race.flag} ${race.name}</div>
-            <div class="race-date">${race.status === 'cancelled'
-              ? 'Cancelled — not held in 2026'
-              : formatDate(race.date) + (race.venue ? ` · ${race.venue}` : '')}</div>
+            <div class="race-date">${dateLine(race)}</div>
           </div>${badges(race)}
         </div>`).join('');
       const count = document.getElementById('calendar-count');

@@ -2113,6 +2113,29 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 2px 5px;
 }
 
+/* Postponed races are delayed with no confirmed new date — flagged in amber
+   (distinct from blue "rescheduled" and red "cancelled"), date muted, but not
+   struck through since the race is still expected to run. */
+.calendar-item.postponed {
+  border-color: rgba(255, 176, 60, 0.35);
+}
+
+.calendar-item.postponed .race-date {
+  color: var(--text-muted);
+}
+
+.postponed-badge {
+  font-family: var(--font-racing);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(255, 176, 60, 0.14);
+  color: #ffb03c;
+  border: 1px solid rgba(255, 176, 60, 0.4);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
 /* FAQ accordion */
 .faq-list {
   display: flex;
