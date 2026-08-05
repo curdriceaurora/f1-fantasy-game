@@ -2071,13 +2071,20 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 2px 5px;
 }
 
-/* Cancelled races are shown but visually inactive. */
+/* Cancelled races stay legible but read as inactive: muted surface and text
+   rather than a blanket opacity that would dim the small metadata and badge. */
 .calendar-item.cancelled {
-  opacity: 0.5;
-  filter: grayscale(1);
+  background: rgba(22, 33, 62, 0.35);
+  border-color: #242438;
+}
+
+.calendar-item.cancelled .race-num,
+.calendar-item.cancelled .race-date {
+  color: var(--text-muted);
 }
 
 .calendar-item.cancelled .race-country {
+  color: var(--text-muted);
   text-decoration: line-through;
   text-decoration-thickness: 1px;
 }
