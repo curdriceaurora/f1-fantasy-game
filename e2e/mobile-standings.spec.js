@@ -11,10 +11,10 @@ const committedStandings = JSON.parse(
 const filterTarget = committedStandings[2];
 const LAYOUT_TOLERANCE_PX = 1;
 
-function formatDelta(value) {
+function formatDeltaChip(value) {
   if (value == null) return '—';
   if (value === 0) return 'No change';
-  return value > 0 ? `+${value}` : String(value);
+  return value > 0 ? `▲ ${value}` : `▼ ${Math.abs(value)}`;
 }
 
 function signedPoints(value) {
@@ -85,7 +85,7 @@ test('renders standings as API-backed mobile cards without horizontal overflow',
   await expect(firstRow.locator('.standing-principal')).toHaveText(leader.principalName);
   await expect(firstRow.locator('.standing-total')).toHaveText(String(leader.totalPoints));
   await expect(firstRow.locator('.standing-latest')).toHaveText(signedPoints(leader.latestRacePoints));
-  await expect(firstRow.locator('.standing-delta')).toHaveText(formatDelta(leader.wowDelta));
+  await expect(firstRow.locator('.standing-delta')).toHaveText(formatDeltaChip(leader.wowDelta));
 
   const topRowCells = await Promise.all([
     firstRow.locator('.standing-rank').boundingBox(),
