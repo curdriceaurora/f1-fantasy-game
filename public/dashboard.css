@@ -377,6 +377,25 @@
   color: var(--text-secondary);
 }
 
+/* On phones a single column would push the standings far down the page; keep the
+   summary compact as a 2×2 grid so it stays a glance, not a screenful. */
+@media (max-width: 480px) {
+  .season-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 16px 0 4px;
+  }
+
+  .summary-tile {
+    padding: 10px 12px;
+    gap: 5px;
+  }
+
+  .summary-value {
+    font-size: 15px;
+  }
+}
+
 .team-link {
   color: var(--text-primary);
   text-decoration: none;

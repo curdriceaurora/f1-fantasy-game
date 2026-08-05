@@ -209,10 +209,22 @@ function renderSeasonSummary(data) {
   const racesScored = data.races.filter((race) => race.status === 'finalized').length;
   const activeRaces = data.races.filter((race) => race.status !== 'cancelled').length;
   const nextRace = data.races.find((race) => race.status === 'not run');
+  // A race can still be pending without a firm next date (postponed, or run but
+  // not yet scored), so the absence of a scheduled race isn't "season complete".
+  const seasonPending = data.races.some((race) => race.status !== 'finalized' && race.status !== 'cancelled');
+  let nextValue = 'Season complete';
+  let nextSub = '';
+  if (nextRace) {
+    nextValue = `R${nextRace.round} · ${nextRace.name}`;
+    nextSub = formatRaceDate(nextRace.date);
+  } else if (seasonPending) {
+    nextValue = 'To be confirmed';
+    nextSub = 'date TBC';
+  }
   const tiles = [
     { label: 'Championship leader', value: leader ? leader.displayName : '—', sub: leader ? `${leader.totalPoints} pts` : '', lead: true },
     { label: 'Races scored', value: String(racesScored), sub: `of ${activeRaces}` },
-    { label: 'Next race', value: nextRace ? `R${nextRace.round} · ${nextRace.name}` : 'Season complete', sub: nextRace ? formatRaceDate(nextRace.date) : '' },
+    { label: 'Next race', value: nextValue, sub: nextSub },
     { label: 'Teams entered', value: String(data.standings.length), sub: 'principals' },
   ];
   root.innerHTML = tiles.map((tile) => `
