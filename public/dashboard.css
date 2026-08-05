@@ -255,18 +255,126 @@
 }
 
 .rank-pill {
-  /* Using global badge system, just add specific colors */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 42px;
   padding: 5px 10px;
   border-radius: 999px;
-  background: rgba(255, 215, 0, 0.14);
-  color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
   font-family: var(--font-racing);
   font-size: 11px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Podium: only the top three carry a medal colour, so rank reads as standing
+   rather than uniform decoration. */
+.rank-pill-p1 {
+  background: rgba(255, 215, 0, 0.16);
+  color: var(--accent-gold);
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.45);
+}
+
+.rank-pill-p2 {
+  background: rgba(192, 192, 192, 0.16);
+  color: #d6d6de;
+  box-shadow: inset 0 0 0 1px rgba(192, 192, 192, 0.4);
+}
+
+.rank-pill-p3 {
+  background: rgba(205, 127, 50, 0.18);
+  color: #e0955a;
+  box-shadow: inset 0 0 0 1px rgba(205, 127, 50, 0.45);
+}
+
+/* Numeric columns line up on their digits. */
+.standing-total,
+.standing-latest {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Week-over-week change: a state chip whose shape and colour carry direction. */
+.delta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+.delta-chip.delta-up {
+  background: rgba(39, 244, 210, 0.12);
+  color: var(--green);
+}
+
+.delta-chip.delta-down {
+  background: rgba(225, 6, 0, 0.16);
+  color: var(--f1-red-glow);
+}
+
+.delta-chip.delta-flat {
+  font-size: 11px;
+}
+
+/* ── Season summary tiles (at-a-glance KPIs above the standings) ── */
+.season-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(184px, 1fr));
+  gap: 12px;
+  margin: 20px 0 4px;
+}
+
+.summary-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 2px solid rgba(255, 255, 255, 0.09);
+}
+
+.summary-tile-lead {
+  border-top-color: var(--accent-gold);
+}
+
+.summary-label {
+  font-family: var(--font-racing);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.summary-value {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-racing);
+  font-size: 17px;
+  line-height: 1.15;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-tile-lead .summary-value {
+  color: var(--accent-gold);
+}
+
+.summary-sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .team-link {
