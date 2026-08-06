@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
-import { monitorPage } from './helpers.js';
+import { monitorPage } from '../helpers.js';
 
 function readJson(path) {
   return JSON.parse(readFileSync(join(process.cwd(), path), 'utf8'));

@@ -1,5 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Specs live in a folder named for the audience they describe, and each project
+// picks up only the folders that apply to it. Nothing is guarded at runtime, so
+// a full run has no expected skips. See e2e/README.md for the mapping.
+const SHARED = '**/shared/*.spec.js';
+const DESKTOP = '**/desktop/*.spec.js';
+const MOBILE = '**/mobile/*.spec.js';
+const IPHONE = '**/iphone/*.spec.js';
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -14,10 +22,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      testMatch: [SHARED, DESKTOP],
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'mobile-iphone-14',
+      testMatch: [SHARED, MOBILE, IPHONE],
       use: {
         ...devices['iPhone 14 Pro'],
         browserName: 'chromium',
@@ -25,6 +35,7 @@ export default defineConfig({
     },
     {
       name: 'mobile-pixel-7',
+      testMatch: [SHARED, MOBILE],
       use: {
         ...devices['Pixel 7'],
         browserName: 'chromium',
