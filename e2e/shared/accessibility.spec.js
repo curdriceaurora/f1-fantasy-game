@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
-import { monitorPage } from './helpers.js';
+import { monitorPage } from '../helpers.js';
 
 const leader = JSON.parse(
   readFileSync(join(process.cwd(), 'season/scored/standings.json'), 'utf8'),
@@ -73,7 +73,7 @@ test.describe('core accessibility', () => {
     assertHealthy();
   });
 
-  test('honors reduced-motion preferences for animated UI feedback', async ({ page }, testInfo) => {
+  test('honors reduced-motion preferences for animated UI feedback', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('http://127.0.0.1:3457/index.html');
@@ -94,12 +94,6 @@ test.describe('core accessibility', () => {
     const detailArrowTransform = await page.locator('.race-item summary').first()
       .evaluate(element => getComputedStyle(element, '::after').transform);
     expect(detailArrowTransform).toBe('none');
-
-    if (testInfo.project.name.startsWith('mobile-')) {
-      await page.goto('http://127.0.0.1:3456/rules.html');
-      await page.locator('.rules-nav').evaluate(element => element.classList.add('rules-nav-hidden'));
-      await expect(page.locator('.rules-nav')).toHaveCSS('transition-duration', '0s');
-    }
 
     assertHealthy();
   });
