@@ -3,7 +3,7 @@
   "raceName": "Miami",
   "date": "2026-05-03",
   "round": 6,
-  "generatedAt": "2026-08-05T13:19:46.294Z",
+  "generatedAt": "2026-08-11T23:56:44.160Z",
   "documents": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_miami_grand_prix_-_infringement_-_car_16_-_pit_lane_speeding.pdf",
@@ -435,219 +435,6 @@
       "runningTotal": 302
     },
     {
-      "teamId": "tracey-wallis-1da84f99",
-      "principalName": "Tracey Wallis",
-      "displayName": "Spanner In The Works",
-      "raceId": "miami",
-      "raceName": "Miami",
-      "raceDate": "2026-05-03",
-      "baseSubtotal": 65,
-      "driverSubtotal": 39,
-      "constructorSubtotal": 26,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 65,
-      "drivers": [
-        {
-          "driverId": "lando-norris",
-          "name": "Lando Norris",
-          "teamName": "McLaren",
-          "imageSlug": "norris",
-          "rank": "Champion",
-          "qualifyingPosition": 4,
-          "sprintPosition": 1,
-          "gridStart": 4,
-          "improvementGrid": 4,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 30,
-          "components": [
-            {
-              "label": "Qualifying (grid P4)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            },
-            {
-              "label": "Fastest lap",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "lance-stroll",
-          "name": "Lance Stroll",
-          "teamName": "Aston Martin",
-          "imageSlug": "stroll",
-          "rank": "No Hoper",
-          "qualifyingPosition": 18,
-          "sprintPosition": 17,
-          "gridStart": 18,
-          "improvementGrid": 18,
-          "racePosition": 17,
-          "classified": true,
-          "totalPoints": 5,
-          "components": [
-            {
-              "label": "Qualifying (grid P18)",
-              "points": 3
-            },
-            {
-              "label": "Sprint P17",
-              "points": 0
-            },
-            {
-              "label": "Race finish P17",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 20,
-          "sprintPosition": 16,
-          "gridStart": 20,
-          "improvementGrid": 20,
-          "racePosition": 16,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying (grid P20)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P16",
-              "points": 0
-            },
-            {
-              "label": "Race finish P16",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 8
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 25,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 19,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 34,
-            "formula": "ceil((3×19 + 2×34) ÷ 5)",
-            "weightedRawPoints": 25,
-            "weightedPoints": 25
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 25
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -15,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-15 + 2×14) ÷ 5)",
-            "weightedRawPoints": -3.4,
-            "weightedPoints": -3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -3
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 4,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 153
-    },
-    {
       "teamId": "laurence-eggleston-9ea0df43",
       "principalName": "Laurence Eggleston",
       "displayName": "Stroll In The Park",
@@ -859,6 +646,219 @@
         }
       ],
       "runningTotal": 302
+    },
+    {
+      "teamId": "tracey-wallis-1da84f99",
+      "principalName": "Tracey Wallis",
+      "displayName": "Spanner In The Works",
+      "raceId": "miami",
+      "raceName": "Miami",
+      "raceDate": "2026-05-03",
+      "baseSubtotal": 64,
+      "driverSubtotal": 39,
+      "constructorSubtotal": 25,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 64,
+      "drivers": [
+        {
+          "driverId": "lando-norris",
+          "name": "Lando Norris",
+          "teamName": "McLaren",
+          "imageSlug": "norris",
+          "rank": "Champion",
+          "qualifyingPosition": 4,
+          "sprintPosition": 1,
+          "gridStart": 4,
+          "improvementGrid": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 30,
+          "components": [
+            {
+              "label": "Qualifying (grid P4)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "lance-stroll",
+          "name": "Lance Stroll",
+          "teamName": "Aston Martin",
+          "imageSlug": "stroll",
+          "rank": "No Hoper",
+          "qualifyingPosition": 18,
+          "sprintPosition": 17,
+          "gridStart": 18,
+          "improvementGrid": 18,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": 5,
+          "components": [
+            {
+              "label": "Qualifying (grid P18)",
+              "points": 3
+            },
+            {
+              "label": "Sprint P17",
+              "points": 0
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 20,
+          "sprintPosition": 16,
+          "gridStart": 20,
+          "improvementGrid": 20,
+          "racePosition": 16,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying (grid P20)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P16",
+              "points": 0
+            },
+            {
+              "label": "Race finish P16",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 8
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 25,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 19,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 34,
+            "formula": "ceil((3×19 + 2×34) ÷ 5)",
+            "weightedRawPoints": 25,
+            "weightedPoints": 25
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 25
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -15,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×-15 + 2×14) ÷ 5)",
+            "weightedRawPoints": -3.4,
+            "weightedPoints": -3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -3
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 4,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
+            }
+          ]
+        }
+      ],
+      "runningTotal": 147
     },
     {
       "teamId": "matthew-brooks-0ba2f10f",
@@ -2338,13 +2338,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 52,
+      "baseSubtotal": 51,
       "driverSubtotal": 13,
-      "constructorSubtotal": 39,
+      "constructorSubtotal": 38,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 52,
+      "totalPoints": 51,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2518,27 +2518,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 4,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 4,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 3
             }
           ]
         }
       ],
-      "runningTotal": 162
+      "runningTotal": 156
     },
     {
       "teamId": "charles-skilton-1f69d034",
@@ -3178,13 +3178,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 43,
+      "baseSubtotal": 42,
       "driverSubtotal": 31,
-      "constructorSubtotal": 12,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 43,
+      "totalPoints": 42,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -3362,27 +3362,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 4,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 4,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 3
             }
           ]
         }
       ],
-      "runningTotal": 358
+      "runningTotal": 351
     },
     {
       "teamId": "brian-donnell-c0048d2b",
@@ -4225,428 +4225,6 @@
       "runningTotal": 304
     },
     {
-      "teamId": "john-khatri-81ee21fe",
-      "principalName": "John Khatri",
-      "displayName": "Bella’s Racing Team",
-      "raceId": "miami",
-      "raceName": "Miami",
-      "raceDate": "2026-05-03",
-      "baseSubtotal": 37,
-      "driverSubtotal": 2,
-      "constructorSubtotal": 35,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 37,
-      "drivers": [
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": null,
-          "sprintPosition": 9,
-          "gridStart": 22,
-          "improvementGrid": 22,
-          "racePosition": 22,
-          "classified": true,
-          "totalPoints": -6,
-          "components": [
-            {
-              "label": "Qualifying (grid P22)",
-              "points": -6
-            },
-            {
-              "label": "Sprint P9",
-              "points": 0
-            },
-            {
-              "label": "Race finish P22",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 20,
-          "sprintPosition": 16,
-          "gridStart": 20,
-          "improvementGrid": 20,
-          "racePosition": 16,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying (grid P20)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P16",
-              "points": 0
-            },
-            {
-              "label": "Race finish P16",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 8
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "valtteri-bottas",
-          "name": "Valtteri Bottas",
-          "teamName": "Cadillac",
-          "imageSlug": "bottas",
-          "rank": "Outsider",
-          "qualifyingPosition": 19,
-          "sprintPosition": 19,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": 4,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": 2
-            },
-            {
-              "label": "Sprint P19",
-              "points": 0
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 25,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 19,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 34,
-            "formula": "ceil((3×19 + 2×34) ÷ 5)",
-            "weightedRawPoints": 25,
-            "weightedPoints": 25
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 25
-            }
-          ]
-        },
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 6,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 6
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 4,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 179
-    },
-    {
-      "teamId": "caroline-harris-855736a8",
-      "principalName": "Caroline Harris",
-      "displayName": "Harris Racing",
-      "raceId": "miami",
-      "raceName": "Miami",
-      "raceDate": "2026-05-03",
-      "baseSubtotal": 36,
-      "driverSubtotal": 31,
-      "constructorSubtotal": 5,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 36,
-      "drivers": [
-        {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 2,
-          "sprintPosition": 5,
-          "gridStart": 2,
-          "improvementGrid": 2,
-          "racePosition": 5,
-          "classified": true,
-          "totalPoints": 3,
-          "components": [
-            {
-              "label": "Qualifying (grid P2)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P5",
-              "points": 4
-            },
-            {
-              "label": "Race finish P5",
-              "points": 10
-            },
-            {
-              "label": "Position change",
-              "points": -6
-            },
-            {
-              "label": "Race time penalty",
-              "points": -5
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 5,
-          "sprintPosition": 4,
-          "gridStart": 5,
-          "improvementGrid": 5,
-          "racePosition": 4,
-          "classified": true,
-          "totalPoints": 19,
-          "components": [
-            {
-              "label": "Qualifying (grid P5)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P4",
-              "points": 5
-            },
-            {
-              "label": "Race finish P4",
-              "points": 12
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        },
-        {
-          "driverId": "alex-albon",
-          "name": "Alex Albon",
-          "teamName": "Williams",
-          "imageSlug": "albon",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 15,
-          "sprintPosition": 18,
-          "gridStart": 15,
-          "improvementGrid": 15,
-          "racePosition": 10,
-          "classified": true,
-          "totalPoints": 9,
-          "components": [
-            {
-              "label": "Qualifying (grid P15)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P18",
-              "points": 0
-            },
-            {
-              "label": "Race finish P10",
-              "points": 1
-            },
-            {
-              "label": "Position change",
-              "points": 10
-            }
-          ],
-          "raceContext": {
-            "raceId": "miami",
-            "raceName": "Miami"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 5,
-            "formula": "ceil((3×2 + 2×5) ÷ 5)",
-            "weightedRawPoints": 3.2,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -15,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-15 + 2×14) ÷ 5)",
-            "weightedRawPoints": -3.4,
-            "weightedPoints": -3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -3
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 4,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 4,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 119
-    },
-    {
       "teamId": "bruce-eggleston-cb831d32",
       "principalName": "Bruce Eggleston",
       "displayName": "Eggheads",
@@ -4858,6 +4436,219 @@
         }
       ],
       "runningTotal": 268
+    },
+    {
+      "teamId": "caroline-harris-855736a8",
+      "principalName": "Caroline Harris",
+      "displayName": "Harris Racing",
+      "raceId": "miami",
+      "raceName": "Miami",
+      "raceDate": "2026-05-03",
+      "baseSubtotal": 35,
+      "driverSubtotal": 31,
+      "constructorSubtotal": 4,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 35,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 2,
+          "sprintPosition": 5,
+          "gridStart": 2,
+          "improvementGrid": 2,
+          "racePosition": 5,
+          "classified": true,
+          "totalPoints": 3,
+          "components": [
+            {
+              "label": "Qualifying (grid P2)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P5",
+              "points": 10
+            },
+            {
+              "label": "Position change",
+              "points": -6
+            },
+            {
+              "label": "Race time penalty",
+              "points": -5
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 5,
+          "sprintPosition": 4,
+          "gridStart": 5,
+          "improvementGrid": 5,
+          "racePosition": 4,
+          "classified": true,
+          "totalPoints": 19,
+          "components": [
+            {
+              "label": "Qualifying (grid P5)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P4",
+              "points": 5
+            },
+            {
+              "label": "Race finish P4",
+              "points": 12
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "alex-albon",
+          "name": "Alex Albon",
+          "teamName": "Williams",
+          "imageSlug": "albon",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 15,
+          "sprintPosition": 18,
+          "gridStart": 15,
+          "improvementGrid": 15,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 9,
+          "components": [
+            {
+              "label": "Qualifying (grid P15)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P18",
+              "points": 0
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 10
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×2 + 2×5) ÷ 5)",
+            "weightedRawPoints": 3.2,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -15,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": 14,
+            "formula": "ceil((3×-15 + 2×14) ÷ 5)",
+            "weightedRawPoints": -3.4,
+            "weightedPoints": -3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -3
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 4,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
+            }
+          ]
+        }
+      ],
+      "runningTotal": 113
     },
     {
       "teamId": "mark-bayley-16a5cc70",
@@ -5282,19 +5073,228 @@
       "runningTotal": -8
     },
     {
+      "teamId": "john-khatri-81ee21fe",
+      "principalName": "John Khatri",
+      "displayName": "Bella’s Racing Team",
+      "raceId": "miami",
+      "raceName": "Miami",
+      "raceDate": "2026-05-03",
+      "baseSubtotal": 32,
+      "driverSubtotal": -2,
+      "constructorSubtotal": 34,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 32,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": null,
+          "sprintPosition": 9,
+          "gridStart": 22,
+          "improvementGrid": 22,
+          "racePosition": 22,
+          "classified": true,
+          "totalPoints": -6,
+          "components": [
+            {
+              "label": "Qualifying (grid P22)",
+              "points": -6
+            },
+            {
+              "label": "Sprint P9",
+              "points": 0
+            },
+            {
+              "label": "Race finish P22",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 20,
+          "sprintPosition": 16,
+          "gridStart": 20,
+          "improvementGrid": 20,
+          "racePosition": 16,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying (grid P20)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P16",
+              "points": 0
+            },
+            {
+              "label": "Race finish P16",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 8
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 19,
+          "sprintPosition": 19,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": 0,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P19",
+              "points": 0
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "miami",
+            "raceName": "Miami"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 25,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 19,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 34,
+            "formula": "ceil((3×19 + 2×34) ÷ 5)",
+            "weightedRawPoints": 25,
+            "weightedPoints": 25
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 25
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 6,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 2,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×2 + 2×10) ÷ 5)",
+            "weightedRawPoints": 5.2,
+            "weightedPoints": 6
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 6
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 4,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
+            }
+          ]
+        }
+      ],
+      "runningTotal": 157
+    },
+    {
       "teamId": "sanath-kuppa-f128be53",
       "principalName": "Sanath Kuppa",
       "displayName": "Must Be The Water",
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 33,
-      "driverSubtotal": 27,
+      "baseSubtotal": 29,
+      "driverSubtotal": 23,
       "constructorSubtotal": 6,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 33,
+      "totalPoints": 29,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -5380,11 +5380,11 @@
           "improvementGrid": 19,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 0,
           "components": [
             {
               "label": "Qualifying (grid P19)",
-              "points": 2
+              "points": -2
             },
             {
               "label": "Sprint P19",
@@ -5488,7 +5488,7 @@
           ]
         }
       ],
-      "runningTotal": 123
+      "runningTotal": 107
     },
     {
       "teamId": "kiran-sivanna-aeca91ae",
@@ -6128,13 +6128,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 21,
+      "baseSubtotal": 20,
       "driverSubtotal": 8,
-      "constructorSubtotal": 13,
+      "constructorSubtotal": 12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 21,
+      "totalPoints": 20,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -6312,27 +6312,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 4,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 4,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 3
             }
           ]
         }
       ],
-      "runningTotal": 292
+      "runningTotal": 285
     },
     {
       "teamId": "rob-wallis-94faa5a8",
@@ -8242,11 +8242,11 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": -1,
-      "driverSubtotal": -3,
+      "baseSubtotal": -5,
+      "driverSubtotal": -7,
       "constructorSubtotal": 2,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 1,
+      "homeCircuitBonusPoints": 5,
       "investmentBonusPoints": 7,
       "totalPoints": 7,
       "drivers": [
@@ -8334,11 +8334,11 @@
           "improvementGrid": 19,
           "racePosition": 18,
           "classified": true,
-          "totalPoints": 4,
+          "totalPoints": 0,
           "components": [
             {
               "label": "Qualifying (grid P19)",
-              "points": 2
+              "points": -2
             },
             {
               "label": "Sprint P19",
@@ -8442,7 +8442,7 @@
           ]
         }
       ],
-      "runningTotal": 64
+      "runningTotal": 52
     },
     {
       "teamId": "fred-bull-c865e3fe",

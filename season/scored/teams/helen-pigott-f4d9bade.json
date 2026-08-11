@@ -2,7 +2,7 @@
   "teamId": "helen-pigott-f4d9bade",
   "principalName": "Helen Pigott",
   "displayName": "Rumtruffle",
-  "totalPoints": 209,
+  "totalPoints": 208,
   "completedRaces": 11,
   "latestRacePoints": 20,
   "races": [
@@ -1016,13 +1016,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 10,
+      "baseSubtotal": 9,
       "driverSubtotal": 21,
-      "constructorSubtotal": -11,
+      "constructorSubtotal": -12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 10,
+      "totalPoints": 9,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1196,27 +1196,27 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         }
       ],
-      "runningTotal": 60
+      "runningTotal": 59
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1410,7 +1410,7 @@
           ]
         }
       ],
-      "runningTotal": 92
+      "runningTotal": 91
     },
     {
       "raceId": "austria",
@@ -1604,7 +1604,7 @@
           ]
         }
       ],
-      "runningTotal": 111
+      "runningTotal": 110
     },
     {
       "raceId": "great-britain",
@@ -1810,7 +1810,7 @@
           ]
         }
       ],
-      "runningTotal": 139
+      "runningTotal": 138
     },
     {
       "raceId": "belgium",
@@ -2004,7 +2004,7 @@
           ]
         }
       ],
-      "runningTotal": 189
+      "runningTotal": 188
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 209
+      "runningTotal": 208
     }
   ]
 }

@@ -2,7 +2,7 @@
   "teamId": "martin-lewis-ea255cc6",
   "principalName": "Martin Lewis",
   "displayName": "Eat My Dust",
-  "totalPoints": 234,
+  "totalPoints": 233,
   "completedRaces": 11,
   "latestRacePoints": 19,
   "races": [
@@ -1016,13 +1016,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 12,
+      "baseSubtotal": 11,
       "driverSubtotal": 19,
-      "constructorSubtotal": -7,
+      "constructorSubtotal": -8,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 12,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1188,27 +1188,27 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         }
       ],
-      "runningTotal": 147
+      "runningTotal": 146
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1410,7 +1410,7 @@
           ]
         }
       ],
-      "runningTotal": 166
+      "runningTotal": 165
     },
     {
       "raceId": "austria",
@@ -1604,7 +1604,7 @@
           ]
         }
       ],
-      "runningTotal": 182
+      "runningTotal": 181
     },
     {
       "raceId": "great-britain",
@@ -1810,7 +1810,7 @@
           ]
         }
       ],
-      "runningTotal": 164
+      "runningTotal": 163
     },
     {
       "raceId": "belgium",
@@ -2004,7 +2004,7 @@
           ]
         }
       ],
-      "runningTotal": 215
+      "runningTotal": 214
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 234
+      "runningTotal": 233
     }
   ]
 }

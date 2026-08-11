@@ -2,7 +2,7 @@
   "teamId": "rahul-srinivasan-c15c2aa4",
   "principalName": "Rahul Srinivasan",
   "displayName": "Ask Colapinto's MOM Before Overtaking",
-  "totalPoints": 756,
+  "totalPoints": 755,
   "completedRaces": 11,
   "latestRacePoints": 29,
   "races": [
@@ -1032,13 +1032,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -25,
+      "baseSubtotal": -26,
       "driverSubtotal": -38,
-      "constructorSubtotal": 13,
+      "constructorSubtotal": 12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -25,
+      "totalPoints": -26,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1185,22 +1185,22 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -1232,7 +1232,7 @@
           ]
         }
       ],
-      "runningTotal": 365
+      "runningTotal": 364
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1430,7 +1430,7 @@
           ]
         }
       ],
-      "runningTotal": 405
+      "runningTotal": 404
     },
     {
       "raceId": "austria",
@@ -1624,7 +1624,7 @@
           ]
         }
       ],
-      "runningTotal": 438
+      "runningTotal": 437
     },
     {
       "raceId": "great-britain",
@@ -1830,7 +1830,7 @@
           ]
         }
       ],
-      "runningTotal": 716
+      "runningTotal": 715
     },
     {
       "raceId": "belgium",
@@ -2028,7 +2028,7 @@
           ]
         }
       ],
-      "runningTotal": 727
+      "runningTotal": 726
     },
     {
       "raceId": "hungary",
@@ -2226,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 756
+      "runningTotal": 755
     }
   ]
 }

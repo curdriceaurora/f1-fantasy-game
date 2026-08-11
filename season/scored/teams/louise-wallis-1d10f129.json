@@ -2,7 +2,7 @@
   "teamId": "louise-wallis-1d10f129",
   "principalName": "Louise Wallis",
   "displayName": "Lewis it Friday Yet?",
-  "totalPoints": 661,
+  "totalPoints": 656,
   "completedRaces": 11,
   "latestRacePoints": 14,
   "races": [
@@ -1024,13 +1024,13 @@
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 21,
-      "driverSubtotal": 8,
-      "constructorSubtotal": 13,
+      "baseSubtotal": 16,
+      "driverSubtotal": 4,
+      "constructorSubtotal": 12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 22,
+      "totalPoints": 17,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1112,11 +1112,11 @@
           "improvementGrid": 19,
           "racePosition": 20,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -4,
           "components": [
             {
               "label": "Qualifying (grid P19)",
-              "points": 2
+              "points": -2
             },
             {
               "label": "Race finish P20",
@@ -1169,22 +1169,22 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -1216,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 415
+      "runningTotal": 410
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 491
+      "runningTotal": 486
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 535
+      "runningTotal": 530
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1814,7 @@
           ]
         }
       ],
-      "runningTotal": 649
+      "runningTotal": 644
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 647
+      "runningTotal": 642
     },
     {
       "raceId": "hungary",
@@ -2214,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 661
+      "runningTotal": 656
     }
   ]
 }
