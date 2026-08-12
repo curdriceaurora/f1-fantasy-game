@@ -176,3 +176,53 @@ test('syncSeasonEntries rejects a workbook without the roster sheet', async () =
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('two distinct roster labels resolving to the same team are rejected at import', () => {
+  // The #88 bug: Martin labels Racing Bulls "RBPT", the alias table mapped it to
+  // red-bull, and both collapsed into one constructor — eight managers held the
+  // wrong team for eleven races while their picks still looked plausible. That
+  // exact pair no longer collides, so the guard is exercised with another pair
+  // that does.
+  //
+  // The check assumes each driver and team appears under one label per roster,
+  // which holds for Martin's: he writes "RBPT" or "Red Bull", never both spellings
+  // of one team, and one form of each driver's name throughout.
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  // Russell 12 + Hamilton 9 + Stroll 5 + team1 13 + Audi 5 + Haas 6 = 50.
+  const row = (principal, team1) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', team1, 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
+  // Data rows begin at index 4; the workbook carries a title block above the header.
+  const rows = [[], [], [], header, row('Alpha', 'Red Bull'), row('Beta', 'Red Bull Racing')];
+
+  assert.throws(
+    () => buildEntries(rows, 'roster.xlsx'),
+    /"Red Bull" and "Red Bull Racing" both resolve to red-bull/,
+  );
+});
+
+test('the same team written the same way twice is not a collision', () => {
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = (principal) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
+  assert.equal(buildEntries([[], [], [], header, row('Alpha'), row('Beta')], 'roster.xlsx').length, 2);
+});
+
+test('the collision guard covers the prediction columns too', () => {
+  // Predictions resolve through the same alias table as the picks, so a collision
+  // there corrupts a driver- or constructor-champion prediction just as silently.
+  // Selections and predictions are the same kind of reference and must be checked
+  // together — a guard on part of the surface is a guard with a hole in it.
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = (principal, constructorChampion) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', constructorChampion, 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, row('Alpha', 'Red Bull'), row('Beta', 'Red Bull Racing')], 'roster.xlsx'),
+    /"Red Bull" and "Red Bull Racing" both resolve to red-bull/,
+  );
+});
+
+test('the collision guard covers the driver-champion prediction', () => {
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = (principal, driverChampion) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, driverChampion, 'Mercedes', 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, row('Alpha', 'G. Russell'), row('Beta', 'George Russell')], 'roster.xlsx'),
+    /both resolve to george-russell/,
+  );
+});

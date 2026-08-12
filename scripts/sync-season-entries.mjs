@@ -271,7 +271,41 @@ export function createStableTeamId(principalName, existingTeamId = null) {
   return `${base}-${fingerprint}`;
 }
 
+// Two different labels in Martin's roster must never resolve to the same driver
+// or team. That is what #88 was: he writes Racing Bulls as "RBPT", the alias
+// table mapped it to red-bull, and both collapsed into one constructor — eight
+// managers held the wrong team for eleven races while their picks still looked
+// entirely plausible. An alias collision is invisible in the output it corrupts,
+// so it has to fail here, at the one point where the two labels are still
+// distinguishable.
+function assertNoResolutionCollisions(rows) {
+  const seen = { driver: new Map(), team: new Map() };
+  const record = (kind, label, resolved) => {
+    if (!label || !resolved) return;
+    const text = String(label).trim();
+    const existing = seen[kind].get(resolved.id);
+    if (existing && existing !== text) {
+      throw new Error(
+        `Roster labels "${[existing, text].sort()[0]}" and "${[existing, text].sort()[1]}" both resolve to ${resolved.id}`
+        + ` — the alias table is collapsing two distinct ${kind}s`,
+      );
+    }
+    seen[kind].set(resolved.id, text);
+  };
+
+  for (let index = 4; index < rows.length; index += 1) {
+    const row = rows[index];
+    if (!row || !row[1] || !row[2]) continue;
+    // Selections *and* predictions: both resolve through the same alias table, so
+    // a collision corrupts a champion prediction exactly as silently as a pick.
+    // Guarding only part of the surface is a guard with a hole in it.
+    for (const column of [3, 4, 5, 11]) record('driver', row[column], resolveDriver(row[column]));
+    for (const column of [6, 7, 8, 12]) record('team', row[column], resolveTeam(row[column]));
+  }
+}
+
 export function buildEntriesWithMap(rows, workbookPath, existingEntries = [], previousTeamIdMap = null) {
+  assertNoResolutionCollisions(rows);
   const entries = [];
   const seenTeamIds = new Set();
   const fallbackLookups = {

@@ -2,21 +2,21 @@
   "teamId": "mark-bayley-16a5cc70",
   "principalName": "Mark Bayley",
   "displayName": "Harvest Mode Heroes",
-  "totalPoints": 565,
+  "totalPoints": 642,
   "completedRaces": 11,
-  "latestRacePoints": 48,
+  "latestRacePoints": 41,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 86,
+      "baseSubtotal": 85,
       "driverSubtotal": 52,
-      "constructorSubtotal": 34,
+      "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 86,
+      "totalPoints": 85,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -144,29 +144,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 5,
+          "totalPoints": 4,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 29,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -31,
-            "formula": "ceil((3×29 + 2×-31) ÷ 5)",
-            "weightedRawPoints": 5,
-            "weightedPoints": 5
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": -4,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×-4 + 2×15) ÷ 5)",
+            "weightedRawPoints": 3.6,
+            "weightedPoints": 4
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 5
+              "points": 4
             }
           ]
         },
@@ -202,19 +202,19 @@
           ]
         }
       ],
-      "runningTotal": 86
+      "runningTotal": 85
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 72,
+      "baseSubtotal": 99,
       "driverSubtotal": 44,
-      "constructorSubtotal": 28,
+      "constructorSubtotal": 55,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 72,
+      "totalPoints": 99,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -354,29 +354,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": -8,
+          "totalPoints": 19,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": -18,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-18 + 2×6) ÷ 5)",
-            "weightedRawPoints": -8.4,
-            "weightedPoints": -8
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 25,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 9,
+            "formula": "ceil((3×25 + 2×9) ÷ 5)",
+            "weightedRawPoints": 18.6,
+            "weightedPoints": 19
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -8
+              "points": 19
             }
           ]
         },
@@ -412,19 +412,19 @@
           ]
         }
       ],
-      "runningTotal": 158
+      "runningTotal": 184
     },
     {
       "raceId": "japan",
       "raceName": "Japan",
       "raceDate": "2026-03-29",
-      "baseSubtotal": 47,
+      "baseSubtotal": 56,
       "driverSubtotal": 20,
-      "constructorSubtotal": 27,
+      "constructorSubtotal": 36,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 47,
+      "totalPoints": 56,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -552,29 +552,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 1,
+          "totalPoints": 10,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 6,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -8,
-            "formula": "ceil((3×6 + 2×-8) ÷ 5)",
-            "weightedRawPoints": 0.4,
-            "weightedPoints": 1
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 15,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 1,
+            "formula": "ceil((3×15 + 2×1) ÷ 5)",
+            "weightedRawPoints": 9.4,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 1
+              "points": 10
             }
           ]
         },
@@ -606,19 +606,19 @@
           ]
         }
       ],
-      "runningTotal": 205
+      "runningTotal": 240
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 18,
+      "baseSubtotal": 13,
       "driverSubtotal": 20,
-      "constructorSubtotal": -2,
+      "constructorSubtotal": -7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 18,
+      "totalPoints": 13,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -766,29 +766,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 3,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×3 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -1.8,
-            "weightedPoints": -1
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": -15,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×-15 + 2×7) ÷ 5)",
+            "weightedRawPoints": -6.2,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": -6
             }
           ]
         },
@@ -820,19 +820,19 @@
           ]
         }
       ],
-      "runningTotal": 223
+      "runningTotal": 253
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 59,
+      "baseSubtotal": 40,
       "driverSubtotal": -10,
-      "constructorSubtotal": 69,
+      "constructorSubtotal": 50,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 59,
+      "totalPoints": 40,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -976,29 +976,33 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 19,
+          "totalPoints": 0,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 21,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×21 + 2×14) ÷ 5)",
-            "weightedRawPoints": 18.2,
-            "weightedPoints": 19
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 19,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": -16,
+            "formula": "ceil((3×19 + 2×-16) ÷ 5)",
+            "weightedRawPoints": 5,
+            "weightedPoints": 5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 19
+              "points": 5
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -1030,19 +1034,19 @@
           ]
         }
       ],
-      "runningTotal": 282
+      "runningTotal": 293
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -44,
+      "baseSubtotal": -1,
       "driverSubtotal": -31,
-      "constructorSubtotal": -13,
+      "constructorSubtotal": 30,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -44,
+      "totalPoints": -1,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1178,29 +1182,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": -15,
+          "totalPoints": 28,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": -40,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 22,
-            "formula": "ceil((3×-40 + 2×22) ÷ 5)",
-            "weightedRawPoints": -15.2,
-            "weightedPoints": -15
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 26,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 29,
+            "formula": "ceil((3×26 + 2×29) ÷ 5)",
+            "weightedRawPoints": 27.2,
+            "weightedPoints": 28
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -15
+              "points": 28
             }
           ]
         },
@@ -1232,19 +1236,19 @@
           ]
         }
       ],
-      "runningTotal": 238
+      "runningTotal": 292
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 40,
+      "baseSubtotal": 39,
       "driverSubtotal": 4,
-      "constructorSubtotal": 36,
+      "constructorSubtotal": 35,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 40,
+      "totalPoints": 39,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1376,29 +1380,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 12,
+          "totalPoints": 11,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 14,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×14 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11.6,
-            "weightedPoints": 12
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 10,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 12,
+            "formula": "ceil((3×10 + 2×12) ÷ 5)",
+            "weightedRawPoints": 10.8,
+            "weightedPoints": 11
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 12
+              "points": 11
             }
           ]
         },
@@ -1430,19 +1434,19 @@
           ]
         }
       ],
-      "runningTotal": 278
+      "runningTotal": 331
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 48,
+      "baseSubtotal": 37,
       "driverSubtotal": 23,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 48,
+      "totalPoints": 37,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1570,29 +1574,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 20,
+          "totalPoints": 9,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 24,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×24 + 2×12) ÷ 5)",
-            "weightedRawPoints": 19.2,
-            "weightedPoints": 20
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 8,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 20
+              "points": 9
             }
           ]
         },
@@ -1624,19 +1628,19 @@
           ]
         }
       ],
-      "runningTotal": 326
+      "runningTotal": 368
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 87,
+      "baseSubtotal": 115,
       "driverSubtotal": 49,
-      "constructorSubtotal": 38,
+      "constructorSubtotal": 66,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 87,
+      "homeCircuitBonusPoints": 115,
       "investmentBonusPoints": 0,
-      "totalPoints": 174,
+      "totalPoints": 230,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1776,29 +1780,33 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": -9,
+          "totalPoints": 19,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": -25,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 13,
-            "formula": "ceil((3×-25 + 2×13) ÷ 5)",
-            "weightedRawPoints": -9.8,
-            "weightedPoints": -9
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 23,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 19,
+            "formula": "ceil((3×23 + 2×19) ÷ 5)",
+            "weightedRawPoints": 21.4,
+            "weightedPoints": 22
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -9
+              "points": 22
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -3
             }
           ]
         },
@@ -1830,19 +1838,19 @@
           ]
         }
       ],
-      "runningTotal": 500
+      "runningTotal": 598
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 17,
+      "baseSubtotal": 3,
       "driverSubtotal": -15,
-      "constructorSubtotal": 32,
+      "constructorSubtotal": 18,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 17,
+      "totalPoints": 3,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1974,29 +1982,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 17,
+          "totalPoints": 3,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 13,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 22,
-            "formula": "ceil((3×13 + 2×22) ÷ 5)",
-            "weightedRawPoints": 16.6,
-            "weightedPoints": 17
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 0,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 7,
+            "formula": "ceil((3×0 + 2×7) ÷ 5)",
+            "weightedRawPoints": 2.8,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 17
+              "points": 3
             }
           ]
         },
@@ -2028,19 +2036,19 @@
           ]
         }
       ],
-      "runningTotal": 517
+      "runningTotal": 601
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 48,
+      "baseSubtotal": 41,
       "driverSubtotal": 15,
-      "constructorSubtotal": 33,
+      "constructorSubtotal": 26,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 48,
+      "totalPoints": 41,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2172,29 +2180,29 @@
           ]
         },
         {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
           "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
+            "liam-lawson",
+            "arvid-lindblad"
           ],
-          "totalPoints": 18,
+          "totalPoints": 11,
           "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 22,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 11,
-            "formula": "ceil((3×22 + 2×11) ÷ 5)",
-            "weightedRawPoints": 17.6,
-            "weightedPoints": 18
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 13,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×13 + 2×8) ÷ 5)",
+            "weightedRawPoints": 11,
+            "weightedPoints": 11
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 18
+              "points": 11
             }
           ]
         },
@@ -2226,7 +2234,7 @@
           ]
         }
       ],
-      "runningTotal": 565
+      "runningTotal": 642
     }
   ]
 }
