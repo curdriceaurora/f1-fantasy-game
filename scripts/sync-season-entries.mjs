@@ -296,8 +296,11 @@ function assertNoResolutionCollisions(rows) {
   for (let index = 4; index < rows.length; index += 1) {
     const row = rows[index];
     if (!row || !row[1] || !row[2]) continue;
-    for (const column of [3, 4, 5]) record('driver', row[column], resolveDriver(row[column]));
-    for (const column of [6, 7, 8]) record('team', row[column], resolveTeam(row[column]));
+    // Selections *and* predictions: both resolve through the same alias table, so
+    // a collision corrupts a champion prediction exactly as silently as a pick.
+    // Guarding only part of the surface is a guard with a hole in it.
+    for (const column of [3, 4, 5, 11]) record('driver', row[column], resolveDriver(row[column]));
+    for (const column of [6, 7, 8, 12]) record('team', row[column], resolveTeam(row[column]));
   }
 }
 

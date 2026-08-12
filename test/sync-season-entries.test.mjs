@@ -203,3 +203,25 @@ test('the same team written the same way twice is not a collision', () => {
   const row = (principal) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
   assert.equal(buildEntries([[], [], [], header, row('Alpha'), row('Beta')], 'roster.xlsx').length, 2);
 });
+
+test('the collision guard covers the prediction columns too', () => {
+  // Predictions resolve through the same alias table as the picks, so a collision
+  // there corrupts a driver- or constructor-champion prediction just as silently.
+  // Selections and predictions are the same kind of reference and must be checked
+  // together — a guard on part of the surface is a guard with a hole in it.
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = (principal, constructorChampion) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', constructorChampion, 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, row('Alpha', 'Red Bull'), row('Beta', 'Red Bull Racing')], 'roster.xlsx'),
+    /"Red Bull" and "Red Bull Racing" both resolve to red-bull/,
+  );
+});
+
+test('the collision guard covers the driver-champion prediction', () => {
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = (principal, driverChampion) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Red Bull', 'Audi', 'Haas', 'Britain', 400, driverChampion, 'Mercedes', 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, row('Alpha', 'G. Russell'), row('Beta', 'George Russell')], 'roster.xlsx'),
+    /both resolve to george-russell/,
+  );
+});
