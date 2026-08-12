@@ -10,20 +10,13 @@ import { scoreFantasyTeam, buildConstructorContribution, buildDriverContribution
 //
 // The workbook is not in the repository — `martins-calculations/` is gitignored as a
 // local reference — so this fixture cannot be checked against its source by CI. To
-// re-derive it from a local copy (the rank label there is "No-Hoper"):
+// verify it against a local copy:
 //
-//   python3 -c "
-//   import openpyxl, sys
-//   ws = openpyxl.load_workbook(sys.argv[1], data_only=True)['Tables']
-//   seen = {}
-//   for r in range(52, 74):
-//       rank = ws.cell(r, 8).value
-//       if rank and rank not in seen:
-//           seen[rank] = [ws.cell(r, c).value for c in range(10, 17)]
-//   for rank, row in seen.items(): print(rank, row)
-//   " 'martins-calculations/<master workbook>.xlsx'
+//   npm run verify:matrix -- 'martins-calculations/<workbook>.xlsx'
 //
-// See #64: the reconcile:martin harness is where this becomes an automated check.
+// That reads Tables!H52:P73 and diffs all 42 cells against QUALIFYING_MATRIX, exiting
+// non-zero on any disagreement. See #64: the reconcile:martin harness is where this
+// becomes part of the standing reconciliation.
 const TDRIVER_QUALIFYING = {
   //             pole  2-5  6-10  11-14  15-18  19-22   DNQ
   Champion:     [   0,  -2,   -4,    -6,    -9,   -13,  -20],

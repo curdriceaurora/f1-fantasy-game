@@ -1,7 +1,7 @@
 {
   "name": "f1-fantasy-game",
   "version": "1.0.0",
-  "description": "F1 Fantasy Team Selector — PocketTanks Game + Slot Machine",
+  "description": "F1 Fantasy Team Selector \u2014 PocketTanks Game + Slot Machine",
   "type": "module",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
     "score:race": "node scripts/score-race.mjs",
     "auto:score": "node scripts/auto-score.mjs",
     "audit:penalties": "node scripts/audit-time-penalties.mjs",
+    "verify:matrix": "node scripts/verify-qualifying-matrix.mjs",
     "reconcile:season": "node scripts/reconcile-season.mjs",
     "switch-mode": "node scripts/switch-mode.mjs",
     "prepare": "simple-git-hooks"
