@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import ExcelJS from 'exceljs';
 import {
-  readRaceSheet, selectRaceSources, workbookModified, assertCompleteSources, detectCoverageLoss,
+  readRaceSheet, selectRaceSources, workbookModified, assertCompleteSources, detectCoverageLoss, validateRaceCoverage,
   MARTIN_SHEET_BY_RACE, EXPECTED_DRIVERS, EXPECTED_TEAMS,
 } from '../lib/martin-workbook.js';
 
@@ -276,3 +276,14 @@ function fullDriverFields() {
     total: 0, grid: 1, finish: 1, fineEuros: 0, gridPenalty: 0, timePenalty: 0, sprintPoints: 0, fastestLapPoints: 0,
   };
 }
+
+test('validateRaceCoverage rejects a field nobody expects, on either side', () => {
+  // A new scoring input added to one projection but not the other would be
+  // computed, published, and never compared. The schema is exact for that reason.
+  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, fullDriverFields()]));
+  drivers.d0.newScoreInput = 3;
+  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i, fineEuros: 0 }]));
+  const problems = validateRaceCoverage({ monaco: { drivers, teams } });
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /driver d0 has unexpected field\(s\): newScoreInput/);
+});

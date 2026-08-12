@@ -130,8 +130,13 @@ export function runCheck({ ledger, accepted, scored }) {
   // guards cannot protect a file edited by hand or mangled by a merge after the
   // fact, and comparing only the entities and fields it happens to contain would
   // pass happily on a narrowed one.
-  const lines = validateRaceCoverage(ledger.races, (raceId) => `  ${raceId} (committed ledger)`)
-    .map((problem) => problem.replace(/^ {2}/, '  '));
+  const lines = [
+    ...validateRaceCoverage(ledger.races, (raceId) => `${raceId} (committed ledger)`),
+    // The scored side is validated too: it is the comparison projection, so an
+    // entity or field appearing there without a counterpart is a hole, not a
+    // curiosity. Same rules, same function, both directions.
+    ...validateRaceCoverage(scored, (raceId) => `${raceId} (scored)`),
+  ].map((problem) => `  ${problem}`);
   const result = compareToLedger(scored, ledger, accepted);
   for (const row of result.unexplained) {
     lines.push(`  ${row.race} ${row.kind} ${row.id} ${row.field}: ours ${row.ours}, Martin ${row.martin}`);
@@ -141,6 +146,11 @@ export function runCheck({ ledger, accepted, scored }) {
   }
   for (const raceId of result.missingRaces) {
     lines.push(`  ${raceId}: in the ledger but not scored`);
+  }
+  for (const row of result.unmatched) {
+    lines.push(row.field
+      ? `  ${row.race} ${row.kind} ${row.id}: field ${row.field} is scored but absent from the ledger`
+      : `  ${row.race} ${row.kind} ${row.id}: scored but absent from the ledger`);
   }
   for (const raceId of result.unledgeredRaces) {
     lines.push(`  ${raceId}: scored but absent from the ledger — regenerate with \`${GENERATE_COMMAND}\``);

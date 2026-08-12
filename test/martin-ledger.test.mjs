@@ -119,3 +119,35 @@ test('compareToLedger is silent when the ledger and the scored races match exact
   const scored = { monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 9, grid: 9 } }, teams: { williams: { total: -3 } } } };
   assert.deepEqual(compareToLedger(scored, ledger, accepted).unledgeredRaces, []);
 });
+
+// The three mutations below all add something to the scored side. Comparison
+// walked ledger -> scored, so anything present only on our side was invisible:
+// a new seat, a new constructor, or a new scoring input could be introduced and
+// never compared against Martin at all.
+const fullLedger = { races: { monaco: { drivers: { a: { total: 1 } }, teams: { t: { total: 2 } } } } };
+
+test('compareToLedger reports a scored driver the ledger does not have', () => {
+  const scored = { monaco: { drivers: { a: { total: 1 }, 'reserve-driver': { total: 5 } }, teams: { t: { total: 2 } } } };
+  const result = compareToLedger(scored, fullLedger, { divergences: [] });
+  assert.equal(result.unmatched.length, 1);
+  assert.deepEqual(result.unmatched[0], { race: 'monaco', kind: 'driver', id: 'reserve-driver', field: null });
+});
+
+test('compareToLedger reports a scored constructor the ledger does not have', () => {
+  const scored = { monaco: { drivers: { a: { total: 1 } }, teams: { t: { total: 2 }, 'reserve-team': { total: 9 } } } };
+  const result = compareToLedger(scored, fullLedger, { divergences: [] });
+  assert.deepEqual(result.unmatched[0], { race: 'monaco', kind: 'team', id: 'reserve-team', field: null });
+});
+
+test('compareToLedger reports a scored field the ledger does not carry', () => {
+  // A new scoring input must be added to the ledger too, or it is computed and
+  // published without ever being checked against Martin.
+  const scored = { monaco: { drivers: { a: { total: 1, newScoreInput: 3 } }, teams: { t: { total: 2 } } } };
+  const result = compareToLedger(scored, fullLedger, { divergences: [] });
+  assert.deepEqual(result.unmatched[0], { race: 'monaco', kind: 'driver', id: 'a', field: 'newScoreInput' });
+});
+
+test('compareToLedger is silent when both sides carry exactly the same shape', () => {
+  const scored = { monaco: { drivers: { a: { total: 1 } }, teams: { t: { total: 2 } } } };
+  assert.deepEqual(compareToLedger(scored, fullLedger, { divergences: [] }).unmatched, []);
+});
