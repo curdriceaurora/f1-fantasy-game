@@ -235,3 +235,44 @@ test('runCheck rejects a committed ledger with a compared field removed', async 
   assert.equal(result.ok, false);
   assert.match(result.lines.join('\n'), /driver lando-norris is missing field\(s\): sprintPoints/);
 });
+
+test('generateLedger refuses to build a ledger whose own provenance is malformed', async () => {
+  // A source with no internal timestamp metadata yields workbookModified: null.
+  // Generation previously reported 0 regressions and wrote an artifact the very
+  // next CI check would reject — the guard existed but ran only against the
+  // *previous* ledger, never the candidate being built.
+  const { mkdtempSync, rmSync } = await import('fs');
+  const { tmpdir } = await import('os');
+  const { join } = await import('path');
+  const ExcelJS = (await import('exceljs')).default;
+  const { generateLedger } = await import('../scripts/reconcile-martin.mjs');
+
+  const dir = mkdtempSync(join(tmpdir(), 'ledger-'));
+  try {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet('Race 8');
+    const row = sheet.getRow(6);
+    row.getCell(2).value = 'L. Norris';
+    row.getCell(24).value = -26;
+    row.getCell(25).value = 'McLaren';
+    row.getCell(27).value = -19;
+    row.commit();
+    await workbook.xlsx.writeFile(join(dir, 'no-timestamp.xlsx'));
+
+    // ExcelJS stamps `modified` on write, so the absent-metadata case is injected
+    // at the reader rather than faked in the file.
+    const readWorkbookImpl = async (path) => {
+      const loaded = new ExcelJS.Workbook();
+      await loaded.xlsx.readFile(path);
+      loaded.modified = undefined;
+      loaded.created = undefined;
+      return loaded;
+    };
+
+    const { ledger, regressions } = await generateLedger({ workbookDir: dir, readWorkbookImpl });
+    assert.equal(ledger.provenance.races.monaco.workbookModified, null);
+    assert.match(regressions.join(' '), /generated ledger provenance:.*workbookModified/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

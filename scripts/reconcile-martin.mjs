@@ -85,7 +85,10 @@ export function scoredByRace(calendar = loadCalendar(), read = readJson) {
   return races;
 }
 
-export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = null } = {}) {
+// readWorkbookImpl is injectable so a source with absent timestamp metadata can
+// be exercised: ExcelJS stamps a modified date on write, so such a workbook
+// cannot be produced by round-tripping one through a file.
+export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = null, readWorkbookImpl = readWorkbook } = {}) {
   if (!existsSync(workbookDir)) {
     throw new Error(`${workbookDir} not found. Martin's workbooks are gitignored local reference — this mode only runs locally.`);
   }
@@ -97,7 +100,7 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
   const entries = [];
   for (const name of files) {
     const path = join(workbookDir, name);
-    const workbook = await readWorkbook(path);
+    const workbook = await readWorkbookImpl(path);
     entries.push({ ...workbookIdentity(path), name, workbookModified: workbookModified(workbook), workbook });
   }
 
@@ -114,11 +117,17 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
     races[raceId] = source.race;
   }
 
-  // Ways a regeneration can quietly weaken the gate, all fatal. The previous
-  // ledger's provenance is validated before it is trusted: comparing against a
-  // damaged record would report no regression and read as a clean run.
+  // Ways a regeneration can quietly weaken the gate, all fatal.
+  //
+  // Both ledgers are validated, not just the old one. The previous is checked
+  // before it is trusted, since comparing against a damaged record reports no
+  // regression and reads as a clean run. The candidate is checked before it is
+  // written, so a source that cannot produce sound provenance — a workbook with
+  // no internal timestamp, say — fails here rather than producing an artifact
+  // guaranteed to fail the next CI check.
   const regressions = [
     ...(previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : []),
+    ...validateProvenance({ provenance, races }).map((p) => `generated ledger provenance: ${p}`),
     ...detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
     ...assertCompleteSources(sources),
     ...detectCoverageLoss(previous?.races, races),
