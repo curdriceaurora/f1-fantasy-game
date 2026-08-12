@@ -2,9 +2,9 @@
   "teamId": "tom-pigott-2ae838f8",
   "principalName": "Tom Pigott",
   "displayName": "Suitable For Upgrade",
-  "totalPoints": 472,
+  "totalPoints": 431,
   "completedRaces": 11,
-  "latestRacePoints": 29,
+  "latestRacePoints": 28,
   "races": [
     {
       "raceId": "australia",
@@ -604,13 +604,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 13,
-      "driverSubtotal": -2,
-      "constructorSubtotal": 15,
+      "baseSubtotal": -3,
+      "driverSubtotal": -12,
+      "constructorSubtotal": 9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 13,
+      "totalPoints": -3,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -624,7 +624,7 @@
           "improvementGrid": 3,
           "racePosition": 8,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying (grid P3)",
@@ -640,6 +640,10 @@
             },
             {
               "label": "Position change",
+              "points": -10
+            },
+            {
+              "label": "Race time penalty",
               "points": -10
             },
             {
@@ -734,22 +738,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -808,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 170
+      "runningTotal": 154
     },
     {
       "raceId": "canada",
@@ -1022,7 +1026,7 @@
           ]
         }
       ],
-      "runningTotal": 250
+      "runningTotal": 234
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1220,7 @@
           ]
         }
       ],
-      "runningTotal": 263
+      "runningTotal": 247
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1410,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 268
+      "runningTotal": 252
     },
     {
       "raceId": "austria",
@@ -1604,19 +1608,19 @@
           ]
         }
       ],
-      "runningTotal": 281
+      "runningTotal": 265
     },
     {
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 94,
+      "baseSubtotal": 90,
       "driverSubtotal": 52,
-      "constructorSubtotal": 42,
+      "constructorSubtotal": 38,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 94,
+      "totalPoints": 90,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1763,22 +1767,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×2 + 2×6) ÷ 5)",
-            "weightedRawPoints": 3.6,
-            "weightedPoints": 4
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -0.4,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         },
@@ -1810,19 +1814,19 @@
           ]
         }
       ],
-      "runningTotal": 375
+      "runningTotal": 355
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 68,
-      "driverSubtotal": 60,
-      "constructorSubtotal": 8,
+      "baseSubtotal": 48,
+      "driverSubtotal": 50,
+      "constructorSubtotal": -2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 68,
+      "totalPoints": 48,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1868,7 +1872,7 @@
           "improvementGrid": 21,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 32,
+          "totalPoints": 22,
           "components": [
             {
               "label": "Qualifying (grid P21)",
@@ -1881,6 +1885,10 @@
             {
               "label": "Position change",
               "points": 30
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1961,22 +1969,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×2 + 2×0) ÷ 5)",
-            "weightedRawPoints": 1.2,
-            "weightedPoints": 2
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×-8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": -8.8,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -8
             },
             {
               "label": "FIA monetary fines",
@@ -2012,19 +2020,19 @@
           ]
         }
       ],
-      "runningTotal": 443
+      "runningTotal": 403
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 29,
+      "baseSubtotal": 28,
       "driverSubtotal": 15,
-      "constructorSubtotal": 14,
+      "constructorSubtotal": 13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 29,
+      "totalPoints": 28,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2144,22 +2152,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
             "leadDriverPoints": 13,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×13 + 2×5) ÷ 5)",
+            "weightedRawPoints": 9.8,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2218,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 472
+      "runningTotal": 431
     }
   ]
 }

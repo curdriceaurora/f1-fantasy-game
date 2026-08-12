@@ -2,7 +2,7 @@
   "teamId": "helen-pigott-f4d9bade",
   "principalName": "Helen Pigott",
   "displayName": "Rumtruffle",
-  "totalPoints": 203,
+  "totalPoints": 175,
   "completedRaces": 11,
   "latestRacePoints": 20,
   "races": [
@@ -1610,13 +1610,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 14,
-      "driverSubtotal": 7,
+      "baseSubtotal": 11,
+      "driverSubtotal": 4,
       "constructorSubtotal": 7,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 14,
+      "homeCircuitBonusPoints": 11,
       "investmentBonusPoints": 0,
-      "totalPoints": 28,
+      "totalPoints": 22,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1702,7 +1702,7 @@
           "improvementGrid": 15,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P15)",
@@ -1719,6 +1719,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1810,19 +1814,19 @@
           ]
         }
       ],
-      "runningTotal": 133
+      "runningTotal": 127
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 50,
-      "driverSubtotal": 37,
-      "constructorSubtotal": 13,
+      "baseSubtotal": 28,
+      "driverSubtotal": 27,
+      "constructorSubtotal": 1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 50,
+      "totalPoints": 28,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1836,7 +1840,7 @@
           "improvementGrid": 21,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 32,
+          "totalPoints": 22,
           "components": [
             {
               "label": "Qualifying (grid P21)",
@@ -1849,6 +1853,10 @@
             {
               "label": "Position change",
               "points": 30
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1930,22 +1938,22 @@
             "lando-norris",
             "oscar-piastri"
           ],
-          "totalPoints": 13,
+          "totalPoints": 7,
           "weightingBreakdown": {
             "leadDriverId": "lando-norris",
             "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 14,
+            "leadDriverPoints": 4,
             "secondDriverId": "oscar-piastri",
             "secondDriverName": "Oscar Piastri",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×14 + 2×10) ÷ 5)",
-            "weightedRawPoints": 12.4,
-            "weightedPoints": 13
+            "formula": "ceil((3×4 + 2×10) ÷ 5)",
+            "weightedRawPoints": 6.4,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
+              "points": 7
             }
           ]
         },
@@ -1957,22 +1965,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 0,
+            "leadDriverPoints": -10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "formula": "ceil((3×-10 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -6.8,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -2004,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 183
+      "runningTotal": 155
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 203
+      "runningTotal": 175
     }
   ]
 }
