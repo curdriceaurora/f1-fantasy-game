@@ -2,7 +2,7 @@
   "teamId": "bruce-eggleston-cb831d32",
   "principalName": "Bruce Eggleston",
   "displayName": "Eggheads",
-  "totalPoints": 728,
+  "totalPoints": 718,
   "completedRaces": 11,
   "latestRacePoints": 39,
   "races": [
@@ -612,13 +612,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 34,
-      "driverSubtotal": 31,
+      "baseSubtotal": 24,
+      "driverSubtotal": 21,
       "constructorSubtotal": 3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 34,
+      "totalPoints": 24,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -668,7 +668,7 @@
           "improvementGrid": 3,
           "racePosition": 8,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying (grid P3)",
@@ -684,6 +684,10 @@
             },
             {
               "label": "Position change",
+              "points": -10
+            },
+            {
+              "label": "Race time penalty",
               "points": -10
             },
             {
@@ -816,7 +820,7 @@
           ]
         }
       ],
-      "runningTotal": 264
+      "runningTotal": 254
     },
     {
       "raceId": "canada",
@@ -1026,7 +1030,7 @@
           ]
         }
       ],
-      "runningTotal": 344
+      "runningTotal": 334
     },
     {
       "raceId": "monaco",
@@ -1224,7 +1228,7 @@
           ]
         }
       ],
-      "runningTotal": 330
+      "runningTotal": 320
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1422,7 +1426,7 @@
           ]
         }
       ],
-      "runningTotal": 404
+      "runningTotal": 394
     },
     {
       "raceId": "austria",
@@ -1616,7 +1620,7 @@
           ]
         }
       ],
-      "runningTotal": 460
+      "runningTotal": 450
     },
     {
       "raceId": "great-britain",
@@ -1822,7 +1826,7 @@
           ]
         }
       ],
-      "runningTotal": 660
+      "runningTotal": 650
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 689
+      "runningTotal": 679
     },
     {
       "raceId": "hungary",
@@ -2222,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 728
+      "runningTotal": 718
     }
   ]
 }

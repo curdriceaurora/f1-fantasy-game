@@ -2,7 +2,7 @@
   "teamId": "rachel-khatri-e38f6983",
   "principalName": "Rachel Khatri",
   "displayName": "Little Red Corvette",
-  "totalPoints": 611,
+  "totalPoints": 605,
   "completedRaces": 11,
   "latestRacePoints": 49,
   "races": [
@@ -612,13 +612,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 16,
+      "baseSubtotal": 10,
       "driverSubtotal": 12,
-      "constructorSubtotal": 4,
+      "constructorSubtotal": -2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 16,
+      "totalPoints": 10,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -765,22 +765,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -812,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 241
+      "runningTotal": 235
     },
     {
       "raceId": "canada",
@@ -1018,7 +1018,7 @@
           ]
         }
       ],
-      "runningTotal": 291
+      "runningTotal": 285
     },
     {
       "raceId": "monaco",
@@ -1220,7 +1220,7 @@
           ]
         }
       ],
-      "runningTotal": 301
+      "runningTotal": 295
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 394
+      "runningTotal": 388
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 459
+      "runningTotal": 453
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 554
+      "runningTotal": 548
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2016,7 @@
           ]
         }
       ],
-      "runningTotal": 562
+      "runningTotal": 556
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 611
+      "runningTotal": 605
     }
   ]
 }

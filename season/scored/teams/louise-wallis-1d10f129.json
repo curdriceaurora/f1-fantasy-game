@@ -2,7 +2,7 @@
   "teamId": "louise-wallis-1d10f129",
   "principalName": "Louise Wallis",
   "displayName": "Lewis it Friday Yet?",
-  "totalPoints": 650,
+  "totalPoints": 644,
   "completedRaces": 11,
   "latestRacePoints": 10,
   "races": [
@@ -612,13 +612,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 44,
+      "baseSubtotal": 38,
       "driverSubtotal": 34,
-      "constructorSubtotal": 10,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 45,
+      "totalPoints": 39,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -738,22 +738,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -812,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 315
+      "runningTotal": 309
     },
     {
       "raceId": "canada",
@@ -1018,7 +1018,7 @@
           ]
         }
       ],
-      "runningTotal": 393
+      "runningTotal": 387
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 410
+      "runningTotal": 404
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 486
+      "runningTotal": 480
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 530
+      "runningTotal": 524
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1814,7 @@
           ]
         }
       ],
-      "runningTotal": 642
+      "runningTotal": 636
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 640
+      "runningTotal": 634
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 650
+      "runningTotal": 644
     }
   ]
 }

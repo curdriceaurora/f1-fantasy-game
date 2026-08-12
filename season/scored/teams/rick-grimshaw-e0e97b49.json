@@ -2,7 +2,7 @@
   "teamId": "rick-grimshaw-e0e97b49",
   "principalName": "Rick Grimshaw",
   "displayName": "Back With A Bang",
-  "totalPoints": 593,
+  "totalPoints": 583,
   "completedRaces": 11,
   "latestRacePoints": 21,
   "races": [
@@ -612,13 +612,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 42,
-      "driverSubtotal": 31,
+      "baseSubtotal": 32,
+      "driverSubtotal": 21,
       "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 42,
+      "totalPoints": 32,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -668,7 +668,7 @@
           "improvementGrid": 3,
           "racePosition": 8,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying (grid P3)",
@@ -684,6 +684,10 @@
             },
             {
               "label": "Position change",
+              "points": -10
+            },
+            {
+              "label": "Race time penalty",
               "points": -10
             },
             {
@@ -816,7 +820,7 @@
           ]
         }
       ],
-      "runningTotal": 347
+      "runningTotal": 337
     },
     {
       "raceId": "canada",
@@ -1026,7 +1030,7 @@
           ]
         }
       ],
-      "runningTotal": 407
+      "runningTotal": 397
     },
     {
       "raceId": "monaco",
@@ -1224,7 +1228,7 @@
           ]
         }
       ],
-      "runningTotal": 390
+      "runningTotal": 380
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1422,7 +1426,7 @@
           ]
         }
       ],
-      "runningTotal": 448
+      "runningTotal": 438
     },
     {
       "raceId": "austria",
@@ -1616,7 +1620,7 @@
           ]
         }
       ],
-      "runningTotal": 471
+      "runningTotal": 461
     },
     {
       "raceId": "great-britain",
@@ -1822,7 +1826,7 @@
           ]
         }
       ],
-      "runningTotal": 571
+      "runningTotal": 561
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 572
+      "runningTotal": 562
     },
     {
       "raceId": "hungary",
@@ -2222,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 593
+      "runningTotal": 583
     }
   ]
 }

@@ -2,7 +2,7 @@
   "teamId": "claire-skilton-2543e64a",
   "principalName": "Claire Skilton",
   "displayName": "Princess Fiona's Fantasy Formula",
-  "totalPoints": 714,
+  "totalPoints": 708,
   "completedRaces": 11,
   "latestRacePoints": 17,
   "races": [
@@ -616,13 +616,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 53,
+      "baseSubtotal": 47,
       "driverSubtotal": 23,
-      "constructorSubtotal": 30,
+      "constructorSubtotal": 24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 53,
+      "totalPoints": 47,
       "drivers": [
         {
           "driverId": "lewis-hamilton",
@@ -769,22 +769,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -816,7 +816,7 @@
           ]
         }
       ],
-      "runningTotal": 320
+      "runningTotal": 314
     },
     {
       "raceId": "canada",
@@ -1022,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 424
+      "runningTotal": 418
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 439
+      "runningTotal": 433
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1418,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 493
+      "runningTotal": 487
     },
     {
       "raceId": "austria",
@@ -1612,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 524
+      "runningTotal": 518
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 682
+      "runningTotal": 676
     },
     {
       "raceId": "belgium",
@@ -2020,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 697
+      "runningTotal": 691
     },
     {
       "raceId": "hungary",
@@ -2226,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 714
+      "runningTotal": 708
     }
   ]
 }

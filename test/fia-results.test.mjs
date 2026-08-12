@@ -222,3 +222,31 @@ test('parseGridPenalties sums two penalties applied to the same car', () => {
 test('parseGridPenalties reads nothing from a grid with no penalties section', () => {
   assert.equal(parseGridPenalties('1\n63George RUSSELL Mercedes 1:29.000').size, 0);
 });
+
+test('parseFinalClassification reads a time penalty behind a lead-in clause', () => {
+  // Miami's footer describes Leclerc's penalty as a converted drive-through. The
+  // seconds do not follow the dash directly, which is why it was never ingested
+  // while Verstappen's plainly-worded penalty on the next line was (#63).
+  const text = [
+    '1 16Charles LECLERC Scuderia Ferrari HP 90',
+    '* PENALTIES',
+    "Car 16 - Drive through penalty converted to 20 second time penalty - Leaving the track without a justifiable reason multiple times - Stewards' document no. 97",
+    "Car 3 - 5 second time penalty - Crossing the white line at the pit exit - Stewards' document no. 99",
+  ].join('\n');
+  const { penalties } = parseFinalClassification(text);
+  assert.equal(penalties.get('charles-leclerc'), 20);
+  assert.equal(penalties.get('max-verstappen'), 5);
+});
+
+test('parseFinalClassification does not let one car\'s lead-in swallow the next car', () => {
+  // Guard against a greedy lead-in matching across entries: a car with no seconds
+  // of its own must not absorb the following car's penalty.
+  const text = [
+    '* PENALTIES',
+    'Car 16 - Reprimand - Impeding',
+    'Car 3 - 5 second time penalty - Track limits',
+  ].join('\n');
+  const { penalties } = parseFinalClassification(text);
+  assert.equal(penalties.get('charles-leclerc'), undefined);
+  assert.equal(penalties.get('max-verstappen'), 5);
+});

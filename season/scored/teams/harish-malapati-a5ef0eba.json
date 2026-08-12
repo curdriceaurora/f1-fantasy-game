@@ -2,7 +2,7 @@
   "teamId": "harish-malapati-a5ef0eba",
   "principalName": "Harish Malapati",
   "displayName": "No Sandbagging",
-  "totalPoints": 671,
+  "totalPoints": 655,
   "completedRaces": 11,
   "latestRacePoints": 45,
   "races": [
@@ -604,13 +604,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 17,
-      "driverSubtotal": 7,
-      "constructorSubtotal": 10,
+      "baseSubtotal": 1,
+      "driverSubtotal": -3,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 17,
+      "totalPoints": 1,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -660,7 +660,7 @@
           "improvementGrid": 3,
           "racePosition": 8,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying (grid P3)",
@@ -676,6 +676,10 @@
             },
             {
               "label": "Position change",
+              "points": -10
+            },
+            {
+              "label": "Race time penalty",
               "points": -10
             },
             {
@@ -734,22 +738,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -808,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 367
+      "runningTotal": 351
     },
     {
       "raceId": "canada",
@@ -1018,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 441
+      "runningTotal": 425
     },
     {
       "raceId": "monaco",
@@ -1220,7 +1224,7 @@
           ]
         }
       ],
-      "runningTotal": 403
+      "runningTotal": 387
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 461
+      "runningTotal": 445
     },
     {
       "raceId": "austria",
@@ -1608,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 507
+      "runningTotal": 491
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 608
+      "runningTotal": 592
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 626
+      "runningTotal": 610
     },
     {
       "raceId": "hungary",
@@ -2214,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 671
+      "runningTotal": 655
     }
   ]
 }

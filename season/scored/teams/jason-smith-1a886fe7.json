@@ -2,7 +2,7 @@
   "teamId": "jason-smith-1a886fe7",
   "principalName": "Jason Smith",
   "displayName": "NMC Racing",
-  "totalPoints": 765,
+  "totalPoints": 759,
   "completedRaces": 11,
   "latestRacePoints": 35,
   "races": [
@@ -616,13 +616,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 82,
+      "baseSubtotal": 76,
       "driverSubtotal": 46,
-      "constructorSubtotal": 36,
+      "constructorSubtotal": 30,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 82,
+      "totalPoints": 76,
       "drivers": [
         {
           "driverId": "kimi-antonelli",
@@ -769,22 +769,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 6,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×2 + 2×10) ÷ 5)",
-            "weightedRawPoints": 5.2,
-            "weightedPoints": 6
+            "formula": "ceil((3×-8 + 2×10) ÷ 5)",
+            "weightedRawPoints": -0.8,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 0
             }
           ]
         },
@@ -816,7 +816,7 @@
           ]
         }
       ],
-      "runningTotal": 392
+      "runningTotal": 386
     },
     {
       "raceId": "canada",
@@ -1026,7 +1026,7 @@
           ]
         }
       ],
-      "runningTotal": 463
+      "runningTotal": 457
     },
     {
       "raceId": "monaco",
@@ -1228,7 +1228,7 @@
           ]
         }
       ],
-      "runningTotal": 530
+      "runningTotal": 524
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1426,7 +1426,7 @@
           ]
         }
       ],
-      "runningTotal": 522
+      "runningTotal": 516
     },
     {
       "raceId": "austria",
@@ -1624,7 +1624,7 @@
           ]
         }
       ],
-      "runningTotal": 582
+      "runningTotal": 576
     },
     {
       "raceId": "great-britain",
@@ -1838,7 +1838,7 @@
           ]
         }
       ],
-      "runningTotal": 692
+      "runningTotal": 686
     },
     {
       "raceId": "belgium",
@@ -2036,7 +2036,7 @@
           ]
         }
       ],
-      "runningTotal": 730
+      "runningTotal": 724
     },
     {
       "raceId": "hungary",
@@ -2238,7 +2238,7 @@
           ]
         }
       ],
-      "runningTotal": 765
+      "runningTotal": 759
     }
   ]
 }
