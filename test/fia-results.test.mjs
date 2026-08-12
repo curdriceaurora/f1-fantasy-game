@@ -250,3 +250,33 @@ test('parseFinalClassification does not let one car\'s lead-in swallow the next 
   assert.equal(penalties.get('charles-leclerc'), undefined);
   assert.equal(penalties.get('max-verstappen'), 5);
 });
+
+test('fetchRaceResults reports an unavailable starting grid as null, not an empty map', () => {
+  // The distinction the normalizer depends on: null means "document unavailable,
+  // fall back", {} means "document parsed, authoritatively no penalties".
+  // Boolean({}) is true, so returning {} for a failed download would silently
+  // present an empty result as authoritative.
+  const race = { date: '2026-03-08', id: 'australia', meetingName: 'Australian Grand Prix', isSprintWeekend: false };
+  const options = {
+    maxAttempts: 1,
+    retryDelayMs: 0,
+    fetch: async () => ({ ok: true, status: 200, text: async () => '' }),
+    fetchPdfTextImpl: async () => { throw new Error('404'); },
+  };
+  return fetchRaceResults(race, options).then((results) => {
+    assert.equal(results.gridPenaltyPlaces, null);
+  });
+});
+
+test('fetchRaceResults reports a parsed grid with no penalties as an empty map', () => {
+  const race = { date: '2026-03-08', id: 'australia', meetingName: 'Australian Grand Prix', isSprintWeekend: false };
+  const options = {
+    maxAttempts: 1,
+    retryDelayMs: 0,
+    fetch: async () => ({ ok: true, status: 200, text: async () => '' }),
+    fetchPdfTextImpl: async () => '1\n63George RUSSELL Mercedes 1:29.000',
+  };
+  return fetchRaceResults(race, options).then((results) => {
+    assert.deepEqual(results.gridPenaltyPlaces, {});
+  });
+});

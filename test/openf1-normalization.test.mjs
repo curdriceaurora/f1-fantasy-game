@@ -349,3 +349,20 @@ test('a qualifying-DSQ driver is flagged so scoring can rule them DNQ for the ba
   assert.equal(normalized.drivers['george-russell'].qualifyingDsq, true);
   assert.equal(normalized.drivers['kimi-antonelli'].qualifyingDsq, false);
 });
+
+test('an unavailable FIA starting grid falls back to the OpenF1 grid penalty', () => {
+  // The base fixture's race control feed carries "5 PLACE GRID PENALTY FOR CAR 63".
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.fiaResults = { gridPositions: {}, gridPenaltyPlaces: null };
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+  assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 5);
+});
+
+test('a parsed FIA starting grid with no penalties overrides the OpenF1 fallback', () => {
+  // {} means the document was read and nobody was penalised — authoritative zero,
+  // not "no data". Boolean({}) being true is what makes the null case above matter.
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.fiaResults = { gridPositions: {}, gridPenaltyPlaces: {} };
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+  assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 0);
+});
