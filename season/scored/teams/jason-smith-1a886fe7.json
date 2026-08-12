@@ -2,9 +2,9 @@
   "teamId": "jason-smith-1a886fe7",
   "principalName": "Jason Smith",
   "displayName": "NMC Racing",
-  "totalPoints": 770,
+  "totalPoints": 765,
   "completedRaces": 11,
-  "latestRacePoints": 40,
+  "latestRacePoints": 35,
   "races": [
     {
       "raceId": "australia",
@@ -2042,13 +2042,13 @@
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 40,
-      "driverSubtotal": 22,
-      "constructorSubtotal": 18,
+      "baseSubtotal": 35,
+      "driverSubtotal": 19,
+      "constructorSubtotal": 16,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 40,
+      "totalPoints": 35,
       "drivers": [
         {
           "driverId": "kimi-antonelli",
@@ -2062,7 +2062,7 @@
           "improvementGrid": 7,
           "racePosition": 3,
           "classified": true,
-          "totalPoints": 23,
+          "totalPoints": 20,
           "components": [
             {
               "label": "Qualifying (grid P7)",
@@ -2075,6 +2075,10 @@
             {
               "label": "Position change",
               "points": 8
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -2160,22 +2164,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2187,22 +2191,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
             "leadDriverPoints": 13,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×13 + 2×5) ÷ 5)",
+            "weightedRawPoints": 9.8,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2234,7 +2238,7 @@
           ]
         }
       ],
-      "runningTotal": 770
+      "runningTotal": 765
     }
   ]
 }

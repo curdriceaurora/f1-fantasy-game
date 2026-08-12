@@ -2,7 +2,7 @@
   "teamId": "ryan-eyre-6119a97c",
   "principalName": "Ryan Eyre",
   "displayName": "Eyre We Go Again",
-  "totalPoints": 105,
+  "totalPoints": 91,
   "completedRaces": 11,
   "latestRacePoints": 27,
   "races": [
@@ -1816,13 +1816,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 19,
-      "driverSubtotal": -4,
-      "constructorSubtotal": 23,
+      "baseSubtotal": 5,
+      "driverSubtotal": -14,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 26,
+      "totalPoints": 12,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -1836,7 +1836,7 @@
           "improvementGrid": 19,
           "racePosition": 16,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -10,
           "components": [
             {
               "label": "Qualifying (grid P19)",
@@ -1849,6 +1849,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1930,22 +1934,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 32,
-            "formula": "ceil((3×13 + 2×32) ÷ 5)",
-            "weightedRawPoints": 20.6,
-            "weightedPoints": 21
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×13 + 2×22) ÷ 5)",
+            "weightedRawPoints": 16.6,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2004,7 +2008,7 @@
           ]
         }
       ],
-      "runningTotal": 78
+      "runningTotal": 64
     },
     {
       "raceId": "hungary",
@@ -2198,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 105
+      "runningTotal": 91
     }
   ]
 }

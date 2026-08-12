@@ -2,9 +2,9 @@
   "teamId": "ben-west-39e8b936",
   "principalName": "Ben West",
   "displayName": "Plan F (For Ferrari)",
-  "totalPoints": 424,
+  "totalPoints": 419,
   "completedRaces": 11,
-  "latestRacePoints": 55,
+  "latestRacePoints": 53,
   "races": [
     {
       "raceId": "australia",
@@ -1618,13 +1618,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 61,
-      "driverSubtotal": 28,
+      "baseSubtotal": 58,
+      "driverSubtotal": 25,
       "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 61,
+      "totalPoints": 58,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -1710,7 +1710,7 @@
           "improvementGrid": 15,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P15)",
@@ -1727,6 +1727,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1818,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 340
+      "runningTotal": 337
     },
     {
       "raceId": "belgium",
@@ -2016,19 +2020,19 @@
           ]
         }
       ],
-      "runningTotal": 369
+      "runningTotal": 366
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 55,
+      "baseSubtotal": 53,
       "driverSubtotal": 26,
-      "constructorSubtotal": 29,
+      "constructorSubtotal": 27,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 55,
+      "totalPoints": 53,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2140,22 +2144,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2167,22 +2171,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
             "leadDriverPoints": 13,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×13 + 2×5) ÷ 5)",
+            "weightedRawPoints": 9.8,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2214,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 424
+      "runningTotal": 419
     }
   ]
 }

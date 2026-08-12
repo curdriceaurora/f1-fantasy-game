@@ -2,7 +2,7 @@
   "teamId": "nathanael-wallis-711c13e3",
   "principalName": "Nathanael Wallis",
   "displayName": "Wallis Racing",
-  "totalPoints": 431,
+  "totalPoints": 414,
   "completedRaces": 11,
   "latestRacePoints": 31,
   "races": [
@@ -1618,13 +1618,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 34,
-      "driverSubtotal": 16,
-      "constructorSubtotal": 18,
+      "baseSubtotal": 27,
+      "driverSubtotal": 13,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 34,
+      "totalPoints": 27,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1710,7 +1710,7 @@
           "improvementGrid": 15,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P15)",
@@ -1727,6 +1727,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1744,22 +1748,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×2 + 2×6) ÷ 5)",
-            "weightedRawPoints": 3.6,
-            "weightedPoints": 4
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -0.4,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         },
@@ -1818,19 +1822,19 @@
           ]
         }
       ],
-      "runningTotal": 422
+      "runningTotal": 415
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -22,
+      "baseSubtotal": -32,
       "driverSubtotal": -18,
-      "constructorSubtotal": -4,
+      "constructorSubtotal": -14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -22,
+      "totalPoints": -32,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1938,22 +1942,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×2 + 2×0) ÷ 5)",
-            "weightedRawPoints": 1.2,
-            "weightedPoints": 2
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×-8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": -8.8,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -8
             },
             {
               "label": "FIA monetary fines",
@@ -2016,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 400
+      "runningTotal": 383
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 431
+      "runningTotal": 414
     }
   ]
 }

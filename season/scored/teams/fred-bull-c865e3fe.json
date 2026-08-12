@@ -2,7 +2,7 @@
   "teamId": "fred-bull-c865e3fe",
   "principalName": "Fred Bull",
   "displayName": "He's from Holland - Ishn't dat veird",
-  "totalPoints": 217,
+  "totalPoints": 193,
   "completedRaces": 11,
   "latestRacePoints": 50,
   "races": [
@@ -1816,13 +1816,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 68,
-      "driverSubtotal": 45,
-      "constructorSubtotal": 23,
+      "baseSubtotal": 44,
+      "driverSubtotal": 25,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 68,
+      "totalPoints": 44,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1868,7 +1868,7 @@
           "improvementGrid": 21,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 32,
+          "totalPoints": 22,
           "components": [
             {
               "label": "Qualifying (grid P21)",
@@ -1881,6 +1881,10 @@
             {
               "label": "Position change",
               "points": 30
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1900,7 +1904,7 @@
           "improvementGrid": 19,
           "racePosition": 16,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -10,
           "components": [
             {
               "label": "Qualifying (grid P19)",
@@ -1913,6 +1917,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1930,22 +1938,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 32,
-            "formula": "ceil((3×13 + 2×32) ÷ 5)",
-            "weightedRawPoints": 20.6,
-            "weightedPoints": 21
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×13 + 2×22) ÷ 5)",
+            "weightedRawPoints": 16.6,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2004,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 167
+      "runningTotal": 143
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 217
+      "runningTotal": 193
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "brian-donnell-c0048d2b",
   "principalName": "Brian Donnell",
   "displayName": "Fairbanks ICEdogs",
-  "totalPoints": 462,
+  "totalPoints": 447,
   "completedRaces": 11,
-  "latestRacePoints": 36,
+  "latestRacePoints": 35,
   "races": [
     {
       "raceId": "australia",
@@ -1816,13 +1816,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -27,
-      "driverSubtotal": -38,
-      "constructorSubtotal": 11,
+      "baseSubtotal": -41,
+      "driverSubtotal": -48,
+      "constructorSubtotal": 7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -27,
+      "totalPoints": -41,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1868,7 +1868,7 @@
           "improvementGrid": 19,
           "racePosition": 16,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -10,
           "components": [
             {
               "label": "Qualifying (grid P19)",
@@ -1881,6 +1881,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1957,22 +1961,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 32,
-            "formula": "ceil((3×13 + 2×32) ÷ 5)",
-            "weightedRawPoints": 20.6,
-            "weightedPoints": 21
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×13 + 2×22) ÷ 5)",
+            "weightedRawPoints": 16.6,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2004,19 +2008,19 @@
           ]
         }
       ],
-      "runningTotal": 426
+      "runningTotal": 412
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 36,
+      "baseSubtotal": 35,
       "driverSubtotal": 11,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 36,
+      "totalPoints": 35,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2124,22 +2128,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2198,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 462
+      "runningTotal": 447
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "laura-young-cf286bb9",
   "principalName": "Laura Young",
   "displayName": "Running on Empty",
-  "totalPoints": 275,
+  "totalPoints": 239,
   "completedRaces": 11,
-  "latestRacePoints": 90,
+  "latestRacePoints": 84,
   "races": [
     {
       "raceId": "australia",
@@ -1618,13 +1618,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 18,
+      "baseSubtotal": 14,
       "driverSubtotal": 31,
-      "constructorSubtotal": -13,
+      "constructorSubtotal": -17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 18,
+      "totalPoints": 14,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1771,22 +1771,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×2 + 2×6) ÷ 5)",
-            "weightedRawPoints": 3.6,
-            "weightedPoints": 4
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -0.4,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         },
@@ -1818,19 +1818,19 @@
           ]
         }
       ],
-      "runningTotal": 153
+      "runningTotal": 149
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 32,
-      "driverSubtotal": 29,
-      "constructorSubtotal": 3,
+      "baseSubtotal": 6,
+      "driverSubtotal": 19,
+      "constructorSubtotal": -13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 32,
+      "totalPoints": 6,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1844,7 +1844,7 @@
           "improvementGrid": 13,
           "racePosition": 7,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 4,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -1861,6 +1861,10 @@
             {
               "label": "Fastest lap",
               "points": 2
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1942,22 +1946,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 0,
+            "leadDriverPoints": -10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "formula": "ceil((3×-10 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -6.8,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -1969,22 +1973,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×2 + 2×0) ÷ 5)",
-            "weightedRawPoints": 1.2,
-            "weightedPoints": 2
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×-8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": -8.8,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -8
             },
             {
               "label": "FIA monetary fines",
@@ -2020,19 +2024,19 @@
           ]
         }
       ],
-      "runningTotal": 185
+      "runningTotal": 155
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 45,
-      "driverSubtotal": 33,
+      "baseSubtotal": 42,
+      "driverSubtotal": 30,
       "constructorSubtotal": 12,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 45,
+      "homeCircuitBonusPoints": 42,
       "investmentBonusPoints": 0,
-      "totalPoints": 90,
+      "totalPoints": 84,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -2078,7 +2082,7 @@
           "improvementGrid": 5,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 8,
+          "totalPoints": 5,
           "components": [
             {
               "label": "Qualifying (grid P5)",
@@ -2091,6 +2095,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             },
             {
               "label": "Race time penalty",
@@ -2218,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 275
+      "runningTotal": 239
     }
   ]
 }

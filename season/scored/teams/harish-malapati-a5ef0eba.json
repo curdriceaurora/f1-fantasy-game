@@ -2,9 +2,9 @@
   "teamId": "harish-malapati-a5ef0eba",
   "principalName": "Harish Malapati",
   "displayName": "No Sandbagging",
-  "totalPoints": 679,
+  "totalPoints": 671,
   "completedRaces": 11,
-  "latestRacePoints": 46,
+  "latestRacePoints": 45,
   "races": [
     {
       "raceId": "australia",
@@ -1614,13 +1614,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 104,
-      "driverSubtotal": 75,
+      "baseSubtotal": 101,
+      "driverSubtotal": 72,
       "constructorSubtotal": 29,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 104,
+      "totalPoints": 101,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1706,7 +1706,7 @@
           "improvementGrid": 15,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P15)",
@@ -1723,6 +1723,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1814,19 +1818,19 @@
           ]
         }
       ],
-      "runningTotal": 611
+      "runningTotal": 608
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 22,
+      "baseSubtotal": 18,
       "driverSubtotal": -6,
-      "constructorSubtotal": 28,
+      "constructorSubtotal": 24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 22,
+      "totalPoints": 18,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1965,22 +1969,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 32,
-            "formula": "ceil((3×13 + 2×32) ÷ 5)",
-            "weightedRawPoints": 20.6,
-            "weightedPoints": 21
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×13 + 2×22) ÷ 5)",
+            "weightedRawPoints": 16.6,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2012,19 +2016,19 @@
           ]
         }
       ],
-      "runningTotal": 633
+      "runningTotal": 626
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 46,
+      "baseSubtotal": 45,
       "driverSubtotal": 21,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 46,
+      "totalPoints": 45,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2136,22 +2140,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
             "leadDriverPoints": 13,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×13 + 2×5) ÷ 5)",
+            "weightedRawPoints": 9.8,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2210,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 679
+      "runningTotal": 671
     }
   ]
 }

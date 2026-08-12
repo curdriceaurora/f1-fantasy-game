@@ -2,9 +2,9 @@
   "teamId": "stephen-brooks-397d1f58",
   "principalName": "Stephen Brooks",
   "displayName": "Cadillacing Speed",
-  "totalPoints": 423,
+  "totalPoints": 416,
   "completedRaces": 11,
-  "latestRacePoints": 6,
+  "latestRacePoints": 5,
   "races": [
     {
       "raceId": "australia",
@@ -1812,13 +1812,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -38,
+      "baseSubtotal": -44,
       "driverSubtotal": -28,
-      "constructorSubtotal": -10,
+      "constructorSubtotal": -16,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -38,
+      "totalPoints": -44,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1953,22 +1953,22 @@
             "alex-albon",
             "carlos-sainz"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 0,
+            "leadDriverPoints": -10,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -2,
-            "formula": "ceil((3×0 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -0.8,
-            "weightedPoints": 0
+            "formula": "ceil((3×-10 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -6.8,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -2000,19 +2000,19 @@
           ]
         }
       ],
-      "runningTotal": 417
+      "runningTotal": 411
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 6,
+      "baseSubtotal": 5,
       "driverSubtotal": 1,
-      "constructorSubtotal": 5,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 6,
+      "totalPoints": 5,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2124,22 +2124,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2198,7 +2198,7 @@
           ]
         }
       ],
-      "runningTotal": 423
+      "runningTotal": 416
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "john-khatri-81ee21fe",
   "principalName": "John Khatri",
   "displayName": "Bella’s Racing Team",
-  "totalPoints": 364,
+  "totalPoints": 352,
   "completedRaces": 11,
-  "latestRacePoints": 25,
+  "latestRacePoints": 23,
   "races": [
     {
       "raceId": "australia",
@@ -1820,13 +1820,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 14,
-      "driverSubtotal": 22,
+      "baseSubtotal": 4,
+      "driverSubtotal": 12,
       "constructorSubtotal": -8,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 14,
+      "totalPoints": 4,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1840,7 +1840,7 @@
           "improvementGrid": 21,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 32,
+          "totalPoints": 22,
           "components": [
             {
               "label": "Qualifying (grid P21)",
@@ -1853,6 +1853,10 @@
             {
               "label": "Position change",
               "points": 30
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2012,19 +2016,19 @@
           ]
         }
       ],
-      "runningTotal": 339
+      "runningTotal": 329
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 25,
+      "baseSubtotal": 23,
       "driverSubtotal": 5,
-      "constructorSubtotal": 20,
+      "constructorSubtotal": 18,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 25,
+      "totalPoints": 23,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2136,22 +2140,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2163,22 +2167,22 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
             "leadDriverPoints": 13,
             "secondDriverId": "lewis-hamilton",
             "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×13 + 2×8) ÷ 5)",
-            "weightedRawPoints": 11,
-            "weightedPoints": 11
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×13 + 2×5) ÷ 5)",
+            "weightedRawPoints": 9.8,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2210,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 364
+      "runningTotal": 352
     }
   ]
 }

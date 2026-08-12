@@ -2,7 +2,7 @@
   "teamId": "john-hopkins-4d46f69f",
   "principalName": "John Hopkins",
   "displayName": "Over The Rainbow",
-  "totalPoints": 261,
+  "totalPoints": 255,
   "completedRaces": 11,
   "latestRacePoints": 11,
   "races": [
@@ -1820,13 +1820,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -32,
+      "baseSubtotal": -38,
       "driverSubtotal": -40,
-      "constructorSubtotal": 8,
+      "constructorSubtotal": 2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -32,
+      "totalPoints": -38,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1934,22 +1934,22 @@
             "lando-norris",
             "oscar-piastri"
           ],
-          "totalPoints": 13,
+          "totalPoints": 7,
           "weightingBreakdown": {
             "leadDriverId": "lando-norris",
             "leadDriverName": "Lando Norris",
-            "leadDriverPoints": 14,
+            "leadDriverPoints": 4,
             "secondDriverId": "oscar-piastri",
             "secondDriverName": "Oscar Piastri",
             "secondDriverPoints": 10,
-            "formula": "ceil((3×14 + 2×10) ÷ 5)",
-            "weightedRawPoints": 12.4,
-            "weightedPoints": 13
+            "formula": "ceil((3×4 + 2×10) ÷ 5)",
+            "weightedRawPoints": 6.4,
+            "weightedPoints": 7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 13
+              "points": 7
             }
           ]
         },
@@ -2008,7 +2008,7 @@
           ]
         }
       ],
-      "runningTotal": 250
+      "runningTotal": 244
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 261
+      "runningTotal": 255
     }
   ]
 }

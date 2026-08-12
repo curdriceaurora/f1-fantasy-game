@@ -2,9 +2,9 @@
   "teamId": "simon-walker-7dd9df1f",
   "principalName": "Simon Walker",
   "displayName": "Jaamhi Dodgers",
-  "totalPoints": 673,
+  "totalPoints": 667,
   "completedRaces": 11,
-  "latestRacePoints": 12,
+  "latestRacePoints": 11,
   "races": [
     {
       "raceId": "australia",
@@ -1618,13 +1618,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 81,
-      "driverSubtotal": 46,
-      "constructorSubtotal": 35,
+      "baseSubtotal": 76,
+      "driverSubtotal": 43,
+      "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 82,
+      "totalPoints": 77,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1710,7 +1710,7 @@
           "improvementGrid": 15,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P15)",
@@ -1727,6 +1727,10 @@
             {
               "label": "Position change",
               "points": 10
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             }
           ],
           "raceContext": {
@@ -1798,27 +1802,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 18,
+          "totalPoints": 16,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 14,
+            "leadDriverPoints": 11,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
             "secondDriverPoints": 22,
-            "formula": "ceil((3×14 + 2×22) ÷ 5)",
-            "weightedRawPoints": 17.2,
-            "weightedPoints": 18
+            "formula": "ceil((3×11 + 2×22) ÷ 5)",
+            "weightedRawPoints": 15.4,
+            "weightedPoints": 16
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 18
+              "points": 16
             }
           ]
         }
       ],
-      "runningTotal": 690
+      "runningTotal": 685
     },
     {
       "raceId": "belgium",
@@ -2012,19 +2016,19 @@
           ]
         }
       ],
-      "runningTotal": 661
+      "runningTotal": 656
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 11,
+      "baseSubtotal": 10,
       "driverSubtotal": -1,
-      "constructorSubtotal": 12,
+      "constructorSubtotal": 11,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 12,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2136,22 +2140,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2210,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 673
+      "runningTotal": 667
     }
   ]
 }

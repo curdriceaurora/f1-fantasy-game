@@ -2,9 +2,9 @@
   "teamId": "tracey-wallis-1da84f99",
   "principalName": "Tracey Wallis",
   "displayName": "Spanner In The Works",
-  "totalPoints": 230,
+  "totalPoints": 199,
   "completedRaces": 11,
-  "latestRacePoints": 53,
+  "latestRacePoints": 52,
   "races": [
     {
       "raceId": "australia",
@@ -1622,13 +1622,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": 41,
-      "driverSubtotal": 32,
+      "baseSubtotal": 31,
+      "driverSubtotal": 22,
       "constructorSubtotal": 9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 41,
+      "totalPoints": 31,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1678,7 +1678,7 @@
           "improvementGrid": 22,
           "racePosition": 19,
           "classified": true,
-          "totalPoints": 6,
+          "totalPoints": -4,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -1695,6 +1695,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1822,19 +1826,19 @@
           ]
         }
       ],
-      "runningTotal": 184
+      "runningTotal": 174
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -7,
-      "driverSubtotal": 6,
+      "baseSubtotal": -27,
+      "driverSubtotal": -14,
       "constructorSubtotal": -13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -7,
+      "totalPoints": -27,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1848,7 +1852,7 @@
           "improvementGrid": 13,
           "racePosition": 7,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 4,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -1865,6 +1869,10 @@
             {
               "label": "Fastest lap",
               "points": 2
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1884,7 +1892,7 @@
           "improvementGrid": 20,
           "racePosition": 20,
           "classified": true,
-          "totalPoints": 0,
+          "totalPoints": -10,
           "components": [
             {
               "label": "Qualifying (grid P20)",
@@ -1897,6 +1905,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2020,19 +2032,19 @@
           ]
         }
       ],
-      "runningTotal": 177
+      "runningTotal": 147
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 53,
+      "baseSubtotal": 52,
       "driverSubtotal": 37,
-      "constructorSubtotal": 16,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 53,
+      "totalPoints": 52,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -2140,22 +2152,22 @@
             "kimi-antonelli",
             "george-russell"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "george-russell",
             "leadDriverName": "George Russell",
             "leadDriverPoints": 2,
             "secondDriverId": "kimi-antonelli",
             "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 23,
-            "formula": "ceil((3×2 + 2×23) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 20,
+            "formula": "ceil((3×2 + 2×20) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -2214,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 230
+      "runningTotal": 199
     }
   ]
 }

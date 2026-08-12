@@ -2,7 +2,7 @@
   "teamId": "caroline-harris-855736a8",
   "principalName": "Caroline Harris",
   "displayName": "Harris Racing",
-  "totalPoints": 122,
+  "totalPoints": 108,
   "completedRaces": 11,
   "latestRacePoints": 36,
   "races": [
@@ -1622,13 +1622,13 @@
       "raceId": "great-britain",
       "raceName": "Great Britain",
       "raceDate": "2026-07-05",
-      "baseSubtotal": -7,
+      "baseSubtotal": -11,
       "driverSubtotal": -10,
-      "constructorSubtotal": 3,
+      "constructorSubtotal": -1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -7,
+      "totalPoints": -11,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1748,22 +1748,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": 2,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×2 + 2×6) ÷ 5)",
-            "weightedRawPoints": 3.6,
-            "weightedPoints": 4
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -0.4,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         },
@@ -1822,19 +1822,19 @@
           ]
         }
       ],
-      "runningTotal": 115
+      "runningTotal": 111
     },
     {
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": -29,
+      "baseSubtotal": -39,
       "driverSubtotal": -27,
-      "constructorSubtotal": -2,
+      "constructorSubtotal": -12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -29,
+      "totalPoints": -39,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1942,22 +1942,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 1,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×2 + 2×0) ÷ 5)",
-            "weightedRawPoints": 1.2,
-            "weightedPoints": 2
+            "secondDriverPoints": -10,
+            "formula": "ceil((3×-8 + 2×-10) ÷ 5)",
+            "weightedRawPoints": -8.8,
+            "weightedPoints": -8
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -8
             },
             {
               "label": "FIA monetary fines",
@@ -2020,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 86
+      "runningTotal": 72
     },
     {
       "raceId": "hungary",
@@ -2214,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 122
+      "runningTotal": 108
     }
   ]
 }

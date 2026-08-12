@@ -2,9 +2,9 @@
   "teamId": "mark-haggan-f7670793",
   "principalName": "Mark Haggan",
   "displayName": "Henry’s Hoovers",
-  "totalPoints": 492,
+  "totalPoints": 485,
   "completedRaces": 11,
-  "latestRacePoints": 39,
+  "latestRacePoints": 36,
   "races": [
     {
       "raceId": "australia",
@@ -1812,13 +1812,13 @@
       "raceId": "belgium",
       "raceName": "Belgium",
       "raceDate": "2026-07-19",
-      "baseSubtotal": 9,
+      "baseSubtotal": 5,
       "driverSubtotal": -14,
-      "constructorSubtotal": 23,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 9,
+      "totalPoints": 5,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -1926,22 +1926,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 13,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 32,
-            "formula": "ceil((3×13 + 2×32) ÷ 5)",
-            "weightedRawPoints": 20.6,
-            "weightedPoints": 21
+            "secondDriverPoints": 22,
+            "formula": "ceil((3×13 + 2×22) ÷ 5)",
+            "weightedRawPoints": 16.6,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2000,19 +2000,19 @@
           ]
         }
       ],
-      "runningTotal": 453
+      "runningTotal": 449
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 39,
-      "driverSubtotal": 18,
+      "baseSubtotal": 36,
+      "driverSubtotal": 15,
       "constructorSubtotal": 21,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 39,
+      "totalPoints": 36,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2058,7 +2058,7 @@
           "improvementGrid": 5,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 8,
+          "totalPoints": 5,
           "components": [
             {
               "label": "Qualifying (grid P5)",
@@ -2071,6 +2071,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -3
             },
             {
               "label": "Race time penalty",
@@ -2198,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 492
+      "runningTotal": 485
     }
   ]
 }
