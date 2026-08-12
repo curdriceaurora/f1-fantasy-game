@@ -107,10 +107,31 @@ test('runVerifyQualifyingMatrix passes on a workbook that matches, and counts th
 
 test('runVerifyQualifyingMatrix fails when the workbook disagrees with the engine', async () => {
   await withTempDir(async (directory) => {
-    const rows = structuredClone(ROWS).filter(([rank]) => rank !== 'Champion');
+    const rows = structuredClone(ROWS);
     rows.find(([rank]) => rank === 'Outsider')[1][5] = 2;
     const path = await writeWorkbook(directory, rows);
-    await assert.rejects(() => runVerifyQualifyingMatrix(path), /1 of 35 qualifying-matrix cells disagree/);
+    await assert.rejects(() => runVerifyQualifyingMatrix(path), /1 of 42 qualifying-matrix cells disagree/);
+  });
+});
+
+test('readTDriverMatrix rejects a table that is missing a rank', async () => {
+  // A rank moved outside rows 52-73, or a row deleted, must not quietly shrink the
+  // check into reporting success on fewer cells than it claims to cover.
+  await withTempDir(async (directory) => {
+    const rows = structuredClone(ROWS).filter(([rank]) => rank !== 'Champion');
+    const path = await writeWorkbook(directory, rows);
+    await assert.rejects(() => readTDriverMatrix(path), /missing rank\(s\): Champion/);
+  });
+});
+
+test('readTDriverMatrix rejects a rank name it does not recognise', async () => {
+  // Catches a rename in the workbook that would otherwise read as a missing rank
+  // plus a silently ignored extra one.
+  await withTempDir(async (directory) => {
+    const rows = structuredClone(ROWS);
+    rows.find(([rank]) => rank === 'Outsider')[0] = 'Outsiders';
+    const path = await writeWorkbook(directory, rows);
+    await assert.rejects(() => readTDriverMatrix(path), /unexpected rank\(s\): Outsiders/);
   });
 });
 

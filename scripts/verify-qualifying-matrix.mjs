@@ -14,7 +14,7 @@
 
 import { existsSync } from 'fs';
 import ExcelJS from 'exceljs';
-import { scoreQualifying } from '../lib/score-engine.js';
+import { scoreQualifying, QUALIFYING_RANKS } from '../lib/score-engine.js';
 
 // Tables!H52:P73 — 22 driver rows, one per seat. Column H is the rank group,
 // J through P are the seven grid bands. Column I ("Lead?") is skipped.
@@ -57,6 +57,20 @@ export async function readTDriverMatrix(workbookPath) {
   }
   if (!matrix.size) {
     throw new Error(`No TDriver rows found in ${workbookPath} at H${TDRIVER_FIRST_ROW}:P${TDRIVER_LAST_ROW}`);
+  }
+  // A rank that has been renamed, deleted, or moved outside the row range must fail
+  // rather than shrink the check: reporting "35 of 35 cells match" while silently
+  // skipping a whole rank would be worse than not running at all.
+  const missing = QUALIFYING_RANKS.filter((rank) => !matrix.has(rank));
+  const unexpected = [...matrix.keys()].filter((rank) => !QUALIFYING_RANKS.includes(rank));
+  if (missing.length || unexpected.length) {
+    const parts = [
+      missing.length ? `missing rank(s): ${missing.join(', ')}` : null,
+      unexpected.length ? `unexpected rank(s): ${unexpected.join(', ')}` : null,
+    ].filter(Boolean);
+    throw new Error(
+      `TDriver at H${TDRIVER_FIRST_ROW}:P${TDRIVER_LAST_ROW} does not cover the six capability ranks — ${parts.join('; ')}`,
+    );
   }
   return matrix;
 }
