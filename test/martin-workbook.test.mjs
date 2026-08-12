@@ -1,0 +1,201 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import ExcelJS from 'exceljs';
+import { readRaceSheet, selectRaceSources, workbookModified, MARTIN_SHEET_BY_RACE } from '../lib/martin-workbook.js';
+
+// A minimal stand-in for one of Martin's race sheets: driver name in B, driver
+// total in X, constructor in Y and its total in AA on alternating rows.
+function raceSheet(workbook, sheetName, rows) {
+  const sheet = workbook.addWorksheet(sheetName);
+  rows.forEach(([driver, driverTotal, team, teamTotal], index) => {
+    const row = sheet.getRow(6 + index);
+    row.getCell(2).value = driver;
+    row.getCell(24).value = driverTotal;
+    if (team) {
+      row.getCell(25).value = team;
+      row.getCell(27).value = teamTotal;
+    }
+    row.commit();
+  });
+  return workbook;
+}
+
+function entry(name, modified, build) {
+  const workbook = new ExcelJS.Workbook();
+  build(workbook);
+  return { name, sha256: `sha-${name}`, workbookModified: modified, workbook };
+}
+
+test('readRaceSheet maps driver and constructor totals to canonical ids', () => {
+  const workbook = raceSheet(new ExcelJS.Workbook(), 'Race 8', [
+    ['L. Norris', -26, 'McLaren', -19],
+    ['O. Piastri', 16, null, null],
+  ]);
+  const race = readRaceSheet(workbook, 'Race 8');
+  assert.equal(race.drivers['lando-norris'], -26);
+  assert.equal(race.drivers['oscar-piastri'], 16);
+  assert.equal(race.teams.mclaren, -19);
+});
+
+test('readRaceSheet returns null for a sheet the workbook does not carry', () => {
+  const workbook = raceSheet(new ExcelJS.Workbook(), 'Race 8', [['L. Norris', -26, 'McLaren', -19]]);
+  assert.equal(readRaceSheet(workbook, 'Race 9'), null);
+});
+
+test('selectRaceSources prefers the more recently modified workbook', () => {
+  const sources = selectRaceSources([
+    entry('master.xlsx', '2026-08-03T16:49:11Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -19, 'McLaren', -14]])),
+    entry('monaco-final.xlsx', '2026-08-20T09:00:00Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -26, 'McLaren', -19]])),
+  ]);
+  assert.equal(sources.monaco.workbook, 'monaco-final.xlsx');
+  assert.equal(sources.monaco.race.drivers['lando-norris'], -26);
+});
+
+test('selectRaceSources ignores a reissue that is older than the master', () => {
+  // The 10 August Monaco attachment was byte-identical to the 2 August one and
+  // predated the master's corrections (#79). Supplied later, named "updated",
+  // and still stale — only the internal timestamp reveals it.
+  const sources = selectRaceSources([
+    entry('master.xlsx', '2026-08-03T16:49:11Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -26, 'McLaren', -19]])),
+    entry('monaco-updated.xlsx', '2026-08-02T18:37:46Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -20, 'McLaren', -20]])),
+  ]);
+  assert.equal(sources.monaco.workbook, 'master.xlsx');
+  assert.equal(sources.monaco.race.drivers['lando-norris'], -26);
+});
+
+test('selectRaceSources takes each race from its own newest source', () => {
+  const sources = selectRaceSources([
+    entry('master.xlsx', '2026-08-03T16:49:11Z', (wb) => {
+      raceSheet(wb, 'Race 1', [['M. Verstappen', 25, 'Red Bull', 3]]);
+      raceSheet(wb, 'Race 8', [['L. Norris', -26, 'McLaren', -19]]);
+    }),
+    entry('australia-updated.xlsx', '2026-08-10T07:18:24Z', (wb) => raceSheet(wb, 'Race 1', [['M. Verstappen', 29, 'Red Bull', 5]])),
+  ]);
+  assert.equal(sources.australia.workbook, 'australia-updated.xlsx');
+  assert.equal(sources.australia.race.drivers['max-verstappen'], 29);
+  assert.equal(sources.monaco.workbook, 'master.xlsx');
+});
+
+test('workbookModified reads the document timestamp, not the filesystem', () => {
+  const workbook = new ExcelJS.Workbook();
+  workbook.modified = new Date('2026-08-03T16:49:11Z');
+  assert.equal(workbookModified(workbook), '2026-08-03T16:49:11.000Z');
+});
+
+test('the sheet map follows Martin\'s original calendar, not our renumbered rounds', () => {
+  // Monaco is his Race 8 but our round 6; Spain-at-Madrid is his Race 16 while
+  // Barcelona is his Race 9. Keying off `round` would silently read the wrong sheet.
+  assert.equal(MARTIN_SHEET_BY_RACE.monaco, 8);
+  assert.equal(MARTIN_SHEET_BY_RACE['barcelona-catalunya'], 9);
+  assert.equal(MARTIN_SHEET_BY_RACE.spain, 16);
+  assert.equal(Object.keys(MARTIN_SHEET_BY_RACE).length, 24);
+});
+
+test('readRaceSheet reads formula cells by their cached result', async () => {
+  // Martin's master workbook computes every driver name and total with formulas
+  // (=VLOOKUP(...), =SUM(P:W)-2*(S)); only his reissued single-race files carry
+  // hardcoded values. ExcelJS returns a formula cell as { formula, result }, so
+  // reading .value directly yields an object and the whole sheet is skipped —
+  // which silently reduced the ledger to the four value-only workbooks and let a
+  // stale Monaco reissue win over the master.
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 8');
+  const row = sheet.getRow(6);
+  row.getCell(2).value = { formula: 'VLOOKUP(1, TDriverX, 2, FALSE)', result: 'L. Norris' };
+  row.getCell(24).value = { formula: 'SUM(P6:W6)-2*(S6)', result: -26 };
+  row.getCell(25).value = { formula: 'C6', result: 'McLaren' };
+  row.getCell(27).value = { formula: '(3*X6+2*X7)/5', result: -19 };
+  row.commit();
+
+  const race = readRaceSheet(workbook, 'Race 8');
+  assert.equal(race.drivers['lando-norris'], -26);
+  assert.equal(race.teams.mclaren, -19);
+});
+
+test('readRaceSheet ignores a formula whose cached result is an error', () => {
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 8');
+  const row = sheet.getRow(6);
+  row.getCell(2).value = { formula: 'VLOOKUP(1, TDriverX, 2, FALSE)', result: 'L. Norris' };
+  row.getCell(24).value = { formula: 'SUM(P6:W6)', result: { error: '#REF!' } };
+  row.commit();
+  assert.equal(readRaceSheet(workbook, 'Race 8'), null);
+});
+
+test('readRaceSheet reads shared-formula cells, which carry no formula key', () => {
+  // Excel stores a column of identical formulas once: the first cell holds
+  // { formula, result } and every cell below it { sharedFormula, result }.
+  // Keying off "formula" therefore reads only the top row of each column — the
+  // Monaco sheet yielded 2 drivers of 22 before this was handled.
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 8');
+  const first = sheet.getRow(6);
+  first.getCell(2).value = { formula: 'VLOOKUP(1, TDriverX, 2, FALSE)', result: 'L. Norris' };
+  first.getCell(24).value = { formula: 'SUM(P6:W6)-2*(S6)', result: -26 };
+  first.commit();
+  const second = sheet.getRow(7);
+  second.getCell(2).value = { sharedFormula: 'B6', result: 'O. Piastri' };
+  second.getCell(24).value = { sharedFormula: 'X6', result: 16 };
+  second.commit();
+
+  const race = readRaceSheet(workbook, 'Race 8');
+  assert.equal(race.drivers['lando-norris'], -26);
+  assert.equal(race.drivers['oscar-piastri'], 16);
+});
+
+test('Martin\'s "RBPT" resolves to Racing Bulls, not Red Bull', () => {
+  // His sheets label the team RBPT. Resolving it to red-bull silently merged the
+  // two constructors — the later row won, so every race reported a Red Bull total
+  // that was actually RBPT's.
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 8');
+  const rows = [['M. Verstappen', -40, 'Red Bull', -15], ['L. Lawson', 24, 'RBPT', 26]];
+  rows.forEach(([driver, total, team, teamTotal], index) => {
+    const row = sheet.getRow(6 + index);
+    row.getCell(2).value = driver;
+    row.getCell(24).value = total;
+    row.getCell(25).value = team;
+    row.getCell(27).value = teamTotal;
+    row.commit();
+  });
+  const race = readRaceSheet(workbook, 'Race 8');
+  assert.equal(race.teams['red-bull'], -15);
+  assert.equal(race.teams['racing-bulls'], 26);
+});
+
+test('readRaceSheet treats a formula cell with no cached result as zero', () => {
+  // Excel omits the cached <v> when a formula evaluates to 0, so ExcelJS yields
+  // { sharedFormula } with no result key. Falling through would drop the row, and
+  // a driver on exactly 0 points would vanish from the ledger — which is how
+  // Sainz's Belgium score (0) went unchecked, the very race where Martin missed
+  // his 10-place grid penalty. openpyxl reads the same cells as 0.
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 12');
+  const first = sheet.getRow(6);
+  first.getCell(2).value = { formula: 'VLOOKUP(1, TDriverX, 2, FALSE)', result: 'L. Norris' };
+  first.getCell(24).value = { formula: 'SUM(P6:W6)', result: 4 };
+  first.commit();
+  const zero = sheet.getRow(7);
+  zero.getCell(2).value = { sharedFormula: 'B6', result: 'C. Sainz Jr' };
+  zero.getCell(24).value = { sharedFormula: 'X6' };
+  zero.commit();
+
+  const race = readRaceSheet(workbook, 'Race 12');
+  assert.equal(race.drivers['carlos-sainz'], 0);
+});
+
+test('readRaceSheet ignores an unraced sheet, whose template rows are all zero', () => {
+  // Martin's master carries all 24 race sheets from the start; the ones not yet
+  // run compute 0 for every driver. Treating those as results would put 13 empty
+  // races in the ledger and report each as "in the ledger but not scored".
+  // A real race cannot total zero for all 22 — position change alone prevents it.
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet('Race 20');
+  ['L. Norris', 'O. Piastri'].forEach((driver, index) => {
+    const row = sheet.getRow(6 + index);
+    row.getCell(2).value = driver;
+    row.getCell(24).value = 0;
+    row.commit();
+  });
+  assert.equal(readRaceSheet(workbook, 'Race 20'), null);
+});

@@ -27,6 +27,12 @@ jobs:
       - name: Test
         run: npm run test:coverage
 
+      # Gate scoring against Martin's committed ledger. Reads no workbook — that
+      # is the point: the ledger is derived and tracked, so the check runs here
+      # rather than depending on someone remembering to run it locally.
+      - name: Reconcile against Martin's ledger
+        run: npm run reconcile:martin
+
   e2e:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
