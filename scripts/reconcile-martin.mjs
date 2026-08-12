@@ -17,24 +17,66 @@ import { existsSync, readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { pathToFileURL } from 'url';
 import { compareToLedger, detectSourceRegression, ledgerBody } from '../lib/martin-ledger.js';
-import { readWorkbook, selectRaceSources, workbookIdentity, workbookModified } from '../lib/martin-workbook.js';
-import { loadCalendar, readJson, scoredRacePath } from '../lib/season-store.js';
+import {
+  assertCompleteSources, detectCoverageLoss, readWorkbook, selectRaceSources,
+  workbookIdentity, workbookModified,
+} from '../lib/martin-workbook.js';
+import {
+  buildConstructorContribution, buildDriverContribution, scoreFinePoints,
+  scoreGridPenalty, scoreSprintFinish, scoreTimePenalty,
+} from '../lib/score-engine.js';
+import { loadCalendar, normalizedRacePath, readJson } from '../lib/season-store.js';
 
 const WORKBOOK_DIR = 'martins-calculations';
 export const LEDGER_PATH = 'season/reference/martin-ledger.json';
 export const DIVERGENCE_PATH = 'season/reference/accepted-divergence.json';
 const GENERATE_COMMAND = 'npm run reconcile:martin -- --generate';
 
+// Scored from the normalized race data rather than from season/scored/*.json.
+// The scored artifacts contain only drivers and constructors somebody picked, so
+// Piastri, Ocon, Bortoleto and Racing Bulls appeared nowhere and 44 ledger values
+// went unchecked. Normalized data holds all 22 seats and 11 constructors, whether
+// or not anyone selected them.
+//
+// Fines are applied here the way publish-scoreboard does — normalized records
+// carry `fineEuros` with `finePoints` left at 0 — so the totals compared are the
+// same ones the scoreboard publishes.
 export function scoredByRace(calendar = loadCalendar(), read = readJson) {
   const races = {};
   for (const race of calendar) {
-    const scored = read(scoredRacePath(race.id), null);
-    if (!scored) continue;
+    const normalized = read(normalizedRacePath(race.id), null);
+    if (!normalized) continue;
+    const withFines = Object.fromEntries(
+      Object.entries(normalized.drivers).map(([id, driver]) => [
+        id, { ...driver, finePoints: scoreFinePoints(driver.fineEuros) },
+      ]),
+    );
+    // Mirror the columns the ledger records, so inputs are compared and not only
+    // the totals they add up to.
     const drivers = {};
+    for (const [id, driver] of Object.entries(withFines)) {
+      drivers[id] = {
+        total: buildDriverContribution(id, driver, {}).totalPoints,
+        grid: driver.qualifyingDsq ? 'dsq' : (driver.gridStart ?? null),
+        finish: driver.racePosition ?? null,
+        fineEuros: driver.fineEuros || 0,
+        gridPenalty: scoreGridPenalty(driver.gridPenaltyPlaces),
+        timePenalty: scoreTimePenalty(driver.timePenaltySeconds),
+        sprintPoints: driver.sprintPosition ? scoreSprintFinish(driver.sprintPosition) : 0,
+        fastestLapPoints: driver.fastestLap ? 2 : 0,
+      };
+    }
     const teams = {};
-    for (const team of scored.teams || []) {
-      for (const driver of team.drivers || []) drivers[driver.driverId] = driver.totalPoints;
-      for (const constructor of team.constructors || []) teams[constructor.teamId] = constructor.totalPoints;
+    for (const [teamId, team] of Object.entries(normalized.teams)) {
+      const contributions = team.driverIds.map((id) => buildDriverContribution(id, withFines[id], {}));
+      teams[teamId] = {
+        total: buildConstructorContribution(
+          teamId,
+          { ...team, finePoints: scoreFinePoints(team.fineEuros) },
+          contributions,
+        ).totalPoints,
+        fineEuros: team.fineEuros || 0,
+      };
     }
     races[race.id] = { drivers, teams };
   }
@@ -70,8 +112,13 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
     races[raceId] = source.race;
   }
 
-  // Refuse to record a source older than the one already cited for that race.
-  const regressions = detectSourceRegression(previous?.provenance, provenance);
+  // Three ways a regeneration can quietly weaken the gate, all fatal:
+  // an older source, a partially parsed sheet, or coverage that has shrunk.
+  const regressions = [
+    ...detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
+    ...assertCompleteSources(sources),
+    ...detectCoverageLoss(previous?.races, races),
+  ];
   return { ledger: { provenance, races }, regressions, workbooksRead: files.length };
 }
 
@@ -82,10 +129,10 @@ export function runCheck({ ledger, accepted, scored }) {
   const result = compareToLedger(scored, ledger, accepted);
   const lines = [];
   for (const row of result.unexplained) {
-    lines.push(`  ${row.race} ${row.kind} ${row.id}: ours ${row.ours}, Martin ${row.martin}`);
+    lines.push(`  ${row.race} ${row.kind} ${row.id} ${row.field}: ours ${row.ours}, Martin ${row.martin}`);
   }
   for (const row of result.resolved) {
-    lines.push(`  ${row.race} ${row.kind} ${row.id}: accepted divergence no longer applies — remove it from ${DIVERGENCE_PATH}`);
+    lines.push(`  ${row.race} ${row.kind} ${row.id} ${row.field}: accepted divergence no longer applies — remove it from ${DIVERGENCE_PATH}`);
   }
   for (const raceId of result.missingRaces) {
     lines.push(`  ${raceId}: in the ledger but not scored`);
@@ -108,8 +155,8 @@ async function main(argv) {
   if (generate) {
     const { ledger, regressions, workbooksRead } = await generateLedger({ workbookDir, previous });
     if (regressions.length) {
-      for (const regression of regressions) console.error(`  ${regression.message}`);
-      throw new Error(`${regressions.length} race(s) would be taken from a workbook older than the one already recorded`);
+      for (const regression of regressions) console.error(`  ${regression}`);
+      throw new Error(`${regressions.length} problem(s) would weaken the ledger — refusing to write it`);
     }
     const races = Object.keys(ledger.races).length;
     // generatedAt sits outside the compared body on purpose: regenerating from

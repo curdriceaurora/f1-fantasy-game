@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import ExcelJS from 'exceljs';
-import { readRaceSheet, selectRaceSources, workbookModified, MARTIN_SHEET_BY_RACE } from '../lib/martin-workbook.js';
+import {
+  readRaceSheet, selectRaceSources, workbookModified, assertCompleteSources, detectCoverageLoss,
+  MARTIN_SHEET_BY_RACE, EXPECTED_DRIVERS, EXPECTED_TEAMS,
+} from '../lib/martin-workbook.js';
 
 // A minimal stand-in for one of Martin's race sheets: driver name in B, driver
 // total in X, constructor in Y and its total in AA on alternating rows.
@@ -32,9 +35,9 @@ test('readRaceSheet maps driver and constructor totals to canonical ids', () => 
     ['O. Piastri', 16, null, null],
   ]);
   const race = readRaceSheet(workbook, 'Race 8');
-  assert.equal(race.drivers['lando-norris'], -26);
-  assert.equal(race.drivers['oscar-piastri'], 16);
-  assert.equal(race.teams.mclaren, -19);
+  assert.equal(race.drivers['lando-norris'].total, -26);
+  assert.equal(race.drivers['oscar-piastri'].total, 16);
+  assert.equal(race.teams.mclaren.total, -19);
 });
 
 test('readRaceSheet returns null for a sheet the workbook does not carry', () => {
@@ -48,7 +51,7 @@ test('selectRaceSources prefers the more recently modified workbook', () => {
     entry('monaco-final.xlsx', '2026-08-20T09:00:00Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -26, 'McLaren', -19]])),
   ]);
   assert.equal(sources.monaco.workbook, 'monaco-final.xlsx');
-  assert.equal(sources.monaco.race.drivers['lando-norris'], -26);
+  assert.equal(sources.monaco.race.drivers['lando-norris'].total, -26);
 });
 
 test('selectRaceSources ignores a reissue that is older than the master', () => {
@@ -60,7 +63,7 @@ test('selectRaceSources ignores a reissue that is older than the master', () => 
     entry('monaco-updated.xlsx', '2026-08-02T18:37:46Z', (wb) => raceSheet(wb, 'Race 8', [['L. Norris', -20, 'McLaren', -20]])),
   ]);
   assert.equal(sources.monaco.workbook, 'master.xlsx');
-  assert.equal(sources.monaco.race.drivers['lando-norris'], -26);
+  assert.equal(sources.monaco.race.drivers['lando-norris'].total, -26);
 });
 
 test('selectRaceSources takes each race from its own newest source', () => {
@@ -72,7 +75,7 @@ test('selectRaceSources takes each race from its own newest source', () => {
     entry('australia-updated.xlsx', '2026-08-10T07:18:24Z', (wb) => raceSheet(wb, 'Race 1', [['M. Verstappen', 29, 'Red Bull', 5]])),
   ]);
   assert.equal(sources.australia.workbook, 'australia-updated.xlsx');
-  assert.equal(sources.australia.race.drivers['max-verstappen'], 29);
+  assert.equal(sources.australia.race.drivers['max-verstappen'].total, 29);
   assert.equal(sources.monaco.workbook, 'master.xlsx');
 });
 
@@ -108,8 +111,8 @@ test('readRaceSheet reads formula cells by their cached result', async () => {
   row.commit();
 
   const race = readRaceSheet(workbook, 'Race 8');
-  assert.equal(race.drivers['lando-norris'], -26);
-  assert.equal(race.teams.mclaren, -19);
+  assert.equal(race.drivers['lando-norris'].total, -26);
+  assert.equal(race.teams.mclaren.total, -19);
 });
 
 test('readRaceSheet ignores a formula whose cached result is an error', () => {
@@ -139,8 +142,8 @@ test('readRaceSheet reads shared-formula cells, which carry no formula key', () 
   second.commit();
 
   const race = readRaceSheet(workbook, 'Race 8');
-  assert.equal(race.drivers['lando-norris'], -26);
-  assert.equal(race.drivers['oscar-piastri'], 16);
+  assert.equal(race.drivers['lando-norris'].total, -26);
+  assert.equal(race.drivers['oscar-piastri'].total, 16);
 });
 
 test('Martin\'s "RBPT" resolves to Racing Bulls, not Red Bull', () => {
@@ -159,8 +162,8 @@ test('Martin\'s "RBPT" resolves to Racing Bulls, not Red Bull', () => {
     row.commit();
   });
   const race = readRaceSheet(workbook, 'Race 8');
-  assert.equal(race.teams['red-bull'], -15);
-  assert.equal(race.teams['racing-bulls'], 26);
+  assert.equal(race.teams['red-bull'].total, -15);
+  assert.equal(race.teams['racing-bulls'].total, 26);
 });
 
 test('readRaceSheet treats a formula cell with no cached result as zero', () => {
@@ -181,7 +184,7 @@ test('readRaceSheet treats a formula cell with no cached result as zero', () => 
   zero.commit();
 
   const race = readRaceSheet(workbook, 'Race 12');
-  assert.equal(race.drivers['carlos-sainz'], 0);
+  assert.equal(race.drivers['carlos-sainz'].total, 0);
 });
 
 test('readRaceSheet ignores an unraced sheet, whose template rows are all zero', () => {
@@ -198,4 +201,45 @@ test('readRaceSheet ignores an unraced sheet, whose template rows are all zero',
     row.commit();
   });
   assert.equal(readRaceSheet(workbook, 'Race 20'), null);
+});
+
+test('assertCompleteSources rejects a sheet that parsed fewer than every seat', () => {
+  // A missed alias or an unhandled formula shape must not be recorded as a thin
+  // ledger: the rows that vanished would simply stop being checked.
+  const problems = assertCompleteSources({
+    monaco: {
+      sheet: 'Race 8',
+      workbook: 'master.xlsx',
+      race: { drivers: { 'lando-norris': { total: -26 } }, teams: { mclaren: { total: -19 } } },
+    },
+  });
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], new RegExp(`1/${EXPECTED_DRIVERS} drivers and 1/${EXPECTED_TEAMS} constructors`));
+});
+
+test('assertCompleteSources passes a full sheet', () => {
+  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, { total: i }]));
+  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i }]));
+  assert.deepEqual(assertCompleteSources({ monaco: { sheet: 'Race 8', workbook: 'm.xlsx', race: { drivers, teams } } }), []);
+});
+
+test('detectCoverageLoss reports a race or row the committed ledger had and this run does not', () => {
+  const previous = {
+    monaco: { drivers: { 'lando-norris': { total: -26 }, 'oscar-piastri': { total: 16 } }, teams: { mclaren: { total: -19 } } },
+    belgium: { drivers: { 'carlos-sainz': { total: 0 } }, teams: {} },
+  };
+  const next = { monaco: { drivers: { 'lando-norris': { total: -26 } }, teams: { mclaren: { total: -19 } } } };
+  const losses = detectCoverageLoss(previous, next);
+  assert.equal(losses.length, 2);
+  assert.match(losses.join(' '), /oscar-piastri dropped out/);
+  assert.match(losses.join(' '), /belgium: covered by the committed ledger/);
+});
+
+test('detectCoverageLoss is silent when coverage is unchanged or grows', () => {
+  const previous = { monaco: { drivers: { 'lando-norris': { total: -26 } }, teams: {} } };
+  const next = {
+    monaco: { drivers: { 'lando-norris': { total: -26 }, 'oscar-piastri': { total: 16 } }, teams: {} },
+    spain: { drivers: { 'carlos-sainz': { total: 4 } }, teams: {} },
+  };
+  assert.deepEqual(detectCoverageLoss(previous, next), []);
 });

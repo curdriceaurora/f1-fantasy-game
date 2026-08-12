@@ -6,49 +6,54 @@ const ledger = {
   provenance: { races: { monaco: { workbook: 'master.xlsx', sha256: 'aaa', workbookModified: '2026-08-03T16:49:11Z', sheet: 'Race 8' } } },
   races: {
     monaco: {
-      drivers: { 'alex-albon': 7, 'pierre-gasly': 11 },
-      teams: { williams: -3 },
+      drivers: {
+        'alex-albon': { total: 7, grid: 11 },
+        'pierre-gasly': { total: 11, grid: 10 },
+      },
+      teams: { williams: { total: -3 } },
     },
   },
 };
 
 const accepted = {
   divergences: [
-    { race: 'monaco', kind: 'driver', id: 'pierre-gasly', ours: 9, martin: 11, issue: '#84 Q1', reason: 'pit-lane rule unknown' },
+    { race: 'monaco', kind: 'driver', id: 'pierre-gasly', field: 'total', ours: 9, martin: 11, issue: '#84 Q1', reason: 'pit-lane rule unknown' },
+    { race: 'monaco', kind: 'driver', id: 'pierre-gasly', field: 'grid', ours: 9, martin: 10, issue: '#84 Q1', reason: 'pit-lane rule unknown' },
   ],
 };
 
 test('compareToLedger is silent when our scores match Martin, allowing for accepted gaps', () => {
-  const scored = { monaco: { drivers: { 'alex-albon': 7, 'pierre-gasly': 9 }, teams: { williams: -3 } } };
+  const scored = { monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 9, grid: 9 } }, teams: { williams: { total: -3 } } } };
   const result = compareToLedger(scored, ledger, accepted);
   assert.deepEqual(result.unexplained, []);
   assert.deepEqual(result.resolved, []);
 });
 
 test('compareToLedger reports a score that drifts away from Martin', () => {
-  const scored = { monaco: { drivers: { 'alex-albon': 10, 'pierre-gasly': 9 }, teams: { williams: -3 } } };
+  const scored = { monaco: { drivers: { 'alex-albon': { total: 10, grid: 11 }, 'pierre-gasly': { total: 9, grid: 9 } }, teams: { williams: { total: -3 } } } };
   const result = compareToLedger(scored, ledger, accepted);
   assert.equal(result.unexplained.length, 1);
-  assert.deepEqual(result.unexplained[0], { race: 'monaco', kind: 'driver', id: 'alex-albon', ours: 10, martin: 7 });
+  assert.deepEqual(result.unexplained[0], { race: 'monaco', kind: 'driver', id: 'alex-albon', field: 'total', ours: 10, martin: 7 });
 });
 
 test('compareToLedger reports an accepted divergence that has been fixed, so the manifest can shrink', () => {
   // Gasly now agrees. The manifest entry is stale and must be removed, or it
   // silently masks a future regression on the same driver.
-  const scored = { monaco: { drivers: { 'alex-albon': 7, 'pierre-gasly': 11 }, teams: { williams: -3 } } };
+  const scored = { monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 11, grid: 10 } }, teams: { williams: { total: -3 } } } };
   const result = compareToLedger(scored, ledger, accepted);
   assert.deepEqual(result.unexplained, []);
-  assert.equal(result.resolved.length, 1);
+  assert.equal(result.resolved.length, 2);
   assert.equal(result.resolved[0].id, 'pierre-gasly');
 });
 
 test('compareToLedger does not let an accepted entry excuse a different value than the one recorded', () => {
   // The manifest accepts ours=9 against martin=11. Scoring 4 is a new bug, not
   // the known gap, and must not be swallowed.
-  const scored = { monaco: { drivers: { 'alex-albon': 7, 'pierre-gasly': 4 }, teams: { williams: -3 } } };
+  const scored = { monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 4, grid: 9 } }, teams: { williams: { total: -3 } } } };
   const result = compareToLedger(scored, ledger, accepted);
   assert.equal(result.unexplained.length, 1);
   assert.equal(result.unexplained[0].id, 'pierre-gasly');
+  assert.equal(result.unexplained[0].field, 'total');
   assert.equal(result.unexplained[0].ours, 4);
 });
 
@@ -87,8 +92,11 @@ test('ledgerBody orders keys stably so a rebuild does not diff on ordering alone
   const shuffled = {
     races: {
       monaco: {
-        teams: { williams: -3 },
-        drivers: { 'pierre-gasly': 11, 'alex-albon': 7 },
+        teams: { williams: { total: -3 } },
+        drivers: {
+          'pierre-gasly': { grid: 10, total: 11 },
+          'alex-albon': { grid: 11, total: 7 },
+        },
       },
     },
   };
