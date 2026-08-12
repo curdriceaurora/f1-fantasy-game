@@ -2,7 +2,7 @@
   "teamId": "nathanael-wallis-711c13e3",
   "principalName": "Nathanael Wallis",
   "displayName": "Wallis Racing",
-  "totalPoints": 441,
+  "totalPoints": 431,
   "completedRaces": 11,
   "latestRacePoints": 31,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 91,
-      "driverSubtotal": 76,
-      "constructorSubtotal": 15,
+      "baseSubtotal": 86,
+      "driverSubtotal": 72,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 91,
+      "homeCircuitBonusPoints": 86,
       "investmentBonusPoints": 0,
-      "totalPoints": 182,
+      "totalPoints": 172,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -30,11 +30,11 @@
           "improvementGrid": 22,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 33,
+          "totalPoints": 29,
           "components": [
             {
-              "label": "Qualifying (grid P20)",
-              "points": -9
+              "label": "Qualifying (DSQ, ruled DNQ, grid P20)",
+              "points": -13
             },
             {
               "label": "Race finish P6",
@@ -128,22 +128,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-4 + 2×8) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         },
@@ -202,7 +202,7 @@
           ]
         }
       ],
-      "runningTotal": 182
+      "runningTotal": 172
     },
     {
       "raceId": "china",
@@ -408,7 +408,7 @@
           ]
         }
       ],
-      "runningTotal": 232
+      "runningTotal": 222
     },
     {
       "raceId": "japan",
@@ -602,7 +602,7 @@
           ]
         }
       ],
-      "runningTotal": 265
+      "runningTotal": 255
     },
     {
       "raceId": "miami",
@@ -812,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 285
+      "runningTotal": 275
     },
     {
       "raceId": "canada",
@@ -1022,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 312
+      "runningTotal": 302
     },
     {
       "raceId": "monaco",
@@ -1224,7 +1224,7 @@
           ]
         }
       ],
-      "runningTotal": 283
+      "runningTotal": 273
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1418,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 347
+      "runningTotal": 337
     },
     {
       "raceId": "austria",
@@ -1612,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 398
+      "runningTotal": 388
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 432
+      "runningTotal": 422
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2016,7 @@
           ]
         }
       ],
-      "runningTotal": 410
+      "runningTotal": 400
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 441
+      "runningTotal": 431
     }
   ]
 }

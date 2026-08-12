@@ -2,7 +2,7 @@
   "teamId": "ken-pigott-5e176435",
   "principalName": "Ken Pigott",
   "displayName": "Rascasse Racing",
-  "totalPoints": 126,
+  "totalPoints": 119,
   "completedRaces": 11,
   "latestRacePoints": 25,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": -43,
-      "driverSubtotal": -27,
-      "constructorSubtotal": -16,
+      "baseSubtotal": -47,
+      "driverSubtotal": -30,
+      "constructorSubtotal": -17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -43,
+      "totalPoints": -47,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -62,11 +62,11 @@
           "improvementGrid": 22,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 8,
+          "totalPoints": 5,
           "components": [
             {
-              "label": "Qualifying (grid P21)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P21)",
+              "points": -9
             },
             {
               "label": "Race finish P15",
@@ -151,22 +151,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-4 + 2×8) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         },
@@ -198,7 +198,7 @@
           ]
         }
       ],
-      "runningTotal": -43
+      "runningTotal": -47
     },
     {
       "raceId": "china",
@@ -404,7 +404,7 @@
           ]
         }
       ],
-      "runningTotal": -51
+      "runningTotal": -55
     },
     {
       "raceId": "japan",
@@ -598,19 +598,19 @@
           ]
         }
       ],
-      "runningTotal": -43
+      "runningTotal": -47
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 35,
-      "driverSubtotal": 4,
+      "baseSubtotal": 32,
+      "driverSubtotal": 1,
       "constructorSubtotal": 31,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 35,
+      "totalPoints": 32,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -624,11 +624,11 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -6,
+          "totalPoints": -9,
           "components": [
             {
-              "label": "Qualifying (grid P22)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
+              "points": -9
             },
             {
               "label": "Sprint P9",
@@ -804,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": -8
+      "runningTotal": -15
     },
     {
       "raceId": "canada",
@@ -1014,7 +1014,7 @@
           ]
         }
       ],
-      "runningTotal": -16
+      "runningTotal": -23
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 5
+      "runningTotal": -2
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 20
+      "runningTotal": 13
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 39
+      "runningTotal": 32
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1814,7 @@
           ]
         }
       ],
-      "runningTotal": 51
+      "runningTotal": 44
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 101
+      "runningTotal": 94
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 126
+      "runningTotal": 119
     }
   ]
 }

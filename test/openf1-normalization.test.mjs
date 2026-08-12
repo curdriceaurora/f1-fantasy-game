@@ -100,8 +100,9 @@ test('a qualifying-DSQ driver is measured from the last grid slot for improvemen
     baseFetchedRace(),
     { drivers: {}, teams: {}, documents: [] },
   );
-  // Field size = number of entrants (2 here). Russell's real grid is kept for the
-  // qualifying band; only his improvement baseline moves to the last slot.
+  // Field size = number of entrants (2 here). The real grid start is preserved for
+  // reporting; the improvement baseline moves to the last slot. (The qualifying
+  // *band* is driven by the separate qualifyingDsq flag, not by gridStart.)
   assert.equal(normalized.drivers['george-russell'].gridStart, 4);
   assert.equal(normalized.drivers['george-russell'].improvementGrid, 2);
   // A driver not disqualified in qualifying keeps grid == improvement baseline.
@@ -337,4 +338,14 @@ test('normalizeRaceWeekend fails when lap feed cannot determine fastest lap', ()
     () => normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
     /cannot determine fastest lap/,
   );
+});
+
+test('a qualifying-DSQ driver is flagged so scoring can rule them DNQ for the band', () => {
+  const normalized = normalizeRaceWeekend(
+    { ...calendarRace, qualifyingDisqualified: ['george-russell'] },
+    baseFetchedRace(),
+    { drivers: {}, teams: {}, documents: [] },
+  );
+  assert.equal(normalized.drivers['george-russell'].qualifyingDsq, true);
+  assert.equal(normalized.drivers['kimi-antonelli'].qualifyingDsq, false);
 });

@@ -241,3 +241,33 @@ test('a No Hoper who does not qualify loses two points, not three', () => {
   const quali = contribution.components.find((c) => /Qualifying/.test(c.label));
   assert.equal(quali.points, -2);
 });
+
+test('a qualifying DSQ scores the DNQ band, not the band of the grid slot it starts from', () => {
+  // Verstappen (Contender) is disqualified from qualifying at Australia and starts
+  // P20 with the improvement baseline at P22. Martin's Race 1!P column reads -13 —
+  // the Contender DNQ value — not the -9 of the 19th-22nd band he physically starts in.
+  const contribution = buildDriverContribution('max-verstappen', {
+    qualifyingPosition: null, gridStart: 20, improvementGrid: 22, qualifyingDsq: true,
+    racePosition: 6, sprintPosition: null,
+    fastestLap: true, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+  }, { raceId: 'australia', raceName: 'Australia' });
+
+  const quali = contribution.components.find((c) => /Qualifying/.test(c.label));
+  assert.equal(quali.points, -13);
+  // The improvement baseline from #38 must survive the band change.
+  const positionChange = contribution.components.find((c) => /^Position change/.test(c.label));
+  assert.equal(positionChange.points, (22 - 6) * 2);
+  // Reconciles to Martin's revised Australia sheet: -13 quali + 32 change + 8 for
+  // P6 + 2 fastest lap = 29.
+  assert.equal(contribution.totalPoints, 29);
+});
+
+test('a driver who merely starts at the back still scores the 19th-22nd band, not DNQ', () => {
+  // Boundary guard: only a qualifying DSQ moves the band. Bottas (Outsider) starts
+  // P20 on merit at Monaco and scores -2, not the -4 of the DNQ column.
+  const contribution = buildDriverContribution('valtteri-bottas', {
+    qualifyingPosition: 20, gridStart: 20, racePosition: 21, sprintPosition: null,
+    fastestLap: false, gridPenaltyPlaces: 0, timePenaltySeconds: 0, finePoints: 0, classified: true,
+  }, { raceId: 'monaco', raceName: 'Monaco' });
+  assert.equal(contribution.components.find((c) => /Qualifying/.test(c.label)).points, -2);
+});

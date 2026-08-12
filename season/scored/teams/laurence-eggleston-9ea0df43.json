@@ -2,7 +2,7 @@
   "teamId": "laurence-eggleston-9ea0df43",
   "principalName": "Laurence Eggleston",
   "displayName": "Stroll In The Park",
-  "totalPoints": 657,
+  "totalPoints": 653,
   "completedRaces": 11,
   "latestRacePoints": 80,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 76,
+      "baseSubtotal": 73,
       "driverSubtotal": 56,
-      "constructorSubtotal": 20,
+      "constructorSubtotal": 17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 76,
+      "totalPoints": 73,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -155,22 +155,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 8,
+          "totalPoints": 5,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": 33,
+            "leadDriverPoints": 29,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
             "secondDriverPoints": -31,
-            "formula": "ceil((3×33 + 2×-31) ÷ 5)",
-            "weightedRawPoints": 7.4,
-            "weightedPoints": 8
+            "formula": "ceil((3×29 + 2×-31) ÷ 5)",
+            "weightedRawPoints": 5,
+            "weightedPoints": 5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 8
+              "points": 5
             }
           ]
         },
@@ -202,7 +202,7 @@
           ]
         }
       ],
-      "runningTotal": 76
+      "runningTotal": 73
     },
     {
       "raceId": "china",
@@ -412,7 +412,7 @@
           ]
         }
       ],
-      "runningTotal": 163
+      "runningTotal": 160
     },
     {
       "raceId": "japan",
@@ -610,19 +610,19 @@
           ]
         }
       ],
-      "runningTotal": 237
+      "runningTotal": 234
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 65,
+      "baseSubtotal": 64,
       "driverSubtotal": 43,
-      "constructorSubtotal": 22,
+      "constructorSubtotal": 21,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 65,
+      "totalPoints": 64,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -773,22 +773,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 0,
+          "totalPoints": -1,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 3,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -6,
-            "formula": "ceil((3×3 + 2×-6) ÷ 5)",
-            "weightedRawPoints": -0.6,
-            "weightedPoints": 0
+            "secondDriverPoints": -9,
+            "formula": "ceil((3×3 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -1.8,
+            "weightedPoints": -1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -1
             }
           ]
         },
@@ -820,7 +820,7 @@
           ]
         }
       ],
-      "runningTotal": 302
+      "runningTotal": 298
     },
     {
       "raceId": "canada",
@@ -1034,7 +1034,7 @@
           ]
         }
       ],
-      "runningTotal": 364
+      "runningTotal": 360
     },
     {
       "raceId": "monaco",
@@ -1236,7 +1236,7 @@
           ]
         }
       ],
-      "runningTotal": 389
+      "runningTotal": 385
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1434,7 +1434,7 @@
           ]
         }
       ],
-      "runningTotal": 366
+      "runningTotal": 362
     },
     {
       "raceId": "austria",
@@ -1632,7 +1632,7 @@
           ]
         }
       ],
-      "runningTotal": 443
+      "runningTotal": 439
     },
     {
       "raceId": "great-britain",
@@ -1846,7 +1846,7 @@
           ]
         }
       ],
-      "runningTotal": 501
+      "runningTotal": 497
     },
     {
       "raceId": "belgium",
@@ -2040,7 +2040,7 @@
           ]
         }
       ],
-      "runningTotal": 577
+      "runningTotal": 573
     },
     {
       "raceId": "hungary",
@@ -2238,7 +2238,7 @@
           ]
         }
       ],
-      "runningTotal": 657
+      "runningTotal": 653
     }
   ]
 }

@@ -2,7 +2,7 @@
   "teamId": "tom-pigott-2ae838f8",
   "principalName": "Tom Pigott",
   "displayName": "Suitable For Upgrade",
-  "totalPoints": 476,
+  "totalPoints": 472,
   "completedRaces": 11,
   "latestRacePoints": 29,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 42,
+      "baseSubtotal": 41,
       "driverSubtotal": 8,
-      "constructorSubtotal": 34,
+      "constructorSubtotal": 33,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 42,
+      "totalPoints": 41,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -151,22 +151,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-4 + 2×8) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         },
@@ -198,7 +198,7 @@
           ]
         }
       ],
-      "runningTotal": 42
+      "runningTotal": 41
     },
     {
       "raceId": "china",
@@ -404,7 +404,7 @@
           ]
         }
       ],
-      "runningTotal": 134
+      "runningTotal": 133
     },
     {
       "raceId": "japan",
@@ -598,19 +598,19 @@
           ]
         }
       ],
-      "runningTotal": 158
+      "runningTotal": 157
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 16,
-      "driverSubtotal": 1,
+      "baseSubtotal": 13,
+      "driverSubtotal": -2,
       "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 16,
+      "totalPoints": 13,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -664,11 +664,11 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -6,
+          "totalPoints": -9,
           "components": [
             {
-              "label": "Qualifying (grid P22)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
+              "points": -9
             },
             {
               "label": "Sprint P9",
@@ -808,7 +808,7 @@
           ]
         }
       ],
-      "runningTotal": 174
+      "runningTotal": 170
     },
     {
       "raceId": "canada",
@@ -1022,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 254
+      "runningTotal": 250
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 267
+      "runningTotal": 263
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1410,7 +1410,7 @@
           ]
         }
       ],
-      "runningTotal": 272
+      "runningTotal": 268
     },
     {
       "raceId": "austria",
@@ -1604,7 +1604,7 @@
           ]
         }
       ],
-      "runningTotal": 285
+      "runningTotal": 281
     },
     {
       "raceId": "great-britain",
@@ -1810,7 +1810,7 @@
           ]
         }
       ],
-      "runningTotal": 379
+      "runningTotal": 375
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 447
+      "runningTotal": 443
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 476
+      "runningTotal": 472
     }
   ]
 }
