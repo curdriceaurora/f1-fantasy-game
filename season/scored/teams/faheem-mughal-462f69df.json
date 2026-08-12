@@ -2,7 +2,7 @@
   "teamId": "faheem-mughal-462f69df",
   "principalName": "Faheem Mughal",
   "displayName": "Esah Built My Hot Rod",
-  "totalPoints": 274,
+  "totalPoints": 269,
   "completedRaces": 11,
   "latestRacePoints": 41,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 56,
-      "driverSubtotal": 15,
+      "baseSubtotal": 52,
+      "driverSubtotal": 11,
       "constructorSubtotal": 41,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 56,
+      "totalPoints": 52,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -30,11 +30,11 @@
           "improvementGrid": 22,
           "racePosition": 6,
           "classified": true,
-          "totalPoints": 33,
+          "totalPoints": 29,
           "components": [
             {
-              "label": "Qualifying (grid P20)",
-              "points": -9
+              "label": "Qualifying (DSQ, ruled DNQ, grid P20)",
+              "points": -13
             },
             {
               "label": "Race finish P6",
@@ -206,7 +206,7 @@
           ]
         }
       ],
-      "runningTotal": 56
+      "runningTotal": 52
     },
     {
       "raceId": "china",
@@ -416,7 +416,7 @@
           ]
         }
       ],
-      "runningTotal": 82
+      "runningTotal": 78
     },
     {
       "raceId": "japan",
@@ -610,7 +610,7 @@
           ]
         }
       ],
-      "runningTotal": 112
+      "runningTotal": 108
     },
     {
       "raceId": "miami",
@@ -820,7 +820,7 @@
           ]
         }
       ],
-      "runningTotal": 119
+      "runningTotal": 115
     },
     {
       "raceId": "canada",
@@ -1026,19 +1026,19 @@
           ]
         }
       ],
-      "runningTotal": 189
+      "runningTotal": 185
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -30,
+      "baseSubtotal": -31,
       "driverSubtotal": -43,
-      "constructorSubtotal": 13,
+      "constructorSubtotal": 12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -30,
+      "totalPoints": -31,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1181,22 +1181,22 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         },
@@ -1228,7 +1228,7 @@
           ]
         }
       ],
-      "runningTotal": 159
+      "runningTotal": 154
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1426,7 +1426,7 @@
           ]
         }
       ],
-      "runningTotal": 177
+      "runningTotal": 172
     },
     {
       "raceId": "austria",
@@ -1620,7 +1620,7 @@
           ]
         }
       ],
-      "runningTotal": 210
+      "runningTotal": 205
     },
     {
       "raceId": "great-britain",
@@ -1826,7 +1826,7 @@
           ]
         }
       ],
-      "runningTotal": 209
+      "runningTotal": 204
     },
     {
       "raceId": "belgium",
@@ -2024,7 +2024,7 @@
           ]
         }
       ],
-      "runningTotal": 233
+      "runningTotal": 228
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 274
+      "runningTotal": 269
     }
   ]
 }

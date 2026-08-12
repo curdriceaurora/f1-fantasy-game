@@ -2,7 +2,7 @@
   "teamId": "oyvind-helgerud-3d689e5d",
   "principalName": "Oyvind Helgerud",
   "displayName": "Vestigo Racing",
-  "totalPoints": 113,
+  "totalPoints": 105,
   "completedRaces": 11,
   "latestRacePoints": 19,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": -39,
-      "driverSubtotal": -45,
-      "constructorSubtotal": 6,
+      "baseSubtotal": -43,
+      "driverSubtotal": -48,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -39,
+      "totalPoints": -43,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -62,11 +62,11 @@
           "improvementGrid": 22,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 8,
+          "totalPoints": 5,
           "components": [
             {
-              "label": "Qualifying (grid P21)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P21)",
+              "points": -9
             },
             {
               "label": "Race finish P15",
@@ -151,22 +151,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-4 + 2×8) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         },
@@ -198,7 +198,7 @@
           ]
         }
       ],
-      "runningTotal": -39
+      "runningTotal": -43
     },
     {
       "raceId": "china",
@@ -404,7 +404,7 @@
           ]
         }
       ],
-      "runningTotal": -31
+      "runningTotal": -35
     },
     {
       "raceId": "japan",
@@ -598,19 +598,19 @@
           ]
         }
       ],
-      "runningTotal": -20
+      "runningTotal": -24
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 26,
-      "driverSubtotal": -13,
+      "baseSubtotal": 23,
+      "driverSubtotal": -16,
       "constructorSubtotal": 39,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 26,
+      "totalPoints": 23,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -624,11 +624,11 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -6,
+          "totalPoints": -9,
           "components": [
             {
-              "label": "Qualifying (grid P22)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
+              "points": -9
             },
             {
               "label": "Sprint P9",
@@ -804,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": 6
+      "runningTotal": -1
     },
     {
       "raceId": "canada",
@@ -1014,19 +1014,19 @@
           ]
         }
       ],
-      "runningTotal": 14
+      "runningTotal": 7
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": 6,
+      "baseSubtotal": 5,
       "driverSubtotal": 2,
-      "constructorSubtotal": 4,
+      "constructorSubtotal": 3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 6,
+      "totalPoints": 5,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -1196,27 +1196,27 @@
             "esteban-ocon",
             "oliver-bearman"
           ],
-          "totalPoints": 11,
+          "totalPoints": 10,
           "weightingBreakdown": {
             "leadDriverId": "esteban-ocon",
             "leadDriverName": "Esteban Ocon",
             "leadDriverPoints": 18,
             "secondDriverId": "oliver-bearman",
             "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×18 + 2×0) ÷ 5)",
-            "weightedRawPoints": 10.8,
-            "weightedPoints": 11
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×18 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 9.2,
+            "weightedPoints": 10
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 10
             }
           ]
         }
       ],
-      "runningTotal": 20
+      "runningTotal": 12
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 28
+      "runningTotal": 20
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 45
+      "runningTotal": 37
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1814,7 @@
           ]
         }
       ],
-      "runningTotal": 50
+      "runningTotal": 42
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2012,7 @@
           ]
         }
       ],
-      "runningTotal": 94
+      "runningTotal": 86
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 113
+      "runningTotal": 105
     }
   ]
 }

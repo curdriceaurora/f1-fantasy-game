@@ -3,7 +3,7 @@
   "raceName": "China",
   "date": "2026-03-15",
   "round": 2,
-  "generatedAt": "2026-08-05T13:19:46.292Z",
+  "generatedAt": "2026-08-12T00:03:17.845Z",
   "documents": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_chinese_grand_prix_-_infringement_-_car_10_-_released_in_an_unsafe_condition.pdf",
@@ -440,7 +440,7 @@
           ]
         }
       ],
-      "runningTotal": 291
+      "runningTotal": 288
     },
     {
       "teamId": "jason-smith-1a886fe7",
@@ -866,7 +866,7 @@
           ]
         }
       ],
-      "runningTotal": 228
+      "runningTotal": 225
     },
     {
       "teamId": "simon-walker-7dd9df1f",
@@ -1714,7 +1714,7 @@
           ]
         }
       ],
-      "runningTotal": 192
+      "runningTotal": 189
     },
     {
       "teamId": "stephen-brooks-397d1f58",
@@ -1923,7 +1923,7 @@
           ]
         }
       ],
-      "runningTotal": 215
+      "runningTotal": 213
     },
     {
       "teamId": "rahul-srinivasan-c15c2aa4",
@@ -2358,13 +2358,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 103,
+      "baseSubtotal": 101,
       "driverSubtotal": 72,
-      "constructorSubtotal": 31,
+      "constructorSubtotal": 29,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 103,
+      "totalPoints": 101,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2542,27 +2542,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 271
+      "runningTotal": 263
     },
     {
       "teamId": "brian-donnell-c0048d2b",
@@ -2771,7 +2771,7 @@
           ]
         }
       ],
-      "runningTotal": 174
+      "runningTotal": 168
     },
     {
       "teamId": "venkatesh-bhimaraju-fa220cd7",
@@ -3196,215 +3196,6 @@
       "runningTotal": 183
     },
     {
-      "teamId": "john-khatri-81ee21fe",
-      "principalName": "John Khatri",
-      "displayName": "Bella’s Racing Team",
-      "raceId": "china",
-      "raceName": "China",
-      "raceDate": "2026-03-15",
-      "baseSubtotal": 93,
-      "driverSubtotal": 28,
-      "constructorSubtotal": 65,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 93,
-      "drivers": [
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 9,
-          "sprintPosition": 15,
-          "gridStart": 9,
-          "improvementGrid": 9,
-          "racePosition": 8,
-          "classified": true,
-          "totalPoints": 6,
-          "components": [
-            {
-              "label": "Qualifying (grid P9)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P15",
-              "points": 0
-            },
-            {
-              "label": "Race finish P8",
-              "points": 4
-            },
-            {
-              "label": "Position change",
-              "points": 2
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 22,
-          "sprintPosition": 19,
-          "gridStart": 21,
-          "improvementGrid": 21,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying (grid P21)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P19",
-              "points": 0
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        },
-        {
-          "driverId": "valtteri-bottas",
-          "name": "Valtteri Bottas",
-          "teamName": "Cadillac",
-          "imageSlug": "bottas",
-          "rank": "Outsider",
-          "qualifyingPosition": 20,
-          "sprintPosition": 21,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 13,
-          "classified": true,
-          "totalPoints": 14,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": 2
-            },
-            {
-              "label": "Sprint P21",
-              "points": 0
-            },
-            {
-              "label": "Race finish P13",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 31,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": 26,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 37,
-            "formula": "ceil((3×26 + 2×37) ÷ 5)",
-            "weightedRawPoints": 30.4,
-            "weightedPoints": 31
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 31
-            }
-          ]
-        },
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 23,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 22,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 24,
-            "formula": "ceil((3×22 + 2×24) ÷ 5)",
-            "weightedRawPoints": 22.8,
-            "weightedPoints": 23
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 23
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 11,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 8,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 11
-            }
-          ]
-        }
-      ],
-      "runningTotal": 110
-    },
-    {
       "teamId": "tom-pigott-2ae838f8",
       "principalName": "Tom Pigott",
       "displayName": "Suitable For Upgrade",
@@ -3611,7 +3402,7 @@
           ]
         }
       ],
-      "runningTotal": 134
+      "runningTotal": 133
     },
     {
       "teamId": "ben-west-39e8b936",
@@ -4033,7 +3824,216 @@
           ]
         }
       ],
-      "runningTotal": 184
+      "runningTotal": 181
+    },
+    {
+      "teamId": "john-khatri-81ee21fe",
+      "principalName": "John Khatri",
+      "displayName": "Bella’s Racing Team",
+      "raceId": "china",
+      "raceName": "China",
+      "raceDate": "2026-03-15",
+      "baseSubtotal": 87,
+      "driverSubtotal": 24,
+      "constructorSubtotal": 63,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 87,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 9,
+          "sprintPosition": 15,
+          "gridStart": 9,
+          "improvementGrid": 9,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 6,
+          "components": [
+            {
+              "label": "Qualifying (grid P9)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P15",
+              "points": 0
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 22,
+          "sprintPosition": 19,
+          "gridStart": 21,
+          "improvementGrid": 21,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying (grid P21)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P19",
+              "points": 0
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 20,
+          "sprintPosition": 21,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 13,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P13",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 31,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 26,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 37,
+            "formula": "ceil((3×26 + 2×37) ÷ 5)",
+            "weightedRawPoints": 30.4,
+            "weightedPoints": 31
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 31
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 23,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 22,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 24,
+            "formula": "ceil((3×22 + 2×24) ÷ 5)",
+            "weightedRawPoints": 22.8,
+            "weightedPoints": 23
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 23
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 9,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 8,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 9
+            }
+          ]
+        }
+      ],
+      "runningTotal": 99
     },
     {
       "teamId": "laurence-eggleston-9ea0df43",
@@ -4246,7 +4246,7 @@
           ]
         }
       ],
-      "runningTotal": 163
+      "runningTotal": 160
     },
     {
       "teamId": "chris-bayley-f3b36d58",
@@ -4459,7 +4459,7 @@
           ]
         }
       ],
-      "runningTotal": 151
+      "runningTotal": 147
     },
     {
       "teamId": "rachel-khatri-e38f6983",
@@ -4672,7 +4672,7 @@
           ]
         }
       ],
-      "runningTotal": 177
+      "runningTotal": 174
     },
     {
       "teamId": "mark-bayley-16a5cc70",
@@ -4885,7 +4885,7 @@
           ]
         }
       ],
-      "runningTotal": 161
+      "runningTotal": 158
     },
     {
       "teamId": "mark-haggan-f7670793",
@@ -5094,7 +5094,7 @@
           ]
         }
       ],
-      "runningTotal": 130
+      "runningTotal": 127
     },
     {
       "teamId": "kai-lewis-dbf2a760",
@@ -5303,7 +5303,7 @@
           ]
         }
       ],
-      "runningTotal": 83
+      "runningTotal": 80
     },
     {
       "teamId": "nathanael-wallis-711c13e3",
@@ -5312,13 +5312,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 52,
+      "baseSubtotal": 50,
       "driverSubtotal": 27,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 23,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 52,
+      "totalPoints": 50,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -5492,27 +5492,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 236
+      "runningTotal": 222
     },
     {
       "teamId": "john-hopkins-4d46f69f",
@@ -5521,13 +5521,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 44,
+      "baseSubtotal": 42,
       "driverSubtotal": 47,
-      "constructorSubtotal": -3,
+      "constructorSubtotal": -5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 44,
+      "totalPoints": 42,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -5701,236 +5701,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 78
-    },
-    {
-      "teamId": "sanath-kuppa-f128be53",
-      "principalName": "Sanath Kuppa",
-      "displayName": "Must Be The Water",
-      "raceId": "china",
-      "raceName": "China",
-      "raceDate": "2026-03-15",
-      "baseSubtotal": 43,
-      "driverSubtotal": 48,
-      "constructorSubtotal": -5,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 43,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 2,
-          "sprintPosition": 1,
-          "gridStart": 2,
-          "improvementGrid": 2,
-          "racePosition": 2,
-          "classified": true,
-          "totalPoints": 26,
-          "components": [
-            {
-              "label": "Qualifying (grid P2)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P2",
-              "points": 18
-            },
-            {
-              "label": "Position change",
-              "points": 0
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 22,
-          "sprintPosition": 19,
-          "gridStart": 21,
-          "improvementGrid": 21,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": 8,
-          "components": [
-            {
-              "label": "Qualifying (grid P21)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P19",
-              "points": 0
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        },
-        {
-          "driverId": "valtteri-bottas",
-          "name": "Valtteri Bottas",
-          "teamName": "Cadillac",
-          "imageSlug": "bottas",
-          "rank": "Outsider",
-          "qualifyingPosition": 20,
-          "sprintPosition": 21,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 13,
-          "classified": true,
-          "totalPoints": 14,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": 2
-            },
-            {
-              "label": "Sprint P21",
-              "points": 0
-            },
-            {
-              "label": "Race finish P13",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "china",
-            "raceName": "China"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "red-bull",
-          "name": "Red Bull",
-          "imageSlug": "redbull",
-          "driverIds": [
-            "max-verstappen",
-            "isack-hadjar"
-          ],
-          "totalPoints": -8,
-          "weightingBreakdown": {
-            "leadDriverId": "max-verstappen",
-            "leadDriverName": "Max Verstappen",
-            "leadDriverPoints": -18,
-            "secondDriverId": "isack-hadjar",
-            "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 6,
-            "formula": "ceil((3×-18 + 2×6) ÷ 5)",
-            "weightedRawPoints": -8.4,
-            "weightedPoints": -8
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -8
-            }
-          ]
-        },
-        {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
-          "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
-          ],
-          "totalPoints": 7,
-          "weightingBreakdown": {
-            "leadDriverId": "carlos-sainz",
-            "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 14,
-            "secondDriverId": "alex-albon",
-            "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -4,
-            "formula": "ceil((3×14 + 2×-4) ÷ 5)",
-            "weightedRawPoints": 6.8,
-            "weightedPoints": 7
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 7
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -4,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": 0,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": -12,
-            "formula": "ceil((3×0 + 2×-12) ÷ 5)",
-            "weightedRawPoints": -4.8,
-            "weightedPoints": -4
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -4
-            }
-          ]
-        }
-      ],
-      "runningTotal": 80
+      "runningTotal": 75
     },
     {
       "teamId": "lizzie-bulmer-ed151919",
@@ -6139,7 +5930,216 @@
           ]
         }
       ],
-      "runningTotal": 84
+      "runningTotal": 79
+    },
+    {
+      "teamId": "sanath-kuppa-f128be53",
+      "principalName": "Sanath Kuppa",
+      "displayName": "Must Be The Water",
+      "raceId": "china",
+      "raceName": "China",
+      "raceDate": "2026-03-15",
+      "baseSubtotal": 39,
+      "driverSubtotal": 44,
+      "constructorSubtotal": -5,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 39,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 2,
+          "sprintPosition": 1,
+          "gridStart": 2,
+          "improvementGrid": 2,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 26,
+          "components": [
+            {
+              "label": "Qualifying (grid P2)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 22,
+          "sprintPosition": 19,
+          "gridStart": 21,
+          "improvementGrid": 21,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": 8,
+          "components": [
+            {
+              "label": "Qualifying (grid P21)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P19",
+              "points": 0
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "qualifyingPosition": 20,
+          "sprintPosition": 21,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 13,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P13",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "china",
+            "raceName": "China"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": -8,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": -18,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-18 + 2×6) ÷ 5)",
+            "weightedRawPoints": -8.4,
+            "weightedPoints": -8
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -8
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": 14,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×14 + 2×-4) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -4,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 0,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -12,
+            "formula": "ceil((3×0 + 2×-12) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 67
     },
     {
       "teamId": "ryan-eyre-6119a97c",
@@ -6148,13 +6148,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 28,
-      "driverSubtotal": 28,
+      "baseSubtotal": 24,
+      "driverSubtotal": 24,
       "constructorSubtotal": 0,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 7,
-      "totalPoints": 35,
+      "totalPoints": 31,
       "drivers": [
         {
           "driverId": "carlos-sainz",
@@ -6240,11 +6240,11 @@
           "improvementGrid": 19,
           "racePosition": 13,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 10,
           "components": [
             {
               "label": "Qualifying (grid P19)",
-              "points": 2
+              "points": -2
             },
             {
               "label": "Sprint P21",
@@ -6348,7 +6348,7 @@
           ]
         }
       ],
-      "runningTotal": 40
+      "runningTotal": 26
     },
     {
       "teamId": "martin-lewis-ea255cc6",
@@ -6557,7 +6557,7 @@
           ]
         }
       ],
-      "runningTotal": 35
+      "runningTotal": 27
     },
     {
       "teamId": "faheem-mughal-462f69df",
@@ -6770,7 +6770,7 @@
           ]
         }
       ],
-      "runningTotal": 82
+      "runningTotal": 78
     },
     {
       "teamId": "tracey-wallis-1da84f99",
@@ -6779,13 +6779,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 23,
+      "baseSubtotal": 21,
       "driverSubtotal": -15,
-      "constructorSubtotal": 38,
+      "constructorSubtotal": 36,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 21,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -6959,27 +6959,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 57
+      "runningTotal": 52
     },
     {
       "teamId": "helen-pigott-f4d9bade",
@@ -7188,7 +7188,7 @@
           ]
         }
       ],
-      "runningTotal": -9
+      "runningTotal": -11
     },
     {
       "teamId": "kiran-sivanna-aeca91ae",
@@ -7397,7 +7397,7 @@
           ]
         }
       ],
-      "runningTotal": 36
+      "runningTotal": 34
     },
     {
       "teamId": "rob-wallis-94faa5a8",
@@ -7606,7 +7606,7 @@
           ]
         }
       ],
-      "runningTotal": -5
+      "runningTotal": -8
     },
     {
       "teamId": "caroline-harris-855736a8",
@@ -7615,13 +7615,13 @@
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 13,
+      "baseSubtotal": 11,
       "driverSubtotal": 4,
-      "constructorSubtotal": 9,
+      "constructorSubtotal": 7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 13,
+      "totalPoints": 11,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -7795,27 +7795,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 72
+      "runningTotal": 64
     },
     {
       "teamId": "paul-brooks-c712f8af",
@@ -8024,7 +8024,7 @@
           ]
         }
       ],
-      "runningTotal": 52
+      "runningTotal": 49
     },
     {
       "teamId": "leanne-lewis-b930b948",
@@ -8233,7 +8233,7 @@
           ]
         }
       ],
-      "runningTotal": 41
+      "runningTotal": 35
     },
     {
       "teamId": "oyvind-helgerud-3d689e5d",
@@ -8442,7 +8442,7 @@
           ]
         }
       ],
-      "runningTotal": -31
+      "runningTotal": -35
     },
     {
       "teamId": "richard-malet-7dc02204",
@@ -8651,7 +8651,7 @@
           ]
         }
       ],
-      "runningTotal": 41
+      "runningTotal": 31
     },
     {
       "teamId": "fred-bull-c865e3fe",
@@ -8860,7 +8860,7 @@
           ]
         }
       ],
-      "runningTotal": 22
+      "runningTotal": 12
     },
     {
       "teamId": "laura-young-cf286bb9",
@@ -9069,7 +9069,7 @@
           ]
         }
       ],
-      "runningTotal": 27
+      "runningTotal": 24
     },
     {
       "teamId": "ken-pigott-5e176435",
@@ -9278,7 +9278,7 @@
           ]
         }
       ],
-      "runningTotal": -51
+      "runningTotal": -55
     }
   ]
 }

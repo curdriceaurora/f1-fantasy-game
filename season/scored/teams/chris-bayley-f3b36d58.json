@@ -2,7 +2,7 @@
   "teamId": "chris-bayley-f3b36d58",
   "principalName": "Chris Bayley",
   "displayName": "Aero We Go",
-  "totalPoints": 446,
+  "totalPoints": 442,
   "completedRaces": 11,
   "latestRacePoints": 23,
   "races": [
@@ -10,13 +10,13 @@
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 65,
-      "driverSubtotal": 32,
-      "constructorSubtotal": 33,
+      "baseSubtotal": 61,
+      "driverSubtotal": 29,
+      "constructorSubtotal": 32,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 65,
+      "totalPoints": 61,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -94,11 +94,11 @@
           "improvementGrid": 22,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 8,
+          "totalPoints": 5,
           "components": [
             {
-              "label": "Qualifying (grid P21)",
-              "points": -6
+              "label": "Qualifying (DSQ, ruled DNQ, grid P21)",
+              "points": -9
             },
             {
               "label": "Race finish P15",
@@ -155,22 +155,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -4,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 10,
-            "formula": "ceil((3×-4 + 2×10) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×-4 + 2×8) ÷ 5)",
+            "weightedRawPoints": 0.8,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         },
@@ -206,7 +206,7 @@
           ]
         }
       ],
-      "runningTotal": 65
+      "runningTotal": 61
     },
     {
       "raceId": "china",
@@ -416,7 +416,7 @@
           ]
         }
       ],
-      "runningTotal": 151
+      "runningTotal": 147
     },
     {
       "raceId": "japan",
@@ -610,7 +610,7 @@
           ]
         }
       ],
-      "runningTotal": 189
+      "runningTotal": 185
     },
     {
       "raceId": "miami",
@@ -816,7 +816,7 @@
           ]
         }
       ],
-      "runningTotal": 246
+      "runningTotal": 242
     },
     {
       "raceId": "canada",
@@ -1026,7 +1026,7 @@
           ]
         }
       ],
-      "runningTotal": 245
+      "runningTotal": 241
     },
     {
       "raceId": "monaco",
@@ -1228,7 +1228,7 @@
           ]
         }
       ],
-      "runningTotal": 260
+      "runningTotal": 256
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1426,7 +1426,7 @@
           ]
         }
       ],
-      "runningTotal": 300
+      "runningTotal": 296
     },
     {
       "raceId": "austria",
@@ -1620,7 +1620,7 @@
           ]
         }
       ],
-      "runningTotal": 354
+      "runningTotal": 350
     },
     {
       "raceId": "great-britain",
@@ -1826,7 +1826,7 @@
           ]
         }
       ],
-      "runningTotal": 460
+      "runningTotal": 456
     },
     {
       "raceId": "belgium",
@@ -2024,7 +2024,7 @@
           ]
         }
       ],
-      "runningTotal": 423
+      "runningTotal": 419
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 446
+      "runningTotal": 442
     }
   ]
 }

@@ -2,21 +2,21 @@
   "teamId": "tracey-wallis-1da84f99",
   "principalName": "Tracey Wallis",
   "displayName": "Spanner In The Works",
-  "totalPoints": 245,
+  "totalPoints": 230,
   "completedRaces": 11,
-  "latestRacePoints": 54,
+  "latestRacePoints": 53,
   "races": [
     {
       "raceId": "australia",
       "raceName": "Australia",
       "raceDate": "2026-03-08",
-      "baseSubtotal": 34,
-      "driverSubtotal": 20,
-      "constructorSubtotal": 14,
+      "baseSubtotal": 31,
+      "driverSubtotal": 18,
+      "constructorSubtotal": 13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 34,
+      "totalPoints": 31,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -62,11 +62,11 @@
           "improvementGrid": 22,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": 10,
+          "totalPoints": 8,
           "components": [
             {
-              "label": "Qualifying (grid P22)",
-              "points": 0
+              "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
+              "points": -2
             },
             {
               "label": "Race finish P17",
@@ -182,39 +182,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 2,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 2,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 2,
-            "formula": "ceil((3×2 + 2×2) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": -2,
+            "formula": "ceil((3×2 + 2×-2) ÷ 5)",
+            "weightedRawPoints": 0.4,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 1
             }
           ]
         }
       ],
-      "runningTotal": 34
+      "runningTotal": 31
     },
     {
       "raceId": "china",
       "raceName": "China",
       "raceDate": "2026-03-15",
-      "baseSubtotal": 23,
+      "baseSubtotal": 21,
       "driverSubtotal": -15,
-      "constructorSubtotal": 38,
+      "constructorSubtotal": 36,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 21,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -388,39 +388,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 11,
+          "totalPoints": 9,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×8 + 2×14) ÷ 5)",
-            "weightedRawPoints": 10.4,
-            "weightedPoints": 11
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×8 + 2×10) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 11
+              "points": 9
             }
           ]
         }
       ],
-      "runningTotal": 57
+      "runningTotal": 52
     },
     {
       "raceId": "japan",
       "raceName": "Japan",
       "raceDate": "2026-03-29",
-      "baseSubtotal": 31,
+      "baseSubtotal": 29,
       "driverSubtotal": 10,
-      "constructorSubtotal": 21,
+      "constructorSubtotal": 19,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 29,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -582,39 +582,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 2,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 0,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×0 + 2×4) ÷ 5)",
-            "weightedRawPoints": 1.6,
-            "weightedPoints": 2
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×0 + 2×0) ÷ 5)",
+            "weightedRawPoints": 0,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 88
+      "runningTotal": 81
     },
     {
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 65,
+      "baseSubtotal": 64,
       "driverSubtotal": 39,
-      "constructorSubtotal": 26,
+      "constructorSubtotal": 25,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 65,
+      "totalPoints": 64,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -792,37 +792,37 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 4,
+          "totalPoints": 3,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 4,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 4,
-            "formula": "ceil((3×4 + 2×4) ÷ 5)",
-            "weightedRawPoints": 4,
-            "weightedPoints": 4
+            "secondDriverPoints": 0,
+            "formula": "ceil((3×4 + 2×0) ÷ 5)",
+            "weightedRawPoints": 2.4,
+            "weightedPoints": 3
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 3
             }
           ]
         }
       ],
-      "runningTotal": 153
+      "runningTotal": 145
     },
     {
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -5,
+      "baseSubtotal": -6,
       "driverSubtotal": -9,
-      "constructorSubtotal": 4,
+      "constructorSubtotal": 3,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 5,
+      "homeCircuitBonusPoints": 6,
       "investmentBonusPoints": 0,
       "totalPoints": 0,
       "drivers": [
@@ -998,39 +998,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 6,
+          "totalPoints": 5,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 2,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 12,
-            "formula": "ceil((3×2 + 2×12) ÷ 5)",
-            "weightedRawPoints": 6,
-            "weightedPoints": 6
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×2 + 2×8) ÷ 5)",
+            "weightedRawPoints": 4.4,
+            "weightedPoints": 5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 6
+              "points": 5
             }
           ]
         }
       ],
-      "runningTotal": 153
+      "runningTotal": 145
     },
     {
       "raceId": "monaco",
       "raceName": "Monaco",
       "raceDate": "2026-06-07",
-      "baseSubtotal": -30,
+      "baseSubtotal": -32,
       "driverSubtotal": -29,
-      "constructorSubtotal": -1,
+      "constructorSubtotal": -3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -30,
+      "totalPoints": -32,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1200,39 +1200,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": -3,
+          "totalPoints": -5,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": -6,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×-6 + 2×0) ÷ 5)",
-            "weightedRawPoints": -3.6,
-            "weightedPoints": -3
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×-6 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -5.2,
+            "weightedPoints": -5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -3
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 123
+      "runningTotal": 113
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 11,
+      "baseSubtotal": 9,
       "driverSubtotal": 17,
-      "constructorSubtotal": -6,
+      "constructorSubtotal": -8,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 11,
+      "totalPoints": 9,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1402,39 +1402,39 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": 3,
+          "totalPoints": 1,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": 5,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": -1,
-            "formula": "ceil((3×5 + 2×-1) ÷ 5)",
-            "weightedRawPoints": 2.6,
-            "weightedPoints": 3
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×5 + 2×-5) ÷ 5)",
+            "weightedRawPoints": 1,
+            "weightedPoints": 1
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 3
+              "points": 1
             }
           ]
         }
       ],
-      "runningTotal": 134
+      "runningTotal": 122
     },
     {
       "raceId": "austria",
       "raceName": "Austria",
       "raceDate": "2026-06-28",
-      "baseSubtotal": 23,
+      "baseSubtotal": 21,
       "driverSubtotal": -2,
-      "constructorSubtotal": 25,
+      "constructorSubtotal": 23,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 21,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1596,27 +1596,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": -5,
+          "totalPoints": -7,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": -8,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": -2,
-            "formula": "ceil((3×-8 + 2×-2) ÷ 5)",
-            "weightedRawPoints": -5.6,
-            "weightedPoints": -5
+            "secondDriverPoints": -6,
+            "formula": "ceil((3×-8 + 2×-6) ÷ 5)",
+            "weightedRawPoints": -7.2,
+            "weightedPoints": -7
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -5
+              "points": -7
             }
           ]
         }
       ],
-      "runningTotal": 157
+      "runningTotal": 143
     },
     {
       "raceId": "great-britain",
@@ -1822,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 198
+      "runningTotal": 184
     },
     {
       "raceId": "belgium",
@@ -2020,19 +2020,19 @@
           ]
         }
       ],
-      "runningTotal": 191
+      "runningTotal": 177
     },
     {
       "raceId": "hungary",
       "raceName": "Hungary",
       "raceDate": "2026-07-26",
-      "baseSubtotal": 54,
+      "baseSubtotal": 53,
       "driverSubtotal": 37,
-      "constructorSubtotal": 17,
+      "constructorSubtotal": 16,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 54,
+      "totalPoints": 53,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -2194,27 +2194,27 @@
             "sergio-perez",
             "valtteri-bottas"
           ],
-          "totalPoints": -1,
+          "totalPoints": -2,
           "weightingBreakdown": {
             "leadDriverId": "sergio-perez",
             "leadDriverName": "Sergio Perez",
             "leadDriverPoints": -2,
             "secondDriverId": "valtteri-bottas",
             "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 0,
-            "formula": "ceil((3×-2 + 2×0) ÷ 5)",
-            "weightedRawPoints": -1.2,
-            "weightedPoints": -1
+            "secondDriverPoints": -4,
+            "formula": "ceil((3×-2 + 2×-4) ÷ 5)",
+            "weightedRawPoints": -2.8,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": -2
             }
           ]
         }
       ],
-      "runningTotal": 245
+      "runningTotal": 230
     }
   ]
 }
