@@ -210,7 +210,7 @@ test('assertCompleteSources rejects a sheet that parsed fewer than every seat', 
     monaco: {
       sheet: 'Race 8',
       workbook: 'master.xlsx',
-      race: { drivers: { 'lando-norris': { total: -26 } }, teams: { mclaren: { total: -19 } } },
+      race: { drivers: { 'lando-norris': fullDriverFields() }, teams: { mclaren: { total: -19, fineEuros: 0 } } },
     },
   });
   assert.equal(problems.length, 1);
@@ -218,8 +218,8 @@ test('assertCompleteSources rejects a sheet that parsed fewer than every seat', 
 });
 
 test('assertCompleteSources passes a full sheet', () => {
-  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, { total: i }]));
-  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i }]));
+  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, fullDriverFields()]));
+  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i, fineEuros: 0 }]));
   assert.deepEqual(assertCompleteSources({ monaco: { sheet: 'Race 8', workbook: 'm.xlsx', race: { drivers, teams } } }), []);
 });
 
@@ -243,3 +243,36 @@ test('detectCoverageLoss is silent when coverage is unchanged or grows', () => {
   };
   assert.deepEqual(detectCoverageLoss(previous, next), []);
 });
+
+test('assertCompleteSources rejects a driver missing a compared field', () => {
+  // Entity counts alone do not protect field coverage: dropping sprintPoints from
+  // every driver kept 22/11 intact and lost a whole comparison dimension.
+  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, fullDriverFields()]));
+  delete drivers.d3.sprintPoints;
+  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i, fineEuros: 0 }]));
+  const problems = assertCompleteSources({ monaco: { sheet: 'Race 8', workbook: 'm.xlsx', race: { drivers, teams } } });
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /driver d3 is missing field\(s\): sprintPoints/);
+});
+
+test('assertCompleteSources rejects a constructor missing a compared field', () => {
+  const drivers = Object.fromEntries(Array.from({ length: EXPECTED_DRIVERS }, (_, i) => [`d${i}`, fullDriverFields()]));
+  const teams = Object.fromEntries(Array.from({ length: EXPECTED_TEAMS }, (_, i) => [`t${i}`, { total: i, fineEuros: 0 }]));
+  delete teams.t0.fineEuros;
+  const problems = assertCompleteSources({ monaco: { sheet: 'Race 8', workbook: 'm.xlsx', race: { drivers, teams } } });
+  assert.match(problems[0], /team t0 is missing field\(s\): fineEuros/);
+});
+
+test('detectCoverageLoss reports a field that disappeared from an entity', () => {
+  const previous = { monaco: { drivers: { 'lando-norris': { total: -26, sprintPoints: 0 } }, teams: {} } };
+  const next = { monaco: { drivers: { 'lando-norris': { total: -26 } } }, teams: {} };
+  const losses = detectCoverageLoss(previous, next);
+  assert.equal(losses.length, 1);
+  assert.match(losses[0], /lando-norris lost field sprintPoints/);
+});
+
+function fullDriverFields() {
+  return {
+    total: 0, grid: 1, finish: 1, fineEuros: 0, gridPenalty: 0, timePenalty: 0, sprintPoints: 0, fastestLapPoints: 0,
+  };
+}

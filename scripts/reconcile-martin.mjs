@@ -137,6 +137,9 @@ export function runCheck({ ledger, accepted, scored }) {
   for (const raceId of result.missingRaces) {
     lines.push(`  ${raceId}: in the ledger but not scored`);
   }
+  for (const raceId of result.unledgeredRaces) {
+    lines.push(`  ${raceId}: scored but absent from the ledger — regenerate with \`${GENERATE_COMMAND}\``);
+  }
   return { ...result, lines, ok: !lines.length };
 }
 

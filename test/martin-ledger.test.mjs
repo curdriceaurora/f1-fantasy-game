@@ -102,3 +102,20 @@ test('ledgerBody orders keys stably so a rebuild does not diff on ordering alone
   };
   assert.equal(ledgerBody(shuffled), ledgerBody(ledger));
 });
+
+test('compareToLedger fails on a scored race the ledger does not cover', () => {
+  // The set comparison must run both ways. Iterating only over ledger races means
+  // the next completed round can be scored and published while the ledger still
+  // predates it, and reconciliation stays green on stale coverage.
+  const scored = {
+    monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 9, grid: 9 } }, teams: { williams: { total: -3 } } },
+    spain: { drivers: { 'carlos-sainz': { total: 12, grid: 4 } }, teams: { williams: { total: 8 } } },
+  };
+  const result = compareToLedger(scored, ledger, accepted);
+  assert.deepEqual(result.unledgeredRaces, ['spain']);
+});
+
+test('compareToLedger is silent when the ledger and the scored races match exactly', () => {
+  const scored = { monaco: { drivers: { 'alex-albon': { total: 7, grid: 11 }, 'pierre-gasly': { total: 9, grid: 9 } }, teams: { williams: { total: -3 } } } };
+  assert.deepEqual(compareToLedger(scored, ledger, accepted).unledgeredRaces, []);
+});
