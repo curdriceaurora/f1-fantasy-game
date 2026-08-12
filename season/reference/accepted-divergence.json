@@ -1,0 +1,495 @@
+{
+  "note": "Divergences from Martin we knowingly carry, one entry per field. Each excuses exactly one value pair, so a different value on the same field still fails. Remove an entry once resolved — reconcile:martin reports stale entries as failures.",
+  "divergences": [
+    {
+      "race": "miami",
+      "kind": "driver",
+      "id": "isack-hadjar",
+      "field": "total",
+      "ours": -9,
+      "martin": -19,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -10; rule unknown"
+    },
+    {
+      "race": "miami",
+      "kind": "driver",
+      "id": "isack-hadjar",
+      "field": "gridPenalty",
+      "ours": 0,
+      "martin": -10,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -10; rule unknown"
+    },
+    {
+      "race": "miami",
+      "kind": "driver",
+      "id": "charles-leclerc",
+      "field": "total",
+      "ours": -8,
+      "martin": -18,
+      "issue": "#75",
+      "reason": "Martin's -20 exceeds the §2.4 10-point cap; ours is the capped -10"
+    },
+    {
+      "race": "miami",
+      "kind": "driver",
+      "id": "charles-leclerc",
+      "field": "timePenalty",
+      "ours": -10,
+      "martin": -20,
+      "issue": "#75",
+      "reason": "Martin's -20 exceeds the §2.4 10-point cap; ours is the capped -10"
+    },
+    {
+      "race": "miami",
+      "kind": "team",
+      "id": "red-bull",
+      "field": "total",
+      "ours": -1,
+      "martin": -5,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "miami",
+      "kind": "team",
+      "id": "ferrari",
+      "field": "total",
+      "ours": 0,
+      "martin": -6,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "china",
+      "kind": "driver",
+      "id": "alex-albon",
+      "field": "total",
+      "ours": -4,
+      "martin": -9,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; the rule is not derivable from any published number"
+    },
+    {
+      "race": "china",
+      "kind": "driver",
+      "id": "alex-albon",
+      "field": "gridPenalty",
+      "ours": 0,
+      "martin": -5,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; the rule is not derivable from any published number"
+    },
+    {
+      "race": "china",
+      "kind": "team",
+      "id": "williams",
+      "field": "total",
+      "ours": 7,
+      "martin": 5,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "japan",
+      "kind": "driver",
+      "id": "franco-colapinto",
+      "field": "total",
+      "ours": 1,
+      "martin": 3,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P15; Martin has 16"
+    },
+    {
+      "race": "japan",
+      "kind": "driver",
+      "id": "franco-colapinto",
+      "field": "grid",
+      "ours": 15,
+      "martin": 16,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P15; Martin has 16"
+    },
+    {
+      "race": "japan",
+      "kind": "team",
+      "id": "alpine",
+      "field": "total",
+      "ours": 10,
+      "martin": 11,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "canada",
+      "kind": "driver",
+      "id": "charles-leclerc",
+      "field": "total",
+      "ours": 23,
+      "martin": 24,
+      "issue": "#76",
+      "reason": "FIA fined Ferrari €1,000 (car 16, pit-lane speeding); Martin has not applied it"
+    },
+    {
+      "race": "canada",
+      "kind": "driver",
+      "id": "charles-leclerc",
+      "field": "fineEuros",
+      "ours": 1000,
+      "martin": 0,
+      "issue": "#76",
+      "reason": "FIA fined Ferrari €1,000 (car 16, pit-lane speeding); Martin has not applied it"
+    },
+    {
+      "race": "canada",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "total",
+      "ours": 14,
+      "martin": 4,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -10; rule unknown"
+    },
+    {
+      "race": "canada",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "gridPenalty",
+      "ours": 0,
+      "martin": -10,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -10; rule unknown"
+    },
+    {
+      "race": "canada",
+      "kind": "team",
+      "id": "ferrari",
+      "field": "total",
+      "ours": 26,
+      "martin": 27,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "canada",
+      "kind": "team",
+      "id": "aston-martin",
+      "field": "total",
+      "ours": -5,
+      "martin": -9,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "monaco",
+      "kind": "driver",
+      "id": "liam-lawson",
+      "field": "total",
+      "ours": 26,
+      "martin": 24,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P10; Martin has Lawson and Gasly transposed"
+    },
+    {
+      "race": "monaco",
+      "kind": "driver",
+      "id": "liam-lawson",
+      "field": "grid",
+      "ours": 10,
+      "martin": 9,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P10; Martin has Lawson and Gasly transposed"
+    },
+    {
+      "race": "monaco",
+      "kind": "driver",
+      "id": "pierre-gasly",
+      "field": "total",
+      "ours": 9,
+      "martin": 11,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P9; Martin has Lawson and Gasly transposed"
+    },
+    {
+      "race": "monaco",
+      "kind": "driver",
+      "id": "pierre-gasly",
+      "field": "grid",
+      "ours": 9,
+      "martin": 10,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P9; Martin has Lawson and Gasly transposed"
+    },
+    {
+      "race": "monaco",
+      "kind": "team",
+      "id": "racing-bulls",
+      "field": "total",
+      "ours": 28,
+      "martin": 26,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "monaco",
+      "kind": "team",
+      "id": "alpine",
+      "field": "total",
+      "ours": 6,
+      "martin": 7,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "liam-lawson",
+      "field": "total",
+      "ours": 10,
+      "martin": 6,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P8; Martin has 9"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "liam-lawson",
+      "field": "finish",
+      "ours": 8,
+      "martin": 9,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P8; Martin has 9"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "arvid-lindblad",
+      "field": "total",
+      "ours": 12,
+      "martin": 9,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P9; Martin has 10"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "arvid-lindblad",
+      "field": "finish",
+      "ours": 9,
+      "martin": 10,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P9; Martin has 10"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "fernando-alonso",
+      "field": "total",
+      "ours": 2,
+      "martin": -3,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; rule unknown"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "fernando-alonso",
+      "field": "gridPenalty",
+      "ours": 0,
+      "martin": -5,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; rule unknown"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "nico-hulkenberg",
+      "field": "total",
+      "ours": -19,
+      "martin": -17,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P9; Martin has 10"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "nico-hulkenberg",
+      "field": "grid",
+      "ours": 9,
+      "martin": 10,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P9; Martin has 10"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "franco-colapinto",
+      "field": "total",
+      "ours": 3,
+      "martin": 10,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P10; Martin has 8"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "driver",
+      "id": "franco-colapinto",
+      "field": "finish",
+      "ours": 10,
+      "martin": 8,
+      "issue": "#84 Q11",
+      "reason": "FIA classification says P10; Martin has 8"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "team",
+      "id": "racing-bulls",
+      "field": "total",
+      "ours": 11,
+      "martin": 8,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "team",
+      "id": "aston-martin",
+      "field": "total",
+      "ours": 0,
+      "martin": -3,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "team",
+      "id": "audi",
+      "field": "total",
+      "ours": -10,
+      "martin": -9,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "barcelona-catalunya",
+      "kind": "team",
+      "id": "alpine",
+      "field": "total",
+      "ours": 17,
+      "martin": 20,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "great-britain",
+      "kind": "driver",
+      "id": "kimi-antonelli",
+      "field": "total",
+      "ours": -17,
+      "martin": -19,
+      "issue": "#84 Q11",
+      "reason": "FIA classification names him fastest lap; Martin does not award it"
+    },
+    {
+      "race": "great-britain",
+      "kind": "driver",
+      "id": "kimi-antonelli",
+      "field": "fastestLapPoints",
+      "ours": 2,
+      "martin": 0,
+      "issue": "#84 Q11",
+      "reason": "FIA classification names him fastest lap; Martin does not award it"
+    },
+    {
+      "race": "great-britain",
+      "kind": "team",
+      "id": "mercedes",
+      "field": "total",
+      "ours": 10,
+      "martin": 9,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "belgium",
+      "kind": "driver",
+      "id": "carlos-sainz",
+      "field": "total",
+      "ours": -10,
+      "martin": 0,
+      "issue": "#84 Q2",
+      "reason": "FIA grid lists \"Cars 18, 1 & 55 - 10 place grid penalties\"; Martin applied it to 18 and 1 only"
+    },
+    {
+      "race": "belgium",
+      "kind": "driver",
+      "id": "carlos-sainz",
+      "field": "gridPenalty",
+      "ours": -10,
+      "martin": 0,
+      "issue": "#84 Q2",
+      "reason": "FIA grid lists \"Cars 18, 1 & 55 - 10 place grid penalties\"; Martin applied it to 18 and 1 only"
+    },
+    {
+      "race": "belgium",
+      "kind": "team",
+      "id": "williams",
+      "field": "total",
+      "ours": -6,
+      "martin": 0,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "hungary",
+      "kind": "driver",
+      "id": "isack-hadjar",
+      "field": "total",
+      "ours": 11,
+      "martin": 12,
+      "issue": "#76",
+      "reason": "FIA fined Red Bull €400 (car 6, pit-lane speeding); Martin has not applied it"
+    },
+    {
+      "race": "hungary",
+      "kind": "driver",
+      "id": "isack-hadjar",
+      "field": "fineEuros",
+      "ours": 400,
+      "martin": 0,
+      "issue": "#76",
+      "reason": "FIA fined Red Bull €400 (car 6, pit-lane speeding); Martin has not applied it"
+    },
+    {
+      "race": "hungary",
+      "kind": "driver",
+      "id": "sergio-perez",
+      "field": "total",
+      "ours": -2,
+      "martin": -7,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; rule unknown"
+    },
+    {
+      "race": "hungary",
+      "kind": "driver",
+      "id": "sergio-perez",
+      "field": "gridPenalty",
+      "ours": 0,
+      "martin": -5,
+      "issue": "#84 Q1",
+      "reason": "pit-lane start: Martin scores -5; rule unknown"
+    },
+    {
+      "race": "hungary",
+      "kind": "team",
+      "id": "cadillac",
+      "field": "total",
+      "ours": -2,
+      "martin": -5,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    }
+  ]
+}

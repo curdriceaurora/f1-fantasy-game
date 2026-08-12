@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node server.js",
     "lint": "eslint .",
-    "quality:check": "npm run lint && npm run test:coverage",
+    "quality:check": "npm run lint && npm run test:coverage && npm run reconcile:martin",
     "test": "node --test",
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=95",
     "test:e2e": "playwright test",
@@ -17,6 +17,7 @@
     "auto:score": "node scripts/auto-score.mjs",
     "audit:penalties": "node scripts/audit-time-penalties.mjs",
     "verify:matrix": "node scripts/verify-qualifying-matrix.mjs",
+    "reconcile:martin": "node scripts/reconcile-martin.mjs",
     "reconcile:season": "node scripts/reconcile-season.mjs",
     "switch-mode": "node scripts/switch-mode.mjs",
     "prepare": "simple-git-hooks"

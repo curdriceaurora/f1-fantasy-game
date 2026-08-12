@@ -1,0 +1,3045 @@
+{
+  "provenance": {
+    "races": {
+      "australia": {
+        "workbook": "Martins FF1 2026 1 Australia updated.xlsx",
+        "sha256": "44a0596ca66dceb0e929e197c74a2d416828ecf62c666f11ec21aa29b5ff1a86",
+        "workbookModified": "2026-08-10T07:18:24.000Z",
+        "sheet": "Race 1"
+      },
+      "miami": {
+        "workbook": "Martins FF1 2026 6 Miami updated.xlsx",
+        "sha256": "117bc62e8da9086830921d700025309ea8126ce24850a6f440da317ecb2bd6d9",
+        "workbookModified": "2026-08-10T07:19:08.000Z",
+        "sheet": "Race 6"
+      },
+      "china": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 2"
+      },
+      "japan": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 3"
+      },
+      "canada": {
+        "workbook": "Martins FF1 2026 7 Canada updated.xlsx",
+        "sha256": "b77abb47f8d9d588b5321a33debe33623d7eb8c3416e0b2e3c9547aa284d75a2",
+        "workbookModified": "2026-08-10T07:11:08.000Z",
+        "sheet": "Race 7"
+      },
+      "monaco": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 8"
+      },
+      "barcelona-catalunya": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 9"
+      },
+      "austria": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 10"
+      },
+      "great-britain": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 11"
+      },
+      "belgium": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 12"
+      },
+      "hungary": {
+        "workbook": "Martins FF1 2026 7 Canada and 8 Monaco updated.xlsx",
+        "sha256": "aa128141361c68bda5b6a9dc817bf54acfe1b682fcb107e807a551e2a0d8a9f0",
+        "workbookModified": "2026-08-03T16:49:11.000Z",
+        "sheet": "Race 13"
+      }
+    },
+    "generatedBy": "npm run reconcile:martin -- --generate"
+  },
+  "races": {
+    "australia": {
+      "drivers": {
+        "lando-norris": {
+          "total": 8,
+          "grid": 6,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": -32,
+          "grid": 5,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 28,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 21,
+          "grid": 2,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": 29,
+          "grid": "dsq",
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "isack-hadjar": {
+          "total": -31,
+          "grid": 3,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 20,
+          "grid": 4,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 18,
+          "grid": 7,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": 5,
+          "grid": "dsq",
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": 4,
+          "grid": 15,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": -4,
+          "grid": 8,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 15,
+          "grid": 9,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": -4,
+          "grid": 17,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 8,
+          "grid": "dsq",
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 7,
+          "grid": 13,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 19,
+          "grid": 12,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -22,
+          "grid": 11,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 7,
+          "grid": 10,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 15,
+          "grid": 14,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 7,
+          "grid": 16,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 2,
+          "grid": 18,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -2,
+          "grid": 19,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": -8,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 22,
+          "fineEuros": 7500
+        },
+        "red-bull": {
+          "total": 5,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 20,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": 5,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 12,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -10,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 9,
+          "fineEuros": 5000
+        },
+        "cadillac": {
+          "total": 1,
+          "fineEuros": 0
+        }
+      }
+    },
+    "miami": {
+      "drivers": {
+        "lando-norris": {
+          "total": 30,
+          "grid": 4,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 8,
+          "fastestLapPoints": 2
+        },
+        "oscar-piastri": {
+          "total": 28,
+          "grid": 7,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 7,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 19,
+          "grid": 5,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 5,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 34,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 3,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": 3,
+          "grid": 2,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 4,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": -19,
+          "grid": "dsq",
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": -18,
+          "grid": 3,
+          "finish": 8,
+          "fineEuros": 200,
+          "gridPenalty": 0,
+          "timePenalty": -20,
+          "sprintPoints": 6,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 10,
+          "grid": 6,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 2,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": 8,
+          "grid": 13,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": 9,
+          "grid": 15,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": -15,
+          "grid": 11,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 7,
+          "grid": 16,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 2,
+          "grid": 17,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 5,
+          "grid": 18,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 5,
+          "grid": 14,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 5,
+          "grid": 12,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -15,
+          "grid": 10,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 14,
+          "grid": 21,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": -14,
+          "grid": 9,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 1,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 17,
+          "grid": 8,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 4,
+          "grid": 20,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": 0,
+          "grid": 19,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 30,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 25,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": -5,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": -6,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": 9,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": -6,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 5,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -3,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": -1,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": 3,
+          "fineEuros": 0
+        }
+      }
+    },
+    "china": {
+      "drivers": {
+        "lando-norris": {
+          "total": -27,
+          "grid": 6,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 5,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": -25,
+          "grid": 5,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 3,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 26,
+          "grid": 2,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 8,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 37,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 4,
+          "fastestLapPoints": 2
+        },
+        "max-verstappen": {
+          "total": -18,
+          "grid": 8,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 6,
+          "grid": 9,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 22,
+          "grid": 4,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 7,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 24,
+          "grid": 3,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 6,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": 14,
+          "grid": 17,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -9,
+          "grid": 22,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": -5,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 25,
+          "grid": 14,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 2,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 9,
+          "grid": 15,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 0,
+          "grid": 18,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 4,
+          "grid": 20,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 1,
+          "grid": 13,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 27,
+          "grid": 10,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 1,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": 0,
+          "grid": 11,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": -12,
+          "grid": 16,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 19,
+          "grid": 7,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 11,
+          "grid": 12,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 8,
+          "grid": 21,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": 10,
+          "grid": 19,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": -26,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 31,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": -8,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 23,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": 5,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 19,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 2,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 12,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -4,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 13,
+          "fineEuros": 5000
+        },
+        "cadillac": {
+          "total": 9,
+          "fineEuros": 0
+        }
+      }
+    },
+    "japan": {
+      "drivers": {
+        "lando-norris": {
+          "total": 8,
+          "grid": 5,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": 20,
+          "grid": 3,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 8,
+          "grid": 2,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 33,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "max-verstappen": {
+          "total": 6,
+          "grid": 11,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": -8,
+          "grid": 8,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 20,
+          "grid": 4,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 8,
+          "grid": 6,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": -2,
+          "grid": 16,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -8,
+          "grid": 17,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 15,
+          "grid": 14,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 1,
+          "grid": 10,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 2,
+          "grid": 21,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 2,
+          "grid": 22,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 8,
+          "grid": 12,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": -8,
+          "grid": 18,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": 4,
+          "grid": 13,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": -5,
+          "grid": 9,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 15,
+          "grid": 7,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 3,
+          "grid": 16,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 0,
+          "grid": 19,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": 0,
+          "grid": 20,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 13,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 18,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 16,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -4,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 10,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 2,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 2,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 11,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": 0,
+          "fineEuros": 0
+        }
+      }
+    },
+    "canada": {
+      "drivers": {
+        "lando-norris": {
+          "total": -25,
+          "grid": 3,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 7,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": -9,
+          "grid": 4,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 5,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": -25,
+          "grid": 1,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 8,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 38,
+          "grid": 2,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 6,
+          "fastestLapPoints": 2
+        },
+        "max-verstappen": {
+          "total": 21,
+          "grid": 6,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 2,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 14,
+          "grid": 7,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 24,
+          "grid": 8,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 4,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 30,
+          "grid": 5,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 3,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": 10,
+          "grid": 15,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -8,
+          "grid": 18,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 19,
+          "grid": 12,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": -16,
+          "grid": 9,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 1,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": -6,
+          "grid": 19,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 4,
+          "grid": 22,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 6,
+          "grid": 17,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 13,
+          "grid": 16,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -2,
+          "grid": 11,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": -5,
+          "grid": 13,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 22,
+          "grid": 14,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 25,
+          "grid": 10,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 2,
+          "grid": 20,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": 8,
+          "grid": 21,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": -18,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 19,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 27,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": 3,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 0,
+          "fineEuros": 10000
+        },
+        "aston-martin": {
+          "total": -9,
+          "fineEuros": 12500
+        },
+        "haas": {
+          "total": 9,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -3,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 24,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": 5,
+          "fineEuros": 0
+        }
+      }
+    },
+    "monaco": {
+      "drivers": {
+        "lando-norris": {
+          "total": -26,
+          "grid": 8,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": 16,
+          "grid": 7,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": -15,
+          "grid": 6,
+          "finish": 12,
+          "fineEuros": 100,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 32,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 100,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "max-verstappen": {
+          "total": -40,
+          "grid": 2,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 22,
+          "grid": 5,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": -23,
+          "grid": 4,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 23,
+          "grid": 3,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": -10,
+          "grid": 12,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": 7,
+          "grid": 11,
+          "finish": 8,
+          "fineEuros": 5100,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 24,
+          "grid": 9,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 29,
+          "grid": 15,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 18,
+          "grid": 21,
+          "finish": 10,
+          "fineEuros": 100,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 3,
+          "grid": 22,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 18,
+          "grid": 17,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": -4,
+          "grid": 19,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -10,
+          "grid": 13,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -10,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 8,
+          "grid": 16,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 11,
+          "grid": 10,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -10,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 0,
+          "grid": 14,
+          "finish": 14,
+          "fineEuros": 900,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": -6,
+          "grid": 18,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -10,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -4,
+          "grid": 20,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": -19,
+          "fineEuros": 20000
+        },
+        "mercedes": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": -15,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": -4,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -3,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 26,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 12,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 10,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -2,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": -5,
+          "fineEuros": 0
+        }
+      }
+    },
+    "barcelona-catalunya": {
+      "drivers": {
+        "lando-norris": {
+          "total": 15,
+          "grid": 4,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": 12,
+          "grid": 7,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 19,
+          "grid": 1,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": -28,
+          "grid": 3,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": 14,
+          "grid": 5,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 8,
+          "grid": 6,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": -10,
+          "grid": 10,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 32,
+          "grid": 2,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "carlos-sainz": {
+          "total": 1,
+          "grid": 16,
+          "finish": 12,
+          "fineEuros": 5000,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -5,
+          "grid": 18,
+          "finish": 18,
+          "fineEuros": 5000,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 6,
+          "grid": 8,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 9,
+          "grid": 11,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": -3,
+          "grid": 22,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": -5,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": -3,
+          "grid": 21,
+          "finish": 22,
+          "fineEuros": 600,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 8,
+          "grid": 17,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": -4,
+          "grid": 15,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -17,
+          "grid": 10,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 2,
+          "grid": 12,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 26,
+          "grid": 14,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 10,
+          "grid": 13,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -10,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 5,
+          "grid": 19,
+          "finish": 14,
+          "fineEuros": 500,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -5,
+          "grid": 20,
+          "finish": 21,
+          "fineEuros": 100,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 14,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 12,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -1,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 8,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": -3,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -9,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 20,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": 1,
+          "fineEuros": 0
+        }
+      }
+    },
+    "austria": {
+      "drivers": {
+        "lando-norris": {
+          "total": 0,
+          "grid": 6,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": 16,
+          "grid": 7,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 28,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 22,
+          "grid": 4,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "max-verstappen": {
+          "total": 24,
+          "grid": 5,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 12,
+          "grid": 8,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": -5,
+          "grid": 2,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 9,
+          "grid": 3,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": -10,
+          "grid": 17,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": 0,
+          "grid": 18,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 8,
+          "grid": 9,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 10,
+          "grid": 10,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 2,
+          "grid": 21,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 6,
+          "grid": 22,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": -2,
+          "grid": 15,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 1,
+          "grid": 13,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": 4,
+          "grid": 14,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 2,
+          "grid": 12,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 2,
+          "grid": 11,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 5,
+          "grid": 16,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": -8,
+          "grid": 19,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -6,
+          "grid": 20,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 26,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 20,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 1,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -6,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 9,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 0,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 4,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": -7,
+          "fineEuros": 0
+        }
+      }
+    },
+    "great-britain": {
+      "drivers": {
+        "lando-norris": {
+          "total": 18,
+          "grid": 6,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 6,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": -6,
+          "grid": 8,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 2,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 27,
+          "grid": 4,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 5,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": -19,
+          "grid": 1,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 8,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": -25,
+          "grid": 7,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 3,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 13,
+          "grid": 5,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 34,
+          "grid": 2,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 4,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 25,
+          "grid": 3,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 7,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": -8,
+          "grid": 14,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -12,
+          "grid": 16,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 23,
+          "grid": 10,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 1,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 19,
+          "grid": 9,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 2,
+          "grid": 21,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": -4,
+          "grid": 22,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": 8,
+          "grid": 17,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 5,
+          "grid": 13,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -20,
+          "grid": 12,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 10,
+          "grid": 11,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 11,
+          "grid": 15,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": -3,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 22,
+          "grid": 19,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": 8,
+          "grid": 20,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": 4,
+          "grid": 18,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 9,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 9,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": -9,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 31,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -9,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 19,
+          "fineEuros": 5000
+        },
+        "aston-martin": {
+          "total": 0,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": -8,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 16,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": 7,
+          "fineEuros": 0
+        }
+      }
+    },
+    "belgium": {
+      "drivers": {
+        "lando-norris": {
+          "total": 4,
+          "grid": 13,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "oscar-piastri": {
+          "total": 10,
+          "grid": 6,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": -38,
+          "grid": 3,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 31,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": 13,
+          "grid": 2,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 22,
+          "grid": 21,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 25,
+          "grid": 4,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lewis-hamilton": {
+          "total": 17,
+          "grid": 5,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": 0,
+          "grid": 19,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": -2,
+          "grid": 15,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 0,
+          "grid": 9,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 7,
+          "grid": 7,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": -8,
+          "grid": 22,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": -10,
+          "grid": 20,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": -10,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": -2,
+          "grid": 16,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": 3,
+          "grid": 14,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": -2,
+          "grid": 12,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 7,
+          "grid": 8,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 7,
+          "grid": 10,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 9,
+          "grid": 11,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": -8,
+          "grid": 18,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -2,
+          "grid": 17,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": -10,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 17,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 7,
+          "fineEuros": 30000
+        },
+        "williams": {
+          "total": 0,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 3,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": -9,
+          "fineEuros": 100
+        },
+        "haas": {
+          "total": 0,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": 2,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 8,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": -5,
+          "fineEuros": 0
+        }
+      }
+    },
+    "hungary": {
+      "drivers": {
+        "lando-norris": {
+          "total": 25,
+          "grid": 1,
+          "finish": 1,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oscar-piastri": {
+          "total": -34,
+          "grid": 3,
+          "finish": 20,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "george-russell": {
+          "total": 2,
+          "grid": 6,
+          "finish": 7,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "kimi-antonelli": {
+          "total": 20,
+          "grid": 7,
+          "finish": 3,
+          "fineEuros": 0,
+          "gridPenalty": -3,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "max-verstappen": {
+          "total": 22,
+          "grid": 4,
+          "finish": 2,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "isack-hadjar": {
+          "total": 12,
+          "grid": 8,
+          "finish": 6,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "charles-leclerc": {
+          "total": 13,
+          "grid": 2,
+          "finish": 4,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 2
+        },
+        "lewis-hamilton": {
+          "total": 5,
+          "grid": 5,
+          "finish": 5,
+          "fineEuros": 0,
+          "gridPenalty": -3,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "carlos-sainz": {
+          "total": -4,
+          "grid": 18,
+          "finish": 18,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "alex-albon": {
+          "total": 0,
+          "grid": 19,
+          "finish": 17,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "liam-lawson": {
+          "total": 13,
+          "grid": 11,
+          "finish": 8,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "arvid-lindblad": {
+          "total": 8,
+          "grid": 9,
+          "finish": 10,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "fernando-alonso": {
+          "total": 2,
+          "grid": 16,
+          "finish": 14,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "lance-stroll": {
+          "total": 14,
+          "grid": 20,
+          "finish": 13,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "esteban-ocon": {
+          "total": -2,
+          "grid": 15,
+          "finish": 16,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "oliver-bearman": {
+          "total": -9,
+          "grid": 17,
+          "finish": 19,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": -5,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "nico-hulkenberg": {
+          "total": 7,
+          "grid": 10,
+          "finish": 9,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "gabriel-bortoleto": {
+          "total": 6,
+          "grid": 14,
+          "finish": 11,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "pierre-gasly": {
+          "total": 6,
+          "grid": 12,
+          "finish": 12,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "franco-colapinto": {
+          "total": 2,
+          "grid": 13,
+          "finish": 15,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "sergio-perez": {
+          "total": -7,
+          "grid": 22,
+          "finish": 21,
+          "fineEuros": 0,
+          "gridPenalty": -5,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        },
+        "valtteri-bottas": {
+          "total": -4,
+          "grid": 21,
+          "finish": 22,
+          "fineEuros": 0,
+          "gridPenalty": 0,
+          "timePenalty": 0,
+          "sprintPoints": 0,
+          "fastestLapPoints": 0
+        }
+      },
+      "teams": {
+        "mclaren": {
+          "total": 2,
+          "fineEuros": 0
+        },
+        "mercedes": {
+          "total": 10,
+          "fineEuros": 0
+        },
+        "red-bull": {
+          "total": 18,
+          "fineEuros": 0
+        },
+        "ferrari": {
+          "total": 10,
+          "fineEuros": 0
+        },
+        "williams": {
+          "total": -2,
+          "fineEuros": 0
+        },
+        "racing-bulls": {
+          "total": 11,
+          "fineEuros": 0
+        },
+        "aston-martin": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "haas": {
+          "total": -4,
+          "fineEuros": 0
+        },
+        "audi": {
+          "total": 7,
+          "fineEuros": 0
+        },
+        "alpine": {
+          "total": 5,
+          "fineEuros": 0
+        },
+        "cadillac": {
+          "total": -5,
+          "fineEuros": 0
+        }
+      }
+    }
+  }
+}
