@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { compareToLedger, detectSourceRegression, ledgerBody } from '../lib/martin-ledger.js';
+import {
+  compareToLedger, detectSourceRegression, ledgerBody, validateProvenance,
+} from '../lib/martin-ledger.js';
 
 const ledger = {
   provenance: { races: { monaco: { workbook: 'master.xlsx', sha256: 'aaa', workbookModified: '2026-08-03T16:49:11Z', sheet: 'Race 8' } } },
@@ -150,4 +152,80 @@ test('compareToLedger reports a scored field the ledger does not carry', () => {
 test('compareToLedger is silent when both sides carry exactly the same shape', () => {
   const scored = { monaco: { drivers: { a: { total: 1 } }, teams: { t: { total: 2 } } } };
   assert.deepEqual(compareToLedger(scored, fullLedger, { divergences: [] }).unmatched, []);
+});
+
+// Provenance is the other half of the artifact. The score projections are fully
+// validated, but the record of *which Martin we read* was trusted unchecked —
+// and it is what detectSourceRegression depends on, so deleting a race's entry
+// silently disables stale-source protection for that race.
+const provenanceLedger = {
+  provenance: {
+    races: {
+      monaco: {
+        workbook: 'master.xlsx',
+        sha256: 'a'.repeat(64),
+        workbookModified: '2026-08-03T16:49:11.000Z',
+        sheet: 'Race 8',
+      },
+    },
+  },
+  races: { monaco: { drivers: {}, teams: {} } },
+};
+
+test('validateProvenance accepts a well-formed entry', () => {
+  assert.deepEqual(validateProvenance(provenanceLedger), []);
+});
+
+test('validateProvenance rejects a ledger with no provenance at all', () => {
+  const problems = validateProvenance({ races: { monaco: { drivers: {}, teams: {} } } });
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /no provenance/i);
+});
+
+test('validateProvenance rejects a race whose provenance entry was removed', () => {
+  // The consequential one: with monaco's entry gone, detectSourceRegression has
+  // nothing to compare against and an older source would be accepted.
+  const ledger = structuredClone(provenanceLedger);
+  delete ledger.provenance.races.monaco;
+  assert.match(validateProvenance(ledger).join(' '), /monaco: scored in the ledger but has no provenance/);
+});
+
+test('validateProvenance rejects provenance for a race the ledger does not carry', () => {
+  const ledger = structuredClone(provenanceLedger);
+  ledger.provenance.races.spain = { ...ledger.provenance.races.monaco, sheet: 'Race 16' };
+  assert.match(validateProvenance(ledger).join(' '), /spain: has provenance but no race data/);
+});
+
+test('validateProvenance rejects a missing or malformed sha256', () => {
+  const missing = structuredClone(provenanceLedger);
+  delete missing.provenance.races.monaco.sha256;
+  assert.match(validateProvenance(missing).join(' '), /sha256/);
+
+  const malformed = structuredClone(provenanceLedger);
+  malformed.provenance.races.monaco.sha256 = 'not-a-hash';
+  assert.match(validateProvenance(malformed).join(' '), /sha256/);
+});
+
+test('validateProvenance rejects a missing or unparseable workbookModified', () => {
+  const missing = structuredClone(provenanceLedger);
+  delete missing.provenance.races.monaco.workbookModified;
+  assert.match(validateProvenance(missing).join(' '), /workbookModified/);
+
+  const malformed = structuredClone(provenanceLedger);
+  malformed.provenance.races.monaco.workbookModified = 'sometime last week';
+  assert.match(validateProvenance(malformed).join(' '), /workbookModified/);
+});
+
+test('validateProvenance rejects a missing workbook name', () => {
+  const ledger = structuredClone(provenanceLedger);
+  delete ledger.provenance.races.monaco.workbook;
+  assert.match(validateProvenance(ledger).join(' '), /workbook/);
+});
+
+test('validateProvenance rejects a sheet that is not the one that race lives on', () => {
+  // Monaco is Martin's Race 8. A provenance entry citing another sheet means the
+  // ledger was built from the wrong data even if every value looks plausible.
+  const ledger = structuredClone(provenanceLedger);
+  ledger.provenance.races.monaco.sheet = 'Race 9';
+  assert.match(validateProvenance(ledger).join(' '), /sheet "Race 9".*expected "Race 8"/);
 });

@@ -16,7 +16,9 @@
 import { existsSync, readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { pathToFileURL } from 'url';
-import { compareToLedger, detectSourceRegression, ledgerBody } from '../lib/martin-ledger.js';
+import {
+  compareToLedger, detectSourceRegression, ledgerBody, validateProvenance,
+} from '../lib/martin-ledger.js';
 import {
   assertCompleteSources, detectCoverageLoss, readWorkbook, selectRaceSources,
   validateRaceCoverage, workbookIdentity, workbookModified,
@@ -112,9 +114,11 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
     races[raceId] = source.race;
   }
 
-  // Three ways a regeneration can quietly weaken the gate, all fatal:
-  // an older source, a partially parsed sheet, or coverage that has shrunk.
+  // Ways a regeneration can quietly weaken the gate, all fatal. The previous
+  // ledger's provenance is validated before it is trusted: comparing against a
+  // damaged record would report no regression and read as a clean run.
   const regressions = [
+    ...(previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : []),
     ...detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
     ...assertCompleteSources(sources),
     ...detectCoverageLoss(previous?.races, races),
@@ -131,6 +135,10 @@ export function runCheck({ ledger, accepted, scored }) {
   // fact, and comparing only the entities and fields it happens to contain would
   // pass happily on a narrowed one.
   const lines = [
+    // Provenance first: without it the ledger's values may be right while the
+    // record of which workbook they came from is gone, and with it the only
+    // defence against a stale source.
+    ...validateProvenance(ledger).map((problem) => `provenance: ${problem}`),
     ...validateRaceCoverage(ledger.races, (raceId) => `${raceId} (committed ledger)`),
     // The scored side is validated too: it is the comparison projection, so an
     // entity or field appearing there without a counterpart is a hole, not a

@@ -26,7 +26,22 @@ function raceFixture({ drivers = {}, teams = {} } = {}) {
 }
 
 function ledgerFixture(overrides) {
-  return { races: { monaco: raceFixture(overrides) } };
+  // Provenance is part of a valid ledger, not decoration: runCheck rejects a
+  // ledger whose record of which workbook it came from is missing, since that is
+  // the only thing standing between us and a stale source.
+  return {
+    provenance: {
+      races: {
+        monaco: {
+          workbook: 'master.xlsx',
+          sha256: 'a'.repeat(64),
+          workbookModified: '2026-08-03T16:49:11.000Z',
+          sheet: 'Race 8',
+        },
+      },
+    },
+    races: { monaco: raceFixture(overrides) },
+  };
 }
 
 function scoredFixture(overrides) {
