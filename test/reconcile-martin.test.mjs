@@ -2,13 +2,44 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { runCheck, scoredByRace, parseArgs, LEDGER_PATH } from '../scripts/reconcile-martin.mjs';
 
-const ledger = { races: { monaco: { drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3 } } } } };
+// A ledger must be complete to be trusted, so fixtures are built to the real
+// shape — 22 seats and 11 constructors with every compared field — and the rows
+// under test are overridden on top.
+function driverFields(overrides = {}) {
+  return {
+    total: 0, grid: 10, finish: 10, fineEuros: 0, gridPenalty: 0,
+    timePenalty: 0, sprintPoints: 0, fastestLapPoints: 0, ...overrides,
+  };
+}
+
+function raceFixture({ drivers = {}, teams = {} } = {}) {
+  // Named rows substitute for filler, so the totals stay at exactly 22 and 11 —
+  // adding them on top would trip the very completeness check under test.
+  const named = Object.entries(drivers);
+  const fillerDrivers = Array.from({ length: 22 - named.length }, (_, i) => [`driver-${i}`, driverFields()]);
+  const namedTeams = Object.entries(teams);
+  const fillerTeams = Array.from({ length: 11 - namedTeams.length }, (_, i) => [`team-${i}`, { total: 0, fineEuros: 0 }]);
+  return {
+    drivers: Object.fromEntries([...fillerDrivers, ...named.map(([id, o]) => [id, driverFields(o)])]),
+    teams: Object.fromEntries([...fillerTeams, ...namedTeams]),
+  };
+}
+
+function ledgerFixture(overrides) {
+  return { races: { monaco: raceFixture(overrides) } };
+}
+
+function scoredFixture(overrides) {
+  return { monaco: raceFixture(overrides) };
+}
+
+const ledger = ledgerFixture({ drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3, fineEuros: 0 } } });
 
 test('runCheck passes when every scored value matches the ledger', () => {
   const result = runCheck({
     ledger,
     accepted: { divergences: [] },
-    scored: { monaco: { drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3 } } } },
+    scored: scoredFixture({ drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3, fineEuros: 0 } } }),
   });
   assert.equal(result.ok, true);
   assert.deepEqual(result.lines, []);
@@ -18,10 +49,10 @@ test('runCheck names the driver, both values and the race when scoring drifts', 
   const result = runCheck({
     ledger,
     accepted: { divergences: [] },
-    scored: { monaco: { drivers: { 'alex-albon': { total: 10 } }, teams: { williams: { total: -3 } } } },
+    scored: scoredFixture({ drivers: { 'alex-albon': { total: 10 } }, teams: { williams: { total: -3, fineEuros: 0 } } }),
   });
   assert.equal(result.ok, false);
-  assert.match(result.lines[0], /monaco driver alex-albon total: ours 10, Martin 7/);
+  assert.match(result.lines.join('\n'), /monaco driver alex-albon total: ours 10, Martin 7/);
 });
 
 test('runCheck tells you to delete an accepted divergence once it stops applying', () => {
@@ -30,10 +61,10 @@ test('runCheck tells you to delete an accepted divergence once it stops applying
   const result = runCheck({
     ledger,
     accepted: { divergences: [{ race: 'monaco', kind: 'driver', id: 'alex-albon', field: 'total', ours: 4, martin: 7, issue: '#84 Q1' }] },
-    scored: { monaco: { drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3 } } } },
+    scored: scoredFixture({ drivers: { 'alex-albon': { total: 7 } }, teams: { williams: { total: -3, fineEuros: 0 } } }),
   });
   assert.equal(result.ok, false);
-  assert.match(result.lines[0], /no longer applies/);
+  assert.match(result.lines.join('\n'), /no longer applies/);
 });
 
 test('runCheck fails loudly when the ledger has never been generated', () => {
@@ -163,4 +194,29 @@ test('scoredByRace covers every driver and constructor, not only the selected on
   assert.equal(typeof monaco.teams['racing-bulls'].total, 'number');
   assert.equal(Object.keys(monaco.drivers).length, 22);
   assert.equal(Object.keys(monaco.teams).length, 11);
+});
+
+test('runCheck rejects a committed ledger with an entity removed', async () => {
+  // The generate-time guards protect the write path, but CI trusts the committed
+  // file. A hand edit or a bad merge can narrow it, and comparing only what the
+  // ledger contains would keep passing on the reduced set.
+  const { readJson } = await import('../lib/season-store.js');
+  const { LEDGER_PATH: path, DIVERGENCE_PATH } = await import('../scripts/reconcile-martin.mjs');
+  const ledger = structuredClone(readJson(path, null));
+  delete ledger.races.australia.drivers['lando-norris'];
+
+  const result = runCheck({ ledger, accepted: readJson(DIVERGENCE_PATH, { divergences: [] }), scored: scoredByRace() });
+  assert.equal(result.ok, false);
+  assert.match(result.lines.join('\n'), /australia.*21\/22 drivers/);
+});
+
+test('runCheck rejects a committed ledger with a compared field removed', async () => {
+  const { readJson } = await import('../lib/season-store.js');
+  const { LEDGER_PATH: path, DIVERGENCE_PATH } = await import('../scripts/reconcile-martin.mjs');
+  const ledger = structuredClone(readJson(path, null));
+  delete ledger.races.australia.drivers['lando-norris'].sprintPoints;
+
+  const result = runCheck({ ledger, accepted: readJson(DIVERGENCE_PATH, { divergences: [] }), scored: scoredByRace() });
+  assert.equal(result.ok, false);
+  assert.match(result.lines.join('\n'), /driver lando-norris is missing field\(s\): sprintPoints/);
 });

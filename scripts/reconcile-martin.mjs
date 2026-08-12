@@ -19,7 +19,7 @@ import { pathToFileURL } from 'url';
 import { compareToLedger, detectSourceRegression, ledgerBody } from '../lib/martin-ledger.js';
 import {
   assertCompleteSources, detectCoverageLoss, readWorkbook, selectRaceSources,
-  workbookIdentity, workbookModified,
+  validateRaceCoverage, workbookIdentity, workbookModified,
 } from '../lib/martin-workbook.js';
 import {
   buildConstructorContribution, buildDriverContribution, scoreFinePoints,
@@ -126,8 +126,13 @@ export function runCheck({ ledger, accepted, scored }) {
   if (!ledger) {
     throw new Error(`${LEDGER_PATH} is missing. Run \`${GENERATE_COMMAND}\` against Martin's workbooks.`);
   }
+  // Validate the committed ledger itself, not just what it says. The generate
+  // guards cannot protect a file edited by hand or mangled by a merge after the
+  // fact, and comparing only the entities and fields it happens to contain would
+  // pass happily on a narrowed one.
+  const lines = validateRaceCoverage(ledger.races, (raceId) => `  ${raceId} (committed ledger)`)
+    .map((problem) => problem.replace(/^ {2}/, '  '));
   const result = compareToLedger(scored, ledger, accepted);
-  const lines = [];
   for (const row of result.unexplained) {
     lines.push(`  ${row.race} ${row.kind} ${row.id} ${row.field}: ours ${row.ours}, Martin ${row.martin}`);
   }
