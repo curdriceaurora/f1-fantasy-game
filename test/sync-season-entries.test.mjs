@@ -184,8 +184,9 @@ test('two distinct roster labels resolving to the same team are rejected at impo
   // exact pair no longer collides, so the guard is exercised with another pair
   // that does.
   //
-  // The check assumes each team appears under one label per roster, which holds
-  // for Martin's: he writes "RBPT" or "Red Bull", never both spellings of one team.
+  // The check assumes each driver and team appears under one label per roster,
+  // which holds for Martin's: he writes "RBPT" or "Red Bull", never both spellings
+  // of one team, and one form of each driver's name throughout.
   const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
   // Russell 12 + Hamilton 9 + Stroll 5 + team1 13 + Audi 5 + Haas 6 = 50.
   const row = (principal, team1) => ['', principal, `${principal} Racing`, 'G. Russell', 'L. Hamilton', 'L. Stroll', team1, 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
