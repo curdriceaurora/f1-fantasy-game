@@ -254,4 +254,60 @@ test('compareToLedger marks unexplained when scored race omits a driver present 
   assert.equal(result.unexplained[0].martin, 7);
 });
 
+test('validateProvenance flags missing and orphaned provenance entries', () => {
+  const missingRaceProv = structuredClone(provenanceLedger);
+  delete missingRaceProv.provenance.races.monaco;
+  assert.match(validateProvenance(missingRaceProv).join(' '), /scored in the ledger but has no provenance entry/);
+
+  const orphanRaceProv = structuredClone(provenanceLedger);
+  orphanRaceProv.provenance.races.spain = { workbook: 'spain.xlsx', sha256: 'a'.repeat(64), workbookModified: '2026-08-01T00:00:00Z', sheet: 'Race 9' };
+  assert.match(validateProvenance(orphanRaceProv).join(' '), /has provenance but no race data in the ledger/);
+});
+
+test('compareToLedger finds unmatched fields present in scored data but missing in ledger', () => {
+  const testLedger = {
+    races: {
+      monaco: {
+        drivers: {
+          'alex-albon': { total: 7 },
+        },
+        teams: {},
+      },
+    },
+  };
+  const scored = {
+    monaco: {
+      drivers: {
+        'alex-albon': { total: 7, extraField: 99 },
+      },
+      teams: {},
+    },
+  };
+  const result = compareToLedger(scored, testLedger, { divergences: [] });
+  assert.equal(result.unmatched.length, 1);
+  assert.equal(result.unmatched[0].field, 'extraField');
+});
+
+test('validateProvenance handles null ledger and ledgerBody sorts nested objects', () => {
+  assert.match(validateProvenance(null).join(' '), /the ledger has no provenance/);
+
+  const customLedger = {
+    races: {
+      monaco: {
+        drivers: {
+          'alex-albon': {
+            z_field: { b: 2, a: 1 },
+            a_field: 10,
+          },
+        },
+        teams: {},
+      },
+    },
+  };
+  const body = ledgerBody(customLedger);
+  assert.ok(body.indexOf('"a_field"') < body.indexOf('"z_field"'));
+});
+
+
+
 

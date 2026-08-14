@@ -4,7 +4,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
-import { loadCalendar, resolveCalendarFileName, loadFineReviews, loadFineReview, listNormalizedRaceIds, readJson } from '../lib/season-store.js';
+import { loadCalendar, loadEntries, resolveCalendarFileName, loadFineReviews, loadFineReview, listNormalizedRaceIds, readJson, seasonPaths } from '../lib/season-store.js';
+
 
 function withTempSeason(callback) {
   const workingRoot = mkdtempSync(join(tmpdir(), 'f1-season-store-'));
@@ -164,5 +165,45 @@ test('listNormalizedRaceIds filters out non-json files in the normalized directo
     assert.deepEqual(raceIds, ['australia']);
   });
 });
+
+test('season store covers originalDate sort, invalid dates, non-array configs, and relative paths', () => {
+  withTempSeason(({ configDir }) => {
+    writeFileSync(join(configDir, '2026-calendar.json'), JSON.stringify([
+      { id: 'race-postponed', name: 'Race Postponed', originalDate: '2026-06-01' },
+      { id: 'race-dated', name: 'Race Dated', date: '2026-05-01', round: 1 },
+      { id: 'race-invalid', name: 'Race Invalid', date: 'invalid-date', round: 2 },
+    ]));
+    const sorted = loadCalendar();
+    assert.equal(sorted[0].id, 'race-dated');
+    assert.equal(sorted[1].id, 'race-postponed');
+    assert.equal(sorted[2].id, 'race-invalid');
+
+    // Non-array calendar
+    writeFileSync(join(configDir, '2026-calendar.json'), JSON.stringify({ notAnArray: true }));
+    assert.deepEqual(loadCalendar(), []);
+
+    // Non-array entries
+    writeFileSync(join(configDir, 'entries.json'), JSON.stringify({ notAnArray: true }));
+    assert.deepEqual(loadEntries(), []);
+
+    // Non-object fine documents
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify(['array-format']));
+    assert.throws(() => loadFineReviews(), /must be an object keyed by race id/);
+
+    writeFileSync(join(configDir, 'fine-documents.json'), JSON.stringify({ race1: 'not-an-object' }));
+    assert.throws(() => loadFineReviews(), /must be an object/);
+  });
+
+  const prev = process.env.F1_FANTASY_SEASON_DIR;
+  process.env.F1_FANTASY_SEASON_DIR = './relative-season-path';
+  try {
+    const paths = seasonPaths();
+    assert.ok(paths.season.endsWith('relative-season-path'));
+  } finally {
+    if (prev == null) delete process.env.F1_FANTASY_SEASON_DIR;
+    else process.env.F1_FANTASY_SEASON_DIR = prev;
+  }
+});
+
 
 

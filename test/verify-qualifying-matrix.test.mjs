@@ -145,3 +145,11 @@ test('runVerifyQualifyingMatrix explains a missing workbook rather than throwing
 test('runVerifyQualifyingMatrix prints usage when given no path', async () => {
   await assert.rejects(() => runVerifyQualifyingMatrix(undefined), /Usage: npm run verify:matrix/);
 });
+
+test('readTDriverMatrix rejects a sheet with no TDriver rows in range', async () => {
+  await withTempDir(async (directory) => {
+    const path = await writeWorkbook(directory, []);
+    await assert.rejects(() => readTDriverMatrix(path), /No TDriver rows found/);
+  });
+});
+

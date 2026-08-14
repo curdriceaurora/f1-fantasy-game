@@ -448,15 +448,17 @@ export async function syncSeasonEntries(workbookPath) {
   return { workbookPath: resolvedWorkbookPath, entries, scoreboard };
 }
 
-async function main() {
-  const result = await syncSeasonEntries();
+export async function runSyncSeasonEntriesCli(workbookPath = undefined) {
+  const result = await syncSeasonEntries(workbookPath);
   console.log(`Imported ${result.entries.length} team entries from ${result.workbookPath}`);
   console.log(`Standings regenerated for ${result.scoreboard.standings.length} teams.`);
+  return result;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch((error) => {
+  runSyncSeasonEntriesCli().catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
 }
+

@@ -270,3 +270,68 @@ test('fetchRaceResults reports a parsed grid with no penalties as an empty map',
     assert.deepEqual(results.gridPenaltyPlaces, {});
   });
 });
+
+test('fetchRaceResults on sprint weekends fetches and parses sprint classification', async () => {
+  const sprintRace = { date: '2026-03-15', id: 'china', meetingName: 'Chinese Grand Prix', isSprintWeekend: true };
+  const texts = {
+    final_race_classification: '163George RUSSELL Mercedes 1:30.000',
+    final_starting_grid: '1\n63George RUSSELL Mercedes 1:29.000',
+    final_sprint_classification: '144Lewis HAMILTON Ferrari 30:00.000\n* PENALTIES\nCar 63 - 5 second time penalty',
+  };
+  const options = {
+    fetchPdfTextImpl: async (url) => {
+      if (url.includes('final_sprint_classification')) return texts.final_sprint_classification;
+      if (url.includes('final_starting_grid')) return texts.final_starting_grid;
+      return texts.final_race_classification;
+    },
+  };
+
+  const results = await fetchRaceResults(sprintRace, options);
+  assert.equal(results.finishingPositions['george-russell'], 1);
+  assert.equal(results.sprintPositions['lewis-hamilton'], 1);
+  assert.equal(results.gridPositions['george-russell'], 1);
+});
+
+test('parseStartingGrid handles pit-lane starters in split-line number and name format', () => {
+  const text = [
+    '1',
+    '63George RUSSELL Mercedes 1:29.000',
+    'DRIVERS REQUIRED TO START FROM THE PIT LANE',
+    '14',
+    'Fernando ALONSO Aston Martin',
+  ].join('\n');
+
+  const grid = parseStartingGrid(text);
+  assert.equal(grid.get('george-russell'), 1);
+  assert.equal(grid.get('fernando-alonso'), 2);
+});
+
+test('parseFinalClassification parses penalty multiplier and parseStartingGrid ignores out of bounds positions', async () => {
+  const text = [
+    '163George RUSSELL Mercedes',
+    'PENALTIES',
+    'Car 16 - 2 x 5 second time penalties - track limits',
+  ].join('\n');
+
+  const classification = parseFinalClassification(text);
+  assert.equal(classification.penalties.get('charles-leclerc'), 10);
+
+  // Out-of-bounds grid position (e.g. position 50)
+  const invalidGrid = parseStartingGrid([
+    '50',
+    '63George RUSSELL Mercedes',
+  ].join('\n'));
+  assert.equal(invalidGrid.has('george-russell'), false);
+
+  // fetchRaceResults with missing grid text
+  const race = { date: '2026-03-08', meetingName: 'Australian Grand Prix' };
+  const res = await fetchRaceResults(race, {
+    fetchPdfTextImpl: async (url) => {
+      if (url.includes('starting_grid')) throw new Error('404');
+      return '163George RUSSELL Mercedes';
+    },
+  });
+  assert.equal(res.gridPenaltyPlaces, null);
+});
+
+

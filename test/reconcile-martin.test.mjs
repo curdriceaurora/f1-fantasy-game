@@ -309,4 +309,22 @@ test('runCheck reports missing races, unledgered races, and unmatched entities',
   assert.ok(result.lines.some((line) => line.includes('australia: scored but absent from the ledger')));
 });
 
+test('parseArgs in reconcile-martin parses --generate and --workbooks flags', async () => {
+  const { parseArgs } = await import('../scripts/reconcile-martin.mjs');
+  assert.deepEqual(parseArgs(['--generate', '--workbooks', '/tmp/workbooks']), {
+    generate: true,
+    workbookDir: '/tmp/workbooks',
+  });
+  assert.deepEqual(parseArgs([]), {
+    generate: false,
+    workbookDir: 'martins-calculations',
+  });
+});
+
+test('runReconcileMartinCli executes check against committed ledger without error', async () => {
+  const { runReconcileMartinCli } = await import('../scripts/reconcile-martin.mjs');
+  await assert.doesNotReject(() => runReconcileMartinCli([]));
+});
+
+
 

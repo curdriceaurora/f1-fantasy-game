@@ -273,4 +273,73 @@ test('runScoreRaceCli validates arguments and reports a successful score', async
     'Applied 1 FIA fine document(s).',
     'Standings rebuilt for 1 teams.',
   ]);
+
+  // Default logger execution
+  const resDefault = await runScoreRaceCli(['--race', 'australia'], {
+    scoreRace: async (raceId) => ({
+      race: { id: raceId, name: 'Australian Grand Prix' },
+      fineSummary: { documents: [] },
+      scoreboard: { standings: [] },
+    }),
+  });
+  assert.equal(resDefault.race.id, 'australia');
 });
+
+
+test('scoreRace throws when run before Monday publication time or when fine parsing emits warnings', async () => {
+  await withTempSeason(async (seasonDir) => {
+    writeJson(join(seasonDir, 'config', 'fine-documents.json'), {
+      australia: { reviewed: true, documents: [], reviewedAt: '2026-03-09T12:00:00Z' },
+    });
+
+    // Run before Monday publication time
+    await assert.rejects(
+      () => scoreRace('australia', { now: new Date('2026-03-08T18:00:00Z') }),
+      /not yet eligible for Monday scoring/,
+    );
+
+    // Fine parsing emits warnings
+    await assert.rejects(
+      () => scoreRace('australia', {
+        now: new Date('2026-03-09T13:00:00Z'),
+        fetchRaceWeekend: async () => stubFetchedRace(),
+        fetchFineSummary: async () => ({
+          drivers: {},
+          teams: {},
+          documents: [],
+          warnings: ['Unable to classify subject'],
+        }),
+      }),
+      /FIA fine parsing is incomplete for australia/,
+    );
+  });
+});
+
+test('scoreRace throws when entries are empty, race is unknown, or fine review is incomplete', async () => {
+  await withTempSeason(async (seasonDir) => {
+    // Empty entries
+    writeJson(join(seasonDir, 'config', 'entries.json'), []);
+    await assert.rejects(
+      () => scoreRace('australia', { now: new Date('2026-03-09T13:00:00Z') }),
+      /No imported entries found/,
+    );
+
+    // Restore entries, test unknown race id
+    writeJson(join(seasonDir, 'config', 'entries.json'), [{ teamId: 'test-team' }]);
+    await assert.rejects(
+      () => scoreRace('unknown-race-id', { now: new Date('2026-03-09T13:00:00Z') }),
+      /Unknown race id "unknown-race-id"/,
+    );
+
+    // Incomplete fine review
+    writeJson(join(seasonDir, 'config', 'fine-documents.json'), {
+      australia: { reviewed: false, documents: [] },
+    });
+    await assert.rejects(
+      () => scoreRace('australia', { now: new Date('2026-03-09T13:00:00Z') }),
+      /Fine review for australia is incomplete/,
+    );
+  });
+});
+
+

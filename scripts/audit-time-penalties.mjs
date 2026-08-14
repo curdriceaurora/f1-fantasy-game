@@ -95,15 +95,21 @@ export function auditTimePenalties() {
   return { results, failures, report: buildTimePenaltyAuditReport(results, failures) };
 }
 
-function main() {
-  const audit = auditTimePenalties();
-  process.stdout.write(audit.report);
+export function runAuditTimePenaltiesCli(options = {}) {
+  const stdout = options.stdout || process.stdout;
+  const audit = (options.auditTimePenalties || auditTimePenalties)();
+  stdout.write(audit.report);
   if (process.env.GITHUB_STEP_SUMMARY) {
     appendFileSync(process.env.GITHUB_STEP_SUMMARY, audit.report);
   }
-  if (audit.failures.length) process.exitCode = 1;
+  if (audit.failures.length && options.setExitCode !== false) {
+    process.exitCode = 1;
+  }
+  return audit;
 }
 
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main();
+  runAuditTimePenaltiesCli();
 }
+

@@ -23,7 +23,7 @@ import {
 import { scoreRace } from './score-race.mjs';
 import { recordFiaDocumentBaseline } from './check-late-fia-documents.mjs';
 
-function parseArgs(argv) {
+export function parseArgs(argv = []) {
   return {
     dryRun: argv.includes('--dry-run'),
     // Rescore even when the published document set is unchanged — needed after
@@ -129,16 +129,23 @@ export async function reconcileSeason(services = {}) {
   return { scored, unchanged, failed };
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const args = parseArgs(process.argv.slice(2));
-  reconcileSeason({ dryRun: args.dryRun, force: args.force })
-    .then(({ failed }) => {
-      if (failed.length) {
-        process.exitCode = 1;
-      }
-    })
-    .catch((error) => {
-      console.error(error.message);
-      process.exitCode = 1;
-    });
+export async function runReconcileSeasonCli(argv = [], services = {}) {
+  const args = parseArgs(argv);
+  const result = await reconcileSeason({
+    ...services,
+    dryRun: args.dryRun || services.dryRun,
+    force: args.force || services.force,
+  });
+  if (result.failed.length && services.setExitCode !== false) {
+    process.exitCode = 1;
+  }
+  return result;
 }
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  runReconcileSeasonCli(process.argv.slice(2)).catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}
+

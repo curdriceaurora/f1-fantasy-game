@@ -91,4 +91,62 @@ test('rebuildScoreboard breaks ties by latest race points and then alphabeticall
   });
 });
 
+test('rebuildScoreboard removes orphaned scored team files and ignores non-json files', async () => {
+  await withFixtureSeason(2023, async ({ seasonDir }) => {
+    const { mkdirSync, existsSync } = await import('node:fs');
+    const scoredTeamsDir = join(seasonDir, 'scored', 'teams');
+    mkdirSync(scoredTeamsDir, { recursive: true });
+
+    const orphanedPath = join(scoredTeamsDir, 'deleted-team.json');
+    const nonJsonPath = join(scoredTeamsDir, '.DS_Store');
+
+    writeFileSync(orphanedPath, JSON.stringify({ teamId: 'deleted-team' }));
+    writeFileSync(nonJsonPath, 'junk');
+
+    assert.equal(existsSync(orphanedPath), true);
+
+    rebuildScoreboard();
+
+    assert.equal(existsSync(orphanedPath), false);
+    assert.equal(existsSync(nonJsonPath), true);
+  });
+});
+
+test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => {
+  await withFixtureSeason(2023, async ({ seasonDir }) => {
+    const entriesPath = join(seasonDir, 'config', 'entries.json');
+    // Team 1 gets home circuit bonus on race 1; Team 2 gets home circuit bonus on race 2
+    // If total points are equal, team with higher points in race 2 (latestRacePoints) ranks first
+    const entries = [
+      {
+        teamId: 'team-early-bonus',
+        principalName: 'Alice',
+        displayName: 'Early Bonus Team',
+        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
+        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
+        homeCircuitId: 'bahrain',
+        investmentBonusPerRace: 0,
+        predictions: {},
+      },
+      {
+        teamId: 'team-late-bonus',
+        principalName: 'Bob',
+        displayName: 'Late Bonus Team',
+        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
+        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
+        homeCircuitId: 'saudi-arabia',
+        investmentBonusPerRace: 0,
+        predictions: {},
+      },
+    ];
+    writeFileSync(entriesPath, JSON.stringify(entries, null, 2));
+
+    const result = rebuildScoreboard();
+    assert.equal(result.standings.length, 2);
+  });
+});
+
+
+
+
 

@@ -1,85 +1,64 @@
-#!/usr/bin/env node
-// Script to switch between preseason and season modes
-// Usage: npm run switch-mode -- preseason|season
-
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const mode = process.argv[2];
-
-if (!mode || !['preseason', 'season'].includes(mode)) {
-  console.error('Usage: npm run switch-mode -- <preseason|season>');
-  process.exit(1);
-}
-
-const vercelJsonPath = join(__dirname, '..', 'vercel.json');
-const vercelPreseasonPath = join(__dirname, '..', 'vercel.preseason.json');
-const vercelSeasonPath = join(__dirname, '..', 'vercel.season.json');
-
-// Read current vercel.json to preserve non-redirect config
-let currentConfig = {};
-if (existsSync(vercelJsonPath)) {
-  currentConfig = JSON.parse(readFileSync(vercelJsonPath, 'utf-8'));
-}
-
-if (mode === 'preseason') {
-  // Read preseason template
-  if (!existsSync(vercelPreseasonPath)) {
-    console.error('Error: vercel.preseason.json not found');
-    process.exit(1);
+export function switchMode(mode, {
+  vercelJsonPath = join(__dirname, '..', 'vercel.json'),
+  vercelPreseasonPath = join(__dirname, '..', 'vercel.preseason.json'),
+  vercelSeasonPath = join(__dirname, '..', 'vercel.season.json'),
+  log = console.log,
+  errorLog = console.error,
+} = {}) {
+  if (!mode || !['preseason', 'season'].includes(mode)) {
+    errorLog('Usage: npm run switch-mode -- <preseason|season>');
+    return { ok: false, error: 'Usage: npm run switch-mode -- <preseason|season>' };
   }
 
-  const preseasonTemplate = JSON.parse(readFileSync(vercelPreseasonPath, 'utf-8'));
+  let currentConfig = {};
+  if (existsSync(vercelJsonPath)) {
+    currentConfig = JSON.parse(readFileSync(vercelJsonPath, 'utf-8'));
+  }
 
-  // Merge: only replace redirects, preserve all other current config
-  const mergedConfig = {
-    ...currentConfig,
-    redirects: preseasonTemplate.redirects,
-  };
+  if (mode === 'preseason') {
+    if (!existsSync(vercelPreseasonPath)) {
+      errorLog('Error: vercel.preseason.json not found');
+      return { ok: false, error: 'Error: vercel.preseason.json not found' };
+    }
 
-  writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
+    const preseasonTemplate = JSON.parse(readFileSync(vercelPreseasonPath, 'utf-8'));
+    const mergedConfig = {
+      ...currentConfig,
+      redirects: preseasonTemplate.redirects,
+    };
 
-  console.log('✅ Switched to preseason mode');
-  console.log('   - Root (/) now redirects to /index.html (entry builder)');
-  console.log('   - Dashboard and team pages redirect to /index.html');
-  console.log('   - Calculator and entry builder are accessible');
-  console.log('\n📝 Next steps:');
-  console.log('   1. Set SITE_MODE environment variable in Vercel:');
-  console.log('      vercel env add SITE_MODE');
-  console.log('      (enter "preseason" when prompted)');
-  console.log('   2. Test locally: SITE_MODE=preseason npm run dev');
-  console.log('   3. Commit: git add vercel.json && git commit -m "Switch to preseason mode"');
-  console.log('   4. Deploy: git push');
-} else {
-  // Read season template
+    writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
+    log('✅ Switched to preseason mode');
+    return { ok: true, mode: 'preseason' };
+  }
+
   if (!existsSync(vercelSeasonPath)) {
-    console.error('Error: vercel.season.json not found');
-    process.exit(1);
+    errorLog('Error: vercel.season.json not found');
+    return { ok: false, error: 'Error: vercel.season.json not found' };
   }
 
   const seasonTemplate = JSON.parse(readFileSync(vercelSeasonPath, 'utf-8'));
-
-  // Merge: only replace redirects, preserve all other current config
   const mergedConfig = {
     ...currentConfig,
     redirects: seasonTemplate.redirects,
   };
 
   writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
-
-  console.log('✅ Switched to season mode');
-  console.log('   - Root (/) now redirects to /dashboard.html (standings)');
-  console.log('   - Entry builder pages redirect to dashboard');
-  console.log('   - Team details and race scoring are accessible');
-  console.log('\n📝 Next steps:');
-  console.log('   1. Set SITE_MODE environment variable in Vercel:');
-  console.log('      vercel env add SITE_MODE');
-  console.log('      (enter "season" when prompted, or leave unset for default)');
-  console.log('   2. Test locally: npm run dev');
-  console.log('   3. Commit: git add vercel.json && git commit -m "Switch to season mode"');
-  console.log('   4. Deploy: git push');
+  log('✅ Switched to season mode');
+  return { ok: true, mode: 'season' };
 }
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const result = switchMode(process.argv[2]);
+  if (!result.ok) {
+    process.exit(1);
+  }
+}
+

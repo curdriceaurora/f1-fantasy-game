@@ -93,9 +93,14 @@ export async function autoScore(services = {}) {
   console.log(`Standings rebuilt for ${result.scoreboard.standings.length} teams.`);
 }
 
+export async function runAutoScoreCli(services = {}) {
+  await autoScore(services);
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  autoScore().catch((error) => {
+  runAutoScoreCli().catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
 }
+

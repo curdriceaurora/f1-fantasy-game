@@ -298,10 +298,26 @@ test('fetchPdfText fetches, parses, caches, and reuses FIA PDF text', async () =
     assert.equal(await fetchPdfText(url, options), 'Parsed FIA decision');
     assert.equal(fetches, 1);
     assert.equal(parses, 1);
+
+    // Bypass cache with FIA_CACHE_DISABLED
+    process.env.FIA_CACHE_DISABLED = '1';
+    assert.equal(await fetchPdfText(url, options), 'Parsed FIA decision');
+    assert.equal(fetches, 2);
+    delete process.env.FIA_CACHE_DISABLED;
+
+    // Empty text handling
+    const emptyOptions = {
+      cacheDir,
+      fetchImpl: async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('') }),
+      parsePdf: async () => ({ text: '' }),
+    };
+    assert.equal(await fetchPdfText('https://fia.test/empty.pdf', emptyOptions), '');
   } finally {
+    delete process.env.FIA_CACHE_DISABLED;
     rmSync(cacheDir, { recursive: true, force: true });
   }
 });
+
 
 test('fetchFineSummary aggregates drivers and teams while retaining warnings', async () => {
   const documents = ['driver.pdf', 'team.pdf', 'unknown.pdf', 'no-fine.pdf'];
@@ -341,4 +357,57 @@ test('classifySubject identifies driver from CAR XX (XYZ) steward heading format
   const subjectWithNumberOnly = classifySubject('Infringement by CAR 44 during Pit Stop');
   assert.deepEqual(subjectWithNumberOnly, { type: 'driver', id: 'lewis-hamilton' });
 });
+
+test('driverFaultDriver matches car number in text when absent in URL', () => {
+  const driver = driverFaultDriver('https://fia.test/pit_lane_speeding.pdf', 'Incident involving Car 63 speeding in the pit lane');
+  assert.ok(driver);
+  assert.equal(driver.id, 'george-russell');
+
+  const nonFault = driverFaultDriver('https://fia.test/unsafe_release.pdf', 'Car 63 released unsafely');
+  assert.equal(nonFault, null);
+});
+
+test('summarizeFineDocumentText reassigns competitor fine from driver to entrant team and warns on unknown subject', () => {
+  const competitorText = [
+    'Car 63 - George Russell',
+    'A fine of €5,000 is imposed on the Competitor for technical infraction.',
+  ].join('\n');
+  const result = summarizeFineDocumentText('https://fia.test/tech_fine.pdf', competitorText);
+  assert.equal(result.document.appliedTo.type, 'team');
+  assert.equal(result.document.appliedTo.id, 'mercedes');
+
+  const unclassifiedText = 'The unknown party is fined €2,000 for parking infraction.';
+  const warnResult = summarizeFineDocumentText('https://fia.test/parking.pdf', unclassifiedText);
+  assert.equal(warnResult.document.appliedTo, null);
+  assert.match(warnResult.warning, /Unable to classify/);
+});
+
+test('fetchFineSummary accumulates multiple fines on driver and team', async () => {
+  const docs = ['https://fia.test/doc1.pdf', 'https://fia.test/doc2.pdf'];
+  const texts = {
+    'https://fia.test/doc1.pdf': 'George Russell is fined €500 for pit lane speeding.',
+    'https://fia.test/doc2.pdf': 'George Russell is fined €700 for pit lane speeding.',
+  };
+  const summary = await fetchFineSummary('monaco', docs, {
+    fetchPdfTextImpl: async (url) => texts[url],
+  });
+  assert.equal(summary.drivers['george-russell'], 1200);
+});
+
+test('activeFineFromText and classifySubject cover currency formats and CAR regex branches', () => {
+  // Dot thousand and comma decimal
+  assert.equal(activeFineFromText('The competitor is fined €1.234,56 for infraction.'), 1234.56);
+  assert.equal(activeFineFromText('The competitor is fined €1.000 for infraction.'), 1000);
+  assert.equal(activeFineFromText('The competitor is fined €1,000 for infraction.'), 1000);
+  assert.equal(activeFineFromText('There is no operational fine imposed.'), 0);
+
+  // CAR with acronym match
+  assert.deepEqual(classifySubject('CAR 63 (RUS) is investigated.'), { type: 'driver', id: 'george-russell' });
+  // CAR with non-matching acronym falls back to car number
+  assert.deepEqual(classifySubject('CAR 63 (XYZ) is investigated.'), { type: 'driver', id: 'george-russell' });
+  // CAR with number only
+  assert.deepEqual(classifySubject('CAR 63 is investigated.'), { type: 'driver', id: 'george-russell' });
+});
+
+
 

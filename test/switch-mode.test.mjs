@@ -150,3 +150,24 @@ test('switch-mode script fails with invalid mode', () => {
     }
   );
 });
+
+test('switchMode function validates input and handles missing template files', async () => {
+  const { switchMode } = await import('../scripts/switch-mode.mjs');
+  const invalidResult = switchMode('invalid-mode', { log: () => {}, errorLog: () => {} });
+  assert.equal(invalidResult.ok, false);
+
+  const missingPreseason = switchMode('preseason', {
+    vercelPreseasonPath: '/non/existent/path/preseason.json',
+    log: () => {},
+    errorLog: () => {},
+  });
+  assert.equal(missingPreseason.ok, false);
+
+  const missingSeason = switchMode('season', {
+    vercelSeasonPath: '/non/existent/path/season.json',
+    log: () => {},
+    errorLog: () => {},
+  });
+  assert.equal(missingSeason.ok, false);
+});
+

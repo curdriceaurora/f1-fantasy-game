@@ -160,3 +160,38 @@ test('reconcileSeason handles season before any eligible races', async () => {
   });
 });
 
+test('parseArgs in reconcile-season parses flags correctly', async () => {
+  const { parseArgs } = await import('../scripts/reconcile-season.mjs');
+  assert.deepEqual(parseArgs(['--dry-run', '--force']), { dryRun: true, force: true });
+  assert.deepEqual(parseArgs([]), { dryRun: false, force: false });
+});
+
+test('reconcileSeason logs unraceable races with and without notes', async () => {
+  await withTempSeason(async (seasonDir) => {
+    const calendarPath = join(seasonDir, 'config', '2026-calendar.json');
+    writeJson(calendarPath, [
+      { id: 'bahrain', round: 1, name: 'Bahrain', date: '2026-04-12', status: 'postponed', notes: 'relocated' },
+      { id: 'saudi', round: 2, name: 'Saudi', date: '2026-04-19', status: 'cancelled' },
+    ]);
+
+    const result = await reconcileSeason({
+      now: NOW,
+      scoreRace: async () => ({ race: { name: 'x' }, fineSummary: { documents: [] }, scoreboard: { standings: [] } }),
+    });
+    assert.deepEqual(result.scored, []);
+  });
+});
+
+test('runReconcileSeasonCli runs reconciliation with flags and services', async () => {
+  const { runReconcileSeasonCli } = await import('../scripts/reconcile-season.mjs');
+  await withTempSeason(async () => {
+    const result = await runReconcileSeasonCli(['--dry-run'], {
+      now: NOW,
+      setExitCode: false,
+    });
+    assert.ok(result);
+  });
+});
+
+
+

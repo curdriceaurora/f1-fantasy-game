@@ -142,3 +142,71 @@ test('autoScore does nothing when race is already finalized with unchanged fine 
   }, { finalized: true });
 });
 
+test('autoScore handles discovery failure on finalized and unfinalized races', async () => {
+  // Finalized race discovery failure -> keeps review and returns
+  await withTempSeason(async () => {
+    let scored = false;
+    await autoScore({
+      now: NOW,
+      discoverMonetaryFinePdfs: async () => { throw new Error('FIA 503'); },
+      scoreRace: async () => { scored = true; },
+    });
+    assert.equal(scored, false);
+  }, { finalized: true });
+
+  // Unfinalized race discovery failure -> throws
+  await withTempSeason(async () => {
+    await assert.rejects(
+      () => autoScore({
+        now: NOW,
+        discoverMonetaryFinePdfs: async () => { throw new Error('FIA 503'); },
+        scoreRace: async () => {},
+      }),
+      /FIA document discovery failed/,
+    );
+  }, { finalized: false });
+});
+
+test('autoScore records empty fine note when no fines are discovered', async () => {
+  await withTempSeason(async (seasonDir) => {
+    let scored = false;
+    await autoScore({
+      now: NOW,
+      discoverMonetaryFinePdfs: async () => [],
+      scoreRace: async () => {
+        scored = true;
+        return {
+          race: { name: 'Australian Grand Prix' },
+          fineSummary: { documents: [] },
+          scoreboard: { standings: [] },
+        };
+      },
+    });
+    assert.equal(scored, true);
+    const review = readJson(join(seasonDir, 'config', 'fine-documents.json')).australia;
+    assert.match(review.notes, /no FIA monetary fines found/);
+  }, { finalized: false });
+});
+
+test('runAutoScoreCli executes clean scoring run', async () => {
+  const { runAutoScoreCli } = await import('../scripts/auto-score.mjs');
+  await withTempSeason(async () => {
+    let scored = false;
+    await runAutoScoreCli({
+      now: NOW,
+      discoverMonetaryFinePdfs: async () => [],
+      scoreRace: async () => {
+        scored = true;
+        return {
+          race: { name: 'Australian Grand Prix' },
+          fineSummary: { documents: [] },
+          scoreboard: { standings: [] },
+        };
+      },
+    });
+    assert.equal(scored, true);
+  }, { finalized: false });
+});
+
+
+

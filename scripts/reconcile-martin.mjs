@@ -183,7 +183,7 @@ function parseArgs(argv) {
   };
 }
 
-async function main(argv) {
+export async function runReconcileMartinCli(argv = []) {
   const { generate, workbookDir } = parseArgs(argv);
   const previous = readJson(LEDGER_PATH, null);
 
@@ -222,10 +222,13 @@ async function main(argv) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  main(process.argv.slice(2)).catch((error) => {
+  runReconcileMartinCli(process.argv.slice(2)).catch((error) => {
     console.error(error.message);
     process.exit(1);
   });
 }
 
+
+const main = runReconcileMartinCli;
 export { main, parseArgs };
+
