@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync, readFileSync } from 'fs';
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { tmpdir } from 'os';
 import { join } from 'path';
 import playwrightConfig from '../playwright.config.js';
 
@@ -42,8 +43,18 @@ function specFiles(directory = E2E_DIR, prefix = '') {
   });
 }
 
+// Both filter-based tests below reduce to `assert.deepEqual([], [])` if discovery
+// returns nothing, so they would pass while guarding an empty set. Asserting the
+// set is non-empty first is the difference between checking every spec and
+// checking no specs — the same vacuity that made the recursion test hollow.
+function discoveredSpecs() {
+  const files = specFiles();
+  assert.ok(files.length > 0, 'no e2e specs discovered — these guards would pass vacuously');
+  return files;
+}
+
 test('every e2e spec declares its applicability in the filename', () => {
-  const misnamed = specFiles().filter((name) => !SPEC.test(name));
+  const misnamed = discoveredSpecs().filter((name) => !SPEC.test(name));
   assert.deepEqual(
     misnamed,
     [],
@@ -51,13 +62,29 @@ test('every e2e spec declares its applicability in the filename', () => {
   );
 });
 
-test('spec discovery matches Playwright, including nested directories', () => {
-  // Pins the recursion itself. A flat readdirSync would return only the top level
-  // and quietly stop guarding anything filed under a feature directory later.
+test('spec discovery recurses, matching Playwright\'s own testDir walk', () => {
+  // Built against a fixture tree rather than against e2e/, which has no nested
+  // specs today. Filtering the real directory for nested paths iterates zero
+  // times and passes whether or not specFiles recurses at all — a guard that
+  // asserts nothing while looking like it asserts something.
   assert.equal(playwrightConfig.testDir, './e2e');
-  const nested = specFiles().filter((name) => name.includes('/'));
-  for (const name of nested) assert.match(name, SPEC, `nested spec ${name} must still carry a suffix`);
-  assert.ok(specFiles().length > 0);
+
+  const root = mkdtempSync(join(tmpdir(), 'e2e-discovery-'));
+  try {
+    writeFileSync(join(root, 'top.shared.spec.js'), '');
+    mkdirSync(join(root, 'feature', 'deep'), { recursive: true });
+    writeFileSync(join(root, 'feature', 'example.iphone.spec.js'), '');
+    writeFileSync(join(root, 'feature', 'deep', 'buried.mobile.spec.js'), '');
+    writeFileSync(join(root, 'feature', 'notes.md'), '');
+
+    assert.deepEqual(specFiles(root).sort(), [
+      'feature/deep/buried.mobile.spec.js',
+      'feature/example.iphone.spec.js',
+      'top.shared.spec.js',
+    ]);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('each project claims exactly the suffixes it should', () => {
@@ -86,7 +113,7 @@ test('every applicability suffix is claimed by at least one project', () => {
 test('no spec still guards applicability at runtime', () => {
   // The thing this change removed. A reintroduced project guard would restore the
   // skips and put the mapping back somewhere only readable test-by-test.
-  const offenders = specFiles().filter((name) => {
+  const offenders = discoveredSpecs().filter((name) => {
     const source = readFileSync(join(E2E_DIR, name), 'utf8');
     return /test\.skip\(\s*!?testInfo\.project\.name/.test(source);
   });
