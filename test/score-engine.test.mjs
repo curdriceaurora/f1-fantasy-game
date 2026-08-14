@@ -281,3 +281,91 @@ test('a driver who merely starts at the back still scores the 19th-22nd band, no
   }, { raceId: 'monaco', raceName: 'Monaco' });
   assert.equal(contribution.components.find((c) => /Qualifying/.test(c.label)).points, -2);
 });
+
+test('scoreQualifying throws for an unsupported driver rank', () => {
+  assert.throws(
+    () => scoreQualifying('NonExistentRank', 1),
+    /Unsupported driver rank: NonExistentRank/,
+  );
+});
+
+test('buildDriverContribution throws for unknown driver or missing normalized result', () => {
+  assert.throws(
+    () => buildDriverContribution('unknown-driver-id', {}, { raceId: 'x', raceName: 'X' }),
+    /Unknown driver: unknown-driver-id/,
+  );
+
+  assert.throws(
+    () => buildDriverContribution('max-verstappen', null, { raceId: 'x', raceName: 'X' }),
+    /No normalized result found for Max Verstappen/,
+  );
+});
+
+test('buildConstructorContribution throws for unknown team or missing normalized result', () => {
+  assert.throws(
+    () => buildConstructorContribution('unknown-team-id', {}, []),
+    /Unknown team: unknown-team-id/,
+  );
+
+  assert.throws(
+    () => buildConstructorContribution('red-bull', null, []),
+    /No normalized constructor result found for Red Bull/,
+  );
+});
+
+test('buildConstructorContribution handles unlisted lead drivers and single driver rosters', () => {
+  const customDrivers = [
+    { driverId: 'kimi-antonelli', totalPoints: 10, name: 'Kimi Antonelli' },
+    { driverId: 'oliver-bearman', totalPoints: 20, name: 'Oliver Bearman' },
+  ];
+  // Neither Antonelli nor Bearman is in LEAD_DRIVER_IDS, so higher scorer (Bearman = 20) becomes lead
+  const result = buildConstructorContribution('haas', { driverIds: ['kimi-antonelli', 'oliver-bearman'] }, customDrivers);
+  assert.equal(result.weightingBreakdown.leadDriverId, 'oliver-bearman');
+  assert.equal(result.weightingBreakdown.secondDriverId, 'kimi-antonelli');
+
+  const singleDriver = [{ driverId: 'kimi-antonelli', totalPoints: 10, name: 'Kimi Antonelli' }];
+  const singleResult = buildConstructorContribution('haas', { driverIds: ['kimi-antonelli'] }, singleDriver);
+  assert.equal(singleResult.weightingBreakdown.secondDriverId, null);
+  assert.equal(singleResult.weightingBreakdown.secondDriverPoints, 0);
+});
+
+test('scoreFantasyTeam caps negative home circuit subtotal at zero', () => {
+  const entry = {
+    teamId: 'test-team',
+    selectedDriverIds: ['max-verstappen'],
+    selectedConstructorIds: ['red-bull'],
+    homeCircuitId: 'monaco',
+    investmentBonusPerRace: 0,
+  };
+  const normalizedRace = {
+    raceId: 'monaco',
+    raceName: 'Monaco Grand Prix',
+    date: '2026-05-24',
+    drivers: {
+      'max-verstappen': {
+        gridStart: 20,
+        racePosition: null, // DNF -> 0 points
+        gridPenaltyPlaces: 10, // -10 points
+        finePoints: -50, // -50 points
+      },
+      'isack-hadjar': {
+        gridStart: 20,
+        racePosition: null,
+      },
+    },
+    teams: {
+      'red-bull': {
+        driverIds: ['max-verstappen', 'isack-hadjar'],
+        finePoints: 0,
+      },
+    },
+  };
+  const score = scoreFantasyTeam(entry, normalizedRace);
+  assert.ok(score.baseSubtotal < 0);
+  assert.equal(score.totalPoints, 0);
+  assert.equal(score.homeCircuitBonusPoints, -score.baseSubtotal);
+});
+
+
+
+

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'fs';
+
 import { dirname, join } from 'path';
 import { tmpdir } from 'os';
 import {
@@ -124,9 +125,59 @@ test('notification report names the race, links documents, and states no rescore
   const report = buildLateDocumentReport([{
     race: { name: 'Australia', round: 1 },
     documents: ['https://fia.test/appeal_decision.pdf'],
-  }]);
+  }], [{ raceName: 'China', reason: 'FIA 403' }]);
 
   assert.match(report, /Australia \(Round 1\)/);
   assert.match(report, /\[appeal decision\.pdf\]\(https:\/\/fia\.test\/appeal_decision\.pdf\)/);
   assert.match(report, /no race was rescored/i);
+  assert.match(report, /## Scan failures/);
+  assert.match(report, /\*\*China:\*\* FIA 403/);
 });
+
+test('publishGitHubOutputs writes to GitHub Actions step summary and outputs when configured', async () => {
+  const { publishGitHubOutputs } = await import('../scripts/check-late-fia-documents.mjs');
+  const tempDir = mkdtempSync(join(tmpdir(), 'gh-outputs-'));
+  const summaryFile = join(tempDir, 'summary.md');
+  const outputFile = join(tempDir, 'output.txt');
+
+  process.env.GITHUB_STEP_SUMMARY = summaryFile;
+  process.env.GITHUB_OUTPUT = outputFile;
+
+  try {
+    publishGitHubOutputs({
+      alerts: [{ race: { name: 'Australia', round: 1 }, documents: ['https://fia.test/appeal.pdf'] }],
+      failures: [{ raceName: 'China', reason: 'FIA 403' }],
+    });
+
+    assert.equal(existsSync(summaryFile), true);
+    assert.equal(existsSync(outputFile), true);
+
+    const summaryContent = readFileSync(summaryFile, 'utf8');
+    assert.match(summaryContent, /Late FIA result documents detected/);
+
+    const outputContent = readFileSync(outputFile, 'utf8');
+    assert.match(outputContent, /detected=true/);
+    assert.match(outputContent, /failed=true/);
+  } finally {
+    delete process.env.GITHUB_STEP_SUMMARY;
+    delete process.env.GITHUB_OUTPUT;
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test('runCheckLateFiaDocumentsCli executes end-to-end cleanly', async () => {
+  const { runCheckLateFiaDocumentsCli } = await import('../scripts/check-late-fia-documents.mjs');
+  await withTempSeason(async () => {
+    const result = await runCheckLateFiaDocumentsCli({
+      now: NOW,
+      discoverPotentialPenaltyPdfs: async () => [],
+    });
+    assert.ok(result);
+  }, {
+    australia: { documents: [], recordedAt: '2026-03-09T14:00:00Z' },
+  });
+});
+
+
+
+

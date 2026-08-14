@@ -224,3 +224,157 @@ test('auditTimePenalties executes cleanly on season fixtures', () => {
   assert.ok(Array.isArray(audit.failures));
   assert.strictEqual(typeof audit.report, 'string');
 });
+
+test('buildTimePenaltyAuditReport formats failures cleanly', () => {
+  const report = buildTimePenaltyAuditReport([], [
+    { raceName: 'Australian Grand Prix', reason: 'Missing telemetry' },
+  ]);
+  assert.ok(report.includes('## Audit failures'));
+  assert.ok(report.includes('- **Australian Grand Prix:** Missing telemetry'));
+});
+
+test('generateTeamName produces valid non-empty string', async () => {
+  const { generateTeamName } = await import('../public/constants.js');
+  const name = generateTeamName();
+  assert.equal(typeof name, 'string');
+  assert.ok(name.length > 0);
+});
+
+test('resolveApiRoute handles nested bracket params and resolution', async () => {
+  const { resolveApiRoute, resolveStaticPath, createAppServer } = await import('../server.js');
+  const matched = resolveApiRoute('/api/dashboard/teams/alpha-team');
+  assert.ok(matched);
+  assert.equal(matched.params.teamId, 'alpha-team');
+  assert.ok(matched.filePath.endsWith('[teamId].js'));
+
+  const unmatched = resolveApiRoute('/api/non-existent/deep/route');
+  assert.equal(unmatched, null);
+
+  // Escaping public root
+  const escaped = resolveStaticPath('/public', '/../secret.txt');
+  assert.equal(escaped, null);
+
+  // Server error and not found handling
+  const server = createAppServer({
+    importApiModule: async () => { throw new Error('API failure'); },
+  });
+  assert.ok(server);
+});
+
+
+test('auditTimePenalties handles races missing FIA penalty footer ledger and runAuditTimePenaltiesCli writes report', async () => {
+  const { auditTimePenalties, runAuditTimePenaltiesCli } = await import('../scripts/audit-time-penalties.mjs');
+  const { mkdtempSync, rmSync, writeFileSync, mkdirSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+
+  const root = mkdtempSync(join(tmpdir(), 'f1-pen-audit-'));
+  const seasonDir = join(root, 'season');
+  const previous = process.env.F1_FANTASY_SEASON_DIR;
+  process.env.F1_FANTASY_SEASON_DIR = seasonDir;
+
+  try {
+    mkdirSync(join(seasonDir, 'config'), { recursive: true });
+    mkdirSync(join(seasonDir, 'scored'), { recursive: true });
+    mkdirSync(join(seasonDir, 'raw', 'australia'), { recursive: true });
+
+    writeFileSync(join(seasonDir, 'config', '2026-calendar.json'), JSON.stringify([
+      { id: 'australia', name: 'Australian Grand Prix', date: '2026-03-08' },
+    ]));
+    writeFileSync(join(seasonDir, 'scored', 'australia.json'), JSON.stringify({
+      drivers: {},
+    }));
+    // Write openf1.json without fiaResults.penaltySeconds
+    writeFileSync(join(seasonDir, 'raw', 'australia', 'openf1.json'), JSON.stringify({
+      fiaResults: {},
+    }));
+
+    const audit = auditTimePenalties();
+    assert.equal(audit.failures.length, 1);
+    assert.match(audit.failures[0].reason, /no FIA penalty footer ledger/);
+
+    const written = [];
+    const summaryFile = join(root, 'summary.md');
+    process.env.GITHUB_STEP_SUMMARY = summaryFile;
+
+    runAuditTimePenaltiesCli({
+      auditTimePenalties: () => audit,
+      stdout: { write: (text) => written.push(text) },
+      setExitCode: false,
+    });
+
+
+    assert.ok(written.length > 0);
+    assert.match(written[0], /Audit failures/);
+
+    // Test mismatch report generation and unknown driver fallbacks
+    const { compareTimePenaltyLedgers, buildTimePenaltyAuditReport } = await import('../scripts/audit-time-penalties.mjs');
+    const mismatchComparison = compareTimePenaltyLedgers(
+      { id: 'australia', name: 'Australian Grand Prix', round: 1 },
+      {
+        fiaResults: { penaltySeconds: { 'max-verstappen': 5 } },
+        raceTimePenaltyMessages: [
+          { message: '10 SECOND TIME PENALTY FOR CAR 3 (VER) - CAUSING A COLLISION', date: '2026-03-08T05:00:00Z' },
+          { message: '5 SECOND TIME PENALTY FOR CAR 999 - SPEEDING', date: '2026-03-08T05:10:00Z' },
+        ],
+      },
+    );
+    assert.equal(mismatchComparison.mismatches.length, 2);
+
+    const report = buildTimePenaltyAuditReport([mismatchComparison]);
+    assert.match(report, /Australian Grand Prix/);
+    assert.match(report, /FIA footer 5s; OpenF1 inference 10s/);
+  } finally {
+    delete process.env.GITHUB_STEP_SUMMARY;
+    if (previous == null) delete process.env.F1_FANTASY_SEASON_DIR;
+    else process.env.F1_FANTASY_SEASON_DIR = previous;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('fetchHistoricalJson handles 429 rate limit retries and throws on terminal error', async () => {
+  const { fetchHistoricalJson } = await import('../scripts/generate-test-corpus.mjs');
+  let calls = 0;
+  const mockFetch429 = async () => {
+    calls += 1;
+    if (calls < 3) {
+      return { ok: false, status: 429 };
+    }
+    return { ok: true, json: async () => ({ result: 'success' }) };
+  };
+
+  const result = await fetchHistoricalJson('test-endpoint', {
+    fetchImpl: mockFetch429,
+    sleep: async () => {},
+  });
+  assert.deepEqual(result, { result: 'success' });
+  assert.equal(calls, 3);
+
+  // Terminal non-429 error
+  await assert.rejects(
+    () => fetchHistoricalJson('bad-endpoint', {
+      fetchImpl: async () => ({ ok: false, status: 500 }),
+      sleep: async () => {},
+    }),
+    /Unable to fetch bad-endpoint: 500/,
+  );
+});
+
+
+
+test('generate-test-corpus throws on incomplete historical data and applies synthetic adjustments', async () => {
+  const { buildNormalizedRace, injectSyntheticAdjustments } = await import('../scripts/generate-test-corpus.mjs');
+  const emptyRace = { round: 1, results: [], qualifying: [], sprint: [] };
+  const mapping = { currentTeamToHistorical: new Map(), driverMap: new Map() };
+  assert.throws(
+    () => buildNormalizedRace(2023, emptyRace, mapping),
+    /Incomplete historical data/,
+  );
+
+  const adj2026 = injectSyntheticAdjustments(2026, 1, 'max-verstappen', 'red-bull', 0);
+  assert.ok(typeof adj2026.driverFineEuros === 'number');
+});
+
+
+
+

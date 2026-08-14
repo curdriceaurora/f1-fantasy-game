@@ -226,3 +226,75 @@ test('the collision guard covers the driver-champion prediction', () => {
     /both resolve to george-russell/,
   );
 });
+
+test('buildEntries throws on invalid driver, team, circuit, or total cost', () => {
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+
+  const badDriverRow = ['', 'Alice', 'Alice Racing', 'Invalid Driver', 'L. Hamilton', 'L. Stroll', 'Mercedes', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, badDriverRow], 'roster.xlsx'),
+    /Unable to resolve Driver 1 "Invalid Driver"/,
+  );
+
+  const badTeamRow = ['', 'Alice', 'Alice Racing', 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Invalid Team', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, badTeamRow], 'roster.xlsx'),
+    /Unable to resolve Team 1 "Invalid Team"/,
+  );
+
+  const badCircuitRow = ['', 'Alice', 'Alice Racing', 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Mercedes', 'Audi', 'Haas', 'Invalid Circuit', 400, 'G. Russell', 'Mercedes', 8, 50];
+  assert.throws(
+    () => buildEntries([[], [], [], header, badCircuitRow], 'roster.xlsx'),
+    /Unable to resolve Home Circuit "Invalid Circuit"/,
+  );
+
+  const badCostRow = ['', 'Alice', 'Alice Racing', 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Mercedes', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 'non-numeric'];
+  assert.throws(
+    () => buildEntries([[], [], [], header, badCostRow], 'roster.xlsx'),
+    /Invalid Total Cost "non-numeric"/,
+  );
+
+  assert.throws(
+    () => buildEntries([[], [], [], header], 'roster.xlsx'),
+    /No team entries found in the workbook/,
+  );
+});
+
+test('syncSeasonEntries throws when workbook path is omitted', async () => {
+  await assert.rejects(
+    () => syncSeasonEntries(null),
+    /Roster workbook path is required/,
+  );
+});
+
+test('runSyncSeasonEntriesCli imports test workbook and returns results', async () => {
+  const { runSyncSeasonEntriesCli } = await import('../scripts/sync-season-entries.mjs');
+  const tempDir = mkdtempSync(join(tmpdir(), 'f1-sync-test-'));
+  const wbPath = join(tempDir, 'roster.xlsx');
+  const previousSeasonDir = process.env.F1_FANTASY_SEASON_DIR;
+  process.env.F1_FANTASY_SEASON_DIR = join(tempDir, 'season');
+
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Starting Roster');
+  const header = ['', 'Team Principal', 'Team Name', 'Driver 1', 'Driver 2', 'Driver 3', 'Team 1', 'Team 2', 'Team 3', 'Circuit', 'Classified', 'Champion', 'Constructor', 'Last driver', 'Cost'];
+  const row = ['', 'Alice', 'Alice Racing', 'G. Russell', 'L. Hamilton', 'L. Stroll', 'Mercedes', 'Audi', 'Haas', 'Britain', 400, 'G. Russell', 'Mercedes', 8, 50];
+  ws.addRow([]);
+  ws.addRow([]);
+  ws.addRow([]);
+  ws.addRow(header);
+  ws.addRow(row);
+  await wb.xlsx.writeFile(wbPath);
+
+  try {
+    const result = await runSyncSeasonEntriesCli(wbPath);
+    assert.equal(result.entries.length, 1);
+    assert.equal(result.entries[0].principalName, 'Alice');
+  } finally {
+    if (previousSeasonDir == null) delete process.env.F1_FANTASY_SEASON_DIR;
+    else process.env.F1_FANTASY_SEASON_DIR = previousSeasonDir;
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+
+

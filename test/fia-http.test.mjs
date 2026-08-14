@@ -117,3 +117,18 @@ test('retryable statuses cover the bot filter and transient server failures', ()
     assert.equal(isRetryableStatus(status), false, `${status} should not be retried`);
   }
 });
+
+test('fetchFiaResource uses default wait helper when wait is not overridden', async () => {
+  let calls = 0;
+  const response = await fetchFiaResource('https://fia.test/documents', {
+    attempts: 2,
+    backoffMs: 1, // 1ms for quick test execution
+    fetchImpl: async () => {
+      calls += 1;
+      return stubResponse(calls === 1 ? 503 : 200);
+    },
+  });
+  assert.equal(response.status, 200);
+  assert.equal(calls, 2);
+});
+

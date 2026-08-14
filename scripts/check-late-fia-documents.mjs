@@ -123,9 +123,10 @@ export async function checkLateFiaDocuments(services = {}) {
   return { alerts, initialized, unchanged, failures, snapshotChanged: changed };
 }
 
-function publishGitHubOutputs(result) {
+export function publishGitHubOutputs(result) {
   const report = buildLateDocumentReport(result.alerts, result.failures);
   const reportPath = join(process.env.RUNNER_TEMP || tmpdir(), 'late-fia-documents.md');
+
   writeFileSync(reportPath, report);
 
   if (process.env.GITHUB_STEP_SUMMARY) {
@@ -141,14 +142,15 @@ function publishGitHubOutputs(result) {
   }
 }
 
-async function main() {
-  const result = await checkLateFiaDocuments();
+export async function runCheckLateFiaDocumentsCli(services = {}) {
+  const result = await checkLateFiaDocuments(services);
   publishGitHubOutputs(result);
   console.log(`Late-document alerts: ${result.alerts.length}; scan failures: ${result.failures.length}.`);
+  return result;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch((error) => {
+  runCheckLateFiaDocumentsCli().catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });

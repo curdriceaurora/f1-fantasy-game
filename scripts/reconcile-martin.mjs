@@ -175,7 +175,7 @@ export function runCheck({ ledger, accepted, scored }) {
   return { ...result, lines, ok: !lines.length };
 }
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const index = argv.indexOf('--workbooks');
   return {
     generate: argv.includes('--generate'),
@@ -183,7 +183,8 @@ function parseArgs(argv) {
   };
 }
 
-async function main(argv) {
+
+export async function runReconcileMartinCli(argv = []) {
   const { generate, workbookDir } = parseArgs(argv);
   const previous = readJson(LEDGER_PATH, null);
 
@@ -222,10 +223,10 @@ async function main(argv) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  main(process.argv.slice(2)).catch((error) => {
+  runReconcileMartinCli(process.argv.slice(2)).catch((error) => {
     console.error(error.message);
     process.exit(1);
   });
 }
 
-export { main, parseArgs };
+

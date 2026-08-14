@@ -287,3 +287,52 @@ test('validateRaceCoverage rejects a field nobody expects, on either side', () =
   assert.equal(problems.length, 1);
   assert.match(problems[0], /driver d0 has unexpected field\(s\): newScoreInput/);
 });
+
+test('readRaceSheet parses qualifying DSQ x as dsq, drops all-zero unrun templates, and handles formula errors', () => {
+  const wb = new ExcelJS.Workbook();
+  const sheet = wb.addWorksheet('Race 1');
+  const row = sheet.getRow(6);
+  row.getCell(2).value = 'M. Verstappen';
+  row.getCell(4).value = 'x'; // qualifying DSQ
+  row.getCell(24).value = 25;
+  row.getCell(25).value = 'Red Bull';
+  row.getCell(27).value = 25;
+  row.commit();
+
+  const race = readRaceSheet(wb, 'Race 1');
+  assert.ok(race);
+  assert.equal(race.drivers['max-verstappen'].grid, 'dsq');
+
+  // All-zero unrun template
+  const unrunWb = new ExcelJS.Workbook();
+  const unrunSheet = unrunWb.addWorksheet('Race 2');
+  const unrunRow = unrunSheet.getRow(6);
+  unrunRow.getCell(2).value = 'M. Verstappen';
+  unrunRow.getCell(24).value = 0;
+  unrunRow.commit();
+  assert.equal(readRaceSheet(unrunWb, 'Race 2'), null);
+
+  // Formula with error
+  const errWb = new ExcelJS.Workbook();
+  const errSheet = errWb.addWorksheet('Race 3');
+  const errRow = errSheet.getRow(6);
+  errRow.getCell(2).value = { formula: 'VLOOKUP()', result: { error: '#REF!' } };
+  errRow.commit();
+  assert.equal(readRaceSheet(errWb, 'Race 3'), null);
+});
+
+test('detectCoverageLoss detects missing races and missing entities', () => {
+  const prev = {
+    monaco: { drivers: { 'lando-norris': { total: 1 } }, teams: { mclaren: { total: 1 } } },
+    spain: { drivers: { 'carlos-sainz': { total: 1 } }, teams: {} },
+  };
+  const next = {
+    monaco: { drivers: {}, teams: {} }, // lando-norris and mclaren dropped
+    // spain completely missing
+  };
+  const losses = detectCoverageLoss(prev, next);
+  assert.ok(losses.some((msg) => msg.includes('missing from this run')));
+  assert.ok(losses.some((msg) => msg.includes('driver lando-norris dropped')));
+  assert.ok(losses.some((msg) => msg.includes('team mclaren dropped')));
+});
+

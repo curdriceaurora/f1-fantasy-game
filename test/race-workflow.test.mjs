@@ -100,9 +100,28 @@ test('a rescheduled race is scored normally against its new date', () => {
   assert.equal(afterNewDate.state, RACE_WORKFLOW_STATES.AWAITING_FINE_REVIEW);
 });
 
+test('mondayPublicationDate throws for invalid race date', () => {
+  assert.throws(
+    () => mondayPublicationDate('invalid-date'),
+    /Invalid race date "invalid-date"/,
+  );
+});
+
+
 test('races default to scheduled when no status is recorded', () => {
+  assert.equal(raceStatus(null), 'scheduled');
   assert.equal(raceStatus({ id: 'monaco' }), 'scheduled');
   assert.equal(isRaceScoreable({ id: 'monaco' }), true);
   assert.equal(isRaceScoreable({ id: 'monaco', status: 'cancelled' }), false);
   assert.equal(isRaceScoreable({ id: 'monaco', status: 'postponed' }), false);
 });
+
+test('mondayPublicationDate advances Monday race to next Monday and canTransitionRaceWorkflow validates states', () => {
+  // 2026-03-09 is a Monday; mondayPublicationDate moves it by 1 day
+  const nextMonday = mondayPublicationDate('2026-03-09');
+  assert.equal(nextMonday.toISOString(), '2026-03-10T12:00:00.000Z');
+
+  assert.equal(canTransitionRaceWorkflow('invalid-state', 'finalized'), false);
+});
+
+
