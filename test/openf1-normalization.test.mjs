@@ -367,6 +367,39 @@ test('a parsed FIA starting grid with no penalties overrides the OpenF1 fallback
   assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 0);
 });
 
+test('pit-lane grid-penalty resolution survives normalization as first-class data', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.fiaResults = {
+    gridPositions: {},
+    gridPenaltyPlaces: { 'george-russell': 20 },
+    pitLaneGridPenalties: {
+      'george-russell': {
+        status: 'resolved', places: 20, method: 'power-unit-elements', sourceUrl: 'https://fia.test/decision.pdf',
+      },
+    },
+  };
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+
+  assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 20);
+  assert.equal(normalized.drivers['george-russell'].pitLaneGridPenalty.status, 'resolved');
+  assert.equal(normalized.drivers['kimi-antonelli'].pitLaneGridPenalty, undefined);
+});
+
+test('normalization preserves a disconnected pit-lane count for reconciliation to audit', () => {
+  const fetchedRace = baseFetchedRace();
+  fetchedRace.fiaResults = {
+    gridPositions: {},
+    gridPenaltyPlaces: { 'george-russell': 0 },
+    pitLaneGridPenalties: {
+      'george-russell': { status: 'resolved', places: 20, sourceUrl: 'https://fia.test/decision.pdf' },
+    },
+  };
+
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+  assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 0);
+  assert.equal(normalized.drivers['george-russell'].pitLaneGridPenalty.places, 20);
+});
+
 test('normalizeRaceWeekend throws when race or qualifying results are missing', () => {
   const fetchedWithoutRace = baseFetchedRace();
   fetchedWithoutRace.raceResultRows = [];
@@ -425,7 +458,4 @@ test('normalizeRaceWeekend throws when lap data is empty', () => {
     /OpenF1 lap data is missing; cannot determine fastest lap/,
   );
 });
-
-
-
 

@@ -62099,6 +62099,7 @@
       "pierre-gasly": 21,
       "isack-hadjar": 22
     },
+    "disqualifiedDrivers": [],
     "penaltySeconds": {
       "charles-leclerc": 20,
       "max-verstappen": 5
@@ -62127,6 +62128,17 @@
       "gabriel-bortoleto": 21,
       "isack-hadjar": 22
     },
+    "gridPenaltyPlaces": {
+      "isack-hadjar": 20
+    },
+    "pitLaneGridPenalties": {
+      "isack-hadjar": {
+        "status": "resolved",
+        "places": 20,
+        "method": "power-unit-elements",
+        "sourceUrl": "https://www.fia.com/system/files/decision-document/2026_miami_grand_prix_-_infringement_-_car_6_-_pu_elements_changed_under_parc_ferme.pdf"
+      }
+    },
     "sprintPositions": {
       "lando-norris": 1,
       "oscar-piastri": 2,
@@ -62151,6 +62163,6 @@
       "arvid-lindblad": 21,
       "gabriel-bortoleto": 22
     },
-    "gridPenaltyPlaces": {}
+    "sprintDisqualifiedDrivers": []
   }
 }

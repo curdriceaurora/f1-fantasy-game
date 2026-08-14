@@ -207,7 +207,13 @@
       "dns": false,
       "dsq": false,
       "fastestLap": false,
-      "gridPenaltyPlaces": 0,
+      "gridPenaltyPlaces": 30,
+      "pitLaneGridPenalty": {
+        "status": "resolved",
+        "places": 30,
+        "method": "stated-accumulation",
+        "sourceUrl": "https://www.fia.com/system/files/decision-document/2026_barcelona-catalunya_grand_prix_-_infringement_-_car_14_-_pu_elements_and_changes_used_during_parc_ferme.pdf"
+      },
       "timePenaltySeconds": 0,
       "fineEuros": 0,
       "finePoints": 0
@@ -601,6 +607,6 @@
       "sprint": null,
       "race": 11307
     },
-    "generatedAt": "2026-08-12T01:43:49.310Z"
+    "generatedAt": "2026-08-14T07:23:19.989Z"
   }
 }

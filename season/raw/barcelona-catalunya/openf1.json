@@ -65473,6 +65473,7 @@
       "valtteri-bottas": 21,
       "lance-stroll": 22
     },
+    "disqualifiedDrivers": [],
     "penaltySeconds": {
       "franco-colapinto": 10,
       "kimi-antonelli": 5
@@ -65501,7 +65502,18 @@
       "lance-stroll": 21,
       "fernando-alonso": 22
     },
+    "gridPenaltyPlaces": {
+      "fernando-alonso": 30
+    },
+    "pitLaneGridPenalties": {
+      "fernando-alonso": {
+        "status": "resolved",
+        "places": 30,
+        "method": "stated-accumulation",
+        "sourceUrl": "https://www.fia.com/system/files/decision-document/2026_barcelona-catalunya_grand_prix_-_infringement_-_car_14_-_pu_elements_and_changes_used_during_parc_ferme.pdf"
+      }
+    },
     "sprintPositions": {},
-    "gridPenaltyPlaces": {}
+    "sprintDisqualifiedDrivers": null
   }
 }

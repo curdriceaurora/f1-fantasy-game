@@ -2,7 +2,7 @@
   "teamId": "rob-wallis-94faa5a8",
   "principalName": "Rob Wallis",
   "displayName": "Basil Bush - Zoom Zoom",
-  "totalPoints": 83,
+  "totalPoints": 73,
   "completedRaces": 11,
   "latestRacePoints": 26,
   "races": [
@@ -810,13 +810,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -1,
+      "baseSubtotal": -5,
       "driverSubtotal": 19,
-      "constructorSubtotal": -20,
+      "constructorSubtotal": -24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 0,
+      "totalPoints": -4,
       "drivers": [
         {
           "driverId": "liam-lawson",
@@ -990,22 +990,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -1014,7 +1014,7 @@
           ]
         }
       ],
-      "runningTotal": 41
+      "runningTotal": 37
     },
     {
       "raceId": "monaco",
@@ -1220,19 +1220,19 @@
           ]
         }
       ],
-      "runningTotal": 42
+      "runningTotal": 38
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 9,
+      "baseSubtotal": 3,
       "driverSubtotal": -4,
-      "constructorSubtotal": 13,
+      "constructorSubtotal": 7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 10,
+      "totalPoints": 4,
       "drivers": [
         {
           "driverId": "liam-lawson",
@@ -1398,27 +1398,27 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -3,
-            "formula": "ceil((3×2 + 2×-3) ÷ 5)",
-            "weightedRawPoints": 0,
-            "weightedPoints": 0
+            "formula": "ceil((3×-8 + 2×-3) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         }
       ],
-      "runningTotal": 52
+      "runningTotal": 42
     },
     {
       "raceId": "austria",
@@ -1612,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 62
+      "runningTotal": 52
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 74
+      "runningTotal": 64
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2016,7 @@
           ]
         }
       ],
-      "runningTotal": 57
+      "runningTotal": 47
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "runningTotal": 83
+      "runningTotal": 73
     }
   ]
 }
