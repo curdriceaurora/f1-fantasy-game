@@ -173,6 +173,7 @@ test('autoScore records empty fine note when no fines are discovered', async () 
     await autoScore({
       now: NOW,
       discoverMonetaryFinePdfs: async () => [],
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: async () => {
         scored = true;
         return {
@@ -195,6 +196,7 @@ test('runAutoScoreCli executes clean scoring run', async () => {
     await runAutoScoreCli({
       now: NOW,
       discoverMonetaryFinePdfs: async () => [],
+      discoverPotentialPenaltyPdfs: async () => [],
       scoreRace: async () => {
         scored = true;
         return {
@@ -207,6 +209,5 @@ test('runAutoScoreCli executes clean scoring run', async () => {
     assert.equal(scored, true);
   }, { finalized: false });
 });
-
 
 
