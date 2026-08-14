@@ -124,13 +124,39 @@ test('an unreadable pit-lane decision cannot be hidden by an accepted divergence
       drivers: {
         'alex-albon': {
           gridPenaltyPlaces: 0,
-          pitLaneGridPenalty: { status: 'unresolved', reason: 'race-decision-not-found' },
+          pitLaneGridPenalty: {
+            status: 'unresolved',
+            reason: 'decision-candidates-unreadable',
+            candidateUrls: ['https://fia.test/china-decision.pdf'],
+          },
         },
       },
     }),
   );
 
-  assert.match(problems.join('\n'), /has no steward-decision source/);
+  assert.match(problems.join('\n'), /1 FIA decision candidate\(s\) could not be read/);
+});
+
+test('a simultaneous numbered and pit-lane penalty becomes a reconciliation finding', () => {
+  const problems = auditPitLaneGridPenalties(
+    { divergences: [] },
+    [{ id: 'miami' }],
+    () => ({
+      drivers: {
+        'isack-hadjar': {
+          gridPenaltyPlaces: 20,
+          pitLaneGridPenalty: {
+            status: 'resolved',
+            places: 20,
+            numberedGridPenaltyPlaces: 3,
+            sourceUrl: 'https://fia.test/miami-decision.pdf',
+          },
+        },
+      },
+    }),
+  );
+
+  assert.match(problems.join('\n'), /also carries a 3-place grid-footer penalty/);
 });
 
 test('scoredByRace scores every seat in the normalized race, selected or not', () => {
@@ -373,5 +399,4 @@ test('runReconcileMartinCli executes check against committed ledger without erro
   const { runReconcileMartinCli } = await import('../scripts/reconcile-martin.mjs');
   await assert.doesNotReject(() => runReconcileMartinCli([]));
 });
-
 

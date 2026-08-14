@@ -102,7 +102,14 @@ export function auditPitLaneGridPenalties(
       const marker = driver.pitLaneGridPenalty;
       if (!marker) continue;
       const label = `${race.id} driver ${driverId}`;
-      if (!marker.sourceUrl) {
+      if (marker.numberedGridPenaltyPlaces != null) {
+        problems.push(`${label}: pit-lane start also carries a ${marker.numberedGridPenaltyPlaces}-place grid-footer penalty; pit-lane resolution was preferred`);
+      }
+      if (marker.reason === 'decision-index-unavailable') {
+        problems.push(`${label}: FIA decision index was unavailable${marker.detail ? ` — ${marker.detail}` : ''}`);
+      } else if (marker.reason === 'decision-candidates-unreadable') {
+        problems.push(`${label}: ${marker.candidateUrls?.length || 0} FIA decision candidate(s) could not be read`);
+      } else if (!marker.sourceUrl) {
         problems.push(`${label}: pit-lane grid-penalty marker has no steward-decision source`);
       }
       if (marker.status === 'resolved') {
@@ -323,4 +330,3 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     process.exit(1);
   });
 }
-

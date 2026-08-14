@@ -164,6 +164,22 @@ Oracle Red Bull Racing
   assert.deepEqual([...pitLaneStarters], [['fernando-alonso', 14], ['isack-hadjar', 6]]);
 });
 
+test('parseStartingGrid rejects a pit-lane section whose starter cannot be mapped', () => {
+  assert.throws(
+    () => parseStartingGrid([
+      '1',
+      '63George RUSSELL',
+      'DRIVERS REQUIRED TO START FROM THE PIT LANE',
+      '99Reserve DRIVER',
+    ].join('\n')),
+    /Unable to map pit-lane starter car number\(s\): 99/,
+  );
+  assert.throws(
+    () => parseStartingGrid('DRIVERS REQUIRED TO START FROM THE PIT LANE'),
+    /pit-lane section but no starter entries could be parsed/,
+  );
+});
+
 test('parseGridPenalties reads a single numbered grid penalty', () => {
   // Britain's final starting grid footer.
   const penalties = parseGridPenalties([
@@ -294,6 +310,38 @@ test('resolvePitLaneGridPenalties returns one resolution for every starter and i
   assert.equal(resolutions['isack-hadjar'].places, 20);
 });
 
+test('decision-index failure becomes a per-driver unresolved marker', async () => {
+  const starters = new Map([['alex-albon', 23], ['isack-hadjar', 6]]);
+  const resolutions = await resolvePitLaneGridPenalties({}, starters, {
+    fetchFiaDecisionUrlsImpl: async () => { throw new Error('FIA 503'); },
+  });
+
+  assert.equal(Object.keys(resolutions).length, starters.size);
+  assert.deepEqual(resolutions['alex-albon'], {
+    status: 'unresolved', reason: 'decision-index-unavailable', detail: 'FIA 503',
+  });
+  assert.equal(resolutions['isack-hadjar'].reason, 'decision-index-unavailable');
+});
+
+test('unreadable decision candidates are distinct from an absent decision', async () => {
+  const starters = new Map([['isack-hadjar', 6]]);
+  const candidate = 'https://fia.test/race_-_infringement_-_car_6_race.pdf';
+  const unreadable = await resolvePitLaneGridPenalties({}, starters, {
+    fetchFiaDecisionUrlsImpl: async () => [candidate],
+    fetchPdfTextImpl: async () => { throw new Error('bad PDF'); },
+  });
+  const absent = await resolvePitLaneGridPenalties({}, starters, {
+    fetchFiaDecisionUrlsImpl: async () => [],
+  });
+
+  assert.deepEqual(unreadable['isack-hadjar'], {
+    status: 'unresolved', reason: 'decision-candidates-unreadable', candidateUrls: [candidate],
+  });
+  assert.deepEqual(absent['isack-hadjar'], {
+    status: 'unresolved', reason: 'race-decision-not-found',
+  });
+});
+
 test('fetchRaceResults joins a pit-lane starter to its decision-derived place count', async () => {
   const gridUrl = 'final_starting_grid';
   const decisionUrl = 'https://fia.test/race_-_infringement_-_car_6_race.pdf';
@@ -316,6 +364,35 @@ test('fetchRaceResults joins a pit-lane starter to its decision-derived place co
   assert.equal(results.gridPositions['isack-hadjar'], 22);
   assert.equal(results.gridPenaltyPlaces['isack-hadjar'], 20);
   assert.equal(results.pitLaneGridPenalties['isack-hadjar'].status, 'resolved');
+});
+
+test('a numbered penalty plus pit-lane start is retained for reconciliation instead of aborting ingestion', async () => {
+  const decisionUrl = 'https://fia.test/race_-_infringement_-_car_6_race.pdf';
+  const results = await fetchRaceResults(
+    { date: '2026-05-03', meetingName: 'Miami Grand Prix', isSprintWeekend: false },
+    {
+      fetchFiaDecisionUrlsImpl: async () => [decisionUrl],
+      fetchPdfTextImpl: async (url) => {
+        if (url.includes('final_starting_grid')) {
+          return [
+            '21',
+            '5Gabriel BORTOLETO',
+            'DRIVERS REQUIRED TO START FROM THE PIT LANE',
+            '6Isack HADJAR',
+            '* PENALTIES',
+            'Car 6 - 3 place grid penalty - Impeding another driver',
+          ].join('\n');
+        }
+        if (url === decisionUrl) {
+          return 'Fact\nThe following Power Unit elements have been used:\n4th Energy Store\n4th Control Electronics Unit\nInfringement\nDecision\nRequired to start the Race from the pit lane.';
+        }
+        return '15Gabriel BORTOLETO';
+      },
+    },
+  );
+
+  assert.equal(results.gridPenaltyPlaces['isack-hadjar'], 20);
+  assert.equal(results.pitLaneGridPenalties['isack-hadjar'].numberedGridPenaltyPlaces, 3);
 });
 
 test('parseFinalClassification reads a time penalty behind a lead-in clause', () => {

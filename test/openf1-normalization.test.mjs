@@ -385,7 +385,7 @@ test('pit-lane grid-penalty resolution survives normalization as first-class dat
   assert.equal(normalized.drivers['kimi-antonelli'].pitLaneGridPenalty, undefined);
 });
 
-test('normalization rejects a resolved pit-lane count disconnected from scoring', () => {
+test('normalization preserves a disconnected pit-lane count for reconciliation to audit', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.fiaResults = {
     gridPositions: {},
@@ -395,10 +395,9 @@ test('normalization rejects a resolved pit-lane count disconnected from scoring'
     },
   };
 
-  assert.throws(
-    () => normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] }),
-    /resolved pit-lane grid penalty.*20.*scored value is 0/i,
-  );
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
+  assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 0);
+  assert.equal(normalized.drivers['george-russell'].pitLaneGridPenalty.places, 20);
 });
 
 test('normalizeRaceWeekend throws when race or qualifying results are missing', () => {
@@ -459,5 +458,4 @@ test('normalizeRaceWeekend throws when lap data is empty', () => {
     /OpenF1 lap data is missing; cannot determine fastest lap/,
   );
 });
-
 
