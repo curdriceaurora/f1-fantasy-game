@@ -31,12 +31,19 @@ const REAL_ACCEPTED = readJson(DIVERGENCE_PATH, { divergences: [] });
 
 // Driven from the committed artifacts rather than fixtures: this is what CI
 // actually reads, and a fixture can drift from it without anyone noticing.
+// The manifest is carried in the state, not read directly, so a mutation can
+// perturb it too. It is the third artifact the gate depends on and the only one
+// expected to shrink over time.
 function baseline() {
-  return { ledger: structuredClone(REAL_LEDGER), scored: structuredClone(scoredByRace()) };
+  return {
+    ledger: structuredClone(REAL_LEDGER),
+    scored: structuredClone(scoredByRace()),
+    accepted: structuredClone(REAL_ACCEPTED),
+  };
 }
 
-function check({ ledger, scored }) {
-  return runCheck({ ledger, accepted: REAL_ACCEPTED, scored });
+function check({ ledger, scored, accepted }) {
+  return runCheck({ ledger, accepted, scored });
 }
 
 // A stable, deterministic target for the per-entity mutations. Sorting keeps the
@@ -150,13 +157,23 @@ function projectionMutations() {
 
   // The stale-manifest guard: an accepted divergence that no longer applies is a
   // hole, because it goes on excusing a row after the real gap has been fixed.
-  // Making our value agree with Martin's is exactly that situation.
+  //
+  // The entry is synthesised rather than taken from the committed manifest. That
+  // file is *expected* to empty as Martin's answers land — it is the point of the
+  // whole exercise — and a mutation that reads from it would stop pinning this
+  // guard at precisely the moment the manifest reached zero. Depending on the
+  // data being untidy to test the tidying-up mechanism is the wrong way round.
   mutations.push({
-    name: 'scored: resolve an accepted divergence without removing its manifest entry',
+    name: 'manifest: an accepted divergence that no longer applies',
     guard: 'resolved',
     apply: (state) => {
-      const entry = REAL_ACCEPTED.divergences.find((divergence) => divergence.kind === 'driver' && divergence.field === 'total');
-      state.scored[entry.race].drivers[entry.id].total = entry.martin;
+      const raceId = firstRace(state.ledger);
+      const id = firstId(state.scored[raceId].drivers);
+      // Claims a disagreement on a row where both sides already agree, so the
+      // entry can never match and is stale by construction.
+      state.accepted.divergences.push({
+        race: raceId, kind: 'driver', id, field: 'total', ours: -9999, martin: -8888, issue: 'synthetic',
+      });
     },
   });
 
