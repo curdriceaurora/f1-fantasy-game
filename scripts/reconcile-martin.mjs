@@ -117,7 +117,10 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
     races[raceId] = source.race;
   }
 
-  // Ways a regeneration can quietly weaken the gate, all fatal.
+  // Ways a regeneration can quietly weaken the gate, all fatal — and grouped by
+  // guard for the same reason runCheck groups its findings: several of these
+  // catch overlapping problems, so a flat list lets one be disconnected while its
+  // neighbours keep the run failing and nothing notices.
   //
   // Both ledgers are validated, not just the old one. The previous is checked
   // before it is trusted, since comparing against a damaged record reports no
@@ -125,14 +128,15 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
   // written, so a source that cannot produce sound provenance — a workbook with
   // no internal timestamp, say — fails here rather than producing an artifact
   // guaranteed to fail the next CI check.
-  const regressions = [
-    ...(previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : []),
-    ...validateProvenance({ provenance, races }).map((p) => `generated ledger provenance: ${p}`),
-    ...detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
-    ...assertCompleteSources(sources),
-    ...detectCoverageLoss(previous?.races, races),
-  ];
-  return { ledger: { provenance, races }, regressions, workbooksRead: files.length };
+  const findings = {
+    previousProvenance: previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : [],
+    candidateProvenance: validateProvenance({ provenance, races }).map((p) => `generated ledger provenance: ${p}`),
+    sourceRegression: detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
+    sourceCompleteness: assertCompleteSources(sources),
+    coverageLoss: detectCoverageLoss(previous?.races, races),
+  };
+  const regressions = Object.values(findings).flat();
+  return { ledger: { provenance, races }, findings, regressions, workbooksRead: files.length };
 }
 
 export function runCheck({ ledger, accepted, scored }) {
@@ -188,8 +192,17 @@ export function runCheck({ ledger, accepted, scored }) {
   return { ...result, findings, lines, ok: !lines.length };
 }
 
-// Which guard produced each kind of finding. Named here so the harness and the
-// implementation cannot drift apart silently.
+// Which guard produced each kind of finding, for both paths. Named here so the
+// mutation harness and the implementation cannot drift apart silently: a guard
+// added without an entry here is a guard nothing can pin.
+export const GENERATION_GUARDS = Object.freeze({
+  previousProvenance: (result) => result.findings.previousProvenance,
+  candidateProvenance: (result) => result.findings.candidateProvenance,
+  sourceRegression: (result) => result.findings.sourceRegression,
+  sourceCompleteness: (result) => result.findings.sourceCompleteness,
+  coverageLoss: (result) => result.findings.coverageLoss,
+});
+
 export const GUARDS = Object.freeze({
   provenance: (result) => result.findings.provenance,
   ledgerCoverage: (result) => result.findings.ledgerCoverage,

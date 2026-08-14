@@ -1,6 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runCheck, scoredByRace, GUARDS, LEDGER_PATH, DIVERGENCE_PATH } from '../scripts/reconcile-martin.mjs';
+import { mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
+import { join } from 'path';
+import ExcelJS from 'exceljs';
+import {
+  runCheck, generateLedger, scoredByRace, GUARDS, GENERATION_GUARDS, LEDGER_PATH, DIVERGENCE_PATH,
+} from '../scripts/reconcile-martin.mjs';
+import { DRIVERS, TEAMS } from '../public/constants.js';
 import { readJson } from '../lib/season-store.js';
 import { EXPECTED_DRIVER_FIELDS, EXPECTED_TEAM_FIELDS } from '../lib/martin-workbook.js';
 
@@ -272,4 +279,160 @@ test('the generated mutation set covers every compared field on both sides', () 
   // 2 sides x 2 kinds x (4 shape mutations + fields), plus 5 race/comparison ones.
   const expected = 2 * (2 * 4 + EXPECTED_DRIVER_FIELDS.length + EXPECTED_TEAM_FIELDS.length) + 5;
   assert.equal(names.length, expected);
+});
+
+// ---------------------------------------------------------------------------
+// Generation path.
+//
+// Everything above exercises runCheck, which is what CI runs. But the ledger CI
+// reads is produced by generateLedger, and its guards were unpinned: review
+// showed assertCompleteSources could be disconnected entirely with the whole
+// suite still green. Direct tests of the helper prove the helper works; they say
+// nothing about whether generation still calls it.
+//
+// These mutations perturb the *sources* rather than the artifacts, and assert the
+// generation guard that must object.
+// ---------------------------------------------------------------------------
+
+const FULL_SHEET = 'Race 8';
+const MONACO = 'monaco';
+
+// A complete, valid source: 22 seats and 11 constructors, so the completeness
+// guard is satisfied and any failure comes from the mutation under test rather
+// than from the fixture being thin.
+async function writeWorkbook(directory, name, { modified = '2026-08-03T16:49:11Z', drivers = DRIVERS, teams = TEAMS } = {}) {
+  const workbook = new ExcelJS.Workbook();
+  workbook.modified = modified ? new Date(modified) : undefined;
+  workbook.created = modified ? new Date(modified) : undefined;
+  const sheet = workbook.addWorksheet(FULL_SHEET);
+  drivers.forEach((driver, index) => {
+    const row = sheet.getRow(6 + index);
+    row.getCell(2).value = `${driver.fullName.split(' ')[0][0]}. ${driver.fullName.split(' ').slice(1).join(' ')}`;
+    row.getCell(4).value = index + 1;
+    row.getCell(13).value = 0;
+    row.getCell(14).value = index + 1;
+    row.getCell(17).value = 0;
+    row.getCell(18).value = 0;
+    row.getCell(20).value = 0;
+    row.getCell(23).value = 0;
+    // Non-zero somewhere, or the sheet reads as an unraced template.
+    row.getCell(24).value = index === 0 ? 25 : index;
+    if (index < teams.length) {
+      row.getCell(25).value = teams[index].name;
+      row.getCell(26).value = 0;
+      row.getCell(27).value = index;
+    }
+    row.commit();
+  });
+  await workbook.xlsx.writeFile(join(directory, name));
+}
+
+async function withWorkbookDir(run) {
+  const directory = mkdtempSync(join(tmpdir(), 'mutation-gen-'));
+  try {
+    return await run(directory);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+const GENERATION_MUTATIONS = [
+  {
+    name: 'generation: a source that parses fewer than every seat',
+    guard: 'sourceCompleteness',
+    build: async (dir) => { await writeWorkbook(dir, 'partial.xlsx', { drivers: DRIVERS.slice(0, 5) }); },
+  },
+  {
+    name: 'generation: a source with no internal timestamp metadata',
+    guard: 'candidateProvenance',
+    // ExcelJS stamps a date on write, so the absent-metadata case is injected at
+    // the reader rather than faked in the file.
+    build: async (dir) => { await writeWorkbook(dir, 'no-timestamp.xlsx'); },
+    readWorkbookImpl: async (path) => {
+      const loaded = new ExcelJS.Workbook();
+      await loaded.xlsx.readFile(path);
+      loaded.modified = undefined;
+      loaded.created = undefined;
+      return loaded;
+    },
+  },
+  {
+    name: 'generation: a source older than the one already recorded',
+    guard: 'sourceRegression',
+    build: async (dir) => { await writeWorkbook(dir, 'stale.xlsx', { modified: '2026-08-02T18:37:46Z' }); },
+    previous: {
+      provenance: {
+        races: {
+          [MONACO]: {
+            workbook: 'master.xlsx',
+            sha256: 'a'.repeat(64),
+            workbookModified: '2026-08-03T16:49:11.000Z',
+            sheet: FULL_SHEET,
+          },
+        },
+      },
+      races: {},
+    },
+  },
+  {
+    name: 'generation: coverage that has shrunk since the committed ledger',
+    guard: 'coverageLoss',
+    build: async (dir) => { await writeWorkbook(dir, 'current.xlsx'); },
+    // The committed ledger covered a driver this run does not produce.
+    previous: {
+      provenance: {
+        races: {
+          [MONACO]: {
+            workbook: 'older.xlsx',
+            sha256: 'b'.repeat(64),
+            workbookModified: '2026-08-01T00:00:00.000Z',
+            sheet: FULL_SHEET,
+          },
+        },
+      },
+      races: { [MONACO]: { drivers: { 'ghost-driver': { total: 1 } }, teams: {} } },
+    },
+  },
+  {
+    name: 'generation: a previous ledger whose provenance is damaged',
+    guard: 'previousProvenance',
+    build: async (dir) => { await writeWorkbook(dir, 'current.xlsx'); },
+    previous: {
+      provenance: { races: { [MONACO]: { workbook: 'older.xlsx', sha256: 'nope', sheet: FULL_SHEET } } },
+      races: { [MONACO]: { drivers: {}, teams: {} } },
+    },
+  },
+];
+
+test('generation accepts a complete, well-formed source', async () => {
+  // The inverse again: without it these mutations could pass by rejecting
+  // everything, including valid input.
+  await withWorkbookDir(async (dir) => {
+    await writeWorkbook(dir, 'good.xlsx');
+    const { regressions } = await generateLedger({ workbookDir: dir });
+    assert.deepEqual(regressions, []);
+  });
+});
+
+for (const mutation of GENERATION_MUTATIONS) {
+  test(`caught — ${mutation.name}`, async () => {
+    await withWorkbookDir(async (dir) => {
+      await mutation.build(dir);
+      const result = await generateLedger({
+        workbookDir: dir,
+        previous: mutation.previous ?? null,
+        ...(mutation.readWorkbookImpl ? { readWorkbookImpl: mutation.readWorkbookImpl } : {}),
+      });
+      assert.ok(result.regressions.length > 0, `mutation went undetected: ${mutation.name}`);
+      const caught = GENERATION_GUARDS[mutation.guard](result);
+      assert.ok(caught.length > 0, `${mutation.name}: expected guard "${mutation.guard}" to fire`);
+    });
+  });
+}
+
+test('every generation guard is pinned by at least one mutation', () => {
+  const pinned = new Set(GENERATION_MUTATIONS.map((mutation) => mutation.guard));
+  for (const guard of Object.keys(GENERATION_GUARDS)) {
+    assert.ok(pinned.has(guard), `generation guard "${guard}" is not pinned by any mutation`);
+  }
 });
