@@ -2,7 +2,7 @@
   "teamId": "helen-pigott-f4d9bade",
   "principalName": "Helen Pigott",
   "displayName": "Rumtruffle",
-  "totalPoints": 175,
+  "totalPoints": 165,
   "completedRaces": 11,
   "latestRacePoints": 20,
   "races": [
@@ -604,13 +604,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 6,
-      "driverSubtotal": -38,
+      "baseSubtotal": -4,
+      "driverSubtotal": -48,
       "constructorSubtotal": 44,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 6,
+      "totalPoints": -4,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -624,7 +624,7 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -9,
+          "totalPoints": -19,
           "components": [
             {
               "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
@@ -641,6 +641,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -804,7 +808,7 @@
           ]
         }
       ],
-      "runningTotal": 17
+      "runningTotal": 7
     },
     {
       "raceId": "canada",
@@ -1010,7 +1014,7 @@
           ]
         }
       ],
-      "runningTotal": 45
+      "runningTotal": 35
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1220,7 @@
           ]
         }
       ],
-      "runningTotal": 54
+      "runningTotal": 44
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1410,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 86
+      "runningTotal": 76
     },
     {
       "raceId": "austria",
@@ -1604,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 105
+      "runningTotal": 95
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 127
+      "runningTotal": 117
     },
     {
       "raceId": "belgium",
@@ -2012,7 +2016,7 @@
           ]
         }
       ],
-      "runningTotal": 155
+      "runningTotal": 145
     },
     {
       "raceId": "hungary",
@@ -2210,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 175
+      "runningTotal": 165
     }
   ]
 }

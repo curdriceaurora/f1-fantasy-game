@@ -91,7 +91,13 @@
       "dns": false,
       "dsq": false,
       "fastestLap": false,
-      "gridPenaltyPlaces": 0,
+      "gridPenaltyPlaces": 20,
+      "pitLaneGridPenalty": {
+        "status": "resolved",
+        "places": 20,
+        "method": "power-unit-elements",
+        "sourceUrl": "https://www.fia.com/system/files/decision-document/2026_miami_grand_prix_-_infringement_-_car_6_-_pu_elements_changed_under_parc_ferme.pdf"
+      },
       "timePenaltySeconds": 0,
       "fineEuros": 0,
       "finePoints": 0
@@ -565,6 +571,6 @@
       "sprint": 11275,
       "race": 11280
     },
-    "generatedAt": "2026-08-12T01:43:49.303Z"
+    "generatedAt": "2026-08-14T07:23:19.981Z"
   }
 }

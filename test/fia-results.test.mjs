@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseFinalClassification, parseStartingGrid, parseGridPenalties, fetchRaceResults } from '../lib/fia-results.js';
+import {
+  fetchRaceResults, parseFinalClassification, parseGridPenalties,
+  parsePitLaneGridPenaltyDecision, parseStartingGrid, resolvePitLaneGridPenalties,
+} from '../lib/fia-results.js';
 
 test('fetchRaceResults handles missing or failing PDF downloads gracefully', async () => {
   const race = { date: '2026-03-08', id: 'australia', meetingName: 'Australian Grand Prix', isSprintWeekend: false };
@@ -87,10 +90,11 @@ McLaren Mastercard F1 Team
 1:12.765
 `;
 
-  const grid = parseStartingGrid(text);
+  const { positions: grid, pitLaneStarters } = parseStartingGrid(text);
   assert.equal(grid.get('kimi-antonelli'), 1);
   assert.equal(grid.get('max-verstappen'), 2);
   assert.equal(grid.get('lando-norris'), 8);
+  assert.equal(pitLaneStarters.size, 0);
 });
 
 test('parseStartingGrid assigns Barcelona pit-lane starter Alonso to P22', () => {
@@ -111,10 +115,11 @@ Aston Martin Aramco F1 Team
 document no. 52
 `;
 
-  const grid = parseStartingGrid(text);
+  const { positions: grid, pitLaneStarters } = parseStartingGrid(text);
   assert.equal(grid.get('sergio-perez'), 19);
   assert.equal(grid.get('lance-stroll'), 21);
   assert.equal(grid.get('fernando-alonso'), 22);
+  assert.equal(pitLaneStarters.get('fernando-alonso'), 14);
 });
 
 test('parseStartingGrid handles a pit-lane car number split from the driver name', () => {
@@ -130,9 +135,10 @@ NOTES
 Car 6 - Permitted to start
 `;
 
-  const grid = parseStartingGrid(text);
+  const { positions: grid, pitLaneStarters } = parseStartingGrid(text);
   assert.equal(grid.get('gabriel-bortoleto'), 21);
   assert.equal(grid.get('isack-hadjar'), 22);
+  assert.equal(pitLaneStarters.get('isack-hadjar'), 6);
 });
 
 test('parseStartingGrid gives multiple pit-lane starters ordered virtual positions', () => {
@@ -152,9 +158,10 @@ Oracle Red Bull Racing
 * PENALTIES
 `;
 
-  const grid = parseStartingGrid(text);
+  const { positions: grid, pitLaneStarters } = parseStartingGrid(text);
   assert.equal(grid.get('fernando-alonso'), 21);
   assert.equal(grid.get('isack-hadjar'), 22);
+  assert.deepEqual([...pitLaneStarters], [['fernando-alonso', 14], ['isack-hadjar', 6]]);
 });
 
 test('parseGridPenalties reads a single numbered grid penalty', () => {
@@ -191,8 +198,8 @@ test('parseGridPenalties keeps the raw place count above the scoring cap', () =>
 });
 
 test('parseGridPenalties ignores a pit-lane start, which carries no place count', () => {
-  // Inventing a number here would silently encode a rule Martin has not given us
-  // (see #84 Q1). A pit-lane starter must come back with no grid penalty at all.
+  // This document carries no count. Its first-class starter marker is resolved
+  // against the steward decision instead of inventing a value in this parser.
   const penalties = parseGridPenalties([
     '* PENALTIES',
     "Car 6 - Required to start from the pit lane - Car modified whilst under Parc Fermé conditions - Stewards' document no. 75",
@@ -211,6 +218,104 @@ test('parseGridPenalties sums two penalties applied to the same car', () => {
 
 test('parseGridPenalties reads nothing from a grid with no penalties section', () => {
   assert.equal(parseGridPenalties('1\n63George RUSSELL Mercedes 1:29.000').size, 0);
+});
+
+test('parsePitLaneGridPenaltyDecision prefers a stated accumulation', () => {
+  const decision = [
+    'Decision',
+    'Required\u00a0to\u00a0start\u00a0the\u00a0Race\u00a0from\u00a0the\u00a0pit\u00a0lane.',
+    'Fact',
+    'The following Power Unit elements have been used:',
+    '4th Energy Store (ES)',
+    '4th Control Electronics Unit (PU-CE)',
+    '4th MGU-K',
+    'Infringement',
+    'Reason',
+    'there is an accumulation of 30 places.',
+  ].join('\n');
+
+  assert.deepEqual(parsePitLaneGridPenaltyDecision(decision), {
+    status: 'resolved', places: 30, method: 'stated-accumulation',
+  });
+});
+
+test('parsePitLaneGridPenaltyDecision derives ten places per listed extra power-unit element', () => {
+  const decision = [
+    'Fact',
+    'The following Power Unit elements have been used:',
+    '4th Energy Store (ES)',
+    '4th Control Electronics Unit (PU-CE)',
+    'Power Unit elements were replaced under parc ferme.',
+    'Infringement',
+    'Decision',
+    'Required to start the Race from the pit lane.',
+  ].join('\n');
+
+  assert.deepEqual(parsePitLaneGridPenaltyDecision(decision), {
+    status: 'resolved', places: 20, method: 'power-unit-elements',
+  });
+});
+
+test('parsePitLaneGridPenaltyDecision preserves setup-change starts as unresolved', () => {
+  const decision = [
+    'Fact',
+    'The setup of the suspension has been changed while under Parc Ferme.',
+    'Infringement',
+    'Decision',
+    'Required to start the Race from the pit lane.',
+  ].join('\n');
+
+  assert.deepEqual(parsePitLaneGridPenaltyDecision(decision), {
+    status: 'unresolved', reason: 'no-place-count-in-race-decision',
+  });
+  assert.equal(parsePitLaneGridPenaltyDecision('Required to start the Sprint from the pit lane.'), null);
+});
+
+test('resolvePitLaneGridPenalties returns one resolution for every starter and ignores Sprint decisions', async () => {
+  const starters = new Map([['alex-albon', 23], ['isack-hadjar', 6]]);
+  assert.ok(starters.size > 0, 'fixture must exercise at least one pit-lane starter');
+  const urls = [
+    'https://fia.test/race_-_infringement_-_car_23_sprint.pdf',
+    'https://fia.test/race_-_infringement_-_car_23_race.pdf',
+    'https://fia.test/race_-_infringement_-_car_6_race.pdf',
+  ];
+  const textByUrl = {
+    [urls[0]]: 'Decision\nRequired to start the Sprint from the pit lane.',
+    [urls[1]]: 'Fact\nSuspension setup changed\nInfringement\nDecision\nRequired to start the Race from the pit lane.',
+    [urls[2]]: 'Fact\nThe following Power Unit elements have been used:\n4th Energy Store\n4th Control Electronics Unit\nInfringement\nDecision\nRequired to start the Race from the pit lane.',
+  };
+  const resolutions = await resolvePitLaneGridPenalties({}, starters, {
+    fetchFiaDecisionUrlsImpl: async () => urls,
+    fetchPdfTextImpl: async (url) => textByUrl[url],
+  });
+
+  assert.equal(Object.keys(resolutions).length, starters.size);
+  assert.equal(resolutions['alex-albon'].status, 'unresolved');
+  assert.equal(resolutions['isack-hadjar'].places, 20);
+});
+
+test('fetchRaceResults joins a pit-lane starter to its decision-derived place count', async () => {
+  const gridUrl = 'final_starting_grid';
+  const decisionUrl = 'https://fia.test/race_-_infringement_-_car_6_race.pdf';
+  const results = await fetchRaceResults(
+    { date: '2026-05-03', meetingName: 'Miami Grand Prix', isSprintWeekend: false },
+    {
+      fetchFiaDecisionUrlsImpl: async () => [decisionUrl],
+      fetchPdfTextImpl: async (url) => {
+        if (url.includes(gridUrl)) {
+          return '21\n5Gabriel BORTOLETO\nDRIVERS REQUIRED TO START FROM THE PIT LANE\n6\nIsack HADJAR';
+        }
+        if (url === decisionUrl) {
+          return 'Fact\nThe following Power Unit elements have been used:\n4th Energy Store\n4th Control Electronics Unit\nInfringement\nDecision\nRequired to start the Race from the pit lane.';
+        }
+        return '15Gabriel BORTOLETO';
+      },
+    },
+  );
+
+  assert.equal(results.gridPositions['isack-hadjar'], 22);
+  assert.equal(results.gridPenaltyPlaces['isack-hadjar'], 20);
+  assert.equal(results.pitLaneGridPenalties['isack-hadjar'].status, 'resolved');
 });
 
 test('parseFinalClassification reads a time penalty behind a lead-in clause', () => {
@@ -301,9 +406,10 @@ test('parseStartingGrid handles pit-lane starters in split-line number and name 
     'Fernando ALONSO Aston Martin',
   ].join('\n');
 
-  const grid = parseStartingGrid(text);
+  const { positions: grid, pitLaneStarters } = parseStartingGrid(text);
   assert.equal(grid.get('george-russell'), 1);
   assert.equal(grid.get('fernando-alonso'), 2);
+  assert.equal(pitLaneStarters.get('fernando-alonso'), 14);
 });
 
 test('parseFinalClassification parses penalty multiplier and parseStartingGrid ignores out of bounds positions', async () => {
@@ -320,7 +426,7 @@ test('parseFinalClassification parses penalty multiplier and parseStartingGrid i
   const invalidGrid = parseStartingGrid([
     '50',
     '63George RUSSELL Mercedes',
-  ].join('\n'));
+  ].join('\n')).positions;
   assert.equal(invalidGrid.has('george-russell'), false);
 
   // fetchRaceResults with missing grid text
@@ -333,5 +439,3 @@ test('parseFinalClassification parses penalty multiplier and parseStartingGrid i
   });
   assert.equal(res.gridPenaltyPlaces, null);
 });
-
-

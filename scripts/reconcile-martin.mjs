@@ -85,6 +85,57 @@ export function scoredByRace(calendar = loadCalendar(), read = readJson) {
   return races;
 }
 
+// Pit-lane decisions carry a third state that the numeric ledger cannot express:
+// the driver was penalised, but no place count is derivable. Resolved markers
+// must agree with the numeric scoring input. Unresolved markers are permitted
+// only when the exact zero-vs-Martin divergence remains explicitly accepted.
+export function auditPitLaneGridPenalties(
+  accepted,
+  calendar = loadCalendar(),
+  read = readJson,
+) {
+  const problems = [];
+  for (const race of calendar) {
+    const normalized = read(normalizedRacePath(race.id), null);
+    if (!normalized) continue;
+    for (const [driverId, driver] of Object.entries(normalized.drivers)) {
+      const marker = driver.pitLaneGridPenalty;
+      if (!marker) continue;
+      const label = `${race.id} driver ${driverId}`;
+      if (!marker.sourceUrl) {
+        problems.push(`${label}: pit-lane grid-penalty marker has no steward-decision source`);
+      }
+      if (marker.status === 'resolved') {
+        if (!Number.isInteger(marker.places) || marker.places <= 0) {
+          problems.push(`${label}: resolved pit-lane grid penalty has invalid place count ${marker.places}`);
+        } else if (driver.gridPenaltyPlaces !== marker.places) {
+          problems.push(`${label}: resolved pit-lane grid penalty is ${marker.places} places but scoring uses ${driver.gridPenaltyPlaces}`);
+        }
+        continue;
+      }
+      if (marker.status !== 'unresolved') {
+        problems.push(`${label}: unknown pit-lane grid-penalty status "${marker.status}"`);
+        continue;
+      }
+      if ('places' in marker || driver.gridPenaltyPlaces !== 0) {
+        problems.push(`${label}: unresolved pit-lane grid penalty must not carry a numeric score`);
+        continue;
+      }
+      const acknowledged = (accepted?.divergences || []).some((entry) => (
+        entry.race === race.id
+          && entry.kind === 'driver'
+          && entry.id === driverId
+          && entry.field === 'gridPenalty'
+          && entry.ours === scoreGridPenalty(driver.gridPenaltyPlaces)
+      ));
+      if (!acknowledged) {
+        problems.push(`${label}: unresolved pit-lane grid penalty is not acknowledged in ${DIVERGENCE_PATH}`);
+      }
+    }
+  }
+  return problems;
+}
+
 // readWorkbookImpl is injectable so a source with absent timestamp metadata can
 // be exercised: ExcelJS stamps a modified date on write, so such a workbook
 // cannot be produced by round-tripping one through a file.
@@ -139,7 +190,7 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
   return { ledger: { provenance, races }, findings, regressions, workbooksRead: files.length };
 }
 
-export function runCheck({ ledger, accepted, scored }) {
+export function runCheck({ ledger, accepted, scored, pitLanePenaltyFindings = [] }) {
   if (!ledger) {
     throw new Error(`${LEDGER_PATH} is missing. Run \`${GENERATE_COMMAND}\` against Martin's workbooks.`);
   }
@@ -162,6 +213,7 @@ export function runCheck({ ledger, accepted, scored }) {
     // The scored side too: it is the comparison projection, so an entity or field
     // appearing there without a counterpart is a hole, not a curiosity.
     scoredCoverage: validateRaceCoverage(scored, (raceId) => `${raceId} (scored)`),
+    pitLaneResolution: pitLanePenaltyFindings,
   };
 
   const result = compareToLedger(scored, ledger, accepted);
@@ -169,6 +221,7 @@ export function runCheck({ ledger, accepted, scored }) {
     ...findings.provenance.map((problem) => `provenance: ${problem}`),
     ...findings.ledgerCoverage,
     ...findings.scoredCoverage,
+    ...findings.pitLaneResolution.map((problem) => `pit-lane resolution: ${problem}`),
   ].map((problem) => `  ${problem}`);
 
   for (const row of result.unexplained) {
@@ -207,6 +260,7 @@ export const GUARDS = Object.freeze({
   provenance: (result) => result.findings.provenance,
   ledgerCoverage: (result) => result.findings.ledgerCoverage,
   scoredCoverage: (result) => result.findings.scoredCoverage,
+  pitLaneResolution: (result) => result.findings.pitLaneResolution,
   unexplained: (result) => result.unexplained,
   resolved: (result) => result.resolved,
   missingRaces: (result) => result.missingRaces,
@@ -246,10 +300,12 @@ export async function runReconcileMartinCli(argv = []) {
     return;
   }
 
+  const accepted = readJson(DIVERGENCE_PATH, { divergences: [] });
   const result = runCheck({
     ledger: previous,
-    accepted: readJson(DIVERGENCE_PATH, { divergences: [] }),
+    accepted,
     scored: scoredByRace(),
+    pitLanePenaltyFindings: auditPitLaneGridPenalties(accepted),
   });
   if (result.ok) {
     const races = Object.keys(previous.races).length;
@@ -267,5 +323,4 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     process.exit(1);
   });
 }
-
 

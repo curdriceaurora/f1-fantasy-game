@@ -818,11 +818,11 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -6,
-      "driverSubtotal": -9,
+      "baseSubtotal": -16,
+      "driverSubtotal": -19,
       "constructorSubtotal": 3,
       "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 6,
+      "homeCircuitBonusPoints": 16,
       "investmentBonusPoints": 0,
       "totalPoints": 0,
       "drivers": [
@@ -874,7 +874,7 @@
           "improvementGrid": 22,
           "racePosition": 15,
           "classified": true,
-          "totalPoints": 14,
+          "totalPoints": 4,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -891,6 +891,10 @@
             {
               "label": "Position change",
               "points": 14
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {

@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runCheck, scoredByRace, parseArgs, LEDGER_PATH } from '../scripts/reconcile-martin.mjs';
+import {
+  auditPitLaneGridPenalties, runCheck, scoredByRace, parseArgs, LEDGER_PATH,
+} from '../scripts/reconcile-martin.mjs';
 
 // A ledger must be complete to be trusted, so fixtures are built to the real
 // shape — 22 seats and 11 constructors with every compared field — and the rows
@@ -84,6 +86,51 @@ test('runCheck tells you to delete an accepted divergence once it stops applying
 
 test('runCheck fails loudly when the ledger has never been generated', () => {
   assert.throws(() => runCheck({ ledger: null, accepted: {}, scored: {} }), new RegExp(LEDGER_PATH));
+});
+
+test('unresolved pit-lane penalties require an exact accepted divergence', () => {
+  const calendar = [{ id: 'china' }];
+  const normalized = {
+    drivers: {
+      'alex-albon': {
+        gridPenaltyPlaces: 0,
+        pitLaneGridPenalty: {
+          status: 'unresolved',
+          reason: 'no-place-count-in-race-decision',
+          sourceUrl: 'https://fia.test/china-decision.pdf',
+        },
+      },
+    },
+  };
+  const read = () => normalized;
+  const accepted = {
+    divergences: [{
+      race: 'china', kind: 'driver', id: 'alex-albon', field: 'gridPenalty', ours: 0, martin: -5,
+    }],
+  };
+
+  assert.deepEqual(auditPitLaneGridPenalties(accepted, calendar, read), []);
+  assert.match(
+    auditPitLaneGridPenalties({ divergences: [] }, calendar, read).join('\n'),
+    /unresolved.*not acknowledged/,
+  );
+});
+
+test('an unreadable pit-lane decision cannot be hidden by an accepted divergence', () => {
+  const problems = auditPitLaneGridPenalties(
+    { divergences: [{ race: 'china', kind: 'driver', id: 'alex-albon', field: 'gridPenalty', ours: 0, martin: -5 }] },
+    [{ id: 'china' }],
+    () => ({
+      drivers: {
+        'alex-albon': {
+          gridPenaltyPlaces: 0,
+          pitLaneGridPenalty: { status: 'unresolved', reason: 'race-decision-not-found' },
+        },
+      },
+    }),
+  );
+
+  assert.match(problems.join('\n'), /has no steward-decision source/);
 });
 
 test('scoredByRace scores every seat in the normalized race, selected or not', () => {
@@ -326,6 +373,5 @@ test('runReconcileMartinCli executes check against committed ledger without erro
   const { runReconcileMartinCli } = await import('../scripts/reconcile-martin.mjs');
   await assert.doesNotReject(() => runReconcileMartinCli([]));
 });
-
 
 
