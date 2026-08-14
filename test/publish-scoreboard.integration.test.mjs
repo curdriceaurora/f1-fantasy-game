@@ -115,26 +115,52 @@ test('rebuildScoreboard removes orphaned scored team files and ignores non-json 
 test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => {
   await withFixtureSeason(2023, async ({ seasonDir }) => {
     const entriesPath = join(seasonDir, 'config', 'entries.json');
-    // Team 1 gets home circuit bonus on race 1; Team 2 gets home circuit bonus on race 2
-    // If total points are equal, team with higher points in race 2 (latestRacePoints) ranks first
+    const calendarPath = join(seasonDir, 'config', '2026-calendar.json');
+
+    // Create 2 races where both races have identical scores
+    writeFileSync(calendarPath, JSON.stringify([
+      { id: 'race-1', name: 'Race 1', date: '2026-03-08', round: 1 },
+      { id: 'race-2', name: 'Race 2', date: '2026-03-15', round: 2 },
+    ]));
+
+    const normRace = (id, date, round) => ({
+      raceId: id,
+      raceName: id,
+      date,
+      round,
+      drivers: {
+        'max-verstappen': { gridStart: 1, racePosition: 1, gridPenaltyPlaces: 0, timePenaltySeconds: 0, fineEuros: 0 },
+      },
+      teams: {
+        'red-bull': { driverIds: ['max-verstappen'], fineEuros: 0 },
+      },
+    });
+    writeFileSync(join(seasonDir, 'normalized', 'race-1.json'), JSON.stringify(normRace('race-1', '2026-03-08', 1)));
+    writeFileSync(join(seasonDir, 'normalized', 'race-2.json'), JSON.stringify(normRace('race-2', '2026-03-15', 2)));
+
+    // Both teams pick Verstappen & Red Bull.
+    // Team A (Alpha Racing) has homeCircuitId: "race-1" -> Race 1 gets 2X, Race 2 gets X (latest = X).
+    // Team B (Beta Racing) has homeCircuitId: "race-2" -> Race 1 gets X, Race 2 gets 2X (latest = 2X).
+    // Both have total = 3X (135 pts).
+    // Beta Racing MUST rank 1st on latestRacePoints (90 > 45) despite Alpha being alphabetical 1st.
     const entries = [
       {
-        teamId: 'team-early-bonus',
+        teamId: 'team-a',
         principalName: 'Alice',
-        displayName: 'Early Bonus Team',
-        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
-        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
-        homeCircuitId: 'bahrain',
+        displayName: 'Alpha Racing',
+        selectedDriverIds: ['max-verstappen'],
+        selectedConstructorIds: ['red-bull'],
+        homeCircuitId: 'race-1',
         investmentBonusPerRace: 0,
         predictions: {},
       },
       {
-        teamId: 'team-late-bonus',
+        teamId: 'team-b',
         principalName: 'Bob',
-        displayName: 'Late Bonus Team',
-        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
-        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
-        homeCircuitId: 'saudi-arabia',
+        displayName: 'Beta Racing',
+        selectedDriverIds: ['max-verstappen'],
+        selectedConstructorIds: ['red-bull'],
+        homeCircuitId: 'race-2',
         investmentBonusPerRace: 0,
         predictions: {},
       },
@@ -143,8 +169,15 @@ test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => 
 
     const result = rebuildScoreboard();
     assert.equal(result.standings.length, 2);
+    assert.equal(result.standings[0].totalPoints, result.standings[1].totalPoints);
+    assert.ok(result.standings[0].latestRacePoints > result.standings[1].latestRacePoints);
+    assert.equal(result.standings[0].teamId, 'team-b');
+    assert.equal(result.standings[0].displayName, 'Beta Racing');
+    assert.equal(result.standings[1].teamId, 'team-a');
+    assert.equal(result.standings[1].displayName, 'Alpha Racing');
   });
 });
+
 
 
 

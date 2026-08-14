@@ -169,5 +169,25 @@ test('switchMode function validates input and handles missing template files', a
     errorLog: () => {},
   });
   assert.equal(missingSeason.ok, false);
+
+  const logs = [];
+  const { mkdtempSync, rmSync } = await import('fs');
+  const { tmpdir } = await import('os');
+  const tempDir = mkdtempSync(join(tmpdir(), 'f1-switch-mode-test-'));
+  const tempVercelPath = join(tempDir, 'vercel.json');
+
+  try {
+    const validPreseason = switchMode('preseason', {
+      vercelJsonPath: tempVercelPath,
+      log: (msg) => logs.push(msg),
+      errorLog: () => {},
+    });
+    assert.equal(validPreseason.ok, true);
+    assert.ok(logs.some((msg) => msg.includes('Set SITE_MODE environment variable')));
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 });
+
+
 

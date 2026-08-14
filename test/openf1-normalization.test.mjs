@@ -419,12 +419,19 @@ test('normalizeRaceWeekend throws when driver is missing official grid start or 
 
 test('normalizeRaceWeekend throws when team cannot be mapped or lap data is empty', () => {
   const fetchedUnknownTeam = baseFetchedRace();
-  // Provide driver whose driver.team_name and canonical team are unresolvable
   fetchedUnknownTeam.drivers = [
     { driver_number: 63, first_name: 'George', last_name: 'Russell', full_name: 'George Russell', team_name: 'Totally Unknown Team' },
   ];
-  // Since George Russell's canonical driver object has team: 'Mercedes', resolveTeam('Mercedes') works.
-  // To trigger line 353, we can mock canonicalizeTeamName and resolveTeam or use unmapped driver setup if possible.
+
+  assert.throws(
+    () => normalizeRaceWeekend(
+      calendarRace,
+      fetchedUnknownTeam,
+      { drivers: {}, teams: {}, documents: [] },
+      { canonicalizeTeamName: () => null, resolveTeam: () => null },
+    ),
+    /Unable to map OpenF1 team "Totally Unknown Team" to canonical constants/,
+  );
 
   const fetchedEmptyLaps = baseFetchedRace();
   fetchedEmptyLaps.laps = [];
@@ -433,5 +440,6 @@ test('normalizeRaceWeekend throws when team cannot be mapped or lap data is empt
     /OpenF1 lap data is missing; cannot determine fastest lap/,
   );
 });
+
 
 

@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+// Script to switch between preseason and season modes
+// Usage: npm run switch-mode -- preseason|season
+
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
@@ -36,6 +40,16 @@ export function switchMode(mode, {
 
     writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
     log('✅ Switched to preseason mode');
+    log('   - Root (/) now redirects to /index.html (entry builder)');
+    log('   - Dashboard and team pages redirect to /index.html');
+    log('   - Calculator and entry builder are accessible');
+    log('\n📝 Next steps:');
+    log('   1. Set SITE_MODE environment variable in Vercel:');
+    log('      vercel env add SITE_MODE');
+    log('      (enter "preseason" when prompted)');
+    log('   2. Test locally: SITE_MODE=preseason npm run dev');
+    log('   3. Commit: git add vercel.json && git commit -m "Switch to preseason mode"');
+    log('   4. Deploy: git push');
     return { ok: true, mode: 'preseason' };
   }
 
@@ -52,6 +66,16 @@ export function switchMode(mode, {
 
   writeFileSync(vercelJsonPath, JSON.stringify(mergedConfig, null, 2) + '\n');
   log('✅ Switched to season mode');
+  log('   - Root (/) now redirects to /dashboard.html (standings)');
+  log('   - Entry builder pages redirect to dashboard');
+  log('   - Team details and race scoring are accessible');
+  log('\n📝 Next steps:');
+  log('   1. Set SITE_MODE environment variable in Vercel:');
+  log('      vercel env add SITE_MODE');
+  log('      (enter "season" when prompted, or leave unset for default)');
+  log('   2. Test locally: npm run dev');
+  log('   3. Commit: git add vercel.json && git commit -m "Switch to season mode"');
+  log('   4. Deploy: git push');
   return { ok: true, mode: 'season' };
 }
 
@@ -61,4 +85,3 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     process.exit(1);
   }
 }
-
