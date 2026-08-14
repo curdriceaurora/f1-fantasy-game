@@ -148,3 +148,15 @@ test('dry run reports the pending races without writing anything', async () => {
     assert.deepEqual(readJson(join(seasonDir, 'config', 'fine-documents.json')), {});
   });
 });
+
+test('reconcileSeason handles season before any eligible races', async () => {
+  await withTempSeason(async () => {
+    const earlyDate = new Date('2026-01-01T00:00:00Z');
+    const result = await reconcileSeason({
+      now: earlyDate,
+      scoreRace: async () => assert.fail('should not score'),
+    });
+    assert.deepEqual(result, { scored: [], unchanged: [], failed: [] });
+  });
+});
+

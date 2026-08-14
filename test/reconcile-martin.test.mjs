@@ -276,3 +276,37 @@ test('generateLedger refuses to build a ledger whose own provenance is malformed
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('runCheck reports missing races, unledgered races, and unmatched entities', () => {
+  const customLedger = {
+    provenance: {
+      races: {
+        monaco: { workbook: 'master.xlsx', sha256: 'a'.repeat(64), workbookModified: '2026-08-03T16:49:11.000Z', sheet: 'Race 8' },
+        china: { workbook: 'master.xlsx', sha256: 'a'.repeat(64), workbookModified: '2026-08-03T16:49:11.000Z', sheet: 'Race 2' },
+      },
+    },
+    races: {
+      monaco: raceFixture(),
+      china: raceFixture(),
+    },
+  };
+  // Scored has monaco and australia (china is missing from scored; australia is unledgered)
+  const scored = {
+    monaco: raceFixture(),
+    australia: raceFixture(),
+  };
+
+  const result = runCheck({
+    ledger: customLedger,
+    accepted: { divergences: [] },
+    scored,
+  });
+
+  assert.equal(result.ok, false);
+  assert.deepEqual(result.missingRaces, ['china']);
+  assert.deepEqual(result.unledgeredRaces, ['australia']);
+  assert.ok(result.lines.some((line) => line.includes('china: in the ledger but not scored')));
+  assert.ok(result.lines.some((line) => line.includes('australia: scored but absent from the ledger')));
+});
+
+

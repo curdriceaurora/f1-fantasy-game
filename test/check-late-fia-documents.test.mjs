@@ -124,9 +124,13 @@ test('notification report names the race, links documents, and states no rescore
   const report = buildLateDocumentReport([{
     race: { name: 'Australia', round: 1 },
     documents: ['https://fia.test/appeal_decision.pdf'],
-  }]);
+  }], [{ raceName: 'China', reason: 'FIA 403' }]);
 
   assert.match(report, /Australia \(Round 1\)/);
   assert.match(report, /\[appeal decision\.pdf\]\(https:\/\/fia\.test\/appeal_decision\.pdf\)/);
   assert.match(report, /no race was rescored/i);
+  assert.match(report, /## Scan failures/);
+  assert.match(report, /\*\*China:\*\* FIA 403/);
 });
+
+

@@ -229,3 +229,29 @@ test('validateProvenance rejects a sheet that is not the one that race lives on'
   ledger.provenance.races.monaco.sheet = 'Race 9';
   assert.match(validateProvenance(ledger).join(' '), /sheet "Race 9".*expected "Race 8"/);
 });
+
+test('compareToLedger marks unexplained when scored race omits a driver present in ledger', () => {
+  const testLedger = {
+    races: {
+      monaco: {
+        drivers: {
+          'alex-albon': { total: 7, grid: 10, finish: 10, fineEuros: 0, gridPenalty: 0, timePenalty: 0, sprintPoints: 0, fastestLapPoints: 0 },
+        },
+        teams: {},
+      },
+    },
+  };
+  const scored = {
+    monaco: {
+      drivers: {}, // alex-albon missing
+      teams: {},
+    },
+  };
+  const result = compareToLedger(scored, testLedger, { divergences: [] });
+  assert.ok(result.unexplained.length > 0);
+  assert.equal(result.unexplained[0].id, 'alex-albon');
+  assert.equal(result.unexplained[0].ours, null);
+  assert.equal(result.unexplained[0].martin, 7);
+});
+
+

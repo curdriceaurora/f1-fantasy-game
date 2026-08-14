@@ -12,8 +12,11 @@ export default [
       '**/* 2.*',
       'test/fixtures 2/**',
       'test/helpers 2/**',
+      '.claude/**',
+      '.agents/**',
     ],
   },
+
   js.configs.recommended,
   {
     files: ['public/**/*.js'],

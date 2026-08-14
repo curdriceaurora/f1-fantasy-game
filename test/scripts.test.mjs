@@ -224,3 +224,31 @@ test('auditTimePenalties executes cleanly on season fixtures', () => {
   assert.ok(Array.isArray(audit.failures));
   assert.strictEqual(typeof audit.report, 'string');
 });
+
+test('buildTimePenaltyAuditReport formats failures cleanly', () => {
+  const report = buildTimePenaltyAuditReport([], [
+    { raceName: 'Australian Grand Prix', reason: 'Missing telemetry' },
+  ]);
+  assert.ok(report.includes('## Audit failures'));
+  assert.ok(report.includes('- **Australian Grand Prix:** Missing telemetry'));
+});
+
+test('generateTeamName produces valid non-empty string', async () => {
+  const { generateTeamName } = await import('../public/constants.js');
+  const name = generateTeamName();
+  assert.equal(typeof name, 'string');
+  assert.ok(name.length > 0);
+});
+
+test('resolveApiRoute handles nested bracket params and resolution', async () => {
+  const { resolveApiRoute } = await import('../server.js');
+  const matched = resolveApiRoute('/api/dashboard/teams/alpha-team');
+  assert.ok(matched);
+  assert.equal(matched.params.teamId, 'alpha-team');
+  assert.ok(matched.filePath.endsWith('[teamId].js'));
+
+  const unmatched = resolveApiRoute('/api/non-existent/deep/route');
+  assert.equal(unmatched, null);
+});
+
+

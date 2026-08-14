@@ -366,3 +366,54 @@ test('a parsed FIA starting grid with no penalties overrides the OpenF1 fallback
   const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, { drivers: {}, teams: {}, documents: [] });
   assert.equal(normalized.drivers['george-russell'].gridPenaltyPlaces, 0);
 });
+
+test('normalizeRaceWeekend throws when race or qualifying results are missing', () => {
+  const fetchedWithoutRace = baseFetchedRace();
+  fetchedWithoutRace.raceResultRows = [];
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedWithoutRace, { drivers: {}, teams: {}, documents: [] }),
+    /OpenF1 race results are missing for australia/,
+  );
+
+  const fetchedWithoutQuali = baseFetchedRace();
+  fetchedWithoutQuali.qualifyingResultRows = [];
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedWithoutQuali, { drivers: {}, teams: {}, documents: [] }),
+    /OpenF1 qualifying results are missing for australia/,
+  );
+});
+
+test('normalizeRaceWeekend throws when driver name cannot be mapped to canonical constants', () => {
+  const fetchedUnknownDriver = baseFetchedRace();
+  fetchedUnknownDriver.drivers = [
+    { driver_number: 99, full_name: 'Unknown Driver', team_name: 'Mercedes' },
+  ];
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedUnknownDriver, { drivers: {}, teams: {}, documents: [] }),
+    /Unable to map OpenF1 driver "Unknown Driver" to canonical constants/,
+  );
+});
+
+
+test('normalizeRaceWeekend throws when driver is missing official grid start or race classification', () => {
+  const fetchedMissingGrid = baseFetchedRace();
+  // Driver 12 (Antonelli) has no grid start in position feed and not in fiaGrid
+  fetchedMissingGrid.positionFeed = [
+    { driver_number: 63, position: 1, date: '2026-03-08T04:00:00Z' },
+  ];
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedMissingGrid, { drivers: {}, teams: {}, documents: [] }),
+    /Missing official grid start for driver number 12/,
+  );
+
+  const fetchedMissingRace = baseFetchedRace();
+  fetchedMissingRace.raceResultRows = [
+    { driver_number: 63, position: 1, dnf: false, dns: false, dsq: false },
+    // Antonelli (12) missing from raceResultRows
+  ];
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedMissingRace, { drivers: {}, teams: {}, documents: [] }),
+    /Missing race classification for driver number 12/,
+  );
+});
+

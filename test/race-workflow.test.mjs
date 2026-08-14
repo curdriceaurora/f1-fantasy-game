@@ -100,6 +100,14 @@ test('a rescheduled race is scored normally against its new date', () => {
   assert.equal(afterNewDate.state, RACE_WORKFLOW_STATES.AWAITING_FINE_REVIEW);
 });
 
+test('mondayPublicationDate throws for invalid race date', () => {
+  assert.throws(
+    () => mondayPublicationDate('invalid-date'),
+    /Invalid race date "invalid-date"/,
+  );
+});
+
+
 test('races default to scheduled when no status is recorded', () => {
   assert.equal(raceStatus({ id: 'monaco' }), 'scheduled');
   assert.equal(isRaceScoreable({ id: 'monaco' }), true);

@@ -140,3 +140,29 @@ test('season store handles absent calendars and rejects malformed fine reviews',
     assert.throws(() => loadFineReviews(), /documents.*array/);
   });
 });
+
+test('loadCalendar handles identical date and round deterministically', () => {
+  withTempSeason(({ configDir }) => {
+    writeFileSync(join(configDir, '2026-calendar.json'), JSON.stringify([
+      { id: 'race-1', name: 'Race 1', date: '2026-05-01', round: 1 },
+      { id: 'race-2', name: 'Race 2', date: '2026-05-01', round: 1 },
+    ]));
+    const calendar = loadCalendar();
+    assert.equal(calendar.length, 2);
+  });
+});
+
+test('listNormalizedRaceIds filters out non-json files in the normalized directory', () => {
+  withTempSeason(({ configDir }) => {
+    const normalizedDir = join(configDir, '..', 'normalized');
+    mkdirSync(normalizedDir, { recursive: true });
+    writeFileSync(join(normalizedDir, 'australia.json'), '{}');
+    writeFileSync(join(normalizedDir, '.DS_Store'), 'junk');
+    writeFileSync(join(normalizedDir, 'notes.txt'), 'notes');
+
+    const raceIds = listNormalizedRaceIds();
+    assert.deepEqual(raceIds, ['australia']);
+  });
+});
+
+

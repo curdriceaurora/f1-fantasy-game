@@ -120,3 +120,12 @@ test('loadRaceDetail returns data for existing scored race if present', () => {
     }
   }
 });
+
+test('buildWeekOverWeekDelta returns empty Map when teams have only 1 completed race', () => {
+  const entries = [{ teamId: 'team-1', displayName: 'Team 1' }];
+  const standingsRows = [{ teamId: 'team-1', rank: 1 }];
+  // If stored.completedRaces <= 1, it filters out and returns empty Map
+  const deltaMap = buildWeekOverWeekDelta(entries, standingsRows);
+  assert.equal(deltaMap.size, 0);
+});
+

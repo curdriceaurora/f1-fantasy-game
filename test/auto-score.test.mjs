@@ -117,3 +117,28 @@ test('a successful discovery records the reviewed documents and scores the race'
     );
   });
 });
+
+test('autoScore logs and exits cleanly when no races are eligible yet', async () => {
+  await withTempSeason(async () => {
+    const earlyDate = new Date('2026-01-01T00:00:00Z');
+    let scored = false;
+    await autoScore({
+      now: earlyDate,
+      scoreRace: async () => { scored = true; },
+    });
+    assert.equal(scored, false);
+  });
+});
+
+test('autoScore does nothing when race is already finalized with unchanged fine documents', async () => {
+  await withTempSeason(async () => {
+    let scored = false;
+    await autoScore({
+      now: NOW,
+      discoverMonetaryFinePdfs: async () => ['https://fia.test/australia_fine.pdf'],
+      scoreRace: async () => { scored = true; },
+    });
+    assert.equal(scored, false);
+  }, { finalized: true });
+});
+

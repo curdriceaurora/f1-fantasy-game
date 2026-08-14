@@ -55,3 +55,40 @@ test('rebuildScoreboard removes stale team score files after entries change', as
     assert.equal(existsSync(ghostFile), false);
   });
 });
+
+test('rebuildScoreboard breaks ties by latest race points and then alphabetically by display name', async () => {
+  await withFixtureSeason(2023, async ({ seasonDir }) => {
+    const entriesPath = join(seasonDir, 'config', 'entries.json');
+    const entries = [
+      {
+        teamId: 'team-a',
+        principalName: 'Alice',
+        displayName: 'Beta Racing',
+        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
+        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
+        homeCircuitId: 'australia',
+        investmentBonusPerRace: 0,
+        predictions: {},
+      },
+      {
+        teamId: 'team-b',
+        principalName: 'Bob',
+        displayName: 'Alpha Racing',
+        selectedDriverIds: ['george-russell', 'kimi-antonelli', 'esteban-ocon'],
+        selectedConstructorIds: ['mercedes', 'alpine', 'williams'],
+        homeCircuitId: 'australia',
+        investmentBonusPerRace: 0,
+        predictions: {},
+      },
+    ];
+    writeFileSync(entriesPath, JSON.stringify(entries, null, 2));
+
+    const result = rebuildScoreboard();
+    assert.equal(result.standings.length, 2);
+    // Identical points and latestRacePoints -> alphabetical by displayName ('Alpha Racing' before 'Beta Racing')
+    assert.equal(result.standings[0].displayName, 'Alpha Racing');
+    assert.equal(result.standings[1].displayName, 'Beta Racing');
+  });
+});
+
+

@@ -281,3 +281,37 @@ test('a driver who merely starts at the back still scores the 19th-22nd band, no
   }, { raceId: 'monaco', raceName: 'Monaco' });
   assert.equal(contribution.components.find((c) => /Qualifying/.test(c.label)).points, -2);
 });
+
+test('scoreQualifying throws for an unsupported driver rank', () => {
+  assert.throws(
+    () => scoreQualifying('NonExistentRank', 1),
+    /Unsupported driver rank: NonExistentRank/,
+  );
+});
+
+test('buildDriverContribution throws for unknown driver or missing normalized result', () => {
+  assert.throws(
+    () => buildDriverContribution('unknown-driver-id', {}, { raceId: 'x', raceName: 'X' }),
+    /Unknown driver: unknown-driver-id/,
+  );
+
+  assert.throws(
+    () => buildDriverContribution('max-verstappen', null, { raceId: 'x', raceName: 'X' }),
+    /No normalized result found for Max Verstappen/,
+  );
+});
+
+test('buildConstructorContribution throws for unknown team or missing normalized result', () => {
+  assert.throws(
+    () => buildConstructorContribution('unknown-team-id', {}, []),
+    /Unknown team: unknown-team-id/,
+  );
+
+  assert.throws(
+    () => buildConstructorContribution('red-bull', null, []),
+    /No normalized constructor result found for Red Bull/,
+  );
+});
+
+
+

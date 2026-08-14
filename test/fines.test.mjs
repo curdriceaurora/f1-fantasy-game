@@ -320,3 +320,25 @@ test('fetchFineSummary aggregates drivers and teams while retaining warnings', a
   assert.equal(summary.documents.length, 4);
   assert.equal(summary.warnings.length, 1);
 });
+
+test('parseEuros handles European format numbers with both dots and commas', () => {
+  const text = 'The competitor is fined €1.500,00 for pit lane speeding.';
+  assert.equal(activeFineFromText(text), 1500);
+});
+
+test('activeFineFromText recognizes fully suspended and no operational fine phrases', () => {
+  const textFullySuspended = 'The competitor is fined €5,000. This fine is fully suspended for the remainder of the season.';
+  assert.equal(activeFineFromText(textFullySuspended), 0);
+
+  const textNoOpFine = 'The competitor is fined €10,000. There is no operational fine due to exceptional circumstances.';
+  assert.equal(activeFineFromText(textNoOpFine), 0);
+});
+
+test('classifySubject identifies driver from CAR XX (XYZ) steward heading format', () => {
+  const subjectWithAcronym = classifySubject('Infringement by CAR 63 (RUS) during Qualifying');
+  assert.deepEqual(subjectWithAcronym, { type: 'driver', id: 'george-russell' });
+
+  const subjectWithNumberOnly = classifySubject('Infringement by CAR 44 during Pit Stop');
+  assert.deepEqual(subjectWithNumberOnly, { type: 'driver', id: 'lewis-hamilton' });
+});
+
