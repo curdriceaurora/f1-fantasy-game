@@ -2,8 +2,7 @@ import { test, expect } from '@playwright/test';
 import { monitorPage } from './helpers.js';
 
 test.describe('mobile tank aiming', () => {
-  async function enterGame(page, testInfo) {
-    test.skip(testInfo.project.name !== 'mobile-iphone-14', 'iPhone mobile project only');
+  async function enterGame(page) {
     const assertHealthy = await monitorPage(page);
     await page.goto('http://127.0.0.1:3457/index.html');
     await page.locator('#input-name').fill('Lewis Hamilton');
@@ -21,8 +20,8 @@ test.describe('mobile tank aiming', () => {
     });
   }
 
-  test('ignores drags that start outside the tank activation radius', async ({ page }, testInfo) => {
-    const assertHealthy = await enterGame(page, testInfo);
+  test('ignores drags that start outside the tank activation radius', async ({ page }) => {
+    const assertHealthy = await enterGame(page);
     const canvas = page.locator('#game-canvas');
     const box = await canvas.boundingBox();
     const angle = page.locator('#slider-angle');
@@ -38,8 +37,8 @@ test.describe('mobile tank aiming', () => {
     assertHealthy();
   });
 
-  test('syncs a direct canvas aim and launches the projectile', async ({ page }, testInfo) => {
-    const assertHealthy = await enterGame(page, testInfo);
+  test('syncs a direct canvas aim and launches the projectile', async ({ page }) => {
+    const assertHealthy = await enterGame(page);
     const canvas = page.locator('#game-canvas');
     const box = await canvas.boundingBox();
     const origin = await canvas.evaluate(element => {
@@ -74,8 +73,8 @@ test.describe('mobile tank aiming', () => {
     assertHealthy();
   });
 
-  test('cancels the preview when the touch leaves the top boundary', async ({ page }, testInfo) => {
-    const assertHealthy = await enterGame(page, testInfo);
+  test('cancels the preview when the touch leaves the top boundary', async ({ page }) => {
+    const assertHealthy = await enterGame(page);
     const canvas = page.locator('#game-canvas');
     const box = await canvas.boundingBox();
     const origin = await canvas.evaluate(element => ({

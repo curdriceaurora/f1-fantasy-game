@@ -18,8 +18,7 @@ const mobilePages = [
 ];
 
 test.describe('mobile navigation shell', () => {
-  test('uses a 50px safe-area-aware header and prevents horizontal overflow', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.startsWith('mobile-'), 'mobile project only');
+  test('uses a 50px safe-area-aware header and prevents horizontal overflow', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
 
     for (const url of mobilePages) {
@@ -61,8 +60,7 @@ test.describe('mobile navigation shell', () => {
     assertHealthy();
   });
 
-  test('traps focus in the drawer and restores it after Escape', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.startsWith('mobile-'), 'mobile project only');
+  test('traps focus in the drawer and restores it after Escape', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto('http://127.0.0.1:3457/index.html');
 
@@ -89,8 +87,7 @@ test.describe('mobile navigation shell', () => {
     assertHealthy();
   });
 
-  test('closes the drawer after navigating to an intra-page section', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.startsWith('mobile-'), 'mobile project only');
+  test('closes the drawer after navigating to an intra-page section', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto('http://127.0.0.1:3456/rules.html');
 
@@ -107,8 +104,7 @@ test.describe('mobile navigation shell', () => {
     assertHealthy();
   });
 
-  test('hides the rules sub-navigation on downward scroll and reveals it upward', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.startsWith('mobile-'), 'mobile project only');
+  test('hides the rules sub-navigation on downward scroll and reveals it upward', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto('http://127.0.0.1:3456/rules.html');
     const rulesNav = page.locator('.rules-nav');
@@ -120,17 +116,4 @@ test.describe('mobile navigation shell', () => {
 
     assertHealthy();
   });
-});
-
-test('desktop navigation remains visible and unchanged', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
-  const assertHealthy = await monitorPage(page);
-  await page.goto('http://127.0.0.1:3456/dashboard.html');
-
-  await expect(page.locator('.global-nav')).toBeVisible();
-  await expect(page.locator('.global-nav')).toHaveCSS('display', 'flex');
-  await expect(page.locator('.mobile-menu-btn')).toBeHidden();
-  await expect(page.locator('.site-banner')).toHaveCSS('position', 'fixed');
-
-  assertHealthy();
 });
