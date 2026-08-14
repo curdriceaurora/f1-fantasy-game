@@ -193,9 +193,10 @@ test('the CLI check path passes against the committed ledger and manifest', asyn
   // Exercises what CI runs. Read-only: check mode never writes, so this asserts
   // the committed ledger, the committed manifest and the scored artifacts are
   // mutually consistent right now — the gate guarding every future change.
-  const { main } = await import('../scripts/reconcile-martin.mjs');
-  await main([]);
+  const { runReconcileMartinCli } = await import('../scripts/reconcile-martin.mjs');
+  await runReconcileMartinCli([]);
 });
+
 
 test('scoredByRace covers every driver and constructor, not only the selected ones', () => {
   // Piastri, Ocon, Bortoleto and Racing Bulls are picked by nobody, so they are

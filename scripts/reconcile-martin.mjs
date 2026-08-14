@@ -175,13 +175,14 @@ export function runCheck({ ledger, accepted, scored }) {
   return { ...result, lines, ok: !lines.length };
 }
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const index = argv.indexOf('--workbooks');
   return {
     generate: argv.includes('--generate'),
     workbookDir: index >= 0 ? argv[index + 1] : WORKBOOK_DIR,
   };
 }
+
 
 export async function runReconcileMartinCli(argv = []) {
   const { generate, workbookDir } = parseArgs(argv);
@@ -228,7 +229,4 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   });
 }
 
-
-const main = runReconcileMartinCli;
-export { main, parseArgs };
 
