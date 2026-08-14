@@ -117,7 +117,10 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
     races[raceId] = source.race;
   }
 
-  // Ways a regeneration can quietly weaken the gate, all fatal.
+  // Ways a regeneration can quietly weaken the gate, all fatal — and grouped by
+  // guard for the same reason runCheck groups its findings: several of these
+  // catch overlapping problems, so a flat list lets one be disconnected while its
+  // neighbours keep the run failing and nothing notices.
   //
   // Both ledgers are validated, not just the old one. The previous is checked
   // before it is trusted, since comparing against a damaged record reports no
@@ -125,36 +128,49 @@ export async function generateLedger({ workbookDir = WORKBOOK_DIR, previous = nu
   // written, so a source that cannot produce sound provenance — a workbook with
   // no internal timestamp, say — fails here rather than producing an artifact
   // guaranteed to fail the next CI check.
-  const regressions = [
-    ...(previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : []),
-    ...validateProvenance({ provenance, races }).map((p) => `generated ledger provenance: ${p}`),
-    ...detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
-    ...assertCompleteSources(sources),
-    ...detectCoverageLoss(previous?.races, races),
-  ];
-  return { ledger: { provenance, races }, regressions, workbooksRead: files.length };
+  const findings = {
+    previousProvenance: previous ? validateProvenance(previous).map((p) => `previous ledger provenance: ${p}`) : [],
+    candidateProvenance: validateProvenance({ provenance, races }).map((p) => `generated ledger provenance: ${p}`),
+    sourceRegression: detectSourceRegression(previous?.provenance, provenance).map((r) => r.message),
+    sourceCompleteness: assertCompleteSources(sources),
+    coverageLoss: detectCoverageLoss(previous?.races, races),
+  };
+  const regressions = Object.values(findings).flat();
+  return { ledger: { provenance, races }, findings, regressions, workbooksRead: files.length };
 }
 
 export function runCheck({ ledger, accepted, scored }) {
   if (!ledger) {
     throw new Error(`${LEDGER_PATH} is missing. Run \`${GENERATE_COMMAND}\` against Martin's workbooks.`);
   }
-  // Validate the committed ledger itself, not just what it says. The generate
-  // guards cannot protect a file edited by hand or mangled by a merge after the
-  // fact, and comparing only the entities and fields it happens to contain would
-  // pass happily on a narrowed one.
-  const lines = [
+  // Findings are grouped by which guard produced them, not flattened into prose.
+  //
+  // The mutation harness needs to assert that each guard is individually
+  // load-bearing: several of them catch the same perturbation, so with a single
+  // list of strings a guard can be deleted while its neighbours keep the check
+  // failing and nothing notices. Attribution by category lets the harness pin
+  // each guard without matching message wording, which would only turn it into a
+  // change-detector.
+  const findings = {
     // Provenance first: without it the ledger's values may be right while the
     // record of which workbook they came from is gone, and with it the only
     // defence against a stale source.
-    ...validateProvenance(ledger).map((problem) => `provenance: ${problem}`),
-    ...validateRaceCoverage(ledger.races, (raceId) => `${raceId} (committed ledger)`),
-    // The scored side is validated too: it is the comparison projection, so an
-    // entity or field appearing there without a counterpart is a hole, not a
-    // curiosity. Same rules, same function, both directions.
-    ...validateRaceCoverage(scored, (raceId) => `${raceId} (scored)`),
-  ].map((problem) => `  ${problem}`);
+    provenance: validateProvenance(ledger),
+    // The committed ledger is validated, not just read. The generate guards
+    // cannot protect a file edited by hand or mangled by a merge afterwards.
+    ledgerCoverage: validateRaceCoverage(ledger.races, (raceId) => `${raceId} (committed ledger)`),
+    // The scored side too: it is the comparison projection, so an entity or field
+    // appearing there without a counterpart is a hole, not a curiosity.
+    scoredCoverage: validateRaceCoverage(scored, (raceId) => `${raceId} (scored)`),
+  };
+
   const result = compareToLedger(scored, ledger, accepted);
+  const lines = [
+    ...findings.provenance.map((problem) => `provenance: ${problem}`),
+    ...findings.ledgerCoverage,
+    ...findings.scoredCoverage,
+  ].map((problem) => `  ${problem}`);
+
   for (const row of result.unexplained) {
     lines.push(`  ${row.race} ${row.kind} ${row.id} ${row.field}: ours ${row.ours}, Martin ${row.martin}`);
   }
@@ -172,8 +188,31 @@ export function runCheck({ ledger, accepted, scored }) {
   for (const raceId of result.unledgeredRaces) {
     lines.push(`  ${raceId}: scored but absent from the ledger — regenerate with \`${GENERATE_COMMAND}\``);
   }
-  return { ...result, lines, ok: !lines.length };
+
+  return { ...result, findings, lines, ok: !lines.length };
 }
+
+// Which guard produced each kind of finding, for both paths. Named here so the
+// mutation harness and the implementation cannot drift apart silently: a guard
+// added without an entry here is a guard nothing can pin.
+export const GENERATION_GUARDS = Object.freeze({
+  previousProvenance: (result) => result.findings.previousProvenance,
+  candidateProvenance: (result) => result.findings.candidateProvenance,
+  sourceRegression: (result) => result.findings.sourceRegression,
+  sourceCompleteness: (result) => result.findings.sourceCompleteness,
+  coverageLoss: (result) => result.findings.coverageLoss,
+});
+
+export const GUARDS = Object.freeze({
+  provenance: (result) => result.findings.provenance,
+  ledgerCoverage: (result) => result.findings.ledgerCoverage,
+  scoredCoverage: (result) => result.findings.scoredCoverage,
+  unexplained: (result) => result.unexplained,
+  resolved: (result) => result.resolved,
+  missingRaces: (result) => result.missingRaces,
+  unmatched: (result) => result.unmatched,
+  unledgeredRaces: (result) => result.unledgeredRaces,
+});
 
 export function parseArgs(argv) {
   const index = argv.indexOf('--workbooks');
