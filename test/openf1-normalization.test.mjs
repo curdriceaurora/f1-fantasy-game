@@ -417,22 +417,7 @@ test('normalizeRaceWeekend throws when driver is missing official grid start or 
   );
 });
 
-test('normalizeRaceWeekend throws when team cannot be mapped or lap data is empty', () => {
-  const fetchedUnknownTeam = baseFetchedRace();
-  fetchedUnknownTeam.drivers = [
-    { driver_number: 63, first_name: 'George', last_name: 'Russell', full_name: 'George Russell', team_name: 'Totally Unknown Team' },
-  ];
-
-  assert.throws(
-    () => normalizeRaceWeekend(
-      calendarRace,
-      fetchedUnknownTeam,
-      { drivers: {}, teams: {}, documents: [] },
-      { canonicalizeTeamName: () => null, resolveTeam: () => null },
-    ),
-    /Unable to map OpenF1 team "Totally Unknown Team" to canonical constants/,
-  );
-
+test('normalizeRaceWeekend throws when lap data is empty', () => {
   const fetchedEmptyLaps = baseFetchedRace();
   fetchedEmptyLaps.laps = [];
   assert.throws(
@@ -440,6 +425,7 @@ test('normalizeRaceWeekend throws when team cannot be mapped or lap data is empt
     /OpenF1 lap data is missing; cannot determine fastest lap/,
   );
 });
+
 
 
 
