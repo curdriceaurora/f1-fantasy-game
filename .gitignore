@@ -9,6 +9,11 @@ martins-calculations/
 # Cached FIA document text (immutable published docs; refetch on demand)
 .fia-cache/
 
+# Local agent configuration. Ignored rather than merely untracked because it has
+# now been swept into two unrelated PRs by `git add -A`; untracking alone did not
+# stop it recurring.
+.agents/
+
 # Playwright output
 playwright-report/
 test-results/

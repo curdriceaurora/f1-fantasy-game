@@ -4,13 +4,8 @@ import { monitorPage } from './helpers.js';
 
 const CALCULATOR_URL = 'http://127.0.0.1:3457/calculator.html';
 
-function requireIphoneProject(testInfo) {
-  test.skip(testInfo.project.name !== 'mobile-iphone-14', 'iPhone mobile project only');
-}
-
 test.describe('mobile prediction sliders', () => {
-  test('exposes synchronized ARIA values and semantic step controls', async ({ page }, testInfo) => {
-    requireIphoneProject(testInfo);
+  test('exposes synchronized ARIA values and semantic step controls', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto(CALCULATOR_URL);
 
@@ -41,8 +36,7 @@ test.describe('mobile prediction sliders', () => {
     assertHealthy();
   });
 
-  test('applies logical keyboard semantics to standard and inverted values', async ({ page }, testInfo) => {
-    requireIphoneProject(testInfo);
+  test('applies logical keyboard semantics to standard and inverted values', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto(CALCULATOR_URL);
 
@@ -70,8 +64,7 @@ test.describe('mobile prediction sliders', () => {
     assertHealthy();
   });
 
-  test('positions the visible tooltip above the focused thumb', async ({ page }, testInfo) => {
-    requireIphoneProject(testInfo);
+  test('positions the visible tooltip above the focused thumb', async ({ page }) => {
     const assertHealthy = await monitorPage(page);
     await page.goto(CALCULATOR_URL);
 

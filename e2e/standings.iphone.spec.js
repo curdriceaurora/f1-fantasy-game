@@ -21,8 +21,7 @@ function signedPoints(value) {
   return `${value > 0 ? '+' : ''}${value}`;
 }
 
-test('renders standings as API-backed mobile cards without horizontal overflow', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'mobile-iphone-14', 'iPhone mobile project only');
+test('renders standings as API-backed mobile cards without horizontal overflow', async ({ page }) => {
   const assertHealthy = await monitorPage(page);
   const standingsResponse = page.waitForResponse(response => (
     new URL(response.url()).pathname === '/api/dashboard/standings'
@@ -119,8 +118,7 @@ test('renders standings as API-backed mobile cards without horizontal overflow',
   assertHealthy();
 });
 
-test('filters standings by team or principal without reloading', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'mobile-iphone-14', 'iPhone mobile project only');
+test('filters standings by team or principal without reloading', async ({ page }) => {
   const assertHealthy = await monitorPage(page);
   await page.goto(DASHBOARD_URL);
 
@@ -137,8 +135,7 @@ test('filters standings by team or principal without reloading', async ({ page }
   assertHealthy();
 });
 
-test('exposes a loading state until dashboard data is ready', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'mobile-iphone-14', 'iPhone mobile project only');
+test('exposes a loading state until dashboard data is ready', async ({ page }) => {
   const assertHealthy = await monitorPage(page);
   let releaseResponse = () => {};
   const responseGate = new Promise(resolve => { releaseResponse = resolve; });
