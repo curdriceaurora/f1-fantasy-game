@@ -459,3 +459,51 @@ test('normalizeRaceWeekend throws when lap data is empty', () => {
   );
 });
 
+
+// A fantasy entry owns a seat, not a person: when a reserve fills the seat for
+// one weekend, the seat's owner scores that weekend's result.
+function fetchedRaceWithReserve() {
+  const fetchedRace = baseFetchedRace();
+  const reserve = { driver_number: 22, first_name: 'Yuki', last_name: 'Tsunoda', full_name: 'Yuki Tsunoda', team_name: 'Racing Bulls' };
+  fetchedRace.drivers = [fetchedRace.drivers[0], reserve];
+  for (const rows of [fetchedRace.raceResultRows, fetchedRace.qualifyingResultRows, fetchedRace.laps, fetchedRace.positionFeed]) {
+    for (const row of rows) {
+      if (row.driver_number === 12) row.driver_number = 22;
+    }
+  }
+  return fetchedRace;
+}
+
+test('a reserve driver scores into the seat they filled', () => {
+  const normalized = normalizeRaceWeekend(
+    calendarRace,
+    fetchedRaceWithReserve(),
+    { drivers: {}, teams: {}, documents: [] },
+    [{ seatDriverId: 'isack-hadjar', driverNumber: 22, fullName: 'Yuki Tsunoda' }],
+  );
+
+  const seat = normalized.drivers['isack-hadjar'];
+  assert.ok(seat, 'the seat holder receives the result');
+  assert.equal(seat.racePosition, 6);
+  assert.deepEqual(seat.substitutedBy, { fullName: 'Yuki Tsunoda', driverNumber: 22 });
+  assert.equal(normalized.drivers['kimi-antonelli'], undefined);
+});
+
+test('a driver off the roster with no substitution still stops the run', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(calendarRace, fetchedRaceWithReserve(), { drivers: {}, teams: {}, documents: [] }),
+    /Unable to map OpenF1 driver "Yuki Tsunoda"/,
+  );
+});
+
+test('a substitution naming an unknown roster driver is rejected', () => {
+  assert.throws(
+    () => normalizeRaceWeekend(
+      calendarRace,
+      fetchedRaceWithReserve(),
+      { drivers: {}, teams: {}, documents: [] },
+      [{ seatDriverId: 'nobody-at-all', driverNumber: 22 }],
+    ),
+    /names unknown roster driver "nobody-at-all"/,
+  );
+});

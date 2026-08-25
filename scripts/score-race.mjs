@@ -7,7 +7,7 @@ import { fetchRaceResults } from '../lib/fia-results.js';
 import { fetchRaceWeekend, normalizeRaceWeekend } from '../lib/openf1.js';
 import { rebuildScoreboard } from '../lib/publish-scoreboard.js';
 import { evaluateRaceWorkflow } from '../lib/race-workflow.js';
-import { ensureSeasonDirs, loadCalendar, loadEntries, loadFineReview, normalizedRacePath, rawRacePath, scoredRacePath, writeJson } from '../lib/season-store.js';
+import { ensureSeasonDirs, loadCalendar, loadEntries, loadFineReview, loadSeatSubstitutions, normalizedRacePath, rawRacePath, scoredRacePath, writeJson } from '../lib/season-store.js';
 
 export function parseArgs(argv) {
   const args = {};
@@ -79,7 +79,7 @@ export async function scoreRace(raceId, services = {}) {
   }
   writeJson(rawRacePath(calendarRace.id, 'fines.json'), fineSummary);
 
-  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, fineSummary);
+  const normalized = normalizeRaceWeekend(calendarRace, fetchedRace, fineSummary, loadSeatSubstitutions(calendarRace.id));
   writeJson(normalizedRacePath(calendarRace.id), normalized);
 
   const scoreboard = rebuildScoreboard();
