@@ -2,7 +2,7 @@
   "teamId": "laura-young-cf286bb9",
   "principalName": "Laura Young",
   "displayName": "Running on Empty",
-  "totalPoints": 239,
+  "totalPoints": 229,
   "completedRaces": 11,
   "latestRacePoints": 84,
   "races": [
@@ -814,13 +814,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -8,
+      "baseSubtotal": -12,
       "driverSubtotal": -3,
-      "constructorSubtotal": -5,
+      "constructorSubtotal": -9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -8,
+      "totalPoints": -12,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -967,22 +967,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -1018,7 +1018,7 @@
           ]
         }
       ],
-      "runningTotal": 82
+      "runningTotal": 78
     },
     {
       "raceId": "monaco",
@@ -1216,19 +1216,19 @@
           ]
         }
       ],
-      "runningTotal": 93
+      "runningTotal": 89
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 31,
+      "baseSubtotal": 25,
       "driverSubtotal": 42,
-      "constructorSubtotal": -11,
+      "constructorSubtotal": -17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 25,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -1371,22 +1371,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -3,
-            "formula": "ceil((3×2 + 2×-3) ÷ 5)",
-            "weightedRawPoints": 0,
-            "weightedPoints": 0
+            "formula": "ceil((3×-8 + 2×-3) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -1418,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 124
+      "runningTotal": 114
     },
     {
       "raceId": "austria",
@@ -1612,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 135
+      "runningTotal": 125
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 149
+      "runningTotal": 139
     },
     {
       "raceId": "belgium",
@@ -2024,7 +2024,7 @@
           ]
         }
       ],
-      "runningTotal": 155
+      "runningTotal": 145
     },
     {
       "raceId": "hungary",
@@ -2226,7 +2226,7 @@
           ]
         }
       ],
-      "runningTotal": 239
+      "runningTotal": 229
     }
   ]
 }

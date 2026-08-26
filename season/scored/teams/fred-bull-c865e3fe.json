@@ -2,7 +2,7 @@
   "teamId": "fred-bull-c865e3fe",
   "principalName": "Fred Bull",
   "displayName": "He's from Holland - Ishn't dat veird",
-  "totalPoints": 242,
+  "totalPoints": 232,
   "completedRaces": 11,
   "latestRacePoints": 43,
   "races": [
@@ -608,13 +608,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": -2,
-      "driverSubtotal": 2,
+      "baseSubtotal": -12,
+      "driverSubtotal": -8,
       "constructorSubtotal": -4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -2,
+      "totalPoints": -12,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -668,7 +668,7 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -9,
+          "totalPoints": -19,
           "components": [
             {
               "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
@@ -685,6 +685,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -812,7 +816,7 @@
           ]
         }
       ],
-      "runningTotal": 45
+      "runningTotal": 35
     },
     {
       "raceId": "canada",
@@ -1022,7 +1026,7 @@
           ]
         }
       ],
-      "runningTotal": 96
+      "runningTotal": 86
     },
     {
       "raceId": "monaco",
@@ -1216,7 +1220,7 @@
           ]
         }
       ],
-      "runningTotal": 104
+      "runningTotal": 94
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 132
+      "runningTotal": 122
     },
     {
       "raceId": "austria",
@@ -1608,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 171
+      "runningTotal": 161
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 169
+      "runningTotal": 159
     },
     {
       "raceId": "belgium",
@@ -2020,7 +2024,7 @@
           ]
         }
       ],
-      "runningTotal": 199
+      "runningTotal": 189
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2222,7 @@
           ]
         }
       ],
-      "runningTotal": 242
+      "runningTotal": 232
     }
   ]
 }

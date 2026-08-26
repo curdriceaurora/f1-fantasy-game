@@ -2,7 +2,7 @@
   "teamId": "nathanael-wallis-711c13e3",
   "principalName": "Nathanael Wallis",
   "displayName": "Wallis Racing",
-  "totalPoints": 414,
+  "totalPoints": 404,
   "completedRaces": 11,
   "latestRacePoints": 31,
   "races": [
@@ -818,13 +818,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 27,
+      "baseSubtotal": 23,
       "driverSubtotal": 18,
-      "constructorSubtotal": 9,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 27,
+      "totalPoints": 23,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -944,22 +944,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -1022,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 302
+      "runningTotal": 298
     },
     {
       "raceId": "monaco",
@@ -1224,19 +1224,19 @@
           ]
         }
       ],
-      "runningTotal": 273
+      "runningTotal": 269
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": 64,
+      "baseSubtotal": 58,
       "driverSubtotal": 59,
-      "constructorSubtotal": 5,
+      "constructorSubtotal": -1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 64,
+      "totalPoints": 58,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1344,22 +1344,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -3,
-            "formula": "ceil((3×2 + 2×-3) ÷ 5)",
-            "weightedRawPoints": 0,
-            "weightedPoints": 0
+            "formula": "ceil((3×-8 + 2×-3) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -1418,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 337
+      "runningTotal": 327
     },
     {
       "raceId": "austria",
@@ -1612,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 388
+      "runningTotal": 378
     },
     {
       "raceId": "great-britain",
@@ -1822,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 415
+      "runningTotal": 405
     },
     {
       "raceId": "belgium",
@@ -2020,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 383
+      "runningTotal": 373
     },
     {
       "raceId": "hungary",
@@ -2214,7 +2214,7 @@
           ]
         }
       ],
-      "runningTotal": 414
+      "runningTotal": 404
     }
   ]
 }

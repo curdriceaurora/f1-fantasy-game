@@ -5,10 +5,11 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import ExcelJS from 'exceljs';
 import {
-  runCheck, generateLedger, scoredByRace, GUARDS, GENERATION_GUARDS, LEDGER_PATH, DIVERGENCE_PATH,
+  auditPitLaneGridPenalties, runCheck, generateLedger, scoredByRace,
+  GUARDS, GENERATION_GUARDS, LEDGER_PATH, DIVERGENCE_PATH,
 } from '../scripts/reconcile-martin.mjs';
 import { DRIVERS, TEAMS } from '../public/constants.js';
-import { readJson } from '../lib/season-store.js';
+import { loadCalendar, normalizedRacePath, readJson } from '../lib/season-store.js';
 import { EXPECTED_DRIVER_FIELDS, EXPECTED_TEAM_FIELDS } from '../lib/martin-workbook.js';
 
 // Nine holes were found in this gate by review, across six rounds. Every one
@@ -46,11 +47,12 @@ function baseline() {
     ledger: structuredClone(REAL_LEDGER),
     scored: structuredClone(scoredByRace()),
     accepted: structuredClone(REAL_ACCEPTED),
+    pitLanePenaltyFindings: auditPitLaneGridPenalties(REAL_ACCEPTED),
   };
 }
 
-function check({ ledger, scored, accepted }) {
-  return runCheck({ ledger, accepted, scored });
+function check({ ledger, scored, accepted, pitLanePenaltyFindings }) {
+  return runCheck({ ledger, accepted, scored, pitLanePenaltyFindings });
 }
 
 // A stable, deterministic target for the per-entity mutations. Sorting keeps the
@@ -239,7 +241,26 @@ function provenanceMutations() {
   return mutations;
 }
 
-for (const mutation of [...projectionMutations(), ...provenanceMutations()]) {
+function pitLaneMutations() {
+  return [{
+    name: 'normalized: disconnect a resolved pit-lane count from the scored value',
+    guard: 'pitLaneResolution',
+    apply: (state) => {
+      const race = loadCalendar().find(({ id }) => id === 'miami');
+      const normalized = structuredClone(readJson(normalizedRacePath(race.id), null));
+      const driver = normalized.drivers['isack-hadjar'];
+      assert.equal(driver.pitLaneGridPenalty?.status, 'resolved', 'mutation target must be a resolved pit-lane penalty');
+      driver.gridPenaltyPlaces = 0;
+      state.pitLanePenaltyFindings = auditPitLaneGridPenalties(
+        state.accepted,
+        [race],
+        () => normalized,
+      );
+    },
+  }];
+}
+
+for (const mutation of [...projectionMutations(), ...provenanceMutations(), ...pitLaneMutations()]) {
   test(`caught — ${mutation.name}`, () => {
     const state = baseline();
     mutation.apply(state);
@@ -257,7 +278,10 @@ test('every guard the check exposes is pinned by at least one mutation', () => {
   // Without this, a guard can be added and left unexercised, or an existing one
   // can stop being covered when a mutation is retargeted. Three guards were
   // deletable with the suite green before attribution existed.
-  const pinned = new Set([...projectionMutations(), ...provenanceMutations()].map((mutation) => mutation.guard));
+  const pinned = new Set(
+    [...projectionMutations(), ...provenanceMutations(), ...pitLaneMutations()]
+      .map((mutation) => mutation.guard),
+  );
   for (const guard of Object.keys(GUARDS)) {
     assert.ok(pinned.has(guard), `guard "${guard}" is not pinned by any mutation`);
   }

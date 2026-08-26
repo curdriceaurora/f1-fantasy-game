@@ -3,7 +3,7 @@
   "raceName": "Canada",
   "date": "2026-05-24",
   "round": 5,
-  "generatedAt": "2026-08-12T15:13:54.200Z",
+  "generatedAt": "2026-08-14T07:23:20.012Z",
   "documents": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2026_canadian_grand_prix_-_infringement_-_car_18_-_released_in_an_unsafe_condition.pdf",
@@ -459,7 +459,7 @@
           ]
         }
       ],
-      "runningTotal": 123
+      "runningTotal": 109
     },
     {
       "teamId": "kai-lewis-dbf2a760",
@@ -672,7 +672,7 @@
           ]
         }
       ],
-      "runningTotal": 181
+      "runningTotal": 177
     },
     {
       "teamId": "rahul-srinivasan-c15c2aa4",
@@ -886,223 +886,6 @@
         }
       ],
       "runningTotal": 374
-    },
-    {
-      "teamId": "tom-pigott-2ae838f8",
-      "principalName": "Tom Pigott",
-      "displayName": "Suitable For Upgrade",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": 80,
-      "driverSubtotal": 50,
-      "constructorSubtotal": 30,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 80,
-      "drivers": [
-        {
-          "driverId": "charles-leclerc",
-          "name": "Charles Leclerc",
-          "teamName": "Ferrari",
-          "imageSlug": "leclerc",
-          "rank": "Top Ten",
-          "qualifyingPosition": 8,
-          "sprintPosition": 5,
-          "gridStart": 8,
-          "improvementGrid": 8,
-          "racePosition": 4,
-          "classified": true,
-          "totalPoints": 23,
-          "components": [
-            {
-              "label": "Qualifying (grid P8)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P5",
-              "points": 4
-            },
-            {
-              "label": "Race finish P4",
-              "points": 12
-            },
-            {
-              "label": "Position change",
-              "points": 8
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -1
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 7,
-          "sprintPosition": 21,
-          "gridStart": 7,
-          "improvementGrid": 7,
-          "racePosition": 5,
-          "classified": true,
-          "totalPoints": 14,
-          "components": [
-            {
-              "label": "Qualifying (grid P7)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P21",
-              "points": 0
-            },
-            {
-              "label": "Race finish P5",
-              "points": 10
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "oliver-bearman",
-          "name": "Oliver Bearman",
-          "teamName": "Haas",
-          "imageSlug": "bearman",
-          "rank": "Outsider",
-          "qualifyingPosition": 16,
-          "sprintPosition": 18,
-          "gridStart": 16,
-          "improvementGrid": 16,
-          "racePosition": 10,
-          "classified": true,
-          "totalPoints": 13,
-          "components": [
-            {
-              "label": "Qualifying (grid P16)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P18",
-              "points": 0
-            },
-            {
-              "label": "Race finish P10",
-              "points": 1
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 26,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 23,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 30,
-            "formula": "ceil((3×23 + 2×30) ÷ 5)",
-            "weightedRawPoints": 25.8,
-            "weightedPoints": 26
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 26
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 9,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 6,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 13,
-            "formula": "ceil((3×6 + 2×13) ÷ 5)",
-            "weightedRawPoints": 8.8,
-            "weightedPoints": 9
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 9
-            }
-          ]
-        }
-      ],
-      "runningTotal": 234
     },
     {
       "teamId": "jon-cooke-fed59910",
@@ -1734,6 +1517,223 @@
         }
       ],
       "runningTotal": 344
+    },
+    {
+      "teamId": "tom-pigott-2ae838f8",
+      "principalName": "Tom Pigott",
+      "displayName": "Suitable For Upgrade",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": 76,
+      "driverSubtotal": 50,
+      "constructorSubtotal": 26,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 76,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 8,
+          "sprintPosition": 5,
+          "gridStart": 8,
+          "improvementGrid": 8,
+          "racePosition": 4,
+          "classified": true,
+          "totalPoints": 23,
+          "components": [
+            {
+              "label": "Qualifying (grid P8)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P4",
+              "points": 12
+            },
+            {
+              "label": "Position change",
+              "points": 8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 7,
+          "sprintPosition": 21,
+          "gridStart": 7,
+          "improvementGrid": 7,
+          "racePosition": 5,
+          "classified": true,
+          "totalPoints": 14,
+          "components": [
+            {
+              "label": "Qualifying (grid P7)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P5",
+              "points": 10
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "oliver-bearman",
+          "name": "Oliver Bearman",
+          "teamName": "Haas",
+          "imageSlug": "bearman",
+          "rank": "Outsider",
+          "qualifyingPosition": 16,
+          "sprintPosition": 18,
+          "gridStart": 16,
+          "improvementGrid": 16,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 13,
+          "components": [
+            {
+              "label": "Qualifying (grid P16)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P18",
+              "points": 0
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 26,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 30,
+            "formula": "ceil((3×23 + 2×30) ÷ 5)",
+            "weightedRawPoints": 25.8,
+            "weightedPoints": 26
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 26
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 9,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 6,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×6 + 2×13) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 9
+            }
+          ]
+        }
+      ],
+      "runningTotal": 220
     },
     {
       "teamId": "jason-smith-1a886fe7",
@@ -3433,7 +3433,7 @@
           ]
         }
       ],
-      "runningTotal": 204
+      "runningTotal": 194
     },
     {
       "teamId": "harish-malapati-a5ef0eba",
@@ -3863,7 +3863,7 @@
           ]
         }
       ],
-      "runningTotal": 96
+      "runningTotal": 86
     },
     {
       "teamId": "rachel-khatri-e38f6983",
@@ -4072,7 +4072,7 @@
           ]
         }
       ],
-      "runningTotal": 285
+      "runningTotal": 281
     },
     {
       "teamId": "simon-walker-7dd9df1f",
@@ -4935,219 +4935,6 @@
       "runningTotal": 293
     },
     {
-      "teamId": "richard-malet-7dc02204",
-      "principalName": "Richard Malet",
-      "displayName": "The Last Carlos Fandango",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": 31,
-      "driverSubtotal": 13,
-      "constructorSubtotal": 18,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 31,
-      "drivers": [
-        {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 6,
-          "sprintPosition": 7,
-          "gridStart": 6,
-          "improvementGrid": 6,
-          "racePosition": 3,
-          "classified": true,
-          "totalPoints": 21,
-          "components": [
-            {
-              "label": "Qualifying (grid P6)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P7",
-              "points": 2
-            },
-            {
-              "label": "Race finish P3",
-              "points": 15
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "fernando-alonso",
-          "name": "Fernando Alonso",
-          "teamName": "Aston Martin",
-          "imageSlug": "alonso",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 19,
-          "sprintPosition": 22,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -6,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P22",
-              "points": 0
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 11,
-          "sprintPosition": 15,
-          "gridStart": 11,
-          "improvementGrid": 11,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": -2,
-          "components": [
-            {
-              "label": "Qualifying (grid P11)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P15",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "ferrari",
-          "name": "Ferrari",
-          "imageSlug": "ferrari",
-          "driverIds": [
-            "charles-leclerc",
-            "lewis-hamilton"
-          ],
-          "totalPoints": 26,
-          "weightingBreakdown": {
-            "leadDriverId": "charles-leclerc",
-            "leadDriverName": "Charles Leclerc",
-            "leadDriverPoints": 23,
-            "secondDriverId": "lewis-hamilton",
-            "secondDriverName": "Lewis Hamilton",
-            "secondDriverPoints": 30,
-            "formula": "ceil((3×23 + 2×30) ÷ 5)",
-            "weightedRawPoints": 25.8,
-            "weightedPoints": 26
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 26
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -2,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
-            "weightedRawPoints": -3.2,
-            "weightedPoints": -3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -3
-            }
-          ]
-        }
-      ],
-      "runningTotal": 84
-    },
-    {
       "teamId": "ryan-eyre-6119a97c",
       "principalName": "Ryan Eyre",
       "displayName": "Eyre We Go Again",
@@ -5567,7 +5354,7 @@
           ]
         }
       ],
-      "runningTotal": 213
+      "runningTotal": 209
     },
     {
       "teamId": "helen-pigott-f4d9bade",
@@ -5776,7 +5563,220 @@
           ]
         }
       ],
-      "runningTotal": 45
+      "runningTotal": 35
+    },
+    {
+      "teamId": "richard-malet-7dc02204",
+      "principalName": "Richard Malet",
+      "displayName": "The Last Carlos Fandango",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": 27,
+      "driverSubtotal": 13,
+      "constructorSubtotal": 14,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 27,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 6,
+          "sprintPosition": 7,
+          "gridStart": 6,
+          "improvementGrid": 6,
+          "racePosition": 3,
+          "classified": true,
+          "totalPoints": 21,
+          "components": [
+            {
+              "label": "Qualifying (grid P6)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P7",
+              "points": 2
+            },
+            {
+              "label": "Race finish P3",
+              "points": 15
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 19,
+          "sprintPosition": 22,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -6,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P22",
+              "points": 0
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 11,
+          "sprintPosition": 15,
+          "gridStart": 11,
+          "improvementGrid": 11,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P11)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P15",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 26,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 23,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 30,
+            "formula": "ceil((3×23 + 2×30) ÷ 5)",
+            "weightedRawPoints": 25.8,
+            "weightedPoints": 26
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 26
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -2,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -3
+            }
+          ]
+        }
+      ],
+      "runningTotal": 80
     },
     {
       "teamId": "nathanael-wallis-711c13e3",
@@ -5785,13 +5785,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 27,
+      "baseSubtotal": 23,
       "driverSubtotal": 18,
-      "constructorSubtotal": 9,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 27,
+      "totalPoints": 23,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -5911,22 +5911,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -5989,7 +5989,7 @@
           ]
         }
       ],
-      "runningTotal": 302
+      "runningTotal": 298
     },
     {
       "teamId": "kiran-sivanna-aeca91ae",
@@ -6620,220 +6620,7 @@
           ]
         }
       ],
-      "runningTotal": 124
-    },
-    {
-      "teamId": "oyvind-helgerud-3d689e5d",
-      "principalName": "Oyvind Helgerud",
-      "displayName": "Vestigo Racing",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": 8,
-      "driverSubtotal": 22,
-      "constructorSubtotal": -14,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": 8,
-      "drivers": [
-        {
-          "driverId": "isack-hadjar",
-          "name": "Isack Hadjar",
-          "teamName": "Racing Bulls",
-          "imageSlug": "hadjar",
-          "rank": "Top Ten",
-          "qualifyingPosition": 7,
-          "sprintPosition": 21,
-          "gridStart": 7,
-          "improvementGrid": 7,
-          "racePosition": 5,
-          "classified": true,
-          "totalPoints": 14,
-          "components": [
-            {
-              "label": "Qualifying (grid P7)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P21",
-              "points": 0
-            },
-            {
-              "label": "Race finish P5",
-              "points": 10
-            },
-            {
-              "label": "Position change",
-              "points": 4
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 15,
-          "sprintPosition": 10,
-          "gridStart": 15,
-          "improvementGrid": 15,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 10,
-          "components": [
-            {
-              "label": "Qualifying (grid P15)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "nico-hulkenberg",
-          "name": "Nico Hulkenberg",
-          "teamName": "Audi",
-          "imageSlug": "hulkenberg",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 11,
-          "sprintPosition": 15,
-          "gridStart": 11,
-          "improvementGrid": 11,
-          "racePosition": 12,
-          "classified": true,
-          "totalPoints": -2,
-          "components": [
-            {
-              "label": "Qualifying (grid P11)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P15",
-              "points": 0
-            },
-            {
-              "label": "Race finish P12",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mclaren",
-          "name": "McLaren",
-          "imageSlug": "mclaren",
-          "driverIds": [
-            "lando-norris",
-            "oscar-piastri"
-          ],
-          "totalPoints": -18,
-          "weightingBreakdown": {
-            "leadDriverId": "lando-norris",
-            "leadDriverName": "Lando Norris",
-            "leadDriverPoints": -25,
-            "secondDriverId": "oscar-piastri",
-            "secondDriverName": "Oscar Piastri",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×-25 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -18.6,
-            "weightedPoints": -18
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -18
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 9,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 6,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 13,
-            "formula": "ceil((3×6 + 2×13) ÷ 5)",
-            "weightedRawPoints": 8.8,
-            "weightedPoints": 9
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 9
-            }
-          ]
-        }
-      ],
-      "runningTotal": 7
+      "runningTotal": 120
     },
     {
       "teamId": "sanath-kuppa-f128be53",
@@ -7042,7 +6829,433 @@
           ]
         }
       ],
-      "runningTotal": 105
+      "runningTotal": 101
+    },
+    {
+      "teamId": "oyvind-helgerud-3d689e5d",
+      "principalName": "Oyvind Helgerud",
+      "displayName": "Vestigo Racing",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": 4,
+      "driverSubtotal": 22,
+      "constructorSubtotal": -18,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 4,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "qualifyingPosition": 7,
+          "sprintPosition": 21,
+          "gridStart": 7,
+          "improvementGrid": 7,
+          "racePosition": 5,
+          "classified": true,
+          "totalPoints": 14,
+          "components": [
+            {
+              "label": "Qualifying (grid P7)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P5",
+              "points": 10
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 15,
+          "sprintPosition": 10,
+          "gridStart": 15,
+          "improvementGrid": 15,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P15)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 11,
+          "sprintPosition": 15,
+          "gridStart": 11,
+          "improvementGrid": 11,
+          "racePosition": 12,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P11)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P15",
+              "points": 0
+            },
+            {
+              "label": "Race finish P12",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
+          "driverIds": [
+            "lando-norris",
+            "oscar-piastri"
+          ],
+          "totalPoints": -18,
+          "weightingBreakdown": {
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": -25,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": -9,
+            "formula": "ceil((3×-25 + 2×-9) ÷ 5)",
+            "weightedRawPoints": -18.6,
+            "weightedPoints": -18
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -18
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 9,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 6,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×6 + 2×13) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 9
+            }
+          ]
+        }
+      ],
+      "runningTotal": -7
+    },
+    {
+      "teamId": "tracey-wallis-1da84f99",
+      "principalName": "Tracey Wallis",
+      "displayName": "Spanner In The Works",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": -16,
+      "driverSubtotal": -19,
+      "constructorSubtotal": 3,
+      "homeCircuitApplied": true,
+      "homeCircuitBonusPoints": 16,
+      "investmentBonusPoints": 0,
+      "totalPoints": 0,
+      "drivers": [
+        {
+          "driverId": "lando-norris",
+          "name": "Lando Norris",
+          "teamName": "McLaren",
+          "imageSlug": "norris",
+          "rank": "Champion",
+          "qualifyingPosition": 3,
+          "sprintPosition": 2,
+          "gridStart": 3,
+          "improvementGrid": 3,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": -25,
+          "components": [
+            {
+              "label": "Qualifying (grid P3)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P2",
+              "points": 7
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -30
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "lance-stroll",
+          "name": "Lance Stroll",
+          "teamName": "Aston Martin",
+          "imageSlug": "stroll",
+          "rank": "No Hoper",
+          "qualifyingPosition": 21,
+          "sprintPosition": 16,
+          "gridStart": 22,
+          "improvementGrid": 22,
+          "racePosition": 15,
+          "classified": true,
+          "totalPoints": 4,
+          "components": [
+            {
+              "label": "Qualifying (grid P22)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P16",
+              "points": 0
+            },
+            {
+              "label": "Race finish P15",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 14
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 20,
+          "sprintPosition": 14,
+          "gridStart": 20,
+          "improvementGrid": 20,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": 2,
+          "components": [
+            {
+              "label": "Qualifying (grid P20)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P14",
+              "points": 0
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -25,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 38,
+            "formula": "ceil((3×-25 + 2×38) ÷ 5)",
+            "weightedRawPoints": 0.2,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -2,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -3
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 5,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 2,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×2 + 2×8) ÷ 5)",
+            "weightedRawPoints": 4.4,
+            "weightedPoints": 5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 5
+            }
+          ]
+        }
+      ],
+      "runningTotal": 145
     },
     {
       "teamId": "rob-wallis-94faa5a8",
@@ -7051,13 +7264,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -1,
+      "baseSubtotal": -5,
       "driverSubtotal": 19,
-      "constructorSubtotal": -20,
+      "constructorSubtotal": -24,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 0,
+      "totalPoints": -4,
       "drivers": [
         {
           "driverId": "liam-lawson",
@@ -7231,22 +7444,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -7255,429 +7468,7 @@
           ]
         }
       ],
-      "runningTotal": 41
-    },
-    {
-      "teamId": "tracey-wallis-1da84f99",
-      "principalName": "Tracey Wallis",
-      "displayName": "Spanner In The Works",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": -6,
-      "driverSubtotal": -9,
-      "constructorSubtotal": 3,
-      "homeCircuitApplied": true,
-      "homeCircuitBonusPoints": 6,
-      "investmentBonusPoints": 0,
-      "totalPoints": 0,
-      "drivers": [
-        {
-          "driverId": "lando-norris",
-          "name": "Lando Norris",
-          "teamName": "McLaren",
-          "imageSlug": "norris",
-          "rank": "Champion",
-          "qualifyingPosition": 3,
-          "sprintPosition": 2,
-          "gridStart": 3,
-          "improvementGrid": 3,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": -25,
-          "components": [
-            {
-              "label": "Qualifying (grid P3)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P2",
-              "points": 7
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -30
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "lance-stroll",
-          "name": "Lance Stroll",
-          "teamName": "Aston Martin",
-          "imageSlug": "stroll",
-          "rank": "No Hoper",
-          "qualifyingPosition": 21,
-          "sprintPosition": 16,
-          "gridStart": 22,
-          "improvementGrid": 22,
-          "racePosition": 15,
-          "classified": true,
-          "totalPoints": 14,
-          "components": [
-            {
-              "label": "Qualifying (grid P22)",
-              "points": 0
-            },
-            {
-              "label": "Sprint P16",
-              "points": 0
-            },
-            {
-              "label": "Race finish P15",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 14
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "sergio-perez",
-          "name": "Sergio Perez",
-          "teamName": "Cadillac",
-          "imageSlug": "perez",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 20,
-          "sprintPosition": 14,
-          "gridStart": 20,
-          "improvementGrid": 20,
-          "racePosition": 17,
-          "classified": true,
-          "totalPoints": 2,
-          "components": [
-            {
-              "label": "Qualifying (grid P20)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P14",
-              "points": 0
-            },
-            {
-              "label": "Race finish P17",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 1,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": -25,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 38,
-            "formula": "ceil((3×-25 + 2×38) ÷ 5)",
-            "weightedRawPoints": 0.2,
-            "weightedPoints": 1
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 1
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -2,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
-            "weightedRawPoints": -3.2,
-            "weightedPoints": -3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -3
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 5,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 2,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×2 + 2×8) ÷ 5)",
-            "weightedRawPoints": 4.4,
-            "weightedPoints": 5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 5
-            }
-          ]
-        }
-      ],
-      "runningTotal": 145
-    },
-    {
-      "teamId": "chris-bayley-f3b36d58",
-      "principalName": "Chris Bayley",
-      "displayName": "Aero We Go",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": -1,
-      "driverSubtotal": -21,
-      "constructorSubtotal": 20,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": -1,
-      "drivers": [
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 1,
-          "sprintPosition": 1,
-          "gridStart": 1,
-          "improvementGrid": 1,
-          "racePosition": 19,
-          "classified": true,
-          "totalPoints": -25,
-          "components": [
-            {
-              "label": "Qualifying (grid P1)",
-              "points": 3
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P19",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -36
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "fernando-alonso",
-          "name": "Fernando Alonso",
-          "teamName": "Aston Martin",
-          "imageSlug": "alonso",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 19,
-          "sprintPosition": 22,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -6,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P22",
-              "points": 0
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 15,
-          "sprintPosition": 10,
-          "gridStart": 15,
-          "improvementGrid": 15,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 10,
-          "components": [
-            {
-              "label": "Qualifying (grid P15)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "mercedes",
-          "name": "Mercedes",
-          "imageSlug": "mercedes",
-          "driverIds": [
-            "kimi-antonelli",
-            "george-russell"
-          ],
-          "totalPoints": 1,
-          "weightingBreakdown": {
-            "leadDriverId": "george-russell",
-            "leadDriverName": "George Russell",
-            "leadDriverPoints": -25,
-            "secondDriverId": "kimi-antonelli",
-            "secondDriverName": "Kimi Antonelli",
-            "secondDriverPoints": 38,
-            "formula": "ceil((3×-25 + 2×38) ÷ 5)",
-            "weightedRawPoints": 0.2,
-            "weightedPoints": 1
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 1
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "alpine",
-          "name": "Alpine",
-          "imageSlug": "alpine",
-          "driverIds": [
-            "pierre-gasly",
-            "franco-colapinto"
-          ],
-          "totalPoints": 24,
-          "weightingBreakdown": {
-            "leadDriverId": "pierre-gasly",
-            "leadDriverName": "Pierre Gasly",
-            "leadDriverPoints": 22,
-            "secondDriverId": "franco-colapinto",
-            "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×22 + 2×25) ÷ 5)",
-            "weightedRawPoints": 23.2,
-            "weightedPoints": 24
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 24
-            }
-          ]
-        }
-      ],
-      "runningTotal": 241
+      "runningTotal": 37
     },
     {
       "teamId": "matthew-brooks-0ba2f10f",
@@ -7889,19 +7680,232 @@
       "runningTotal": 280
     },
     {
+      "teamId": "chris-bayley-f3b36d58",
+      "principalName": "Chris Bayley",
+      "displayName": "Aero We Go",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": -5,
+      "driverSubtotal": -21,
+      "constructorSubtotal": 16,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -5,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": 1,
+          "gridStart": 1,
+          "improvementGrid": 1,
+          "racePosition": 19,
+          "classified": true,
+          "totalPoints": -25,
+          "components": [
+            {
+              "label": "Qualifying (grid P1)",
+              "points": 3
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P19",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -36
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 19,
+          "sprintPosition": 22,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -6,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P22",
+              "points": 0
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 15,
+          "sprintPosition": 10,
+          "gridStart": 15,
+          "improvementGrid": 15,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P15)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 1,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -25,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 38,
+            "formula": "ceil((3×-25 + 2×38) ÷ 5)",
+            "weightedRawPoints": 0.2,
+            "weightedPoints": 1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 24,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": 22,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 25,
+            "formula": "ceil((3×22 + 2×25) ÷ 5)",
+            "weightedRawPoints": 23.2,
+            "weightedPoints": 24
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 24
+            }
+          ]
+        }
+      ],
+      "runningTotal": 237
+    },
+    {
       "teamId": "ken-pigott-5e176435",
       "principalName": "Ken Pigott",
       "displayName": "Rascasse Racing",
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -8,
+      "baseSubtotal": -12,
       "driverSubtotal": 18,
-      "constructorSubtotal": -26,
+      "constructorSubtotal": -30,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -8,
+      "totalPoints": -12,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -8048,22 +8052,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -8099,7 +8103,7 @@
           ]
         }
       ],
-      "runningTotal": -23
+      "runningTotal": -37
     },
     {
       "teamId": "laura-young-cf286bb9",
@@ -8108,13 +8112,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": -8,
+      "baseSubtotal": -12,
       "driverSubtotal": -3,
-      "constructorSubtotal": -5,
+      "constructorSubtotal": -9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -8,
+      "totalPoints": -12,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -8261,22 +8265,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -8312,220 +8316,7 @@
           ]
         }
       ],
-      "runningTotal": 82
-    },
-    {
-      "teamId": "leanne-lewis-b930b948",
-      "principalName": "Leanne Lewis",
-      "displayName": "Skid Marks",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": -14,
-      "driverSubtotal": -21,
-      "constructorSubtotal": 7,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": -14,
-      "drivers": [
-        {
-          "driverId": "lando-norris",
-          "name": "Lando Norris",
-          "teamName": "McLaren",
-          "imageSlug": "norris",
-          "rank": "Champion",
-          "qualifyingPosition": 3,
-          "sprintPosition": 2,
-          "gridStart": 3,
-          "improvementGrid": 3,
-          "racePosition": 18,
-          "classified": true,
-          "totalPoints": -25,
-          "components": [
-            {
-              "label": "Qualifying (grid P3)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P2",
-              "points": 7
-            },
-            {
-              "label": "Race finish P18",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -30
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "carlos-sainz",
-          "name": "Carlos Sainz",
-          "teamName": "Williams",
-          "imageSlug": "sainz",
-          "rank": "Top Ten",
-          "qualifyingPosition": 15,
-          "sprintPosition": 10,
-          "gridStart": 15,
-          "improvementGrid": 15,
-          "racePosition": 9,
-          "classified": true,
-          "totalPoints": 10,
-          "components": [
-            {
-              "label": "Qualifying (grid P15)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P10",
-              "points": 0
-            },
-            {
-              "label": "Race finish P9",
-              "points": 2
-            },
-            {
-              "label": "Position change",
-              "points": 12
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "fernando-alonso",
-          "name": "Fernando Alonso",
-          "teamName": "Aston Martin",
-          "imageSlug": "alonso",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 19,
-          "sprintPosition": 22,
-          "gridStart": 19,
-          "improvementGrid": 19,
-          "racePosition": 20,
-          "classified": true,
-          "totalPoints": -6,
-          "components": [
-            {
-              "label": "Qualifying (grid P19)",
-              "points": -4
-            },
-            {
-              "label": "Sprint P22",
-              "points": 0
-            },
-            {
-              "label": "Race finish P20",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -2
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "williams",
-          "name": "Williams",
-          "imageSlug": "williams",
-          "driverIds": [
-            "alex-albon",
-            "carlos-sainz"
-          ],
-          "totalPoints": 3,
-          "weightingBreakdown": {
-            "leadDriverId": "carlos-sainz",
-            "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": 10,
-            "secondDriverId": "alex-albon",
-            "secondDriverName": "Alex Albon",
-            "secondDriverPoints": -8,
-            "formula": "ceil((3×10 + 2×-8) ÷ 5)",
-            "weightedRawPoints": 2.8,
-            "weightedPoints": 3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 3
-            }
-          ]
-        },
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "haas",
-          "name": "Haas",
-          "imageSlug": "haas",
-          "driverIds": [
-            "esteban-ocon",
-            "oliver-bearman"
-          ],
-          "totalPoints": 9,
-          "weightingBreakdown": {
-            "leadDriverId": "esteban-ocon",
-            "leadDriverName": "Esteban Ocon",
-            "leadDriverPoints": 6,
-            "secondDriverId": "oliver-bearman",
-            "secondDriverName": "Oliver Bearman",
-            "secondDriverPoints": 13,
-            "formula": "ceil((3×6 + 2×13) ÷ 5)",
-            "weightedRawPoints": 8.8,
-            "weightedPoints": 9
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 9
-            }
-          ]
-        }
-      ],
-      "runningTotal": 95
+      "runningTotal": 78
     },
     {
       "teamId": "stephen-brooks-397d1f58",
@@ -8737,219 +8528,6 @@
       "runningTotal": 285
     },
     {
-      "teamId": "caroline-harris-855736a8",
-      "principalName": "Caroline Harris",
-      "displayName": "Harris Racing",
-      "raceId": "canada",
-      "raceName": "Canada",
-      "raceDate": "2026-05-24",
-      "baseSubtotal": -15,
-      "driverSubtotal": -12,
-      "constructorSubtotal": -3,
-      "homeCircuitApplied": false,
-      "homeCircuitBonusPoints": 0,
-      "investmentBonusPoints": 0,
-      "totalPoints": -15,
-      "drivers": [
-        {
-          "driverId": "max-verstappen",
-          "name": "Max Verstappen",
-          "teamName": "Red Bull",
-          "imageSlug": "verstappen",
-          "rank": "Contender",
-          "qualifyingPosition": 6,
-          "sprintPosition": 7,
-          "gridStart": 6,
-          "improvementGrid": 6,
-          "racePosition": 3,
-          "classified": true,
-          "totalPoints": 21,
-          "components": [
-            {
-              "label": "Qualifying (grid P6)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P7",
-              "points": 2
-            },
-            {
-              "label": "Race finish P3",
-              "points": 15
-            },
-            {
-              "label": "Position change",
-              "points": 6
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "george-russell",
-          "name": "George Russell",
-          "teamName": "Mercedes",
-          "imageSlug": "russell",
-          "rank": "Contender",
-          "qualifyingPosition": 1,
-          "sprintPosition": 1,
-          "gridStart": 1,
-          "improvementGrid": 1,
-          "racePosition": 19,
-          "classified": true,
-          "totalPoints": -25,
-          "components": [
-            {
-              "label": "Qualifying (grid P1)",
-              "points": 3
-            },
-            {
-              "label": "Sprint P1",
-              "points": 8
-            },
-            {
-              "label": "Race finish P19",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -36
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        },
-        {
-          "driverId": "alex-albon",
-          "name": "Alex Albon",
-          "teamName": "Williams",
-          "imageSlug": "albon",
-          "rank": "Mid Runner",
-          "qualifyingPosition": 18,
-          "sprintPosition": 19,
-          "gridStart": 18,
-          "improvementGrid": 18,
-          "racePosition": 21,
-          "classified": true,
-          "totalPoints": -8,
-          "components": [
-            {
-              "label": "Qualifying (grid P18)",
-              "points": -2
-            },
-            {
-              "label": "Sprint P19",
-              "points": 0
-            },
-            {
-              "label": "Race finish P21",
-              "points": 0
-            },
-            {
-              "label": "Position change",
-              "points": -6
-            }
-          ],
-          "raceContext": {
-            "raceId": "canada",
-            "raceName": "Canada"
-          }
-        }
-      ],
-      "constructors": [
-        {
-          "teamId": "aston-martin",
-          "name": "Aston Martin",
-          "imageSlug": "aston_martin",
-          "driverIds": [
-            "fernando-alonso",
-            "lance-stroll"
-          ],
-          "totalPoints": -5,
-          "weightingBreakdown": {
-            "leadDriverId": "fernando-alonso",
-            "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": -6,
-            "secondDriverId": "lance-stroll",
-            "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 2
-            },
-            {
-              "label": "FIA monetary fines",
-              "points": -7
-            }
-          ]
-        },
-        {
-          "teamId": "audi",
-          "name": "Audi",
-          "imageSlug": "audi",
-          "driverIds": [
-            "gabriel-bortoleto",
-            "nico-hulkenberg"
-          ],
-          "totalPoints": -3,
-          "weightingBreakdown": {
-            "leadDriverId": "nico-hulkenberg",
-            "leadDriverName": "Nico Hulkenberg",
-            "leadDriverPoints": -2,
-            "secondDriverId": "gabriel-bortoleto",
-            "secondDriverName": "Gabriel Bortoleto",
-            "secondDriverPoints": -5,
-            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
-            "weightedRawPoints": -3.2,
-            "weightedPoints": -3
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": -3
-            }
-          ]
-        },
-        {
-          "teamId": "cadillac",
-          "name": "Cadillac",
-          "imageSlug": "cadillac",
-          "driverIds": [
-            "sergio-perez",
-            "valtteri-bottas"
-          ],
-          "totalPoints": 5,
-          "weightingBreakdown": {
-            "leadDriverId": "sergio-perez",
-            "leadDriverName": "Sergio Perez",
-            "leadDriverPoints": 2,
-            "secondDriverId": "valtteri-bottas",
-            "secondDriverName": "Valtteri Bottas",
-            "secondDriverPoints": 8,
-            "formula": "ceil((3×2 + 2×8) ÷ 5)",
-            "weightedRawPoints": 4.4,
-            "weightedPoints": 5
-          },
-          "components": [
-            {
-              "label": "Weighted driver total",
-              "points": 5
-            }
-          ]
-        }
-      ],
-      "runningTotal": 93
-    },
-    {
       "teamId": "john-hopkins-4d46f69f",
       "principalName": "John Hopkins",
       "displayName": "Over The Rainbow",
@@ -9157,6 +8735,432 @@
         }
       ],
       "runningTotal": 138
+    },
+    {
+      "teamId": "leanne-lewis-b930b948",
+      "principalName": "Leanne Lewis",
+      "displayName": "Skid Marks",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": -18,
+      "driverSubtotal": -21,
+      "constructorSubtotal": 3,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -18,
+      "drivers": [
+        {
+          "driverId": "lando-norris",
+          "name": "Lando Norris",
+          "teamName": "McLaren",
+          "imageSlug": "norris",
+          "rank": "Champion",
+          "qualifyingPosition": 3,
+          "sprintPosition": 2,
+          "gridStart": 3,
+          "improvementGrid": 3,
+          "racePosition": 18,
+          "classified": true,
+          "totalPoints": -25,
+          "components": [
+            {
+              "label": "Qualifying (grid P3)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P2",
+              "points": 7
+            },
+            {
+              "label": "Race finish P18",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -30
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 15,
+          "sprintPosition": 10,
+          "gridStart": 15,
+          "improvementGrid": 15,
+          "racePosition": 9,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P15)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P10",
+              "points": 0
+            },
+            {
+              "label": "Race finish P9",
+              "points": 2
+            },
+            {
+              "label": "Position change",
+              "points": 12
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 19,
+          "sprintPosition": 22,
+          "gridStart": 19,
+          "improvementGrid": 19,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -6,
+          "components": [
+            {
+              "label": "Qualifying (grid P19)",
+              "points": -4
+            },
+            {
+              "label": "Sprint P22",
+              "points": 0
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": 3,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": 10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×10 + 2×-8) ÷ 5)",
+            "weightedRawPoints": 2.8,
+            "weightedPoints": 3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 3
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": 9,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 6,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": 13,
+            "formula": "ceil((3×6 + 2×13) ÷ 5)",
+            "weightedRawPoints": 8.8,
+            "weightedPoints": 9
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 9
+            }
+          ]
+        }
+      ],
+      "runningTotal": 91
+    },
+    {
+      "teamId": "caroline-harris-855736a8",
+      "principalName": "Caroline Harris",
+      "displayName": "Harris Racing",
+      "raceId": "canada",
+      "raceName": "Canada",
+      "raceDate": "2026-05-24",
+      "baseSubtotal": -19,
+      "driverSubtotal": -12,
+      "constructorSubtotal": -7,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -19,
+      "drivers": [
+        {
+          "driverId": "max-verstappen",
+          "name": "Max Verstappen",
+          "teamName": "Red Bull",
+          "imageSlug": "verstappen",
+          "rank": "Contender",
+          "qualifyingPosition": 6,
+          "sprintPosition": 7,
+          "gridStart": 6,
+          "improvementGrid": 6,
+          "racePosition": 3,
+          "classified": true,
+          "totalPoints": 21,
+          "components": [
+            {
+              "label": "Qualifying (grid P6)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P7",
+              "points": 2
+            },
+            {
+              "label": "Race finish P3",
+              "points": 15
+            },
+            {
+              "label": "Position change",
+              "points": 6
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 1,
+          "sprintPosition": 1,
+          "gridStart": 1,
+          "improvementGrid": 1,
+          "racePosition": 19,
+          "classified": true,
+          "totalPoints": -25,
+          "components": [
+            {
+              "label": "Qualifying (grid P1)",
+              "points": 3
+            },
+            {
+              "label": "Sprint P1",
+              "points": 8
+            },
+            {
+              "label": "Race finish P19",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -36
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        },
+        {
+          "driverId": "alex-albon",
+          "name": "Alex Albon",
+          "teamName": "Williams",
+          "imageSlug": "albon",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 18,
+          "sprintPosition": 19,
+          "gridStart": 18,
+          "improvementGrid": 18,
+          "racePosition": 21,
+          "classified": true,
+          "totalPoints": -8,
+          "components": [
+            {
+              "label": "Qualifying (grid P18)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P19",
+              "points": 0
+            },
+            {
+              "label": "Race finish P21",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -6
+            }
+          ],
+          "raceContext": {
+            "raceId": "canada",
+            "raceName": "Canada"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -3,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": -2,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -5,
+            "formula": "ceil((3×-2 + 2×-5) ÷ 5)",
+            "weightedRawPoints": -3.2,
+            "weightedPoints": -3
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -3
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": 5,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": 2,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": 8,
+            "formula": "ceil((3×2 + 2×8) ÷ 5)",
+            "weightedRawPoints": 4.4,
+            "weightedPoints": 5
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 5
+            }
+          ]
+        }
+      ],
+      "runningTotal": 89
     },
     {
       "teamId": "paul-brooks-c712f8af",

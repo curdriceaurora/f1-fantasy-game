@@ -2,7 +2,7 @@
   "teamId": "john-khatri-81ee21fe",
   "principalName": "John Khatri",
   "displayName": "Bella’s Racing Team",
-  "totalPoints": 346,
+  "totalPoints": 336,
   "completedRaces": 11,
   "latestRacePoints": 23,
   "races": [
@@ -608,13 +608,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 23,
-      "driverSubtotal": -5,
+      "baseSubtotal": 13,
+      "driverSubtotal": -15,
       "constructorSubtotal": 28,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 13,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -628,7 +628,7 @@
           "improvementGrid": 22,
           "racePosition": 22,
           "classified": true,
-          "totalPoints": -9,
+          "totalPoints": -19,
           "components": [
             {
               "label": "Qualifying (DSQ, ruled DNQ, grid P22)",
@@ -645,6 +645,10 @@
             {
               "label": "Position change",
               "points": 0
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -808,7 +812,7 @@
           ]
         }
       ],
-      "runningTotal": 148
+      "runningTotal": 138
     },
     {
       "raceId": "canada",
@@ -1014,7 +1018,7 @@
           ]
         }
       ],
-      "runningTotal": 204
+      "runningTotal": 194
     },
     {
       "raceId": "monaco",
@@ -1212,7 +1216,7 @@
           ]
         }
       ],
-      "runningTotal": 211
+      "runningTotal": 201
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1418,7 @@
           ]
         }
       ],
-      "runningTotal": 228
+      "runningTotal": 218
     },
     {
       "raceId": "austria",
@@ -1608,7 +1612,7 @@
           ]
         }
       ],
-      "runningTotal": 246
+      "runningTotal": 236
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1818,7 @@
           ]
         }
       ],
-      "runningTotal": 319
+      "runningTotal": 309
     },
     {
       "raceId": "belgium",
@@ -2016,7 +2020,7 @@
           ]
         }
       ],
-      "runningTotal": 323
+      "runningTotal": 313
     },
     {
       "raceId": "hungary",
@@ -2214,7 +2218,7 @@
           ]
         }
       ],
-      "runningTotal": 346
+      "runningTotal": 336
     }
   ]
 }

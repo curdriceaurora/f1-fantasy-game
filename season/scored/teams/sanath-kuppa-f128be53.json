@@ -2,7 +2,7 @@
   "teamId": "sanath-kuppa-f128be53",
   "principalName": "Sanath Kuppa",
   "displayName": "Must Be The Water",
-  "totalPoints": 109,
+  "totalPoints": 105,
   "completedRaces": 11,
   "latestRacePoints": 19,
   "races": [
@@ -604,13 +604,13 @@
       "raceId": "miami",
       "raceName": "Miami",
       "raceDate": "2026-05-03",
-      "baseSubtotal": 28,
+      "baseSubtotal": 24,
       "driverSubtotal": 23,
-      "constructorSubtotal": 5,
+      "constructorSubtotal": 1,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 28,
+      "totalPoints": 24,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -730,22 +730,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": -1,
+          "totalPoints": -5,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 3,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": -9,
-            "formula": "ceil((3×3 + 2×-9) ÷ 5)",
-            "weightedRawPoints": -1.8,
-            "weightedPoints": -1
+            "secondDriverPoints": -19,
+            "formula": "ceil((3×3 + 2×-19) ÷ 5)",
+            "weightedRawPoints": -5.8,
+            "weightedPoints": -5
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": -1
+              "points": -5
             }
           ]
         },
@@ -804,7 +804,7 @@
           ]
         }
       ],
-      "runningTotal": 101
+      "runningTotal": 97
     },
     {
       "raceId": "canada",
@@ -1010,7 +1010,7 @@
           ]
         }
       ],
-      "runningTotal": 105
+      "runningTotal": 101
     },
     {
       "raceId": "monaco",
@@ -1212,7 +1212,7 @@
           ]
         }
       ],
-      "runningTotal": 60
+      "runningTotal": 56
     },
     {
       "raceId": "barcelona-catalunya",
@@ -1414,7 +1414,7 @@
           ]
         }
       ],
-      "runningTotal": 80
+      "runningTotal": 76
     },
     {
       "raceId": "austria",
@@ -1608,7 +1608,7 @@
           ]
         }
       ],
-      "runningTotal": 112
+      "runningTotal": 108
     },
     {
       "raceId": "great-britain",
@@ -1814,7 +1814,7 @@
           ]
         }
       ],
-      "runningTotal": 125
+      "runningTotal": 121
     },
     {
       "raceId": "belgium",
@@ -2008,7 +2008,7 @@
           ]
         }
       ],
-      "runningTotal": 90
+      "runningTotal": 86
     },
     {
       "raceId": "hungary",
@@ -2202,7 +2202,7 @@
           ]
         }
       ],
-      "runningTotal": 109
+      "runningTotal": 105
     }
   ]
 }

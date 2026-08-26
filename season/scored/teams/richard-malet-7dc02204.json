@@ -2,7 +2,7 @@
   "teamId": "richard-malet-7dc02204",
   "principalName": "Richard Malet",
   "displayName": "The Last Carlos Fandango",
-  "totalPoints": 129,
+  "totalPoints": 109,
   "completedRaces": 11,
   "latestRacePoints": 55,
   "races": [
@@ -818,13 +818,13 @@
       "raceId": "canada",
       "raceName": "Canada",
       "raceDate": "2026-05-24",
-      "baseSubtotal": 31,
+      "baseSubtotal": 27,
       "driverSubtotal": 13,
-      "constructorSubtotal": 18,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 31,
+      "totalPoints": 27,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -971,22 +971,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": -5,
+          "totalPoints": -9,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
             "leadDriverPoints": -6,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
-            "secondDriverPoints": 14,
-            "formula": "ceil((3×-6 + 2×14) ÷ 5)",
-            "weightedRawPoints": 2,
-            "weightedPoints": 2
+            "secondDriverPoints": 4,
+            "formula": "ceil((3×-6 + 2×4) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 2
+              "points": -2
             },
             {
               "label": "FIA monetary fines",
@@ -1022,7 +1022,7 @@
           ]
         }
       ],
-      "runningTotal": 84
+      "runningTotal": 80
     },
     {
       "raceId": "monaco",
@@ -1224,19 +1224,19 @@
           ]
         }
       ],
-      "runningTotal": 58
+      "runningTotal": 54
     },
     {
       "raceId": "barcelona-catalunya",
       "raceName": "Barcelona-Catalunya",
       "raceDate": "2026-06-14",
-      "baseSubtotal": -6,
-      "driverSubtotal": -3,
-      "constructorSubtotal": -3,
+      "baseSubtotal": -22,
+      "driverSubtotal": -13,
+      "constructorSubtotal": -9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -6,
+      "totalPoints": -22,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -1282,7 +1282,7 @@
           "improvementGrid": 22,
           "racePosition": 19,
           "classified": true,
-          "totalPoints": 2,
+          "totalPoints": -8,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -1295,6 +1295,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -1371,22 +1375,22 @@
             "fernando-alonso",
             "lance-stroll"
           ],
-          "totalPoints": 0,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "fernando-alonso",
             "leadDriverName": "Fernando Alonso",
-            "leadDriverPoints": 2,
+            "leadDriverPoints": -8,
             "secondDriverId": "lance-stroll",
             "secondDriverName": "Lance Stroll",
             "secondDriverPoints": -3,
-            "formula": "ceil((3×2 + 2×-3) ÷ 5)",
-            "weightedRawPoints": 0,
-            "weightedPoints": 0
+            "formula": "ceil((3×-8 + 2×-3) ÷ 5)",
+            "weightedRawPoints": -6,
+            "weightedPoints": -6
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 0
+              "points": -6
             }
           ]
         },
@@ -1418,7 +1422,7 @@
           ]
         }
       ],
-      "runningTotal": 52
+      "runningTotal": 32
     },
     {
       "raceId": "austria",
@@ -1612,7 +1616,7 @@
           ]
         }
       ],
-      "runningTotal": 91
+      "runningTotal": 71
     },
     {
       "raceId": "great-britain",
@@ -1818,7 +1822,7 @@
           ]
         }
       ],
-      "runningTotal": 71
+      "runningTotal": 51
     },
     {
       "raceId": "belgium",
@@ -2024,7 +2028,7 @@
           ]
         }
       ],
-      "runningTotal": 74
+      "runningTotal": 54
     },
     {
       "raceId": "hungary",
@@ -2218,7 +2222,7 @@
           ]
         }
       ],
-      "runningTotal": 129
+      "runningTotal": 109
     }
   ]
 }
