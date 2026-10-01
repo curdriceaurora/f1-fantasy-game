@@ -130,9 +130,10 @@ test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => 
       round,
       drivers: {
         'max-verstappen': { gridStart: 1, racePosition: 1, gridPenaltyPlaces: 0, timePenaltySeconds: 0, fineEuros: 0 },
+        'isack-hadjar': { gridStart: 2, racePosition: 2, gridPenaltyPlaces: 0, timePenaltySeconds: 0, fineEuros: 0 },
       },
       teams: {
-        'red-bull': { driverIds: ['max-verstappen'], fineEuros: 0 },
+        'red-bull': { driverIds: ['max-verstappen', 'isack-hadjar'], fineEuros: 0 },
       },
     });
     writeFileSync(join(seasonDir, 'normalized', 'race-1.json'), JSON.stringify(normRace('race-1', '2026-03-08', 1)));
@@ -141,8 +142,8 @@ test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => 
     // Both teams pick Verstappen & Red Bull.
     // Team A (Alpha Racing) has homeCircuitId: "race-1" -> Race 1 gets 2X, Race 2 gets X (latest = X).
     // Team B (Beta Racing) has homeCircuitId: "race-2" -> Race 1 gets X, Race 2 gets 2X (latest = 2X).
-    // Both have total = 3X (135 pts).
-    // Beta Racing MUST rank 1st on latestRacePoints (90 > 45) despite Alpha being alphabetical 1st.
+    // Both have total = 3X.
+    // Beta Racing MUST rank 1st on latestRacePoints (2X > X) despite Alpha being alphabetical 1st.
     const entries = [
       {
         teamId: 'team-a',
@@ -177,7 +178,6 @@ test('rebuildScoreboard breaks standings ties by latestRacePoints', async () => 
     assert.equal(result.standings[1].displayName, 'Alpha Racing');
   });
 });
-
 
 
 

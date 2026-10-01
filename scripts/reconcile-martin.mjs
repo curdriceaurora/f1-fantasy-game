@@ -24,9 +24,10 @@ import {
   validateRaceCoverage, workbookIdentity, workbookModified,
 } from '../lib/martin-workbook.js';
 import {
-  buildConstructorContribution, buildDriverContribution, scoreFinePoints,
+  buildConstructorContribution, buildSeatContribution, scoreFinePoints,
   scoreGridPenalty, scoreSprintFinish, scoreTimePenalty,
 } from '../lib/score-engine.js';
+import { CANONICAL_SEATS, inferRaceSeatOccupants, seatsForTeam } from '../lib/seats.js';
 import { loadCalendar, normalizedRacePath, readJson } from '../lib/season-store.js';
 
 const WORKBOOK_DIR = 'martins-calculations';
@@ -55,10 +56,20 @@ export function scoredByRace(calendar = loadCalendar(), read = readJson) {
     );
     // Mirror the columns the ledger records, so inputs are compared and not only
     // the totals they add up to.
+    // Project by seat, not by whoever drove it. A reserve has no canonical entry
+    // to score against, and Martin's sheet is keyed the same way: his Zandvoort
+    // rows carry the stand-ins under the seats they filled. Where nobody was
+    // substituted the occupant is the seat owner, so this is the previous
+    // behaviour unchanged.
+    const seatOccupants = inferRaceSeatOccupants(normalized.teams, normalized.seatOccupants, race.id);
+    const seatRace = { ...normalized, drivers: withFines };
     const drivers = {};
-    for (const [id, driver] of Object.entries(withFines)) {
-      drivers[id] = {
-        total: buildDriverContribution(id, driver, {}).totalPoints,
+    for (const seat of CANONICAL_SEATS) {
+      const occupantId = seatOccupants[seat.id] || seat.ownerDriverId;
+      const driver = withFines[occupantId];
+      if (!driver) continue;
+      drivers[seat.ownerDriverId] = {
+        total: buildSeatContribution(seat.ownerDriverId, seatRace, {}, seatOccupants).totalPoints,
         grid: driver.qualifyingDsq ? 'dsq' : (driver.gridStart ?? null),
         finish: driver.racePosition ?? null,
         fineEuros: driver.fineEuros || 0,
@@ -70,7 +81,8 @@ export function scoredByRace(calendar = loadCalendar(), read = readJson) {
     }
     const teams = {};
     for (const [teamId, team] of Object.entries(normalized.teams)) {
-      const contributions = team.driverIds.map((id) => buildDriverContribution(id, withFines[id], {}));
+      const contributions = seatsForTeam(teamId)
+        .map((seat) => buildSeatContribution(seat.ownerDriverId, seatRace, {}, seatOccupants));
       teams[teamId] = {
         total: buildConstructorContribution(
           teamId,

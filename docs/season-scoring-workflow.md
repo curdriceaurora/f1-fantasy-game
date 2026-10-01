@@ -60,3 +60,34 @@ Revisit the design if any of these become true:
 - transfer windows and end-of-season bonuses become staged workflows instead of one-off calculations
 
 At that point, persisting state transitions explicitly in a database may be worth it. For the current Monday batch model, the lightweight internal state machine is the right tradeoff.
+
+## Seat Substitutions
+
+Fantasy driver picks follow a team seat rather than a permanent driver name.
+The baseline seat roster comes from Martin's Race 1 results table (including
+Hadjar at Red Bull and Lawson at Racing Bulls), not stale calculator team labels.
+It defines two stable seats per constructor. A race can set
+`seatOccupants` on its calendar entry to replace a seat occupant independently
+for `qualifying`, `sprint`, and `race`. An omitted session uses the inferred race
+occupant when the lineup changed, or the roster owner when it did not.
+For a single race-lineup change, the scorer infers the replacement by comparing
+the normalized constructor lineup with the two seat owners. If both seats change
+at once, it fails closed until the mapping is made explicit.
+
+```json
+"seatOccupants": {
+  "mercedes:1": {
+    "qualifying": "george-russell",
+    "sprint": "reserve-driver-id",
+    "race": "reserve-driver-id"
+  }
+}
+```
+
+The occupant id must exist in that race's normalized `drivers` data. A `null`
+occupant fails scoring deliberately: the empty-seat interpretation remains
+blocked on Martin and must not silently publish either zero or DNS points.
+Constructor selections resolve the same two stable seats. A substitute therefore
+inherits that seat's driver category and its designated 3x/2x constructor
+weighting, while the published constructor artifact continues to list the actual
+race lineup.
