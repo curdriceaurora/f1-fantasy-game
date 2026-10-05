@@ -2,9 +2,9 @@
   "teamId": "chris-bayley-f3b36d58",
   "principalName": "Chris Bayley",
   "displayName": "Aero We Go",
-  "totalPoints": 405,
-  "completedRaces": 12,
-  "latestRacePoints": 26,
+  "totalPoints": 388,
+  "completedRaces": 13,
+  "latestRacePoints": -17,
   "races": [
     {
       "raceId": "australia",
@@ -2437,6 +2437,200 @@
         }
       ],
       "runningTotal": 405
+    },
+    {
+      "raceId": "bahrain",
+      "raceName": "Bahrain",
+      "raceDate": "2026-10-04",
+      "baseSubtotal": -17,
+      "driverSubtotal": -26,
+      "constructorSubtotal": 9,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -17,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 8,
+          "sprintPosition": null,
+          "gridStart": 7,
+          "improvementGrid": 7,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -28,
+          "components": [
+            {
+              "label": "Qualifying (grid P7)",
+              "points": -2
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -26
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 12,
+          "sprintPosition": null,
+          "gridStart": 12,
+          "improvementGrid": 12,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 12,
+          "components": [
+            {
+              "label": "Qualifying (grid P12)",
+              "points": 0
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 8
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "carlos-sainz",
+          "name": "Carlos Sainz",
+          "teamName": "Williams",
+          "imageSlug": "sainz",
+          "rank": "Top Ten",
+          "qualifyingPosition": 13,
+          "sprintPosition": null,
+          "gridStart": 13,
+          "improvementGrid": 13,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": -10,
+          "components": [
+            {
+              "label": "Qualifying (grid P13)",
+              "points": -2
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -8
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": -7,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -28,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 23,
+            "formula": "ceil((3×-28 + 2×23) ÷ 5)",
+            "weightedRawPoints": -7.6,
+            "weightedPoints": -7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": 12,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": 12,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×12 + 2×10) ÷ 5)",
+            "weightedRawPoints": 11.2,
+            "weightedPoints": 12
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 12
+            }
+          ]
+        },
+        {
+          "teamId": "alpine",
+          "name": "Alpine",
+          "imageSlug": "alpine",
+          "driverIds": [
+            "pierre-gasly",
+            "franco-colapinto"
+          ],
+          "totalPoints": 4,
+          "weightingBreakdown": {
+            "leadDriverId": "pierre-gasly",
+            "leadDriverName": "Pierre Gasly",
+            "leadDriverPoints": -5,
+            "secondDriverId": "franco-colapinto",
+            "secondDriverName": "Franco Colapinto",
+            "secondDriverPoints": 16,
+            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
+            "weightedRawPoints": 3.4,
+            "weightedPoints": 4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 388
     }
   ]
 }

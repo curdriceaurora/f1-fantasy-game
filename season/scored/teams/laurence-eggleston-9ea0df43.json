@@ -2,9 +2,9 @@
   "teamId": "laurence-eggleston-9ea0df43",
   "principalName": "Laurence Eggleston",
   "displayName": "Stroll In The Park",
-  "totalPoints": 821,
-  "completedRaces": 12,
-  "latestRacePoints": 109,
+  "totalPoints": 897,
+  "completedRaces": 13,
+  "latestRacePoints": 76,
   "races": [
     {
       "raceId": "australia",
@@ -2449,6 +2449,200 @@
         }
       ],
       "runningTotal": 821
+    },
+    {
+      "raceId": "bahrain",
+      "raceName": "Bahrain",
+      "raceDate": "2026-10-04",
+      "baseSubtotal": 76,
+      "driverSubtotal": 63,
+      "constructorSubtotal": 13,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 76,
+      "drivers": [
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 5,
+          "sprintPosition": null,
+          "gridStart": 4,
+          "improvementGrid": 4,
+          "racePosition": 4,
+          "classified": true,
+          "totalPoints": 15,
+          "components": [
+            {
+              "label": "Qualifying (grid P4)",
+              "points": 3
+            },
+            {
+              "label": "Race finish P4",
+              "points": 12
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "kimi-antonelli",
+          "name": "Kimi Antonelli",
+          "teamName": "Mercedes",
+          "imageSlug": "antonelli",
+          "rank": "Top Ten",
+          "qualifyingPosition": 4,
+          "sprintPosition": null,
+          "gridStart": 3,
+          "improvementGrid": 3,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 23,
+          "components": [
+            {
+              "label": "Qualifying (grid P3)",
+              "points": 3
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "arvid-lindblad",
+          "name": "Arvid Lindblad",
+          "teamName": "Racing Bulls",
+          "imageSlug": "lindblad",
+          "rank": "No Hoper",
+          "qualifyingPosition": 16,
+          "sprintPosition": null,
+          "gridStart": 22,
+          "improvementGrid": 22,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 25,
+          "components": [
+            {
+              "label": "Qualifying (grid P22)",
+              "points": 0
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 24
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": -7,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": -28,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 23,
+            "formula": "ceil((3×-28 + 2×23) ÷ 5)",
+            "weightedRawPoints": -7.6,
+            "weightedPoints": -7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -7
+            }
+          ]
+        },
+        {
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
+          "driverIds": [
+            "liam-lawson",
+            "arvid-lindblad"
+          ],
+          "totalPoints": 21,
+          "weightingBreakdown": {
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 17,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 25,
+            "formula": "ceil((3×17 + 2×25) ÷ 5)",
+            "weightedRawPoints": 20.2,
+            "weightedPoints": 21
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 21
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -1,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 6,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -13,
+            "formula": "ceil((3×6 + 2×-13) ÷ 5)",
+            "weightedRawPoints": -1.6,
+            "weightedPoints": -1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -1
+            }
+          ]
+        }
+      ],
+      "runningTotal": 897
     }
   ]
 }

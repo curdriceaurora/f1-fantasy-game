@@ -2,9 +2,9 @@
   "teamId": "lizzie-bulmer-ed151919",
   "principalName": "Lizzie Bulmer",
   "displayName": "Final Countdown",
-  "totalPoints": 248,
-  "completedRaces": 12,
-  "latestRacePoints": 27,
+  "totalPoints": 242,
+  "completedRaces": 13,
+  "latestRacePoints": -6,
   "races": [
     {
       "raceId": "australia",
@@ -2413,6 +2413,200 @@
         }
       ],
       "runningTotal": 248
+    },
+    {
+      "raceId": "bahrain",
+      "raceName": "Bahrain",
+      "raceDate": "2026-10-04",
+      "baseSubtotal": -6,
+      "driverSubtotal": -21,
+      "constructorSubtotal": 15,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": -6,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 8,
+          "sprintPosition": null,
+          "gridStart": 7,
+          "improvementGrid": 7,
+          "racePosition": 20,
+          "classified": true,
+          "totalPoints": -28,
+          "components": [
+            {
+              "label": "Qualifying (grid P7)",
+              "points": -2
+            },
+            {
+              "label": "Race finish P20",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -26
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "fernando-alonso",
+          "name": "Fernando Alonso",
+          "teamName": "Aston Martin",
+          "imageSlug": "alonso",
+          "rank": "Mid Runner",
+          "qualifyingPosition": 12,
+          "sprintPosition": null,
+          "gridStart": 12,
+          "improvementGrid": 12,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 12,
+          "components": [
+            {
+              "label": "Qualifying (grid P12)",
+              "points": 0
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 8
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 9,
+          "sprintPosition": null,
+          "gridStart": 9,
+          "improvementGrid": 9,
+          "racePosition": 16,
+          "classified": true,
+          "totalPoints": -5,
+          "components": [
+            {
+              "label": "Qualifying (grid P9)",
+              "points": 9
+            },
+            {
+              "label": "Race finish P16",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -14
+            }
+          ],
+          "raceContext": {
+            "raceId": "bahrain",
+            "raceName": "Bahrain"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "red-bull",
+          "name": "Red Bull",
+          "imageSlug": "redbull",
+          "driverIds": [
+            "max-verstappen",
+            "isack-hadjar"
+          ],
+          "totalPoints": 25,
+          "weightingBreakdown": {
+            "leadDriverId": "max-verstappen",
+            "leadDriverName": "Max Verstappen",
+            "leadDriverPoints": 30,
+            "secondDriverId": "isack-hadjar",
+            "secondDriverName": "Isack Hadjar",
+            "secondDriverPoints": 16,
+            "formula": "ceil((3×30 + 2×16) ÷ 5)",
+            "weightedRawPoints": 24.4,
+            "weightedPoints": 25
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 25
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -9,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -10,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": -8,
+            "formula": "ceil((3×-10 + 2×-8) ÷ 5)",
+            "weightedRawPoints": -9.2,
+            "weightedPoints": -9
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -9
+            }
+          ]
+        },
+        {
+          "teamId": "audi",
+          "name": "Audi",
+          "imageSlug": "audi",
+          "driverIds": [
+            "gabriel-bortoleto",
+            "nico-hulkenberg"
+          ],
+          "totalPoints": -1,
+          "weightingBreakdown": {
+            "leadDriverId": "nico-hulkenberg",
+            "leadDriverName": "Nico Hulkenberg",
+            "leadDriverPoints": 6,
+            "secondDriverId": "gabriel-bortoleto",
+            "secondDriverName": "Gabriel Bortoleto",
+            "secondDriverPoints": -13,
+            "formula": "ceil((3×6 + 2×-13) ÷ 5)",
+            "weightedRawPoints": -1.6,
+            "weightedPoints": -1
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -1
+            }
+          ]
+        }
+      ],
+      "runningTotal": 242
     }
   ]
 }
