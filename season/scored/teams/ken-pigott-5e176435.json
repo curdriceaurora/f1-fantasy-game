@@ -2,9 +2,9 @@
   "teamId": "ken-pigott-5e176435",
   "principalName": "Ken Pigott",
   "displayName": "Rascasse Racing",
-  "totalPoints": 40,
+  "totalPoints": 29,
   "completedRaces": 13,
-  "latestRacePoints": 27,
+  "latestRacePoints": 16,
   "races": [
     {
       "raceId": "australia",
@@ -2438,13 +2438,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 27,
-      "driverSubtotal": 18,
-      "constructorSubtotal": 9,
+      "baseSubtotal": 16,
+      "driverSubtotal": 12,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 27,
+      "totalPoints": 16,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2458,7 +2458,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2471,6 +2471,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2490,7 +2494,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2503,6 +2507,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2606,7 +2614,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2622,11 +2630,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 40
+      "runningTotal": 29
     }
   ]
 }

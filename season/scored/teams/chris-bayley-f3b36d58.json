@@ -2,9 +2,9 @@
   "teamId": "chris-bayley-f3b36d58",
   "principalName": "Chris Bayley",
   "displayName": "Aero We Go",
-  "totalPoints": 388,
+  "totalPoints": 383,
   "completedRaces": 13,
-  "latestRacePoints": -17,
+  "latestRacePoints": -22,
   "races": [
     {
       "raceId": "australia",
@@ -2442,13 +2442,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": -17,
-      "driverSubtotal": -26,
-      "constructorSubtotal": 9,
+      "baseSubtotal": -22,
+      "driverSubtotal": -27,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -17,
+      "totalPoints": -22,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2526,7 +2526,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2539,6 +2539,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2610,27 +2614,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 388
+      "runningTotal": 383
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "oyvind-helgerud-3d689e5d",
   "principalName": "Oyvind Helgerud",
   "displayName": "Vestigo Racing",
-  "totalPoints": 82,
+  "totalPoints": 76,
   "completedRaces": 13,
-  "latestRacePoints": 26,
+  "latestRacePoints": 20,
   "races": [
     {
       "raceId": "australia",
@@ -2426,13 +2426,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 26,
-      "driverSubtotal": 12,
+      "baseSubtotal": 20,
+      "driverSubtotal": 6,
       "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 26,
+      "totalPoints": 20,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2446,7 +2446,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2459,6 +2459,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2478,7 +2482,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2491,6 +2495,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2614,7 +2622,7 @@
           ]
         }
       ],
-      "runningTotal": 82
+      "runningTotal": 76
     }
   ]
 }

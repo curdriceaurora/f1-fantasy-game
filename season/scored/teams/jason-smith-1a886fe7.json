@@ -2,9 +2,9 @@
   "teamId": "jason-smith-1a886fe7",
   "principalName": "Jason Smith",
   "displayName": "NMC Racing",
-  "totalPoints": 942,
+  "totalPoints": 927,
   "completedRaces": 13,
-  "latestRacePoints": 65,
+  "latestRacePoints": 50,
   "races": [
     {
       "raceId": "australia",
@@ -2438,13 +2438,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 65,
-      "driverSubtotal": 52,
-      "constructorSubtotal": 13,
+      "baseSubtotal": 50,
+      "driverSubtotal": 42,
+      "constructorSubtotal": 8,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 65,
+      "totalPoints": 50,
       "drivers": [
         {
           "driverId": "kimi-antonelli",
@@ -2522,7 +2522,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2535,6 +2535,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2579,7 +2583,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2595,6 +2599,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2626,7 +2634,7 @@
           ]
         }
       ],
-      "runningTotal": 942
+      "runningTotal": 927
     }
   ]
 }

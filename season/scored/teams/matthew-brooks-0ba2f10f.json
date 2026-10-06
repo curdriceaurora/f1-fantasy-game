@@ -2,9 +2,9 @@
   "teamId": "matthew-brooks-0ba2f10f",
   "principalName": "Matthew Brooks",
   "displayName": "Sainz, Sealed, Delivered",
-  "totalPoints": 751,
+  "totalPoints": 736,
   "completedRaces": 13,
-  "latestRacePoints": 9,
+  "latestRacePoints": -6,
   "races": [
     {
       "raceId": "australia",
@@ -2410,13 +2410,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 9,
-      "driverSubtotal": 13,
-      "constructorSubtotal": -4,
+      "baseSubtotal": -6,
+      "driverSubtotal": 3,
+      "constructorSubtotal": -9,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 9,
+      "totalPoints": -6,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2494,7 +2494,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2507,6 +2507,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2578,7 +2582,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2594,11 +2598,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 751
+      "runningTotal": 736
     }
   ]
 }

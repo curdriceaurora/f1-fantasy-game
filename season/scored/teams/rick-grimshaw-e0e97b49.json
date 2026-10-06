@@ -2,9 +2,9 @@
   "teamId": "rick-grimshaw-e0e97b49",
   "principalName": "Rick Grimshaw",
   "displayName": "Back With A Bang",
-  "totalPoints": 616,
+  "totalPoints": 612,
   "completedRaces": 13,
-  "latestRacePoints": -6,
+  "latestRacePoints": -10,
   "races": [
     {
       "raceId": "australia",
@@ -2430,13 +2430,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": -6,
+      "baseSubtotal": -10,
       "driverSubtotal": 3,
-      "constructorSubtotal": -9,
+      "constructorSubtotal": -13,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -6,
+      "totalPoints": -10,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2548,12 +2548,12 @@
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
+            "leadDriverPoints": -11,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -8,
-            "formula": "ceil((3×-10 + 2×-8) ÷ 5)",
-            "weightedRawPoints": -9.2,
+            "formula": "ceil((3×-11 + 2×-8) ÷ 5)",
+            "weightedRawPoints": -9.8,
             "weightedPoints": -9
           },
           "components": [
@@ -2571,22 +2571,22 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         },
@@ -2618,7 +2618,7 @@
           ]
         }
       ],
-      "runningTotal": 616
+      "runningTotal": 612
     }
   ]
 }

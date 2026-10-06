@@ -2,9 +2,9 @@
   "teamId": "venkatesh-bhimaraju-fa220cd7",
   "principalName": "Venkatesh Bhimaraju",
   "displayName": "Porpoiser",
-  "totalPoints": 687,
+  "totalPoints": 673,
   "completedRaces": 13,
-  "latestRacePoints": 2,
+  "latestRacePoints": -12,
   "races": [
     {
       "raceId": "australia",
@@ -2430,13 +2430,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 1,
+      "baseSubtotal": -13,
       "driverSubtotal": -18,
-      "constructorSubtotal": 19,
+      "constructorSubtotal": 5,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 2,
+      "totalPoints": -12,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2544,7 +2544,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2560,6 +2560,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2571,7 +2575,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2587,6 +2591,10 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2598,27 +2606,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 687
+      "runningTotal": 673
     }
   ]
 }

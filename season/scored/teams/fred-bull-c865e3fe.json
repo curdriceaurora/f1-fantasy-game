@@ -2,9 +2,9 @@
   "teamId": "fred-bull-c865e3fe",
   "principalName": "Fred Bull",
   "displayName": "He's from Holland - Ishn't dat veird",
-  "totalPoints": 372,
+  "totalPoints": 357,
   "completedRaces": 13,
-  "latestRacePoints": 60,
+  "latestRacePoints": 45,
   "races": [
     {
       "raceId": "australia",
@@ -2426,13 +2426,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 60,
-      "driverSubtotal": 36,
-      "constructorSubtotal": 24,
+      "baseSubtotal": 45,
+      "driverSubtotal": 30,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 60,
+      "totalPoints": 45,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -2482,7 +2482,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2495,6 +2495,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2514,7 +2518,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2527,6 +2531,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2544,22 +2552,22 @@
             "liam-lawson",
             "arvid-lindblad"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "liam-lawson",
             "leadDriverName": "Liam Lawson",
             "leadDriverPoints": 17,
             "secondDriverId": "arvid-lindblad",
             "secondDriverName": "Arvid Lindblad",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×17 + 2×25) ÷ 5)",
-            "weightedRawPoints": 20.2,
-            "weightedPoints": 21
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×17 + 2×15) ÷ 5)",
+            "weightedRawPoints": 16.2,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2598,7 +2606,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2614,11 +2622,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 372
+      "runningTotal": 357
     }
   ]
 }

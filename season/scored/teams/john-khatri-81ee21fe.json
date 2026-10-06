@@ -2,9 +2,9 @@
   "teamId": "john-khatri-81ee21fe",
   "principalName": "John Khatri",
   "displayName": "Bella’s Racing Team",
-  "totalPoints": 421,
+  "totalPoints": 411,
   "completedRaces": 13,
-  "latestRacePoints": 11,
+  "latestRacePoints": 1,
   "races": [
     {
       "raceId": "australia",
@@ -2422,13 +2422,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 11,
-      "driverSubtotal": 6,
-      "constructorSubtotal": 5,
+      "baseSubtotal": 1,
+      "driverSubtotal": 1,
+      "constructorSubtotal": 0,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 11,
+      "totalPoints": 1,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2442,7 +2442,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2455,6 +2455,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2563,7 +2567,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2579,6 +2583,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2610,7 +2618,7 @@
           ]
         }
       ],
-      "runningTotal": 421
+      "runningTotal": 411
     }
   ]
 }

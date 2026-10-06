@@ -2,9 +2,9 @@
   "teamId": "rachel-khatri-e38f6983",
   "principalName": "Rachel Khatri",
   "displayName": "Little Red Corvette",
-  "totalPoints": 705,
+  "totalPoints": 684,
   "completedRaces": 13,
-  "latestRacePoints": 37,
+  "latestRacePoints": 16,
   "races": [
     {
       "raceId": "australia",
@@ -2414,13 +2414,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 37,
-      "driverSubtotal": -8,
-      "constructorSubtotal": 45,
+      "baseSubtotal": 16,
+      "driverSubtotal": -18,
+      "constructorSubtotal": 34,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 37,
+      "totalPoints": 16,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2466,7 +2466,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2479,6 +2479,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2528,22 +2532,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 25,
+          "totalPoints": 23,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 30,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×30 + 2×16) ÷ 5)",
-            "weightedRawPoints": 24.4,
-            "weightedPoints": 25
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×30 + 2×11) ÷ 5)",
+            "weightedRawPoints": 22.4,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 25
+              "points": 23
             }
           ]
         },
@@ -2555,7 +2559,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2571,6 +2575,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2582,27 +2590,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 705
+      "runningTotal": 684
     }
   ]
 }

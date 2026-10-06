@@ -2,9 +2,9 @@
   "teamId": "leanne-lewis-b930b948",
   "principalName": "Leanne Lewis",
   "displayName": "Skid Marks",
-  "totalPoints": 49,
+  "totalPoints": 48,
   "completedRaces": 13,
-  "latestRacePoints": 1,
+  "latestRacePoints": 0,
   "races": [
     {
       "raceId": "australia",
@@ -2434,13 +2434,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 1,
-      "driverSubtotal": -6,
+      "baseSubtotal": 0,
+      "driverSubtotal": -7,
       "constructorSubtotal": 7,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 1,
+      "totalPoints": 0,
       "drivers": [
         {
           "driverId": "lando-norris",
@@ -2486,7 +2486,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2499,6 +2499,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2552,12 +2556,12 @@
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
+            "leadDriverPoints": -11,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -8,
-            "formula": "ceil((3×-10 + 2×-8) ÷ 5)",
-            "weightedRawPoints": -9.2,
+            "formula": "ceil((3×-11 + 2×-8) ÷ 5)",
+            "weightedRawPoints": -9.8,
             "weightedPoints": -9
           },
           "components": [
@@ -2622,7 +2626,7 @@
           ]
         }
       ],
-      "runningTotal": 49
+      "runningTotal": 48
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "caroline-harris-855736a8",
   "principalName": "Caroline Harris",
   "displayName": "Harris Racing",
-  "totalPoints": 138,
+  "totalPoints": 133,
   "completedRaces": 13,
-  "latestRacePoints": 1,
+  "latestRacePoints": -4,
   "races": [
     {
       "raceId": "australia",
@@ -2418,13 +2418,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 1,
+      "baseSubtotal": -4,
       "driverSubtotal": -6,
-      "constructorSubtotal": 7,
+      "constructorSubtotal": 2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 1,
+      "totalPoints": -4,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -2563,7 +2563,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2579,6 +2579,10 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2610,7 +2614,7 @@
           ]
         }
       ],
-      "runningTotal": 138
+      "runningTotal": 133
     }
   ]
 }

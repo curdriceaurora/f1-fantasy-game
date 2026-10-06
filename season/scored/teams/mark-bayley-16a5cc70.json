@@ -2,9 +2,9 @@
   "teamId": "mark-bayley-16a5cc70",
   "principalName": "Mark Bayley",
   "displayName": "Harvest Mode Heroes",
-  "totalPoints": 698,
+  "totalPoints": 685,
   "completedRaces": 13,
-  "latestRacePoints": 20,
+  "latestRacePoints": 7,
   "races": [
     {
       "raceId": "australia",
@@ -2438,13 +2438,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 20,
+      "baseSubtotal": 7,
       "driverSubtotal": -21,
-      "constructorSubtotal": 41,
+      "constructorSubtotal": 28,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 20,
+      "totalPoints": 7,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2552,7 +2552,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2568,6 +2568,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2579,22 +2583,22 @@
             "liam-lawson",
             "arvid-lindblad"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "liam-lawson",
             "leadDriverName": "Liam Lawson",
             "leadDriverPoints": 17,
             "secondDriverId": "arvid-lindblad",
             "secondDriverName": "Arvid Lindblad",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×17 + 2×25) ÷ 5)",
-            "weightedRawPoints": 20.2,
-            "weightedPoints": 21
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×17 + 2×15) ÷ 5)",
+            "weightedRawPoints": 16.2,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2606,27 +2610,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 698
+      "runningTotal": 685
     }
   ]
 }

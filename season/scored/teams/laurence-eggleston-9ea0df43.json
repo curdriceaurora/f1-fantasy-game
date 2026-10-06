@@ -2,9 +2,9 @@
   "teamId": "laurence-eggleston-9ea0df43",
   "principalName": "Laurence Eggleston",
   "displayName": "Stroll In The Park",
-  "totalPoints": 897,
+  "totalPoints": 878,
   "completedRaces": 13,
-  "latestRacePoints": 76,
+  "latestRacePoints": 57,
   "races": [
     {
       "raceId": "australia",
@@ -2454,13 +2454,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 76,
-      "driverSubtotal": 63,
-      "constructorSubtotal": 13,
+      "baseSubtotal": 57,
+      "driverSubtotal": 53,
+      "constructorSubtotal": 4,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 76,
+      "totalPoints": 57,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2538,7 +2538,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2551,6 +2551,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2595,22 +2599,22 @@
             "liam-lawson",
             "arvid-lindblad"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "liam-lawson",
             "leadDriverName": "Liam Lawson",
             "leadDriverPoints": 17,
             "secondDriverId": "arvid-lindblad",
             "secondDriverName": "Arvid Lindblad",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×17 + 2×25) ÷ 5)",
-            "weightedRawPoints": 20.2,
-            "weightedPoints": 21
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×17 + 2×15) ÷ 5)",
+            "weightedRawPoints": 16.2,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2622,7 +2626,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2638,11 +2642,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 897
+      "runningTotal": 878
     }
   ]
 }

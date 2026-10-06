@@ -2,9 +2,9 @@
   "teamId": "richard-malet-7dc02204",
   "principalName": "Richard Malet",
   "displayName": "The Last Carlos Fandango",
-  "totalPoints": 212,
+  "totalPoints": 202,
   "completedRaces": 13,
-  "latestRacePoints": 75,
+  "latestRacePoints": 65,
   "races": [
     {
       "raceId": "australia",
@@ -2426,13 +2426,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 75,
+      "baseSubtotal": 65,
       "driverSubtotal": 48,
-      "constructorSubtotal": 27,
+      "constructorSubtotal": 17,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 75,
+      "totalPoints": 65,
       "drivers": [
         {
           "driverId": "max-verstappen",
@@ -2544,7 +2544,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2560,6 +2560,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2598,7 +2602,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2614,11 +2618,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 212
+      "runningTotal": 202
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "martin-lewis-ea255cc6",
   "principalName": "Martin Lewis",
   "displayName": "Eat My Dust",
-  "totalPoints": 236,
+  "totalPoints": 228,
   "completedRaces": 13,
-  "latestRacePoints": 18,
+  "latestRacePoints": 10,
   "races": [
     {
       "raceId": "australia",
@@ -2418,13 +2418,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 18,
-      "driverSubtotal": -2,
-      "constructorSubtotal": 20,
+      "baseSubtotal": 10,
+      "driverSubtotal": -8,
+      "constructorSubtotal": 18,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 18,
+      "totalPoints": 10,
       "drivers": [
         {
           "driverId": "isack-hadjar",
@@ -2438,7 +2438,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2451,6 +2451,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2470,7 +2474,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2483,6 +2487,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2532,22 +2540,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 25,
+          "totalPoints": 23,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 30,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×30 + 2×16) ÷ 5)",
-            "weightedRawPoints": 24.4,
-            "weightedPoints": 25
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×30 + 2×11) ÷ 5)",
+            "weightedRawPoints": 22.4,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 25
+              "points": 23
             }
           ]
         },
@@ -2563,12 +2571,12 @@
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
+            "leadDriverPoints": -11,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -8,
-            "formula": "ceil((3×-10 + 2×-8) ÷ 5)",
-            "weightedRawPoints": -9.2,
+            "formula": "ceil((3×-11 + 2×-8) ÷ 5)",
+            "weightedRawPoints": -9.8,
             "weightedPoints": -9
           },
           "components": [
@@ -2606,7 +2614,7 @@
           ]
         }
       ],
-      "runningTotal": 236
+      "runningTotal": 228
     }
   ]
 }

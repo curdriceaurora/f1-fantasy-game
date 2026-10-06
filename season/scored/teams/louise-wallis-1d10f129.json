@@ -2,9 +2,9 @@
   "teamId": "louise-wallis-1d10f129",
   "principalName": "Louise Wallis",
   "displayName": "Lewis it Friday Yet?",
-  "totalPoints": 725,
+  "totalPoints": 716,
   "completedRaces": 13,
-  "latestRacePoints": 17,
+  "latestRacePoints": 8,
   "races": [
     {
       "raceId": "australia",
@@ -2422,13 +2422,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 16,
+      "baseSubtotal": 7,
       "driverSubtotal": -8,
-      "constructorSubtotal": 24,
+      "constructorSubtotal": 15,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": 17,
+      "totalPoints": 8,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2536,7 +2536,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2552,6 +2552,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2590,27 +2594,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 725
+      "runningTotal": 716
     }
   ]
 }
