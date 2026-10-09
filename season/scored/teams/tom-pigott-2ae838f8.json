@@ -2,9 +2,9 @@
   "teamId": "tom-pigott-2ae838f8",
   "principalName": "Tom Pigott",
   "displayName": "Suitable For Upgrade",
-  "totalPoints": 532,
+  "totalPoints": 522,
   "completedRaces": 13,
-  "latestRacePoints": 67,
+  "latestRacePoints": 57,
   "races": [
     {
       "raceId": "australia",
@@ -2430,13 +2430,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 67,
-      "driverSubtotal": 35,
-      "constructorSubtotal": 32,
+      "baseSubtotal": 57,
+      "driverSubtotal": 30,
+      "constructorSubtotal": 27,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 67,
+      "totalPoints": 57,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2482,7 +2482,7 @@
           "improvementGrid": 8,
           "racePosition": 5,
           "classified": true,
-          "totalPoints": 16,
+          "totalPoints": 11,
           "components": [
             {
               "label": "Qualifying (grid P8)",
@@ -2495,6 +2495,10 @@
             {
               "label": "Position change",
               "points": 6
+            },
+            {
+              "label": "Grid penalty",
+              "points": -5
             }
           ],
           "raceContext": {
@@ -2544,7 +2548,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2560,6 +2564,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2618,7 +2626,7 @@
           ]
         }
       ],
-      "runningTotal": 532
+      "runningTotal": 522
     }
   ]
 }

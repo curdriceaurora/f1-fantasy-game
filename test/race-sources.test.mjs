@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { eventDocumentsPage, fetchFiaDecisionUrls, fiaEventName, meetingToFiaSlug } from '../lib/fia-documents.js';
+import {
+  documentPrefixes, eventDocumentsPage, fetchFiaDecisionUrls, fiaDocumentSlug, fiaEventName, meetingToFiaSlug,
+} from '../lib/fia-documents.js';
 import { openf1MeetingName } from '../lib/openf1.js';
 
 // The June race is FIA's "Barcelona-Catalunya Grand Prix", OpenF1's "Barcelona
@@ -53,4 +55,61 @@ test('document discovery uses the FIA event name, not the calendar meeting name'
 
   assert.deepEqual(requested, [eventDocumentsPage('Barcelona-Catalunya Grand Prix')]);
   assert.equal(urls.length, 1);
+});
+
+// The October Bahrain round is listed on FIA's "Bahrain Grand Prix" event page,
+// but every document it publishes is prefixed "2026_bahrain_grand_prix_in_malaysia".
+const BAHRAIN_IN_MALAYSIA = {
+  id: 'bahrain',
+  meetingName: 'Bahrain Grand Prix',
+  date: '2026-10-04',
+  sources: { fiaDocumentSlug: 'bahrain_grand_prix_in_malaysia' },
+};
+
+const BAHRAIN_PAGE = [
+  '<a href="/system/files/decision-document/2026_bahrain_grand_prix_in_malaysia_-_infringement_-_car_6_-_changes_to_pu_elements.pdf">doc</a>',
+  '<a href="/system/files/decision-document/2026_bahrain_grand_prix_in_malaysia_-_final_starting_grid.pdf">doc</a>',
+].join('');
+
+function servePage(html, requested = []) {
+  return async (url) => {
+    requested.push(url);
+    return { ok: true, status: 200, text: async () => html };
+  };
+}
+
+test('the document slug override replaces the slug taken from the event name', () => {
+  assert.equal(fiaDocumentSlug(BAHRAIN_IN_MALAYSIA), 'bahrain_grand_prix_in_malaysia');
+  assert.equal(fiaDocumentSlug(BARCELONA), 'barcelona-catalunya_grand_prix');
+  assert.equal(fiaDocumentSlug(MONACO), 'monaco_grand_prix');
+});
+
+test('document discovery reads the event page but matches the overridden file prefix', async () => {
+  const requested = [];
+  const urls = await fetchFiaDecisionUrls(BAHRAIN_IN_MALAYSIA, { fetchImpl: servePage(BAHRAIN_PAGE, requested) });
+
+  assert.deepEqual(requested, [eventDocumentsPage('Bahrain Grand Prix')]);
+  assert.equal(urls.length, 2);
+});
+
+test('an event page whose documents all use another prefix fails instead of reading as no documents', async () => {
+  const { sources, ...withoutOverride } = BAHRAIN_IN_MALAYSIA;
+  assert.ok(sources);
+  await assert.rejects(
+    () => fetchFiaDecisionUrls(withoutOverride, { fetchImpl: servePage(BAHRAIN_PAGE) }),
+    /files its documents under 2026_bahrain_grand_prix_in_malaysia, not 2026_bahrain_grand_prix\. Set sources\.fiaDocumentSlug for bahrain/,
+  );
+});
+
+test('an event page with no documents yet still falls back to the landing page', async () => {
+  const requested = [];
+  const urls = await fetchFiaDecisionUrls(MONACO, { fetchImpl: servePage('<p>No documents</p>', requested) });
+
+  assert.deepEqual(urls, []);
+  assert.equal(requested.length, 2);
+});
+
+test('document prefixes are read up to the first separator', () => {
+  assert.deepEqual(documentPrefixes(BAHRAIN_PAGE, '2026'), ['2026_bahrain_grand_prix_in_malaysia']);
+  assert.deepEqual(documentPrefixes(BAHRAIN_PAGE, '2025'), []);
 });

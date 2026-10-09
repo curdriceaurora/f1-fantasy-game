@@ -2,9 +2,9 @@
   "teamId": "stephen-brooks-397d1f58",
   "principalName": "Stephen Brooks",
   "displayName": "Cadillacing Speed",
-  "totalPoints": 510,
+  "totalPoints": 500,
   "completedRaces": 13,
-  "latestRacePoints": -11,
+  "latestRacePoints": -21,
   "races": [
     {
       "raceId": "australia",
@@ -2402,13 +2402,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": -11,
-      "driverSubtotal": 1,
+      "baseSubtotal": -21,
+      "driverSubtotal": -9,
       "constructorSubtotal": -12,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -11,
+      "totalPoints": -21,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2486,7 +2486,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2499,6 +2499,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2547,12 +2551,12 @@
           "weightingBreakdown": {
             "leadDriverId": "carlos-sainz",
             "leadDriverName": "Carlos Sainz",
-            "leadDriverPoints": -10,
+            "leadDriverPoints": -11,
             "secondDriverId": "alex-albon",
             "secondDriverName": "Alex Albon",
             "secondDriverPoints": -8,
-            "formula": "ceil((3×-10 + 2×-8) ÷ 5)",
-            "weightedRawPoints": -9.2,
+            "formula": "ceil((3×-11 + 2×-8) ÷ 5)",
+            "weightedRawPoints": -9.8,
             "weightedPoints": -9
           },
           "components": [
@@ -2590,7 +2594,7 @@
           ]
         }
       ],
-      "runningTotal": 510
+      "runningTotal": 500
     }
   ]
 }

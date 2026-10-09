@@ -2,9 +2,9 @@
   "teamId": "brian-donnell-c0048d2b",
   "principalName": "Brian Donnell",
   "displayName": "Fairbanks ICEdogs",
-  "totalPoints": 582,
+  "totalPoints": 577,
   "completedRaces": 13,
-  "latestRacePoints": -3,
+  "latestRacePoints": -8,
   "races": [
     {
       "raceId": "australia",
@@ -2418,13 +2418,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": -3,
-      "driverSubtotal": -21,
-      "constructorSubtotal": 18,
+      "baseSubtotal": -8,
+      "driverSubtotal": -22,
+      "constructorSubtotal": 14,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": -3,
+      "totalPoints": -8,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2470,7 +2470,7 @@
           "improvementGrid": 13,
           "racePosition": 17,
           "classified": true,
-          "totalPoints": -10,
+          "totalPoints": -11,
           "components": [
             {
               "label": "Qualifying (grid P13)",
@@ -2483,6 +2483,10 @@
             {
               "label": "Position change",
               "points": -8
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -1
             }
           ],
           "raceContext": {
@@ -2559,22 +2563,22 @@
             "liam-lawson",
             "arvid-lindblad"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "liam-lawson",
             "leadDriverName": "Liam Lawson",
             "leadDriverPoints": 17,
             "secondDriverId": "arvid-lindblad",
             "secondDriverName": "Arvid Lindblad",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×17 + 2×25) ÷ 5)",
-            "weightedRawPoints": 20.2,
-            "weightedPoints": 21
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×17 + 2×15) ÷ 5)",
+            "weightedRawPoints": 16.2,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2606,7 +2610,7 @@
           ]
         }
       ],
-      "runningTotal": 582
+      "runningTotal": 577
     }
   ]
 }

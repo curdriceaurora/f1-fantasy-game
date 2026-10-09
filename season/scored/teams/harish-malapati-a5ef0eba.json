@@ -2,9 +2,9 @@
   "teamId": "harish-malapati-a5ef0eba",
   "principalName": "Harish Malapati",
   "displayName": "No Sandbagging",
-  "totalPoints": 818,
+  "totalPoints": 809,
   "completedRaces": 13,
-  "latestRacePoints": 23,
+  "latestRacePoints": 14,
   "races": [
     {
       "raceId": "australia",
@@ -2430,13 +2430,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 23,
+      "baseSubtotal": 14,
       "driverSubtotal": -18,
-      "constructorSubtotal": 41,
+      "constructorSubtotal": 32,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 23,
+      "totalPoints": 14,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2544,7 +2544,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2560,6 +2560,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2571,22 +2575,22 @@
             "liam-lawson",
             "arvid-lindblad"
           ],
-          "totalPoints": 21,
+          "totalPoints": 17,
           "weightingBreakdown": {
             "leadDriverId": "liam-lawson",
             "leadDriverName": "Liam Lawson",
             "leadDriverPoints": 17,
             "secondDriverId": "arvid-lindblad",
             "secondDriverName": "Arvid Lindblad",
-            "secondDriverPoints": 25,
-            "formula": "ceil((3×17 + 2×25) ÷ 5)",
-            "weightedRawPoints": 20.2,
-            "weightedPoints": 21
+            "secondDriverPoints": 15,
+            "formula": "ceil((3×17 + 2×15) ÷ 5)",
+            "weightedRawPoints": 16.2,
+            "weightedPoints": 17
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 21
+              "points": 17
             }
           ]
         },
@@ -2618,7 +2622,7 @@
           ]
         }
       ],
-      "runningTotal": 818
+      "runningTotal": 809
     }
   ]
 }

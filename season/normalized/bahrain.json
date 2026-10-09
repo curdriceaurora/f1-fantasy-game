@@ -4,7 +4,35 @@
   "date": "2026-10-04",
   "round": 16,
   "sprintWeekend": false,
-  "documents": [],
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_bahrain_grand_prix_in_malaysia_-_infringement_-_car_27_-_unsafe_release.pdf",
+      "fineEuros": 10000,
+      "finePoints": -5,
+      "appliedTo": {
+        "type": "team",
+        "id": "audi"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_bahrain_grand_prix_in_malaysia_-_infringement_-_car_55_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "driver",
+        "id": "carlos-sainz"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_bahrain_grand_prix_in_malaysia_-_infringement_-_car_44_-_impeding_of_car_5.pdf",
+      "fineEuros": 10000,
+      "finePoints": -5,
+      "appliedTo": {
+        "type": "team",
+        "id": "ferrari"
+      }
+    }
+  ],
   "drivers": {
     "lando-norris": {
       "driverId": "lando-norris",
@@ -81,7 +109,7 @@
       "dns": false,
       "dsq": false,
       "fastestLap": false,
-      "gridPenaltyPlaces": 0,
+      "gridPenaltyPlaces": 5,
       "timePenaltySeconds": 0,
       "fineEuros": 0,
       "finePoints": 0
@@ -301,7 +329,7 @@
       "dns": false,
       "dsq": false,
       "fastestLap": false,
-      "gridPenaltyPlaces": 0,
+      "gridPenaltyPlaces": 30,
       "timePenaltySeconds": 0,
       "fineEuros": 0,
       "finePoints": 0
@@ -321,7 +349,7 @@
       "dns": false,
       "dsq": false,
       "fastestLap": false,
-      "gridPenaltyPlaces": 0,
+      "gridPenaltyPlaces": 15,
       "timePenaltySeconds": 0,
       "fineEuros": 0,
       "finePoints": 0
@@ -363,7 +391,7 @@
       "fastestLap": false,
       "gridPenaltyPlaces": 0,
       "timePenaltySeconds": 0,
-      "fineEuros": 0,
+      "fineEuros": 100,
       "finePoints": 0
     },
     "george-russell": {
@@ -472,7 +500,7 @@
         "gabriel-bortoleto",
         "nico-hulkenberg"
       ],
-      "fineEuros": 0,
+      "fineEuros": 10000,
       "finePoints": 0
     },
     "alpine": {
@@ -517,7 +545,7 @@
         "charles-leclerc",
         "lewis-hamilton"
       ],
-      "fineEuros": 0,
+      "fineEuros": 10000,
       "finePoints": 0
     },
     "williams": {
@@ -555,6 +583,6 @@
       "sprint": null,
       "race": 11731
     },
-    "generatedAt": "2026-10-05T22:26:35.949Z"
+    "generatedAt": "2026-10-06T04:06:49.457Z"
   }
 }

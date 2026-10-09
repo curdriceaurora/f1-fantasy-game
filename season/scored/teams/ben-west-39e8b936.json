@@ -2,9 +2,9 @@
   "teamId": "ben-west-39e8b936",
   "principalName": "Ben West",
   "displayName": "Plan F (For Ferrari)",
-  "totalPoints": 481,
+  "totalPoints": 471,
   "completedRaces": 13,
-  "latestRacePoints": 24,
+  "latestRacePoints": 14,
   "races": [
     {
       "raceId": "australia",
@@ -2422,13 +2422,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 24,
+      "baseSubtotal": 14,
       "driverSubtotal": 16,
-      "constructorSubtotal": 8,
+      "constructorSubtotal": -2,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 24,
+      "totalPoints": 14,
       "drivers": [
         {
           "driverId": "charles-leclerc",
@@ -2563,7 +2563,7 @@
             "charles-leclerc",
             "lewis-hamilton"
           ],
-          "totalPoints": 16,
+          "totalPoints": 11,
           "weightingBreakdown": {
             "leadDriverId": "charles-leclerc",
             "leadDriverName": "Charles Leclerc",
@@ -2579,6 +2579,10 @@
             {
               "label": "Weighted driver total",
               "points": 16
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         },
@@ -2590,7 +2594,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2606,11 +2610,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 481
+      "runningTotal": 471
     }
   ]
 }

@@ -2,9 +2,9 @@
   "teamId": "simon-walker-7dd9df1f",
   "principalName": "Simon Walker",
   "displayName": "Jaamhi Dodgers",
-  "totalPoints": 703,
+  "totalPoints": 699,
   "completedRaces": 13,
-  "latestRacePoints": -27,
+  "latestRacePoints": -31,
   "races": [
     {
       "raceId": "australia",
@@ -2418,13 +2418,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": -28,
+      "baseSubtotal": -32,
       "driverSubtotal": -29,
-      "constructorSubtotal": 1,
+      "constructorSubtotal": -3,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 1,
-      "totalPoints": -27,
+      "totalPoints": -31,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2586,27 +2586,27 @@
             "pierre-gasly",
             "franco-colapinto"
           ],
-          "totalPoints": 4,
+          "totalPoints": 0,
           "weightingBreakdown": {
             "leadDriverId": "pierre-gasly",
             "leadDriverName": "Pierre Gasly",
             "leadDriverPoints": -5,
             "secondDriverId": "franco-colapinto",
             "secondDriverName": "Franco Colapinto",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×-5 + 2×16) ÷ 5)",
-            "weightedRawPoints": 3.4,
-            "weightedPoints": 4
+            "secondDriverPoints": 6,
+            "formula": "ceil((3×-5 + 2×6) ÷ 5)",
+            "weightedRawPoints": -0.6,
+            "weightedPoints": 0
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 4
+              "points": 0
             }
           ]
         }
       ],
-      "runningTotal": 703
+      "runningTotal": 699
     }
   ]
 }

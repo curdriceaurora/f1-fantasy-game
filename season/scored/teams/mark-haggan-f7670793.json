@@ -2,9 +2,9 @@
   "teamId": "mark-haggan-f7670793",
   "principalName": "Mark Haggan",
   "displayName": "Henry’s Hoovers",
-  "totalPoints": 629,
+  "totalPoints": 612,
   "completedRaces": 13,
-  "latestRacePoints": 41,
+  "latestRacePoints": 24,
   "races": [
     {
       "raceId": "australia",
@@ -2406,13 +2406,13 @@
       "raceId": "bahrain",
       "raceName": "Bahrain",
       "raceDate": "2026-10-04",
-      "baseSubtotal": 41,
-      "driverSubtotal": 13,
-      "constructorSubtotal": 28,
+      "baseSubtotal": 24,
+      "driverSubtotal": 3,
+      "constructorSubtotal": 21,
       "homeCircuitApplied": false,
       "homeCircuitBonusPoints": 0,
       "investmentBonusPoints": 0,
-      "totalPoints": 41,
+      "totalPoints": 24,
       "drivers": [
         {
           "driverId": "george-russell",
@@ -2490,7 +2490,7 @@
           "improvementGrid": 22,
           "racePosition": 10,
           "classified": true,
-          "totalPoints": 25,
+          "totalPoints": 15,
           "components": [
             {
               "label": "Qualifying (grid P22)",
@@ -2503,6 +2503,10 @@
             {
               "label": "Position change",
               "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
             }
           ],
           "raceContext": {
@@ -2520,22 +2524,22 @@
             "max-verstappen",
             "isack-hadjar"
           ],
-          "totalPoints": 25,
+          "totalPoints": 23,
           "weightingBreakdown": {
             "leadDriverId": "max-verstappen",
             "leadDriverName": "Max Verstappen",
             "leadDriverPoints": 30,
             "secondDriverId": "isack-hadjar",
             "secondDriverName": "Isack Hadjar",
-            "secondDriverPoints": 16,
-            "formula": "ceil((3×30 + 2×16) ÷ 5)",
-            "weightedRawPoints": 24.4,
-            "weightedPoints": 25
+            "secondDriverPoints": 11,
+            "formula": "ceil((3×30 + 2×11) ÷ 5)",
+            "weightedRawPoints": 22.4,
+            "weightedPoints": 23
           },
           "components": [
             {
               "label": "Weighted driver total",
-              "points": 25
+              "points": 23
             }
           ]
         },
@@ -2574,7 +2578,7 @@
             "gabriel-bortoleto",
             "nico-hulkenberg"
           ],
-          "totalPoints": -1,
+          "totalPoints": -6,
           "weightingBreakdown": {
             "leadDriverId": "nico-hulkenberg",
             "leadDriverName": "Nico Hulkenberg",
@@ -2590,11 +2594,15 @@
             {
               "label": "Weighted driver total",
               "points": -1
+            },
+            {
+              "label": "FIA monetary fines",
+              "points": -5
             }
           ]
         }
       ],
-      "runningTotal": 629
+      "runningTotal": 612
     }
   ]
 }
