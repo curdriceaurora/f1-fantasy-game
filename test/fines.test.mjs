@@ -258,8 +258,8 @@ test('driverFaultDriver identifies driver-fault infringements from URL patterns'
   assert.ok(driver1);
   assert.strictEqual(driver1.id, 'lewis-hamilton');
 
-  const url2 = 'https://example.test/infringement_-_car_12_-_impeding.pdf';
-  const driver2 = driverFaultDriver(url2, 'Reason Car 12 impeding');
+  const url2 = 'https://example.test/infringement_-_car_12_-_causing_a_collision_with_car_55.pdf';
+  const driver2 = driverFaultDriver(url2, 'Reason Car 12 collision');
   assert.ok(driver2);
   assert.strictEqual(driver2.id, 'kimi-antonelli');
 
@@ -411,3 +411,41 @@ test('activeFineFromText and classifySubject cover currency formats and CAR rege
 
 
 
+
+test('a Reason restating a partially suspended fine counts the payable part once', () => {
+  // Bahrain-in-Malaysia Audi unsafe release: the Reason repeats the Decision,
+  // naming the payer before "of which". Martin's sheet bills €10,000.
+  const text = `
+    Decision
+    The competitor (Audi Revolut F1 Team) is fined €30,000 of which €20,000 is
+    suspended for 12 months on condition that the Competitor does not commit a similar
+    infringement during its pitstops in the meantime.
+    Reason
+    The Stewards therefore impose a fine of €30,000 on the
+    Competitor, of which €20,000 is suspended for the remainder of the 2026 season,
+    subject to there being no further similar infringement.
+  `;
+
+  assert.equal(activeFineFromText(text), 10000);
+  const summary = summarizeFineDocumentText('https://example.test/infringement_-_car_27_-_unsafe_release.pdf', text);
+  assert.equal(summary.document.fineEuros, 10000);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'audi' });
+});
+
+test('an impeding fine on the competitor is billed to the team, not the warned driver', () => {
+  const url = 'https://example.test/2026_bahrain_grand_prix_in_malaysia_-_infringement_-_car_44_-_impeding_of_car_5.pdf';
+  const text = `
+    No / Driver
+    44 - Lewis Hamilton
+    Competitor
+    Scuderia Ferrari HP
+    Decision
+    Driver: Warning.
+    The competitor (Scuderia Ferrari HP) is fined €10,000.
+  `;
+
+  assert.equal(driverFaultDriver(url, text), null);
+  const summary = summarizeFineDocumentText(url, text);
+  assert.equal(summary.document.fineEuros, 10000);
+  assert.deepEqual(summary.document.appliedTo, { type: 'team', id: 'ferrari' });
+});

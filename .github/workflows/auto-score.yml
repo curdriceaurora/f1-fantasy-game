@@ -10,48 +10,35 @@ concurrency:
   group: season-data-writes
   cancel-in-progress: false
 
+# Up to three attempts, each in its own job and so on its own runner. See
+# auto-score-attempt.yml for why a fresh runner, not an in-job retry, is what
+# gets past the FIA bot filter. Nothing to score is a success on the first
+# attempt, so the retries only run when there was real work and it failed.
 jobs:
-  auto-score:
-    runs-on: ubuntu-latest
+  first:
     permissions:
       contents: write
+    uses: ./.github/workflows/auto-score-attempt.yml
+    with:
+      wait_seconds: 0
+      final: false
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+  second:
+    needs: first
+    if: needs.first.outputs.outcome == 'failure'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/auto-score-attempt.yml
+    with:
+      wait_seconds: 600
+      final: false
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run auto-scorer
-        run: node scripts/auto-score.mjs
-
-      - name: Commit and push season data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add season/
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          git commit -m "chore: auto-score race with FIA fine documents [skip ci]"
-
-          branch="${GITHUB_REF_NAME:-main}"
-          for attempt in 1 2 3; do
-            if git pull --rebase origin "$branch" && git push origin "HEAD:$branch"; then
-              exit 0
-            fi
-            git rebase --abort || true
-            sleep $((attempt * 2))
-          done
-
-          echo "Failed to push auto-score commit after 3 attempts."
-          exit 1
+  third:
+    needs: second
+    if: needs.second.outputs.outcome == 'failure'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/auto-score-attempt.yml
+    with:
+      wait_seconds: 1800
+      final: true

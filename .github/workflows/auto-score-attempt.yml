@@ -1,0 +1,90 @@
+name: Auto Score Race (one attempt)
+
+# One scoring attempt on a fresh runner, called by auto-score.yml.
+#
+# fia.com's bot filter refuses some GitHub runner addresses outright. Retrying
+# inside a job never helps — same machine, same address — but a new job lands
+# on a new runner, and on 5 October that alone was the difference between a
+# 403 and a scored race. So a failed attempt does not fail the run: it reports
+# `outcome: failure` and the caller starts another attempt in a fresh job. Only
+# the final attempt turns a failure red.
+
+on:
+  workflow_call:
+    inputs:
+      wait_seconds:
+        description: Pause before this attempt, so a retry is spaced from the last one.
+        type: number
+        default: 0
+      final:
+        description: The last attempt; a failure here fails the run.
+        type: boolean
+        default: false
+    outputs:
+      outcome:
+        description: success or failure of the scoring step on this attempt.
+        value: ${{ jobs.attempt.outputs.outcome }}
+
+jobs:
+  attempt:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      outcome: ${{ steps.score.outputs.outcome }}
+
+    steps:
+      - name: Wait before retrying
+        if: inputs.wait_seconds > 0
+        run: sleep ${{ inputs.wait_seconds }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run auto-scorer
+        id: score
+        run: |
+          if node scripts/auto-score.mjs; then
+            echo "outcome=success" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "outcome=failure" >> "$GITHUB_OUTPUT"
+          if [ "${{ inputs.final }}" = "true" ]; then
+            echo "::error::Scoring failed on every attempt, each on a fresh runner."
+            exit 1
+          fi
+          echo "::warning::Scoring failed on this runner; a fresh runner will retry."
+
+      - name: Commit and push season data
+        if: steps.score.outputs.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add season/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: auto-score race with FIA fine documents [skip ci]"
+
+          branch="${GITHUB_REF_NAME:-main}"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$branch" && git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+
+          echo "Failed to push auto-score commit after 3 attempts."
+          exit 1
