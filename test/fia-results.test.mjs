@@ -516,3 +516,20 @@ test('parseFinalClassification parses penalty multiplier and parseStartingGrid i
   });
   assert.equal(res.gridPenaltyPlaces, null);
 });
+
+test('parseFinalClassification expands a time penalty shared by several cars', () => {
+  // Zandvoort's footer gives Colapinto (43) and Lawson (30) one line. Reading only
+  // "Car N" lines dropped both, and Martin's sheet carries -10 for each.
+  const text = [
+    '1 4Lando NORRIS McLaren 72',
+    '* PENALTIES',
+    "Cars 43 & 30 - 10 second time penalties - Failing to slow for yellow flags - Stewards' document nos. 65 & 66",
+    "Car 55 - 10 second time penalty - Causing a collision - Stewards' document no. 68",
+  ].join('\n');
+
+  const { penalties } = parseFinalClassification(text);
+  assert.equal(penalties.get('franco-colapinto'), 10);
+  assert.equal(penalties.get('liam-lawson'), 10);
+  assert.equal(penalties.get('carlos-sainz'), 10);
+  assert.equal(penalties.size, 3);
+});

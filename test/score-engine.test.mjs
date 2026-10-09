@@ -501,7 +501,8 @@ test('constructor scoring preserves seat weighting when its lead driver is repla
   assert.deepEqual(constructor.driverIds, ['reserve-driver', 'kimi-antonelli']);
   assert.equal(constructor.weightingBreakdown.leadDriverId, 'george-russell');
   assert.equal(constructor.weightingBreakdown.leadDriverName, 'George Russell');
-  assert.equal(constructor.weightingBreakdown.leadDriverPoints, 20);
+  // The reserve's P3 qualifies in the No Hoper row (12), not Russell's Contender row (0).
+  assert.equal(constructor.weightingBreakdown.leadDriverPoints, 32);
   assert.equal(constructor.weightingBreakdown.secondDriverId, 'kimi-antonelli');
 });
 
@@ -521,4 +522,66 @@ test('scoreFantasyTeam fails closed when a configured seat is empty', () => {
     }),
     /empty-seat scoring is blocked pending Martin's ruling/,
   );
+});
+
+// Zandvoort: Hadjar was injured, Lawson moved up to Red Bull and the reserve
+// Tsunoda took Lawson's Racing Bulls seat. Results are from the FIA classification.
+function zandvoortRace() {
+  const driver = (teamId, grid, finish) => ({
+    teamId, qualifyingPosition: grid, gridStart: grid, improvementGrid: grid,
+    sprintPosition: null, racePosition: finish, fastestLap: false, gridPenaltyPlaces: 0,
+    timePenaltySeconds: 0, finePoints: 0, classified: true,
+  });
+  return {
+    raceId: 'netherlands',
+    raceName: 'Netherlands',
+    date: '2026-08-23',
+    sprintWeekend: false,
+    drivers: {
+      'max-verstappen': driver('red-bull', 7, 20),
+      'liam-lawson': { ...driver('red-bull', 8, 7), timePenaltySeconds: 10 },
+      'yuki-tsunoda': { ...driver('racing-bulls', 12, 11), name: 'Yuki Tsunoda' },
+      'arvid-lindblad': driver('racing-bulls', 10, 12),
+    },
+    teams: {
+      'red-bull': { teamId: 'red-bull', driverIds: ['max-verstappen', 'liam-lawson'], finePoints: 0 },
+      'racing-bulls': { teamId: 'racing-bulls', driverIds: ['yuki-tsunoda', 'arvid-lindblad'], finePoints: 0 },
+    },
+  };
+}
+
+function qualifyingPoints(contribution) {
+  return contribution.components.find((component) => component.label.startsWith('Qualifying')).points;
+}
+
+test('a reserve qualifies in the No Hoper row, not the rank of the seat they fill', () => {
+  const entry = {
+    selectedDriverIds: ['liam-lawson'],
+    selectedConstructorIds: [],
+    homeCircuitId: 'elsewhere',
+    investmentBonusPerRace: 0,
+  };
+
+  const contribution = scoreFantasyTeam(entry, zandvoortRace()).drivers[0];
+  assert.equal(contribution.sessionOccupants.qualifying, 'yuki-tsunoda');
+  // P12 is No Hoper's 6, where the seat owner's Outsider row would give 3.
+  assert.equal(qualifyingPoints(contribution), 6);
+  // Martin's Race 14 sheet: 8 for the Lawson seat (6 + 0 for P11 + 2 for one place gained).
+  assert.equal(contribution.totalPoints, 8);
+});
+
+test('a ranked driver standing in keeps the rank of the seat they fill', () => {
+  const entry = {
+    selectedDriverIds: ['isack-hadjar'],
+    selectedConstructorIds: [],
+    homeCircuitId: 'elsewhere',
+    investmentBonusPerRace: 0,
+  };
+
+  const contribution = scoreFantasyTeam(entry, zandvoortRace()).drivers[0];
+  assert.equal(contribution.sessionOccupants.race, 'liam-lawson');
+  // P8 in Hadjar's Top Ten row is 0; Lawson's own Outsider row would give 6.
+  assert.equal(qualifyingPoints(contribution), 0);
+  // Martin's Race 14 sheet: -2 for the Hadjar seat (0 + 6 for P7 + 2 - 10 time penalty).
+  assert.equal(contribution.totalPoints, -2);
 });
