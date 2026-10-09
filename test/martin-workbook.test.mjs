@@ -40,6 +40,28 @@ test('readRaceSheet maps driver and constructor totals to canonical ids', () => 
   assert.equal(race.teams.mclaren.total, -19);
 });
 
+test('readRaceSheet reads a stand-in under the seat row they filled', () => {
+  const names = [
+    'L. Norris', 'O. Piastri', 'G. Russell', 'A. Antonelli', 'M. Verstappen', 'L. Lawson 2',
+    'C. Leclerc', 'L. Hamilton', 'C. Sainz Jr', 'A. Albon', 'Y. Tsunoda', 'A. Lindblad',
+  ];
+  const workbook = raceSheet(new ExcelJS.Workbook(), 'Race 14', names.map((name, index) => [name, index + 1, null, null]));
+  const { drivers } = readRaceSheet(workbook, 'Race 14');
+  // Row 11 is Hadjar's seat (a ranked driver with Martin's "2" suffix); row 16 is
+  // Lawson's seat (a registered reserve).
+  assert.equal(drivers['isack-hadjar'].total, 6);
+  assert.equal(drivers['liam-lawson'].total, 11);
+  assert.equal(Object.keys(drivers).length, 12);
+});
+
+test('readRaceSheet still ignores a name that is neither canonical nor a known stand-in', () => {
+  const workbook = raceSheet(new ExcelJS.Workbook(), 'Race 14', [
+    ['L. Norris', 1, null, null], ['O. Piastri', 2, null, null], ['G. Russell', 3, null, null],
+    ['A. Antonelli', 4, null, null], ['M. Verstappen', 5, null, null], ['X. Nobody', 6, null, null],
+  ]);
+  assert.equal(readRaceSheet(workbook, 'Race 14').drivers['isack-hadjar'], undefined);
+});
+
 test('readRaceSheet returns null for a sheet the workbook does not carry', () => {
   const workbook = raceSheet(new ExcelJS.Workbook(), 'Race 8', [['L. Norris', -26, 'McLaren', -19]]);
   assert.equal(readRaceSheet(workbook, 'Race 9'), null);
