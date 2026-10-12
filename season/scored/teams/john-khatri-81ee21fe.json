@@ -2,9 +2,9 @@
   "teamId": "john-khatri-81ee21fe",
   "principalName": "John Khatri",
   "displayName": "Bella’s Racing Team",
-  "totalPoints": 499,
-  "completedRaces": 16,
-  "latestRacePoints": 1,
+  "totalPoints": 537,
+  "completedRaces": 17,
+  "latestRacePoints": 38,
   "races": [
     {
       "raceId": "australia",
@@ -4241,6 +4241,279 @@
         }
       ],
       "runningTotal": 499
+    },
+    {
+      "raceId": "singapore",
+      "raceName": "Singapore",
+      "raceDate": "2026-10-11",
+      "baseSubtotal": 38,
+      "driverSubtotal": 5,
+      "constructorSubtotal": 33,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 38,
+      "drivers": [
+        {
+          "driverId": "isack-hadjar",
+          "name": "Isack Hadjar",
+          "teamName": "Racing Bulls",
+          "imageSlug": "hadjar",
+          "rank": "Top Ten",
+          "seatId": "red-bull:2",
+          "sessionOccupants": {
+            "qualifying": "isack-hadjar",
+            "sprint": "isack-hadjar",
+            "race": "isack-hadjar"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "isack-hadjar",
+              "name": "Isack Hadjar"
+            },
+            "sprint": {
+              "driverId": "isack-hadjar",
+              "name": "Isack Hadjar"
+            },
+            "race": {
+              "driverId": "isack-hadjar",
+              "name": "Isack Hadjar"
+            }
+          },
+          "qualifyingPosition": "RT",
+          "qualifyingGridStart": 22,
+          "sprintPosition": 18,
+          "gridStart": 22,
+          "improvementGrid": 22,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 9,
+          "components": [
+            {
+              "label": "Qualifying (grid P22)",
+              "points": -6
+            },
+            {
+              "label": "Sprint P18",
+              "points": 0
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 24
+            },
+            {
+              "label": "Grid penalty",
+              "points": -10
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "seatId": "cadillac:1",
+          "sessionOccupants": {
+            "qualifying": "sergio-perez",
+            "sprint": "sergio-perez",
+            "race": "sergio-perez"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            },
+            "sprint": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            },
+            "race": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            }
+          },
+          "qualifyingPosition": 20,
+          "qualifyingGridStart": 17,
+          "sprintPosition": 21,
+          "gridStart": 17,
+          "improvementGrid": 17,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P17)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        },
+        {
+          "driverId": "valtteri-bottas",
+          "name": "Valtteri Bottas",
+          "teamName": "Cadillac",
+          "imageSlug": "bottas",
+          "rank": "Outsider",
+          "seatId": "cadillac:2",
+          "sessionOccupants": {
+            "qualifying": "valtteri-bottas",
+            "sprint": "valtteri-bottas",
+            "race": "valtteri-bottas"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "valtteri-bottas",
+              "name": "Valtteri Bottas"
+            },
+            "sprint": {
+              "driverId": "valtteri-bottas",
+              "name": "Valtteri Bottas"
+            },
+            "race": {
+              "driverId": "valtteri-bottas",
+              "name": "Valtteri Bottas"
+            }
+          },
+          "qualifyingPosition": 21,
+          "qualifyingGridStart": 18,
+          "sprintPosition": 17,
+          "gridStart": 18,
+          "improvementGrid": 18,
+          "racePosition": 19,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P18)",
+              "points": 0
+            },
+            {
+              "label": "Sprint P17",
+              "points": 0
+            },
+            {
+              "label": "Race finish P19",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": -2
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mercedes",
+          "name": "Mercedes",
+          "imageSlug": "mercedes",
+          "driverIds": [
+            "kimi-antonelli",
+            "george-russell"
+          ],
+          "totalPoints": 12,
+          "weightingBreakdown": {
+            "leadDriverId": "george-russell",
+            "leadDriverName": "George Russell",
+            "leadDriverPoints": 3,
+            "secondDriverId": "kimi-antonelli",
+            "secondDriverName": "Kimi Antonelli",
+            "secondDriverPoints": 25,
+            "formula": "ceil((3×3 + 2×25) ÷ 5)",
+            "weightedRawPoints": 11.8,
+            "weightedPoints": 12
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 12
+            }
+          ]
+        },
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 23,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 29,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 12,
+            "formula": "ceil((3×29 + 2×12) ÷ 5)",
+            "weightedRawPoints": 22.2,
+            "weightedPoints": 23
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 23
+            }
+          ]
+        },
+        {
+          "teamId": "cadillac",
+          "name": "Cadillac",
+          "imageSlug": "cadillac",
+          "driverIds": [
+            "sergio-perez",
+            "valtteri-bottas"
+          ],
+          "totalPoints": -2,
+          "weightingBreakdown": {
+            "leadDriverId": "sergio-perez",
+            "leadDriverName": "Sergio Perez",
+            "leadDriverPoints": -2,
+            "secondDriverId": "valtteri-bottas",
+            "secondDriverName": "Valtteri Bottas",
+            "secondDriverPoints": -2,
+            "formula": "ceil((3×-2 + 2×-2) ÷ 5)",
+            "weightedRawPoints": -2,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            }
+          ]
+        }
+      ],
+      "runningTotal": 537
     }
   ]
 }

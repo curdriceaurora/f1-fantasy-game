@@ -2,9 +2,9 @@
   "teamId": "rob-wallis-94faa5a8",
   "principalName": "Rob Wallis",
   "displayName": "Basil Bush - Zoom Zoom",
-  "totalPoints": 159,
-  "completedRaces": 16,
-  "latestRacePoints": 23,
+  "totalPoints": 195,
+  "completedRaces": 17,
+  "latestRacePoints": 36,
   "races": [
     {
       "raceId": "australia",
@@ -4217,6 +4217,275 @@
         }
       ],
       "runningTotal": 159
+    },
+    {
+      "raceId": "singapore",
+      "raceName": "Singapore",
+      "raceDate": "2026-10-11",
+      "baseSubtotal": 35,
+      "driverSubtotal": 29,
+      "constructorSubtotal": 6,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 1,
+      "totalPoints": 36,
+      "drivers": [
+        {
+          "driverId": "liam-lawson",
+          "name": "Liam Lawson",
+          "teamName": "Red Bull",
+          "imageSlug": "lawson",
+          "rank": "Outsider",
+          "seatId": "racing-bulls:1",
+          "sessionOccupants": {
+            "qualifying": "liam-lawson",
+            "sprint": "liam-lawson",
+            "race": "liam-lawson"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "liam-lawson",
+              "name": "Liam Lawson"
+            },
+            "sprint": {
+              "driverId": "liam-lawson",
+              "name": "Liam Lawson"
+            },
+            "race": {
+              "driverId": "liam-lawson",
+              "name": "Liam Lawson"
+            }
+          },
+          "qualifyingPosition": 9,
+          "qualifyingGridStart": 8,
+          "sprintPosition": 5,
+          "gridStart": 8,
+          "improvementGrid": 8,
+          "racePosition": 7,
+          "classified": true,
+          "totalPoints": 18,
+          "components": [
+            {
+              "label": "Qualifying (grid P8)",
+              "points": 6
+            },
+            {
+              "label": "Sprint P5",
+              "points": 4
+            },
+            {
+              "label": "Race finish P7",
+              "points": 6
+            },
+            {
+              "label": "Position change",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        },
+        {
+          "driverId": "nico-hulkenberg",
+          "name": "Nico Hulkenberg",
+          "teamName": "Audi",
+          "imageSlug": "hulkenberg",
+          "rank": "Mid Runner",
+          "seatId": "audi:1",
+          "sessionOccupants": {
+            "qualifying": "nico-hulkenberg",
+            "sprint": "nico-hulkenberg",
+            "race": "nico-hulkenberg"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "nico-hulkenberg",
+              "name": "Nico Hulkenberg"
+            },
+            "sprint": {
+              "driverId": "nico-hulkenberg",
+              "name": "Nico Hulkenberg"
+            },
+            "race": {
+              "driverId": "nico-hulkenberg",
+              "name": "Nico Hulkenberg"
+            }
+          },
+          "qualifyingPosition": 11,
+          "qualifyingGridStart": 10,
+          "sprintPosition": 7,
+          "gridStart": 10,
+          "improvementGrid": 10,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": 13,
+          "components": [
+            {
+              "label": "Qualifying (grid P10)",
+              "points": 3
+            },
+            {
+              "label": "Sprint P7",
+              "points": 2
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        },
+        {
+          "driverId": "sergio-perez",
+          "name": "Sergio Perez",
+          "teamName": "Cadillac",
+          "imageSlug": "perez",
+          "rank": "Mid Runner",
+          "seatId": "cadillac:1",
+          "sessionOccupants": {
+            "qualifying": "sergio-perez",
+            "sprint": "sergio-perez",
+            "race": "sergio-perez"
+          },
+          "sessionOccupantDetails": {
+            "qualifying": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            },
+            "sprint": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            },
+            "race": {
+              "driverId": "sergio-perez",
+              "name": "Sergio Perez"
+            }
+          },
+          "qualifyingPosition": 20,
+          "qualifyingGridStart": 17,
+          "sprintPosition": 21,
+          "gridStart": 17,
+          "improvementGrid": 17,
+          "racePosition": 17,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P17)",
+              "points": -2
+            },
+            {
+              "label": "Sprint P21",
+              "points": 0
+            },
+            {
+              "label": "Race finish P17",
+              "points": 0
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "singapore",
+            "raceName": "Singapore"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "mclaren",
+          "name": "McLaren",
+          "imageSlug": "mclaren",
+          "driverIds": [
+            "lando-norris",
+            "oscar-piastri"
+          ],
+          "totalPoints": 12,
+          "weightingBreakdown": {
+            "leadDriverId": "lando-norris",
+            "leadDriverName": "Lando Norris",
+            "leadDriverPoints": 13,
+            "secondDriverId": "oscar-piastri",
+            "secondDriverName": "Oscar Piastri",
+            "secondDriverPoints": 10,
+            "formula": "ceil((3×13 + 2×10) ÷ 5)",
+            "weightedRawPoints": 11.8,
+            "weightedPoints": 12
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 12
+            }
+          ]
+        },
+        {
+          "teamId": "williams",
+          "name": "Williams",
+          "imageSlug": "williams",
+          "driverIds": [
+            "alex-albon",
+            "carlos-sainz"
+          ],
+          "totalPoints": -4,
+          "weightingBreakdown": {
+            "leadDriverId": "carlos-sainz",
+            "leadDriverName": "Carlos Sainz",
+            "leadDriverPoints": -4,
+            "secondDriverId": "alex-albon",
+            "secondDriverName": "Alex Albon",
+            "secondDriverPoints": -6,
+            "formula": "ceil((3×-4 + 2×-6) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -4
+            }
+          ]
+        },
+        {
+          "teamId": "aston-martin",
+          "name": "Aston Martin",
+          "imageSlug": "aston_martin",
+          "driverIds": [
+            "fernando-alonso",
+            "lance-stroll"
+          ],
+          "totalPoints": -2,
+          "weightingBreakdown": {
+            "leadDriverId": "fernando-alonso",
+            "leadDriverName": "Fernando Alonso",
+            "leadDriverPoints": -6,
+            "secondDriverId": "lance-stroll",
+            "secondDriverName": "Lance Stroll",
+            "secondDriverPoints": 2,
+            "formula": "ceil((3×-6 + 2×2) ÷ 5)",
+            "weightedRawPoints": -2.8,
+            "weightedPoints": -2
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -2
+            }
+          ]
+        }
+      ],
+      "runningTotal": 195
     }
   ]
 }
