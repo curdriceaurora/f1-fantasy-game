@@ -400,3 +400,21 @@ test('runReconcileMartinCli executes check against committed ledger without erro
   await assert.doesNotReject(() => runReconcileMartinCli([]));
 });
 
+
+test('an unresolved pit-lane start is acknowledged when Martin scores the same zero', () => {
+  const calendar = [{ id: 'netherlands' }];
+  const read = () => ({
+    drivers: {
+      'sergio-perez': {
+        gridPenaltyPlaces: 0,
+        pitLaneGridPenalty: { status: 'unresolved', reason: 'no-place-count-in-race-decision', sourceUrl: 'https://example.test/car_11.pdf' },
+      },
+    },
+  });
+  const ledger = (gridPenalty) => ({ races: { netherlands: { drivers: { 'sergio-perez': { gridPenalty } } } } });
+  assert.deepEqual(auditPitLaneGridPenalties({ divergences: [] }, calendar, read, ledger(0)), []);
+  assert.match(
+    auditPitLaneGridPenalties({ divergences: [] }, calendar, read, ledger(-5)).join('\n'),
+    /not acknowledged/,
+  );
+});

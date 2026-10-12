@@ -267,6 +267,12 @@ test('driverFaultDriver identifies driver-fault infringements from URL patterns'
   assert.strictEqual(driverFaultDriver(nonDriverUrl, 'Technical breach'), null);
 });
 
+test('driverFaultDriver bills a registered reserve for their own driver-fault fine', () => {
+  const url = 'https://example.test/2026_spanish_grand_prix_-_infringement_-_car_22_-_pit_lane_speeding.pdf';
+  assert.strictEqual(driverFaultDriver(url, '')?.id, 'yuki-tsunoda');
+  assert.strictEqual(driverFaultDriver(url.replace('car_22', 'car_99'), ''), null);
+});
+
 test('fetchFineSummary handles fine documents list and summarizes totals', async () => {
   const summary = await fetchFineSummary('australia', []);
   assert.strictEqual(summary.raceId, 'australia');

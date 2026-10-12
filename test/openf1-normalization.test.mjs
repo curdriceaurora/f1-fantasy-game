@@ -69,6 +69,19 @@ test('normalizeRaceWeekend applies grid penalties across the weekend but race ti
   assert.equal(normalized.drivers['george-russell'].fastestLap, true);
 });
 
+test('normalizeRaceWeekend preserves explicit per-session seat occupants', () => {
+  const seatOccupants = {
+    'mercedes:1': { qualifying: 'george-russell', race: 'george-russell' },
+  };
+  const normalized = normalizeRaceWeekend(
+    { ...calendarRace, seatOccupants },
+    baseFetchedRace(),
+    { drivers: {}, teams: {}, documents: [] },
+  );
+
+  assert.deepEqual(normalized.seatOccupants, seatOccupants);
+});
+
 test('OpenF1 fallback removes a matching served penalty', () => {
   const fetchedRace = baseFetchedRace();
   fetchedRace.raceTimePenaltyMessages = [

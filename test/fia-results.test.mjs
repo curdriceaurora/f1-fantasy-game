@@ -395,6 +395,34 @@ test('a numbered penalty plus pit-lane start is retained for reconciliation inst
   assert.equal(results.pitLaneGridPenalties['isack-hadjar'].numberedGridPenaltyPlaces, 3);
 });
 
+test('a pit-lane decision with no place count takes the footer penalty as its count', async () => {
+  const decisionUrl = 'https://fia.test/race_-_infringement_-_car_6_race.pdf';
+  const results = await fetchRaceResults(
+    { date: '2026-05-03', meetingName: 'Miami Grand Prix', isSprintWeekend: false },
+    {
+      fetchFiaDecisionUrlsImpl: async () => [decisionUrl],
+      fetchPdfTextImpl: async (url) => {
+        if (url.includes('final_starting_grid')) {
+          return [
+            '21',
+            '5Gabriel BORTOLETO',
+            'DRIVERS REQUIRED TO START FROM THE PIT LANE',
+            '6Isack HADJAR',
+            '* PENALTIES',
+            'Car 6 - 35 place grid penalty - Additional power unit elements have been used',
+          ].join('\n');
+        }
+        if (url === decisionUrl) return 'Decision\nRequired to start the Race from the pit lane.';
+        return '15Gabriel BORTOLETO';
+      },
+    },
+  );
+
+  assert.equal(results.gridPenaltyPlaces['isack-hadjar'], 35);
+  assert.equal(results.pitLaneGridPenalties['isack-hadjar'].status, 'resolved');
+  assert.equal(results.pitLaneGridPenalties['isack-hadjar'].method, 'grid-footer');
+});
+
 test('parseFinalClassification reads a time penalty behind a lead-in clause', () => {
   // Miami's footer describes Leclerc's penalty as a converted drive-through. The
   // seconds do not follow the dash directly, which is why it was never ingested
@@ -515,4 +543,21 @@ test('parseFinalClassification parses penalty multiplier and parseStartingGrid i
     },
   });
   assert.equal(res.gridPenaltyPlaces, null);
+});
+
+test('parseFinalClassification expands a time penalty shared by several cars', () => {
+  // Zandvoort's footer gives Colapinto (43) and Lawson (30) one line. Reading only
+  // "Car N" lines dropped both, and Martin's sheet carries -10 for each.
+  const text = [
+    '1 4Lando NORRIS McLaren 72',
+    '* PENALTIES',
+    "Cars 43 & 30 - 10 second time penalties - Failing to slow for yellow flags - Stewards' document nos. 65 & 66",
+    "Car 55 - 10 second time penalty - Causing a collision - Stewards' document no. 68",
+  ].join('\n');
+
+  const { penalties } = parseFinalClassification(text);
+  assert.equal(penalties.get('franco-colapinto'), 10);
+  assert.equal(penalties.get('liam-lawson'), 10);
+  assert.equal(penalties.get('carlos-sainz'), 10);
+  assert.equal(penalties.size, 3);
 });

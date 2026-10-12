@@ -1,0 +1,30 @@
+{
+  "raceId": "italy",
+  "drivers": {
+    "kimi-antonelli": 100
+  },
+  "teams": {
+    "cadillac": 5000
+  },
+  "documents": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_italian_grand_prix_-_infringement_-_car_25_-_technical_non-conformity_cds.pdf",
+      "fineEuros": 5000,
+      "finePoints": -3,
+      "appliedTo": {
+        "type": "team",
+        "id": "cadillac"
+      }
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_italian_grand_prix_-_infringement_-_car_12_-_pit_lane_speeding.pdf",
+      "fineEuros": 100,
+      "finePoints": -1,
+      "appliedTo": {
+        "type": "driver",
+        "id": "kimi-antonelli"
+      }
+    }
+  ],
+  "warnings": []
+}

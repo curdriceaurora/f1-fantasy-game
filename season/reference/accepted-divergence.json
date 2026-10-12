@@ -430,6 +430,86 @@
       "martin": -5,
       "issue": "flow-through",
       "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "italy",
+      "kind": "driver",
+      "id": "fernando-alonso",
+      "field": "total",
+      "ours": -14,
+      "martin": -9,
+      "issue": "#96",
+      "reason": "FIA decision states a 30-place accumulation with a pit-lane start; §2.4 caps ours at -10, while Martin scores -5"
+    },
+    {
+      "race": "italy",
+      "kind": "driver",
+      "id": "fernando-alonso",
+      "field": "gridPenalty",
+      "ours": -10,
+      "martin": -5,
+      "issue": "#96",
+      "reason": "FIA decision states a 30-place accumulation with a pit-lane start; §2.4 caps ours at -10, while Martin scores -5"
+    },
+    {
+      "race": "italy",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "total",
+      "ours": -1,
+      "martin": -2,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P18; Martin has 19"
+    },
+    {
+      "race": "italy",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "grid",
+      "ours": 18,
+      "martin": 19,
+      "issue": "#84 Q11",
+      "reason": "FIA starting grid says P18; Martin has 19"
+    },
+    {
+      "race": "italy",
+      "kind": "team",
+      "id": "aston-martin",
+      "field": "total",
+      "ours": -8,
+      "martin": -6,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
+    },
+    {
+      "race": "spain",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "total",
+      "ours": -10,
+      "martin": 0,
+      "issue": "#84 Q2",
+      "reason": "FIA stewards' document 41 imposes a 40-place grid penalty on car 18; §2.4 caps ours at -10, while Martin has not applied it"
+    },
+    {
+      "race": "spain",
+      "kind": "driver",
+      "id": "lance-stroll",
+      "field": "gridPenalty",
+      "ours": -10,
+      "martin": 0,
+      "issue": "#84 Q2",
+      "reason": "FIA stewards' document 41 imposes a 40-place grid penalty on car 18; §2.4 caps ours at -10, while Martin has not applied it"
+    },
+    {
+      "race": "spain",
+      "kind": "team",
+      "id": "aston-martin",
+      "field": "total",
+      "ours": -5,
+      "martin": -1,
+      "issue": "flow-through",
+      "reason": "constructor total follows from a driver divergence in the same race"
     }
   ]
 }

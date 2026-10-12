@@ -47,7 +47,7 @@ function baseline() {
     ledger: structuredClone(REAL_LEDGER),
     scored: structuredClone(scoredByRace()),
     accepted: structuredClone(REAL_ACCEPTED),
-    pitLanePenaltyFindings: auditPitLaneGridPenalties(REAL_ACCEPTED),
+    pitLanePenaltyFindings: auditPitLaneGridPenalties(REAL_ACCEPTED, loadCalendar(), readJson, REAL_LEDGER),
   };
 }
 
