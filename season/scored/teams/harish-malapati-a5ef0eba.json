@@ -2,9 +2,9 @@
   "teamId": "harish-malapati-a5ef0eba",
   "principalName": "Harish Malapati",
   "displayName": "No Sandbagging",
-  "totalPoints": 878,
-  "completedRaces": 14,
-  "latestRacePoints": 69,
+  "totalPoints": 939,
+  "completedRaces": 15,
+  "latestRacePoints": 61,
   "races": [
     {
       "raceId": "australia",
@@ -2837,6 +2837,204 @@
         }
       ],
       "runningTotal": 878
+    },
+    {
+      "raceId": "united-states",
+      "raceName": "United States",
+      "raceDate": "2026-10-25",
+      "baseSubtotal": 61,
+      "driverSubtotal": 35,
+      "constructorSubtotal": 26,
+      "homeCircuitApplied": false,
+      "homeCircuitBonusPoints": 0,
+      "investmentBonusPoints": 0,
+      "totalPoints": 61,
+      "drivers": [
+        {
+          "driverId": "george-russell",
+          "name": "George Russell",
+          "teamName": "Mercedes",
+          "imageSlug": "russell",
+          "rank": "Contender",
+          "qualifyingPosition": 6,
+          "sprintPosition": null,
+          "gridStart": 6,
+          "improvementGrid": 6,
+          "racePosition": 8,
+          "classified": true,
+          "totalPoints": -2,
+          "components": [
+            {
+              "label": "Qualifying (grid P6)",
+              "points": -2
+            },
+            {
+              "label": "Race finish P8",
+              "points": 4
+            },
+            {
+              "label": "Position change",
+              "points": -4
+            }
+          ],
+          "raceContext": {
+            "raceId": "united-states",
+            "raceName": "United States"
+          }
+        },
+        {
+          "driverId": "charles-leclerc",
+          "name": "Charles Leclerc",
+          "teamName": "Ferrari",
+          "imageSlug": "leclerc",
+          "rank": "Top Ten",
+          "qualifyingPosition": 4,
+          "sprintPosition": null,
+          "gridStart": 4,
+          "improvementGrid": 4,
+          "racePosition": 2,
+          "classified": true,
+          "totalPoints": 27,
+          "components": [
+            {
+              "label": "Qualifying (grid P4)",
+              "points": 3
+            },
+            {
+              "label": "Race finish P2",
+              "points": 18
+            },
+            {
+              "label": "Position change",
+              "points": 4
+            },
+            {
+              "label": "Fastest lap",
+              "points": 2
+            }
+          ],
+          "raceContext": {
+            "raceId": "united-states",
+            "raceName": "United States"
+          }
+        },
+        {
+          "driverId": "pierre-gasly",
+          "name": "Pierre Gasly",
+          "teamName": "Alpine",
+          "imageSlug": "gasly",
+          "rank": "No Hoper",
+          "qualifyingPosition": 11,
+          "sprintPosition": null,
+          "gridStart": 10,
+          "improvementGrid": 10,
+          "racePosition": 10,
+          "classified": true,
+          "totalPoints": 10,
+          "components": [
+            {
+              "label": "Qualifying (grid P10)",
+              "points": 9
+            },
+            {
+              "label": "Race finish P10",
+              "points": 1
+            },
+            {
+              "label": "Position change",
+              "points": 0
+            }
+          ],
+          "raceContext": {
+            "raceId": "united-states",
+            "raceName": "United States"
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "teamId": "ferrari",
+          "name": "Ferrari",
+          "imageSlug": "ferrari",
+          "driverIds": [
+            "charles-leclerc",
+            "lewis-hamilton"
+          ],
+          "totalPoints": 23,
+          "weightingBreakdown": {
+            "leadDriverId": "charles-leclerc",
+            "leadDriverName": "Charles Leclerc",
+            "leadDriverPoints": 27,
+            "secondDriverId": "lewis-hamilton",
+            "secondDriverName": "Lewis Hamilton",
+            "secondDriverPoints": 17,
+            "formula": "ceil((3×27 + 2×17) ÷ 5)",
+            "weightedRawPoints": 23,
+            "weightedPoints": 23
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 23
+            }
+          ]
+        },
+        {
+          "teamId": "racing-bulls",
+          "name": "Racing Bulls",
+          "imageSlug": "racing_bulls",
+          "driverIds": [
+            "liam-lawson",
+            "arvid-lindblad"
+          ],
+          "totalPoints": 7,
+          "weightingBreakdown": {
+            "leadDriverId": "liam-lawson",
+            "leadDriverName": "Liam Lawson",
+            "leadDriverPoints": 8,
+            "secondDriverId": "arvid-lindblad",
+            "secondDriverName": "Arvid Lindblad",
+            "secondDriverPoints": 5,
+            "formula": "ceil((3×8 + 2×5) ÷ 5)",
+            "weightedRawPoints": 6.8,
+            "weightedPoints": 7
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "teamId": "haas",
+          "name": "Haas",
+          "imageSlug": "haas",
+          "driverIds": [
+            "esteban-ocon",
+            "oliver-bearman"
+          ],
+          "totalPoints": -4,
+          "weightingBreakdown": {
+            "leadDriverId": "esteban-ocon",
+            "leadDriverName": "Esteban Ocon",
+            "leadDriverPoints": 2,
+            "secondDriverId": "oliver-bearman",
+            "secondDriverName": "Oliver Bearman",
+            "secondDriverPoints": -15,
+            "formula": "ceil((3×2 + 2×-15) ÷ 5)",
+            "weightedRawPoints": -4.8,
+            "weightedPoints": -4
+          },
+          "components": [
+            {
+              "label": "Weighted driver total",
+              "points": -4
+            }
+          ]
+        }
+      ],
+      "runningTotal": 939
     }
   ]
 }
